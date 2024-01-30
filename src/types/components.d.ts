@@ -1,4 +1,4 @@
-import { ElementSidebar, IconsSidebar, TypeNotification } from "."
+import {ElementSidebar, IconsSidebar } from "."
 
 /**opcion del sidebar */
 export type SidebarElementProps = {
@@ -12,4 +12,10 @@ export type SidebarElementProps = {
     responsive: boolean;
     /** Icono del elemento */
     icon: keyof typeof IconsSidebar;
+};
+
+/** Detallar un item de informacion, que contiene un titulo y un contenido */
+export type DetailsProps = {
+    tittle:string
+    content: string | number | Date | undefined | null 
 };
