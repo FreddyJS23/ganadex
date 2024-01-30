@@ -30,7 +30,7 @@ export const Navbar = () => {
             <Sidebar android={true} />
           </div>
         </div>
-        <div className=" flex-none">
+        <div className=" flex gap-4">
           {/*  notificacion */}
           <div className="dropdown dropdown-end">
             <div
@@ -44,7 +44,7 @@ export const Navbar = () => {
               </div>
             </div>
 
-            <NotificationMain />
+             <NotificationMain /> 
           </div>
 
           <div className="dropdown dropdown-end">
@@ -71,7 +71,7 @@ export const Navbar = () => {
       </div>
 
       {/* divider */}
-      <div className="hidden sm:flex divider divider-primary opacity-20 mt-0"></div>
+      <div className="hidden sm:flex divider divider-primary opacity-20 m-0 mb-2"></div>
     </>
   );
 }
