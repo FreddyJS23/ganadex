@@ -25,10 +25,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
     <>
       {/* android/desktop */}
       <nav
-        className={`${
-          android ? "flex bg-base-100 w-52" : "hidden"
-        } scrollbar scrollbar-w-1 scrollbar-thumb-primary scrollbar-thumb-rounded-full overflow-x-auto h-full fixed lg:flex lg:flex-col items-center lg:fixed`}
-      >
+        className={`${ android ? 'flex bg-base-100 w-52' : 'hidden' } scrollbar scrollbar-w-1 scrollbar-thumb-primary scrollbar-thumb-rounded-full overflow-x-auto h-screen bg-gradient-to-r from-base-100 from-95%   fixed lg:flex lg:flex-col items-center lg:fixed`} >
         {/*  container */}
         <div className="h-full flex flex-col gap-2 items-center w-full ">
           <Logos small={false} />
@@ -49,8 +46,8 @@ export const Sidebar = ({ android }: SidebarProps) => {
       </nav>
 
       {/*tablet*/}
-      <nav className="hidden fixed sm:max-lg:flex sm:max-lg:flex-col items-center sm:max-lg:fixed  ">
         {/*  container */}
+            <nav className="hidden h-screen bg-gradient-to-r from-base-100 from-95% fixed sm:max-lg:flex sm:max-lg:flex-col items-center sm:max-lg:fixed  ">
         <div className="flex flex-col gap-2 items-center ">
           <Logos small={true} />
           <div className="divider divider-primary self-center w-12 mt-0 "></div>
