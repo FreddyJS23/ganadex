@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { Navbar } from "@/components/navbar";
 import { Sidebar } from "@/components/sidebar";
-import { StyledEngineProvider } from "@mui/material";
+import { Providers } from "./providers";
+
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -19,21 +19,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" >
-      <body className={`${nunito.className} grid grid-cols-12`}>
-        <header className="col-span-2">
-          <Sidebar android={false} />
-        </header>
-        <nav className="col-span-full sm:col-start-3 sm:col-end-12">
-          <Navbar />
-        </nav>
-        
-        <AppRouterCacheProvider>
-          <StyledEngineProvider injectFirst>
-            <main className="col-start-2 col-span-full">{children}</main>
-          </StyledEngineProvider>
-        </AppRouterCacheProvider>
-      </body>
-    </html>
+      <html lang="en">
+          <body
+              className={`${nunito.className} grid grid-cols-12   bg-background dark:bg-background-dark`}
+          >
+              <header className="col-span-2">
+                  <Sidebar android={false} />
+              </header>
+                  <nav className="col-span-full sm:col-start-3 sm:col-end-12 lg:translate-x-6">
+                      <Navbar />
+                  </nav>
+
+                  <main className="mt-2 sm:col-start-2 lg:mt-0 lg:col-start-3 col-span-full ">
+              <Providers>
+                      {children}
+              </Providers>
+                  </main>
+          </body>
+      </html>
   );
 }

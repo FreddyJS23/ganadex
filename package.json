@@ -9,13 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/cache": "^11.11.0",
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.2",
-    "@mui/material-nextjs": "^5.15.0",
+    "@nextui-org/react": "^2.2.9",
     "@svgr/webpack": "^8.1.0",
     "chart.js": "^4.4.1",
+    "framer-motion": "^11.0.3",
+    "json-server": "^1.0.0-alpha.21",
     "next": "14.0.4",
     "prettier": "^3.2.4",
     "react": "^18",
