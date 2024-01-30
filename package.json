@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fakeApi": "json-server src/data/db.json -p 4000 "
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",

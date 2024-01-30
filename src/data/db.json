@@ -1,0 +1,500 @@
+{
+    "response_ganado": {
+        "ganado": {
+            "id": 70928,
+            "nombre": "quisquam-deleniti-vitae-quisquam",
+            "numero": 30752,
+            "origen": "facilis-quod",
+            "sexo": "H",
+            "tipo": "adulto",
+            "fecha_nacimiento": "2024-05-12T13:19:19.438Z",
+            "peso_nacimiento": "442-KG",
+            "peso_destete": "442-KG",
+            "peso_2year": "442-KG",
+            "peso_actual": "442-KG",
+            "estados": [
+                {
+                    "id": 75360,
+                    "estado": "sano"
+                }
+            ],
+            "fecha_defuncion": "2023-03-13",
+            "causa_defuncion": "enim-deleniti-perspiciatis",
+            "prox_revision": "2023-08-10",
+            "prox_servicio": "2025-01-17",
+            "prox_parto": "2024-09-23",
+            "prox_secado": "2023-11-24"
+        },
+        "servicio_reciente": {
+            "id": 6036096,
+            "fecha": "2024-07-12",
+            "observacion": "fuga-est-tenetur-nemo-laudantium",
+            "tipo": "natus-veniam-minus-possimus",
+            "numero_toro": null
+        },
+        "total_servicios": 4743408,
+        "revision_reciente": {
+            "id": 6968905205547008,
+            "fecha": "2023-06-04T02:06:51.302Z",
+            "diagnostico": "tenetur-architecto-eligendi-nisi",
+            "tratamiento": "velit-labore-accusantium-nemo"
+        },
+        "total_revisiones": 5776677
+    },
+    "response_ganados": [
+        {
+            "id": 70928,
+            "nombre": "quisquam-deleniti-vitae-quisquam",
+            "numero": 30752,
+            "origen": "facilis-quod",
+            "sexo": "H",
+            "tipo": "adulto",
+            "fecha_nacimiento": "2024-05-12T13:19:19.438Z",
+            "peso_nacimiento": "442-KG",
+            "peso_destete": "442-KG",
+            "peso_2year": "442-KG",
+            "peso_actual": "442-KG",
+            "estados": [
+                {
+                    "id": 75360,
+                    "estado": "sano"
+                }
+            ]
+        },
+        {
+            "id": 70928,
+            "nombre": "quisquam-deleniti-vitae-quisquam",
+            "numero": 30752,
+            "origen": "facilis-quod",
+            "sexo": "H",
+            "tipo": "adulto",
+            "fecha_nacimiento": "2024-05-12T13:19:19.438Z",
+            "peso_nacimiento": "442-KG",
+            "peso_destete": "442-KG",
+            "peso_2year": "442-KG",
+            "peso_actual": "442-KG",
+            "estados": [
+                {
+                    "id": 75360,
+                    "estado": "sano"
+                }
+            ]
+        }
+    ],
+    "response_toro": {
+        "toro": {
+            "id": 1973427143442432,
+            "nombre": "sunt-blanditiis-illum-sint",
+            "numero": 3434343,
+            "origen": "fuera",
+            "sexo": "M",
+            "tipo": "labore-voluptatibus-nemo-harum-iure",
+            "fecha_nacimiento": "2024-05-12",
+            "efectividad": 33,
+            "padre_en_partos": 7550,
+            "servicios": 481
+        },
+        "efectividad": 33,
+        "padre_en_partos": 7550,
+        "servicios": 481
+    },
+
+    "response_toros": {
+        "toros": [
+            {
+                "id": 1973427143442432,
+                "nombre": "sunt-blanditiis-illum-sint",
+                "numero": 3434343,
+                "origen": "fuera",
+                "sexo": "M",
+                "tipo": "labore-voluptatibus-nemo-harum-iure",
+                "fecha_nacimiento": "2024-05-12"
+            }
+        ],
+
+        "response_insumo": {
+            "insumo": {
+                "id": 3944676,
+                "insumo": "sitmollitia-enim",
+                "cantidad": 5453,
+                "precio": 5018
+            }
+        },
+        "response_insumos": {
+            "insumos": [
+                {
+                    "id": 3944676,
+                    "insumo": "sitmollitia-enim",
+                    "cantidad": 5453,
+                    "precio": 5018
+                },
+                {
+                    "id": 3944676,
+                    "insumo": "sitmollitia-enim",
+                    "cantidad": 5453,
+                    "precio": 5018
+                }
+            ]
+        },
+
+        "response_personal": {
+            "personal": {
+                "id": 80857242,
+                "ci": 17635436,
+                "nombre": "dicta-provident-dicta-distinctio-tenetur",
+                "apellido": "6e7f746b-1c5a-4c1e-a9ef-554e1b82d346",
+                "fecha_nacimiento": "2023-10-26",
+                "cargo": "similique-mola"
+            }
+        },
+        "response_TodoPersonal": {
+            "todo_personal": [
+                {
+                    "id": 8085724465201152,
+                    "ci": 1763543284187136,
+                    "nombre": "dicta-provident-dicta-distinctio-tenetur",
+                    "apellido": "6e7f746b-1c5a-4c1e-a9ef-554e1b82d346",
+                    "fecha_nacimiento": "2023-10-26",
+                    "cargo": "similique-molestiae-ipsam-sit-ipsa"
+                },
+                {
+                    "id": 8085724465201152,
+                    "ci": 1763543284187136,
+                    "nombre": "dicta-provident-dicta-distinctio-tenetur",
+                    "apellido": "6e7f746b-1c5a-4c1e-a9ef-554e1b82d346",
+                    "fecha_nacimiento": "2023-10-26",
+                    "cargo": "similique-molestiae-ipsam-sit-ipsa"
+                }
+            ]
+        },
+        "response_configuracion": {
+            "configuracion": {
+                "id": 3723733040627712,
+                "dark_mode": false,
+                "moneda": "$"
+            }
+        },
+        "response_revision": {
+            "revision": {
+                "id": 4356864,
+                "fecha": "2024-11-23",
+                "diagnostico": "totam-aspernatur-soluta-eius",
+                "tratamiento": "suscipit-eum"
+            }
+        },
+        "response_revisiones": {
+            "revisioness": [
+                {
+                    "id": 4356805979275264,
+                    "fecha": "2024-11-23T17:54:55.360Z",
+                    "diagnostico": "totam-aspernatur-soluta-eius",
+                    "tratamiento": "suscipit-eum"
+                },
+                {
+                    "id": 4356805979275264,
+                    "fecha": "2024-11-23T17:54:55.360Z",
+                    "diagnostico": "totam-aspernatur-soluta-eius",
+                    "tratamiento": "suscipit-eum"
+                }
+            ]
+        },
+        "response_servicio": {
+            "servicio": {
+                "id": 8853613789052928,
+                "fecha": "2023-03-31",
+                "observacion": "molestias-aperiam",
+                "tipo": "neque-quaerat-soluta-corrupti-hic",
+                "numero_toro": 778
+            }
+        },
+        "response_servicios": {
+            "servicios": [
+                {
+                    "id": 8853613789052928,
+                    "fecha": "2023-03-31",
+                    "observacion": "molestias-aperiam",
+                    "tipo": "neque-quaerat-soluta-corrupti-hic",
+                    "numero_toro": 889
+                },
+                {
+                    "id": 8853613789052928,
+                    "fecha": "2023-03-31",
+                    "observacion": "molestias-aperiam",
+                    "tipo": "neque-quaerat-soluta-corrupti-hic",
+                    "numero_toro": 889
+                }
+            ]
+        },
+        "response_parto": {
+            "parto": {
+                "id": 1569869136920576,
+                "fecha": "2024-09-26",
+                "observacion": "blanditiis-commodi-eos",
+                "cria": {
+                    "id": 1356080783294464,
+                    "nombre": "excepturi-amet-saepe-consequuntur",
+                    "numero": null,
+                    "sexo": "M",
+                    "origen": "fuera",
+                    "fecha_nacimiento": "2023-03-31"
+                },
+                "padre_numero": 30392802
+            }
+        },
+        "response_partos": {
+            "partos": [
+                {
+                    "id": 2210139899691008,
+                    "fecha": "2023-11-27T01:21:40.810Z",
+                    "observacion": "placeat-repellat-harum-iste",
+                    "cria": {
+                        "id": 1356080783294464,
+                        "nombre": "excepturi-amet-saepe-consequuntur",
+                        "numero": null,
+                        "sexo": "M",
+                        "origen": null,
+                        "fecha_nacimiento": null
+                    },
+                    "padre_numero": 7867765960474624
+                },
+                {
+                    "id": 2210139899691008,
+                    "fecha": "2023-11-27T01:21:40.810Z",
+                    "observacion": "placeat-repellat-harum-iste",
+                    "cria": {
+                        "id": 1356080783294464,
+                        "nombre": "excepturi-amet-saepe-consequuntur",
+                        "numero": null,
+                        "sexo": "M",
+                        "origen": null,
+                        "fecha_nacimiento": null
+                    },
+                    "padre_numero": 7867765960474624
+                }
+            ]
+        },
+        "response_pesajeLeche": {
+            "pesaje_leche": {
+                "id": 9082760,
+                "pesaje": "44-KG",
+                "fecha": "2024-12-04"
+            }
+        },
+        "response_pesajesLeche": {
+            "pesajes_leche": [
+                {
+                    "id": 9082760,
+                    "pesaje": "44-KG",
+                    "fecha": "2024-12-04"
+                },
+                {
+                    "id": 9082760,
+                    "pesaje": "44-KG",
+                    "fecha": "2024-12-04"
+                }
+            ]
+        },
+        "response_user": {
+            "user": {
+                "id": 66879472,
+                "usuario": "at-odio-autem-pariatur"
+            }
+        },
+        "response_criasPendienteCapar": {
+            "crias_pendiente_capar": [
+                {
+                    "id": 3203300,
+                    "nombre": "ea-omnis-dolorum-voluptates",
+                    "fecha_nacimiento": "2024-12-04"
+                },
+                {
+                    "id": 3203300,
+                    "nombre": "ea-omnis-dolorum-voluptates",
+                    "fecha_nacimiento": "2024-12-04"
+                }
+            ]
+        }
+    },
+    "response_criasPendienteNumeracion": {
+        "crias_pendiente_numeracion": [
+            {
+                "id": 3203300,
+                "nombre": "ea-omnis-dolorum-voluptates",
+                "fecha_nacimiento": "2024-12-04"
+            },
+            {
+                "id": 3203300,
+                "nombre": "ea-omnis-dolorum-voluptates",
+                "fecha_nacimiento": "2024-12-04"
+            }
+        ]
+    },
+
+    "response_preciosLeche": {
+        "precios": [
+            {
+                "id": 79896775752,
+                "precio": 1327600160,
+                "fecha": "2024-01-12"
+            },
+            {
+                "id": 79896775752,
+                "precio": 1327600160,
+                "fecha": "2024-01-12"
+            }
+        ]
+    },
+    "response_ventasLeche": {
+        "ventas_de_leche": [
+            {
+                "id": 6420494083424256,
+                "fecha": "2024-11-30T01:28:55.904Z",
+                "cantidad": "434-KG",
+                "precio": 5263201977499648
+            },
+            {
+                "id": 642049424256,
+                "fecha": "2024-11-30T01:28:55.904Z",
+                "cantidad": "434-KG",
+                "precio": 5263201977499648
+            }
+        ]
+    },
+    "response_comprador": {
+        "comprador": {
+            "id": 813830223360,
+            "nombre": "quo-tempora-fugiat-harum-deleniti"
+        }
+    },
+    "response_compradores": {
+        "compradores": [
+            {
+                "id": 813839690,
+                "nombre": "quo-tempora-fugiat-harum-deleniti"
+            },
+            {
+                "id": 813839690,
+                "nombre": "quo-tempora-fugiat-harum-deleniti"
+            }
+        ]
+    },
+    "response_ventaGanado": {
+        "venta": {
+            "id": 513291131392,
+            "fecha": "2024-12-26",
+            "numero_ganado": 246814883840,
+            "peso": "232-KG",
+            "precio": 350088817024,
+            "precio_kg": 5234733568,
+            "comprador": "adipisci-vel-accusantium"
+        }
+    },
+    "response_ventasGanado": {
+        "ventas": [
+            {
+                "id": 5132911894331392,
+                "fecha": "2024-12-26",
+                "numero_ganado": 2464598814883840,
+                "peso": "232-KG",
+                "precio": 3500853138817024,
+                "precio_kg": 510624234733568,
+                "comprador": "adipisci-vel-accusantium"
+            },
+            {
+                "id": 5132911894331392,
+                "fecha": "2024-12-26",
+                "numero_ganado": 24645988140,
+                "peso": "232-KG",
+                "precio": 3500853138817024,
+                "precio_kg": 510624234733568,
+                "comprador": "adipisci-vel-accusantium"
+            }
+        ]
+    },
+    "response_fallecimiento": {
+        "fallecimiento": {
+            "id": 86196507596,
+            "fecha": "2024-01-29",
+            "causa": "deserunt-quos",
+            "numero_ganado": 2616003384
+        }
+    },
+    "response_fallecimientos": {
+        "fallecimientos": [
+            {
+                "id": 8619650759786496,
+                "fecha": "2024-01-29",
+                "causa": "deserunt-quos",
+                "numero_ganado": 2616003374
+            },
+            {
+                "id": 8619650759786496,
+                "fecha": "2024-01-29",
+                "causa": "deserunt-quos",
+                "numero_ganado": 2616003374
+            }
+        ]
+    },
+    "response_revisionesGeneral": {
+        "todas_revisiones": [
+            {
+                "id": 273274921348,
+                "numero": 72926857052,
+                "ultima_revision": "excepturi-magnam-nulla-quam",
+                "diagnostico": "ea-ut-impedit-occaecati",
+                "proxima_revision": "2023-11-03",
+                "total_revisiones": 562101657600
+            },
+            {
+                "id": 273274921348,
+                "numero": 72926857052,
+                "ultima_revision": "excepturi-magnam-nulla-quam",
+                "diagnostico": "ea-ut-impedit-occaecati",
+                "proxima_revision": "2023-11-03",
+                "total_revisiones": 562101657600
+            }
+        ]
+    },
+    "response_serviciosGeneral": {
+        "todos_servicios": [
+            {
+                "id": 8241060249600000,
+                "numero": 4487045420417024,
+                "ultimo_servicio": "inventore-quod",
+                "toro": {
+                    "id": 1973427143442432,
+                    "nombre": "sunt-blanditiis-illum-sint"
+                },
+                "efectividad": 1315692858,
+                "total_servicios": 172472112
+            },
+            {
+                "id": 8241060249600000,
+                "numero": 4487045420417024,
+                "ultimo_servicio": "inventore-quod",
+                "toro": {
+                    "id": 1973427143442432,
+                    "nombre": "sunt-blanditiis-illum-sint"
+                },
+                "efectividad": 1315692858,
+                "total_servicios": 172472112
+            }
+        ]
+    },
+    "response_pesajesLecheGeneral": {
+        "todos_pesaje_leche": [
+            {
+                "id": 2813243246510080,
+                "numero": 5584306929926144,
+                "ultimo_pesaje": "232-KG",
+                "pesaje_este_mes": true
+            },
+            {
+                "id": 2813243246510080,
+                "numero": 5584306929926144,
+                "ultimo_pesaje": "232-KG",
+                "pesaje_este_mes": true
+            }
+        ]
+    }
+}
