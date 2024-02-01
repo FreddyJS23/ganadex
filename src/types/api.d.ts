@@ -47,8 +47,20 @@ export type ResponseGanado = {
     total_revisiones: number;
 };
 
+export type CabezasGanado = Omit<
+    Ganado,
+    | "fecha_defuncion"
+    | "causa_defuncion"
+    | "fecha_defuncion"
+    | "causa_defuncion"
+    | "prox_revision"
+    | "prox_servicio"
+    | "prox_parto"
+    | "prox_secado"
+>;
+
 export type ResponseGanados = {
-    cabezas_ganado: ResponseGanado[];
+    cabezas_ganado: CabezasGanado[];
 };
 
 export type ResponseToro = {
