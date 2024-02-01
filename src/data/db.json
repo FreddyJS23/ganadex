@@ -1,13 +1,14 @@
 {
-    "response_ganado": {
+    "response_ganado":[ {
+        "id": "70927",
         "ganado": {
-            "id": 70928,
+            "id": 70927,
             "nombre": "quisquam-deleniti-vitae-quisquam",
             "numero": 30752,
             "origen": "facilis-quod",
             "sexo": "H",
             "tipo": "adulto",
-            "fecha_nacimiento": "2024-05-12T13:19:19.438Z",
+            "fecha_nacimiento": "2023-05-12T13:19:19.438Z",
             "peso_nacimiento": "442-KG",
             "peso_destete": "442-KG",
             "peso_2year": "442-KG",
@@ -22,12 +23,12 @@
             "causa_defuncion": "enim-deleniti-perspiciatis",
             "prox_revision": "2023-08-10",
             "prox_servicio": "2025-01-17",
-            "prox_parto": "2024-09-23",
+            "prox_parto": "2023-09-23",
             "prox_secado": "2023-11-24"
         },
         "servicio_reciente": {
             "id": 6036096,
-            "fecha": "2024-07-12",
+            "fecha": "2023-07-12",
             "observacion": "fuga-est-tenetur-nemo-laudantium",
             "tipo": "natus-veniam-minus-possimus",
             "numero_toro": null
@@ -40,16 +41,58 @@
             "tratamiento": "velit-labore-accusantium-nemo"
         },
         "total_revisiones": 5776677
-    },
-    "response_ganados": [
-        {
+    },{
+         "id": "70928",
+        "ganado": {
             "id": 70928,
             "nombre": "quisquam-deleniti-vitae-quisquam",
             "numero": 30752,
             "origen": "facilis-quod",
             "sexo": "H",
             "tipo": "adulto",
-            "fecha_nacimiento": "2024-05-12T13:19:19.438Z",
+            "fecha_nacimiento": "2023-05-12T13:19:19.438Z",
+            "peso_nacimiento": "442-KG",
+            "peso_destete": "442-KG",
+            "peso_2year": "442-KG",
+            "peso_actual": "442-KG",
+            "estados": [
+                {
+                    "id": 75360,
+                    "estado": "sano"
+                }
+            ],
+            "fecha_defuncion": "2023-03-13",
+            "causa_defuncion": "enim-deleniti-perspiciatis",
+            "prox_revision": "2023-08-10",
+            "prox_servicio": "2025-01-17",
+            "prox_parto": "2023-09-23",
+            "prox_secado": "2023-11-24"
+        },
+        "servicio_reciente": {
+            "id": 6036096,
+            "fecha": "2023-07-12",
+            "observacion": "fuga-est-tenetur-nemo-laudantium",
+            "tipo": "natus-veniam-minus-possimus",
+            "numero_toro": null
+        },
+        "total_servicios": 4743408,
+        "revision_reciente": {
+            "id": 6968905205547008,
+            "fecha": "2023-06-04T02:06:51.302Z",
+            "diagnostico": "tenetur-architecto-eligendi-nisi",
+            "tratamiento": "velit-labore-accusantium-nemo"
+        },
+        "total_revisiones": 5776677
+    }],
+    "response_ganados": { 
+       "cabezas_ganado":[ {
+            "id": 70927,
+            "nombre": "quisquam-deleniti-vitae-quisquam",
+            "numero": 30752,
+            "origen": "facilis-quod",
+            "sexo": "H",
+            "tipo": "adulto",
+            "fecha_nacimiento": "2023-05-12",
             "peso_nacimiento": "442-KG",
             "peso_destete": "442-KG",
             "peso_2year": "442-KG",
@@ -68,7 +111,7 @@
             "origen": "facilis-quod",
             "sexo": "H",
             "tipo": "adulto",
-            "fecha_nacimiento": "2024-05-12T13:19:19.438Z",
+            "fecha_nacimiento": "2023-05-12",
             "peso_nacimiento": "442-KG",
             "peso_destete": "442-KG",
             "peso_2year": "442-KG",
@@ -79,8 +122,8 @@
                     "estado": "sano"
                 }
             ]
-        }
-    ],
+        }]
+    },
     "response_toro": {
         "toro": {
             "id": 1973427143442432,
@@ -89,7 +132,7 @@
             "origen": "fuera",
             "sexo": "M",
             "tipo": "labore-voluptatibus-nemo-harum-iure",
-            "fecha_nacimiento": "2024-05-12",
+            "fecha_nacimiento": "2023-05-12",
             "efectividad": 33,
             "padre_en_partos": 7550,
             "servicios": 481
@@ -108,7 +151,7 @@
                 "origen": "fuera",
                 "sexo": "M",
                 "tipo": "labore-voluptatibus-nemo-harum-iure",
-                "fecha_nacimiento": "2024-05-12"
+                "fecha_nacimiento": "2023-05-12"
             }
         ],
 
@@ -177,7 +220,7 @@
         "response_revision": {
             "revision": {
                 "id": 4356864,
-                "fecha": "2024-11-23",
+                "fecha": "2023-11-23",
                 "diagnostico": "totam-aspernatur-soluta-eius",
                 "tratamiento": "suscipit-eum"
             }
@@ -186,13 +229,13 @@
             "revisioness": [
                 {
                     "id": 4356805979275264,
-                    "fecha": "2024-11-23T17:54:55.360Z",
+                    "fecha": "2023-11-23T17:54:55.360Z",
                     "diagnostico": "totam-aspernatur-soluta-eius",
                     "tratamiento": "suscipit-eum"
                 },
                 {
                     "id": 4356805979275264,
-                    "fecha": "2024-11-23T17:54:55.360Z",
+                    "fecha": "2023-11-23T17:54:55.360Z",
                     "diagnostico": "totam-aspernatur-soluta-eius",
                     "tratamiento": "suscipit-eum"
                 }
@@ -228,7 +271,7 @@
         "response_parto": {
             "parto": {
                 "id": 1569869136920576,
-                "fecha": "2024-09-26",
+                "fecha": "2023-09-26",
                 "observacion": "blanditiis-commodi-eos",
                 "cria": {
                     "id": 1356080783294464,
@@ -277,7 +320,7 @@
             "pesaje_leche": {
                 "id": 9082760,
                 "pesaje": "44-KG",
-                "fecha": "2024-12-04"
+                "fecha": "2023-12-04"
             }
         },
         "response_pesajesLeche": {
@@ -285,12 +328,12 @@
                 {
                     "id": 9082760,
                     "pesaje": "44-KG",
-                    "fecha": "2024-12-04"
+                    "fecha": "2023-12-04"
                 },
                 {
                     "id": 9082760,
                     "pesaje": "44-KG",
-                    "fecha": "2024-12-04"
+                    "fecha": "2023-12-04"
                 }
             ]
         },
@@ -305,12 +348,12 @@
                 {
                     "id": 3203300,
                     "nombre": "ea-omnis-dolorum-voluptates",
-                    "fecha_nacimiento": "2024-12-04"
+                    "fecha_nacimiento": "2023-12-04"
                 },
                 {
                     "id": 3203300,
                     "nombre": "ea-omnis-dolorum-voluptates",
-                    "fecha_nacimiento": "2024-12-04"
+                    "fecha_nacimiento": "2023-12-04"
                 }
             ]
         }
@@ -320,12 +363,12 @@
             {
                 "id": 3203300,
                 "nombre": "ea-omnis-dolorum-voluptates",
-                "fecha_nacimiento": "2024-12-04"
+                "fecha_nacimiento": "2023-12-04"
             },
             {
                 "id": 3203300,
                 "nombre": "ea-omnis-dolorum-voluptates",
-                "fecha_nacimiento": "2024-12-04"
+                "fecha_nacimiento": "2023-12-04"
             }
         ]
     },
@@ -335,12 +378,12 @@
             {
                 "id": 79896775752,
                 "precio": 1327600160,
-                "fecha": "2024-01-12"
+                "fecha": "2023-01-12"
             },
             {
                 "id": 79896775752,
                 "precio": 1327600160,
-                "fecha": "2024-01-12"
+                "fecha": "2023-01-12"
             }
         ]
     },
@@ -348,13 +391,13 @@
         "ventas_de_leche": [
             {
                 "id": 6420494083424256,
-                "fecha": "2024-11-30T01:28:55.904Z",
+                "fecha": "2023-11-30T01:28:55.904Z",
                 "cantidad": "434-KG",
                 "precio": 5263201977499648
             },
             {
                 "id": 642049424256,
-                "fecha": "2024-11-30T01:28:55.904Z",
+                "fecha": "2023-11-30T01:28:55.904Z",
                 "cantidad": "434-KG",
                 "precio": 5263201977499648
             }
@@ -381,7 +424,7 @@
     "response_ventaGanado": {
         "venta": {
             "id": 513291131392,
-            "fecha": "2024-12-26",
+            "fecha": "2023-12-26",
             "numero_ganado": 246814883840,
             "peso": "232-KG",
             "precio": 350088817024,
@@ -393,7 +436,7 @@
         "ventas": [
             {
                 "id": 5132911894331392,
-                "fecha": "2024-12-26",
+                "fecha": "2023-12-26",
                 "numero_ganado": 2464598814883840,
                 "peso": "232-KG",
                 "precio": 3500853138817024,
@@ -402,7 +445,7 @@
             },
             {
                 "id": 5132911894331392,
-                "fecha": "2024-12-26",
+                "fecha": "2023-12-26",
                 "numero_ganado": 24645988140,
                 "peso": "232-KG",
                 "precio": 3500853138817024,
@@ -414,7 +457,7 @@
     "response_fallecimiento": {
         "fallecimiento": {
             "id": 86196507596,
-            "fecha": "2024-01-29",
+            "fecha": "2023-01-29",
             "causa": "deserunt-quos",
             "numero_ganado": 2616003384
         }
@@ -423,13 +466,13 @@
         "fallecimientos": [
             {
                 "id": 8619650759786496,
-                "fecha": "2024-01-29",
+                "fecha": "2023-01-29",
                 "causa": "deserunt-quos",
                 "numero_ganado": 2616003374
             },
             {
                 "id": 8619650759786496,
-                "fecha": "2024-01-29",
+                "fecha": "2023-01-29",
                 "causa": "deserunt-quos",
                 "numero_ganado": 2616003374
             }
