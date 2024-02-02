@@ -1,4 +1,4 @@
-import {ElementSidebar, IconsSidebar } from "."
+import {ElementSidebar, EndContentInput, IconsSidebar } from "."
 
 /**opcion del sidebar */
 export type SidebarElementProps = {
@@ -18,4 +18,22 @@ export type SidebarElementProps = {
 export type DetailsProps = {
     tittle:string
     content: string | number | Date | undefined | null 
+};
+
+export type InputProps = {
+    id:string
+    label: string;
+    type:
+        | 'text'
+        | 'search'
+        | 'url'
+        | 'tel'
+        | 'email'
+        | 'password'
+        | 'select'
+        | 'date'
+        | 'number';
+    required: boolean;
+    description?: string;
+    endContent?:keyof typeof EndContentInput
 };
