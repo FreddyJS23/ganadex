@@ -54,7 +54,7 @@ export const SidebarElement = ({
           <ul
             tabIndex={1}
             className={` ${
-              responsive ? "dropdown-content" : "collapse-content mt-2"
+              responsive ? "dropdown-content bg-base-100 p-2 rounded" : "collapse-content mt-2"
             }`}
           >
             {optionsSubmenu()}
@@ -65,7 +65,7 @@ export const SidebarElement = ({
         {optionCattle && (
           <ul
             className={`${
-              responsive ? "dropdown-content" : "collapse-content mt-2"
+              responsive ? "dropdown-content bg-base-100 p-2 rounded " : "collapse-content mt-2"
             }`}
           >
             {optionsSubmenu()}
@@ -91,7 +91,7 @@ export const SidebarElement = ({
 
               <ul
                 className={`${
-                  responsive ? "dropdown-content" : "collapse-content mt-1"
+                  responsive ? "dropdown-content bg-base-100 p-2 rounded" : "collapse-content mt-1"
                 }`}
               >
                 {optionsSubmenu()}

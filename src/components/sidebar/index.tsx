@@ -47,7 +47,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
 
       {/*tablet*/}
         {/*  container */}
-            <nav className="hidden h-screen bg-gradient-to-r from-base-100 from-95% fixed sm:max-lg:flex sm:max-lg:flex-col items-center sm:max-lg:fixed  ">
+            <nav className="hidden z-50 h-screen bg-gradient-to-r from-base-100 from-95% fixed sm:max-lg:flex sm:max-lg:flex-col items-center sm:max-lg:fixed  ">
         <div className="flex flex-col gap-2 items-center ">
           <Logos small={true} />
           <div className="divider divider-primary self-center w-12 mt-0 "></div>
