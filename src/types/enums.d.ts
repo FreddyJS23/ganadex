@@ -99,3 +99,41 @@ export enum IconsTabDatilsCattle {
     pregnant,
     milk,
 }
+
+export enum EndContentInput {
+    dolar,
+    weight,
+    "weight-milk",
+
+}
+
+export enum FieldsIdCasttle {
+    nombre,
+    numero,
+    origen,
+    sexo,
+    tipo_id,
+    fecha_nacimiento,
+    peso_nacimiento,
+    peso_destete,
+    peso_2year,
+    peso_actual,
+    estado_id,
+    fecha_defuncion,
+    causa_defuncion,
+}
+export enum FieldsLabelsCasttle {
+    Nombre,
+    Numero,
+    Origen,
+    Sexo,
+    Tipo,
+    "Fecha de nacimiento",
+    "Peso de nacimiento",
+    "Peso de destete",
+    "Peso de 2 años",
+    "Peso actual",
+    Estados,
+    "Fecha de defunción",
+    "Causa de defunción",
+}
