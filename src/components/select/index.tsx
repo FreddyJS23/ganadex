@@ -22,7 +22,6 @@ export const Select = ({
         <SelectNextUI
             id={id}
             label={label}
-            placeholder='d'
             items={items}
             variant="underlined"
             color="primary"
