@@ -73,6 +73,7 @@ export default function Page() {
                                                 innerWrapper: 'h-fit',
                                                 trigger: 'h-fit',
                                                 label: 'top-4 text-current  font-bold',
+                                                popoverContent: 'bg-base-100',
                                             }}
                                             renderValue={(items) => {
                                                 return (

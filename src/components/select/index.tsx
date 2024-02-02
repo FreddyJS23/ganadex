@@ -31,6 +31,7 @@ export const Select = ({
             classNames={{
                 label: 'text-current font-bold',
                 value: 'text-current',
+                popoverContent:'bg-base-100'
             }}
         >
             {({ label, value }) => <SelectItem key={value}>{label}</SelectItem>}
