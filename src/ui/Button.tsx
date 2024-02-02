@@ -1,8 +1,9 @@
-import React from 'react'
-type ButtonProps={
-    content:string
-}
+import { Button as ButtonNextUI } from '@nextui-org/button';
 
-export const Button = ({content}:ButtonProps) => {
-  return <div className="btn btn-primary btn-sm">{content}</div>;
-}
+type ButtonProps = {
+    content: string;
+};
+
+export const Button = ({ content }: ButtonProps) => {
+    return <ButtonNextUI className="w-full" color="primary">{content}</ButtonNextUI>;
+};
