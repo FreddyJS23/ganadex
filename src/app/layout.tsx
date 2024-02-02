@@ -26,7 +26,7 @@ export default function RootLayout({
               <header className="col-span-2">
                   <Sidebar android={false} />
               </header>
-                  <nav className="col-span-full sm:col-start-3 sm:col-end-12 lg:translate-x-6">
+                  <nav className="col-span-full z-50 sm:col-start-3 sm:col-end-12 lg:translate-x-6">
                       <Navbar />
                   </nav>
 
