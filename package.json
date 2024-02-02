@@ -10,6 +10,7 @@
     "fakeApi": "json-server src/data/db.json -p 4000 "
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@nextui-org/react": "^2.2.9",
     "@svgr/webpack": "^8.1.0",
     "chart.js": "^4.4.1",
