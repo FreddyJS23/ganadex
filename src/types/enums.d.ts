@@ -147,3 +147,15 @@ export enum FieldsLabelsCheckUp {
 Diagnostico,
 Tratamiento
 }
+
+export enum FieldsIdService {
+observacion,
+"numero_toro",
+tipo
+}
+
+export enum FieldsLabelsService {
+Observación,
+"Numero del toro",
+Tipo
+}
