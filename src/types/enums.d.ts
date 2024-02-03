@@ -137,3 +137,13 @@ export enum FieldsLabelsCasttle {
     "Fecha de defunción",
     "Causa de defunción",
 }
+
+export enum FieldsIdCheckUp {
+diagnostico,
+tratamiento
+}
+
+export enum FieldsLabelsCheckUp {
+Diagnostico,
+Tratamiento
+}
