@@ -1,7 +1,8 @@
-import { FieldsIdCasttle, FieldsIdCheckUp, FieldsLabelsCasttle, FieldsLabelsCheckUp, InputProps } from '@/types';
+import { FieldsIdCasttle, FieldsIdCheckUp, FieldsIdService, FieldsLabelsCasttle, FieldsLabelsCheckUp, FieldsLabelsService, InputProps } from '@/types';
 import { genderSelect } from './genderSelect';
 import { typeCasttleSelect } from './typeCastleSelect';
 import { stateCasttleSelect } from './statesCasttleSelect';
+import { typeServicesForCasttle } from './typesServicesForCasttle';
 
 type FieldsCastle = Omit<InputProps, 'id' | 'label'> & {
     id: keyof typeof FieldsIdCasttle;
@@ -12,6 +13,12 @@ type FieldsCastle = Omit<InputProps, 'id' | 'label'> & {
 type FieldsCheckUp = Omit<InputProps, 'id'| 'type' | 'label'> & {
     id: keyof typeof FieldsIdCheckUp;
     label: keyof typeof FieldsLabelsCheckUp;
+};
+
+type FieldsService = Omit<InputProps, 'id' | 'label'> & {
+    id: keyof typeof FieldsIdService;
+    label: keyof typeof FieldsLabelsService;
+    select?: { value: string | number; label: string }[];
 };
 
 export const formCastle: FieldsCastle[] = [
@@ -90,4 +97,9 @@ export const formCastle: FieldsCastle[] = [
 export const formCheckUp:FieldsCheckUp[]=[
     {id:'diagnostico',label:'Diagnostico', required:true},
     {id:'tratamiento',label:'Tratamiento', required:true}
+]
+export const formService:FieldsService[]=[
+    {id:'observacion',label:'Observación', required:true, type:'text'},
+    {id:'tipo',label:'Tipo', required:true, type:'select',select:typeServicesForCasttle},
+    {id:'numero_toro',label:'Numero del toro', required:true, type:'number'},
 ]
