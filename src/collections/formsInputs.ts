@@ -1,4 +1,4 @@
-import { FieldsIdCasttle, FieldsLabelsCasttle, InputProps } from '@/types';
+import { FieldsIdCasttle, FieldsIdCheckUp, FieldsLabelsCasttle, FieldsLabelsCheckUp, InputProps } from '@/types';
 import { genderSelect } from './genderSelect';
 import { typeCasttleSelect } from './typeCastleSelect';
 import { stateCasttleSelect } from './statesCasttleSelect';
@@ -7,6 +7,11 @@ type FieldsCastle = Omit<InputProps, 'id' | 'label'> & {
     id: keyof typeof FieldsIdCasttle;
     label: keyof typeof FieldsLabelsCasttle;
     select?: { value: string | number; label: string }[];
+};
+
+type FieldsCheckUp = Omit<InputProps, 'id'| 'type' | 'label'> & {
+    id: keyof typeof FieldsIdCheckUp;
+    label: keyof typeof FieldsLabelsCheckUp;
 };
 
 export const formCastle: FieldsCastle[] = [
@@ -81,3 +86,8 @@ export const formCastle: FieldsCastle[] = [
         select: stateCasttleSelect,
     },
 ];
+
+export const formCheckUp:FieldsCheckUp[]=[
+    {id:'diagnostico',label:'Diagnostico', required:true},
+    {id:'tratamiento',label:'Tratamiento', required:true}
+]
