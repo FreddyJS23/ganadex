@@ -1,4 +1,4 @@
-import { FieldsIdBirth, FieldsIdCasttle, FieldsIdCheckUp, FieldsIdService, FieldsLabelsBirth, FieldsLabelsCasttle, FieldsLabelsCheckUp, FieldsLabelsService, InputProps } from '@/types';
+import { FieldsIdBirth, FieldsIdCasttle, FieldsIdCheckUp, FieldsIdService, FieldsIdSupply, FieldsLabelsBirth, FieldsLabelsCasttle, FieldsLabelsCheckUp, FieldsLabelsService, FieldsLabelsSupply, InputProps } from '@/types';
 import { genderSelect } from './genderSelect';
 import { typeCasttleSelect } from './typeCastleSelect';
 import { stateCasttleSelect } from './statesCasttleSelect';
@@ -25,6 +25,11 @@ type FieldsBirth = Omit<InputProps, 'id' | 'label'> & {
     id: keyof typeof FieldsIdBirth;
     label: keyof typeof FieldsLabelsBirth;
     select?: { value: string | number; label: string }[];
+};
+
+type FieldsSupply = Omit<InputProps, 'id' | 'label'> & {
+    id: keyof typeof FieldsIdSupply;
+    label: keyof typeof FieldsLabelsSupply;
 };
 
 export const formCastle: FieldsCastle[] = [
@@ -116,4 +121,11 @@ export const formBirth:FieldsBirth[]=[
     {id:'numero',label:'Numero de la cría', required:false, type:'number'},
     {id:'peso_nacimiento',label:'Peso de nacimiento', required:true, type:'number',endContent:'weight'},
     {id:'sexo',label:'Sexo', required:true, type:'select', select:genderSelect},
+]
+
+export const formSupply:FieldsSupply[]=[
+    {id:'insumo',label:'Insumo', required:true, type:'text'},
+    {id:'cantidad',label:'Cantidad', required:true, type:'text'},
+    {id:'precio',label:'Precio', required:true, type:'number'},
+    
 ]
