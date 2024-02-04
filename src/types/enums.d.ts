@@ -159,3 +159,19 @@ Observación,
 "Numero del toro",
 Tipo
 }
+
+export enum FieldsIdBirth {
+observacion,
+nombre,
+numero,
+sexo,
+"peso_nacimiento"
+}
+
+export enum FieldsLabelsBirth {
+Observación,
+"Nombre de la cría",
+"Numero de la cría",
+Sexo,
+"Peso de nacimiento"
+}
