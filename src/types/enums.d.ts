@@ -175,3 +175,15 @@ Observación,
 Sexo,
 "Peso de nacimiento"
 }
+
+export enum FieldsIdSupply {
+insumo,
+cantidad,
+precio,
+}
+
+export enum FieldsLabelsSupply {
+Insumo,
+Cantidad,
+Precio
+}
