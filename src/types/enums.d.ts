@@ -187,3 +187,19 @@ Insumo,
 Cantidad,
 Precio
 }
+
+export enum FieldsIdStaff {
+ci,
+nombre,
+apellido,
+"fecha_nacimiento",
+cargo
+}
+
+export enum FieldsLabelsStaff {
+Cedula,
+Nombre,
+Apellido,
+"Fecha de nacimiento",
+Cargo
+}
