@@ -1,16 +1,17 @@
 import IconoFlechaDerecha from "@/icons/icono-flecha_derecha.svg";
 import Link from "next/link";
-import {  SidebarElementProps } from "@/types";
+import {  SidebarElementProps, URLS } from "@/types";
 import { iconsSidebar, optionsSubmenuSidebar } from "@/collections";
 
+type URL=keyof typeof URLS
 
-const optionsSubmenu = () => {
+const optionsSubmenu = (url:URL) => {
   return optionsSubmenuSidebar.map(({ link, option }, index) => (
     <li
       key={index}
       className="flex p-2 items-center rounded gap-3 hover:bg-base-200 transition-colors duration-75"
     >
-      <Link key={index} className="" href={link}>
+      <Link key={index} className="" href={`${url}${link}`}>
         {option}
       </Link>
     </li>
@@ -23,31 +24,32 @@ export const SidebarElement = ({
   optionMultiple,
   optionCattle,
   responsive,
+  url
 }: SidebarElementProps) => {
   
   /* icono dinamico de opcion del sidebar */
   const Icon = iconsSidebar[icon];
 
   return (
-    <>
-      <li
+    <li>
+      <details
         tabIndex={0}
         className={`${
           responsive ? "dropdown dropdown-right" : "collapse group"
         }    rounded-none transition-none`}
       >
         {/*   elemento */}
-        <div className="flex p-2 pl-4 pr-4 items-center border-l-4 border-l-transparent gap-3  hover:bg-base-200 hover:border-l-primary  group-focus:bg-base-200 group-focus:border-l-primary transition-colors duration-75">
+        <summary className="!flex p-2 pl-4 pr-4 items-center border-l-4 border-l-transparent gap-3  hover:bg-base-200 hover:border-l-primary  group-focus:bg-base-200 group-focus:border-l-primary transition-colors duration-75">
          
           {/*  Icono del elemento */}
           <div className="size-7">{<Icon />}</div>
 
-          <span className="sm:max-lg:hidden  basis-2/3">{element}</span>
+          <Link href={url} className="sm:max-lg:hidden  basis-2/3">{element}</Link>
 
           {optionMultiple && (
-            <IconoFlechaDerecha className="w-2 h-3 group-focus:rotate-90 cursor-pointer transition-transform duration-75" />
+            <IconoFlechaDerecha className="w-2 h-3 group-open:rotate-90 cursor-pointer transition-transform duration-75" />
           )}
-        </div>
+        </summary>
 
         {/*  submenu */}
         {optionMultiple && (
@@ -57,7 +59,7 @@ export const SidebarElement = ({
               responsive ? "dropdown-content bg-base-100 p-2 rounded" : "collapse-content mt-2"
             }`}
           >
-            {optionsSubmenu()}
+            {optionsSubmenu(url)}
           </ul>
         )}
 
@@ -68,7 +70,7 @@ export const SidebarElement = ({
               responsive ? "dropdown-content bg-base-100 p-2 rounded " : "collapse-content mt-2"
             }`}
           >
-            {optionsSubmenu()}
+            {optionsSubmenu(url)}
 
             <li className="flex p-2 items-center rounded gap-3  hover:bg-base-200 transition-colors duration-75">
               <Link className="" href={""}>
@@ -94,12 +96,12 @@ export const SidebarElement = ({
                   responsive ? "dropdown-content bg-base-100 p-2 rounded" : "collapse-content mt-1"
                 }`}
               >
-                {optionsSubmenu()}
+                {optionsSubmenu(url)}
               </ul>
             </li>
           </ul>
         )}
-      </li>
-    </>
+      </details>
+    </li>
   );
 };
