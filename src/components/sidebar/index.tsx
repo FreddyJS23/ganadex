@@ -8,7 +8,7 @@ type SidebarProps = {
 };
 
 const sidebarElements = (responsive: boolean) => {
-  return options.map(({ element, icon }, key) => (
+  return options.map(({ element, icon,url }, key) => (
     <SidebarElement
       key={key}
       element={element}
@@ -16,6 +16,7 @@ const sidebarElements = (responsive: boolean) => {
       optionMultiple={true}
       responsive={responsive}
       optionCattle={element == "Ganado"}
+      url={url}
     />
   ));
 };
@@ -38,6 +39,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
               icon="dashboard"
               optionMultiple={false}
               responsive={false}
+              url="/"
             />
 
             {sidebarElements(false)}
@@ -58,6 +60,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
               icon="dashboard"
               optionMultiple={false}
               responsive={true}
+              url="/"
             />
 
             {sidebarElements(true)}
