@@ -8,9 +8,9 @@ export default async function Page() {
         await getData('response_ventasGanado');
 
     return (
-        <section className="flex p-4  gap-8 flex-col">
+        <section className="flex p-4  gap-8 flex-col sm:pl-12">
             {/* cards */}
-            <article className="flex justify-around">
+            <article className="flex justify-around flex-wrap gap-4 items-center">
                 <CardDashboardSaleMilk
                     data={'Sebastian'}
                     title="Mejor comprador"
@@ -31,8 +31,8 @@ export default async function Page() {
             </article>
 
             {/* tabla ventas */}
-            <article className='flex flex-col gap-4'>
-                <h3 className='ml-4 text-xl'>Historial de ventas</h3>
+            <article className='flex flex-col gap-2'>
+                <h3 className='ml-2 text-lg md:text-xl'>Historial de ventas</h3>
                 <TableSaleCasttle ventas={ventas} />
             </article>
         </section>
