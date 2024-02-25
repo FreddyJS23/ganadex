@@ -21,6 +21,14 @@ type ContentCardSaleCattleProp = {
     data: string | number;
 };
 
+type ContentCardSaleMilkProp = {
+    title: 'Precio actual';
+    /**Precio actual */
+    value: number;
+    /**Porcentaje de variacion respecto al precio anterior del actual */
+    variationValue: number;
+};
+
 export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
     const icons = {
         pregnant: <IconPreñada />,
@@ -53,6 +61,22 @@ export const CardDashboardSaleCattle = ({ title, data }: ContentCardSaleCattlePr
 
             <span className='font-bold text-xl'>{`${data} ${typeof data == "number" ? '$' : ''}`}</span>
             
+        </div>
+    );
+};
+
+export const CardDashboardSaleMilk = ({ title, value,variationValue }: ContentCardSaleMilkProp) => {
+   
+    return (
+        <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
+            <div className="flex">
+                <span>{title}</span>
+                <div className="size-4"></div>
+            </div>
+            <div className='flex justify-between items-center'>
+                <span className="font-bold text-xl">{`${value}$`}</span>
+                <span className="text-xs">{`${variationValue} icon`}</span>
+            </div>
         </div>
     );
 };
