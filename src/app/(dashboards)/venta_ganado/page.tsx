@@ -1,4 +1,4 @@
-import { CardDashboardSaleMilk } from '@/components/cards';
+import { CardDashboardSaleCattle } from '@/components/cards';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
 import { ResponseVentasGanado } from '@/types';
 import { getData } from '@/utils/getData';
@@ -11,12 +11,12 @@ export default async function Page() {
         <section className="flex p-4  gap-8 flex-col sm:pl-12">
             {/* cards */}
             <article className="flex justify-around flex-wrap gap-4 items-center">
-                <CardDashboardSaleMilk
+                <CardDashboardSaleCattle
                     data={'Sebastian'}
                     title="Mejor comprador"
                 />
-                <CardDashboardSaleMilk data={999} title="Mejor venta" />
-                <CardDashboardSaleMilk data={999} title="Peor venta" />
+                <CardDashboardSaleCattle data={999} title="Mejor venta" />
+                <CardDashboardSaleCattle data={999} title="Peor venta" />
             </article>
 
             {/*   grafico venta */}

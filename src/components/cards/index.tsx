@@ -13,7 +13,7 @@ type ContentCardProp = {
     data: string | number;
 };
 
-type ContentCardSaleMilkProp = {
+type ContentCardSaleCattleProp = {
     title:
         | 'Mejor comprador'
         | 'Mejor venta'
@@ -42,7 +42,7 @@ export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
     );
 };
 
-export const CardDashboardSaleMilk = ({ title, data }: ContentCardSaleMilkProp) => {
+export const CardDashboardSaleCattle = ({ title, data }: ContentCardSaleCattleProp) => {
    
     return (
         <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
