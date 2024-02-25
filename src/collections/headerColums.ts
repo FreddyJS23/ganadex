@@ -1,4 +1,4 @@
-import { CabezasGanado, VentaGanado, VentaLeche } from "@/types"
+import { CabezasGanado, Insumo, VentaGanado, VentaLeche } from "@/types"
 
 type headersColumns={
 key:keyof CabezasGanado
@@ -12,6 +12,11 @@ label:string
 
 type headersColumnsSaleMilk={
 key:keyof VentaLeche
+label:string
+}
+
+type headersColumnsSupplies={
+key:keyof Insumo
 label:string
 }
 
@@ -41,4 +46,11 @@ export const headerSaleMilk:headersColumnsSaleMilk[]=[
     {key:"fecha",label:"Fecha"},
     {key:"cantidad",label:"Cantidad"},
     {key:"precio",label:"Precio"},
+]
+
+export const headerSupplies:headersColumnsSupplies[]=[
+    {key:"insumo",label:"Insumo"},
+    {key:"cantidad",label:"Cantidad en inventario"},
+    {key:"precio",label:"Coste individual"},
+   
 ]
