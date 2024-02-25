@@ -13,7 +13,7 @@ const sidebarElements = (responsive: boolean) => {
       key={key}
       element={element}
       icon={icon}
-      optionMultiple={true}
+      optionMultiple={element == "Ganado" ? false : true}
       responsive={responsive}
       optionCattle={element == "Ganado"}
       url={url}

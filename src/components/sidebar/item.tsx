@@ -49,6 +49,9 @@ export const SidebarElement = ({
           {optionMultiple && (
             <IconoFlechaDerecha className="w-2 h-3 group-open:rotate-90 cursor-pointer transition-transform duration-75" />
           )}
+          {optionCattle && (
+            <IconoFlechaDerecha className="w-2 h-3 group-open:rotate-90 cursor-pointer transition-transform duration-75" />
+          )}
         </summary>
 
         {/*  submenu */}
@@ -60,7 +63,7 @@ export const SidebarElement = ({
             }`}
           >
             {optionsSubmenu(url)}
-          </ul>
+          </ul> 
         )}
 
         {/*   submenu ganado */}
@@ -70,7 +73,7 @@ export const SidebarElement = ({
               responsive ? "dropdown-content bg-base-100 p-2 rounded " : "collapse-content mt-2"
             }`}
           >
-            {optionsSubmenu(url)}
+             {optionsSubmenu(url)} 
 
             <li className="flex p-2 items-center rounded gap-3  hover:bg-base-200 transition-colors duration-75">
               <Link className="" href={""}>
