@@ -3,10 +3,10 @@
     /** Nombre de la opcion */
     option: string;
     /** URL de la opcion */
-    link: '/registrar' | '/ver';
+    link: '/registrar' | '';
 };
 
 export const options: OptionsSubmenu[] = [
     { option: "Registrar", link: "/registrar" },
-    { option: "Ver", link: "/ver" },
+    { option: "Ver", link: "" },
 ];
