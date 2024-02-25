@@ -13,6 +13,14 @@ type ContentCardProp = {
     data: string | number;
 };
 
+type ContentCardSaleMilkProp = {
+    title:
+        | 'Mejor comprador'
+        | 'Mejor venta'
+        | 'Peor venta';
+    data: string | number;
+};
+
 export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
     const icons = {
         pregnant: <IconPreñada />,
@@ -30,6 +38,21 @@ export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
             </div>
 
             <div className="hidden text-balance lg:block">{title}</div>
+        </div>
+    );
+};
+
+export const CardDashboardSaleMilk = ({ title, data }: ContentCardSaleMilkProp) => {
+   
+    return (
+        <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
+            <div className='flex'>
+                <span>{title}</span>
+                <div className='size-4'></div>
+            </div>
+
+            <span className='font-bold text-xl'>{`${data} ${typeof data == "number" ? '$' : ''}`}</span>
+            
         </div>
     );
 };
