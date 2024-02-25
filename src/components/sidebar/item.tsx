@@ -48,10 +48,12 @@ export const SidebarElement = ({
 
           {optionMultiple && (
             <IconoFlechaDerecha className="w-2 h-3 group-open:rotate-90 cursor-pointer transition-transform duration-75" />
-          )}
+          ) }
           {optionCattle && (
             <IconoFlechaDerecha className="w-2 h-3 group-open:rotate-90 cursor-pointer transition-transform duration-75" />
-          )}
+          ) }
+         {/* espacio para cubrir el hueco que dejara la flecha en opcion que no tengan submenu */}
+          {!optionCattle && !optionMultiple && <span className="w-2 h-3"></span>}
         </summary>
 
         {/*  submenu */}
