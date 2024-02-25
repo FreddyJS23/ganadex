@@ -42,7 +42,7 @@ export const SidebarElement = ({
         <summary className="!flex p-2 pl-4 pr-4 items-center border-l-4 border-l-transparent gap-3  hover:bg-base-200 hover:border-l-primary  group-focus:bg-base-200 group-focus:border-l-primary transition-colors duration-75">
          
           {/*  Icono del elemento */}
-          <div className="size-7">{<Icon />}</div>
+          <div className={`size-7 ${!optionMultiple ? 'cursor-pointer' : ''}`}>{<Icon />}</div>
 
           <Link href={url} className="sm:max-lg:hidden  basis-2/3">{element}</Link>
 
