@@ -1,4 +1,4 @@
-import { CabezasGanado, Insumo, Personal, VentaGanado, VentaLeche } from "@/types"
+import { CabezasGanado, Insumo, Personal, Revision, Revisiones, VentaGanado, VentaLeche } from "@/types"
 
 type headersColumns={
 key:keyof CabezasGanado
@@ -22,6 +22,11 @@ label:string
 
 type headersColumnsStaff={
 key:keyof Personal
+label:string
+}
+
+type headersColumnsAllCheckups={
+key:keyof Revisiones
 label:string
 }
 
@@ -66,4 +71,13 @@ export const headerStaff:headersColumnsStaff[]=[
     {key:"apellido",label:"Apellido"},
     {key:"fecha_nacimiento",label:"Fecha de nacimiento"},
     {key:"cargo",label:"Cargo"},
+]
+
+export const headerAllCheckup:headersColumnsAllCheckups[]=[
+    {key:"numero",label:"Numero"},
+    {key:"diagnostico",label:"Diagnostico"},
+    {key:"proxima_revision",label:"Proxima revision"},
+    {key:"ultima_revision",label:"Ultima revision"},
+    {key:"total_revisiones",label:"Total de revisiones"},
+    
 ]
