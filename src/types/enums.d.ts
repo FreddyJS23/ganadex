@@ -18,6 +18,18 @@ export enum IconsSidebar {
     setting,
 }
 
+enum URLS {
+    "/",
+    "/ganado",
+    "/venta_leche",
+    "/partos",
+    "/revisiones",
+    "/servicios",
+    "/personal",
+    "/insumos",
+    "/ajustes",
+}
+
 export enum ElementSidebar {
     Dashboard,
     Ganado,
@@ -75,6 +87,10 @@ export enum EndPointsFakeApi {
     response_criasPendienteNumeracion,
     response_preciosLeche,
     response_ventasLeche,
+    response_insumo,
+    response_insumos,
+    response_personal,
+    response_TodoPersonal,
     response_comprador,
     response_compradores,
     response_ventaGanado,

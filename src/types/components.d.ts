@@ -1,4 +1,4 @@
-import {ElementSidebar, EndContentInput, IconsSidebar } from "."
+import {ElementSidebar, EndContentInput, IconsSidebar, URLS } from "."
 
 /**opcion del sidebar */
 export type SidebarElementProps = {
@@ -12,6 +12,8 @@ export type SidebarElementProps = {
     responsive: boolean;
     /** Icono del elemento */
     icon: keyof typeof IconsSidebar;
+    /** Url del elemento */
+    url: keyof typeof URLS;
 };
 
 /** Detallar un item de informacion, que contiene un titulo y un contenido */

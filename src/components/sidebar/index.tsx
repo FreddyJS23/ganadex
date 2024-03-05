@@ -8,14 +8,15 @@ type SidebarProps = {
 };
 
 const sidebarElements = (responsive: boolean) => {
-  return options.map(({ element, icon }, key) => (
+  return options.map(({ element, icon,url }, key) => (
     <SidebarElement
       key={key}
       element={element}
       icon={icon}
-      optionMultiple={true}
+      optionMultiple={element == "Ganado" || element == "Venta de leche"  ? false : true}
       responsive={responsive}
       optionCattle={element == "Ganado"}
+      url={url}
     />
   ));
 };
@@ -25,7 +26,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
     <>
       {/* android/desktop */}
       <nav
-        className={`${ android ? 'flex bg-base-100 w-52' : 'hidden' } scrollbar scrollbar-w-1 scrollbar-thumb-primary scrollbar-thumb-rounded-full overflow-x-auto h-screen bg-gradient-to-r from-base-100 from-95%   fixed lg:flex lg:flex-col items-center lg:fixed`} >
+        className={`${ android ? 'flex bg-base-100 w-52' : 'hidden' } scrollbar scrollbar-w-1 scrollbar-thumb-primary scrollbar-thumb-rounded-full overflow-x-auto h-screen bg-gradient-to-r from-background from-95%   fixed lg:flex lg:flex-col items-center lg:fixed`} >
         {/*  container */}
         <div className="h-full flex flex-col gap-2 items-center w-full ">
           <Logos small={false} />
@@ -38,6 +39,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
               icon="dashboard"
               optionMultiple={false}
               responsive={false}
+              url="/"
             />
 
             {sidebarElements(false)}
@@ -47,7 +49,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
 
       {/*tablet*/}
         {/*  container */}
-            <nav className="hidden z-50 h-screen bg-gradient-to-r from-base-100 from-95% fixed sm:max-lg:flex sm:max-lg:flex-col items-center sm:max-lg:fixed  ">
+            <nav className="hidden z-50 h-screen bg-gradient-to-r from-background from-95% fixed sm:max-lg:flex sm:max-lg:flex-col items-center sm:max-lg:fixed  ">
         <div className="flex flex-col gap-2 items-center ">
           <Logos small={true} />
           <div className="divider divider-primary self-center w-12 mt-0 "></div>
@@ -58,6 +60,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
               icon="dashboard"
               optionMultiple={false}
               responsive={true}
+              url="/"
             />
 
             {sidebarElements(true)}

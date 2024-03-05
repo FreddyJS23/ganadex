@@ -153,8 +153,8 @@
                 "tipo": "labore-voluptatibus-nemo-harum-iure",
                 "fecha_nacimiento": "2023-05-12"
             }
-        ],
-
+        ]
+    },
         "response_insumo": {
             "insumo": {
                 "id": 3944676,
@@ -175,7 +175,7 @@
                     "id": 3944676,
                     "insumo": "sitmollitia-enim",
                     "cantidad": 5453,
-                    "precio": 5018
+                    "precio": 5017
                 }
             ]
         },
@@ -357,7 +357,7 @@
                 }
             ]
         }
-    },
+    ,
     "response_criasPendienteNumeracion": {
         "crias_pendiente_numeracion": [
             {
