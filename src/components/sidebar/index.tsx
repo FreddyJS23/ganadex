@@ -8,12 +8,12 @@ type SidebarProps = {
 };
 
 const sidebarElements = (responsive: boolean) => {
-  return options.map(({ element, icon,url }, key) => (
+  return options.map(({ element, icon,url,optionMultiple }, key) => (
     <SidebarElement
       key={key}
       element={element}
       icon={icon}
-      optionMultiple={element == "Ganado" || element == "Venta de leche"  ? false : true}
+      optionMultiple={optionMultiple}
       responsive={responsive}
       optionCattle={element == "Ganado"}
       url={url}
