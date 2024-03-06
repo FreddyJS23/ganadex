@@ -8,5 +8,4 @@
 
 export const options: OptionsSubmenu[] = [
     { option: "Registrar", link: "/registrar" },
-    { option: "Ver", link: "" },
 ];
