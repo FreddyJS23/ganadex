@@ -1,4 +1,4 @@
-import { CabezasGanado, Insumo, Personal, Revision, Revisiones, VentaGanado, VentaLeche } from "@/types"
+import { CabezasGanado, Insumo, Personal, Revision, Revisiones, Servicios, VentaGanado, VentaLeche } from "@/types"
 
 type headersColumns={
 key:keyof CabezasGanado
@@ -27,6 +27,11 @@ label:string
 
 type headersColumnsAllCheckups={
 key:keyof Revisiones
+label:string
+}
+
+type headersColumnsAllServes={
+key:keyof Servicios
 label:string
 }
 
@@ -79,5 +84,14 @@ export const headerAllCheckup:headersColumnsAllCheckups[]=[
     {key:"proxima_revision",label:"Proxima revision"},
     {key:"ultima_revision",label:"Ultima revision"},
     {key:"total_revisiones",label:"Total de revisiones"},
+    
+]
+
+export const headerAllServes:headersColumnsAllServes[]=[
+    {key:"numero",label:"Numero"},
+    {key:"toro",label:"Toro"},
+    {key:"total_servicios",label:"Total de servicios"},
+    {key:"ultimo_servicio",label:"Ultimo servicio"},
+    {key:"efectividad",label:"Efectividad"},
     
 ]
