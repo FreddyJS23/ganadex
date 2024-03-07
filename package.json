@@ -13,7 +13,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@nextui-org/react": "^2.2.9",
     "@svgr/webpack": "^8.1.0",
-    "chart.js": "^4.4.1",
+    "chart.js": "^4.4.2",
     "framer-motion": "^11.0.3",
     "json-server": "^1.0.0-alpha.21",
     "next": "14.0.4",
