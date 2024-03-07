@@ -564,11 +564,15 @@
         "top_vacas_productoras": [
             {
                 "numero": 32,
-                "peso_leche": "43-KG"
+                "peso_leche": 89
             },
             {
                 "numero": 41,
-                "peso_leche": "41-KG"
+                "peso_leche": 85
+            },
+            {
+                "numero": 451,
+                "peso_leche": 80
             }
         ]
     },
@@ -576,16 +580,20 @@
     "response_vacasMenosProductoras": {
         "top_vacas_menos_productoras": [
             {
-                "numero": 52,
-                "peso_leche": "10-KG"
+                "numero": 523,
+                "peso_leche": 50
             },
             {
-                "numero": 41,
-                "peso_leche": "51-KG"
+                "numero": 415,
+                "peso_leche": 45
+            },
+            {
+                "numero": 419,
+                "peso_leche": 35
             }
         ]
     },
-    
+     
     "response_insumoMayorExistencia": {
         "mayor_cantidad_insumo":{
             "id": 3944676,
