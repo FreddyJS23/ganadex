@@ -1,20 +1,23 @@
 import { CardDashboard } from '@/components/cards';
 import { TortaTipoGanado } from '@/components/charts/dashboard/types catle doughnut';
-import { ResponseTotalTiposGanado, TopVacasMenosProductoras, TopVacasProductoras } from '@/types/dashboard';
+import { InsumoMayorExistencia, InsumoMenorExistencia, ResponseTotalTiposGanado, TopVacasMenosProductoras, TopVacasProductoras } from '@/types/dashboard';
 import { getData } from '@/utils/getData';
 import IconCatle from '@/icons/icono-ganado.svg'
 import IconPositive from '@/icons/icono-ganancia.svg';
 import IconNegative from '@/icons/icono-perdida.svg';
-
+import IconSupplies from '@/icons/icono-insumo.svg';
 import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle production bar';
+import { CircularProgress } from '@/components/circules progress dashboard';
 
 export default async function Home() {
     
     const {total_tipos_ganado}:ResponseTotalTiposGanado =await getData('response_totalGanadoPorTipo');
     const {top_vacas_productoras}:TopVacasProductoras =await getData('response_vacasProductoras');
     const {top_vacas_menos_productoras}:TopVacasMenosProductoras =await getData('response_vacasMenosProductoras');
-
-     return (
+    const {mayor_cantidad_insumo}:InsumoMayorExistencia=await getData('response_insumoMayorExistencia')
+    const {menor_cantidad_insumo}:InsumoMenorExistencia=await getData('response_insumoMenorExistencia')
+    
+    return (
         <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
             {/*  grafico torta */}
             <article className="p-4 bg-base-100 col-span-full max-w-xl md:col-span-2 lex justify-center flex-col  w-full shadow-cards">
@@ -66,10 +69,18 @@ export default async function Home() {
                 </article>
 
                 {/* grafico insumos */}
-                <article className="p-2 max-w-72 ">
-                    <div className="w-full h-40 shadow-cards">
-                        insumos
-                    </div>
+                <article className="p-4 flex flex-col bg-base-100 shadow-cards">
+                   <div className='flex justify-between'>
+                        <h2>Insumos</h2>
+                       <IconSupplies
+                        className={'size-8 bg-primary opacity-70 p-1 rounded-full'}
+                    />
+                     </div>
+                  <div className="flex">
+                    <CircularProgress value={mayor_cantidad_insumo.cantidad} positive={true}  label={mayor_cantidad_insumo.insumo} rangeMaxValue={mayor_cantidad_insumo.cantidad}/>
+                    <CircularProgress value={menor_cantidad_insumo.cantidad} positive={false}  label={menor_cantidad_insumo.insumo} rangeMaxValue={mayor_cantidad_insumo.cantidad}/> 
+                  </div>
+                  
                 </article>
             </div>
             {/* grafico produccion anual leche */}
