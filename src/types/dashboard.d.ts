@@ -22,7 +22,7 @@ type BalanceMensualLeche = {
 };
 
 export type TotalTiposGanado = {
-    [Property in keyof typeof TypesCattle]: string;
+    [Property in keyof typeof TypesCattle]: number;
 };
 
 export type ResponseTotalTiposGanado = {
