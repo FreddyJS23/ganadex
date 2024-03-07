@@ -30,3 +30,43 @@ export const optionChartTotalTypesCattle: ChartOptions<'doughnut'> = {
     aspectRatio: 2.4,
     layout: { padding: 10 },
 };
+
+export const optionChartTop3CatleProduction: ChartOptions<'bar'> = {
+    /* cartesiano */
+    scales: {
+        y: {
+            beginAtZero: true,
+            border: { color: '#ecedee' },
+            grid: {
+                display: false,
+            },
+            ticks: {
+                color: '#ecedee',
+                callback: function (value, index, ticks) {
+                    return value + ' KG';
+                },
+            },
+            suggestedMax: 120,
+        },
+        x: {
+            beginAtZero: true,
+            ticks: { color: '#ecedee' },
+            border: { color: '#ecedee' },
+            grid: {
+                display: false,
+            },
+        },
+    },
+    /* elementos chart */
+    plugins: {
+        legend: { display: false, labels: { color: '#ecedee' } },
+        tooltip: {
+            callbacks: {
+                label: function (context) {
+                    return context.formattedValue + ' KG';
+                },
+            },
+        },
+    },
+    aspectRatio: 1.7,
+};
