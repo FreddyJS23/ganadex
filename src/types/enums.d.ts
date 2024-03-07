@@ -100,6 +100,12 @@ export enum EndPointsFakeApi {
     response_revisionesGeneral,
     response_serviciosGeneral,
     response_pesajesLecheGeneral,
+    response_totalGanadoPorTipo,
+    response_vacasProductoras,
+    response_vacasMenosProductoras,
+    response_insumoMayorExistencia,
+    response_insumoMenorExistencia,
+    response_balanceAnual,
 }
 
 export enum TittlesTabsDetailsCattle{
