@@ -6,7 +6,6 @@ import {
     paletteBackground,
 } from '@/utils/configCharts';
 import { getCastleType } from '@/utils/convertResponseCastleType';
-
 import {
     Chart as ChartJS,
     ArcElement,
