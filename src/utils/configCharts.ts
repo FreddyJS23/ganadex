@@ -70,3 +70,52 @@ export const optionChartTop3CatleProduction: ChartOptions<'bar'> = {
     },
     aspectRatio: 1.7,
 };
+
+export const optionChartLineAnnualMilk: ChartOptions<'line'> = {
+    scales: {
+        y: {
+            beginAtZero: true,
+            border: { color: '#ecedee' },
+            grid: {
+                color: '#ecedee30',
+                display: true,
+            },
+            ticks: {
+                color: '#ecedee',
+                callback: function (value, index, ticks) {
+                    return value + ' KG';
+                },
+            },
+            suggestedMax: 300,
+        },
+        x: {
+            beginAtZero: true,
+            ticks: { color: '#ecedee' },
+            border: { color: '#ecedee' },
+            grid: {
+                color: '#ecedee30',
+                display: true,
+            },
+        },
+    },
+    elements: {
+        line: {
+            borderColor: '#22FF1E80',
+            backgroundColor: '#22FF1E',
+            fill: true,
+            tension: 0.2,
+        },
+        point: { borderWidth: 20, backgroundColor: '#22FF1E' },
+    },
+    plugins: {
+        legend: { display: false, labels: { color: '#ecedee' } },
+        tooltip: {
+            callbacks: {
+                label: function (context) {
+                    return context.formattedValue + ' KG';
+                },
+            },
+        },
+    },
+    aspectRatio: 3,
+};
