@@ -1,6 +1,6 @@
 import { CardDashboard } from '@/components/cards';
 import { TortaTipoGanado } from '@/components/charts/dashboard/types catle doughnut';
-import { InsumoMayorExistencia, InsumoMenorExistencia, ResponseTotalTiposGanado, TopVacasMenosProductoras, TopVacasProductoras } from '@/types/dashboard';
+import { InsumoMayorExistencia, InsumoMenorExistencia, ResponseTotalTiposGanado, TopVacasMenosProductoras, TopVacasProductoras, balanceAnualLeche } from '@/types/dashboard';
 import { getData } from '@/utils/getData';
 import IconCatle from '@/icons/icono-ganado.svg'
 import IconPositive from '@/icons/icono-ganancia.svg';
@@ -8,6 +8,7 @@ import IconNegative from '@/icons/icono-perdida.svg';
 import IconSupplies from '@/icons/icono-insumo.svg';
 import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle production bar';
 import { CircularProgress } from '@/components/circules progress dashboard';
+import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual balance milk';
 
 export default async function Home() {
     
@@ -16,6 +17,7 @@ export default async function Home() {
     const {top_vacas_menos_productoras}:TopVacasMenosProductoras =await getData('response_vacasMenosProductoras');
     const {mayor_cantidad_insumo}:InsumoMayorExistencia=await getData('response_insumoMayorExistencia')
     const {menor_cantidad_insumo}:InsumoMenorExistencia=await getData('response_insumoMenorExistencia')
+    const {balance_anual}:balanceAnualLeche=await getData('response_balanceAnualLeche')
     
     return (
         <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
@@ -84,10 +86,12 @@ export default async function Home() {
                 </article>
             </div>
             {/* grafico produccion anual leche */}
-            <article className="p-2 max-w-80 col-span-full sm:max-w-3xl md:m-auto   ">
-                <div className="w-full h-40 shadow-cards">
-                    produccion anual
-                </div>
+            <article className="p-4 col-span-full shadow-cards flex flex-col gap-2 ">
+                <div className='flex justify-between'>
+                        <h2>Produccion anual de leche</h2>
+                       
+                     </div>
+               <ChartAnnualBalanceMilk balanceAnual={balance_anual} />
             </article>
         </section>
     );
