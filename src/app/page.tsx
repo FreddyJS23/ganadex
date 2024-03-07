@@ -1,13 +1,19 @@
 import { CardDashboard } from '@/components/cards';
-import { TortaTipoGanado } from '@/components/charts/dashboard';
-import { ResponseTotalTiposGanado } from '@/types/dashboard';
+import { TortaTipoGanado } from '@/components/charts/dashboard/types catle doughnut';
+import { ResponseTotalTiposGanado, TopVacasMenosProductoras, TopVacasProductoras } from '@/types/dashboard';
 import { getData } from '@/utils/getData';
 import IconCatle from '@/icons/icono-ganado.svg'
+import IconPositive from '@/icons/icono-ganancia.svg';
+import IconNegative from '@/icons/icono-perdida.svg';
+
+import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle production bar';
 
 export default async function Home() {
     
     const {total_tipos_ganado}:ResponseTotalTiposGanado =await getData('response_totalGanadoPorTipo');
-    
+    const {top_vacas_productoras}:TopVacasProductoras =await getData('response_vacasProductoras');
+    const {top_vacas_menos_productoras}:TopVacasMenosProductoras =await getData('response_vacasMenosProductoras');
+
      return (
         <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
             {/*  grafico torta */}
@@ -42,17 +48,21 @@ export default async function Home() {
             </article>
             <div className="col-span-full flex flex-col justify-around sm:flex-row">
                 {/*    grafico vacas productoras */}
-                <article className="p-2 max-w-72 ">
-                    <div className="w-full h-40 shadow-cards">
-                        grafico vacas productoras
+                <article className="p-4 flex flex-col gap-2  bg-base-100 max-w-72 shadow-cards">
+                    <div className='flex justify-between'>
+                        <h2>Top vacas productoras</h2>
+                            <IconPositive className={"size-8 "} />
                     </div>
+                    <ProduccionVacasTop3 vacasProductoras={top_vacas_productoras} />
                 </article>
 
                 {/*    grafico vacas menos productoras */}
-                <article className="p-2 max-w-72 ">
-                    <div className="w-full h-40 shadow-cards">
-                        grafico vacas menos productoras
-                    </div>
+                <article className="p-4 flex flex-col gap-2  bg-base-100 max-w-72  shadow-cards">
+                     <div className='flex justify-between'>
+                        <h2>Top vacas menos productoras</h2>
+                        <IconNegative className={"size-8 "} />
+                     </div>
+                     <ProduccionVacasTop3 vacasProductoras={top_vacas_menos_productoras} />
                 </article>
 
                 {/* grafico insumos */}
