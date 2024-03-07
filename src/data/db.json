@@ -539,5 +539,82 @@
                 "pesaje_este_mes": true
             }
         ]
+    },
+
+    "response_totalGanadoPorTipo":{
+    "total_tipos_ganado": [
+        {
+            "becerro": 3
+        },
+        {
+            "maute": 2
+        },
+        {
+            "novillo": 4
+        },
+        {
+            "adulto": 7
+        },
+        {
+            "res": 3
+        }
+    ]
+},
+   "response_vacasProductoras": {
+        "top_vacas_productoras": [
+            {
+                "numero": 32,
+                "peso_leche": "43-KG"
+            },
+            {
+                "numero": 41,
+                "peso_leche": "41-KG"
+            }
+        ]
+    },
+   
+    "response_vacasMenosProductoras": {
+        "top_vacas_productoras": [
+            {
+                "numero": 52,
+                "peso_leche": "10-KG"
+            },
+            {
+                "numero": 41,
+                "peso_leche": "51-KG"
+            }
+        ]
+    },
+    
+    "response_insumoMayorExistencia": {
+        "mayor_cantidad_insumo":{
+            "id": 3944676,
+            "insumo": "vacuna",
+            "cantidad": 150,
+            "precio": 5018
+        }
+        
+    },
+    
+    "response_insumoMenorExistencia": {
+        "menor_cantidad_insumo":{
+            "id": 3944676,
+            "insumo": "medicina",
+            "cantidad": 15,
+            "precio": 5018
+        }
+        
+    },
+   
+    "response_balanceAnualLeche": {
+        "balance_anual":[
+            {
+                "mes": "enero",
+                "promedio_pesaje_": "33-KG"
+            }
+        ]
+        
     }
+
+
 }
