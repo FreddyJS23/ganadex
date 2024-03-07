@@ -618,7 +618,7 @@
         "balance_anual":[
             {
                 "mes": "enero",
-                "promedio_pesaje_": "33-KG"
+                "promedio_pesaje": 33
             }
         ]
         
