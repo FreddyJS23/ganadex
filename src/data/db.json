@@ -574,7 +574,7 @@
     },
    
     "response_vacasMenosProductoras": {
-        "top_vacas_productoras": [
+        "top_vacas_menos_productoras": [
             {
                 "numero": 52,
                 "peso_leche": "10-KG"
