@@ -162,3 +162,35 @@ export const optionChartLineEarningsMilkMonth: ChartOptions<'line'> = {
     },
     aspectRatio: 3,
 };
+
+export const optionChartLineSalesCatle: ChartOptions<'bar'> = {
+    /* cartesiano */
+    scales: {
+        y: {
+            beginAtZero: true,
+            border: { color: '#ecedee' },
+            grid: {
+                display: false,
+            },
+            ticks: {
+                color: '#ecedee',
+               
+            },
+            suggestedMax: 50,
+        },
+        x: {
+            beginAtZero: true,
+            ticks: { color: '#ecedee' },
+            border: { color: '#ecedee' },
+            grid: {
+                display: false,
+            },
+        },
+    },
+    /* elementos chart */
+    plugins: {
+        legend: { display: false, labels: { color: '#ecedee' } },
+        
+    },
+    aspectRatio: 7,
+};
