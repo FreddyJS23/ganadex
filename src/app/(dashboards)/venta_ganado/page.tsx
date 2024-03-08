@@ -1,6 +1,8 @@
 import { CardDashboardSaleCattle } from '@/components/cards';
+import { SalesCatle } from '@/components/charts/dashboard/sales catle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
 import { ResponseVentasGanado } from '@/types';
+import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
@@ -20,14 +22,14 @@ export default async function Page() {
             </article>
 
             {/*   grafico venta */}
-            <article className="w-full shadow-cards p-4 flex flex-col gap-4">
+            <article className="w-full shadow-cards bg-base-100 p-4 flex flex-col gap-4">
                 {/* titulo */}
-                <div className="flex justify-between">
-                    <span>Ventas mensuales</span>
-                    <span className="size-7">+</span>
-                </div>
+               <div className="flex justify-between">
+                        <span className='text-2xl'>Ganancia acumulada del mes actual</span>
+                       <ButtonCreateItem />
+                    </div>
                 {/* grafico */}
-                <div className="">grafico</div>
+              <SalesCatle />
             </article>
 
             {/* tabla ventas */}
