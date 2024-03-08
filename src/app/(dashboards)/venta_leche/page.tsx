@@ -1,6 +1,8 @@
 import { CardDashboardSaleMilk } from '@/components/cards';
+import { ChartEarningsMilkMonth } from '@/components/charts/dashboard/earnings milk month';
 import { TableSaleMilk } from '@/components/tables/sale milk';
 import { ResponseVentasLeche } from '@/types';
+import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
@@ -20,16 +22,16 @@ export default async function Page() {
             </article>
             <div className="flex gap-6 flex-col lg:flex-row w-full">
                 {/*   grafico ganancia */}
-                <article className="w-full shadow-cards p-4 flex flex-col">
+                <article className="w-full shadow-cards p-4 flex flex-col bg-base-100">
                     {/* titulo */}
                     <div className="flex justify-between">
-                        <span>Ganancias del mes actual</span>
-                        <span className="size-7">+</span>
+                        <span className='text-2xl'>Ganancia acumulada del mes actual</span>
+                       <ButtonCreateItem />
                     </div>
                     {/* Ganancias */}
-                    <span className="mb-1">39832</span>
+                    <span className="mb-1 text-lg">39832</span>
                     {/* grafico */}
-                    <div className="">grafico</div>
+                    <ChartEarningsMilkMonth />
                 </article>
 
                 {/* tabla ventas */}
