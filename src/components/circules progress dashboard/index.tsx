@@ -17,14 +17,14 @@ export const CircularProgress = ({
     positive,
     label,
     rangeMaxValue,
-}:CircularProgressProps ) => {
+}: CircularProgressProps) => {
     let maxValue = 20;
 
     if (rangeMaxValue >= 20 && rangeMaxValue < 50) maxValue = 50;
     else if (rangeMaxValue >= 50 && rangeMaxValue < 100) maxValue = 100;
     else if (rangeMaxValue >= 100 && rangeMaxValue < 150) maxValue = 150;
     else if (rangeMaxValue >= 150) maxValue = 200;
-    
+
     return (
         <CircularProgressNextui
             label={label}

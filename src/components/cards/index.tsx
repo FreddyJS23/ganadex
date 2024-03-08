@@ -4,7 +4,6 @@ import IconRevision from '@/icons/icono-revision.svg';
 import IconPersonal from '@/icons/icono-personal.svg';
 import IconFlechaEstadoDolar from '@/icons/icono-flechaEstadoDolar.svg';
 
-
 type ContentCardProp = {
     title:
         | 'Vacas preñadas'
@@ -16,10 +15,7 @@ type ContentCardProp = {
 };
 
 type ContentCardSaleCattleProp = {
-    title:
-        | 'Mejor comprador'
-        | 'Mejor venta'
-        | 'Peor venta';
+    title: 'Mejor comprador' | 'Mejor venta' | 'Peor venta';
     data: string | number;
 };
 
@@ -52,37 +48,40 @@ export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
     );
 };
 
-export const CardDashboardSaleCattle = ({ title, data }: ContentCardSaleCattleProp) => {
-   
-    return (
-        <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
-            <div className='flex'>
-                <span>{title}</span>
-                <div className='size-4'></div>
-            </div>
-
-            <span className='font-bold text-xl'>{`${data} ${typeof data == "number" ? '$' : ''}`}</span>
-            
-        </div>
-    );
-};
-
-export const CardDashboardSaleMilk = ({ title, value,variationValue }: ContentCardSaleMilkProp) => {
-   
+export const CardDashboardSaleCattle = ({
+    title,
+    data,
+}: ContentCardSaleCattleProp) => {
     return (
         <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
             <div className="flex">
                 <span>{title}</span>
                 <div className="size-4"></div>
             </div>
-            <div className='flex justify-between items-center'>
-                <span className="font-bold text-xl">{`${value}$`}</span>
-                <div className='flex gap-1'>
-                <span className="text-xs">{`${variationValue}`}</span>
-                <span className='size-4'>
 
-                    <IconFlechaEstadoDolar className={'text-red-500'} />
-                </span>
+            <span className="font-bold text-xl">{`${data} ${typeof data == 'number' ? '$' : ''}`}</span>
+        </div>
+    );
+};
+
+export const CardDashboardSaleMilk = ({
+    title,
+    value,
+    variationValue,
+}: ContentCardSaleMilkProp) => {
+    return (
+        <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
+            <div className="flex">
+                <span>{title}</span>
+                <div className="size-4"></div>
+            </div>
+            <div className="flex justify-between items-center">
+                <span className="font-bold text-xl">{`${value}$`}</span>
+                <div className="flex gap-1">
+                    <span className="text-xs">{`${variationValue}`}</span>
+                    <span className="size-4">
+                        <IconFlechaEstadoDolar className={'text-red-500'} />
+                    </span>
                 </div>
             </div>
         </div>

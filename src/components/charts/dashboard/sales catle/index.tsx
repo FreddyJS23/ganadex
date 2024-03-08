@@ -1,7 +1,12 @@
 'use client';
 
 import { vacaProductora } from '@/types/dashboard';
-import { optionChartLineSalesCatle, optionChartTop3CatleProduction, paletteBackground, paletteBorderColor } from '@/utils/configCharts';
+import {
+    optionChartLineSalesCatle,
+    optionChartTop3CatleProduction,
+    paletteBackground,
+    paletteBorderColor,
+} from '@/utils/configCharts';
 import { getTopProductionCastle } from '@/utils/convertResponseTopProductionCatles';
 import { ChartData } from 'chart.js';
 import {
@@ -40,18 +45,15 @@ const meses = [
 ];
 
 export const SalesCatle = () => {
-    
-
     const data: ChartData<'bar', number[]> = {
         labels: meses,
         datasets: [
             {
-                data: [2,5],
+                data: [2, 5],
                 backgroundColor: paletteBackground,
-                borderColor:paletteBorderColor,
-                borderWidth:1
+                borderColor: paletteBorderColor,
+                borderWidth: 1,
             },
-            
         ],
     };
 

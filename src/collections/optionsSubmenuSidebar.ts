@@ -1,5 +1,5 @@
 /**Lista de opciones que se podrán realizar en el elemento */
- type OptionsSubmenu = {
+type OptionsSubmenu = {
     /** Nombre de la opcion */
     option: string;
     /** URL de la opcion */
@@ -7,5 +7,5 @@
 };
 
 export const options: OptionsSubmenu[] = [
-    { option: "Registrar", link: "/registrar" },
+    { option: 'Registrar', link: '/registrar' },
 ];

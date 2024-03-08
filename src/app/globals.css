@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@layer components{
+@layer components {
     .shadow-cards {
-        @apply shadow-[0px_0px_6px_-3px] shadow-primary rounded-md border-primary
+        @apply shadow-[0px_0px_6px_-3px] shadow-primary rounded-md border-primary;
     }
 }

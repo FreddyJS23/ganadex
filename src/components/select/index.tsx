@@ -1,8 +1,5 @@
 import { InputProps } from '@/types';
-import {
-    Select as SelectNextUI,
-    SelectItem,
-} from '@nextui-org/select';
+import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
 
 type SelectProps = Pick<
     InputProps,
@@ -30,7 +27,7 @@ export const Select = ({
             classNames={{
                 label: 'text-current font-bold',
                 value: 'text-current',
-                popoverContent:'bg-base-100'
+                popoverContent: 'bg-base-100',
             }}
         >
             {({ label, value }) => <SelectItem key={value}>{label}</SelectItem>}

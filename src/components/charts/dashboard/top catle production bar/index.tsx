@@ -1,7 +1,11 @@
 'use client';
 
 import { vacaProductora } from '@/types/dashboard';
-import { optionChartTop3CatleProduction, paletteBackground, paletteBorderColor } from '@/utils/configCharts';
+import {
+    optionChartTop3CatleProduction,
+    paletteBackground,
+    paletteBorderColor,
+} from '@/utils/configCharts';
 import { getTopProductionCastle } from '@/utils/convertResponseTopProductionCatles';
 import { ChartData } from 'chart.js';
 import {
@@ -39,10 +43,9 @@ export const ProduccionVacasTop3 = ({
             {
                 data: production,
                 backgroundColor: paletteBackground,
-                borderColor:paletteBorderColor,
-                borderWidth:1
+                borderColor: paletteBorderColor,
+                borderWidth: 1,
             },
-            
         ],
     };
 

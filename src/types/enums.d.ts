@@ -19,15 +19,15 @@ export enum IconsSidebar {
 }
 
 enum URLS {
-    "/",
-    "/ganado",
-    "/venta_leche",
-    "/partos",
-    "/revisiones",
-    "/servicios",
-    "/personal",
-    "/insumos",
-    "/ajustes",
+    '/',
+    '/ganado',
+    '/venta_leche',
+    '/partos',
+    '/revisiones',
+    '/servicios',
+    '/personal',
+    '/insumos',
+    '/ajustes',
 }
 
 export enum ElementSidebar {
@@ -108,11 +108,11 @@ export enum EndPointsFakeApi {
     response_balanceAnualLeche,
 }
 
-export enum TittlesTabsDetailsCattle{
-Revisiones,
-Servicios,
-Partos,
-"Pesajes de leche"
+export enum TittlesTabsDetailsCattle {
+    Revisiones,
+    Servicios,
+    Partos,
+    'Pesajes de leche',
 }
 
 export enum IconsTabDatilsCattle {
@@ -125,8 +125,7 @@ export enum IconsTabDatilsCattle {
 export enum EndContentInput {
     dolar,
     weight,
-    "weight-milk",
-
+    'weight-milk',
 }
 
 export enum FieldsIdCasttle {
@@ -150,78 +149,78 @@ export enum FieldsLabelsCasttle {
     Origen,
     Sexo,
     Tipo,
-    "Fecha de nacimiento",
-    "Peso de nacimiento",
-    "Peso de destete",
-    "Peso de 2 años",
-    "Peso actual",
+    'Fecha de nacimiento',
+    'Peso de nacimiento',
+    'Peso de destete',
+    'Peso de 2 años',
+    'Peso actual',
     Estados,
-    "Fecha de defunción",
-    "Causa de defunción",
+    'Fecha de defunción',
+    'Causa de defunción',
 }
 
 export enum FieldsIdCheckUp {
-diagnostico,
-tratamiento
+    diagnostico,
+    tratamiento,
 }
 
 export enum FieldsLabelsCheckUp {
-Diagnostico,
-Tratamiento
+    Diagnostico,
+    Tratamiento,
 }
 
 export enum FieldsIdService {
-observacion,
-"numero_toro",
-tipo
+    observacion,
+    'numero_toro',
+    tipo,
 }
 
 export enum FieldsLabelsService {
-Observación,
-"Numero del toro",
-Tipo
+    Observación,
+    'Numero del toro',
+    Tipo,
 }
 
 export enum FieldsIdBirth {
-observacion,
-nombre,
-numero,
-sexo,
-"peso_nacimiento"
+    observacion,
+    nombre,
+    numero,
+    sexo,
+    'peso_nacimiento',
 }
 
 export enum FieldsLabelsBirth {
-Observación,
-"Nombre de la cría",
-"Numero de la cría",
-Sexo,
-"Peso de nacimiento"
+    Observación,
+    'Nombre de la cría',
+    'Numero de la cría',
+    Sexo,
+    'Peso de nacimiento',
 }
 
 export enum FieldsIdSupply {
-insumo,
-cantidad,
-precio,
+    insumo,
+    cantidad,
+    precio,
 }
 
 export enum FieldsLabelsSupply {
-Insumo,
-Cantidad,
-Precio
+    Insumo,
+    Cantidad,
+    Precio,
 }
 
 export enum FieldsIdStaff {
-ci,
-nombre,
-apellido,
-"fecha_nacimiento",
-cargo
+    ci,
+    nombre,
+    apellido,
+    'fecha_nacimiento',
+    cargo,
 }
 
 export enum FieldsLabelsStaff {
-Cedula,
-Nombre,
-Apellido,
-"Fecha de nacimiento",
-Cargo
+    Cedula,
+    Nombre,
+    Apellido,
+    'Fecha de nacimiento',
+    Cargo,
 }

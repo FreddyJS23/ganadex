@@ -1,7 +1,7 @@
 'use client';
 
-import {  headerAllServes } from '@/collections/headerColums';
-import {  ResponseServiciosGeneral, Servicios, ToroDeServicio } from '@/types';
+import { headerAllServes } from '@/collections/headerColums';
+import { ResponseServiciosGeneral, Servicios, ToroDeServicio } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -13,21 +13,19 @@ import { useCallback } from 'react';
 import { LayoutTable } from '..';
 import Link from 'next/link';
 
-export const TableAllServes = ({ todos_servicios }: ResponseServiciosGeneral) => {
+export const TableAllServes = ({
+    todos_servicios,
+}: ResponseServiciosGeneral) => {
     const renderCell = useCallback(
         (servicios: Servicios, columnKey: keyof Servicios): any => {
             const cellValue = servicios[columnKey];
             switch (columnKey) {
                 case 'toro':
-                      const toro = cellValue as ToroDeServicio;
-                     
-                      return (
-                          <Link href={`toro/${toro.id}`}>
-                              {toro.numero}
-                          </Link>
-                      );
+                    const toro = cellValue as ToroDeServicio;
+
+                    return <Link href={`toro/${toro.id}`}>{toro.numero}</Link>;
                     break;
-            
+
                 default:
                     break;
             }

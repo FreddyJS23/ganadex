@@ -1,7 +1,10 @@
 'use client';
 
 import { BalanceMensualLeche } from '@/types/dashboard';
-import { optionChartLineAnnualMilk, optionChartLineEarningsMilkMonth } from '@/utils/configCharts';
+import {
+    optionChartLineAnnualMilk,
+    optionChartLineEarningsMilkMonth,
+} from '@/utils/configCharts';
 import { getBalanceMonthFromAnnual } from '@/utils/convertResponseBalanceAnnualMilk';
 import {
     Chart as ChartJS,
@@ -26,13 +29,10 @@ ChartJS.register(
     Title,
     Tooltip,
     Legend,
-    TimeScale
+    TimeScale,
 );
 
-
 export const ChartEarningsMilkMonth = () => {
-  
-
     const data: ChartData<'line'> = {
         labels: [
             // Date Objects
@@ -41,12 +41,11 @@ export const ChartEarningsMilkMonth = () => {
             {
                 label: 'Cantidad',
                 data: [
-                    { x: new Date('2024-03-01T03:24:00'), },
-                    { x: new Date('2024-03-30T03:24:00'), },
-                   
-                    { x: new Date('2024-03-05T03:24:00'),y:5 },
-                    { x: new Date('2024-03-15T03:24:00'),y:30 },
-                
+                    { x: new Date('2024-03-01T03:24:00') },
+                    { x: new Date('2024-03-30T03:24:00') },
+
+                    { x: new Date('2024-03-05T03:24:00'), y: 5 },
+                    { x: new Date('2024-03-15T03:24:00'), y: 30 },
                 ],
             },
         ],

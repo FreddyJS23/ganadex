@@ -12,7 +12,9 @@ import {
 import { useCallback } from 'react';
 import { LayoutTable } from '..';
 
-export const TableAllCheckups = ({ todas_revisiones }: ResponseRevisionesGeneral) => {
+export const TableAllCheckups = ({
+    todas_revisiones,
+}: ResponseRevisionesGeneral) => {
     const renderCell = useCallback(
         (revisiones: Revisiones, columnKey: keyof Revisiones): any => {
             const cellValue = revisiones[columnKey];

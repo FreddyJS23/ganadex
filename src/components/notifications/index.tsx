@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { NotificationBody } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';

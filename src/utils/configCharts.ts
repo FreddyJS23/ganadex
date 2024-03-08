@@ -174,7 +174,6 @@ export const optionChartLineSalesCatle: ChartOptions<'bar'> = {
             },
             ticks: {
                 color: '#ecedee',
-               
             },
             suggestedMax: 50,
         },
@@ -190,7 +189,6 @@ export const optionChartLineSalesCatle: ChartOptions<'bar'> = {
     /* elementos chart */
     plugins: {
         legend: { display: false, labels: { color: '#ecedee' } },
-        
     },
     aspectRatio: 7,
 };

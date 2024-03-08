@@ -8,8 +8,7 @@ type TitleTabProps = {
     icon?: 'checkUp' | 'serve' | 'pregnant' | 'milk';
 };
 
-export const TitleTab = ({title,icon}:TitleTabProps) => {
-   
+export const TitleTab = ({ title, icon }: TitleTabProps) => {
     const icons = {
         checkUp: <IconRevision />,
         serve: <IconServicio />,
@@ -19,10 +18,8 @@ export const TitleTab = ({title,icon}:TitleTabProps) => {
 
     return (
         <div className="flex items-center space-x-2 ">
-            <span className='hidden sm:block'>{title}</span>
-           {icon && <div className='size-7'>
-                {icons[icon]}
-            </div>}
+            <span className="hidden sm:block">{title}</span>
+            {icon && <div className="size-7">{icons[icon]}</div>}
         </div>
     );
 };

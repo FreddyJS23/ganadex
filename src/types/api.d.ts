@@ -49,14 +49,14 @@ export type ResponseGanado = {
 
 export type CabezasGanado = Omit<
     Ganado,
-    | "fecha_defuncion"
-    | "causa_defuncion"
-    | "fecha_defuncion"
-    | "causa_defuncion"
-    | "prox_revision"
-    | "prox_servicio"
-    | "prox_parto"
-    | "prox_secado"
+    | 'fecha_defuncion'
+    | 'causa_defuncion'
+    | 'fecha_defuncion'
+    | 'causa_defuncion'
+    | 'prox_revision'
+    | 'prox_servicio'
+    | 'prox_parto'
+    | 'prox_secado'
 >;
 
 export type ResponseGanados = {

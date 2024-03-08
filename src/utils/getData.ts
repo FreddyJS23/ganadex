@@ -1,9 +1,14 @@
-import { EndPointsFakeApi } from "@/types";
+import { EndPointsFakeApi } from '@/types';
 
-export async function getData(endPoint: keyof typeof EndPointsFakeApi, id?: number) {
-   const res = await fetch(`${process.env.API_URL}${endPoint}${id ? `/${id}` : ''}`);
-   if (!res.ok) {
+export async function getData(
+    endPoint: keyof typeof EndPointsFakeApi,
+    id?: number,
+) {
+    const res = await fetch(
+        `${process.env.API_URL}${endPoint}${id ? `/${id}` : ''}`,
+    );
+    if (!res.ok) {
         throw new Error('Failed to fetch data');
     }
-    return res.json(); 
+    return res.json();
 }

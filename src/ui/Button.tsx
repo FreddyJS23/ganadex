@@ -5,5 +5,9 @@ type ButtonProps = {
 };
 
 export const Button = ({ content }: ButtonProps) => {
-    return <ButtonNextUI className="w-full" color="primary">{content}</ButtonNextUI>;
+    return (
+        <ButtonNextUI className="w-full" color="primary">
+            {content}
+        </ButtonNextUI>
+    );
 };

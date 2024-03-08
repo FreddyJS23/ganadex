@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 export const iconsSidebar = {
     dashboard: dynamic(() => import('@/icons/icono-dashboard.svg')),
@@ -9,5 +9,5 @@ export const iconsSidebar = {
     staff: dynamic(() => import('@/icons/icono-personal.svg')),
     pregnancy: dynamic(() => import('@/icons/icono-preñadas.svg')),
     checkUp: dynamic(() => import('@/icons/icono-revision.svg')),
-    serve: dynamic(() => import('@/icons/icono-servir.svg'))
-}
+    serve: dynamic(() => import('@/icons/icono-servir.svg')),
+};

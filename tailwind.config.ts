@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 import { nextui } from '@nextui-org/react';
 
 const config: Config = {
@@ -86,4 +86,4 @@ const config: Config = {
         }),
     ],
 };
-export default config
+export default config;

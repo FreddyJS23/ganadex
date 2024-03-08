@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { Details } from '../details';
 import { DetailsChecks, DetailsServe, iconsSidebar } from '@/collections';
@@ -15,17 +15,19 @@ export const TabDetailsCattle = ({
     total_revisiones,
     total_servicios,
 }: TabsDetailsCattleProps) => {
- 
-   
     return (
         <>
             {/* secciones */}
             <Tabs
                 variant="underlined"
                 color="primary"
-                classNames={{ tab: 'font-bold h-12 group',tabList:'gap-0',cursor:'-bottom-1' }}
+                classNames={{
+                    tab: 'font-bold h-12 group',
+                    tabList: 'gap-0',
+                    cursor: '-bottom-1',
+                }}
                 size="lg"
-                fullWidth={true}  
+                fullWidth={true}
             >
                 <Tab
                     key="revisiones"

@@ -1,7 +1,7 @@
 'use client';
 
-import {  headerStaff, } from '@/collections/headerColums';
-import {  Personal, ResponseTodoPersonal} from '@/types';
+import { headerStaff } from '@/collections/headerColums';
+import { Personal, ResponseTodoPersonal } from '@/types';
 import {
     TableHeader,
     TableColumn,

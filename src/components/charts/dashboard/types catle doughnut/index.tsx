@@ -17,7 +17,9 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const TortaTipoGanado = ({ total_tipos_ganado }: ResponseTotalTiposGanado) => {
+export const TortaTipoGanado = ({
+    total_tipos_ganado,
+}: ResponseTotalTiposGanado) => {
     const { numberTypes, typesCattle } = getCastleType(total_tipos_ganado);
 
     const datasets: ChartData<'doughnut', number[]> = {

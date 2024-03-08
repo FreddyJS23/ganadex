@@ -2,10 +2,10 @@ import { Table } from '@nextui-org/table';
 
 type LayoutTableProps = {
     children: any;
-    type:string
+    type: string;
 };
 
-export const LayoutTable = ({ children,type }: LayoutTableProps) => {
+export const LayoutTable = ({ children, type }: LayoutTableProps) => {
     return (
         <Table
             aria-label={`Table ${type}`}

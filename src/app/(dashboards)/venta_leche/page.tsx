@@ -25,8 +25,10 @@ export default async function Page() {
                 <article className="w-full shadow-cards p-4 flex flex-col bg-base-100">
                     {/* titulo */}
                     <div className="flex justify-between">
-                        <span className='text-2xl'>Ganancia acumulada del mes actual</span>
-                       <ButtonCreateItem />
+                        <span className="text-2xl">
+                            Ganancia acumulada del mes actual
+                        </span>
+                        <ButtonCreateItem />
                     </div>
                     {/* Ganancias */}
                     <span className="mb-1 text-lg">39832</span>

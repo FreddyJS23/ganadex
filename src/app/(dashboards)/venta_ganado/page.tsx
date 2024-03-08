@@ -6,8 +6,9 @@ import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
- const { ventas }: ResponseVentasGanado =
-        await getData('response_ventasGanado');
+    const { ventas }: ResponseVentasGanado = await getData(
+        'response_ventasGanado',
+    );
 
     return (
         <section className="flex p-4  gap-8 flex-col sm:pl-12">
@@ -24,17 +25,19 @@ export default async function Page() {
             {/*   grafico venta */}
             <article className="w-full shadow-cards bg-base-100 p-4 flex flex-col gap-4">
                 {/* titulo */}
-               <div className="flex justify-between">
-                        <span className='text-2xl'>Ganancia acumulada del mes actual</span>
-                       <ButtonCreateItem />
-                    </div>
+                <div className="flex justify-between">
+                    <span className="text-2xl">
+                        Ganancia acumulada del mes actual
+                    </span>
+                    <ButtonCreateItem />
+                </div>
                 {/* grafico */}
-              <SalesCatle />
+                <SalesCatle />
             </article>
 
             {/* tabla ventas */}
-            <article className='flex flex-col gap-2'>
-                <h3 className='ml-2 text-lg md:text-xl'>Historial de ventas</h3>
+            <article className="flex flex-col gap-2">
+                <h3 className="ml-2 text-lg md:text-xl">Historial de ventas</h3>
                 <TableSaleCasttle ventas={ventas} />
             </article>
         </section>
