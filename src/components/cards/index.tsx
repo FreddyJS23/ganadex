@@ -2,6 +2,8 @@ import IconPreñada from '@/icons/icono-preñadas.svg';
 import IconServicio from '@/icons/icono-servir.svg';
 import IconRevision from '@/icons/icono-revision.svg';
 import IconPersonal from '@/icons/icono-personal.svg';
+import IconFlechaEstadoDolar from '@/icons/icono-flechaEstadoDolar.svg';
+
 
 type ContentCardProp = {
     title:
@@ -75,7 +77,13 @@ export const CardDashboardSaleMilk = ({ title, value,variationValue }: ContentCa
             </div>
             <div className='flex justify-between items-center'>
                 <span className="font-bold text-xl">{`${value}$`}</span>
-                <span className="text-xs">{`${variationValue} icon`}</span>
+                <div className='flex gap-1'>
+                <span className="text-xs">{`${variationValue}`}</span>
+                <span className='size-4'>
+
+                    <IconFlechaEstadoDolar className={'text-red-500'} />
+                </span>
+                </div>
             </div>
         </div>
     );
