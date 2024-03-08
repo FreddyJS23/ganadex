@@ -86,9 +86,9 @@ export default async function Home() {
                 </article>
             </div>
             {/* grafico produccion anual leche */}
-            <article className="p-4 col-span-full shadow-cards flex flex-col gap-2 ">
+            <article className="p-4 col-span-full shadow-cards flex flex-col gap-2 bg-base-100 ">
                 <div className='flex justify-between'>
-                        <h2>Produccion anual de leche</h2>
+                        <h2 className='text-2xl'>Produccion anual de leche</h2>
                        
                      </div>
                <ChartAnnualBalanceMilk balanceAnual={balance_anual} />
