@@ -1,4 +1,6 @@
 import { ChartOptions } from 'chart.js';
+import 'chartjs-adapter-date-fns';
+import { de } from 'date-fns/locale';
 
 export const paletteBackground = [
     '#1FFF0090',
@@ -116,6 +118,47 @@ export const optionChartLineAnnualMilk: ChartOptions<'line'> = {
                 },
             },
         },
+    },
+    aspectRatio: 3,
+};
+
+export const optionChartLineEarningsMilkMonth: ChartOptions<'line'> = {
+    scales: {
+        y: {
+            beginAtZero: true,
+            border: { color: '#ecedee' },
+            grid: {
+                color: '#ecedee30',
+                display: true,
+            },
+            ticks: {
+                color: '#ecedee',
+            },
+        },
+        x: {
+            adapters: { date: { locale: de } },
+            type: 'time',
+            time: { unit: 'day' },
+            ticks: { color: '#ecedee' },
+            border: { color: '#ecedee' },
+            grid: {
+                color: '#ecedee30',
+                display: true,
+            },
+        },
+    },
+    elements: {
+        line: {
+            borderColor: '#22FF1E80',
+            backgroundColor: '#22FF1E',
+            fill: true,
+            tension: 0.2,
+        },
+        point: { borderWidth: 20, backgroundColor: '#22FF1E' },
+    },
+    plugins: {
+        legend: { display: false, labels: { color: '#ecedee' } },
+        tooltip: {},
     },
     aspectRatio: 3,
 };
