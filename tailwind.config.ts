@@ -16,6 +16,10 @@ const config: Config = {
                 background: "url('../../public/fondo.webp')",
                 'background-dark': "url('../../public/fondo-dark.webp')",
             },
+            fontFamily:{
+                bebasNue:['var(--font-bebasNue)'],
+                nunito:['var(--font-nunito)']
+            }
         },
     },
     daisyui: {

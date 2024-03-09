@@ -1,11 +1,24 @@
 import type { Metadata } from 'next';
-import { Nunito } from 'next/font/google';
+
 import './globals.css';
 import { Navbar } from '@/components/navbar';
 import { Sidebar } from '@/components/sidebar';
 import { Providers } from './providers';
+import localFont from 'next/font/local';
 
-const nunito = Nunito({ subsets: ['latin'] });
+
+const bebasNue = localFont({
+    src: '../../public/fonts/BebasNeue-Regular.ttf',
+    display: 'swap',
+    variable:'--font-bebasNue'
+});
+
+const nunito = localFont({
+    src: '../../public/fonts/nunito-latin-400-normal.ttf',
+    display: 'swap',
+    variable:'--font-nunito'
+});
+
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -20,7 +33,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${nunito.className} grid grid-cols-12   bg-background dark:bg-background-dark`}
+                className={`${nunito.variable} ${bebasNue.variable} font-nunito grid grid-cols-12   bg-background dark:bg-background-dark`}
             >
                 <header className="col-span-2">
                     <Sidebar android={false} />
