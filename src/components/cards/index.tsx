@@ -40,7 +40,7 @@ export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
             <div className="flex flex-col gap-2 lg:flex-row lg:justify-between">
                 <div className="size-7 lg:order-2">{icons[icon]}</div>
                 <div className="text-balance lg:hidden ">{title}</div>
-                <span className="font-bold text-lg lg:order-1">{data}</span>
+                <span className="font-bold text-lg lg:order-1 font-bebasNue">{data}</span>
             </div>
 
             <div className="hidden text-balance lg:block">{title}</div>
@@ -59,7 +59,7 @@ export const CardDashboardSaleCattle = ({
                 <div className="size-4"></div>
             </div>
 
-            <span className="font-bold text-xl">{`${data} ${typeof data == 'number' ? '$' : ''}`}</span>
+            <span className="font-bold text-xl font-bebasNue">{`${data} ${typeof data == 'number' ? '$' : ''}`}</span>
         </div>
     );
 };
@@ -76,7 +76,7 @@ export const CardDashboardSaleMilk = ({
                 <div className="size-4"></div>
             </div>
             <div className="flex justify-between items-center">
-                <span className="font-bold text-xl">{`${value}$`}</span>
+                <span className="font-bold text-xl font-bebasNue">{`${value}$`}</span>
                 <div className="flex gap-1">
                     <span className="text-xs">{`${variationValue}`}</span>
                     <span className="size-4">

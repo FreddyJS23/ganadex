@@ -32,7 +32,7 @@ export const CircularProgress = ({
                 svg: 'w-40 h-40 drop-shadow-md',
 
                 /*  track: `${positive ?  'stroke-primary' : 'stroke-error'}`, */
-                value: 'text-xl font-semibold',
+                value: 'text-xl font-semibold font-bebasNue',
             }}
             value={value}
             showValueLabel={true}
