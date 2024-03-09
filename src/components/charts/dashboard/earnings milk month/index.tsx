@@ -33,7 +33,7 @@ ChartJS.register(
 );
 
 export const ChartEarningsMilkMonth = () => {
-    const data: ChartData<'line'> = {
+    const data: ChartData<'line', { x: string; y?: number }[]> = {
         labels: [
             // Date Objects
         ],
@@ -41,11 +41,11 @@ export const ChartEarningsMilkMonth = () => {
             {
                 label: 'Cantidad',
                 data: [
-                    { x: new Date('2024-03-01T03:24:00') },
-                    { x: new Date('2024-03-30T03:24:00') },
+                    { x: '2024-03-01T03:24:00' },
+                    { x: '2024-03-30T03:24:00' },
 
-                    { x: new Date('2024-03-05T03:24:00'), y: 5 },
-                    { x: new Date('2024-03-15T03:24:00'), y: 30 },
+                    { x: '2024-03-05T03:24:00', y: 5 },
+                    { x: '2024-03-15T03:24:00', y: 30 },
                 ],
             },
         ],
