@@ -2,6 +2,7 @@ import {
     SkeletonBarChart,
     SkeletonCard,
     SkeletonDoughnutChart,
+    SkeletonLineChart,
 } from '@/components/skeletons';
 
 export default function Loading() {
@@ -36,7 +37,7 @@ export default function Loading() {
             </div>
             {/* grafico produccion anual leche */}
             <div className="p-4 col-span-full shadow-cards flex flex-col gap-2 bg-base-100 ">
-                <SkeletonBarChart />
+                <SkeletonLineChart />
             </div>
         </div>
     );
