@@ -34,7 +34,7 @@ export const SkeletonBarChart = () => {
 
 export const SkeletonCard = () => {
     return (
-        <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col md:w-full lg:w-full">
+        <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col">
             <div className="skeleton h-2 w-20"></div>
             <div className="skeleton h-2 w-14"></div>
         </div>
