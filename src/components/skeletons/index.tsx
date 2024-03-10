@@ -31,7 +31,7 @@ export const SkeletonBarChart = ({
                 <div className="skeleton h-['5px'] w-2/6"></div>
             </div>
 
-            <div className="flex gap-4 h-full items-end justify-between border-b-1 border-l-1 p-4">
+            <div className="flex gap-4 h-full items-end justify-between border-b-1 border-l-1 border-base-300 p-4">
                 {totalBars.map(() => (
                     <div
                         className={`skeleton ${longitudesBar[Math.floor(Math.random() * 5)]} w-4`}
@@ -88,7 +88,7 @@ export const SkeletonLineChart = () => {
 
             <LineChart
                 className={
-                    'w-full border-b-1 border-l-1 text-base-300 skeleton bg-transparent rounded-none'
+                    'w-full border-b-1 border-l-1 text-base-300 border-base-300 skeleton bg-transparent rounded-none'
                 }
             />
         </div>
