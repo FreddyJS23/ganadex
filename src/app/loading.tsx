@@ -21,17 +21,17 @@ export default function Loading() {
             </div>
             <div className="col-span-full flex flex-col justify-around sm:flex-row">
                 {/*    grafico vacas productoras */}
-                <div className="p-4 flex flex-col gap-2  bg-base-100 max-w-72 shadow-cards">
+                <div className="h-56 w-72   p-4 flex flex-col gap-2  bg-base-100 max-w-72 shadow-cards">
                     <SkeletonBarChart cantidadBars={3} />
                 </div>
 
                 {/*    grafico vacas menos productoras */}
-                <div className="p-4 flex flex-col gap-2  bg-base-100 max-w-72  shadow-cards">
+                <div className="h-56 w-72  p-4 flex flex-col gap-2  bg-base-100 max-w-72  shadow-cards">
                     <SkeletonBarChart cantidadBars={3} />
                 </div>
 
                 {/* grafico insumos */}
-                <div className="p-4 flex flex-col bg-base-100 shadow-cards">
+                <div className="p-4 h-60 w-80  flex flex-col bg-base-100 shadow-cards">
                     <SkeletonBarChart cantidadBars={2} />
                 </div>
             </div>
