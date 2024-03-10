@@ -13,20 +13,30 @@ export const SkeletonDoughnutChart = () => {
         </div>
     );
 };
-export const SkeletonBarChart = () => {
+export const SkeletonBarChart = ({
+    cantidadBars,
+}: {
+    cantidadBars: number;
+}) => {
+    const longitudesBar = ['h-1/6', 'h-2/6', 'h-3/6', 'h-4/6', 'h-5/6'];
+    let totalBars = [];
+
+    for (let bar = 0; bar < cantidadBars; bar++) {
+        totalBars.push(1);
+    }
+
     return (
-        <div className="flex flex-col gap-4 w-full h-full justify-between">
+        <div className="flex flex-col gap-4 w-full h-full justify-between ">
             <div>
-                <div className="skeleton h-1 w-16"></div>
+                <div className="skeleton h-['5px'] w-2/6"></div>
             </div>
 
-            <div className="flex gap-4 items-end justify-between">
-                <div className="skeleton h-8 w-4"></div>
-                <div className="skeleton h-14 w-4"></div>
-                <div className="skeleton h-16 w-4"></div>
-                <div className="skeleton h-8 w-4"></div>
-                <div className="skeleton h-12 w-4"></div>
-               
+            <div className="flex gap-4 h-full items-end justify-between border-b-1 border-l-1 p-4">
+                {totalBars.map(() => (
+                    <div
+                        className={`skeleton ${longitudesBar[Math.floor(Math.random() * 5)]} w-4`}
+                    ></div>
+                ))}
             </div>
         </div>
     );
