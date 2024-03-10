@@ -1,7 +1,7 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 
 export const checkedDark = (): boolean =>
-    window.matchMedia('(prefers-color-scheme:dark)').matches;
+  typeof window != 'undefined' &&  window.matchMedia('(prefers-color-scheme:dark)').matches;
 
 export const addDarkTailwind = () =>
     document.documentElement.classList.add('dark');
