@@ -2,17 +2,15 @@ import LineChart from '@/svg/lineChart.svg';
 
 export const SkeletonDoughnutChart = () => {
     return (
-       
-            <div className="flex gap-4 items-center">
-                <div className="skeleton size-56 rounded-full shrink-0"></div>
-                <div className="flex flex-col gap-4">
-                    <div className="skeleton h-4 w-16"></div>
-                    <div className="skeleton h-4 w-16"></div>
-                    <div className="skeleton h-4 w-16"></div>
-                    <div className="skeleton h-4 w-16"></div>
-                </div>
+        <div className="flex gap-4 items-center">
+            <div className="skeleton size-56 rounded-full shrink-0"></div>
+            <div className="flex flex-col gap-4">
+                <div className="skeleton h-4 w-16"></div>
+                <div className="skeleton h-4 w-16"></div>
+                <div className="skeleton h-4 w-16"></div>
+                <div className="skeleton h-4 w-16"></div>
             </div>
-      
+        </div>
     );
 };
 export const SkeletonBarChart = () => {
