@@ -32,8 +32,8 @@ export const SkeletonBarChart = ({
             </div>
 
             <div className="flex gap-4 h-full items-end justify-between border-b-1 border-l-1 border-base-300 p-4">
-                {totalBars.map(() => (
-                    <div
+                {totalBars.map((index) => (
+                    <div key={index}
                         className={`skeleton ${longitudesBar[Math.floor(Math.random() * 5)]} w-4`}
                     ></div>
                 ))}
@@ -65,7 +65,7 @@ export const SkeletonTable = () => {
             <div className="flex flex-col gap-12 w-11/12">
                 {cantidadFilas.map((index) => {
                     return (
-                        <div className="flex justify-around gap-4">
+                        <div key={index} className="flex justify-around gap-4">
                             <div className="skeleton h-2 w-20"></div>
                             <div className="skeleton h-2 w-20"></div>
                             <div className="skeleton h-2 w-20"></div>
