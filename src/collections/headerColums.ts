@@ -1,5 +1,6 @@
 import {
     CabezasGanado,
+    CriaPendienteNumeracion,
     Insumo,
     Personal,
     Revision,
@@ -41,6 +42,11 @@ type headersColumnsAllCheckups = {
 
 type headersColumnsAllServes = {
     key: keyof Servicios;
+    label: string;
+};
+
+type headersColumnsAssignmentNumberBullCalf = {
+    key: keyof CriaPendienteNumeracion;
     label: string;
 };
 
@@ -98,4 +104,11 @@ export const headerAllServes: headersColumnsAllServes[] = [
     { key: 'total_servicios', label: 'Total de servicios' },
     { key: 'ultimo_servicio', label: 'Ultimo servicio' },
     { key: 'efectividad', label: 'Efectividad' },
+];
+
+export const headerAssignmentNumberBullCalf: headersColumnsAssignmentNumberBullCalf[] = [
+    { key: 'nombre', label: 'Nombre' },
+    { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
+    { key: 'id', label: 'Asignar' },
+   
 ];
