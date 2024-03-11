@@ -85,6 +85,7 @@ export enum EndPointsFakeApi {
     response_toro,
     response_toros,
     response_criasPendienteNumeracion,
+    response_criasPendienteCapar,
     response_preciosLeche,
     response_ventasLeche,
     response_insumo,
