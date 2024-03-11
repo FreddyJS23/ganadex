@@ -1,5 +1,6 @@
 import {
     CabezasGanado,
+    CriaPendienteCapar,
     CriaPendienteNumeracion,
     Insumo,
     Personal,
@@ -47,6 +48,10 @@ type headersColumnsAllServes = {
 
 type headersColumnsAssignmentNumberBullCalf = {
     key: keyof CriaPendienteNumeracion;
+    label: string;
+};
+type headersColumnsCastreteBullCalf = {
+    key: keyof CriaPendienteCapar;
     label: string;
 };
 
@@ -110,5 +115,12 @@ export const headerAssignmentNumberBullCalf: headersColumnsAssignmentNumberBullC
     { key: 'nombre', label: 'Nombre' },
     { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
     { key: 'id', label: 'Asignar' },
+   
+];
+
+export const headerCastreteBullCalf: headersColumnsCastreteBullCalf[] = [
+    { key: 'nombre', label: 'Nombre' },
+    { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
+    { key: 'id', label: 'Capar' },
    
 ];
