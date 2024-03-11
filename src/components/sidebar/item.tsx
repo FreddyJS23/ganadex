@@ -120,7 +120,18 @@ export const SidebarElement = ({
                                         : 'collapse-content mt-1'
                                 }`}
                             >
-                                {optionsSubmenu(url)}
+                                <li className="flex p-2 items-center rounded gap-3 hover:bg-base-200 transition-colors duration-75">
+                                    <Link className="" href={`capar_becerro`}>
+                                        Capar
+                                    </Link>
+                                </li>
+                                <li className="flex p-2 items-center rounded gap-3 hover:bg-base-200 transition-colors duration-75">
+                                    <Link className="" href={`asignar_numero`}>
+                                        Asignar numero
+                                    </Link>
+                                </li>
+
+                               
                             </ul>
                         </li>
                     </ul>
