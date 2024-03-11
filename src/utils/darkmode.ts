@@ -3,11 +3,17 @@ import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 export const checkedDark = (): boolean =>
   typeof window != 'undefined' &&  window.matchMedia('(prefers-color-scheme:dark)').matches;
 
-export const addDarkTailwind = () =>
-    document.documentElement.classList.add('dark');
+export const addDarkMode = () =>{
 
-export const removeDarkTailwind = () =>
+    document.documentElement.classList.add('dark');
+    document.documentElement.setAttribute('data-theme','ganadexThemeDark')
+}
+
+export const removeDarkMode = () =>{
+
     document.documentElement.classList.remove('dark');
+    document.documentElement.setAttribute('data-theme','ganadexTheme')
+}
 
 /** Activar o desactivar el modo oscuro
  * @param e Evento del checkbox del theme controller de daisyUI
@@ -21,9 +27,11 @@ export const changeThemeDark = (
 
     if (value == 'ganadexTheme') {
         setThemeDark(true);
-        addDarkTailwind();
+        addDarkMode();
+         localStorage.setItem('darkMode', 'true');
     } else if (value == 'ganadexThemeDark') {
         setThemeDark(false);
-        removeDarkTailwind();
+        removeDarkMode();
+         localStorage.setItem('darkMode', 'false');
     }
 };

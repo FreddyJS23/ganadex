@@ -31,7 +31,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" data-theme={'ganadexThemeDark'} className='dark'>
             <body
                 className={`${nunito.variable} ${bebasNue.variable} font-nunito grid grid-cols-12   bg-background dark:bg-background-dark`}
             >

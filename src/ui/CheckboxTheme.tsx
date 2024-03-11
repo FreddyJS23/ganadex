@@ -1,20 +1,35 @@
 'use client';
 
 import {
-    addDarkTailwind,
+    addDarkMode,
+    
     changeThemeDark,
     checkedDark,
+    removeDarkMode,
+    
 } from '@/utils/darkmode';
 import { useEffect, useState } from 'react';
 
 export const CheckboxTheme = () => {
-    checkedDark();
-
+    
+        const storage = window.localStorage;
+        let checkStorage = storage.getItem('darkMode');
+        let storageNull:boolean=true;
+        let themeDarkStorage:boolean=false; 
+        
+        if(typeof checkStorage == 'string') {themeDarkStorage=JSON.parse(checkStorage);
+             storageNull=false }  
+        else if(typeof checkStorage == null) storageNull=true
+        
+   
+    const [themeDark, setThemeDark] = useState(storageNull ? true : themeDarkStorage);
+    
     useEffect(() => {
-        checkedDark() && addDarkTailwind();
-    }, []);
-
-    const [themeDark, setThemeDark] = useState(checkedDark);
+      
+    themeDark == false && removeDarkMode();
+    
+    }, [])
+    
 
     return (
         <label className="swap swap-rotate">
