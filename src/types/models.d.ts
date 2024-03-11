@@ -110,7 +110,7 @@ export type CriaPendienteCapar = Pick<
     'id' | 'nombre' | 'fecha_nacimiento'
 >;
 
-export type CriaPenditeNumeracion = CriaPendienteCapar;
+export type CriaPendienteNumeracion = CriaPendienteCapar;
 
 export type PreciosDeLeche = {
     id: number;
