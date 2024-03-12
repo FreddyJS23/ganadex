@@ -17,6 +17,17 @@ export enum IconsSidebar {
     staff,
     setting,
 }
+export enum IconsModal {
+    weight,
+    bullCalf,
+    price,
+    milk,
+    cattleV2,
+    dead,
+    checkUp,
+    serve,
+    pregnancy,
+}
 
 enum URLS {
     '/',
