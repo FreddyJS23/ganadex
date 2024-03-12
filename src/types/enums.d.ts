@@ -140,6 +140,25 @@ export enum EndContentInput {
     'weight-milk',
 }
 
+export enum TitlesModals {
+    'Pesaje de leche este mes vaca ',
+    'Desea capar el becerro ',
+    'Asignación de numero al becerro ',
+    'Crear nuevo precio para la leche',
+    'Historial de precio de la leche',
+    'Venta de leche',
+    'Crear nuevo comprador',
+    'Venta de ganado',
+    'Nuevo fallecimiento',
+    'Historial de revisiones',
+    'Revision del ',
+    'Historial de servicios',
+    'Servicio del ',
+    'Historial de partos',
+    'Parto del ',
+    'Historial pesajes mensuales de leche',
+}
+
 export enum FieldsIdCasttle {
     nombre,
     numero,
