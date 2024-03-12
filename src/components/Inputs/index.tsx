@@ -18,6 +18,7 @@ export const Input = ({
     description,
     required,
     endContent,
+    size
 }: InputProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
@@ -40,6 +41,7 @@ export const Input = ({
             description={description}
             isRequired={required}
             endContent={endContent && endContents[endContent]}
+            size={size ? size : 'md'}
         />
     );
 };

@@ -35,6 +35,7 @@ export type InputProps = {
         | 'select'
         | 'date'
         | 'number';
+    size?: 'sm' | 'md' | 'lg' ;
     required: boolean;
     description?: string;
     endContent?: keyof typeof EndContentInput;
