@@ -4,6 +4,7 @@ import {
     CriaPendienteNumeracion,
     Insumo,
     Personal,
+    PreciosDeLeche,
     Revision,
     Revisiones,
     Servicios,
@@ -52,6 +53,11 @@ type headersColumnsAssignmentNumberBullCalf = {
 };
 type headersColumnsCastreteBullCalf = {
     key: keyof CriaPendienteCapar;
+    label: string;
+};
+
+type headersColumnsHistoryPriceMilk = {
+    key: keyof PreciosDeLeche;
     label: string;
 };
 
@@ -123,4 +129,8 @@ export const headerCastreteBullCalf: headersColumnsCastreteBullCalf[] = [
     { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
     { key: 'id', label: 'Capar' },
    
+];
+export const headerHistoryPriceMilk: headersColumnsHistoryPriceMilk[] = [
+    { key: 'precio', label: 'Precio' },
+    { key: 'fecha', label: 'Fecha' },
 ];
