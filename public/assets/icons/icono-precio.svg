@@ -1,10 +1,10 @@
-<svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_313_15046)">
-<path d="M22 22.3333V29.3333L16 26.3333L10 29.3333V22.3333" stroke="#AF842D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M18.3 3.33325H13.7C11.6 3.33325 9.6 4.43325 8.5 6.33325L6.2 10.3333C5.1 12.2333 5.1 14.4333 6.2 16.3333L8.5 20.3333C9.6 22.2333 11.6 23.3333 13.7 23.3333H18.3C20.4 23.3333 22.4 22.2333 23.5 20.3333L25.8 16.3333C26.9 14.4333 26.9 12.2333 25.8 10.3333L23.5 6.33325C22.4 4.43325 20.5 3.33325 18.3 3.33325Z" stroke="#AF842D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16 9.33325V10.3333" stroke="#AF842D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16 16.3333V17.3333" stroke="#AF842D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M17 10.3333H15.5C14.7 10.3333 14 11.0333 14 11.8333C14 12.6333 14.7 13.3333 15.5 13.3333H16.5C17.3 13.3333 18 14.0333 18 14.8333C18 15.6333 17.3 16.3333 16.5 16.3333H15" stroke="#AF842D" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 22.3333V29.3333L16 26.3333L10 29.3333V22.3333" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.3 3.33325H13.7C11.6 3.33325 9.6 4.43325 8.5 6.33325L6.2 10.3333C5.1 12.2333 5.1 14.4333 6.2 16.3333L8.5 20.3333C9.6 22.2333 11.6 23.3333 13.7 23.3333H18.3C20.4 23.3333 22.4 22.2333 23.5 20.3333L25.8 16.3333C26.9 14.4333 26.9 12.2333 25.8 10.3333L23.5 6.33325C22.4 4.43325 20.5 3.33325 18.3 3.33325Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 9.33325V10.3333" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 16.3333V17.3333" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17 10.3333H15.5C14.7 10.3333 14 11.0333 14 11.8333C14 12.6333 14.7 13.3333 15.5 13.3333H16.5C17.3 13.3333 18 14.0333 18 14.8333C18 15.6333 17.3 16.3333 16.5 16.3333H15" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
 <clipPath id="clip0_313_15046">
