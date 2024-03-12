@@ -56,3 +56,7 @@ export type LayoutModalProps = {
     onClose: () => void;
     onOpenChange: () => void;
 };
+
+export type ModalProps = Pick<LayoutModalProps,'isOpen' | 'onOpen' | 'onClose' | 'onOpenChange' | 'dataHeader'> & {
+    dataBody?: string | number;
+};
