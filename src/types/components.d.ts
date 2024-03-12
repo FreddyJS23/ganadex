@@ -1,4 +1,4 @@
-import { ElementSidebar, EndContentInput, IconsSidebar, URLS } from '.';
+import { ElementSidebar, EndContentInput, IconsModal, IconsSidebar, TitlesModals, URLS } from '.';
 
 /**opcion del sidebar */
 export type SidebarElementProps = {
@@ -38,4 +38,21 @@ export type InputProps = {
     required: boolean;
     description?: string;
     endContent?: keyof typeof EndContentInput;
+};
+
+export type LayoutModalProps = {
+    /**Body del modal   */
+    children: JSX.Element;
+    /**Titulo del modal   */
+    titleModal:keyof typeof TitlesModals;
+    dataHeader?: string | number;
+    /**Icono del modal   */
+    icon: keyof typeof IconsModal;
+    /**Habilidar botones de registras y cancelar   */
+    footer: boolean;
+
+    isOpen: boolean;
+    onOpen: () => void;
+    onClose: () => void;
+    onOpenChange: () => void;
 };
