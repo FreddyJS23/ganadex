@@ -178,5 +178,5 @@ export type ResponseServiciosGeneral = {
 };
 
 export type ResponsePesajesLecheGeneral = {
-    todos_pesaje_leche: PesajesLeche;
+    todos_pesaje_leche: PesajesLeche[];
 };
