@@ -534,14 +534,14 @@
     "response_pesajesLecheGeneral": {
         "todos_pesaje_leche": [
             {
-                "id": 2813243246510080,
+                "id": 2813,
                 "numero": 5584306929926144,
                 "nombre": "vaca",
                 "ultimo_pesaje": "232-KG",
                 "pesaje_este_mes": true
             },
             {
-                "id": 2813243246510080,
+                "id": 2813243,
                 "numero": 5584306929926144,
                 "nombre": "vaca3",
                 "ultimo_pesaje": "232-KG",
