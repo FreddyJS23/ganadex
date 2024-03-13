@@ -10,4 +10,5 @@ export const iconsModal = {
     checkUp: dynamic(() => import('@/icons/icono-revision.svg')),
     pregnancy: dynamic(() => import('@/icons/icono-preñadas.svg')),
     serve: dynamic(() => import('@/icons/icono-servir.svg')),
+    customer: dynamic(() => import('@/icons/icono-comprador.svg')),
 };
