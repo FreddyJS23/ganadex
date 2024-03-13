@@ -1,14 +1,17 @@
+'use client'
+
 import IconoPlus from '@/icons/icono-plus.svg';
 
-interface Props {
-    onClick: () => void;
+interface ButtonProps {
+    onClick: () => void ;
 }
 
-export const ButtonCreateItem = () => {
+export const ButtonCreateItem = ({onClick}:ButtonProps) => {
     return (
         <button
             title="Add New"
             className="group cursor-pointer outline-none hover:rotate-90 duration-300"
+            onClick={onClick}
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
