@@ -3,6 +3,7 @@ import {
     CriaPendienteCapar,
     CriaPendienteNumeracion,
     Insumo,
+    Parto,
     Personal,
     PreciosDeLeche,
     Revision,
@@ -68,6 +69,11 @@ type headersColumnsCheckups = {
 
 type headersColumnsServices = {
     key: keyof Servicio;
+    label: string;
+};
+
+type headersColumnsBirths = {
+    key: keyof Parto;
     label: string;
 };
 
@@ -154,4 +160,9 @@ export const headerServices: headersColumnsServices[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'numero_toro', label: 'Toro' },
    
+];
+
+export const headerBirths: headersColumnsBirths[] = [
+    { key: 'fecha', label: 'Fecha' },
+    { key: 'observacion', label: 'Observación' },
 ];
