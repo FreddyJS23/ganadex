@@ -7,6 +7,7 @@ import {
     PreciosDeLeche,
     Revision,
     Revisiones,
+    Servicio,
     Servicios,
     VentaGanado,
     VentaLeche,
@@ -62,6 +63,11 @@ type headersColumnsHistoryPriceMilk = {
 };
 type headersColumnsCheckups = {
     key: keyof Revision;
+    label: string;
+};
+
+type headersColumnsServices = {
+    key: keyof Servicio;
     label: string;
 };
 
@@ -142,4 +148,10 @@ export const headerHistoryPriceMilk: headersColumnsHistoryPriceMilk[] = [
 export const headerCheckups: headersColumnsCheckups[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'diagnostico', label: 'Diagnostico' },
+];
+
+export const headerServices: headersColumnsServices[] = [
+    { key: 'fecha', label: 'Fecha' },
+    { key: 'numero_toro', label: 'Toro' },
+   
 ];
