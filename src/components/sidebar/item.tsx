@@ -88,7 +88,7 @@ export const SidebarElement = ({
                         {optionsSubmenu(url)}
 
                         <li className="flex p-2 items-center rounded gap-3  hover:bg-base-200 transition-colors duration-75">
-                            <Link className="" href={''}>
+                            <Link className="" href={'/pesajes_leche'}>
                                 Pesaje de leche
                             </Link>
                         </li>
