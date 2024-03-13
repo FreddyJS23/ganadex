@@ -6,6 +6,7 @@ import {
     Parto,
     Personal,
     PesajeLecheGanado,
+    PesajesLeche,
     PreciosDeLeche,
     Revision,
     Revisiones,
@@ -83,6 +84,11 @@ type headersColumnsWeightMilk = {
     label: string;
 };
 
+type headersColumnsAllWeightMilk = {
+    key: keyof PesajesLeche;
+    label: string;
+};
+
 export const headerCasttle: headersColumns[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
@@ -152,6 +158,15 @@ export const headerCastreteBullCalf: headersColumnsCastreteBullCalf[] = [
     { key: 'id', label: 'Capar' },
    
 ];
+
+export const headerAllWeightMilk: headersColumnsAllWeightMilk[] = [
+    { key: 'nombre', label: 'Nombre' },
+    { key: 'numero', label: 'Numero' },
+    { key: 'pesaje_este_mes', label: 'Pesaje mes actual' },
+    { key: 'ultimo_pesaje', label: 'ultimo pesaje' },
+    { key: 'id', label: 'Pesar' },
+];
+
 export const headerHistoryPriceMilk: headersColumnsHistoryPriceMilk[] = [
     { key: 'precio', label: 'Precio' },
     { key: 'fecha', label: 'Fecha' },
