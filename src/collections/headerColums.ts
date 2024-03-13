@@ -5,6 +5,7 @@ import {
     Insumo,
     Parto,
     Personal,
+    PesajeLecheGanado,
     PreciosDeLeche,
     Revision,
     Revisiones,
@@ -74,6 +75,11 @@ type headersColumnsServices = {
 
 type headersColumnsBirths = {
     key: keyof Parto;
+    label: string;
+};
+
+type headersColumnsWeightMilk = {
+    key: keyof PesajeLecheGanado;
     label: string;
 };
 
@@ -165,4 +171,9 @@ export const headerServices: headersColumnsServices[] = [
 export const headerBirths: headersColumnsBirths[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'observacion', label: 'Observación' },
+];
+
+export const headerWeightMilk: headersColumnsWeightMilk[] = [
+    { key: 'fecha', label: 'Fecha' },
+    { key: 'pesaje', label: 'Pesaje' },
 ];
