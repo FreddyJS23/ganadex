@@ -284,6 +284,7 @@
                 "numero": null,
                 "sexo": "M",
                 "origen": "fuera",
+                "peso_nacimiento": "442-KG",
                 "fecha_nacimiento": "2023-03-31"
             },
             "padre_numero": 30392802
@@ -301,6 +302,7 @@
                     "numero": null,
                     "sexo": "M",
                     "origen": null,
+                    "peso_nacimiento": "442-KG",
                     "fecha_nacimiento": null
                 },
                 "padre_numero": 7867765960474624
@@ -315,6 +317,7 @@
                     "numero": null,
                     "sexo": "M",
                     "origen": null,
+                    "peso_nacimiento": "442-KG",
                     "fecha_nacimiento": null
                 },
                 "padre_numero": 7867765960474624
