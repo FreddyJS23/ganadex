@@ -60,6 +60,10 @@ type headersColumnsHistoryPriceMilk = {
     key: keyof PreciosDeLeche;
     label: string;
 };
+type headersColumnsCheckups = {
+    key: keyof Revision;
+    label: string;
+};
 
 export const headerCasttle: headersColumns[] = [
     { key: 'numero', label: 'Numero' },
@@ -133,4 +137,9 @@ export const headerCastreteBullCalf: headersColumnsCastreteBullCalf[] = [
 export const headerHistoryPriceMilk: headersColumnsHistoryPriceMilk[] = [
     { key: 'precio', label: 'Precio' },
     { key: 'fecha', label: 'Fecha' },
+];
+
+export const headerCheckups: headersColumnsCheckups[] = [
+    { key: 'fecha', label: 'Fecha' },
+    { key: 'diagnostico', label: 'Diagnostico' },
 ];
