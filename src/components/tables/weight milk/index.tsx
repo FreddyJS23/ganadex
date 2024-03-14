@@ -24,13 +24,15 @@ export const TableAllWeightMilk = ({
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [dataModal, setDataModal] = useState<PesajesLeche>();
 
-    const openModal = (pesajeLeche: PesajesLeche) => {
-        setDataModal(pesajeLeche);
-        onOpen();
-    };
+    
 
     const renderCell = useCallback(
         (pesajeLeche: PesajesLeche, columnKey: keyof PesajesLeche): any => {
+            const openModal = (pesajeLeche: PesajesLeche) => {
+                setDataModal(pesajeLeche);
+                onOpen();
+            };
+
             const cellValue = pesajeLeche[columnKey];
 
             switch (columnKey) {
@@ -58,7 +60,7 @@ export const TableAllWeightMilk = ({
                     return cellValue;
             }
         },
-        [],
+        [setDataModal, onOpen],
     );
 
     return (
