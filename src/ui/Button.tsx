@@ -9,11 +9,12 @@ type ButtonProps = {
         | 'success'
         | 'warning'
         | 'danger';
+    onClick:()=>void
 };
 
-export const Button = ({ content,color }: ButtonProps) => {
+export const Button = ({ content,color,onClick }: ButtonProps) => {
     return (
-        <ButtonNextUI className="w-full" color={`${color ? color : 'primary'}`}>
+        <ButtonNextUI onClick={onClick} className="w-full" color={`${color ? color : 'primary'}`}>
             {content}
         </ButtonNextUI>
     );
