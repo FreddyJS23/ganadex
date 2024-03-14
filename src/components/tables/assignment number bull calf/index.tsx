@@ -25,16 +25,17 @@ export const TableAssignmentNumberBullCalf = ({
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [dataModal, setDataModal] = useState<CriaPendienteNumeracion>();
 
-    const openModal = (criaPendienteNumeracion: CriaPendienteNumeracion) => {
-        setDataModal(criaPendienteNumeracion);
-        onOpen();
-    };
-
     const renderCell = useCallback(
         (
             criaPendienteNumeracion: CriaPendienteNumeracion,
             columnKey: keyof CriaPendienteNumeracion,
         ): any => {
+            const openModal = (
+                criaPendienteNumeracion: CriaPendienteNumeracion,
+            ) => {
+                setDataModal(criaPendienteNumeracion);
+                onOpen();
+            };
             const cellValue = criaPendienteNumeracion[columnKey];
 
             switch (columnKey) {
@@ -59,7 +60,7 @@ export const TableAssignmentNumberBullCalf = ({
                     return cellValue;
             }
         },
-        [],
+        [setDataModal, onOpen],
     );
 
     return (

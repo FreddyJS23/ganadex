@@ -8,6 +8,7 @@ import { TitlePage } from '@/ui/TitlePage';
 
 export default function Page() {
     const [observacion, tipo, numeroToro] = formService;
+ const submit = () => {};
 
     return (
         <>
@@ -30,7 +31,7 @@ export default function Page() {
                     )}
                 </div>
                 <div className="w-full sm:max-w-72">
-                    <Button content="Registrar" />
+                    <Button onClick={submit} content="Registrar" />
                 </div>
             </form>
         </>

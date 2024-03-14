@@ -29,16 +29,18 @@ export const TableCastreteBullCalf = ({
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [dataModal, setDataModal] = useState<CriaPendienteCapar>();
 
-    const openModal = (criaPendienteCapar: CriaPendienteCapar) => {
-        setDataModal(criaPendienteCapar);
-        onOpen();
-    };
+   
 
     const renderCell = useCallback(
         (
             criaPendienteCapar: CriaPendienteCapar,
             columnKey: keyof CriaPendienteCapar,
         ): any => {
+            const openModal = (criaPendienteCapar: CriaPendienteCapar) => {
+                setDataModal(criaPendienteCapar);
+                onOpen();
+            };
+           
             const cellValue = criaPendienteCapar[columnKey];
 
             switch (columnKey) {
@@ -63,7 +65,7 @@ export const TableCastreteBullCalf = ({
                     return cellValue;
             }
         },
-        [],
+        [setDataModal, onOpen],
     );
 
     return (

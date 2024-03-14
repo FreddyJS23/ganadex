@@ -9,6 +9,8 @@ import { Chip } from '@nextui-org/chip';
 import { Select } from '@/components/select';
 
 export default function Page() {
+    
+     const submit = () => {};
     return (
         <>
             <TitlePage title="Registrar cabeza ganado" />
@@ -107,7 +109,7 @@ export default function Page() {
                     ),
                 )}
                 <div className="col-span-full md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-2">
-                    <Button content="Registrar" />
+                    <Button onClick={submit} content="Registrar" />
                 </div>
             </form>
         </>

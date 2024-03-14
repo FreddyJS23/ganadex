@@ -26,10 +26,8 @@ export const CheckboxTheme = () => {
     const [themeDark, setThemeDark] = useState(storageNull ? true : themeDarkStorage);
     
     useEffect(() => {
-      
-    themeDark == false && removeDarkMode();
-    
-    }, [])
+        themeDark == false && removeDarkMode();
+    }, [themeDark]);
     
 
     return (
