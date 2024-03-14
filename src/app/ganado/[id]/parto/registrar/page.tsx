@@ -7,6 +7,8 @@ import { Button } from '@/ui/Button';
 import { TitlePage } from '@/ui/TitlePage';
 
 export default function Page() {
+  
+  const submit=()=>{}
     return (
         <>
             <TitlePage title="Registrar parto" />
@@ -44,7 +46,7 @@ export default function Page() {
                     )}
                 </div>
                 <div className="w-full sm:max-w-72">
-                    <Button content="Registrar" />
+                    <Button onClick={submit} content="Registrar" />
                 </div>
             </form>
         </>

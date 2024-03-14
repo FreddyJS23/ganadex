@@ -26,6 +26,7 @@ export const LayoutModal = ({
 }: LayoutModalProps) => {
    
     const Icon = iconsModal[icon];
+ const submit = () => {};
 
     return (
         <Modal
@@ -49,8 +50,8 @@ export const LayoutModal = ({
                         <ModalBody>{children}</ModalBody>
                         {footer && (
                             <ModalFooter className="flex flex-col sm:flex-row-reverse ">
-                                <Button content='Confirmar' />
-                                <Button color='default' content='Cancelar' />
+                                <Button onClick={submit} content='Confirmar' />
+                                <Button onClick={submit} color='default' content='Cancelar' />
                             </ModalFooter>
                         )}
                     </>
