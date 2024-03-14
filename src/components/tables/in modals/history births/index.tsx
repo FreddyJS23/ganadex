@@ -1,8 +1,20 @@
 import { headerBirths } from '@/collections/headerColums';
-import {  ResponsePartos } from '@/types';
+import { Parto, ResponsePartos } from '@/types';
 import IconSearch from '@/icons/icono-Revisar.svg';
+import { useDisclosure } from '@nextui-org/react';
+import { useState } from 'react';
+import { ModalBirth } from '@/components/modals/birth';
 
 export const TableHistoryBirths = ({ partos }: ResponsePartos) => {
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+
+    const [dataModal, setDataModal] = useState<Parto>();
+
+    const openModal = (parto: Parto) => {
+        setDataModal(parto);
+        onOpen();
+    };
+
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -14,17 +26,29 @@ export const TableHistoryBirths = ({ partos }: ResponsePartos) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {partos.map(({ id,fecha,observacion }) => (
-                        <tr key={id}>
-                            <td>{fecha.toISOString()} </td>
-                            <td>{observacion} </td>
+                    {partos.map((parto) => (
+                        <tr key={parto.id}>
+                            <td>{parto.fecha.toISOString()} </td>
+                            <td>{parto.observacion} </td>
                             <td>
-                                <IconSearch className={'size-8 '} />
+                                <IconSearch
+                                    onClick={() => openModal(parto)}
+                                    className={'size-8 cursor-pointer'}
+                                />
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            {dataModal && (
+                <ModalBirth
+                    isOpen={isOpen}
+                    onOpen={onOpen}
+                    onClose={onClose}
+                    onOpenChange={onOpenChange}
+                    parto={dataModal}
+                />
+            )}
         </div>
     );
 };
