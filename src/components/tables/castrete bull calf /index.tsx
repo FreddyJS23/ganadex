@@ -1,6 +1,9 @@
 'use client';
 
-import { headerAssignmentNumberBullCalf, headerCastreteBullCalf } from '@/collections/headerColums';
+import {
+    headerAssignmentNumberBullCalf,
+    headerCastreteBullCalf,
+} from '@/collections/headerColums';
 import {
     CriaPendienteCapar,
     CriaPendienteNumeracion,
@@ -13,15 +16,24 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
+import { useDisclosure } from '@nextui-org/react';
+import { ModalCastrateBullCalf } from '@/components/modals/castrate bull calf';
 
 export const TableCastreteBullCalf = ({
-crias_pendiente_capar
-}:ResponseCriasPendienteCapar) => {
-   
+    crias_pendiente_capar,
+}: ResponseCriasPendienteCapar) => {
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+    const [dataModal, setDataModal] = useState<CriaPendienteCapar>();
+
+    const openModal = (criaPendienteCapar: CriaPendienteCapar) => {
+        setDataModal(criaPendienteCapar);
+        onOpen();
+    };
+
     const renderCell = useCallback(
         (
             criaPendienteCapar: CriaPendienteCapar,
@@ -39,12 +51,12 @@ crias_pendiente_capar
                     );
                 /* button icon */
                 case 'id':
+                    setDataModal(criaPendienteCapar);
                     return (
-                        <Link
-                            href={`capar_becerro/${criaPendienteCapar['id']}`}
-                        >
-                            <IconButton className={'size-6'} />
-                        </Link>
+                        <IconButton
+                            className={'size-6 cursor-pointer'}
+                            onClick={() => openModal(criaPendienteCapar)}
+                        />
                     );
 
                 default:
@@ -55,21 +67,32 @@ crias_pendiente_capar
     );
 
     return (
-        <LayoutTable type="castrete bull calf">
-            <TableHeader columns={headerCastreteBullCalf}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={crias_pendiente_capar}>
-                {(cria) => (
-                    <TableRow key={cria.id}>
-                        {(columnKey: any) => (
-                            <TableCell>{renderCell(cria, columnKey)}</TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+        <>
+            <LayoutTable type="castrete bull calf">
+                <TableHeader columns={headerCastreteBullCalf}>
+                    {({ key, label }) => (
+                        <TableColumn key={key}>{label}</TableColumn>
+                    )}
+                </TableHeader>
+                <TableBody items={crias_pendiente_capar}>
+                    {(cria) => (
+                        <TableRow key={cria.id}>
+                            {(columnKey: any) => (
+                                <TableCell>
+                                    {renderCell(cria, columnKey)}
+                                </TableCell>
+                            )}
+                        </TableRow>
+                    )}
+                </TableBody>
+            </LayoutTable>
+            <ModalCastrateBullCalf
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onOpenChange={onOpenChange}
+                dataHeader={dataModal?.nombre}
+                onClose={onClose}
+            />
+        </>
     );
 };
