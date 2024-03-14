@@ -12,14 +12,24 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
+import { ModalAssignmentNumberBullCalf } from '@/components/modals/assignment number bull calf';
+import { useDisclosure } from '@nextui-org/react';
 
 export const TableAssignmentNumberBullCalf = ({
     crias_pendiente_numeracion,
 }: ResponseCriasPendienteNumeracion) => {
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+    const [dataModal, setDataModal] = useState<CriaPendienteNumeracion>();
+
+    const openModal = (criaPendienteNumeracion: CriaPendienteNumeracion) => {
+        setDataModal(criaPendienteNumeracion);
+        onOpen();
+    };
+
     const renderCell = useCallback(
         (
             criaPendienteNumeracion: CriaPendienteNumeracion,
@@ -37,12 +47,12 @@ export const TableAssignmentNumberBullCalf = ({
                     );
                 /* button icon */
                 case 'id':
+                    setDataModal(criaPendienteNumeracion);
                     return (
-                        <Link
-                            href={`asignar_numero/${criaPendienteNumeracion['id']}`}
-                        >
-                            <IconButton className={'size-6'} />
-                        </Link>
+                        <IconButton
+                            className={'size-6 cursor-pointer'}
+                            onClick={() => openModal(criaPendienteNumeracion)}
+                        />
                     );
 
                 default:
@@ -53,21 +63,33 @@ export const TableAssignmentNumberBullCalf = ({
     );
 
     return (
-        <LayoutTable type="assignment bull calf">
-            <TableHeader columns={headerAssignmentNumberBullCalf}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={crias_pendiente_numeracion}>
-                {(cria) => (
-                    <TableRow key={cria.id}>
-                        {(columnKey: any) => (
-                            <TableCell>{renderCell(cria, columnKey)}</TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+        <>
+            <LayoutTable type="assignment bull calf">
+                <TableHeader columns={headerAssignmentNumberBullCalf}>
+                    {({ key, label }) => (
+                        <TableColumn key={key}>{label}</TableColumn>
+                    )}
+                </TableHeader>
+                <TableBody items={crias_pendiente_numeracion}>
+                    {(cria) => (
+                        <TableRow key={cria.id}>
+                            {(columnKey: any) => (
+                                <TableCell>
+                                    {renderCell(cria, columnKey)}
+                                </TableCell>
+                            )}
+                        </TableRow>
+                    )}
+                </TableBody>
+            </LayoutTable>
+
+            <ModalAssignmentNumberBullCalf
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onOpenChange={onOpenChange}
+                dataHeader={dataModal?.nombre}
+                onClose={onClose}
+            />
+        </>
     );
 };
