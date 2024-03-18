@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@nextui-org/react": "^2.2.9",
     "@svgr/webpack": "^8.1.0",
+    "@types/react-slick": "^0.23.13",
     "chart.js": "^4.4.2",
     "chartjs-adapter-date-fns": "^3.0.0",
     "date-fns": "^3.3.1",
@@ -25,6 +26,8 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "react-hook-form": "^7.49.3",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
     "tailwind-scrollbar": "^3.0.5",
     "zod": "^3.22.4"
   },
