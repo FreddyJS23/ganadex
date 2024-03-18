@@ -14,12 +14,13 @@ const config: Config = {
         extend: {
             backgroundImage: {
                 background: "url('../../public/fondo.webp')",
+                backgroundLogin: "url('../../public/background-login.png')",
                 'background-dark': "url('../../public/fondo-dark.webp')",
             },
-            fontFamily:{
-                bebasNue:['var(--font-bebasNue)'],
-                nunito:['var(--font-nunito)']
-            }
+            fontFamily: {
+                bebasNue: ['var(--font-bebasNue)'],
+                nunito: ['var(--font-nunito)'],
+            },
         },
     },
     daisyui: {
