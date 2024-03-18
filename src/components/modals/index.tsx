@@ -7,8 +7,9 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    useDisclosure,
+   
 } from '@nextui-org/modal';
+import { useRouter } from 'next/navigation';
 
 
 export const LayoutModal = ({
@@ -26,6 +27,12 @@ export const LayoutModal = ({
    
     const Icon = iconsModal[icon];
  const submit = () => {};
+ const router = useRouter();
+
+ const onClose = () => {
+     router.back();
+ };
+  
 
     return (
         <Modal
@@ -33,6 +40,7 @@ export const LayoutModal = ({
             onOpenChange={onOpenChange}
             classNames={{ base: 'bg-base-100' }}
             placement='center'
+            onClose={onClose}
         >
             <ModalContent>
                 {(onClose) => (
@@ -50,7 +58,7 @@ export const LayoutModal = ({
                         {footer && (
                             <ModalFooter className="flex flex-col sm:flex-row-reverse ">
                                 <Button onClick={submit} content='Confirmar' />
-                                <Button onClick={submit} color='default' content='Cancelar' />
+                                <Button onClick={onClose} color='default' content='Cancelar' />
                             </ModalFooter>
                         )}
                     </>
