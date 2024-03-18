@@ -19,7 +19,6 @@ export const LayoutModal = ({
     children,
     isOpen,
     onOpen,
-    onClose,
     onOpenChange,
   
     

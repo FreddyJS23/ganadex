@@ -11,7 +11,7 @@ export const CreateSaleMilk = ({
 }: {
     ListaPreciosRegistrados: PreciosDeLeche[];
 }) => {
-    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+    const { onOpen, onOpenChange} = useDisclosure();
     return (
         <>
             <ButtonCreateItem onClick={onOpen} />
@@ -19,7 +19,6 @@ export const CreateSaleMilk = ({
                 isOpen={isOpen}
                 onOpen={onOpen}
                 onOpenChange={onOpenChange}
-                onClose={onClose}
                 selectPrecios={ListaPreciosRegistrados}
             />
         </>
