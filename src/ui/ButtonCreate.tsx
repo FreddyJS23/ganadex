@@ -1,17 +1,17 @@
-'use client'
-
 import IconoPlus from '@/icons/icono-plus.svg';
+import { Url } from 'next/dist/shared/lib/router/router';
+import Link from 'next/link';
 
 interface ButtonProps {
-    onClick: () => void ;
+    href: Url;
 }
 
-export const ButtonCreateItem = ({onClick}:ButtonProps) => {
+export const ButtonCreateItem = ({href}:ButtonProps) => {
     return (
-        <button
+        <Link
             title="Add New"
             className="group cursor-pointer outline-none hover:rotate-90 duration-300"
-            onClick={onClick}
+            href={href}
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,6 +32,6 @@ export const ButtonCreateItem = ({onClick}:ButtonProps) => {
                 <path d="M8 12H16" stroke-width="1.5"></path>
                 <path d="M12 16V8" stroke-width="1.5"></path>
             </svg>
-        </button>
+        </Link>
     );
 };
