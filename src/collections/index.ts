@@ -4,3 +4,4 @@ export { options as optionsSidebarElements } from './sidebarElements';
 export * from './notifications';
 export * from './detailsTabCattle';
 export * from './imagesCarouselLogin';
+export * from './textCarouselLogin';
