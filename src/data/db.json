@@ -354,16 +354,12 @@
     "response_criasPendienteCapar": {
         "crias_pendiente_capar": [
             {
-                "id": 3203300,
+                "id": 70927,
                 "nombre": "ea-omnis-dolorum-voluptates",
                 "fecha_nacimiento": "2023-12-04"
             },
             {
-<<<<<<< Updated upstream
-                "id": 3203300,
-=======
                 "id": 70928,
->>>>>>> Stashed changes
                 "nombre": "ea-omnis-dolorum-voluptates",
                 "fecha_nacimiento": "2023-12-04"
             }
@@ -372,16 +368,12 @@
     "response_criasPendienteNumeracion": {
         "crias_pendiente_numeracion": [
             {
-                "id": 3203300,
+                "id": 70927,
                 "nombre": "ea-omnis-dolorum-voluptates",
                 "fecha_nacimiento": "2023-12-04"
             },
             {
-<<<<<<< Updated upstream
-                "id": 3203300,
-=======
                 "id": 70928,
->>>>>>> Stashed changes
                 "nombre": "ea-omnis-dolorum-voluptates",
                 "fecha_nacimiento": "2023-12-04"
             }
