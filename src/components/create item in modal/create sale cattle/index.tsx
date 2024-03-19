@@ -2,7 +2,6 @@
 
 import { ModalSaleCattle } from '@/components/modals/sale cattle';
 import { Comprador } from '@/types';
-import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { useDisclosure } from '@nextui-org/react';
 
 export const CreateSaleCattle = ({
@@ -10,15 +9,13 @@ export const CreateSaleCattle = ({
 }: {
     ListaCompradoresRegistrados: Comprador[];
 }) => {
-    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+    const {  onOpen, onOpenChange } = useDisclosure();
     return (
         <>
-            <ButtonCreateItem onClick={onOpen} />
             <ModalSaleCattle
-                isOpen={isOpen}
+                isOpen={true}
                 onOpen={onOpen}
                 onOpenChange={onOpenChange}
-                onClose={onClose}
                 selectCompradores={ListaCompradoresRegistrados}
             />
         </>
