@@ -3,6 +3,7 @@ import { SalesCatle } from '@/components/charts/dashboard/sales catle';
 import { CreateSaleCattle } from '@/components/create item in modal/create sale cattle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
 import { ResponseCompradores, ResponseVentasGanado } from '@/types';
+import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
@@ -10,9 +11,7 @@ export default async function Page() {
         'response_ventasGanado',
     );
   
-    const { compradores }: ResponseCompradores = await getData(
-        'response_compradores',
-    );
+   
 
     return (
         <section className="flex p-4  gap-8 flex-col sm:pl-12">
@@ -34,7 +33,7 @@ export default async function Page() {
                         Ganancia acumulada del mes actual
                     </span>
                     {/* boton y modal crear venta */}
-                    <CreateSaleCattle ListaCompradoresRegistrados={compradores}  />
+                   <ButtonCreateItem href={'venta_ganado/registrar'} />
                 </div>
                 {/* grafico */}
                 <SalesCatle />
