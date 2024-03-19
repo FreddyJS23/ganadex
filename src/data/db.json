@@ -359,7 +359,11 @@
                 "fecha_nacimiento": "2023-12-04"
             },
             {
+<<<<<<< Updated upstream
                 "id": 3203300,
+=======
+                "id": 70928,
+>>>>>>> Stashed changes
                 "nombre": "ea-omnis-dolorum-voluptates",
                 "fecha_nacimiento": "2023-12-04"
             }
@@ -373,7 +377,11 @@
                 "fecha_nacimiento": "2023-12-04"
             },
             {
+<<<<<<< Updated upstream
                 "id": 3203300,
+=======
+                "id": 70928,
+>>>>>>> Stashed changes
                 "nombre": "ea-omnis-dolorum-voluptates",
                 "fecha_nacimiento": "2023-12-04"
             }
