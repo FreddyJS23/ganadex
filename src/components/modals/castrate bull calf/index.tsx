@@ -1,8 +1,12 @@
+'use client'
+
+import { useDisclosure } from '@nextui-org/modal';
 import { LayoutModal } from '..';
 import { ModalProps } from '@/types';
 
-export const ModalCastrateBullCalf = ({isOpen,onClose,onOpen,onOpenChange,dataHeader}:ModalProps) => {
-   
+export const ModalCastrateBullCalf = ({dataHeader}: Pick<ModalProps, 'dataHeader'>) => {
+     
+    const { onOpen, onOpenChange } = useDisclosure();
 
     return (
             <LayoutModal
@@ -10,8 +14,7 @@ export const ModalCastrateBullCalf = ({isOpen,onClose,onOpen,onOpenChange,dataHe
             titleModal={'Desea capar el becerro '}
             dataHeader={`${dataHeader} ?`}
             footer={true}
-            isOpen={isOpen}
-            onClose={onClose}
+            isOpen={true}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
             >
