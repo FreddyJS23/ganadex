@@ -1,22 +1,22 @@
+'use client';
+
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
 import { ModalProps } from '@/types';
+import { useDisclosure } from '@nextui-org/react';
 
 export const ModalAssignmentNumberBullCalf = ({
-    isOpen,
-    onClose,
-    onOpen,
-    onOpenChange,
     dataHeader,
-}: ModalProps) => {
+}: Pick<ModalProps, 'dataHeader'>) => {
+    const { onOpen, onOpenChange } = useDisclosure();
+
     return (
         <LayoutModal
             icon="bullCalf"
             titleModal={'Asignación de numero al becerro '}
             dataHeader={`${dataHeader} ?`}
             footer={true}
-            isOpen={isOpen}
-            onClose={onClose}
+            isOpen={true}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >
