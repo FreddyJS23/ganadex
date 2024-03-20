@@ -11,7 +11,13 @@ type EstadosGanado = {
 
 type Cria = Pick<
     Ganado,
-    'id' | 'nombre' | 'numero' | 'sexo' | 'origen' | 'fecha_nacimiento'|'peso_nacimiento'
+    | 'id'
+    | 'nombre'
+    | 'numero'
+    | 'sexo'
+    | 'origen'
+    | 'fecha_nacimiento'
+    | 'peso_nacimiento'
 >;
 
 type ToroDeServicio = Pick<Toro, 'id' | 'numero'>;

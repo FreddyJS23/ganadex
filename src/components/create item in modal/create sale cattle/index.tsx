@@ -9,7 +9,7 @@ export const CreateSaleCattle = ({
 }: {
     ListaCompradoresRegistrados: Comprador[];
 }) => {
-    const {  onOpen, onOpenChange } = useDisclosure();
+    const { onOpen, onOpenChange } = useDisclosure();
     return (
         <>
             <ModalSaleCattle

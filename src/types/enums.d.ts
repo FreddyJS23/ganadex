@@ -27,7 +27,7 @@ export enum IconsModal {
     checkUp,
     serve,
     pregnancy,
-    customer
+    customer,
 }
 
 enum URLS {

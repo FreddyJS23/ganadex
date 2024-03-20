@@ -13,7 +13,5 @@ export default async function Page({ params }: ParamsPage) {
     );
     const { numero, nombre } = ganado;
 
-    return (
-        <ModalCastrateBullCalf dataHeader={numero ? numero : nombre} />
-    );
+    return <ModalCastrateBullCalf dataHeader={numero ? numero : nombre} />;
 }

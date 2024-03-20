@@ -8,8 +8,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export const TableHistoryCheckUps = ({ revisioness }: ResponseRevisiones) => {
-  
- const pathname = usePathname();
+    const pathname = usePathname();
 
     return (
         <>
@@ -22,10 +21,14 @@ export const TableHistoryCheckUps = ({ revisioness }: ResponseRevisiones) => {
                             ))}
                         </tr>
                     </thead>
-                    <tbody> 
+                    <tbody>
                         {revisioness.map((revision) => (
                             <tr key={revision.id}>
-                                <td>{typeof revision.fecha == 'string' ? revision.fecha : ''} </td>
+                                <td>
+                                    {typeof revision.fecha == 'string'
+                                        ? revision.fecha
+                                        : ''}{' '}
+                                </td>
                                 <td>{revision.diagnostico} </td>
                                 <td>
                                     <Link href={`${pathname}/${revision.id}`}>

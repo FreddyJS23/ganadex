@@ -1,4 +1,11 @@
-import { ElementSidebar, EndContentInput, IconsModal, IconsSidebar, TitlesModals, URLS } from '.';
+import {
+    ElementSidebar,
+    EndContentInput,
+    IconsModal,
+    IconsSidebar,
+    TitlesModals,
+    URLS,
+} from '.';
 
 /**opcion del sidebar */
 export type SidebarElementProps = {
@@ -35,7 +42,7 @@ export type InputProps = {
         | 'select'
         | 'date'
         | 'number';
-    size?: 'sm' | 'md' | 'lg' ;
+    size?: 'sm' | 'md' | 'lg';
     required: boolean;
     description?: string;
     endContent?: keyof typeof EndContentInput;
@@ -45,7 +52,7 @@ export type LayoutModalProps = {
     /**Body del modal   */
     children: JSX.Element;
     /**Titulo del modal   */
-    titleModal:keyof typeof TitlesModals;
+    titleModal: keyof typeof TitlesModals;
     dataHeader?: string | number;
     /**Icono del modal   */
     icon: keyof typeof IconsModal;
@@ -57,6 +64,9 @@ export type LayoutModalProps = {
     onOpenChange?: () => void;
 };
 
-export type ModalProps = Pick<LayoutModalProps,'isOpen' | 'onOpen' | 'onOpenChange' | 'dataHeader'> & {
+export type ModalProps = Pick<
+    LayoutModalProps,
+    'isOpen' | 'onOpen' | 'onOpenChange' | 'dataHeader'
+> & {
     dataBody?: string | number;
 };

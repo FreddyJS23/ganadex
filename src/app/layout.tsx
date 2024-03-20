@@ -6,19 +6,17 @@ import { Sidebar } from '@/components/sidebar';
 import { Providers } from './providers';
 import localFont from 'next/font/local';
 
-
 const bebasNue = localFont({
     src: '../../public/fonts/BebasNeue-Regular.ttf',
     display: 'swap',
-    variable:'--font-bebasNue'
+    variable: '--font-bebasNue',
 });
 
 const nunito = localFont({
     src: '../../public/fonts/nunito-latin-400-normal.ttf',
     display: 'swap',
-    variable:'--font-nunito'
+    variable: '--font-nunito',
 });
-
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -45,8 +43,10 @@ export default function RootLayout({
                 </nav>
 
                 <main className="mt-2 sm:col-start-2 lg:mt-0 lg:col-start-3 col-span-full ">
-                    <Providers>{children}
-                    {modal}</Providers>
+                    <Providers>
+                        {children}
+                        {modal}
+                    </Providers>
                 </main>
             </body>
         </html>

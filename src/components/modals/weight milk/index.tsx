@@ -1,11 +1,13 @@
-'use client'
+'use client';
 
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
 import { ModalProps } from '@/types';
 import { useDisclosure } from '@nextui-org/react';
 
-export const ModalWeightMilk = ({ dataHeader }: Pick<ModalProps, 'dataHeader'>) => {
+export const ModalWeightMilk = ({
+    dataHeader,
+}: Pick<ModalProps, 'dataHeader'>) => {
     const { onOpen, onOpenChange } = useDisclosure();
 
     return (

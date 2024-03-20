@@ -2,10 +2,7 @@ import { CardDashboardSaleMilk } from '@/components/cards';
 import { ChartEarningsMilkMonth } from '@/components/charts/dashboard/earnings milk month';
 import { CreateSaleMilk } from '@/components/create item in modal/create sale milk';
 import { TableSaleMilk } from '@/components/tables/sale milk';
-import {
-    ResponsePreciosLeche,
-    ResponseVentasLeche,
-} from '@/types';
+import { ResponsePreciosLeche, ResponseVentasLeche } from '@/types';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 
@@ -36,7 +33,7 @@ export default async function Page() {
                             Ganancia acumulada del mes actual
                         </span>
                         {/* boton y modal crear venta leche */}
-                       <ButtonCreateItem href={'venta_leche/registrar'} />
+                        <ButtonCreateItem href={'venta_leche/registrar'} />
                     </div>
                     {/* Ganancias */}
                     <span className="mb-1 text-lg">39832</span>

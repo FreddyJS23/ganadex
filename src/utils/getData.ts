@@ -5,7 +5,8 @@ export async function getData(
     id?: number,
 ) {
     const res = await fetch(
-        `${process.env.API_URL}${endPoint}${id ? `/${id}` : ''}`,{cache:'no-store'}
+        `${process.env.API_URL}${endPoint}${id ? `/${id}` : ''}`,
+        { cache: 'no-store' },
     );
     if (!res.ok) {
         throw new Error('Failed to fetch data');

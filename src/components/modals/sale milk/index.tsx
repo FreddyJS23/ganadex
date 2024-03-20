@@ -24,7 +24,11 @@ export const ModalSaleMilk = ({
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >
-            <form action="" method="post" className="m-auto flex flex-col gap-4 w-2/4 ">
+            <form
+                action=""
+                method="post"
+                className="m-auto flex flex-col gap-4 w-2/4 "
+            >
                 <Input
                     id="lecheKg"
                     label="Kilogramos"
@@ -39,8 +43,7 @@ export const ModalSaleMilk = ({
                     required
                     description="Precios disponibles por kg, creados previamente"
                     items={itemsSelect}
-                    endContent='dolar'
-
+                    endContent="dolar"
                 />
             </form>
         </LayoutModal>

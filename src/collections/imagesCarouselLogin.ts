@@ -10,6 +10,6 @@ type Image = {
 };
 
 export const imagesSliderLogin: Image[] = [
-    { src: cattle, alt: 'cattle',  width: 300 },
-    { src: cattle2, alt: 'cattle2',  width: 300 },
+    { src: cattle, alt: 'cattle', width: 300 },
+    { src: cattle2, alt: 'cattle2', width: 300 },
 ];

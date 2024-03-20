@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { LayoutModal } from '..';
 import { ModalProps, PesajeLecheGanado } from '@/types';

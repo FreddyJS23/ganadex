@@ -8,9 +8,8 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-    const { servicios }: ResponseServicios = await getData(
-        'response_servicios',
-    );
+    const { servicios }: ResponseServicios =
+        await getData('response_servicios');
 
     return <ModalHistoryServices servicios={servicios} />;
 }

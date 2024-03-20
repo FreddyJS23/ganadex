@@ -18,7 +18,7 @@ export const Input = ({
     description,
     required,
     endContent,
-    size
+    size,
 }: InputProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,

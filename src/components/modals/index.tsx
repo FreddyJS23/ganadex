@@ -1,5 +1,5 @@
 import { iconsModal } from '@/collections/iconsModal';
-import { IconsModal,LayoutModalProps,TitlesModals } from '@/types';
+import { IconsModal, LayoutModalProps, TitlesModals } from '@/types';
 import { Button } from '@/ui/Button';
 import {
     Modal,
@@ -7,10 +7,8 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-   
 } from '@nextui-org/modal';
 import { useRouter } from 'next/navigation';
-
 
 export const LayoutModal = ({
     titleModal,
@@ -21,25 +19,21 @@ export const LayoutModal = ({
     isOpen,
     onOpen,
     onOpenChange,
-  
-    
 }: LayoutModalProps) => {
-   
     const Icon = iconsModal[icon];
- const submit = () => {};
- const router = useRouter();
+    const submit = () => {};
+    const router = useRouter();
 
- const onClose = () => {
-     router.back();
- };
-  
+    const onClose = () => {
+        router.back();
+    };
 
     return (
         <Modal
             isOpen={isOpen}
             onOpenChange={onOpenChange}
             classNames={{ base: 'bg-base-100' }}
-            placement='center'
+            placement="center"
             onClose={onClose}
         >
             <ModalContent>
@@ -57,8 +51,12 @@ export const LayoutModal = ({
                         <ModalBody>{children}</ModalBody>
                         {footer && (
                             <ModalFooter className="flex flex-col sm:flex-row-reverse ">
-                                <Button onClick={submit} content='Confirmar' />
-                                <Button onClick={onClose} color='default' content='Cancelar' />
+                                <Button onClick={submit} content="Confirmar" />
+                                <Button
+                                    onClick={onClose}
+                                    color="default"
+                                    content="Cancelar"
+                                />
                             </ModalFooter>
                         )}
                     </>

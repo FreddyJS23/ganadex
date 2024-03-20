@@ -130,8 +130,6 @@ export const SidebarElement = ({
                                         Asignar numero
                                     </Link>
                                 </li>
-
-                               
                             </ul>
                         </li>
                     </ul>

@@ -2,33 +2,31 @@
 
 import {
     addDarkMode,
-    
     changeThemeDark,
     checkedDark,
     removeDarkMode,
-    
 } from '@/utils/darkmode';
 import { useEffect, useState } from 'react';
 
 export const CheckboxTheme = () => {
-    
-        const storage =typeof window != 'undefined' &&  window.localStorage;
-        
-        let checkStorage =storage && storage.getItem('darkMode');
-        let storageNull:boolean=true;
-        let themeDarkStorage:boolean=false; 
-        
-        if(typeof checkStorage == 'string') {themeDarkStorage=JSON.parse(checkStorage);
-             storageNull=false }  
-        else if(typeof checkStorage == null) storageNull=true
-        
-   
-    const [themeDark, setThemeDark] = useState(storageNull ? true : themeDarkStorage);
-    
+    const storage = typeof window != 'undefined' && window.localStorage;
+
+    let checkStorage = storage && storage.getItem('darkMode');
+    let storageNull: boolean = true;
+    let themeDarkStorage: boolean = false;
+
+    if (typeof checkStorage == 'string') {
+        themeDarkStorage = JSON.parse(checkStorage);
+        storageNull = false;
+    } else if (typeof checkStorage == null) storageNull = true;
+
+    const [themeDark, setThemeDark] = useState(
+        storageNull ? true : themeDarkStorage,
+    );
+
     useEffect(() => {
         themeDark == false && removeDarkMode();
     }, [themeDark]);
-    
 
     return (
         <label className="swap swap-rotate">

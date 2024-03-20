@@ -6,7 +6,7 @@ interface ButtonProps {
     href: Url;
 }
 
-export const ButtonCreateItem = ({href}:ButtonProps) => {
+export const ButtonCreateItem = ({ href }: ButtonProps) => {
     return (
         <Link
             title="Add New"

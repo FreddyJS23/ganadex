@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { LayoutModal } from '..';
 import { ModalProps, Parto } from '@/types';
@@ -12,7 +12,7 @@ export const ModalHistoryBirths = ({
             icon="pregnancy"
             titleModal={'Historial de partos'}
             footer={false}
-            isOpen={true}    
+            isOpen={true}
         >
             <div className="m-auto mb-4">
                 <TableHistoryBirths partos={partos} />

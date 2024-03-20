@@ -26,16 +26,11 @@ import { ModalCastrateBullCalf } from '@/components/modals/castrate bull calf';
 export const TableCastreteBullCalf = ({
     crias_pendiente_capar,
 }: ResponseCriasPendienteCapar) => {
-   
-
-   
-
     const renderCell = useCallback(
         (
             criaPendienteCapar: CriaPendienteCapar,
             columnKey: keyof CriaPendienteCapar,
         ): any => {
-           
             const cellValue = criaPendienteCapar[columnKey];
 
             switch (columnKey) {

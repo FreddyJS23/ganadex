@@ -8,8 +8,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export const TableHistoryBirths = ({ partos }: ResponsePartos) => {
-
- const pathname = usePathname();
+    const pathname = usePathname();
 
     return (
         <div className="overflow-x-auto">
@@ -24,7 +23,11 @@ export const TableHistoryBirths = ({ partos }: ResponsePartos) => {
                 <tbody>
                     {partos.map((parto) => (
                         <tr key={parto.id}>
-                            <td>{typeof parto.fecha == 'string' ? parto.fecha : ''} </td>
+                            <td>
+                                {typeof parto.fecha == 'string'
+                                    ? parto.fecha
+                                    : ''}{' '}
+                            </td>
                             <td>{parto.observacion} </td>
                             <td>
                                 <Link href={`${pathname}/${parto.id}`}>

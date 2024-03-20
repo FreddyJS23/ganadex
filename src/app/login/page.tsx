@@ -32,7 +32,7 @@ export default function Page() {
                 <div className="hidden sm:flex  bg-backgroundLogin w-2/4 flex-col justify-center items-center gap-12">
                     {/* mockup */}
                     <div className="w-full flex flex-col items-center px-8">
-                       {/* display mockup */}
+                        {/* display mockup */}
                         <div className="w-11/12 ">
                             {' '}
                             <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-[132px] max-w-[238px] md:h-[140px] md:max-w-[267px]">

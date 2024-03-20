@@ -18,21 +18,20 @@ const EndElement = ({ content }: { content: '$' | 'KG' }) => {
     );
 };
 
-
 export const Select = ({
     id,
     label,
     description,
     required,
     items,
-    endContent
+    endContent,
 }: SelectProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
         weight: <EndElement content="KG" />,
         'weight-milk': <EndElement content="KG" />,
     };
-   
+
     return (
         <SelectNextUI
             id={id}

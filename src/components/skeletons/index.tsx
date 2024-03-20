@@ -33,7 +33,8 @@ export const SkeletonBarChart = ({
 
             <div className="flex gap-4 h-full items-end justify-between border-b-1 border-l-1 border-base-300 p-4">
                 {totalBars.map((index) => (
-                    <div key={index}
+                    <div
+                        key={index}
                         className={`skeleton ${longitudesBar[Math.floor(Math.random() * 5)]} w-4`}
                     ></div>
                 ))}

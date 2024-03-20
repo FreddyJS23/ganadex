@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useDisclosure } from '@nextui-org/react';
 import { LayoutModal } from '..';
@@ -7,10 +7,9 @@ import { ModalProps, Servicio } from '@/types';
 export const ModalServe = ({
     servicio,
 }: ModalProps & { servicio: Servicio }) => {
-    
-     const { onOpen, onOpenChange } = useDisclosure();
-   
-     return (
+    const { onOpen, onOpenChange } = useDisclosure();
+
+    return (
         <LayoutModal
             icon="serve"
             titleModal={'Servicio del '}

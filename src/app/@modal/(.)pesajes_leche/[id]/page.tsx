@@ -13,7 +13,5 @@ export default async function Page({ params }: ParamsPage) {
     );
     const { numero, nombre } = ganado;
 
-    return (
-        <ModalWeightMilk dataHeader={numero ? numero : nombre} />
-    );
+    return <ModalWeightMilk dataHeader={numero ? numero : nombre} />;
 }

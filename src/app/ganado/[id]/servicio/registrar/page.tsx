@@ -8,7 +8,7 @@ import { TitlePage } from '@/ui/TitlePage';
 
 export default function Page() {
     const [observacion, tipo, numeroToro] = formService;
- const submit = () => {};
+    const submit = () => {};
 
     return (
         <>

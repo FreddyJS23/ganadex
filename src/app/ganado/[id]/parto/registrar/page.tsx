@@ -7,8 +7,7 @@ import { Button } from '@/ui/Button';
 import { TitlePage } from '@/ui/TitlePage';
 
 export default function Page() {
-  
-  const submit=()=>{}
+    const submit = () => {};
     return (
         <>
             <TitlePage title="Registrar parto" />

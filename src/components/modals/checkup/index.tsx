@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useDisclosure } from '@nextui-org/modal';
 import { LayoutModal } from '..';
@@ -8,9 +8,8 @@ export const ModalCheckUp = ({
     revision,
 }: ModalProps & { revision: Revision }) => {
     const { onOpen, onOpenChange } = useDisclosure();
-    
+
     return (
-        
         <LayoutModal
             icon="checkUp"
             titleModal={'Revision del '}

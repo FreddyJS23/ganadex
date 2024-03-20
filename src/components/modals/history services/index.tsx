@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { LayoutModal } from '..';
 import { ModalProps, Servicio } from '@/types';
@@ -6,7 +6,9 @@ import { TableHistoryServices } from '@/components/tables/in modals/history serv
 
 export const ModalHistoryServices = ({
     servicios,
-}: {servicios: Servicio[] }) => {
+}: {
+    servicios: Servicio[];
+}) => {
     return (
         <LayoutModal
             icon="serve"

@@ -9,8 +9,7 @@ import { Chip } from '@nextui-org/chip';
 import { Select } from '@/components/select';
 
 export default function Page() {
-    
-     const submit = () => {};
+    const submit = () => {};
     return (
         <>
             <TitlePage title="Registrar cabeza ganado" />

@@ -21,17 +21,14 @@ import { ModalWeightMilk } from '@/components/modals/weight milk';
 export const TableAllWeightMilk = ({
     todos_pesaje_leche,
 }: ResponsePesajesLecheGeneral) => {
-   
-
     const renderCell = useCallback(
         (pesajeLeche: PesajesLeche, columnKey: keyof PesajesLeche): any => {
-
             const cellValue = pesajeLeche[columnKey];
 
             switch (columnKey) {
                 /* button icon */
                 case 'id':
-                  const id = cellValue as number;
+                    const id = cellValue as number;
                     return (
                         <>
                             <Link href={`pesaje_leche/${id}`}>

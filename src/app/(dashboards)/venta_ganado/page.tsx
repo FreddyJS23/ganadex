@@ -10,8 +10,6 @@ export default async function Page() {
     const { ventas }: ResponseVentasGanado = await getData(
         'response_ventasGanado',
     );
-  
-   
 
     return (
         <section className="flex p-4  gap-8 flex-col sm:pl-12">
@@ -33,7 +31,7 @@ export default async function Page() {
                         Ganancia acumulada del mes actual
                     </span>
                     {/* boton y modal crear venta */}
-                   <ButtonCreateItem href={'venta_ganado/registrar'} />
+                    <ButtonCreateItem href={'venta_ganado/registrar'} />
                 </div>
                 {/* grafico */}
                 <SalesCatle />

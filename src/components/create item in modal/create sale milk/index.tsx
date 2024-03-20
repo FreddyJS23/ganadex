@@ -6,23 +6,21 @@ import { Comprador, PreciosDeLeche, ResponseCompradores } from '@/types';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { useDisclosure } from '@nextui-org/react';
 
-type ListaPreciosRegistradosProps={
-  ListaPreciosRegistrados: PreciosDeLeche[]
-}
+type ListaPreciosRegistradosProps = {
+    ListaPreciosRegistrados: PreciosDeLeche[];
+};
 
 export const CreateSaleMilk = ({
-    ListaPreciosRegistrados
+    ListaPreciosRegistrados,
 }: ListaPreciosRegistradosProps) => {
-    const { onOpen, onOpenChange} = useDisclosure();
+    const { onOpen, onOpenChange } = useDisclosure();
 
     return (
-       
-            <ModalSaleMilk
-                isOpen={true}
-                onOpen={onOpen}
-                onOpenChange={onOpenChange}
-                selectPrecios={ListaPreciosRegistrados}
-            />
-      
+        <ModalSaleMilk
+            isOpen={true}
+            onOpen={onOpen}
+            onOpenChange={onOpenChange}
+            selectPrecios={ListaPreciosRegistrados}
+        />
     );
 };

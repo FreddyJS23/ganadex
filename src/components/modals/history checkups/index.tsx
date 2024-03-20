@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
 import { LayoutModal } from '..';
-import {  Revision,  } from '@/types';
+import { Revision } from '@/types';
 import { TableHistoryCheckUps } from '@/components/tables/in modals/history checkups';
 
-
-export const ModalHistoryCheckUps =async ({
+export const ModalHistoryCheckUps = async ({
     revisiones,
-}: { revisiones: Revision[] }) => {
-  
+}: {
+    revisiones: Revision[];
+}) => {
     return (
         <LayoutModal
             icon="checkUp"

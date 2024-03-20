@@ -2,7 +2,7 @@
 
 import { Details } from '../details';
 import { DetailsChecks, DetailsServe, iconsSidebar } from '@/collections';
-import { ResponseGanado,} from '@/types';
+import { ResponseGanado } from '@/types';
 import { ContainerContentTab } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
 import { TitleTab } from '@/ui/TitleTab';
@@ -17,12 +17,10 @@ export const TabDetailsCattle = ({
     total_revisiones,
     total_servicios,
 }: TabsDetailsCattleProps) => {
-   
- const router = useRouter();
- const pathname = usePathname();
+    const router = useRouter();
+    const pathname = usePathname();
 
-    
- return (
+    return (
         <>
             {/* secciones */}
             <Tabs
@@ -68,10 +66,10 @@ export const TabDetailsCattle = ({
                         <div className="col-span-full place-self-center">
                             <Button
                                 onClick={() =>
-                                  router.push(`${pathname}/revision`)
+                                    router.push(`${pathname}/revision`)
                                 }
                                 content="Ver historial"
-                            /> 
+                            />
                         </div>
                     </ContainerContentTab>
                 </Tab>
@@ -106,12 +104,12 @@ export const TabDetailsCattle = ({
                             content={'70%'}
                         />
                         <div className="col-span-full place-self-center">
-                          <Button
+                            <Button
                                 onClick={() =>
-                                  router.push(`${pathname}/servicio`)
+                                    router.push(`${pathname}/servicio`)
                                 }
                                 content="Ver historial"
-                            /> 
+                            />
                         </div>
                     </ContainerContentTab>
                 </Tab>
@@ -120,12 +118,10 @@ export const TabDetailsCattle = ({
                     title={<TitleTab title="Partos" icon="pregnant" />}
                 >
                     <div className="col-span-full place-self-center">
-                   <Button
-                                onClick={() =>
-                                  router.push(`${pathname}/parto`)
-                                }
-                                content="Ver historial"
-                            /> 
+                        <Button
+                            onClick={() => router.push(`${pathname}/parto`)}
+                            content="Ver historial"
+                        />
                     </div>
                 </Tab>
                 <Tab
@@ -133,16 +129,15 @@ export const TabDetailsCattle = ({
                     title={<TitleTab title="Pesajes de leche" icon="milk" />}
                 >
                     <div className="col-span-full place-self-center">
-                    <Button
-                                onClick={() =>
-                                  router.push(`${pathname}/pesaje_leche`)
-                                }
-                                content="Ver historial"
-                            /> 
+                        <Button
+                            onClick={() =>
+                                router.push(`${pathname}/pesaje_leche`)
+                            }
+                            content="Ver historial"
+                        />
                     </div>
                 </Tab>
             </Tabs>
-
         </>
     );
 };

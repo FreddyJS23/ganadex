@@ -145,18 +145,17 @@ export const headerAllServes: headersColumnsAllServes[] = [
     { key: 'efectividad', label: 'Efectividad' },
 ];
 
-export const headerAssignmentNumberBullCalf: headersColumnsAssignmentNumberBullCalf[] = [
-    { key: 'nombre', label: 'Nombre' },
-    { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
-    { key: 'id', label: 'Asignar' },
-   
-];
+export const headerAssignmentNumberBullCalf: headersColumnsAssignmentNumberBullCalf[] =
+    [
+        { key: 'nombre', label: 'Nombre' },
+        { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
+        { key: 'id', label: 'Asignar' },
+    ];
 
 export const headerCastreteBullCalf: headersColumnsCastreteBullCalf[] = [
     { key: 'nombre', label: 'Nombre' },
     { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
     { key: 'id', label: 'Capar' },
-   
 ];
 
 export const headerAllWeightMilk: headersColumnsAllWeightMilk[] = [
@@ -180,7 +179,6 @@ export const headerCheckups: headersColumnsCheckups[] = [
 export const headerServices: headersColumnsServices[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'numero_toro', label: 'Toro' },
-   
 ];
 
 export const headerBirths: headersColumnsBirths[] = [
