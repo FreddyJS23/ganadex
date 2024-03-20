@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 export const CheckboxTheme = () => {
     const storage = typeof window != 'undefined' && window.localStorage;
 
-    let checkStorage = storage && storage.getItem('darkMode');
+    const checkStorage = storage && storage.getItem('darkMode');
     let storageNull: boolean = true;
     let themeDarkStorage: boolean = false;
 
