@@ -1,23 +1,24 @@
+'use client'
+
+import { useDisclosure } from '@nextui-org/modal';
 import { LayoutModal } from '..';
-import { ModalProps, Revision, Revisiones } from '@/types';
+import { ModalProps, Revision } from '@/types';
 
 export const ModalCheckUp = ({
-    isOpen,
-    onClose,
-    onOpen,
-    onOpenChange,
     revision,
 }: ModalProps & { revision: Revision }) => {
+    const { onOpen, onOpenChange } = useDisclosure();
+    
     return (
+        
         <LayoutModal
             icon="checkUp"
             titleModal={'Revision del '}
             footer={false}
-            isOpen={isOpen}
-            onClose={onClose}
+            isOpen={true}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
-            dataHeader={revision.fecha.toISOString()}
+            dataHeader={typeof revision.fecha == 'string' ? revision.fecha : ''}
         >
             <div className="flex flex-col gap-4 mb-4">
                 <p>
