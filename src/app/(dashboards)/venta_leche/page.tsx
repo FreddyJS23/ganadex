@@ -36,7 +36,7 @@ export default async function Page() {
                             Ganancia acumulada del mes actual
                         </span>
                         {/* boton y modal crear venta leche */}
-                        <CreateSaleMilk ListaPreciosRegistrados={precios} />
+                       <ButtonCreateItem href={'venta_leche/registrar'} />
                     </div>
                     {/* Ganancias */}
                     <span className="mb-1 text-lg">39832</span>

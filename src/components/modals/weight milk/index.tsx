@@ -1,22 +1,20 @@
+'use client'
+
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
 import { ModalProps } from '@/types';
+import { useDisclosure } from '@nextui-org/react';
 
-export const ModalWeightMilk = ({
-    isOpen,
-    onClose,
-    onOpen,
-    onOpenChange,
-    dataHeader,
-}: ModalProps) => {
+export const ModalWeightMilk = ({ dataHeader }: Pick<ModalProps, 'dataHeader'>) => {
+    const { onOpen, onOpenChange } = useDisclosure();
+
     return (
         <LayoutModal
             icon="weight"
             titleModal={'Pesaje de leche este mes vaca '}
             dataHeader={dataHeader}
             footer={true}
-            isOpen={isOpen}
-            onClose={onClose}
+            isOpen={true}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >

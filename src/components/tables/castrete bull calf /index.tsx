@@ -26,8 +26,7 @@ import { ModalCastrateBullCalf } from '@/components/modals/castrate bull calf';
 export const TableCastreteBullCalf = ({
     crias_pendiente_capar,
 }: ResponseCriasPendienteCapar) => {
-    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-    const [dataModal, setDataModal] = useState<CriaPendienteCapar>();
+   
 
    
 
@@ -36,10 +35,6 @@ export const TableCastreteBullCalf = ({
             criaPendienteCapar: CriaPendienteCapar,
             columnKey: keyof CriaPendienteCapar,
         ): any => {
-            const openModal = (criaPendienteCapar: CriaPendienteCapar) => {
-                setDataModal(criaPendienteCapar);
-                onOpen();
-            };
            
             const cellValue = criaPendienteCapar[columnKey];
 
@@ -53,19 +48,18 @@ export const TableCastreteBullCalf = ({
                     );
                 /* button icon */
                 case 'id':
-                    setDataModal(criaPendienteCapar);
+                    const id = cellValue as number;
                     return (
-                        <IconButton
-                            className={'size-6 cursor-pointer'}
-                            onClick={() => openModal(criaPendienteCapar)}
-                        />
+                        <Link href={`capar_becerro/${id}`}>
+                            <IconButton className={'size-6'} />
+                        </Link>
                     );
 
                 default:
                     return cellValue;
             }
         },
-        [setDataModal, onOpen],
+        [],
     );
 
     return (
@@ -88,13 +82,6 @@ export const TableCastreteBullCalf = ({
                     )}
                 </TableBody>
             </LayoutTable>
-            <ModalCastrateBullCalf
-                isOpen={isOpen}
-                onOpen={onOpen}
-                onOpenChange={onOpenChange}
-                dataHeader={dataModal?.nombre}
-                onClose={onClose}
-            />
         </>
     );
 };

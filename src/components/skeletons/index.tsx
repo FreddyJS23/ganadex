@@ -94,3 +94,39 @@ export const SkeletonLineChart = () => {
         </div>
     );
 };
+
+export const SkeletonModal = () => {
+    return (
+        <>
+            {/* Put this part before </body> tag */}
+            <input
+                type="checkbox"
+                id="my_modal_7"
+                className="modal-toggle"
+                checked
+            />
+            <div className="modal" role="dialog">
+                <div className="modal-box">
+                    <div className="flex flex-col gap-4 mb-12">
+                        <div className="skeleton size-8 rounded-full shrink-0"></div>
+                        <div className="skeleton h-2 w-2/6"></div>
+                    </div>
+
+                    <div className="flex flex-col gap-12 w-2/4 m-auto mb-12 ">
+                        <div className="skeleton h-2 w-full"></div>
+                        <div className="skeleton h-2 w-full"></div>
+                        <div className="skeleton h-2 w-full"></div>
+                    </div>
+
+                    <div className="flex justify-between w-full gap-6">
+                        <div className="skeleton h-8 w-full"></div>
+                        <div className="skeleton h-8 w-full"></div>
+                    </div>
+                </div>
+                <label className="modal-backdrop" htmlFor="my_modal_7">
+                    Close
+                </label>
+            </div>
+        </>
+    );
+};

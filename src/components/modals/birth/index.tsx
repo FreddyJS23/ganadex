@@ -1,26 +1,22 @@
+'use client'
+
+import { useDisclosure } from '@nextui-org/modal';
 import { LayoutModal } from '..';
 import { ModalProps, Parto, Servicio } from '@/types';
 
 export const ModalBirth = ({
-    isOpen,
-    onClose,
-    onOpen,
-    onOpenChange,
     parto,
 }: ModalProps & { parto: Parto }) => {
     const { cria, fecha, id, observacion, padre_numero } = parto;
-
     const { nombre, numero, sexo, peso_nacimiento } = cria;
+     const { onOpen, onOpenChange } = useDisclosure();
     return (
         <LayoutModal
             icon="pregnancy"
             titleModal={'Parto del '}
             footer={false}
-            isOpen={isOpen}
-            onClose={onClose}
-            onOpen={onOpen}
-            onOpenChange={onOpenChange}
-            dataHeader={fecha.toISOString()}
+            isOpen={true}
+            dataHeader={typeof fecha == 'string' ? fecha : '' }
         >
             <div className="flex flex-col gap-4 mb-4">
                 <p>

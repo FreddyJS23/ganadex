@@ -22,20 +22,11 @@ import { useDisclosure } from '@nextui-org/react';
 export const TableAssignmentNumberBullCalf = ({
     crias_pendiente_numeracion,
 }: ResponseCriasPendienteNumeracion) => {
-    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-    const [dataModal, setDataModal] = useState<CriaPendienteNumeracion>();
-
     const renderCell = useCallback(
         (
             criaPendienteNumeracion: CriaPendienteNumeracion,
             columnKey: keyof CriaPendienteNumeracion,
         ): any => {
-            const openModal = (
-                criaPendienteNumeracion: CriaPendienteNumeracion,
-            ) => {
-                setDataModal(criaPendienteNumeracion);
-                onOpen();
-            };
             const cellValue = criaPendienteNumeracion[columnKey];
 
             switch (columnKey) {
@@ -48,19 +39,18 @@ export const TableAssignmentNumberBullCalf = ({
                     );
                 /* button icon */
                 case 'id':
-                    setDataModal(criaPendienteNumeracion);
+                    const id = cellValue as number;
                     return (
-                        <IconButton
-                            className={'size-6 cursor-pointer'}
-                            onClick={() => openModal(criaPendienteNumeracion)}
-                        />
+                        <Link href={`asignar_numero/${id}`}>
+                            <IconButton className={'size-6'} />
+                        </Link>
                     );
 
                 default:
                     return cellValue;
             }
         },
-        [setDataModal, onOpen],
+        [],
     );
 
     return (
@@ -83,14 +73,6 @@ export const TableAssignmentNumberBullCalf = ({
                     )}
                 </TableBody>
             </LayoutTable>
-
-            <ModalAssignmentNumberBullCalf
-                isOpen={isOpen}
-                onOpen={onOpen}
-                onOpenChange={onOpenChange}
-                dataHeader={dataModal?.nombre}
-                onClose={onClose}
-            />
         </>
     );
 };

@@ -2,10 +2,12 @@
 
 import { Details } from '../details';
 import { DetailsChecks, DetailsServe, iconsSidebar } from '@/collections';
-import { ResponseGanado } from '@/types';
+import { ResponseGanado,} from '@/types';
 import { ContainerContentTab } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
 import { TitleTab } from '@/ui/TitleTab';
+import { Button } from '@/ui/Button';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 
 type TabsDetailsCattleProps = Omit<ResponseGanado, 'ganado'>;
 
@@ -15,7 +17,12 @@ export const TabDetailsCattle = ({
     total_revisiones,
     total_servicios,
 }: TabsDetailsCattleProps) => {
-    return (
+   
+ const router = useRouter();
+ const pathname = usePathname();
+
+    
+ return (
         <>
             {/* secciones */}
             <Tabs
@@ -58,6 +65,14 @@ export const TabDetailsCattle = ({
                             tittle={DetailsChecks.totales}
                             content={total_revisiones}
                         />
+                        <div className="col-span-full place-self-center">
+                            <Button
+                                onClick={() =>
+                                  router.push(`${pathname}/revision`)
+                                }
+                                content="Ver historial"
+                            /> 
+                        </div>
                     </ContainerContentTab>
                 </Tab>
                 <Tab
@@ -90,17 +105,44 @@ export const TabDetailsCattle = ({
                             tittle={DetailsServe.efectividad}
                             content={'70%'}
                         />
+                        <div className="col-span-full place-self-center">
+                          <Button
+                                onClick={() =>
+                                  router.push(`${pathname}/servicio`)
+                                }
+                                content="Ver historial"
+                            /> 
+                        </div>
                     </ContainerContentTab>
                 </Tab>
                 <Tab
                     key="partos"
                     title={<TitleTab title="Partos" icon="pregnant" />}
-                ></Tab>
+                >
+                    <div className="col-span-full place-self-center">
+                   <Button
+                                onClick={() =>
+                                  router.push(`${pathname}/parto`)
+                                }
+                                content="Ver historial"
+                            /> 
+                    </div>
+                </Tab>
                 <Tab
                     key="leche"
                     title={<TitleTab title="Pesajes de leche" icon="milk" />}
-                ></Tab>
+                >
+                    <div className="col-span-full place-self-center">
+                    <Button
+                                onClick={() =>
+                                  router.push(`${pathname}/pesaje_leche`)
+                                }
+                                content="Ver historial"
+                            /> 
+                    </div>
+                </Tab>
             </Tabs>
+
         </>
     );
 };

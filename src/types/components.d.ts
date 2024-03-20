@@ -52,12 +52,11 @@ export type LayoutModalProps = {
     /**Habilidar botones de registras y cancelar   */
     footer: boolean;
 
-    isOpen: boolean;
-    onOpen: () => void;
-    onClose: () => void;
-    onOpenChange: () => void;
+    isOpen?: boolean;
+    onOpen?: () => void;
+    onOpenChange?: () => void;
 };
 
-export type ModalProps = Pick<LayoutModalProps,'isOpen' | 'onOpen' | 'onClose' | 'onOpenChange' | 'dataHeader'> & {
+export type ModalProps = Pick<LayoutModalProps,'isOpen' | 'onOpen' | 'onOpenChange' | 'dataHeader'> & {
     dataBody?: string | number;
 };

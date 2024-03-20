@@ -1,23 +1,20 @@
+'use client'
+
 import { LayoutModal } from '..';
-import { ModalProps, Revision, Revisiones } from '@/types';
+import {  Revision,  } from '@/types';
 import { TableHistoryCheckUps } from '@/components/tables/in modals/history checkups';
 
-export const ModalHistoryCheckUps = ({
-    isOpen,
-    onClose,
-    onOpen,
-    onOpenChange,
+
+export const ModalHistoryCheckUps =async ({
     revisiones,
-}: ModalProps & { revisiones: Revision[] }) => {
+}: { revisiones: Revision[] }) => {
+  
     return (
         <LayoutModal
             icon="checkUp"
             titleModal={'Historial de revisiones'}
             footer={false}
-            isOpen={isOpen}
-            onClose={onClose}
-            onOpen={onOpen}
-            onOpenChange={onOpenChange}
+            isOpen={true}
         >
             <div className="m-auto mb-4">
                 <TableHistoryCheckUps revisioness={revisiones} />

@@ -5,7 +5,6 @@ import { Select } from '@/components/select';
 
 export const ModalSaleMilk = ({
     isOpen,
-    onClose,
     onOpen,
     onOpenChange,
     selectPrecios,
@@ -22,7 +21,6 @@ export const ModalSaleMilk = ({
             titleModal={'Venta de leche'}
             footer={true}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >

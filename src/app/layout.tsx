@@ -27,11 +27,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
+    modal,
 }: {
     children: React.ReactNode;
+    modal: React.ReactNode;
 }) {
     return (
-        <html lang="en" data-theme={'ganadexThemeDark'} className='dark'>
+        <html lang="en" data-theme={'ganadexThemeDark'} className="dark">
             <body
                 className={`${nunito.variable} ${bebasNue.variable} font-nunito grid grid-cols-12   bg-background dark:bg-background-dark`}
             >
@@ -43,7 +45,8 @@ export default function RootLayout({
                 </nav>
 
                 <main className="mt-2 sm:col-start-2 lg:mt-0 lg:col-start-3 col-span-full ">
-                    <Providers>{children}</Providers>
+                    <Providers>{children}
+                    {modal}</Providers>
                 </main>
             </body>
         </html>
