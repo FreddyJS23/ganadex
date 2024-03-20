@@ -4,16 +4,13 @@ import IconSearch from '@/icons/icono-Revisar.svg';
 import { useState } from 'react';
 import { useDisclosure } from '@nextui-org/react';
 import { ModalServe } from '@/components/modals/serve';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export const TableHistoryServices = ({ servicios }: ResponseServicios) => {
-    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+   
+     const pathname = usePathname();
 
-    const [dataModal, setDataModal] = useState<Servicio>();
-
-    const openModal = (servicio: Servicio) => {
-        setDataModal(servicio);
-        onOpen();
-    };
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -27,27 +24,19 @@ export const TableHistoryServices = ({ servicios }: ResponseServicios) => {
                 <tbody>
                     {servicios.map((servicio) => (
                         <tr key={servicio.id}>
-                            <td>{servicio.fecha.toISOString()} </td>
+                            <td>{typeof servicio.fecha == 'string' ? servicio.fecha : ''} </td>
                             <td>{servicio.numero_toro} </td>
                             <td>
-                                <IconSearch
-                                    onClick={() => openModal(servicio)}
-                                    className={'size-8 cursor-pointer '}
-                                />
+                                <Link href={`${pathname}/${servicio.id}`}>
+                                    <IconSearch
+                                        className={'size-8 cursor-pointer '}
+                                    />
+                                </Link>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            {dataModal && (
-                <ModalServe
-                    isOpen={isOpen}
-                    onOpen={onOpen}
-                    onClose={onClose}
-                    onOpenChange={onOpenChange}
-                    servicio={dataModal}
-                />
-            )}
         </div>
     );
 };
