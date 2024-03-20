@@ -18,6 +18,7 @@ export const CarouselImagesLogin = () => {
             {imagesSliderLogin.map((image) => {
                 return (
                     <div key={image.alt}>
+                        <Image {...image} alt={image.alt} className="h-[132px] md:h-[140px]" />
                     </div>
                 );
             })}
