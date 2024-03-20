@@ -1,5 +1,5 @@
 import { iconsModal } from '@/collections/iconsModal';
-import { IconsModal, LayoutModalProps, TitlesModals } from '@/types';
+import {  LayoutModalProps,  } from '@/types';
 import { Button } from '@/ui/Button';
 import {
     Modal,
@@ -17,7 +17,6 @@ export const LayoutModal = ({
     footer,
     children,
     isOpen,
-    onOpen,
     onOpenChange,
 }: LayoutModalProps) => {
     const Icon = iconsModal[icon];

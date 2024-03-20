@@ -1,7 +1,6 @@
 'use client';
 
 import {
-    addDarkMode,
     changeThemeDark,
     checkedDark,
     removeDarkMode,

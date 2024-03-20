@@ -1,12 +1,10 @@
 'use client';
 
 import {
-    headerAssignmentNumberBullCalf,
     headerCastreteBullCalf,
 } from '@/collections/headerColums';
 import {
     CriaPendienteCapar,
-    CriaPendienteNumeracion,
     ResponseCriasPendienteCapar,
 } from '@/types';
 import {
@@ -16,12 +14,10 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
-import { useDisclosure } from '@nextui-org/react';
-import { ModalCastrateBullCalf } from '@/components/modals/castrate bull calf';
 
 export const TableCastreteBullCalf = ({
     crias_pendiente_capar,
