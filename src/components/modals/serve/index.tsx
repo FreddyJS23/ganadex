@@ -1,23 +1,24 @@
+'use client'
+
+import { useDisclosure } from '@nextui-org/react';
 import { LayoutModal } from '..';
 import { ModalProps, Servicio } from '@/types';
 
 export const ModalServe = ({
-    isOpen,
-    onClose,
-    onOpen,
-    onOpenChange,
     servicio,
 }: ModalProps & { servicio: Servicio }) => {
-    return (
+    
+     const { onOpen, onOpenChange } = useDisclosure();
+   
+     return (
         <LayoutModal
             icon="serve"
             titleModal={'Servicio del '}
             footer={false}
-            isOpen={isOpen}
-            onClose={onClose}
+            isOpen={true}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
-            dataHeader={servicio.fecha.toISOString()}
+            dataHeader={typeof servicio.fecha == 'string' ? servicio.fecha : ''}
         >
             <div className="flex flex-col gap-4 mb-4">
                 <p>
