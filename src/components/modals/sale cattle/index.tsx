@@ -1,6 +1,6 @@
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
-import { Comprador, ModalProps, PreciosDeLeche } from '@/types';
+import { Comprador, ModalProps } from '@/types';
 import { Select } from '@/components/select';
 
 export const ModalSaleCattle = ({

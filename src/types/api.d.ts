@@ -8,7 +8,6 @@ import {
     Insumo,
     Parto,
     Personal,
-    PesajeLeche,
     PesajeLecheGanado,
     PesajesLeche,
     PreciosDeLeche,

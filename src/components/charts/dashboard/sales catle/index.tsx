@@ -1,13 +1,10 @@
 'use client';
 
-import { vacaProductora } from '@/types/dashboard';
 import {
     optionChartLineSalesCatle,
-    optionChartTop3CatleProduction,
     paletteBackground,
     paletteBorderColor,
 } from '@/utils/configCharts';
-import { getTopProductionCastle } from '@/utils/convertResponseTopProductionCatles';
 import { ChartData } from 'chart.js';
 import {
     Chart as ChartJS,

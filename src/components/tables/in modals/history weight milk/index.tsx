@@ -1,6 +1,5 @@
 import { headerServices } from '@/collections/headerColums';
-import { ResponsePesajesLeche, ResponseServicios } from '@/types';
-import IconSearch from '@/icons/icono-Revisar.svg';
+import { ResponsePesajesLeche } from '@/types';
 
 export const TableHistoryWeightMilk = ({
     pesajes_leche,

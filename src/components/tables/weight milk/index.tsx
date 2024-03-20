@@ -9,14 +9,12 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-peso.svg';
 import Link from 'next/link';
 import IconCheck from '@/icons/icono-check.svg';
 import IconError from '@/icons/icono-error.svg';
-import { Button, useDisclosure } from '@nextui-org/react';
-import { ModalWeightMilk } from '@/components/modals/weight milk';
 
 export const TableAllWeightMilk = ({
     todos_pesaje_leche,

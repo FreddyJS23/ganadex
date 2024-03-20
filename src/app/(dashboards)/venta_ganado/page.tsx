@@ -1,8 +1,7 @@
 import { CardDashboardSaleCattle } from '@/components/cards';
 import { SalesCatle } from '@/components/charts/dashboard/sales catle';
-import { CreateSaleCattle } from '@/components/create item in modal/create sale cattle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
-import { ResponseCompradores, ResponseVentasGanado } from '@/types';
+import {  ResponseVentasGanado } from '@/types';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 

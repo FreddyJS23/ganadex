@@ -12,12 +12,11 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
-import { ModalAssignmentNumberBullCalf } from '@/components/modals/assignment number bull calf';
-import { useDisclosure } from '@nextui-org/react';
+
 
 export const TableAssignmentNumberBullCalf = ({
     crias_pendiente_numeracion,

@@ -1,6 +1,6 @@
 'use client';
 
-import { headerCasttle, headerSaleCasttle } from '@/collections/headerColums';
+import { headerSaleCasttle } from '@/collections/headerColums';
 import { ResponseVentasGanado, VentaGanado } from '@/types';
 import {
     TableHeader,

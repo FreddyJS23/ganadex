@@ -1,17 +1,13 @@
 import { CardDashboardSaleMilk } from '@/components/cards';
 import { ChartEarningsMilkMonth } from '@/components/charts/dashboard/earnings milk month';
-import { CreateSaleMilk } from '@/components/create item in modal/create sale milk';
 import { TableSaleMilk } from '@/components/tables/sale milk';
-import { ResponsePreciosLeche, ResponseVentasLeche } from '@/types';
+import { ResponseVentasLeche } from '@/types';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { ventas_de_leche }: ResponseVentasLeche = await getData(
         'response_ventasLeche',
-    );
-    const { precios }: ResponsePreciosLeche = await getData(
-        'response_preciosLeche',
     );
 
     return (

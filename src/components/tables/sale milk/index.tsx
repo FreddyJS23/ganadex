@@ -1,7 +1,7 @@
 'use client';
 
-import { headerSaleCasttle, headerSaleMilk } from '@/collections/headerColums';
-import { ResponseVentasLeche, VentaGanado, VentaLeche } from '@/types';
+import { headerSaleMilk } from '@/collections/headerColums';
+import { ResponseVentasLeche, VentaLeche } from '@/types';
 import {
     TableHeader,
     TableColumn,

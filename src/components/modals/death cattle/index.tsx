@@ -1,7 +1,6 @@
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
-import { Comprador, ModalProps, PreciosDeLeche } from '@/types';
-import { Select } from '@/components/select';
+import { ModalProps } from '@/types';
 
 export const ModalDeathCattle = ({
     isOpen,

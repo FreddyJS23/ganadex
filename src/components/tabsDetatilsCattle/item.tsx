@@ -1,4 +1,4 @@
-import { Button } from '@/ui/Button';
+
 
 type ContainerContentTabProps = {
     children: JSX.Element[];

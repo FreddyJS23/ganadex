@@ -7,7 +7,7 @@ export const ModalCreateCustomer = ({
     onClose,
     onOpen,
     onOpenChange,
-    dataHeader,
+    
 }: ModalProps) => {
     return (
         <LayoutModal
