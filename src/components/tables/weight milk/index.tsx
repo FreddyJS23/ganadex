@@ -21,30 +21,22 @@ import { ModalWeightMilk } from '@/components/modals/weight milk';
 export const TableAllWeightMilk = ({
     todos_pesaje_leche,
 }: ResponsePesajesLecheGeneral) => {
-    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-    const [dataModal, setDataModal] = useState<PesajesLeche>();
-
-    
+   
 
     const renderCell = useCallback(
         (pesajeLeche: PesajesLeche, columnKey: keyof PesajesLeche): any => {
-            const openModal = (pesajeLeche: PesajesLeche) => {
-                setDataModal(pesajeLeche);
-                onOpen();
-            };
 
             const cellValue = pesajeLeche[columnKey];
 
             switch (columnKey) {
                 /* button icon */
                 case 'id':
-                    setDataModal(pesajeLeche);
+                  const id = cellValue as number;
                     return (
                         <>
-                            <IconButton
-                                onClick={() => openModal(pesajeLeche)}
-                                className={'size-6 cursor-pointer'}
-                            />
+                            <Link href={`pesaje_leche/${id}`}>
+                                <IconButton className={'size-6'} />
+                            </Link>
                         </>
                     );
 
@@ -60,7 +52,7 @@ export const TableAllWeightMilk = ({
                     return cellValue;
             }
         },
-        [setDataModal, onOpen],
+        [],
     );
 
     return (
@@ -83,13 +75,6 @@ export const TableAllWeightMilk = ({
                     )}
                 </TableBody>
             </LayoutTable>
-            <ModalWeightMilk
-                isOpen={isOpen}
-                onOpen={onOpen}
-                onOpenChange={onOpenChange}
-                dataHeader={dataModal?.numero}
-                onClose={onClose}
-            />
         </>
     );
 };
