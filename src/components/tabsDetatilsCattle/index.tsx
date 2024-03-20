@@ -1,13 +1,13 @@
 'use client';
 
 import { Details } from '../details';
-import { DetailsChecks, DetailsServe, iconsSidebar } from '@/collections';
+import { DetailsChecks, DetailsServe } from '@/collections';
 import { ResponseGanado } from '@/types';
 import { ContainerContentTab } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
 import { TitleTab } from '@/ui/TitleTab';
 import { Button } from '@/ui/Button';
-import { useParams, usePathname, useRouter } from 'next/navigation';
+import {  usePathname, useRouter } from 'next/navigation';
 
 type TabsDetailsCattleProps = Omit<ResponseGanado, 'ganado'>;
 

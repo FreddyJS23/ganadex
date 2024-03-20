@@ -1,5 +1,4 @@
 import {
-    SkeletonBarChart,
     SkeletonCard,
     SkeletonLineChart,
     SkeletonTable,

@@ -1,9 +1,6 @@
 import { headerServices } from '@/collections/headerColums';
-import { ResponseServicios, Servicio } from '@/types';
+import { ResponseServicios } from '@/types';
 import IconSearch from '@/icons/icono-Revisar.svg';
-import { useState } from 'react';
-import { useDisclosure } from '@nextui-org/react';
-import { ModalServe } from '@/components/modals/serve';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 

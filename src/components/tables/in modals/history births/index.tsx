@@ -1,9 +1,6 @@
 import { headerBirths } from '@/collections/headerColums';
-import { Parto, ResponsePartos } from '@/types';
+import {  ResponsePartos } from '@/types';
 import IconSearch from '@/icons/icono-Revisar.svg';
-import { useDisclosure } from '@nextui-org/react';
-import { useState } from 'react';
-import { ModalBirth } from '@/components/modals/birth';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 

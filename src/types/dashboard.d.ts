@@ -1,10 +1,8 @@
 import { Months, TypesCattle, TypesCattle } from '.';
 import {
     Comprador,
-    Fallecimiento,
     Insumo,
     VentaGanado,
-    VentaLeche,
 } from './models';
 
 /* --------------------------- Principal -------------------------- */

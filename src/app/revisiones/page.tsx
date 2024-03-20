@@ -1,5 +1,5 @@
 import { TableAllCheckups } from '@/components/tables/checkups';
-import { ResponseRevisionesGeneral, ResponseTodoPersonal } from '@/types';
+import { ResponseRevisionesGeneral, } from '@/types';
 import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 

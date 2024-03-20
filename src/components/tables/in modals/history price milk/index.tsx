@@ -1,6 +1,5 @@
 import { headerHistoryPriceMilk } from '@/collections/headerColums';
 import { ResponsePreciosLeche } from '@/types';
-import React from 'react';
 
 export const TableHistoryPriceMilk = ({ precios }: ResponsePreciosLeche) => {
     return (

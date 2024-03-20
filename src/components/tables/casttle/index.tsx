@@ -9,7 +9,7 @@ import {
     TableBody,
     TableRow,
     TableCell,
-    getKeyValue,
+
 } from '@nextui-org/table';
 import { useCallback } from 'react';
 import { LayoutTable } from '..';

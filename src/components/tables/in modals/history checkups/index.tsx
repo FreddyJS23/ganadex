@@ -1,9 +1,6 @@
 import { headerCheckups } from '@/collections/headerColums';
-import { ResponseRevisiones, Revision } from '@/types';
+import { ResponseRevisiones } from '@/types';
 import IconSearch from '@/icons/icono-Revisar.svg';
-import { useDisclosure } from '@nextui-org/react';
-import { ModalCheckUp } from '@/components/modals/checkup';
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
