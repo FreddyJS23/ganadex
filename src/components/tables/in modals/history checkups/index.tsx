@@ -4,16 +4,13 @@ import IconSearch from '@/icons/icono-Revisar.svg';
 import { useDisclosure } from '@nextui-org/react';
 import { ModalCheckUp } from '@/components/modals/checkup';
 import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export const TableHistoryCheckUps = ({ revisioness }: ResponseRevisiones) => {
-    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  
+ const pathname = usePathname();
 
-    const [dataModal, setDataModal] = useState<Revision>();
-
-    const openModal = (revision: Revision) => {
-        setDataModal(revision);
-        onOpen();
-    };
     return (
         <>
             <div className="overflow-x-auto">
@@ -25,31 +22,23 @@ export const TableHistoryCheckUps = ({ revisioness }: ResponseRevisiones) => {
                             ))}
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> 
                         {revisioness.map((revision) => (
                             <tr key={revision.id}>
-                                <td>{revision.fecha.toISOString()} </td>
+                                <td>{typeof revision.fecha == 'string' ? revision.fecha : ''} </td>
                                 <td>{revision.diagnostico} </td>
                                 <td>
-                                    <IconSearch
-                                        onClick={() => openModal(revision)}
-                                        className={'size-8 cursor-pointer '}
-                                    />
+                                    <Link href={`${pathname}/${revision.id}`}>
+                                        <IconSearch
+                                            className={'size-8 cursor-pointer '}
+                                        />
+                                    </Link>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            {dataModal && (
-                <ModalCheckUp
-                    isOpen={isOpen}
-                    onOpen={onOpen}
-                    onClose={onClose}
-                    onOpenChange={onOpenChange}
-                    revision={dataModal}
-                />
-            )}
         </>
     );
 };
