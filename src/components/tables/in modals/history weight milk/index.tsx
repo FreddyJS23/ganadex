@@ -18,7 +18,7 @@ export const TableHistoryWeightMilk = ({
                 <tbody>
                     {pesajes_leche.map(({ id, fecha, pesaje }) => (
                         <tr key={id}>
-                            <td>{fecha.toISOString()} </td>
+                            <td>{typeof fecha == 'string' ? fecha : ''} </td>
                             <td>{pesaje} </td>
                         </tr>
                     ))}
