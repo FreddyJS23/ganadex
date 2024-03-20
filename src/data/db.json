@@ -222,50 +222,76 @@
             "moneda": "$"
         }
     },
-    "response_revision": {
-        "revision": {
-            "id": 4356864,
-            "fecha": "2023-11-23",
-            "diagnostico": "totam-aspernatur-soluta-eius",
-            "tratamiento": "suscipit-eum"
+    "response_revision": [
+        {
+            "id": "4356",
+            "revision": {
+                "id": 4356,
+                "fecha": "2023-11-23",
+                "diagnostico": "totam-aspernatur-soluta-eius",
+                "tratamiento": "suscipit-eum"
+            }
+        },
+        {
+            "id": "4357",
+            "revision": {
+                "id": 4357,
+                "fecha": "2023-11-23",
+                "diagnostico": "totam-aspernatur-soluta-eius",
+                "tratamiento": "suscipit-eum"
+            }
         }
-    },
+    ],
+
     "response_revisiones": {
         "revisioness": [
             {
-                "id": 4356805979275264,
+                "id": 4356,
                 "fecha": "2023-11-23T17:54:55.360Z",
                 "diagnostico": "totam-aspernatur-soluta-eius",
                 "tratamiento": "suscipit-eum"
             },
             {
-                "id": 4356805979275264,
+                "id": 4357,
                 "fecha": "2023-11-23T17:54:55.360Z",
                 "diagnostico": "totam-aspernatur-soluta-eius",
                 "tratamiento": "suscipit-eum"
             }
         ]
     },
-    "response_servicio": {
-        "servicio": {
-            "id": 8853613789052928,
-            "fecha": "2023-03-31",
-            "observacion": "molestias-aperiam",
-            "tipo": "neque-quaerat-soluta-corrupti-hic",
-            "numero_toro": 778
+    "response_servicio": [
+        {
+            "id": "8853",
+            "servicio": {
+                "id": 8853,
+                "fecha": "2023-03-31",
+                "observacion": "molestias-aperiam",
+                "tipo": "neque-quaerat-soluta-corrupti-hic",
+                "numero_toro": 889
+            }
+        },
+        {
+            "id": "8854",
+            "servicio": {
+                "id": 8854,
+                "fecha": "2023-03-31",
+                "observacion": "molestias-aperiam",
+                "tipo": "neque-quaerat-soluta-corrupti-hic",
+                "numero_toro": 889
+            }
         }
-    },
+    ],
     "response_servicios": {
         "servicios": [
             {
-                "id": 8853613789052928,
+                "id": 8853,
                 "fecha": "2023-03-31",
                 "observacion": "molestias-aperiam",
                 "tipo": "neque-quaerat-soluta-corrupti-hic",
                 "numero_toro": 889
             },
             {
-                "id": 8853613789052928,
+                "id": 8854,
                 "fecha": "2023-03-31",
                 "observacion": "molestias-aperiam",
                 "tipo": "neque-quaerat-soluta-corrupti-hic",
@@ -273,27 +299,48 @@
             }
         ]
     },
-    "response_parto": {
-        "parto": {
-            "id": 1569869136920576,
-            "fecha": "2023-09-26",
-            "observacion": "blanditiis-commodi-eos",
-            "cria": {
-                "id": 1356080783294464,
-                "nombre": "excepturi-amet-saepe-consequuntur",
-                "numero": null,
-                "sexo": "M",
-                "origen": "fuera",
-                "peso_nacimiento": "442-KG",
-                "fecha_nacimiento": "2023-03-31"
-            },
-            "padre_numero": 30392802
+    "response_parto": [
+        {
+            "id": "221",
+            "parto": {
+                "id": 221,
+                "fecha": "2023-11-27T01:21:40.810Z",
+                "observacion": "placeat-repellat-harum-iste",
+                "cria": {
+                    "id": 1356,
+                    "nombre": "excepturi-amet-saepe-consequuntur",
+                    "numero": null,
+                    "sexo": "M",
+                    "origen": null,
+                    "peso_nacimiento": "442-KG",
+                    "fecha_nacimiento": null
+                },
+                "padre_numero": 7867765960474624
+            }
+        },
+        {
+            "id": "222",
+            "parto": {
+                "id": 222,
+                "fecha": "2023-11-27T01:21:40.810Z",
+                "observacion": "placeat-repellat-harum-iste",
+                "cria": {
+                    "id": 1356080783294464,
+                    "nombre": "excepturi-amet-saepe-consequuntur",
+                    "numero": null,
+                    "sexo": "M",
+                    "origen": null,
+                    "peso_nacimiento": "442-KG",
+                    "fecha_nacimiento": null
+                },
+                "padre_numero": 7867765960474624
+            }
         }
-    },
+    ],
     "response_partos": {
         "partos": [
             {
-                "id": 2210139899691008,
+                "id": 221,
                 "fecha": "2023-11-27T01:21:40.810Z",
                 "observacion": "placeat-repellat-harum-iste",
                 "cria": {
@@ -308,7 +355,7 @@
                 "padre_numero": 7867765960474624
             },
             {
-                "id": 2210139899691008,
+                "id": 222,
                 "fecha": "2023-11-27T01:21:40.810Z",
                 "observacion": "placeat-repellat-harum-iste",
                 "cria": {
@@ -324,22 +371,33 @@
             }
         ]
     },
-    "response_pesajeLeche": {
-        "pesaje_leche": {
-            "id": 9082760,
-            "pesaje": "44-KG",
-            "fecha": "2023-12-04"
+    "response_pesajeLeche": [
+        {
+            "id": "9082",
+            "pesaje_leche": {
+                "id": 9082,
+                "pesaje": "44-KG",
+                "fecha": "2023-12-04"
+            }
+        },
+        {
+            "id": "9083",
+            "pesaje_leche": {
+                "id": 9083,
+                "pesaje": "44-KG",
+                "fecha": "2023-12-04"
+            }
         }
-    },
+    ],
     "response_pesajesLeche": {
         "pesajes_leche": [
             {
-                "id": 9082760,
+                "id": 9082,
                 "pesaje": "44-KG",
                 "fecha": "2023-12-04"
             },
             {
-                "id": 9082760,
+                "id": 9083,
                 "pesaje": "44-KG",
                 "fecha": "2023-12-04"
             }
