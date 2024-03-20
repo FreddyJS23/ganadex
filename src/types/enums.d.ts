@@ -93,6 +93,14 @@ export enum TypesCattle {
 
 export enum EndPointsFakeApi {
     response_ganado,
+    response_revisiones,
+    response_revision,
+    response_servicios,
+    response_servicio,
+    response_partos,
+    response_parto,
+    response_pesajesLeche,
+    response_pesajeLeche,
     response_ganados,
     response_toro,
     response_toros,
