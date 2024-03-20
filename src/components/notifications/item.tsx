@@ -20,7 +20,7 @@ export const NotificationBody = ({
     type,
     numberCattle,
 }: NotificationBodyProps) => {
-    let notificationMessage: string = getNotificationMessage(type);
+    const notificationMessage: string = getNotificationMessage(type);
 
     return (
         <div className="flex gap-4 p-2 sm:p-4">

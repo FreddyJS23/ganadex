@@ -3,8 +3,8 @@ import { vacaProductora } from '@/types/dashboard';
 export const getTopProductionCastle = (
     topProductionCatle: vacaProductora[],
 ) => {
-    let catle: string[] = [];
-    let production: number[] = [];
+    const catle: string[] = [];
+    const production: number[] = [];
 
     topProductionCatle.forEach((productionCatle) => {
         catle.push(`vaca ${productionCatle['numero']}`);

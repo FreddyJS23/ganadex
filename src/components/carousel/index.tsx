@@ -3,7 +3,7 @@ import { imagesSliderLogin, textCarouselLogin } from '@/collections';
 import Image from 'next/image';
 import Slider from 'react-slick';
 
-let settings = {
+const settings = {
     accessibility: false,
     arrows: false,
     fade: true,
