@@ -1,11 +1,10 @@
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
-import { Comprador, ModalProps, PreciosDeLeche } from '@/types';
-import { Select } from '@/components/select';
+import { ModalProps } from '@/types';
 
 export const ModalDeathCattle = ({
     isOpen,
-    onClose,
+    
     onOpen,
     onOpenChange,
     dataHeader,
@@ -16,7 +15,6 @@ export const ModalDeathCattle = ({
             titleModal={'Nuevo fallecimiento'}
             footer={true}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
             dataHeader={dataHeader}

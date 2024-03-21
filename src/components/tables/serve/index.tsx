@@ -9,7 +9,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import Link from 'next/link';
 
@@ -17,20 +17,22 @@ export const TableAllServes = ({
     todos_servicios,
 }: ResponseServiciosGeneral) => {
     const renderCell = useCallback(
-        (servicios: Servicios, columnKey: keyof Servicios): any => {
-            const cellValue = servicios[columnKey];
+        (servicios: Servicios, columnKey:Key) => {
+            const cellValue = servicios[columnKey as keyof Servicios];
             switch (columnKey) {
-                case 'toro':
+                case 'toro':{
                     const toro = cellValue as ToroDeServicio;
 
                     return <Link href={`toro/${toro.id}`}>{toro.numero}</Link>;
-                    break;
+                    break;}
 
                 default:
                     break;
             }
 
-            return cellValue;
+          return (
+            cellValue as ReactNode
+          );
         },
         [],
     );
@@ -45,7 +47,7 @@ export const TableAllServes = ({
             <TableBody items={todos_servicios}>
                 {(servicios) => (
                     <TableRow key={servicios.id}>
-                        {(columnKey: any) => (
+                        {(columnKey) => (
                             <TableCell>
                                 {renderCell(servicios, columnKey)}
                             </TableCell>

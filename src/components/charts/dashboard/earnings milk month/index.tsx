@@ -1,11 +1,7 @@
 'use client';
 
-import { BalanceMensualLeche } from '@/types/dashboard';
-import {
-    optionChartLineAnnualMilk,
-    optionChartLineEarningsMilkMonth,
-} from '@/utils/configCharts';
-import { getBalanceMonthFromAnnual } from '@/utils/convertResponseBalanceAnnualMilk';
+
+import {  optionChartLineEarningsMilkMonth,} from '@/utils/configCharts';
 import {
     Chart as ChartJS,
     CategoryScale,

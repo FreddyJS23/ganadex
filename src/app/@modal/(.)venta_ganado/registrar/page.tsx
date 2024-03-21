@@ -1,5 +1,5 @@
 import { CreateSaleCattle } from '@/components/create item in modal/create sale cattle';
-import { ResponseCompradores, ResponsePreciosLeche } from '@/types';
+import { ResponseCompradores} from '@/types';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {

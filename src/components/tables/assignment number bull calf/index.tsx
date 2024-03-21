@@ -12,12 +12,11 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback, useState } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
-import { ModalAssignmentNumberBullCalf } from '@/components/modals/assignment number bull calf';
-import { useDisclosure } from '@nextui-org/react';
+
 
 export const TableAssignmentNumberBullCalf = ({
     crias_pendiente_numeracion,
@@ -25,29 +24,29 @@ export const TableAssignmentNumberBullCalf = ({
     const renderCell = useCallback(
         (
             criaPendienteNumeracion: CriaPendienteNumeracion,
-            columnKey: keyof CriaPendienteNumeracion,
-        ): any => {
-            const cellValue = criaPendienteNumeracion[columnKey];
+            columnKey: Key,
+        ) => {
+            const cellValue = criaPendienteNumeracion[columnKey as keyof CriaPendienteNumeracion];
 
-            switch (columnKey) {
+            switch (columnKey as keyof CriaPendienteNumeracion) {
                 case 'nombre':
-                    const nombre = cellValue as string;
+                   { const nombre = cellValue as string;
                     return (
                         <Link href={`ganado/${criaPendienteNumeracion['id']}`}>
                             {nombre}
                         </Link>
-                    );
+                    );}
                 /* button icon */
-                case 'id':
+                case 'id':{
                     const id = cellValue as number;
                     return (
                         <Link href={`asignar_numero/${id}`}>
                             <IconButton className={'size-6'} />
                         </Link>
-                    );
+                    );}
 
                 default:
-                    return cellValue;
+                    return cellValue as ReactNode;
             }
         },
         [],
@@ -64,7 +63,7 @@ export const TableAssignmentNumberBullCalf = ({
                 <TableBody items={crias_pendiente_numeracion}>
                     {(cria) => (
                         <TableRow key={cria.id}>
-                            {(columnKey: any) => (
+                            {(columnKey) => (
                                 <TableCell>
                                     {renderCell(cria, columnKey)}
                                 </TableCell>

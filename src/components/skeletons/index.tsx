@@ -19,7 +19,7 @@ export const SkeletonBarChart = ({
     cantidadBars: number;
 }) => {
     const longitudesBar = ['h-1/6', 'h-2/6', 'h-3/6', 'h-4/6', 'h-5/6'];
-    let totalBars = [];
+    const totalBars = [];
 
     for (let bar = 0; bar < cantidadBars; bar++) {
         totalBars.push(1);
@@ -52,7 +52,7 @@ export const SkeletonCard = () => {
     );
 };
 export const SkeletonTable = () => {
-    let cantidadFilas = [0, 1, 2];
+    const cantidadFilas = [0, 1, 2];
 
     return (
         <div className="w-full p-4 gap-8 bg-base-100 rounded-large shadow-small flex flex-col justify-center">

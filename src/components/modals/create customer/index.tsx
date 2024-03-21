@@ -4,10 +4,10 @@ import { ModalProps } from '@/types';
 
 export const ModalCreateCustomer = ({
     isOpen,
-    onClose,
+    
     onOpen,
     onOpenChange,
-    dataHeader,
+    
 }: ModalProps) => {
     return (
         <LayoutModal
@@ -15,7 +15,6 @@ export const ModalCreateCustomer = ({
             titleModal={'Crear nuevo comprador'}
             footer={true}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >

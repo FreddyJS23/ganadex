@@ -1,5 +1,4 @@
 import IconCattle from '@/icons/icono-ganado1.svg';
-import IconMilk from '@/icons/icono-leche.svg';
 import IconCloseNotification from '@/icons/icono-cerrar-notificacion.svg';
 import { getNotificationMessage } from '@/utils';
 import { TypeNotification } from '@/types';
@@ -17,12 +16,11 @@ type NotificationBodyProps = {
 };
 
 export const NotificationBody = ({
-    id,
     date,
     type,
     numberCattle,
 }: NotificationBodyProps) => {
-    let notificationMessage: string = getNotificationMessage(type);
+    const notificationMessage: string = getNotificationMessage(type);
 
     return (
         <div className="flex gap-4 p-2 sm:p-4">

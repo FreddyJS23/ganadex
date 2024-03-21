@@ -1,13 +1,12 @@
 'use client';
 
-import { useDisclosure } from '@nextui-org/modal';
 import { LayoutModal } from '..';
-import { ModalProps, Parto, Servicio } from '@/types';
+import { ModalProps, Parto,  } from '@/types';
 
 export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
-    const { cria, fecha, id, observacion, padre_numero } = parto;
+    const { cria, fecha, observacion, padre_numero } = parto;
     const { nombre, numero, sexo, peso_nacimiento } = cria;
-    const { onOpen, onOpenChange } = useDisclosure();
+   
     return (
         <LayoutModal
             icon="pregnancy"

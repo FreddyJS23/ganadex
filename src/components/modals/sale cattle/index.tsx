@@ -1,11 +1,10 @@
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
-import { Comprador, ModalProps, PreciosDeLeche } from '@/types';
+import { Comprador, ModalProps } from '@/types';
 import { Select } from '@/components/select';
 
 export const ModalSaleCattle = ({
     isOpen,
-    onClose,
     onOpen,
     onOpenChange,
     selectCompradores,
@@ -22,7 +21,6 @@ export const ModalSaleCattle = ({
             titleModal={'Venta de ganado'}
             footer={true}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >

@@ -3,7 +3,7 @@ import { BalanceMensualLeche } from '@/types/dashboard';
 export const getBalanceMonthFromAnnual = (
     balanceAnnual: BalanceMensualLeche[],
 ) => {
-    let balanceMonth: number[] = [];
+    const balanceMonth: number[] = [];
 
     balanceAnnual.forEach(({ promedio_pesaje }) =>
         balanceMonth.push(promedio_pesaje),

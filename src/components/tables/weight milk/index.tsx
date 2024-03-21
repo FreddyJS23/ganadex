@@ -9,25 +9,23 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback, useState } from 'react';
+import { Key, useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-peso.svg';
 import Link from 'next/link';
 import IconCheck from '@/icons/icono-check.svg';
 import IconError from '@/icons/icono-error.svg';
-import { Button, useDisclosure } from '@nextui-org/react';
-import { ModalWeightMilk } from '@/components/modals/weight milk';
 
 export const TableAllWeightMilk = ({
     todos_pesaje_leche,
 }: ResponsePesajesLecheGeneral) => {
     const renderCell = useCallback(
-        (pesajeLeche: PesajesLeche, columnKey: keyof PesajesLeche): any => {
-            const cellValue = pesajeLeche[columnKey];
+        (pesajeLeche: PesajesLeche, columnKey: Key) => {
+            const cellValue = pesajeLeche[columnKey as keyof PesajesLeche];
 
-            switch (columnKey) {
+            switch (columnKey as keyof PesajesLeche) {
                 /* button icon */
-                case 'id':
+                case 'id':{
                     const id = cellValue as number;
                     return (
                         <>
@@ -35,18 +33,21 @@ export const TableAllWeightMilk = ({
                                 <IconButton className={'size-6'} />
                             </Link>
                         </>
-                    );
+                    );}
 
-                case 'pesaje_este_mes':
+                case 'pesaje_este_mes':{
                     const pesadaEsteMes = pesajeLeche['pesaje_este_mes'];
                     return pesadaEsteMes ? (
                         <IconCheck className={'size-8'} />
                     ) : (
                         <IconError className={'size-8'} />
-                    );
+                    );}
 
                 default:
-                    return cellValue;
+                    return (
+                        typeof cellValue == 'string' ||
+                        (typeof cellValue == 'number' && cellValue)
+                    );
             }
         },
         [],
@@ -63,7 +64,7 @@ export const TableAllWeightMilk = ({
                 <TableBody items={todos_pesaje_leche}>
                     {(pesajeLeche) => (
                         <TableRow key={pesajeLeche.id}>
-                            {(columnKey: any) => (
+                            {(columnKey) => (
                                 <TableCell>
                                     {renderCell(pesajeLeche, columnKey)}
                                 </TableCell>

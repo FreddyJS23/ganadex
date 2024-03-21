@@ -9,27 +9,26 @@ import {
     TableBody,
     TableRow,
     TableCell,
-    getKeyValue,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import Link from 'next/link';
 
 export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
     const renderCell = useCallback(
-        (cabeza_ganado: CabezasGanado, columnKey: keyof CabezasGanado): any => {
-            const cellValue = cabeza_ganado[columnKey];
+        (cabeza_ganado: CabezasGanado, columnKey: Key) => {
+            const cellValue = cabeza_ganado[columnKey as keyof CabezasGanado];
 
-            switch (columnKey) {
-                case 'numero':
+            switch (columnKey as keyof CabezasGanado) {
+                case 'numero':{
                     const numero = cellValue as number;
                     return (
                         <Link href={`ganado/${cabeza_ganado['id']}`}>
                             {numero}
                         </Link>
-                    );
+                    );}
 
-                case 'estados':
+                case 'estados':{
                     const estados = cellValue as EstadosGanado[];
                     return (
                         <div className="flex flex-wrap">
@@ -37,14 +36,14 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                                 <span key={id}>{estado}</span>
                             ))}
                         </div>
-                    );
+                    );}
 
-                case 'fecha_nacimiento':
+                case 'fecha_nacimiento':{
                     const fecha_nacimiento = cellValue as Date;
-                    return <div>{getAge(fecha_nacimiento)}</div>;
+                    return <div>{getAge(fecha_nacimiento)}</div>;}
 
                 default:
-                    return cellValue;
+                    return cellValue as ReactNode;
             }
         },
         [],
@@ -60,7 +59,7 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
             <TableBody items={cabezas_ganado}>
                 {(cabeza_ganado) => (
                     <TableRow key={cabeza_ganado.id}>
-                        {(columnKey: any) => (
+                        {(columnKey) => (
                             <TableCell>
                                 {renderCell(cabeza_ganado, columnKey)}
                             </TableCell>

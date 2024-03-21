@@ -1,7 +1,6 @@
 'use client';
 
 import {
-    addDarkMode,
     changeThemeDark,
     checkedDark,
     removeDarkMode,
@@ -11,14 +10,14 @@ import { useEffect, useState } from 'react';
 export const CheckboxTheme = () => {
     const storage = typeof window != 'undefined' && window.localStorage;
 
-    let checkStorage = storage && storage.getItem('darkMode');
+    const checkStorage = storage && storage.getItem('darkMode');
     let storageNull: boolean = true;
     let themeDarkStorage: boolean = false;
 
     if (typeof checkStorage == 'string') {
         themeDarkStorage = JSON.parse(checkStorage);
         storageNull = false;
-    } else if (typeof checkStorage == null) storageNull = true;
+    } else if ( checkStorage == null) storageNull = true;
 
     const [themeDark, setThemeDark] = useState(
         storageNull ? true : themeDarkStorage,

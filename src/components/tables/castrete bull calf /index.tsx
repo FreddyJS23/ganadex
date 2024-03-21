@@ -1,12 +1,10 @@
 'use client';
 
 import {
-    headerAssignmentNumberBullCalf,
     headerCastreteBullCalf,
 } from '@/collections/headerColums';
 import {
     CriaPendienteCapar,
-    CriaPendienteNumeracion,
     ResponseCriasPendienteCapar,
 } from '@/types';
 import {
@@ -16,12 +14,10 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback, useState } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
-import { useDisclosure } from '@nextui-org/react';
-import { ModalCastrateBullCalf } from '@/components/modals/castrate bull calf';
 
 export const TableCastreteBullCalf = ({
     crias_pendiente_capar,
@@ -29,29 +25,29 @@ export const TableCastreteBullCalf = ({
     const renderCell = useCallback(
         (
             criaPendienteCapar: CriaPendienteCapar,
-            columnKey: keyof CriaPendienteCapar,
-        ): any => {
-            const cellValue = criaPendienteCapar[columnKey];
+            columnKey: Key,
+        ) => {
+            const cellValue = criaPendienteCapar[columnKey as keyof CriaPendienteCapar];
 
-            switch (columnKey) {
-                case 'nombre':
+            switch (columnKey as keyof CriaPendienteCapar) {
+                case 'nombre':{
                     const nombre = cellValue as string;
                     return (
                         <Link href={`ganado/${criaPendienteCapar['id']}`}>
                             {nombre}
                         </Link>
-                    );
+                    );}
                 /* button icon */
-                case 'id':
+                case 'id':{
                     const id = cellValue as number;
                     return (
                         <Link href={`capar_becerro/${id}`}>
                             <IconButton className={'size-6'} />
                         </Link>
-                    );
+                    );}
 
                 default:
-                    return cellValue;
+                    return cellValue as ReactNode;
             }
         },
         [],
@@ -68,7 +64,7 @@ export const TableCastreteBullCalf = ({
                 <TableBody items={crias_pendiente_capar}>
                     {(cria) => (
                         <TableRow key={cria.id}>
-                            {(columnKey: any) => (
+                            {(columnKey) => (
                                 <TableCell>
                                     {renderCell(cria, columnKey)}
                                 </TableCell>

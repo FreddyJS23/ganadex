@@ -1,6 +1,7 @@
 import { Table } from '@nextui-org/table';
 
 type LayoutTableProps = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     children: any;
     type: string;
 };

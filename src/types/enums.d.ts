@@ -30,17 +30,6 @@ export enum IconsModal {
     customer,
 }
 
-enum URLS {
-    '/',
-    '/ganado',
-    '/venta_leche',
-    '/partos',
-    '/revisiones',
-    '/servicios',
-    '/personal',
-    '/insumos',
-    '/ajustes',
-}
 
 export enum ElementSidebar {
     Dashboard,
@@ -66,6 +55,17 @@ export enum StateCattle {
     pendiente_numeracion,
     pendiente_capar,
     pendiente_pesaje_leche,
+}
+export enum URLS {
+    '/',
+    '/ganado',
+    '/venta_leche',
+    '/partos',
+    '/revisiones',
+    '/servicios',
+    '/personal',
+    '/insumos',
+    '/ajustes',
 }
 
 export enum Months {

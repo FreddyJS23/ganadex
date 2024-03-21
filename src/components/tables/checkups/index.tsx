@@ -9,20 +9,17 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 
 export const TableAllCheckups = ({
     todas_revisiones,
 }: ResponseRevisionesGeneral) => {
-    const renderCell = useCallback(
-        (revisiones: Revisiones, columnKey: keyof Revisiones): any => {
-            const cellValue = revisiones[columnKey];
+    const renderCell = useCallback((revisiones: Revisiones, columnKey: Key) => {
+        const cellValue = revisiones[columnKey as keyof Revisiones];
 
-            return cellValue;
-        },
-        [],
-    );
+        return cellValue as ReactNode;
+    }, []);
 
     return (
         <LayoutTable type="chkeups">
@@ -34,7 +31,7 @@ export const TableAllCheckups = ({
             <TableBody items={todas_revisiones}>
                 {(revisiones) => (
                     <TableRow key={revisiones.id}>
-                        {(columnKey: any) => (
+                        {(columnKey) => (
                             <TableCell>
                                 {renderCell(revisiones, columnKey)}
                             </TableCell>
