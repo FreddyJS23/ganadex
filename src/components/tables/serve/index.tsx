@@ -20,11 +20,11 @@ export const TableAllServes = ({
         (servicios: Servicios, columnKey:Key) => {
             const cellValue = servicios[columnKey as keyof Servicios];
             switch (columnKey) {
-                case 'toro':
+                case 'toro':{
                     const toro = cellValue as ToroDeServicio;
 
                     return <Link href={`toro/${toro.id}`}>{toro.numero}</Link>;
-                    break;
+                    break;}
 
                 default:
                     break;

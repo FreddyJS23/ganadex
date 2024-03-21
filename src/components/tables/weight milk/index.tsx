@@ -25,7 +25,7 @@ export const TableAllWeightMilk = ({
 
             switch (columnKey as keyof PesajesLeche) {
                 /* button icon */
-                case 'id':
+                case 'id':{
                     const id = cellValue as number;
                     return (
                         <>
@@ -33,15 +33,15 @@ export const TableAllWeightMilk = ({
                                 <IconButton className={'size-6'} />
                             </Link>
                         </>
-                    );
+                    );}
 
-                case 'pesaje_este_mes':
+                case 'pesaje_este_mes':{
                     const pesadaEsteMes = pesajeLeche['pesaje_este_mes'];
                     return pesadaEsteMes ? (
                         <IconCheck className={'size-8'} />
                     ) : (
                         <IconError className={'size-8'} />
-                    );
+                    );}
 
                 default:
                     return (
