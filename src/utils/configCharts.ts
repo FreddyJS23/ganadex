@@ -84,7 +84,7 @@ export const optionChartLineAnnualMilk: ChartOptions<'line'> = {
             },
             ticks: {
                 color: '#ecedee',
-                callback: function (value, index, ticks) {
+                callback: function (value) {
                     return value + ' KG';
                 },
             },

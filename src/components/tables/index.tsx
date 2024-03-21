@@ -1,7 +1,7 @@
 import { Table } from '@nextui-org/table';
 
 type LayoutTableProps = {
-    children: any;
+    children: never;
     type: string;
 };
 

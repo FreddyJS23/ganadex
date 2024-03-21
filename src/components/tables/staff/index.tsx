@@ -9,14 +9,17 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { Key, useCallback } from 'react';
 import { LayoutTable } from '..';
 
 export const TableStaff = ({ todo_personal }: ResponseTodoPersonal) => {
     const renderCell = useCallback(
-        (personal: Personal, columnKey: keyof Personal): any => {
-            const cellValue = personal[columnKey];
-            return cellValue;
+        (personal: Personal, columnKey: Key) => {
+            const cellValue = personal[columnKey as keyof Personal];
+          return (
+              typeof cellValue == 'string' ||
+              (typeof cellValue == 'number' && cellValue)
+          );
         },
         [],
     );
@@ -31,7 +34,7 @@ export const TableStaff = ({ todo_personal }: ResponseTodoPersonal) => {
             <TableBody items={todo_personal}>
                 {(todo_personal) => (
                     <TableRow key={todo_personal.id}>
-                        {(columnKey: any) => (
+                        {(columnKey) => (
                             <TableCell>
                                 {renderCell(todo_personal, columnKey)}
                             </TableCell>

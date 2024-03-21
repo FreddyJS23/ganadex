@@ -9,16 +9,16 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { Key, useCallback } from 'react';
 import { LayoutTable } from '..';
 import Link from 'next/link';
 
 export const TableSaleCasttle = ({ ventas }: ResponseVentasGanado) => {
     const renderCell = useCallback(
-        (venta_ganado: VentaGanado, columnKey: keyof VentaGanado): any => {
-            const cellValue = venta_ganado[columnKey];
+        (venta_ganado: VentaGanado, columnKey: Key) => {
+            const cellValue = venta_ganado[columnKey as keyof VentaGanado];
 
-            switch (columnKey) {
+            switch (columnKey as keyof VentaGanado) {
                 case 'numero_ganado':
                     const numero = cellValue as number;
                     return (
@@ -28,7 +28,10 @@ export const TableSaleCasttle = ({ ventas }: ResponseVentasGanado) => {
                     );
 
                 default:
-                    return cellValue;
+                return (
+                    typeof cellValue == 'string' ||
+                    (typeof cellValue == 'number' && cellValue)
+                );
             }
         },
         [],
@@ -44,7 +47,7 @@ export const TableSaleCasttle = ({ ventas }: ResponseVentasGanado) => {
             <TableBody items={ventas}>
                 {(venta_ganado) => (
                     <TableRow key={venta_ganado.id}>
-                        {(columnKey: any) => (
+                        {(columnKey) => (
                             <TableCell>
                                 {renderCell(venta_ganado, columnKey)}
                             </TableCell>

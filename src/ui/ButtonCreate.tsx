@@ -1,4 +1,3 @@
-import IconoPlus from '@/icons/icono-plus.svg';
 import { Url } from 'next/dist/shared/lib/router/router';
 import Link from 'next/link';
 
