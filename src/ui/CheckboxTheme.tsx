@@ -17,7 +17,7 @@ export const CheckboxTheme = () => {
     if (typeof checkStorage == 'string') {
         themeDarkStorage = JSON.parse(checkStorage);
         storageNull = false;
-    } else if (typeof checkStorage == null) storageNull = true;
+    } else if ( checkStorage == null) storageNull = true;
 
     const [themeDark, setThemeDark] = useState(
         storageNull ? true : themeDarkStorage,
