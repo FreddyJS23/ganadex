@@ -12,7 +12,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { Key, useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
@@ -46,10 +46,7 @@ export const TableAssignmentNumberBullCalf = ({
                     );}
 
                 default:
-                    return (
-                        typeof cellValue == 'string' ||
-                        typeof cellValue == 'number' && cellValue
-                    );
+                    return cellValue as ReactNode;
             }
         },
         [],

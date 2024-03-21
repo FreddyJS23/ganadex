@@ -9,7 +9,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { Key, useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 
 export const TableSaleMilk = ({ ventas_de_leche }: ResponseVentasLeche) => {
@@ -17,10 +17,7 @@ export const TableSaleMilk = ({ ventas_de_leche }: ResponseVentasLeche) => {
         (venta_ganado: VentaLeche, columnKey:Key) => {
             const cellValue = venta_ganado[columnKey as keyof VentaLeche];
 
-            return (
-                typeof cellValue == 'string' ||
-                (typeof cellValue == 'number' && cellValue)
-            );
+            return cellValue as ReactNode;
         },
         [],
     );

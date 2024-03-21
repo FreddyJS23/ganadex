@@ -9,7 +9,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { Key, useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import Link from 'next/link';
 
@@ -28,10 +28,7 @@ export const TableSaleCasttle = ({ ventas }: ResponseVentasGanado) => {
                     );}
 
                 default:
-                return (
-                    typeof cellValue == 'string' ||
-                    (typeof cellValue == 'number' && cellValue)
-                );
+                return cellValue as ReactNode;
             }
         },
         [],

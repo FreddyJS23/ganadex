@@ -9,7 +9,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { Key, useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 
 export const TableAllCheckups = ({
@@ -18,10 +18,7 @@ export const TableAllCheckups = ({
     const renderCell = useCallback((revisiones: Revisiones, columnKey: Key) => {
         const cellValue = revisiones[columnKey as keyof Revisiones];
 
-        return (
-            typeof cellValue == 'string' ||
-            (typeof cellValue == 'number' && cellValue)
-        );
+        return cellValue as ReactNode;
     }, []);
 
     return (

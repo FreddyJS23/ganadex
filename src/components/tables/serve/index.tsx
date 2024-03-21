@@ -9,7 +9,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { Key, useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import Link from 'next/link';
 
@@ -31,8 +31,7 @@ export const TableAllServes = ({
             }
 
           return (
-              typeof cellValue == 'string' ||
-              (typeof cellValue == 'number' && cellValue)
+            cellValue as ReactNode
           );
         },
         [],

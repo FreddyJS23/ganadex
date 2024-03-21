@@ -9,7 +9,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { Key, useCallback } from 'react';
+import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 
 export const TableSupplies = ({ insumos }: ResponseInsumos) => {
@@ -17,10 +17,7 @@ export const TableSupplies = ({ insumos }: ResponseInsumos) => {
         (insumo: Insumo, columnKey:Key) => {
             const cellValue = insumo[columnKey as keyof Insumo];
 
-           return (
-               typeof cellValue == 'string' ||
-               (typeof cellValue == 'number' && cellValue)
-           );
+           return cellValue as ReactNode;
         },
         [],
     );
