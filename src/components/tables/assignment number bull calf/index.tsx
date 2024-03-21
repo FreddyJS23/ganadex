@@ -12,7 +12,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { Key, useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
@@ -24,11 +24,11 @@ export const TableAssignmentNumberBullCalf = ({
     const renderCell = useCallback(
         (
             criaPendienteNumeracion: CriaPendienteNumeracion,
-            columnKey: keyof CriaPendienteNumeracion,
-        ): any => {
-            const cellValue = criaPendienteNumeracion[columnKey];
+            columnKey: Key,
+        ) => {
+            const cellValue = criaPendienteNumeracion[columnKey as keyof CriaPendienteNumeracion];
 
-            switch (columnKey) {
+            switch (columnKey as keyof CriaPendienteNumeracion) {
                 case 'nombre':
                     const nombre = cellValue as string;
                     return (
@@ -46,7 +46,10 @@ export const TableAssignmentNumberBullCalf = ({
                     );
 
                 default:
-                    return cellValue;
+                    return (
+                        typeof cellValue == 'string' ||
+                        typeof cellValue == 'number' && cellValue
+                    );
             }
         },
         [],
@@ -63,7 +66,7 @@ export const TableAssignmentNumberBullCalf = ({
                 <TableBody items={crias_pendiente_numeracion}>
                     {(cria) => (
                         <TableRow key={cria.id}>
-                            {(columnKey: any) => (
+                            {(columnKey) => (
                                 <TableCell>
                                     {renderCell(cria, columnKey)}
                                 </TableCell>

@@ -14,7 +14,7 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { Key, useCallback } from 'react';
 import { LayoutTable } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
@@ -25,11 +25,11 @@ export const TableCastreteBullCalf = ({
     const renderCell = useCallback(
         (
             criaPendienteCapar: CriaPendienteCapar,
-            columnKey: keyof CriaPendienteCapar,
-        ): any => {
-            const cellValue = criaPendienteCapar[columnKey];
+            columnKey: Key,
+        ) => {
+            const cellValue = criaPendienteCapar[columnKey as keyof CriaPendienteCapar];
 
-            switch (columnKey) {
+            switch (columnKey as keyof CriaPendienteCapar) {
                 case 'nombre':
                     const nombre = cellValue as string;
                     return (
@@ -47,7 +47,10 @@ export const TableCastreteBullCalf = ({
                     );
 
                 default:
-                    return cellValue;
+                    return (
+                        typeof cellValue == 'string' ||
+                        (typeof cellValue == 'number' && cellValue)
+                    );
             }
         },
         [],
@@ -64,7 +67,7 @@ export const TableCastreteBullCalf = ({
                 <TableBody items={crias_pendiente_capar}>
                     {(cria) => (
                         <TableRow key={cria.id}>
-                            {(columnKey: any) => (
+                            {(columnKey) => (
                                 <TableCell>
                                     {renderCell(cria, columnKey)}
                                 </TableCell>

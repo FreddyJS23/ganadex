@@ -9,15 +9,18 @@ import {
     TableRow,
     TableCell,
 } from '@nextui-org/table';
-import { useCallback } from 'react';
+import { Key, useCallback } from 'react';
 import { LayoutTable } from '..';
 
 export const TableSupplies = ({ insumos }: ResponseInsumos) => {
     const renderCell = useCallback(
-        (insumo: Insumo, columnKey: keyof Insumo): any => {
-            const cellValue = insumo[columnKey];
+        (insumo: Insumo, columnKey:Key) => {
+            const cellValue = insumo[columnKey as keyof Insumo];
 
-            return cellValue;
+           return (
+               typeof cellValue == 'string' ||
+               (typeof cellValue == 'number' && cellValue)
+           );
         },
         [],
     );
@@ -32,7 +35,7 @@ export const TableSupplies = ({ insumos }: ResponseInsumos) => {
             <TableBody items={insumos}>
                 {(insumo) => (
                     <TableRow key={insumo.id}>
-                        {(columnKey: any) => (
+                        {(columnKey) => (
                             <TableCell>
                                 {renderCell(insumo, columnKey)}
                             </TableCell>
