@@ -4,7 +4,6 @@ import { TableHistoryPriceMilk } from '@/components/tables/in modals/history pri
 
 export const ModalHistoryMilk = ({
     isOpen,
-    onClose,
     onOpen,
     onOpenChange,
     precios,
@@ -15,7 +14,6 @@ export const ModalHistoryMilk = ({
             titleModal={'Historial de precio de la leche'}
             footer={false}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >

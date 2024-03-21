@@ -4,7 +4,6 @@ import { ModalProps } from '@/types';
 
 export const ModalNewPriceMilk = ({
     isOpen,
-    onClose,
     onOpen,
     onOpenChange,
     dataHeader,
@@ -16,7 +15,6 @@ export const ModalNewPriceMilk = ({
             dataHeader={dataHeader}
             footer={true}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >

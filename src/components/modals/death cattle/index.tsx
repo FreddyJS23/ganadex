@@ -4,7 +4,7 @@ import { ModalProps } from '@/types';
 
 export const ModalDeathCattle = ({
     isOpen,
-    onClose,
+    
     onOpen,
     onOpenChange,
     dataHeader,
@@ -15,7 +15,6 @@ export const ModalDeathCattle = ({
             titleModal={'Nuevo fallecimiento'}
             footer={true}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
             dataHeader={dataHeader}

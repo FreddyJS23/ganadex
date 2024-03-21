@@ -5,7 +5,6 @@ import { Select } from '@/components/select';
 
 export const ModalSaleCattle = ({
     isOpen,
-    onClose,
     onOpen,
     onOpenChange,
     selectCompradores,
@@ -22,7 +21,6 @@ export const ModalSaleCattle = ({
             titleModal={'Venta de ganado'}
             footer={true}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >

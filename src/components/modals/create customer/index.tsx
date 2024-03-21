@@ -4,7 +4,7 @@ import { ModalProps } from '@/types';
 
 export const ModalCreateCustomer = ({
     isOpen,
-    onClose,
+    
     onOpen,
     onOpenChange,
     
@@ -15,7 +15,6 @@ export const ModalCreateCustomer = ({
             titleModal={'Crear nuevo comprador'}
             footer={true}
             isOpen={isOpen}
-            onClose={onClose}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >
