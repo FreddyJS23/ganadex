@@ -1,6 +1,6 @@
 'use client';
 
-import { headerSaleMilk, headerSupplies } from '@/collections/headerColums';
+import {  headerSupplies } from '@/collections/headerColums';
 import { Insumo, ResponseInsumos } from '@/types';
 import {
     TableHeader,
