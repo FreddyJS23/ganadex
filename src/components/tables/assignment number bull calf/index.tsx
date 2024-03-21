@@ -30,20 +30,20 @@ export const TableAssignmentNumberBullCalf = ({
 
             switch (columnKey as keyof CriaPendienteNumeracion) {
                 case 'nombre':
-                    const nombre = cellValue as string;
+                   { const nombre = cellValue as string;
                     return (
                         <Link href={`ganado/${criaPendienteNumeracion['id']}`}>
                             {nombre}
                         </Link>
-                    );
+                    );}
                 /* button icon */
-                case 'id':
+                case 'id':{
                     const id = cellValue as number;
                     return (
                         <Link href={`asignar_numero/${id}`}>
                             <IconButton className={'size-6'} />
                         </Link>
-                    );
+                    );}
 
                 default:
                     return (

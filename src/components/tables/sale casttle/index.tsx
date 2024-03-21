@@ -20,12 +20,12 @@ export const TableSaleCasttle = ({ ventas }: ResponseVentasGanado) => {
 
             switch (columnKey as keyof VentaGanado) {
                 case 'numero_ganado':
-                    const numero = cellValue as number;
+                    {const numero = cellValue as number;
                     return (
                         <Link href={`ganado/${venta_ganado['id']}`}>
                             {numero}
                         </Link>
-                    );
+                    );}
 
                 default:
                 return (

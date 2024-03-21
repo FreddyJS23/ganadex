@@ -20,15 +20,15 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
             const cellValue = cabeza_ganado[columnKey as keyof CabezasGanado];
 
             switch (columnKey as keyof CabezasGanado) {
-                case 'numero':
+                case 'numero':{
                     const numero = cellValue as number;
                     return (
                         <Link href={`ganado/${cabeza_ganado['id']}`}>
                             {numero}
                         </Link>
-                    );
+                    );}
 
-                case 'estados':
+                case 'estados':{
                     const estados = cellValue as EstadosGanado[];
                     return (
                         <div className="flex flex-wrap">
@@ -36,11 +36,11 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                                 <span key={id}>{estado}</span>
                             ))}
                         </div>
-                    );
+                    );}
 
-                case 'fecha_nacimiento':
+                case 'fecha_nacimiento':{
                     const fecha_nacimiento = cellValue as Date;
-                    return <div>{getAge(fecha_nacimiento)}</div>;
+                    return <div>{getAge(fecha_nacimiento)}</div>;}
 
                 default:
                     return (
