@@ -3,12 +3,14 @@
 import { ResponseNotificaciones } from '@/types';
 import { NotificationBody } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
-export const NotificationMain = () => {
+import { LegacyRef, useRef } from 'react';
+
 export const NotificationMain = ({
     partos,
     revisiones,
     secados,
 }: ResponseNotificaciones) => {
+    const containerNotificationRef: LegacyRef<HTMLDivElement> = useRef(null);
     return (
         <div
             tabIndex={0}
