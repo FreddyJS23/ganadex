@@ -180,3 +180,9 @@ export type Comprador = {
     id: number;
     nombre: string;
 };
+
+export type Notification = {
+    id: number;
+    numero: number;
+    fecha:string
+};
