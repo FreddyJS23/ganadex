@@ -1,8 +1,14 @@
 'use client';
 
+import { ResponseNotificaciones } from '@/types';
 import { NotificationBody } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
 export const NotificationMain = () => {
+export const NotificationMain = ({
+    partos,
+    revisiones,
+    secados,
+}: ResponseNotificaciones) => {
     return (
         <div
             tabIndex={0}

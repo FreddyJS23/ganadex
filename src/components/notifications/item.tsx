@@ -24,6 +24,7 @@ export const NotificationBody = ({
 
     return (
         <div className="flex gap-4 p-2 sm:p-4">
+        <div ref={notificationBodyRef} className="flex gap-4 p-2 sm:p-4">
             {/*  icono */}
             <IconCattle className="size-8 text-black dark:text-white" />
             <div className="flex flex-col">
