@@ -25,36 +25,74 @@ export const NotificationMain = ({
             {/* secciones */}
             <Tabs variant="underlined" color="primary" fullWidth={true}>
                 <Tab title="General">
-                    <NotificationBody
-                        date="12-12-2020"
-                        id={3}
-                        numberCattle={342}
-                        type="birth"
-                    />
+                    <div ref={containerNotificationRef}>
+                        {partos.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="birth"
+                            />
+                        ))}
+                        {revisiones.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="checkup"
+                            />
+                        ))}
+                        {secados.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="drying"
+                            />
+                        ))}
+                    </div>
                 </Tab>
                 <Tab title="Revisiones">
-                    <NotificationBody
-                        date="12-12-2020"
-                        id={3}
-                        numberCattle={342}
-                        type="birth"
-                    />
+                    <div ref={containerNotificationRef}>
+                        {revisiones.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="checkup"
+                            />
+                        ))}
+                    </div>
                 </Tab>
                 <Tab title="Partos">
-                    <NotificationBody
-                        date="12-12-2020"
-                        id={3}
-                        numberCattle={342}
-                        type="birth"
-                    />
+                    <div ref={containerNotificationRef}>
+                        {partos.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="birth"
+                            />
+                        ))}
+                    </div>
                 </Tab>
                 <Tab title="Secado">
-                    <NotificationBody
-                        date="12-12-2020"
-                        id={3}
-                        numberCattle={342}
-                        type="birth"
-                    />
+                    <div ref={containerNotificationRef}>
+                        {secados.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="drying"
+                            />
+                        ))}
+                    </div>
                 </Tab>
             </Tabs>
 
