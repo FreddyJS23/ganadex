@@ -1,8 +1,25 @@
 'use client';
 
+import { ResponseNotificaciones } from '@/types';
 import { NotificationBody } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
-export const NotificationMain = () => {
+import { LegacyRef, useRef } from 'react';
+
+export const NotificationMain = ({
+    partos,
+    revisiones,
+    secados,
+}: ResponseNotificaciones) => {
+    const containerNotificationRef: LegacyRef<HTMLDivElement> = useRef(null);
+
+    const removeAllNotifications = () => {
+        while (containerNotificationRef.current?.firstChild) {
+            containerNotificationRef.current.removeChild(
+                containerNotificationRef.current.firstChild,
+            );
+        }
+    };
+
     return (
         <div
             tabIndex={0}
@@ -11,42 +28,92 @@ export const NotificationMain = () => {
             {/*  cabezera */}
             <div className="flex items-center justify-between">
                 <h4 className="  sm:text-xl  font-bold">Notificaciones</h4>
-                <p className="text-sm sm:text-base">Omitir todo</p>
+                <p
+                    className="text-sm sm:text-base cursor-pointer"
+                    onClick={() => removeAllNotifications()}
+                >
+                    Omitir todo
+                </p>
             </div>
 
             {/* secciones */}
-            <Tabs variant="underlined" color="primary" fullWidth={true}>
+            <Tabs
+                variant="underlined"
+                color="primary"
+                fullWidth={true}
+                classNames={{
+                    panel: 'h-[50vh] overflow-x-auto scrollbar scrollbar-w-1 scrollbar-thumb-primary scrollbar-thumb-rounded-full',
+                }}
+            >
                 <Tab title="General">
-                    <NotificationBody
-                        date="12-12-2020"
-                        id={3}
-                        numberCattle={342}
-                        type="birth"
-                    />
+                    <div ref={containerNotificationRef}>
+                        {partos.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="birth"
+                            />
+                        ))}
+                        {revisiones.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="checkup"
+                            />
+                        ))}
+                        {secados.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="drying"
+                            />
+                        ))}
+                    </div>
                 </Tab>
                 <Tab title="Revisiones">
-                    <NotificationBody
-                        date="12-12-2020"
-                        id={3}
-                        numberCattle={342}
-                        type="birth"
-                    />
+                    <div ref={containerNotificationRef}>
+                        {revisiones.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="checkup"
+                            />
+                        ))}
+                    </div>
                 </Tab>
                 <Tab title="Partos">
-                    <NotificationBody
-                        date="12-12-2020"
-                        id={3}
-                        numberCattle={342}
-                        type="birth"
-                    />
+                    <div ref={containerNotificationRef}>
+                        {partos.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="birth"
+                            />
+                        ))}
+                    </div>
                 </Tab>
                 <Tab title="Secado">
-                    <NotificationBody
-                        date="12-12-2020"
-                        id={3}
-                        numberCattle={342}
-                        type="birth"
-                    />
+                    <div ref={containerNotificationRef}>
+                        {secados.map(({ id, fecha, numero }) => (
+                            <NotificationBody
+                                key={id}
+                                date={fecha}
+                                id={id}
+                                numberCattle={numero}
+                                type="drying"
+                            />
+                        ))}
+                    </div>
                 </Tab>
             </Tabs>
 

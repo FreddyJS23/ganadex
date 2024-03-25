@@ -686,5 +686,58 @@
                 "promedio_pesaje": 33
             }
         ]
+    },
+    "response_notificaciones": {
+        "revisiones": [
+            {
+                "id": 343,
+                "numero": 54,
+                "fecha": "2023-11-03"
+            },
+            {
+                "id": 344,
+                "numero": 58,
+                "fecha": "2023-01-15"
+            },
+            {
+                "id": 343,
+                "numero": 54,
+                "fecha": "2023-10-20"
+            }
+        ],
+        "partos": [
+            {
+                "id": 764,
+                "numero": 543,
+                "fecha": "2023-11-03"
+            },
+            {
+                "id": 349,
+                "numero": 538,
+                "fecha": "2023-02-30"
+            },
+            {
+                "id": 3435,
+                "numero": 24,
+                "fecha": "2023-10-20"
+            }
+        ],
+        "secados": [
+            {
+                "id": 7645,
+                "numero": 5423,
+                "fecha": "2024-12-03"
+            },
+            {
+                "id": 3439,
+                "numero": 5318,
+                "fecha": "2024-07-30"
+            },
+            {
+                "id": 32435,
+                "numero": 224,
+                "fecha": "2024-11-20"
+            }
+        ]
     }
 }

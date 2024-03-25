@@ -6,6 +6,7 @@ import {
     Fallecimiento,
     Ganado,
     Insumo,
+    Notification,
     Parto,
     Personal,
     PesajeLecheGanado,
@@ -178,4 +179,10 @@ export type ResponseServiciosGeneral = {
 
 export type ResponsePesajesLecheGeneral = {
     todos_pesaje_leche: PesajesLeche[];
+};
+
+export type ResponseNotificaciones = {
+    revisiones:Notification[];
+    partos:Notification[];
+    secados:Notification[];
 };

@@ -127,6 +127,7 @@ export enum EndPointsFakeApi {
     response_insumoMayorExistencia,
     response_insumoMenorExistencia,
     response_balanceAnualLeche,
+    response_notificaciones,
 }
 
 export enum TittlesTabsDetailsCattle {

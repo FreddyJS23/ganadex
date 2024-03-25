@@ -5,8 +5,13 @@ import { BadgeNotification } from '@/ui/BadgeNotification';
 import { NotificationMain } from '../notifications';
 import { HamburgerButton } from '@/ui/HamburgerButton';
 import { Sidebar } from '../sidebar';
+import { getData } from '@/utils/getData';
+import { ResponseNotificaciones } from '@/types';
 
-export const Navbar = () => {
+export const Navbar = async () => {
+     
+    const dataNotifications:ResponseNotificaciones=await getData('response_notificaciones')
+    
     return (
         <>
             <div className="navbar bg-primary sm:bg-transparent ">
@@ -47,7 +52,7 @@ export const Navbar = () => {
                             </div>
                         </div>
 
-                        <NotificationMain />
+                        <NotificationMain {...dataNotifications} />
                     </div>
 
                     <div className="dropdown dropdown-end">
