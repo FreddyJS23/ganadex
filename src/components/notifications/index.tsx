@@ -11,6 +11,15 @@ export const NotificationMain = ({
     secados,
 }: ResponseNotificaciones) => {
     const containerNotificationRef: LegacyRef<HTMLDivElement> = useRef(null);
+
+    const removeAllNotifications = () => {
+        while (containerNotificationRef.current?.firstChild) {
+            containerNotificationRef.current.removeChild(
+                containerNotificationRef.current.firstChild,
+            );
+        }
+    };
+
     return (
         <div
             tabIndex={0}
@@ -19,7 +28,12 @@ export const NotificationMain = ({
             {/*  cabezera */}
             <div className="flex items-center justify-between">
                 <h4 className="  sm:text-xl  font-bold">Notificaciones</h4>
-                <p className="text-sm sm:text-base">Omitir todo</p>
+                <p
+                    className="text-sm sm:text-base cursor-pointer"
+                    onClick={() => removeAllNotifications()}
+                >
+                    Omitir todo
+                </p>
             </div>
 
             {/* secciones */}
