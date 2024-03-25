@@ -23,7 +23,14 @@ export const NotificationMain = ({
             </div>
 
             {/* secciones */}
-            <Tabs variant="underlined" color="primary" fullWidth={true}>
+            <Tabs
+                variant="underlined"
+                color="primary"
+                fullWidth={true}
+                classNames={{
+                    panel: 'h-[50vh] overflow-x-auto scrollbar scrollbar-w-1 scrollbar-thumb-primary scrollbar-thumb-rounded-full',
+                }}
+            >
                 <Tab title="General">
                     <div ref={containerNotificationRef}>
                         {partos.map(({ id, fecha, numero }) => (
