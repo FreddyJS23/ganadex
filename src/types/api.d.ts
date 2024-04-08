@@ -187,7 +187,9 @@ export type ResponsePartosGeneral = {
 };
 
 export type ResponseNotificaciones = {
-    revisiones:Notification[];
-    partos:Notification[];
-    secados:Notification[];
+    notificaciones: {
+        revisiones: Notification[];
+        partos: Notification[];
+        secados: Notification[];
+    };
 };
