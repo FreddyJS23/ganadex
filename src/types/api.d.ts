@@ -8,6 +8,7 @@ import {
     Insumo,
     Notification,
     Parto,
+    Partos,
     Personal,
     PesajeLecheGanado,
     PesajesLeche,
@@ -179,6 +180,10 @@ export type ResponseServiciosGeneral = {
 
 export type ResponsePesajesLecheGeneral = {
     todos_pesaje_leche: PesajesLeche[];
+};
+
+export type ResponsePartosGeneral = {
+    todos_partos: Partos[];
 };
 
 export type ResponseNotificaciones = {
