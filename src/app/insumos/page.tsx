@@ -4,7 +4,7 @@ import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
-    const { insumos }: ResponseInsumos = await getData('response_insumos');
+    const { insumos }: ResponseInsumos = await getData('insumos');
     return (
         <section>
             <TitlePage title="Insumos" />

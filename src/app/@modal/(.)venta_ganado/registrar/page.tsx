@@ -4,7 +4,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { compradores }: ResponseCompradores = await getData(
-        'response_compradores',
+        'ventaGanado',
     );
 
     return <CreateSaleCattle ListaCompradoresRegistrados={compradores} />;

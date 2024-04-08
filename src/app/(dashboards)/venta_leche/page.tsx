@@ -7,7 +7,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { ventas_de_leche }: ResponseVentasLeche = await getData(
-        'response_ventasLeche',
+        'ventasLeche',
     );
 
     return (

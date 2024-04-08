@@ -5,7 +5,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { cabezas_ganado }: ResponseGanados =
-        await getData('response_ganados');
+        await getData('todosGanado');
     return (
         <>
             <TitlePage title="Cabezas de ganado" />

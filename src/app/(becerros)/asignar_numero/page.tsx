@@ -5,7 +5,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { crias_pendiente_numeracion }: ResponseCriasPendienteNumeracion =
-        await getData('response_criasPendienteNumeracion');
+        await getData('criasNumeracion');
 
     return (
         <section>

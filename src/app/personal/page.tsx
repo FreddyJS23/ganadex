@@ -5,7 +5,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { todo_personal }: ResponseTodoPersonal = await getData(
-        'response_TodoPersonal',
+        'todosPersonal',
     );
     return (
         <section>

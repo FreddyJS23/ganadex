@@ -5,7 +5,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { servicios }: ResponseServicios =
-        await getData('response_servicios');
+        await getData('ganado',3,'servicios');
 
     return <ModalHistoryServices servicios={servicios} />;
 }

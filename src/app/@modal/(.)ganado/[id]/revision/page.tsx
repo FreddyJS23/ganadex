@@ -4,7 +4,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { revisioness }: ResponseRevisiones = await getData(
-        'response_revisiones',
+        'ganado',2,'revisiones'
     );
 
     return <ModalHistoryCheckUps revisiones={revisioness} />;

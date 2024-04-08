@@ -18,22 +18,23 @@ import { CircularProgress } from '@/components/circules progress dashboard';
 import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual balance milk';
 
 export default async function Home() {
+  
     const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(
-        'response_totalGanadoPorTipo',
+        'totalGanadoTipo'
     );
     const { top_vacas_productoras }: TopVacasProductoras = await getData(
-        'response_vacasProductoras',
+        'vacasProductoras',
     );
     const { top_vacas_menos_productoras }: TopVacasMenosProductoras =
-        await getData('response_vacasMenosProductoras');
+        await getData('vacasMenosProductoras');
     const { mayor_cantidad_insumo }: InsumoMayorExistencia = await getData(
-        'response_insumoMayorExistencia',
+        'insumoMayorExistencia',
     );
     const { menor_cantidad_insumo }: InsumoMenorExistencia = await getData(
-        'response_insumoMenorExistencia',
+        'insumoMenorExistencia',
     );
     const { balance_anual }: balanceAnualLeche = await getData(
-        'response_balanceAnualLeche',
+        'balanceAnualLeche',
     );
 
     return (

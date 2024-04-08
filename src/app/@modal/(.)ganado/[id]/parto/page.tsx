@@ -3,7 +3,7 @@ import { ResponsePartos } from '@/types';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
-    const { partos }: ResponsePartos = await getData('response_partos');
+    const { partos }: ResponsePartos = await getData('ganado',3,'partos');
 
     return <ModalHistoryBirths partos={partos} />;
 }

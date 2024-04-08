@@ -17,7 +17,7 @@ export default async function Page({ params }: ParamsPageCattle) {
         servicio_reciente,
         total_revisiones,
         total_servicios,
-    }: ResponseGanado = await getData('response_ganado', params.id);
+    }: ResponseGanado = await getData('ganado', params.id);
 
     return (
         <>

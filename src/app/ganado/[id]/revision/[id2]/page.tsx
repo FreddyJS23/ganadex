@@ -8,7 +8,9 @@ type ParamsPage = {
 
 export default async function Page({ params }: ParamsPage) {
     const { revision }: ResponseRevision = await getData(
-        'response_revision',
+        'ganado',
+        params.id,
+        'revision',
         params.id2,
     );
 

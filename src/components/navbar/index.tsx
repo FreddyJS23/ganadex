@@ -10,7 +10,7 @@ import { ResponseNotificaciones } from '@/types';
 
 export const Navbar = async () => {
      
-    const dataNotifications:ResponseNotificaciones=await getData('response_notificaciones')
+    const dataNotifications:ResponseNotificaciones=await getData('notificaciones')
     
     return (
         <>
