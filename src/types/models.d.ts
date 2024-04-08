@@ -211,6 +211,8 @@ export type Comprador = {
 
 export type Notification = {
     id: number;
-    numero: number;
-    fecha:string
+    tipo:'revision' | 'parto' | 'secado';
+    leido:boolean;
+    dias_para_evento:number;
+    ganado:Pick<Ganado,'id' | 'numero'>
 };
