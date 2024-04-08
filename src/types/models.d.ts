@@ -9,6 +9,25 @@ type EstadosGanado = {
     estado: keyof typeof StateCattle;
 };
 
+type Pesos = {
+    peso_nacimiento: PesajeGanado | null;
+    peso_destete: PesajeGanado | null;
+    peso_2year: PesajeGanado | null;
+    peso_actual: PesajeGanado | null;
+};
+
+type Eventos = {
+    prox_revision: Date | null;
+    prox_servicio: Date | null;
+    prox_parto: Date | null;
+    prox_secado: Date | null;
+};
+
+type veterinario={
+    id:number;
+    nombre:string;
+}
+
 type Cria = Pick<
     Ganado,
     | 'id'
@@ -30,17 +49,11 @@ export type Ganado = {
     sexo: 'H' | 'M';
     tipo: keyof typeof TypesCattle;
     fecha_nacimiento: Date | null;
-    peso_nacimiento: PesajeGanado | null;
-    peso_destete: PesajeGanado | null;
-    peso_2year: PesajeGanado | null;
-    peso_actual: PesajeGanado | null;
+    pesos:Pesos;
     estados: EstadosGanado[];
     fecha_defuncion: Date | null;
     causa_defuncion: string | null;
-    prox_revision: Date | null;
-    prox_servicio: Date | null;
-    prox_parto: Date | null;
-    prox_secado: Date | null;
+    eventos:Eventos
 };
 
 export type Toro = {
@@ -66,6 +79,7 @@ export type Personal = {
     nombre: string;
     apellido: string;
     fecha_nacimiento: Date;
+    telefono:string;
     cargo: string;
 };
 
@@ -81,6 +95,7 @@ export type Revision = {
     fecha: Date;
     diagnostico: string;
     tratamiento: string;
+    veterinario:veterinario
 };
 
 /**Servicio individual de una cabeza de ganado */
@@ -90,6 +105,8 @@ export type Servicio = {
     observacion: string;
     tipo: string;
     numero_toro: integer;
+    toro:Pick <Toro,'id' | 'numero'>
+    veterinario: veterinario;
 };
 
 export type Parto = {
@@ -97,7 +114,8 @@ export type Parto = {
     fecha: Date;
     observacion: string;
     cria: Cria;
-    padre_numero: number;
+    padre_toro: Pick<Toro, 'id' | 'numero'>;
+    veterinario: veterinario;
 };
 
 /**Pesaje leche individual de una cabeza de ganado */
@@ -133,8 +151,8 @@ export type VentaLeche = {
 export type VentaGanado = {
     id: number;
     fecha: Date;
-    numero_ganado: number;
     peso: PesajeGanado;
+    ganado:Pick <Ganado,'id' | 'numero'>
     precio: number;
     precio_kg: number;
     comprador: string;
@@ -144,7 +162,7 @@ export type Fallecimiento = {
     id: number;
     fecha: Date;
     causa: string;
-    numero_ganado: number;
+    ganado: Pick<Ganado, 'id' | 'numero'>;
 };
 
 /**Revisiones de todas las cabeza de  ganado */
@@ -174,6 +192,16 @@ export type PesajesLeche = {
     numero: number;
     ultimo_pesaje: PesajeLeche;
     pesaje_este_mes: boolean;
+};
+
+/**Partos de todas las cabeza de ganado  */
+export type Partos = {
+    id: number;
+    numero: number;
+    ultimo_parto: Date | null;
+    total_partos: number;
+    toro: Pick <Toro,'id'| 'numero'>;
+    cria: Pick <Cria,'id'| 'numero'>;
 };
 
 export type Comprador = {
