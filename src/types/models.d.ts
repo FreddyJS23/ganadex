@@ -1,4 +1,4 @@
-import { StateCattle, TypesCattle } from './enums';
+import { StateCattle, TypeNotification, TypesCattle } from './enums';
 
 export type PesajeGanado = `${string}-KG`;
 
@@ -211,8 +211,14 @@ export type Comprador = {
 
 export type Notification = {
     id: number;
-    tipo:'revision' | 'parto' | 'secado';
+    tipo:keyof typeof TypeNotification;
     leido:boolean;
     dias_para_evento:number;
     ganado:Pick<Ganado,'id' | 'numero'>
+};
+
+export type TypesNotification = {
+    revision: Notification[];
+    parto: Notification[];
+    secado: Notification[];
 };
