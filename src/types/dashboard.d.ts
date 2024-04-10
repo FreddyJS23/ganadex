@@ -1,6 +1,7 @@
 import { Months, TypesCattle, TypesCattle } from '.';
 import {
     Comprador,
+    Ganado,
     Insumo,
     VentaGanado,
 } from './models';
@@ -8,7 +9,7 @@ import {
 /* --------------------------- Principal -------------------------- */
 
 type vacaProductora = {
-    numero: number;
+    ganado:Pick<Ganado,'id'|'numero'>
     peso_leche: number;
 };
 
@@ -32,7 +33,7 @@ export type TotalPersonal = {
 };
 
 export type TotalVacasEnGestacion = {
-    vacas_gestacion: number;
+    vacas_en_gestacion: number;
 };
 
 export type TopVacasProductoras = {

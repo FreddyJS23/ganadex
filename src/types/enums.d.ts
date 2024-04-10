@@ -1,9 +1,8 @@
 /**Tipos de notificaciones */
 export enum TypeNotification {
-    checkup,
-    birth,
-    drying,
-    milk,
+    revision, 
+    parto,
+    secado
 }
 
 export enum IconsSidebar {

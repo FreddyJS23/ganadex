@@ -6,7 +6,6 @@ import {
     Fallecimiento,
     Ganado,
     Insumo,
-    Notification,
     Parto,
     Partos,
     Personal,
@@ -18,6 +17,7 @@ import {
     Servicio,
     Servicios,
     Toro,
+    TypesNotification,
     User,
     VentaGanado,
     VentaLeche,
@@ -187,9 +187,5 @@ export type ResponsePartosGeneral = {
 };
 
 export type ResponseNotificaciones = {
-    notificaciones: {
-        revisiones: Notification[];
-        partos: Notification[];
-        secados: Notification[];
-    };
+    notificaciones: TypesNotification;
 };
