@@ -12,7 +12,7 @@ export const NotificationBody = ({
     ganado,
     tipo
 }: NotificationBodyProps) => {
-    const notificationMessage: string = getNotificationMessage(type);
+    const notificationMessage: string ='Faltan' + dias_para_evento + 'días' + getNotificationMessage(tipo);
 
     const notificationBodyRef: LegacyRef<HTMLDivElement> = useRef(null);
 
