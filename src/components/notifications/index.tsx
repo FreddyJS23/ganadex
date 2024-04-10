@@ -1,15 +1,15 @@
 'use client';
 
-import { ResponseNotificaciones } from '@/types';
+import {  TypesNotification } from '@/types';
 import { NotificationBody } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
 import { LegacyRef, useRef } from 'react';
 
 export const NotificationMain = ({
-    partos,
-    revisiones,
-    secados,
-}: ResponseNotificaciones) => {
+    revision=[],
+    parto=[],
+    secado=[],
+}: TypesNotification) => {
     const containerNotificationRef: LegacyRef<HTMLDivElement> = useRef(null);
 
     const removeAllNotifications = () => {
