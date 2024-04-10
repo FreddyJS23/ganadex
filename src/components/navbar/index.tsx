@@ -9,8 +9,8 @@ import { getData } from '@/utils/getData';
 import { ResponseNotificaciones } from '@/types';
 
 export const Navbar = async () => {
-     
-    const dataNotifications:ResponseNotificaciones=await getData('notificaciones')
+
+    const {notificaciones}:ResponseNotificaciones=await getData('notificaciones')
     
     return (
         <>
@@ -52,7 +52,7 @@ export const Navbar = async () => {
                             </div>
                         </div>
 
-                        <NotificationMain {...dataNotifications} />
+                        <NotificationMain {...notificaciones} />
                     </div>
 
                     <div className="dropdown dropdown-end">
