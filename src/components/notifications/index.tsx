@@ -47,70 +47,52 @@ export const NotificationMain = ({
             >
                 <Tab title="General">
                     <div ref={containerNotificationRef}>
-                        {partos.map(({ id, fecha, numero }) => (
+                        {parto.map((notificacion) => (
                             <NotificationBody
-                                key={id}
-                                date={fecha}
-                                id={id}
-                                numberCattle={numero}
-                                type="birth"
+                                key={notificacion.id}
+                                {...notificacion}
                             />
                         ))}
-                        {revisiones.map(({ id, fecha, numero }) => (
+                        {revision.map((notificacion) => (
                             <NotificationBody
-                                key={id}
-                                date={fecha}
-                                id={id}
-                                numberCattle={numero}
-                                type="checkup"
+                                key={notificacion.id}
+                                {...notificacion}
                             />
                         ))}
-                        {secados.map(({ id, fecha, numero }) => (
+                        {secado.map((notificacion) => (
                             <NotificationBody
-                                key={id}
-                                date={fecha}
-                                id={id}
-                                numberCattle={numero}
-                                type="drying"
+                                key={notificacion.id}
+                                {...notificacion}
                             />
                         ))}
                     </div>
                 </Tab>
                 <Tab title="Revisiones">
                     <div ref={containerNotificationRef}>
-                        {revisiones.map(({ id, fecha, numero }) => (
+                        {revision.map((notificacion) => (
                             <NotificationBody
-                                key={id}
-                                date={fecha}
-                                id={id}
-                                numberCattle={numero}
-                                type="checkup"
+                                key={notificacion.id}
+                                {...notificacion}
                             />
                         ))}
                     </div>
                 </Tab>
                 <Tab title="Partos">
                     <div ref={containerNotificationRef}>
-                        {partos.map(({ id, fecha, numero }) => (
+                        {parto.map((notificacion) => (
                             <NotificationBody
-                                key={id}
-                                date={fecha}
-                                id={id}
-                                numberCattle={numero}
-                                type="birth"
+                                key={notificacion.id}
+                                {...notificacion}
                             />
                         ))}
                     </div>
                 </Tab>
                 <Tab title="Secado">
                     <div ref={containerNotificationRef}>
-                        {secados.map(({ id, fecha, numero }) => (
+                        {secado.map((notificacion) => (
                             <NotificationBody
-                                key={id}
-                                date={fecha}
-                                id={id}
-                                numberCattle={numero}
-                                type="drying"
+                                key={notificacion.id}
+                                {...notificacion}
                             />
                         ))}
                     </div>
