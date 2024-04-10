@@ -8,9 +8,9 @@ import { LegacyRef, useRef } from 'react';
 type NotificationBodyProps =Notification
 
 export const NotificationBody = ({
-    date,
-    type,
-    numberCattle,
+    dias_para_evento,
+    ganado,
+    tipo
 }: NotificationBodyProps) => {
     const notificationMessage: string = getNotificationMessage(type);
 
