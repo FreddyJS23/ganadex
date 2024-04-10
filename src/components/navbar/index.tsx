@@ -12,6 +12,11 @@ export const Navbar = async () => {
 
     const {notificaciones}:ResponseNotificaciones=await getData('notificaciones')
     
+    const {parto,revision,secado}=notificaciones ?? {parto:[],revision:[],secado:[]} 
+
+    const totalNotifications=parto.length + revision.length  + secado.length
+
+    
     return (
         <>
             <div className="navbar bg-primary sm:bg-transparent ">
@@ -48,7 +53,7 @@ export const Navbar = async () => {
                         >
                             <div className="indicator">
                                 <IconoNotificacion className="text-base-100 sm:text-current  size-8" />
-                                <BadgeNotification />
+                                <BadgeNotification totalNotifications={totalNotifications} />
                             </div>
                         </div>
 
