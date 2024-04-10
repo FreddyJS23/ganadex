@@ -13,7 +13,10 @@ export const NotificationBody = ({
     ganado,
     tipo
 }: NotificationBodyProps) => {
-    const notificationMessage: string ='Faltan' + dias_para_evento + 'días' + getNotificationMessage(tipo);
+    
+    const eventPast=Math.sign(dias_para_evento) == -1 ? true : false
+    const notificationMessageEventPast: string ='Ya pasaron ' + Math.abs(dias_para_evento) + ' días desde que se tuvo que hacer ' + getNotificationMessage(tipo).replace('para', ' ');
+    const notificationMessage: string ='Faltan ' + Math.abs(dias_para_evento) + ' días para' + getNotificationMessage(tipo);
 
     const notificationBodyRef: LegacyRef<HTMLDivElement> = useRef(null);
 
@@ -32,16 +35,9 @@ export const NotificationBody = ({
                     <Link href={`ganado/${ganado.id}`}>{ganado.numero}</Link>
                 </span>
                 {/*   texto */}
-                {type == 'milk' && (
-                    <span className="text-sm sm:text-base">
-                        {notificationMessage}
-                    </span>
-                )}
-                {type != 'milk' && (
-                    <span className="text-sm sm:text-base">
-                        {notificationMessage + date}
-                    </span>
-                )}
+                <span className="text-sm sm:text-base">
+                    {eventPast ? notificationMessageEventPast : notificationMessage}
+                </span>
             </div>
             <IconCloseNotification
                 onClick={() => removeNotification()}
