@@ -3,6 +3,7 @@ import IconCloseNotification from '@/icons/icono-cerrar-notificacion.svg';
 import { getNotificationMessage } from '@/utils';
 import { Notification,  } from '@/types';
 import { LegacyRef, useRef } from 'react';
+import Link from 'next/link';
 
 /**body de la notificacion */
 type NotificationBodyProps =Notification
@@ -27,9 +28,8 @@ export const NotificationBody = ({
             <div className="flex flex-col">
                 {/*   titulo */}
                 <span className="text-sm sm:text-base font-bold">
-                    {type != 'milk'
-                        ? `Ganado numero ${numberCattle}`
-                        : 'Pesaje mensual de leche'}
+                    Ganado numero
+                    <Link href={`ganado/${ganado.id}`}>{ganado.numero}</Link>
                 </span>
                 {/*   texto */}
                 {type == 'milk' && (
