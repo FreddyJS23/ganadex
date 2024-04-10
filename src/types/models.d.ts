@@ -216,3 +216,9 @@ export type Notification = {
     dias_para_evento:number;
     ganado:Pick<Ganado,'id' | 'numero'>
 };
+
+export type TypesNotification = {
+    revision: Notification[];
+    parto: Notification[];
+    secado: Notification[];
+};
