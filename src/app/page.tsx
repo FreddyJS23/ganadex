@@ -6,6 +6,10 @@ import {
     ResponseTotalTiposGanado,
     TopVacasMenosProductoras,
     TopVacasProductoras,
+    TotalGanadoPendienteRevision,
+    TotalGanadoPendienteservir,
+    TotalPersonal,
+    TotalVacasEnGestacion,
     balanceAnualLeche,
 } from '@/types/dashboard';
 import { getData } from '@/utils/getData';
@@ -36,6 +40,18 @@ export default async function Home() {
     const { balance_anual }: balanceAnualLeche = await getData(
         'balanceAnualLeche',
     );
+    const { ganado_pendiente_revision }: TotalGanadoPendienteRevision = await getData(
+        'dashboardPrincipalpendienteRevision',
+    );
+    const { total_personal }: TotalPersonal = await getData(
+        'dashboardPrincipaltotalPersonal',
+    );
+    const { vacas_en_gestacion }: TotalVacasEnGestacion = await getData(
+        'dashboardPrincipalvacasGestacion',
+    );
+    const { cantidad_vacas_para_servir }: TotalGanadoPendienteservir = await getData(
+        'dashboardPrincipalcantidadNovillasMontar',
+    );
 
     return (
         <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
@@ -55,21 +71,21 @@ export default async function Home() {
             {/* cards  */}
             <article className="col-span-full flex flex-wrap gap-8 w-full p-4  justify-center  sm:justify-around md:col-start-3 md:grid md:grid-cols-2 md:p-0 md:gap-4 md:justify-normal ">
                 <CardDashboard
-                    data={999}
+                    data={vacas_en_gestacion}
                     title="Vacas preñadas"
                     icon="pregnant"
                 />
                 <CardDashboard
-                    data={999}
+                    data={cantidad_vacas_para_servir}
                     title="Pendiente de servir"
                     icon="serve"
                 />
                 <CardDashboard
-                    data={999}
+                    data={ganado_pendiente_revision}
                     title="Pendiente de revision"
                     icon="checkUp"
                 />
-                <CardDashboard data={999} title="Personal" icon="staff" />
+                <CardDashboard data={total_personal} title="Personal" icon="staff" />
             </article>
             <div className="col-span-full flex flex-col justify-around sm:flex-row">
                 {/*    grafico vacas productoras */}
