@@ -1,20 +1,11 @@
 import IconCattle from '@/icons/icono-ganado1.svg';
 import IconCloseNotification from '@/icons/icono-cerrar-notificacion.svg';
 import { getNotificationMessage } from '@/utils';
-import { TypeNotification } from '@/types';
+import { Notification,  } from '@/types';
 import { LegacyRef, useRef } from 'react';
 
 /**body de la notificacion */
-type NotificationBodyProps = {
-    /** Identificador del la notificacion */
-    id: number;
-    /** Tipo de notificacion */
-    type: keyof typeof TypeNotification;
-    /** Determina la fecha que ocurrira el evento */
-    date: string;
-    /** Numero del ganado */
-    numberCattle: number | null;
-};
+type NotificationBodyProps =Notification
 
 export const NotificationBody = ({
     date,
