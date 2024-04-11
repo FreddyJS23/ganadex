@@ -26,6 +26,10 @@ export const ModalCheckUp = ({
                 <p>
                     <b>Tratamiento: </b> {revision.tratamiento}
                 </p>
+                <p>
+                    <b>Veterinario que hizo la revision: </b>
+                    {revision.veterinario.nombre}
+                </p>
             </div>
         </LayoutModal>
     );

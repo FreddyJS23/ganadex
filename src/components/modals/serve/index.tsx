@@ -29,6 +29,9 @@ export const ModalServe = ({
                 <p>
                     <b>Tipo: </b> {servicio.tipo}
                 </p>
+                 <p>
+                    <b>Veterinario que hizo el servicio: </b> {servicio.veterinario.nombre}
+                </p>
             </div>
         </LayoutModal>
     );

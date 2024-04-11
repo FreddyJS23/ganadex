@@ -35,6 +35,9 @@ export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
                 <p>
                     <b>Sexo de la cría: </b> {sexo}
                 </p>
+                <p>
+                    <b>Veterinario que atendió el parto: </b> {veterinario.nombre}
+                </p>
             </div>
         </LayoutModal>
     );
