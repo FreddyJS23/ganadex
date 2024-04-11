@@ -13,6 +13,7 @@ import {
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import Link from 'next/link';
+import { DropdownStatesCattle } from '@/components/dropdown states cattle';
 
 export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
     const renderCell = useCallback(
@@ -20,27 +21,25 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
             const cellValue = cabeza_ganado[columnKey as keyof CabezasGanado];
 
             switch (columnKey as keyof CabezasGanado) {
-                case 'numero':{
+                case 'numero': {
                     const numero = cellValue as number;
                     return (
                         <Link href={`ganado/${cabeza_ganado['id']}`}>
                             {numero}
                         </Link>
-                    );}
+                    );
+                }
 
-                case 'estados':{
+                case 'estados': {
                     const estados = cellValue as EstadosGanado[];
-                    return (
-                        <div className="flex flex-wrap">
-                            {estados.map(({ id, estado }) => (
-                                <span key={id}>{estado}</span>
-                            ))}
-                        </div>
-                    );}
 
-                case 'fecha_nacimiento':{
+                    return <DropdownStatesCattle estados={estados} />;
+                }
+
+                case 'fecha_nacimiento': {
                     const fecha_nacimiento = cellValue as Date;
-                    return <div>{getAge(fecha_nacimiento)}</div>;}
+                    return <div>{getAge(fecha_nacimiento)}</div>;
+                }
 
                 default:
                     return cellValue as ReactNode;
