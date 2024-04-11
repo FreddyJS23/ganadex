@@ -1,8 +1,9 @@
 'use client';
 
-import { LayoutModal } from '..';
+import { LayoutModal } from '../..';
 import { Revision } from '@/types';
 import { TableHistoryCheckUps } from '@/components/tables/in modals/history checkups';
+import { ContainerTableHistory } from '..';
 
 export const ModalHistoryCheckUps = async ({
     revisiones,
@@ -16,9 +17,9 @@ export const ModalHistoryCheckUps = async ({
             footer={false}
             isOpen={true}
         >
-            <div className="m-auto mb-4">
-                <TableHistoryCheckUps revisioness={revisiones} />
-            </div>
+            <ContainerTableHistory>
+                <TableHistoryCheckUps revisiones={revisiones} />
+            </ContainerTableHistory>
         </LayoutModal>
     );
 };
