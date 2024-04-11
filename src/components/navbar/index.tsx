@@ -12,7 +12,7 @@ export const Navbar = async () => {
 
     const {notificaciones}:ResponseNotificaciones=await getData('notificaciones')
     
-    const {parto,revision,secado}=notificaciones ?? {parto:[],revision:[],secado:[]} 
+    const {parto=[],revision=[],secado=[]}=notificaciones
 
     const totalNotifications=parto.length + revision.length  + secado.length
 
