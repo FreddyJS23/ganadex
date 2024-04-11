@@ -36,7 +36,7 @@ export const DetailsBirht = {
     fecha: 'Ultima',
     observacion: 'Observacion',
     sexo: 'Sexo de la cria',
-    peso_nacimiento: 'Peso de la cria',
+    numero_cria: 'Numero de la cria',
     proximo: 'Proximo',
     totales: 'Totales',
 };
