@@ -6,9 +6,9 @@ export const getTopProductionCastle = (
     const catle: string[] = [];
     const production: number[] = [];
 
-    topProductionCatle.forEach((productionCatle) => {
-        catle.push(`vaca ${productionCatle['numero']}`);
-        production.push(productionCatle['peso_leche']);
+    topProductionCatle.forEach(({ganado,peso_leche}) => {
+        catle.push(`vaca ${ganado.numero}`);
+        production.push(peso_leche);
     });
 
     return { catle, production };
