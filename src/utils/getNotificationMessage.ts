@@ -1,6 +1,6 @@
 import { notifications } from '@/collections';
-import { NotificationMessageTupla } from '@/types';
-import { TypeNotification } from '@/types/enums';
+import { NotificationMessageTupla, TypeNotification } from '@/types';
+
 
 const notificationsArray = Object.entries(
     notifications,
