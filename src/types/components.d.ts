@@ -26,7 +26,7 @@ export type SidebarElementProps = {
 /** Detallar un item de informacion, que contiene un titulo y un contenido */
 export type DetailsProps = {
     tittle: string;
-    content: string | number | Date | undefined | null;
+    content: string | number | undefined | null;
 };
 
 export type InputProps = {

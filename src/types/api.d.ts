@@ -46,6 +46,15 @@ export type ResponseGanado = {
     total_servicios: number;
     revision_reciente: Revision | null;
     total_revisiones: number;
+    total_partos: number;
+    parto_reciente:Parto;
+    efectividad:number;
+    info_pesajes_leche:{
+        reciente:PesajeLecheGanado
+        mejor:PesajeLecheGanado
+        peor:PesajeLecheGanado
+        estado:string
+    }
 };
 
 export type CabezasGanado = Omit<
@@ -99,7 +108,7 @@ export type ResponseRevision = {
 };
 
 export type ResponseRevisiones = {
-    revisioness: Revision[];
+    revisiones: Revision[];
 };
 
 /**Servicio individual de una cabeza de ganado */
