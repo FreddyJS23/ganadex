@@ -46,6 +46,15 @@ export type ResponseGanado = {
     total_servicios: number;
     revision_reciente: Revision | null;
     total_revisiones: number;
+    total_partos: number;
+    parto_reciente:Parto;
+    efectividad:number;
+    info_pesajes_leche:{
+        reciente:PesajeLecheGanado
+        mejor:PesajeLecheGanado
+        peor:PesajeLecheGanado
+        estado:string
+    }
 };
 
 export type CabezasGanado = Omit<
