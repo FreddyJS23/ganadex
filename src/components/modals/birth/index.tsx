@@ -4,8 +4,8 @@ import { LayoutModal } from '..';
 import { ModalProps, Parto,  } from '@/types';
 
 export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
-    const { cria, fecha, observacion, padre_numero } = parto;
-    const { nombre, numero, sexo, peso_nacimiento } = cria;
+    const { cria, fecha, observacion, padre_toro,veterinario } = parto;
+    const { nombre, numero, sexo, peso } = cria;
    
     return (
         <LayoutModal
@@ -20,7 +20,7 @@ export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
                     <b>Observación: </b> {observacion}
                 </p>
                 <p>
-                    <b>Padre de la cría: </b> {padre_numero}
+                    <b>Padre de la cría: </b> {padre_toro.numero}
                 </p>
                 <p>
                     <b>Nombre de la cría: </b> {nombre}
@@ -29,7 +29,7 @@ export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
                     <b>Numero de la cría: </b> {numero}
                 </p>
                 <p>
-                    <b>Peso nacimiento de la cría: </b> {peso_nacimiento}
+                    <b>Peso nacimiento de la cría: </b> {peso.peso_nacimiento}
                 </p>
 
                 <p>
