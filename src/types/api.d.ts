@@ -108,7 +108,7 @@ export type ResponseRevision = {
 };
 
 export type ResponseRevisiones = {
-    revisioness: Revision[];
+    revisiones: Revision[];
 };
 
 /**Servicio individual de una cabeza de ganado */
