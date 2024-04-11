@@ -36,8 +36,8 @@ type Cria = Pick<
     | 'sexo'
     | 'origen'
     | 'fecha_nacimiento'
-    | 'peso_nacimiento'
->;
+    
+>& {peso:Pick <Pesos,'peso_nacimiento'>};
 
 type ToroDeServicio = Pick<Toro, 'id' | 'numero'>;
 
@@ -104,7 +104,6 @@ export type Servicio = {
     fecha: Date;
     observacion: string;
     tipo: string;
-    numero_toro: integer;
     toro:Pick <Toro,'id' | 'numero'>
     veterinario: veterinario;
 };

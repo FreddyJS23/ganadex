@@ -1,8 +1,9 @@
 'use client';
 
-import { LayoutModal } from '..';
+import { LayoutModal } from '../..';
 import { ModalProps, Parto } from '@/types';
 import { TableHistoryBirths } from '@/components/tables/in modals/history births';
+import { ContainerTableHistory } from '..';
 
 export const ModalHistoryBirths = ({
     partos,
@@ -14,9 +15,10 @@ export const ModalHistoryBirths = ({
             footer={false}
             isOpen={true}
         >
-            <div className="m-auto mb-4">
+            <ContainerTableHistory>
                 <TableHistoryBirths partos={partos} />
-            </div>
+            </ContainerTableHistory>
+          
         </LayoutModal>
     );
 };

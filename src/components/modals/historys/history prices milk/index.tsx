@@ -1,6 +1,7 @@
-import { LayoutModal } from '..';
+import { LayoutModal } from '../..';
 import { ModalProps, PreciosDeLeche } from '@/types';
 import { TableHistoryPriceMilk } from '@/components/tables/in modals/history price milk';
+import { ContainerTableHistory } from '..';
 
 export const ModalHistoryMilk = ({
     isOpen,
@@ -17,9 +18,9 @@ export const ModalHistoryMilk = ({
             onOpen={onOpen}
             onOpenChange={onOpenChange}
         >
-            <div className="m-auto mb-4">
+            <ContainerTableHistory>
                 <TableHistoryPriceMilk precios={precios} />
-            </div>
+            </ContainerTableHistory>
         </LayoutModal>
     );
 };
