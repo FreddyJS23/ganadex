@@ -1,8 +1,9 @@
 'use client';
 
-import { LayoutModal } from '..';
+import { LayoutModal } from '../..';
 import { ModalProps, PesajeLecheGanado } from '@/types';
 import { TableHistoryWeightMilk } from '@/components/tables/in modals/history weight milk';
+import { ContainerTableHistory } from '..';
 
 export const ModalHistoryWeightMilk = ({
     pesajes_leche,
@@ -14,9 +15,9 @@ export const ModalHistoryWeightMilk = ({
             footer={false}
             isOpen={true}
         >
-            <div className="m-auto mb-4">
+            <ContainerTableHistory>
                 <TableHistoryWeightMilk pesajes_leche={pesajes_leche} />
-            </div>
+            </ContainerTableHistory>
         </LayoutModal>
     );
 };
