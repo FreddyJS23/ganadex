@@ -25,7 +25,7 @@ export const TableHistoryServices = ({ servicios }: ResponseServicios) => {
                                     ? servicio.fecha
                                     : ''}{' '}
                             </td>
-                            <td>{servicio.numero_toro} </td>
+                            <td>{servicio.toro.numero} </td>
                             <td>
                                 <Link href={`${pathname}/${servicio.id}`}>
                                     <IconSearch

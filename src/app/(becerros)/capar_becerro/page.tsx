@@ -5,7 +5,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { crias_pendiente_capar }: ResponseCriasPendienteCapar =
-        await getData('response_criasPendienteCapar');
+        await getData('criasCapar');
 
     return (
         <section>

@@ -5,7 +5,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { todas_revisiones }: ResponseRevisionesGeneral = await getData(
-        'response_revisionesGeneral',
+        'revisiones',
     );
     return (
         <section>

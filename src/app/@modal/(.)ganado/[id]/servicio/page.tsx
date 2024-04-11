@@ -1,11 +1,17 @@
-import { ModalHistoryServices } from '@/components/modals/history services';
+import { ModalHistoryServices } from '@/components/modals/historys/history services';
 import {  ResponseServicios } from '@/types';
 import { getData } from '@/utils/getData';
 
+type ParamsPage = {
+    params: { id: number };
+};
 
-export default async function Page() {
-    const { servicios }: ResponseServicios =
-        await getData('response_servicios');
+export default async function Page({ params }: ParamsPage) {
+    const { servicios }: ResponseServicios = await getData(
+        'ganado',
+        params.id,
+        'servicios',
+    );
 
     return <ModalHistoryServices servicios={servicios} />;
 }

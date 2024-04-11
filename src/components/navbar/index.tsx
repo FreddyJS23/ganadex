@@ -9,8 +9,13 @@ import { getData } from '@/utils/getData';
 import { ResponseNotificaciones } from '@/types';
 
 export const Navbar = async () => {
-     
-    const dataNotifications:ResponseNotificaciones=await getData('response_notificaciones')
+
+    const {notificaciones}:ResponseNotificaciones=await getData('notificaciones')
+    
+    const {parto=[],revision=[],secado=[]}=notificaciones
+
+    const totalNotifications=parto.length + revision.length  + secado.length
+
     
     return (
         <>
@@ -48,11 +53,11 @@ export const Navbar = async () => {
                         >
                             <div className="indicator">
                                 <IconoNotificacion className="text-base-100 sm:text-current  size-8" />
-                                <BadgeNotification />
+                                <BadgeNotification totalNotifications={totalNotifications} />
                             </div>
                         </div>
 
-                        <NotificationMain {...dataNotifications} />
+                        <NotificationMain {...notificaciones} />
                     </div>
 
                     <div className="dropdown dropdown-end">

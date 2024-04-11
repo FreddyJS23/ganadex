@@ -4,7 +4,7 @@ import IconSearch from '@/icons/icono-Revisar.svg';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export const TableHistoryCheckUps = ({ revisioness }: ResponseRevisiones) => {
+export const TableHistoryCheckUps = ({ revisiones }: ResponseRevisiones) => {
     const pathname = usePathname();
 
     return (
@@ -19,7 +19,7 @@ export const TableHistoryCheckUps = ({ revisioness }: ResponseRevisiones) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {revisioness.map((revision) => (
+                        {revisiones.map((revision) => (
                             <tr key={revision.id}>
                                 <td>
                                     {typeof revision.fecha == 'string'

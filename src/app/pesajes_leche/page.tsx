@@ -5,7 +5,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { todos_pesaje_leche }: ResponsePesajesLecheGeneral = await getData(
-        'response_pesajesLecheGeneral',
+        'pesajesLeche',
     );
     return (
         <section>

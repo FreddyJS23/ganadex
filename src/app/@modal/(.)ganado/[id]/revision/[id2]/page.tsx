@@ -8,8 +8,10 @@ type ParamsPage = {
 
 export default async function Page({ params }: ParamsPage) {
     const { revision }: ResponseRevision = await getData(
-        'response_revision',
-        params.id2,
+        'ganado',
+        params.id,
+        'revision',
+        params.id2
     );
 
     return <ModalCheckUp revision={revision} />;

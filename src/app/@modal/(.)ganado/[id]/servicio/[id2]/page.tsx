@@ -8,8 +8,10 @@ type ParamsPage = {
 
 export default async function Page({ params }: ParamsPage) {
     const { servicio }: ResponseServicio = await getData(
-        'response_servicio',
-        params.id2,
+        'ganado',
+        params.id,
+        'servicio',
+        params.id2
     );
 
     return <ModalServe servicio={servicio} />;
