@@ -24,21 +24,21 @@ import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual bal
 export default async function Home() {
   
     const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(
-        'totalGanadoTipo'
+        'dashboardPrincipaltotalGanadoTipo'
     );
     const { top_vacas_productoras }: TopVacasProductoras = await getData(
-        'vacasProductoras',
+        'dashboardPrincipalvacasProductoras',
     );
     const { top_vacas_menos_productoras }: TopVacasMenosProductoras =
-        await getData('vacasMenosProductoras');
+        await getData('dashboardPrincipalvacasMenosProductoras');
     const { mayor_cantidad_insumo }: InsumoMayorExistencia = await getData(
-        'insumoMayorExistencia',
+        'dashboardPrincipalinsumoMayorExistencia',
     );
     const { menor_cantidad_insumo }: InsumoMenorExistencia = await getData(
-        'insumoMenorExistencia',
+        'dashboardPrincipalinsumoMenorExistencia',
     );
     const { balance_anual }: balanceAnualLeche = await getData(
-        'balanceAnualLeche',
+        'dashboardPrincipalbalanceAnualLeche',
     );
     const { ganado_pendiente_revision }: TotalGanadoPendienteRevision = await getData(
         'dashboardPrincipalpendienteRevision',
