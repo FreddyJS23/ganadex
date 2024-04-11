@@ -1,27 +1,22 @@
 import IconCattle from '@/icons/icono-ganado1.svg';
 import IconCloseNotification from '@/icons/icono-cerrar-notificacion.svg';
 import { getNotificationMessage } from '@/utils';
-import { TypeNotification } from '@/types';
+import { Notification,  } from '@/types';
 import { LegacyRef, useRef } from 'react';
+import Link from 'next/link';
 
 /**body de la notificacion */
-type NotificationBodyProps = {
-    /** Identificador del la notificacion */
-    id: number;
-    /** Tipo de notificacion */
-    type: keyof typeof TypeNotification;
-    /** Determina la fecha que ocurrira el evento */
-    date: string;
-    /** Numero del ganado */
-    numberCattle: number | null;
-};
+type NotificationBodyProps =Notification
 
 export const NotificationBody = ({
-    date,
-    type,
-    numberCattle,
+    dias_para_evento,
+    ganado,
+    tipo
 }: NotificationBodyProps) => {
-    const notificationMessage: string = getNotificationMessage(type);
+    
+    const eventPast=Math.sign(dias_para_evento) == -1 ? true : false
+    const notificationMessageEventPast: string ='Ya pasaron ' + Math.abs(dias_para_evento) + ' días desde que se tuvo que hacer ' + getNotificationMessage(tipo).replace('para', ' ');
+    const notificationMessage: string ='Faltan ' + Math.abs(dias_para_evento) + ' días para' + getNotificationMessage(tipo);
 
     const notificationBodyRef: LegacyRef<HTMLDivElement> = useRef(null);
 
@@ -36,21 +31,13 @@ export const NotificationBody = ({
             <div className="flex flex-col">
                 {/*   titulo */}
                 <span className="text-sm sm:text-base font-bold">
-                    {type != 'milk'
-                        ? `Ganado numero ${numberCattle}`
-                        : 'Pesaje mensual de leche'}
+                    Ganado numero
+                    <Link href={`ganado/${ganado.id}`}>{ganado.numero}</Link>
                 </span>
                 {/*   texto */}
-                {type == 'milk' && (
-                    <span className="text-sm sm:text-base">
-                        {notificationMessage}
-                    </span>
-                )}
-                {type != 'milk' && (
-                    <span className="text-sm sm:text-base">
-                        {notificationMessage + date}
-                    </span>
-                )}
+                <span className="text-sm sm:text-base">
+                    {eventPast ? notificationMessageEventPast : notificationMessage}
+                </span>
             </div>
             <IconCloseNotification
                 onClick={() => removeNotification()}
