@@ -43,12 +43,12 @@ export const endPoints = {
 };
 
 export const endPointsCattle = {
-    revision: '/response_revision/',
-    revisiones: '/response_revisiones',
-    servicio: '/response_servicio/',
-    servicios: '/response_servicios',
-    parto: '/response_parto/',
-    partos: '/response_partos',
-    pesajeLeche: '/response_pesajeLeche/',
-    pesajesLeche: '/response_pesajesLeche',
+    revision: '/revision/',
+    revisiones: '/revision',
+    servicio: '/servicio/',
+    servicios: '/servicio',
+    parto: '/parto/',
+    partos: '/parto',
+    pesajeLeche: '/pesaje_leche/',
+    pesajesLeche: '/pesaje_leche',
 };
