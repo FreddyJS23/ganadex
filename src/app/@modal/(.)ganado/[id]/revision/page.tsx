@@ -1,11 +1,15 @@
-import { ModalHistoryCheckUps } from '@/components/modals/history checkups';
+import { ModalHistoryCheckUps } from '@/components/modals/historys/history checkups';
 import { ResponseRevisiones } from '@/types';
 import { getData } from '@/utils/getData';
 
-export default async function Page() {
-    const { revisioness }: ResponseRevisiones = await getData(
-        'ganado',2,'revisiones'
+type ParamsPage = {
+    params: { id: number };
+};
+
+export default async function Page({params}:ParamsPage) {
+    const { revisiones }: ResponseRevisiones = await getData(
+        'ganado',params.id,'revisiones'
     );
 
-    return <ModalHistoryCheckUps revisiones={revisioness} />;
+    return <ModalHistoryCheckUps revisiones={revisiones} />;
 }
