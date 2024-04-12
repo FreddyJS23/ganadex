@@ -1,7 +1,7 @@
 'use client';
 
 import { headerCasttle } from '@/collections/headerColums';
-import { CabezasGanado, EstadosGanado, ResponseGanados } from '@/types';
+import { CabezasGanado, EstadosGanado, Pesos, ResponseGanados } from '@/types';
 import { getAge } from '@/utils/getAge';
 import {
     TableHeader,
@@ -29,6 +29,12 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                         </Link>
                     );
                 }
+                case 'pesos': {
+                    const pesos = cellValue as Pesos;
+                    return (
+                      <div>{pesos.peso_actual}</div>
+                    );
+                }
 
                 case 'estados': {
                     const estados = cellValue as EstadosGanado[];
@@ -37,7 +43,7 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                 }
 
                 case 'fecha_nacimiento': {
-                    const fecha_nacimiento = cellValue as Date;
+                    const fecha_nacimiento = cellValue as string;
                     return <div>{getAge(fecha_nacimiento)}</div>;
                 }
 

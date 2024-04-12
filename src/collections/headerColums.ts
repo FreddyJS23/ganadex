@@ -99,7 +99,7 @@ export const headerCasttle: headersColumns[] = [
     { key: 'nombre', label: 'Nombre' },
     { key: 'sexo', label: 'Sexo' },
     { key: 'fecha_nacimiento', label: 'Edad' },
-    { key: 'peso_actual', label: 'Peso actual' },
+    { key: 'pesos', label: 'Peso actual' },
     { key: 'tipo', label: 'Tipo' },
     { key: 'origen', label: 'Origen' },
     { key: 'estados', label: 'Estados' },
@@ -107,7 +107,7 @@ export const headerCasttle: headersColumns[] = [
 
 export const headerSaleCasttle: headersColumnsSaleCasttle[] = [
     { key: 'fecha', label: 'Fecha' },
-    { key: 'numero_ganado', label: 'Numero de ganado' },
+    { key: 'ganado', label: 'Numero de ganado' },
     { key: 'peso', label: 'Peso' },
     { key: 'precio', label: 'Precio' },
     { key: 'precio_kg', label: 'Precio por KG' },
@@ -192,7 +192,7 @@ export const headerCheckups: headersColumnsCheckups[] = [
 
 export const headerServices: headersColumnsServices[] = [
     { key: 'fecha', label: 'Fecha' },
-    { key: 'numero_toro', label: 'Toro' },
+    { key: 'toro', label: 'Toro' },
 ];
 
 export const headerBirths: headersColumnsBirths[] = [
