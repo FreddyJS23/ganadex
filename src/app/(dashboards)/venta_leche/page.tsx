@@ -5,6 +5,7 @@ import { ResponseVentasLeche } from '@/types';
 import { GanaciasMes, PrecioActual, VariacionPrecio } from '@/types/dashboard';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
+import IconImprimir from '@/icons/icono-imprimir.svg';
 
 export default async function Page() {
     const { ventas_de_leche }: ResponseVentasLeche = await getData(
@@ -38,6 +39,12 @@ export default async function Page() {
                         <span className="text-2xl">
                             Ganancia acumulada del mes actual
                         </span>
+                        <a
+                            target="_blank"
+                            href={`http://127.0.0.1:8000/reportes/venta_leche`}
+                        >
+                            <IconImprimir className={'size-8'} />
+                        </a>
                         {/* boton y modal crear venta leche */}
                         <ButtonCreateItem href={'venta_leche/registrar'} />
                     </div>
