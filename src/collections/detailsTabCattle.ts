@@ -44,7 +44,7 @@ export const DetailsBirht = {
 export const DetailsWeightingMilk = {
     ultimo: 'Ultimo',
     peso: 'Peso',
-    mejor_pesaje: 'Mejor_pesaje',
-    peor_pesaje: 'Peor_pesaje',
-    estado_actual: 'Estado_actual',
+    mejor_pesaje: 'Mejor pesaje',
+    peor_pesaje: 'Peor pesaje',
+    estado_actual: 'Estado actual',
 };
