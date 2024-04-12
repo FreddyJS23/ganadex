@@ -217,7 +217,7 @@ export type Notification = {
 };
 
 export type TypesNotification = {
-    revision: Notification[];
-    parto: Notification[];
-    secado: Notification[];
+    revision?: Notification[];
+    parto?: Notification[];
+    secado?: Notification[];
 };
