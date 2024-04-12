@@ -4,7 +4,7 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { precios }: ResponsePreciosLeche = await getData(
-        'ventasLeche',
+        'preciosLeche',
     );
 
     return <CreateSaleMilk ListaPreciosRegistrados={precios} />;
