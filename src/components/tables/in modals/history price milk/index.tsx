@@ -16,7 +16,7 @@ export const TableHistoryPriceMilk = ({ precios }: ResponsePreciosLeche) => {
                     {precios.map(({ id, precio, fecha }) => (
                         <tr key={id}>
                             <td>{precio} </td>
-                            <td>{fecha.toISOString()} </td>
+                            <td>{fecha} </td>
                         </tr>
                     ))}
                 </tbody>

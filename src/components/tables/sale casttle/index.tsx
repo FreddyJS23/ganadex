@@ -1,7 +1,7 @@
 'use client';
 
 import { headerSaleCasttle } from '@/collections/headerColums';
-import { ResponseVentasGanado, VentaGanado } from '@/types';
+import { Ganado, ResponseVentasGanado, VentaGanado } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -19,11 +19,11 @@ export const TableSaleCasttle = ({ ventas }: ResponseVentasGanado) => {
             const cellValue = venta_ganado[columnKey as keyof VentaGanado];
 
             switch (columnKey as keyof VentaGanado) {
-                case 'numero_ganado':
-                    {const numero = cellValue as number;
+                case 'ganado':
+                    {const ganado = cellValue as Pick<Ganado, 'id' | 'numero'>;
                     return (
-                        <Link href={`ganado/${venta_ganado['id']}`}>
-                            {numero}
+                        <Link href={`ganado/${ganado.id}`}>
+                            {ganado.numero}
                         </Link>
                     );}
 

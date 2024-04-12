@@ -1,4 +1,4 @@
-export const getAge = (fecha: Date) => {
+export const getAge = (fecha: string) => {
     const fechaActual = new Date();
     const fechaNacimiento = new Date(fecha);
     const ageYear = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
