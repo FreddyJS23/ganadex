@@ -17,6 +17,7 @@ import IconCatle from '@/icons/icono-ganado.svg';
 import IconPositive from '@/icons/icono-ganancia.svg';
 import IconNegative from '@/icons/icono-perdida.svg';
 import IconSupplies from '@/icons/icono-insumo.svg';
+import IconImprimir from '@/icons/icono-imprimir.svg';
 import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle production bar';
 import { CircularProgress } from '@/components/circules progress dashboard';
 import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual balance milk';
@@ -59,6 +60,12 @@ export default async function Home() {
             <article className="p-4 bg-base-100 col-span-full max-w-xl md:col-span-2 lex justify-center flex-col  w-full shadow-cards">
                 <div className="flex justify-between">
                     <h3>Cabezas de ganado</h3>
+                    <a
+                        target="_blank"
+                        href={`http://127.0.0.1:8000/reportes/general`}
+                    >
+                        <IconImprimir className={'size-8'} />
+                    </a>
                     <IconCatle
                         className={
                             'size-8 bg-primary opacity-70 p-1 rounded-full'

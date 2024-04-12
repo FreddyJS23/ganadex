@@ -5,7 +5,9 @@ import { TabDetailsCattle } from '@/components/tabsDetatilsCattle';
 import { ResponseGanado } from '@/types';
 import { getData } from '@/utils/getData';
 import Image from 'next/image';
+import Link from 'next/link';
 import cattleImage from 'public/cattle.png';
+import IconoImprimir from '@/icons/icono-imprimir.svg';
 
 type ParamsPageCattle = {
     params: { id: number };
@@ -29,9 +31,12 @@ export default async function Page({ params }: ParamsPageCattle) {
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
-                <h3 className=" font-bold text-2xl">
-                    Detalle del animal {ganado.numero}
-                </h3>
+                <div className='flex gap-2'>
+                    <h3 className=" font-bold text-2xl">
+                        Detalle del animal {ganado.numero}
+                    </h3>
+                    <a target='_blank' href={`http://127.0.0.1:8000/reportes/ganado/${ganado.id}`} > <IconoImprimir className={'size-8'} /></a>
+                </div>
                 <div className="flex flex-col gap-5 md:flex-row items-center ">
                     <div className="">
                         {/*  imagen */}
