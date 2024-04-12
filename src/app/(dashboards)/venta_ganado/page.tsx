@@ -2,6 +2,7 @@ import { CardDashboardSaleCattle } from '@/components/cards';
 import { SalesCatle } from '@/components/charts/dashboard/sales catle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
 import {  ResponseVentasGanado } from '@/types';
+import { MejorComprador, MejorVenta, PeorVenta } from '@/types/dashboard';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 
@@ -9,17 +10,26 @@ export default async function Page() {
     const { ventas }: ResponseVentasGanado = await getData(
         'ventasGanado',
     );
+    const { comprador }:MejorComprador  = await getData(
+        'dashboardVentaGanadomejorComprador',
+    );
+    const { venta:mejorVenta }: MejorVenta = await getData(
+        'dashboardVentaGanadomejorVenta',
+    );
+    const { venta:peorVenta }: PeorVenta = await getData(
+        'dashboardVentaGanadopeorVenta',
+    );
 
     return (
         <section className="flex p-4  gap-8 flex-col sm:pl-12">
             {/* cards */}
             <article className="flex justify-around flex-wrap gap-4 items-center">
                 <CardDashboardSaleCattle
-                    data={'Sebastian'}
+                    data={comprador.nombre}
                     title="Mejor comprador"
                 />
-                <CardDashboardSaleCattle data={999} title="Mejor venta" />
-                <CardDashboardSaleCattle data={999} title="Peor venta" />
+                <CardDashboardSaleCattle data={mejorVenta.precio} title="Mejor venta" />
+                <CardDashboardSaleCattle data={peorVenta.precio} title="Peor venta" />
             </article>
 
             {/*   grafico venta */}
