@@ -29,7 +29,7 @@ export const TableAllWeightMilk = ({
                     const id = cellValue as number;
                     return (
                         <>
-                            <Link href={`pesaje_leche/${id}`}>
+                            <Link href={`pesajes_leche/${id}`}>
                                 <IconButton className={'size-6'} />
                             </Link>
                         </>
