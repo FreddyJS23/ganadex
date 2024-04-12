@@ -19,6 +19,7 @@ export const endPoints = {
     fallecimientos: 'fallecimientos',
     revisiones: 'revisiones',
     servicios: 'servicios',
+    partos: 'partos',
     pesajesLeche: 'pesaje_leche',
     dashboardPrincipaltotalGanadoTipo: 'dashboard_principal/total_ganado_tipo',
     dashboardPrincipaltotalPersonal: 'dashboard_principal/total_personal',
