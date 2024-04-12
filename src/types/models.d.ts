@@ -17,10 +17,10 @@ type Pesos = {
 };
 
 type Eventos = {
-    prox_revision: Date | null;
-    prox_servicio: Date | null;
-    prox_parto: Date | null;
-    prox_secado: Date | null;
+    prox_revision: string | null;
+    prox_servicio: string | null;
+    prox_parto: string | null;
+    prox_secado: string | null;
 };
 
 type veterinario={
@@ -48,10 +48,10 @@ export type Ganado = {
     origen: string | null;
     sexo: 'H' | 'M';
     tipo: keyof typeof TypesCattle;
-    fecha_nacimiento: Date | null;
+    fecha_nacimiento: string | null;
     pesos:Pesos;
     estados: EstadosGanado[];
-    fecha_defuncion: Date | null;
+    fecha_defuncion: string | null;
     causa_defuncion: string | null;
     eventos:Eventos
 };
@@ -63,7 +63,7 @@ export type Toro = {
     origen: string | null;
     sexo: 'M';
     tipo: string;
-    fecha_nacimiento: Date | null;
+    fecha_nacimiento: string | null;
 };
 
 export type Insumo = {
@@ -78,7 +78,7 @@ export type Personal = {
     ci: number;
     nombre: string;
     apellido: string;
-    fecha_nacimiento: Date;
+    fecha_nacimiento: string;
     telefono:string;
     cargo: string;
 };
@@ -92,7 +92,7 @@ export type Configuracion = {
 /**Revision individual de una cabeza de ganado */
 export type Revision = {
     id: number;
-    fecha: Date;
+    fecha: string;
     diagnostico: string;
     tratamiento: string;
     veterinario:veterinario
@@ -101,7 +101,7 @@ export type Revision = {
 /**Servicio individual de una cabeza de ganado */
 export type Servicio = {
     id: number;
-    fecha: Date;
+    fecha: string;
     observacion: string;
     tipo: string;
     toro:Pick <Toro,'id' | 'numero'>
@@ -110,7 +110,7 @@ export type Servicio = {
 
 export type Parto = {
     id: number;
-    fecha: Date;
+    fecha: string;
     observacion: string;
     cria: Cria;
     padre_toro: Pick<Toro, 'id' | 'numero'>;
@@ -121,7 +121,7 @@ export type Parto = {
 export type PesajeLecheGanado = {
     id: number;
     pesaje: PesajeLeche;
-    fecha: Date;
+    fecha: string;
 };
 
 export type User = {
@@ -138,18 +138,18 @@ export type CriaPendienteNumeracion = CriaPendienteCapar;
 export type PreciosDeLeche = {
     id: number;
     precio: number;
-    fecha: Date;
+    fecha: string;
 };
 export type VentaLeche = {
     id: number;
-    fecha: Date;
+    fecha: string;
     cantidad: PesajeLeche;
     precio: number;
 };
 
 export type VentaGanado = {
     id: number;
-    fecha: Date;
+    fecha: string;
     peso: PesajeGanado;
     ganado:Pick <Ganado,'id' | 'numero'>
     precio: number;
@@ -159,7 +159,7 @@ export type VentaGanado = {
 
 export type Fallecimiento = {
     id: number;
-    fecha: Date;
+    fecha: string;
     causa: string;
     ganado: Pick<Ganado, 'id' | 'numero'>;
 };
@@ -197,7 +197,7 @@ export type PesajesLeche = {
 export type Partos = {
     id: number;
     numero: number;
-    ultimo_parto: Date | null;
+    ultimo_parto: string | null;
     total_partos: number;
     toro: Pick <Toro,'id'| 'numero'>;
     cria: Pick <Cria,'id'| 'numero'>;
