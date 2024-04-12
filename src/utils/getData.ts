@@ -29,7 +29,7 @@ export async function getData(
 
     try {
         const res = await fetch(url, optionFetch);
-console.log(res)
+
         
         return res.json();
     } catch (e) {
