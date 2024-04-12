@@ -31,8 +31,9 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                 }
                 case 'pesos': {
                     const pesos = cellValue as Pesos;
+                    
                     return (
-                      <div>{pesos.peso_actual}</div>
+                      <div>{pesos ?  pesos.peso_actual ? pesos.peso_actual : 'desconocido' : 'desconocido'}</div>
                     );
                 }
 
