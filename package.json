@@ -21,6 +21,7 @@
     "framer-motion": "^11.0.3",
     "json-server": "^1.0.0-alpha.21",
     "next": "14.0.4",
+    "next-auth": "beta",
     "prettier": "^3.2.4",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
