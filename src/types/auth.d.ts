@@ -1,4 +1,3 @@
-type login = {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { JWT } from 'next-auth/jwt';
 
@@ -13,7 +12,7 @@ export type ResponseRegistroExitoso = {
 };
 
 export type ResponseLogin = {
-    login: login;
+    login: User;
 };
 
 export type ResponseLoginAuthJs ={
