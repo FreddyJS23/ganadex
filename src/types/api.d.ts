@@ -39,6 +39,10 @@ export type ResponseErrorCampos = {
     message: string;
     errors: errors;
 };
+export type ResponseError = {
+    status: number;
+    data: ResponseErrorCampos;
+};
 
 export type ResponseGanado = {
     ganado: Ganado;

@@ -23,6 +23,8 @@
             "@/*": ["./src/*"],
             "@/icons/*": ["public/assets/icons/*"],
             "@/svg/*": ["public/assets/svg/*"],
+            "@/auth": ["./src/app/auth.ts"],
+            "@/actions": ["./src/actions/*"],
         },
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

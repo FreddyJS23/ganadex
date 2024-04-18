@@ -1,5 +1,4 @@
 import { endPoints, endPointsCattle } from '@/collections/endPointsApi';
-import { auth } from '@/services/auth';
 
 export async function getData(
     endPoint: keyof typeof endPoints,
@@ -8,7 +7,7 @@ export async function getData(
     id2?: number,
 ) {
 
-    const login = await auth();
+ 
    /*  const token = login.login.token; */
      const token = '36|eJqVOt2g2yKtxCFceDeRLrFCRCsfK5UlLMx8vQOj3e2e5ccc'; 
 
