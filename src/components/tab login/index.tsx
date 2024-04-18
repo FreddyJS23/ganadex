@@ -63,12 +63,16 @@ export const TabLogin = () => {
                             required
                             type="password"
                             label="Contraseña"
+                            register={register}
+                            errors={errors}
                         />
                     </div>
 
                     <div className="flex gap-2 justify-end mt-4 sm:w-60">
                         <Button
-                            onClick={onClick}
+                            onClick={() => {
+                                return;
+                            }}
                             color="primary"
                             content="Ingresar"
                         />
