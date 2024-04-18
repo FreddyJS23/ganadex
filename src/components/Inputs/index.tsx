@@ -19,6 +19,9 @@ export const Input = ({
     required,
     endContent,
     size,
+    register,
+    errors
+
 }: InputProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
@@ -42,6 +45,8 @@ export const Input = ({
             isRequired={required}
             endContent={endContent && endContents[endContent]}
             size={size ? size : 'md'}
+            {...register(id,{})}
+            isInvalid={errors[id] && true}
         />
     );
 };
