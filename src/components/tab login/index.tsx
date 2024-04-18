@@ -75,6 +75,7 @@ export const TabLogin = () => {
                             }}
                             color="primary"
                             content="Ingresar"
+                            type="submit"
                         />
                     </div>
                 </form>
