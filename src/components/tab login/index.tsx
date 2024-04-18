@@ -128,7 +128,9 @@ export const TabLogin = () => {
 
                     <div className="flex gap-2 justify-end mt-4">
                         <Button
-                            onClick={onClick}
+                            onClick={() => {
+                                return;
+                            }}
                             color="primary"
                             content="Registrarse"
                         />
