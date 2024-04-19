@@ -35,6 +35,13 @@ export type Response = {
     status: number;
 };
 
+/** Respuesta del servidor */
+export type ResponseCorrect = {
+    /** Informacion de la repuesta */
+    message:string;
+   
+};
+
 export type ResponseErrorCampos = {
     message: string;
     errors: errors;
