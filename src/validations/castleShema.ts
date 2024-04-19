@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from './configInitZod';
 
 export const castleShema = z.object({
     nombre: z.string(),
