@@ -1,25 +1,31 @@
 import { endPoints, endPointsCattle } from '@/collections/endPointsApi';
+import { handleResponse } from './handleResponseApi';
+import { ResponseError } from '@/types';
 
 export async function getData(
     endPoint: keyof typeof endPoints,
+    method:'GET' | 'POST' | 'DELETE' | 'PUT'='GET',
+    data?:unknown,
     id?: number,
     endPointCattle?: keyof typeof endPointsCattle,
     id2?: number,
 ) {
 
- 
    /*  const token = login.login.token; */
      const token = '36|eJqVOt2g2yKtxCFceDeRLrFCRCsfK5UlLMx8vQOj3e2e5ccc'; 
 
     let url = 'http://127.0.0.1:8000/' + 'api/' + endPoints[endPoint];
     const optionFetch: RequestInit = {
         cache: 'no-store',
+        method: method,
         headers: {
             Accept: 'application/json',
             Origin: process.env.ORIGIN,
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
         credentials: 'include',
+     body: JSON.stringify(data),
     };
 
     if (id) url = url + id;
@@ -29,10 +35,16 @@ export async function getData(
     try {
         const res = await fetch(url, optionFetch);
 
-        
-        return res.json();
-    } catch (e) {
-        throw new Error('error in fetch');
+        const { data, status } = await handleResponse(res);
 
+        if (status == 200 || status == 201) return data;
+        else if (status == 422 || status == 401 || status == 500 || status == 404)
+            throw { status: status, data: data };
+    } catch (e) {
+        if (e instanceof Error) throw e;
+
+        const { status, data } = e as ResponseError;
+      
+        throw { status, data };
     }
 }
