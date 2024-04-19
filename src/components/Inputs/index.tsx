@@ -47,6 +47,7 @@ export const Input = ({
             size={size ? size : 'md'}
             {...register(id,{})}
             isInvalid={errors[id] && true}
+            errorMessage={errors[id] && errors[id].message as string}
         />
     );
 };
