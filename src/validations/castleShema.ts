@@ -1,9 +1,9 @@
 import { z } from './configInitZod';
 
 export const castleShema = z.object({
-    nombre: z.string(),
     numero: z.number(),
-    origen: z.string(),
+    nombre: z.string().min(3).max(255),
+    origen:  z.string().min(3).max(255),
     sexo: z.enum(['H', 'M']),
     tipo_id: z.number(),
     fecha_nacimiento: z.date(),
@@ -13,5 +13,5 @@ export const castleShema = z.object({
     peso_actual: z.string().regex(/^\d+(\.\d+)?KG$/),
     estado_id: z.array(z.number()),
     fecha_defuncion: z.string(),
-    causa_defuncion: z.string(),
+    causa_defuncion: z.string().max(255),
 });
