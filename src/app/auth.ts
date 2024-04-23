@@ -11,12 +11,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (user) {
                 token.usuario = user.usuario;
                 token.token = user.token;
+            /*     token.cookieCsrf=user.cookieCsrf */
             }
             return token;
         },
         session({ session, token }) {
             session.user.token = token.token;
             session.user.usuario = token.usuario;
+           /*  session.user.cookieCsrf=token.cookieCsrf */
             return session;
         },
     },
@@ -37,7 +39,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     console.log(user)
                     return user;
                 } catch (errorServe) {
-                    
                     if (errorServe instanceof Error) throw new AuthError(ERROR_SERVER);
                     
                     const codeStatusServe=errorServe as ResponseError
