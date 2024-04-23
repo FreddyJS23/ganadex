@@ -51,19 +51,6 @@ export type InputProps = {
     /** Hook para control del input */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     register: UseFormRegister<any>;
-
-    /** Expresión regular para el campo*/
-    pattern?: ValidationRule<RegExp>;
-    /**Indica si el campo es requerido para la validación */
-    required?: boolean;
-    /**Indica la longitud máxima que debe tener */
-    maxLength?: number;
-    /** Indica la longitud mínima que debe tener */
-    minLength?: number;
-    /**Indica el valor mínimo que debe tener */
-    min?: number;
-    /**Indica el valor máximo que debe tener */
-    max?: number;
     /**Objeto con los campos que no pasen su validación, para asignar un clase error al label */
     errors: FieldErrors;
 };
