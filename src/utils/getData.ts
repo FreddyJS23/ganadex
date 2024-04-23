@@ -1,6 +1,10 @@
+'use server'
+
 import { endPoints, endPointsCattle } from '@/collections/endPointsApi';
 import { handleResponse } from './handleResponseApi';
 import { ResponseError } from '@/types';
+import { auth } from '@/auth';
+import { Session } from 'next-auth';
 
 export async function getData(
     endPoint: keyof typeof endPoints,
@@ -15,15 +19,16 @@ export async function getData(
      const token = '36|eJqVOt2g2yKtxCFceDeRLrFCRCsfK5UlLMx8vQOj3e2e5ccc'; 
 
     let url = 'http://127.0.0.1:8000/' + 'api/' + endPoints[endPoint];
+    
+    const headers = new Headers({
+        Accept: 'application/json',
+        Origin: process.env.ORIGIN,
+        'Content-Type': 'application/json',
+    });
     const optionFetch: RequestInit = {
         cache: 'no-store',
         method: method,
-        headers: {
-            Accept: 'application/json',
-            Origin: process.env.ORIGIN,
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-        },
+        headers: headers,
         credentials: 'include',
      body: JSON.stringify(data),
     };
