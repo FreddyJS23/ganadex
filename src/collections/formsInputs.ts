@@ -173,7 +173,7 @@ export const formBirth: FieldsBirth[] = [
 
 export const formSupply: FieldsSupply[] = [
     { id: 'insumo', label: 'Insumo', required: true, type: 'text' },
-    { id: 'cantidad', label: 'Cantidad', required: true, type: 'text' },
+    { id: 'cantidad', label: 'Cantidad', required: true, type: 'number' },
     { id: 'precio', label: 'Precio', required: true, type: 'number' },
 ];
 export const formStaff: FieldsStaff[] = [
