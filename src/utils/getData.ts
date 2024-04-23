@@ -15,8 +15,12 @@ export async function getData(
     id2?: number,
 ) {
 
-   /*  const token = login.login.token; */
-     const token = '36|eJqVOt2g2yKtxCFceDeRLrFCRCsfK5UlLMx8vQOj3e2e5ccc'; 
+    const session = await auth() as Session;
+
+    const {user}=session
+
+   /*  const {token,cookieCsrf}=user */
+    const {token}=user
 
     let url = 'http://127.0.0.1:8000/' + 'api/' + endPoints[endPoint];
     
@@ -24,6 +28,7 @@ export async function getData(
         Accept: 'application/json',
         Origin: process.env.ORIGIN,
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
     });
     const optionFetch: RequestInit = {
         cache: 'no-store',
