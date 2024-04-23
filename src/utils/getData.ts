@@ -55,9 +55,7 @@ export async function getData(
             throw { status: status, data: data };
     } catch (e) {
         if (e instanceof Error) throw e;
-
         const { status, data } = e as ResponseError;
-      
-        throw { status, data };
+        throw (`código ${status} ${data.message}`);
     }
 }
