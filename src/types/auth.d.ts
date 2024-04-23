@@ -22,12 +22,18 @@ export type ResponseLoginAuthJs ={
 
 }
 
+export type CookieCsrf = {
+    nameCookie:string;
+    token:string;
+}
+
 declare module 'next-auth' {
-    export interface User  {
+    export interface User {
         /** Define any user-specific variables here to make them available to other code inferences */
         id: number;
         usuario: string;
         token: string;
+        cookieCsrf:CookieCsrf[]
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
     /**
@@ -43,6 +49,7 @@ declare module 'next-auth/jwt' {
         id: number;
         usuario: string;
         token: string;
+        cookieCsrf: CookieCsrf[];
     }
     
 }

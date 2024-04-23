@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Providers } from './providers';
 import localFont from 'next/font/local';
+import { Toaster } from 'sonner';
 
 const bebasNue = localFont({
     src: '../../public/fonts/BebasNeue-Regular.ttf',
@@ -33,6 +34,7 @@ export default function RootLayout({
             >
                 <Providers>
                     {children}
+                    <Toaster richColors />
                 </Providers>
             </body>
         </html>
