@@ -30,6 +30,9 @@ export async function getData(
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
     });
+
+   /*  if(method == 'POST') headers.append('X-XSRF-TOKEN', cookieCsrf[0].token); */
+    
     const optionFetch: RequestInit = {
         cache: 'no-store',
         method: method,
