@@ -1,5 +1,5 @@
 import { z } from './configInitZod';
 
-export const createStaffShema = z.object({
+export const createConfigurationShema = z.object({
     moneda: z.string().min(1).max(1),
 });

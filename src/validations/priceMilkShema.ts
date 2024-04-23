@@ -1,5 +1,5 @@
 import { z } from './configInitZod';
 
-export const createBullshema = z.object({
+export const createPriceMilkShema = z.object({
     precio: z.number(),
 });
