@@ -18,35 +18,36 @@ import { typeCasttleSelect } from './typeCastleSelect';
 import { stateCasttleSelect } from './statesCasttleSelect';
 import { typeServicesForCasttle } from './typesServicesForCasttle';
 
-type FieldsCastle = Omit<InputProps, 'id' | 'label'> & {
+type FieldsCastle =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdCasttle;
     label: keyof typeof FieldsLabelsCasttle;
     select?: { value: string | number; label: string }[];
 };
 
-type FieldsCheckUp = Omit<InputProps, 'id' | 'type' | 'label'> & {
+type FieldsCheckUp =  {
     id: keyof typeof FieldsIdCheckUp;
     label: keyof typeof FieldsLabelsCheckUp;
+    required:boolean
 };
 
-type FieldsService = Omit<InputProps, 'id' | 'label'> & {
+type FieldsService =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdService;
     label: keyof typeof FieldsLabelsService;
     select?: { value: string | number; label: string }[];
 };
 
-type FieldsBirth = Omit<InputProps, 'id' | 'label'> & {
+type FieldsBirth =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdBirth;
     label: keyof typeof FieldsLabelsBirth;
     select?: { value: string | number; label: string }[];
 };
 
-type FieldsSupply = Omit<InputProps, 'id' | 'label'> & {
+type FieldsSupply =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdSupply;
     label: keyof typeof FieldsLabelsSupply;
 };
 
-type FieldsStaff = Omit<InputProps, 'id' | 'label'> & {
+type FieldsStaff =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdStaff;
     label: keyof typeof FieldsLabelsStaff;
 };
@@ -79,28 +80,28 @@ export const formCastle: FieldsCastle[] = [
         id: 'peso_actual',
         label: 'Peso actual',
         required: false,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
         id: 'peso_destete',
         label: 'Peso de destete',
         required: false,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
         id: 'peso_nacimiento',
         label: 'Peso de nacimiento',
         required: false,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
         id: 'peso_2year',
         label: 'Peso de 2 años',
         required: false,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
