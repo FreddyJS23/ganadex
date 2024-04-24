@@ -261,6 +261,7 @@ export enum FieldsLabelsStaff {
     Cedula,
     Nombre,
     Apellido,
+    Telefono,
     'Fecha de nacimiento',
     Cargo,
 }
