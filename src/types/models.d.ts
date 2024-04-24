@@ -221,3 +221,8 @@ export type TypesNotification = {
     parto?: Notification[];
     secado?: Notification[];
 };
+
+export type PositionStaff = {
+    id:number;
+    cargo:'obrero' | 'veterinario';
+}

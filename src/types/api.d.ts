@@ -11,6 +11,7 @@ import {
     Personal,
     PesajeLecheGanado,
     PesajesLeche,
+    PositionStaff,
     PreciosDeLeche,
     Revision,
     Revisiones,
@@ -208,4 +209,8 @@ export type ResponsePartosGeneral = {
 
 export type ResponseNotificaciones = {
     notificaciones: TypesNotification;
+};
+
+export type ResponseCargosPersonal = {
+    cargos_personal:PositionStaff[];
 };

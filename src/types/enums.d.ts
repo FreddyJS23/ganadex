@@ -253,14 +253,16 @@ export enum FieldsIdStaff {
     ci,
     nombre,
     apellido,
+    telefono,
     'fecha_nacimiento',
-    cargo,
+    'cargo_id',
 }
 
 export enum FieldsLabelsStaff {
     Cedula,
     Nombre,
     Apellido,
+    Telefono,
     'Fecha de nacimiento',
     Cargo,
 }
