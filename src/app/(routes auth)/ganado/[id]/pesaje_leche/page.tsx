@@ -9,6 +9,8 @@ type ParamsPage = {
 export default async function Page({ params }: ParamsPage) {
     const { pesajes_leche }: ResponsePesajesLeche = await getData(
         'ganado',
+        'GET',
+        undefined,
         params.id,
         'pesajesLeche',
     );

@@ -7,7 +7,7 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-    const { partos }: ResponsePartos = await getData('ganado', params.id, 'partos');
+    const { partos }: ResponsePartos = await getData('ganado','GET',undefined, params.id, 'partos');
 
     return <ModalHistoryBirths partos={partos} />;
 }

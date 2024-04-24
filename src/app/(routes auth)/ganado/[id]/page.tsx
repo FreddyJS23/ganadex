@@ -23,8 +23,8 @@ export default async function Page({ params }: ParamsPageCattle) {
         efectividad,
         parto_reciente,
         total_partos,
-        info_pesajes_leche
-    }: ResponseGanado = await getData('ganado', params.id);
+        info_pesajes_leche,
+    }: ResponseGanado = await getData('ganado', 'GET', undefined, params.id);
 
     const { eventos } = ganado;
 

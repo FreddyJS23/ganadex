@@ -9,6 +9,8 @@ type ParamsPage = {
 export default async function Page({ params }: ParamsPage) {
     const { revision }: ResponseRevision = await getData(
         'ganado',
+        'GET',
+        undefined,
         params.id,
         'revision',
         params.id2

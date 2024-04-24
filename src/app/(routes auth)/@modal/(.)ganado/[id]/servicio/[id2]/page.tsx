@@ -9,6 +9,8 @@ type ParamsPage = {
 export default async function Page({ params }: ParamsPage) {
     const { servicio }: ResponseServicio = await getData(
         'ganado',
+        'GET',
+        undefined,
         params.id,
         'servicio',
         params.id2
