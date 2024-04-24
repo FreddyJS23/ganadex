@@ -253,6 +253,7 @@ export enum FieldsIdStaff {
     ci,
     nombre,
     apellido,
+    telefono,
     'fecha_nacimiento',
     cargo,
 }
