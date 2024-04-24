@@ -5,7 +5,7 @@ const regexDate = /[1-9][0-9][0-9]{2}-([0][1-9]|[1][0-2])-([1-2][0-9]|[0][1-9]|[
 
 
 export const createStaffShema = z.object({
-    ci: z.number().min(5).max(6),
+    ci: z.number().gt(1000000).lte(99999999),
     nombre: z.string().min(3).max(255),
     apellido: z.string().min(3).max(255),
     fecha_nacimiento: z.string().regex(regexDate),
