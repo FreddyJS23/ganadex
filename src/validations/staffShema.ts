@@ -10,5 +10,5 @@ export const createStaffShema = z.object({
     apellido: z.string().min(3).max(255),
     fecha_nacimiento: z.string().regex(regexDate),
     telefono: z.string().regex(/^\d{4}-\d{7,7}$/),
-    cargo_id: z.number(),
+    cargo_id:z.string().regex(/\d/),
 });
