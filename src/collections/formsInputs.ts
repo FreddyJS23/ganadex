@@ -179,6 +179,7 @@ export const formSupply: FieldsSupply[] = [
 export const formStaff: FieldsStaff[] = [
     { id: 'ci', label: 'Cedula', required: true, type: 'number' },
     { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
+    { id: 'telefono', label: 'Telefono', required: true, type: 'tel' },
     { id: 'apellido', label: 'Apellido', required: true, type: 'text' },
     {
         id: 'fecha_nacimiento',
