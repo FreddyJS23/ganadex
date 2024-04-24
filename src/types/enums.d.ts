@@ -255,7 +255,7 @@ export enum FieldsIdStaff {
     apellido,
     telefono,
     'fecha_nacimiento',
-    cargo,
+    'cargo_id',
 }
 
 export enum FieldsLabelsStaff {
