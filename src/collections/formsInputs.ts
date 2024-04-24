@@ -187,5 +187,5 @@ export const formStaff: FieldsStaff[] = [
         required: true,
         type: 'date',
     },
-    { id: 'cargo', label: 'Cargo', required: true, type: 'text' },
+    { id: 'cargo_id', label: 'Cargo', required: true, type: 'select' },
 ];
