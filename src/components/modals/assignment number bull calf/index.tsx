@@ -27,6 +27,8 @@ export const ModalAssignmentNumberBullCalf = ({
                     required
                     type="number"
                     size="lg"
+                    register={register}
+                    errors={errors}
                 />
             </form>
         </LayoutModal>
