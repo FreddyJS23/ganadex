@@ -4,12 +4,14 @@ import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
 import { ModalProps } from '@/types';
 import { useDisclosure } from '@nextui-org/react';
+import { useRef } from 'react';
 
 export const ModalAssignmentNumberBullCalf = ({
     dataHeader,
 }: Pick<ModalProps, 'dataHeader'>) => {
     const { onOpen, onOpenChange } = useDisclosure();
 
+const formRef=useRef(null)
     return (
         <LayoutModal
             icon="bullCalf"
@@ -19,8 +21,9 @@ export const ModalAssignmentNumberBullCalf = ({
             isOpen={true}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
+            refForm={formRef}
         >
-            <form action="" method="post" className="m-auto w-2/4 ">
+            <form ref={formRef} id='form-assignmentNumber' action={actionAssigmentNumberBullCalf}  className="m-auto w-2/4 ">
                 <Input
                     id="numero"
                     label="Numero"
