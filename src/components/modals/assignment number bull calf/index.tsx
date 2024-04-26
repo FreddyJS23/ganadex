@@ -22,7 +22,7 @@ export const ModalAssignmentNumberBullCalf = ({
         >
             <form action="" method="post" className="m-auto w-2/4 ">
                 <Input
-                    id="AsignacionNumero"
+                    id="numero"
                     label="Numero"
                     required
                     type="number"
