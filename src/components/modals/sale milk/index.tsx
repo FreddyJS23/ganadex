@@ -6,6 +6,7 @@ import { CreateSaleMilk } from '@/types/forms';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createSaleMilkShema } from '@/validations/saleMilkShema';
+import { useRef } from 'react';
 
 export const ModalSaleMilk = ({
     isOpen,
@@ -33,9 +34,12 @@ const {
             isOpen={isOpen}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
+            refForm={formRef}
         >
             <form
-                action=""
+                id='form-createSaleMilk'
+                ref={formRef}
+                action={actionCreateSaleMilk}
                 method="post"
                 className="m-auto flex flex-col gap-4 w-2/4 "
             >
