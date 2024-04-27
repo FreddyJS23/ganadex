@@ -167,6 +167,10 @@ export type ResponseVentasLeche = {
     ventas_de_leche: VentaLeche[];
 };
 
+export type ResponseVentaLeche = {
+    venta_leche: VentaLeche;
+};
+
 export type ResponseComprador = {
     comprador: Comprador;
 };
