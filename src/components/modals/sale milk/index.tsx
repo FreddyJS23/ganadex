@@ -7,6 +7,10 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createSaleMilkShema } from '@/validations/saleMilkShema';
 import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { createSaleMilk } from '@/actions/createSaleMilk';
+import { toast } from 'sonner';
+import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 
 export const ModalSaleMilk = ({
     isOpen,
@@ -24,6 +28,21 @@ const {
     handleSubmit,
 } = useForm<CreateSaleMilk>({
     resolver: zodResolver(createSaleMilkShema),
+});
+
+const router = useRouter();
+const formRef = useRef(null);
+
+const actionCreateSaleMilk: () => void = handleSubmit(async (data) => {
+    try {
+       const saleMilk=await createSaleMilk(data);
+        toast.success(`Se ha realizado la venta de ${saleMilk} de leche`);
+        /* router.back();
+        router.refresh(); */
+    } catch (error) {
+        const message = error as string;
+        return toast.error(message);
+    }
 });
 
     return (
