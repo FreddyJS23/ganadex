@@ -15,9 +15,11 @@ export const converToSelectOptions = (
 
         itemsSelect.push({
             value: items[keyIdObject],
-            label: items[keyItemObject] as string,
+            label:
+                typeof items[keyItemObject] == 'number'
+                    ? items[keyItemObject].toString()
+                    : items[keyItemObject],
         });
     });
-
     return itemsSelect;
 };
