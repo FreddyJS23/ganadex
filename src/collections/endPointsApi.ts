@@ -7,6 +7,7 @@ export const endPoints = {
     criasNumeracion: 'crias_pendiente_numeracion',
     asignarNumeroCria: 'asignar_numero_cria/',
     criasCapar: 'crias_pendiente_capar',
+    caparCria: 'capar_cria/',
     preciosLeche: 'precio',
     ventasLeche: 'venta_leche',
     insumo: 'insumo/',
