@@ -51,7 +51,7 @@ export async function getData(
         const { data, status } = await handleResponse(res);
 
         if (status == 200 || status == 201) return data;
-        else if (status == 422 || status == 401 || status == 500 || status == 404 || status == 419)
+        else if (status == 422 || status == 401 || status == 500 || status == 404 || status == 419 || status != 200)
             throw { status: status, data: data };
     } catch (e) {
         if (e instanceof Error) throw e;

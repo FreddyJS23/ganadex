@@ -9,6 +9,9 @@ import {
     ModalFooter,
 } from '@nextui-org/modal';
 import { useRouter } from 'next/navigation';
+import { MutableRefObject, useEffect, useState } from 'react';
+
+
 
 export const LayoutModal = ({
     titleModal,

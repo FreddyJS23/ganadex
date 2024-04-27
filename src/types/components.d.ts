@@ -8,6 +8,7 @@ import {
     TitlesModals,
     URLS,
 } from '.';
+import { MutableRefObject } from 'react';
 
 /**opcion del sidebar */
 export type SidebarElementProps = {
@@ -65,7 +66,7 @@ export type LayoutModalProps = {
     icon: keyof typeof IconsModal;
     /**Habilidar botones de registras y cancelar   */
     footer: boolean;
-
+    refForm?: MutableRefObject<HTMLFormElement | null>;
     isOpen?: boolean;
     onOpen?: () => void;
     onOpenChange?: () => void;
