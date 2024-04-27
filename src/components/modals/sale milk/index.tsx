@@ -37,8 +37,8 @@ const actionCreateSaleMilk: () => void = handleSubmit(async (data) => {
     try {
        const saleMilk=await createSaleMilk(data);
         toast.success(`Se ha realizado la venta de ${saleMilk} de leche`);
-        /* router.back();
-        router.refresh(); */
+         router.back();
+        router.refresh(); 
     } catch (error) {
         const message = error as string;
         return toast.error(message);
