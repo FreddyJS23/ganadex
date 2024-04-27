@@ -2,6 +2,10 @@ import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
 import { ModalProps, PreciosDeLeche } from '@/types';
 import { Select } from '@/components/select';
+import { CreateSaleMilk } from '@/types/forms';
+import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { createSaleMilkShema } from '@/validations/saleMilkShema';
 
 export const ModalSaleMilk = ({
     isOpen,
@@ -9,11 +13,17 @@ export const ModalSaleMilk = ({
     onOpenChange,
     selectPrecios,
 }: ModalProps & { selectPrecios: PreciosDeLeche[] }) => {
-    const itemsSelect: { value: string | number; label: string }[] = [];
+   
 
-    selectPrecios.map(({ id, precio }) =>
-        itemsSelect.push({ value: id, label: precio.toString() }),
-    );
+
+const {
+    register,
+    formState: { errors },
+    control,
+    handleSubmit,
+} = useForm<CreateSaleMilk>({
+    resolver: zodResolver(createSaleMilkShema),
+});
 
     return (
         <LayoutModal
@@ -30,20 +40,30 @@ export const ModalSaleMilk = ({
                 className="m-auto flex flex-col gap-4 w-2/4 "
             >
                 <Input
-                    id="lecheKg"
+                    id="cantidad"
                     label="Kilogramos"
                     required
                     type="number"
                     endContent="weight-milk"
                     size="lg"
+                    register={register}
+                    errors={errors}
                 />
-                <Select
-                    id="precio"
-                    label="Precio"
-                    required
-                    description="Precios disponibles por kg, creados previamente"
-                    items={itemsSelect}
-                    endContent="dolar"
+                <Controller
+                    name="precio_id"
+                    control={control}
+                    render={({ field }) => (
+                        <Select
+                            id="precio_id"
+                            label="Precio"
+                            required
+                            description="Precios disponibles por kg, creados previamente"
+                            items={converToSelectOptions(selectPrecios)}
+                            endContent="dolar"
+                            errors={errors}
+                            field={field}
+                        />
+                    )}
                 />
             </form>
         </LayoutModal>

@@ -1,6 +1,6 @@
 'use serve';
 
-import { ResponseError, ResponseVentaLeche, VentaLeche } from '@/types';
+import { ResponseError, ResponseVentaLeche, } from '@/types';
 import { CreateSaleMilk,} from '@/types/forms';
 import { getData } from '@/utils/getData';
 
