@@ -76,6 +76,7 @@ export const CardDashboardSaleMilk = ({
     variationValue,
     multipleOption
 }: ContentCardSaleMilkProp) => {
+ const isNegative = Math.sign(variationValue); 
     return (
         <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
             <div className="flex items-center justify-between">
@@ -87,7 +88,13 @@ export const CardDashboardSaleMilk = ({
                 <div className="flex gap-1">
                     <span className="text-xs">{`${variationValue}`}</span>
                     <span className="size-4">
-                        <IconFlechaEstadoDolar className={'text-red-500'} />
+                        <IconFlechaEstadoDolar
+                            className={
+                                isNegative == -1
+                                    ? 'text-red-500'
+                                    : 'rotate-180 text-green-500'
+                            }
+                        />
                     </span>
                 </div>
             </div>
