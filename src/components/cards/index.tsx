@@ -18,7 +18,7 @@ type ContentCardProp = {
 type ContentCardSaleCattleProp = {
     title: 'Mejor comprador' | 'Mejor venta' | 'Peor venta';
     data: string | number;
-    multipleOption:boolean;
+    multipleOption?:boolean;
 };
 
 type ContentCardSaleMilkProp = {
@@ -27,7 +27,7 @@ type ContentCardSaleMilkProp = {
     value: number;
     /**Porcentaje de variacion respecto al precio anterior del actual */
     variationValue: number;
-    multipleOption:boolean;
+    multipleOption?:boolean;
 };
 
 export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
