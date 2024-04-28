@@ -29,6 +29,7 @@ export default async function Page() {
                     title="Precio actual"
                     value={precio_actual}
                     variationValue={variacion}
+                    multipleOption={true}
                 />
             </article>
             <div className="flex gap-6 flex-col lg:flex-row w-full">
