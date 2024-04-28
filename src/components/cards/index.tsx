@@ -3,6 +3,7 @@ import IconServicio from '@/icons/icono-servir.svg';
 import IconRevision from '@/icons/icono-revision.svg';
 import IconPersonal from '@/icons/icono-personal.svg';
 import IconFlechaEstadoDolar from '@/icons/icono-flechaEstadoDolar.svg';
+import { DropDownOptionsCardsDashboard } from '../dropdown options cards dashboard';
 
 type ContentCardProp = {
     title:
@@ -17,6 +18,7 @@ type ContentCardProp = {
 type ContentCardSaleCattleProp = {
     title: 'Mejor comprador' | 'Mejor venta' | 'Peor venta';
     data: string | number;
+    multipleOption:boolean;
 };
 
 type ContentCardSaleMilkProp = {
@@ -25,6 +27,7 @@ type ContentCardSaleMilkProp = {
     value: number;
     /**Porcentaje de variacion respecto al precio anterior del actual */
     variationValue: number;
+    multipleOption:boolean;
 };
 
 export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
@@ -53,12 +56,13 @@ export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
 export const CardDashboardSaleCattle = ({
     title,
     data,
+    multipleOption
 }: ContentCardSaleCattleProp) => {
     return (
         <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
             <div className="flex">
                 <span>{title}</span>
-                <div className="size-4"></div>
+                 {multipleOption && <DropDownOptionsCardsDashboard tipo="comprador" /> } 
             </div>
 
             <span className="font-bold text-xl font-bebasNue">{`${data} ${typeof data == 'number' ? '$' : ''}`}</span>
@@ -70,12 +74,13 @@ export const CardDashboardSaleMilk = ({
     title,
     value,
     variationValue,
+    multipleOption
 }: ContentCardSaleMilkProp) => {
     return (
         <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
-            <div className="flex">
+            <div className="flex items-center justify-between">
                 <span>{title}</span>
-                <div className="size-4"></div>
+                {multipleOption && <DropDownOptionsCardsDashboard tipo="precio" /> }  
             </div>
             <div className="flex justify-between items-center">
                 <span className="font-bold text-xl font-bebasNue">{`${value}$`}</span>
