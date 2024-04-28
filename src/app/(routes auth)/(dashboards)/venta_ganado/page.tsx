@@ -28,6 +28,7 @@ export default async function Page() {
                 <CardDashboardSaleCattle
                     data={comprador.nombre}
                     title="Mejor comprador"
+                    multipleOption
                 />
                 <CardDashboardSaleCattle
                     data={mejorVenta.precio}
