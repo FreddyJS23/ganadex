@@ -1,5 +1,6 @@
 import {
     CabezasGanado,
+    Comprador,
     CriaPendienteCapar,
     CriaPendienteNumeracion,
     Insumo,
@@ -91,6 +92,11 @@ type headersColumnsWeightMilk = {
 
 type headersColumnsAllWeightMilk = {
     key: keyof PesajesLeche;
+    label: string;
+};
+
+type headersColumnsCustomer = {
+    key: keyof Comprador;
     label: string;
 };
 
@@ -203,4 +209,8 @@ export const headerBirths: headersColumnsBirths[] = [
 export const headerWeightMilk: headersColumnsWeightMilk[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'pesaje', label: 'Pesaje' },
+];
+
+export const headerCustomers: headersColumnsCustomer[] = [
+    { key: 'nombre', label: 'Nombre' },
 ];
