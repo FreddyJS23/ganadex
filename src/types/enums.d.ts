@@ -157,6 +157,7 @@ export enum TitlesModals {
     'Historial de precio de la leche',
     'Venta de leche',
     'Crear nuevo comprador',
+    'Compradores registrados',
     'Venta de ganado',
     'Nuevo fallecimiento',
     'Historial de revisiones',
