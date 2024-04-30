@@ -60,7 +60,9 @@ export const endPointsCattle = {
 };
 
 export const endpointsReports={
-    venta_ganado:'reportes/venta_ganado',
     venta_leche:'reportes/venta_leche',
     fallecimiento:'reportes/fallecimiento',
+}
+export const endpointsReportsAnnual={
+    venta_ganado:'venta_ganado',
 }

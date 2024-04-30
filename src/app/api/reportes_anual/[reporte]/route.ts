@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { endpointsReports } from '@/collections/endPointsApi';
+import {  endpointsReportsAnnual } from '@/collections/endPointsApi';
 import { GetReportsYear } from '@/services/generateReportsYear';
 
 type Params = {
-    params: { reporte: keyof typeof endpointsReports };
+    params: { reporte: keyof typeof endpointsReportsAnnual };
 };
 export async function GET(
     req: NextRequest,
