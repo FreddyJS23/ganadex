@@ -1,12 +1,12 @@
 'use server';
 
-import { endpointsReports } from '@/collections/endPointsApi';
+import { endpointsReportsAnnual } from '@/collections/endPointsApi';
 import { ResponseError } from '@/types';
 import { auth } from '@/auth';
 import { Session } from 'next-auth';
 
 export const GetReportsYear = async (
-    endPoint: keyof typeof endpointsReports,
+    endPoint: keyof typeof endpointsReportsAnnual,
     year: number,
 ) => {
     const session = (await auth()) as Session;
@@ -18,7 +18,7 @@ export const GetReportsYear = async (
 
     const url =
         'http://127.0.0.1:8000' +
-        `/${endpointsReports[endPoint]}?year=${year}`;
+        `/${endpointsReportsAnnual[endPoint]}?year=${year}`;
 
     const headers = new Headers({
         Accept: '*/*',

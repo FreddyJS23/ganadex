@@ -1,12 +1,12 @@
 'use serve';
 
-import { endpointsReports } from '@/collections/endPointsApi';
+import {  endpointsReportsAnnual } from '@/collections/endPointsApi';
 import { ResponseError } from '@/types';
 import {  YearToReports } from '@/types/forms';
 
 export async function generateReportsYear(
     formData: YearToReports,
-    report: keyof typeof endpointsReports,
+    report: keyof typeof endpointsReportsAnnual,
 ): Promise<Blob | ResponseError | undefined> {
     try {
         const file = await fetch(
