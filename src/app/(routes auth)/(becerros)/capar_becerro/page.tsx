@@ -1,4 +1,4 @@
-import { TableCastreteBullCalf } from '@/components/tables/castrete bull calf ';
+import { TableCastreteBullCalf } from '@/components/tables/castrete bull calf';
 import { ResponseCriasPendienteCapar } from '@/types';
 import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
