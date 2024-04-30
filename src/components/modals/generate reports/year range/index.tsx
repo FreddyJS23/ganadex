@@ -7,10 +7,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { toast } from 'sonner';
-import { rangeDatesToReportsShema } from '@/validations/rangeDatesShema';
 import {  endpointsReportsAnnual } from '@/collections/endPointsApi';
 import { generateReportsYear } from '@/actions/generate report year';
 import { yearsToGenerateReportShema } from '@/validations/yearsTotGenerateReportShema';
+import { YearToReports } from '@/types/forms';
 
 export const ModalGenerateReportYear = ({
     onOpen,
