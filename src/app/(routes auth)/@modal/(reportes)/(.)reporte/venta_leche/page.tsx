@@ -1,5 +1,5 @@
 
-import { ModalGenerateReport } from "@/components/modals/generate reports";
+import { ModalGenerateReport } from "@/components/modals/generate reports/date range";
 
 export default async function Page() {
   

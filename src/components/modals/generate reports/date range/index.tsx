@@ -1,7 +1,7 @@
 'use client';
 
 import { Input } from '@/components/Inputs';
-import { LayoutModal } from '..';
+import { LayoutModal } from '../..';
 import { ModalProps } from '@/types';
 import { useForm } from 'react-hook-form';
 import { RangeDatesToReports } from '@/types/forms';
