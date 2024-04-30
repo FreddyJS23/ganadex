@@ -54,6 +54,7 @@ export type InputProps = {
     register: UseFormRegister<any>;
     /**Objeto con los campos que no pasen su validación, para asignar un clase error al label */
     errors: FieldErrors;
+    defaultValue?:string
 };
 
 export type LayoutModalProps = {
@@ -70,6 +71,7 @@ export type LayoutModalProps = {
     isOpen?: boolean;
     onOpen?: () => void;
     onOpenChange?: () => void;
+    onClick?:()=> void
 };
 
 export type ModalProps = Pick<

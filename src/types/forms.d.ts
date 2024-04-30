@@ -7,11 +7,13 @@ import { createUserShema } from "@/validations/createUser";
 import { createCustomerShema } from "@/validations/Customer";
 import { createDeathCastleShema } from "@/validations/deathCastle";
 import { createPriceMilkShema} from "@/validations/priceMilkShema";
+import { rangeDatesToReportsShema } from "@/validations/rangeDatesShema";
 import { createSaleMilkShema } from "@/validations/saleMilkShema";
 import { createServeShema } from "@/validations/serveShema";
 import { createStaffShema } from "@/validations/staffShema";
 import { createSupplyShema } from "@/validations/supplyShema";
 import { createWeightMilkShema } from "@/validations/WeightMilkShema";
+import { yearsToGenerateReportShema } from "@/validations/yearsTotGenerateReportShema";
 import { z } from "zod";
 
 export type Login = {
@@ -61,3 +63,7 @@ export type CreateStaff=z.infer<typeof createStaffShema>
 export type CreateSupply=z.infer<typeof createSupplyShema>
 
 export type CreateWeightMilk=z.infer<typeof createWeightMilkShema>
+
+export type RangeDatesToReports=z.infer<typeof rangeDatesToReportsShema>
+
+export type YearToReports=z.infer<typeof yearsToGenerateReportShema>
