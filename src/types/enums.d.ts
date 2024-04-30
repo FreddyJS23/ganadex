@@ -167,7 +167,8 @@ export enum TitlesModals {
     'Historial de partos',
     'Parto del ',
     'Historial pesajes mensuales de leche',
-    'Escoja un rango de fechas para el reporte'
+    'Escoja un rango de fechas para el reporte',
+    'Año a filtrar el resumen'
 }
 
 export enum FieldsIdCasttle {
