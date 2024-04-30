@@ -6,6 +6,7 @@ import { MejorComprador, MejorVenta, PeorVenta } from '@/types/dashboard';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 import IconImprimir from '@/icons/icono-imprimir.svg';
+import Link from 'next/link';
 
 export default async function Page() {
     const { ventas }: ResponseVentasGanado = await getData(
@@ -47,12 +48,11 @@ export default async function Page() {
                     <span className="text-2xl">
                         Ganancia acumulada del mes actual
                     </span>
-                    <a
-                        target="_blank"
-                        href={`http://127.0.0.1:8000/reportes/venta_ganado`}
+                    <Link
+                        href={`/reporte_anual/venta_ganado`}
                     >
                         <IconImprimir className={'size-8'} />
-                    </a>
+                    </Link>
                     {/* boton y modal crear venta */}
                     <ButtonCreateItem href={'venta_ganado/registrar'} />
                 </div>
