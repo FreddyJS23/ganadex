@@ -13,6 +13,7 @@ import { createServeShema } from "@/validations/serveShema";
 import { createStaffShema } from "@/validations/staffShema";
 import { createSupplyShema } from "@/validations/supplyShema";
 import { createWeightMilkShema } from "@/validations/WeightMilkShema";
+import { yearsToGenerateReportShema } from "@/validations/yearsTotGenerateReportShema";
 import { z } from "zod";
 
 export type Login = {
@@ -64,3 +65,5 @@ export type CreateSupply=z.infer<typeof createSupplyShema>
 export type CreateWeightMilk=z.infer<typeof createWeightMilkShema>
 
 export type RangeDatesToReports=z.infer<typeof rangeDatesToReportsShema>
+
+export type YearToReports=z.infer<typeof yearsToGenerateReportShema>
