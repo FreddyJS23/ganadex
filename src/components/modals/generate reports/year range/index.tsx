@@ -4,12 +4,10 @@ import { Input } from '@/components/Inputs';
 import { LayoutModal } from '../..';
 import { ModalProps } from '@/types';
 import { useForm } from 'react-hook-form';
-import {  YearToReports } from '@/types/forms';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { toast } from 'sonner';
-import { rangeDatesToReportsShema } from '@/validations/rangeDatesShema';
-import { endpointsReports } from '@/collections/endPointsApi';
+import {  endpointsReportsAnnual } from '@/collections/endPointsApi';
 import { generateReportsYear } from '@/actions/generate report year';
 import { yearsToGenerateReportShema } from '@/validations/yearsTotGenerateReportShema';
 
