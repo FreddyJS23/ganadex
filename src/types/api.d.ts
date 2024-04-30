@@ -163,8 +163,16 @@ export type ResponsePreciosLeche = {
     precios: PreciosDeLeche[];
 };
 
+export type ResponsePrecioLeche = {
+    precio: PreciosDeLeche;
+};
+
 export type ResponseVentasLeche = {
     ventas_de_leche: VentaLeche[];
+};
+
+export type ResponseVentaLeche = {
+    venta_leche: VentaLeche;
 };
 
 export type ResponseComprador = {

@@ -28,7 +28,8 @@ export default async function Page() {
                 <CardDashboardSaleMilk
                     title="Precio actual"
                     value={precio_actual}
-                    variationValue={variacion}
+                    variationValue={Math.round(variacion)}
+                    multipleOption={true}
                 />
             </article>
             <div className="flex gap-6 flex-col lg:flex-row w-full">
