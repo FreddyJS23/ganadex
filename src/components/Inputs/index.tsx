@@ -20,7 +20,8 @@ export const Input = ({
     endContent,
     size,
     register,
-    errors
+    errors,
+    defaultValue
 
 }: InputProps) => {
     const endContents = {
@@ -48,6 +49,7 @@ export const Input = ({
             {...register(id, type == 'number' ? {setValueAs:(value)=> value === "" ? undefined : parseInt(value,10)} : {})}
             isInvalid={errors[id] && true}
             errorMessage={errors[id] && errors[id].message as string}
+            defaultValue={defaultValue}
         />
     );
 };
