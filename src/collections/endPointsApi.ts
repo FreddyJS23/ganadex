@@ -58,3 +58,9 @@ export const endPointsCattle = {
     pesajeLeche: '/pesaje_leche/',
     pesajesLeche: '/pesaje_leche',
 };
+
+export const endpointsReports={
+    venta_ganado:'reportes/venta_ganado',
+    venta_leche:'reportes/venta_leche',
+    fallecimiento:'reportes/fallecimiento',
+}
