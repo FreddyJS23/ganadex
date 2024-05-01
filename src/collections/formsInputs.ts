@@ -24,10 +24,9 @@ type FieldsCastle =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     select?: { value: string | number; label: string }[];
 };
 
-type FieldsCheckUp =  {
+type FieldsCheckUp = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdCheckUp;
     label: keyof typeof FieldsLabelsCheckUp;
-    required:boolean
 };
 
 type FieldsService =Pick<InputProps,'type' | 'endContent' | 'required'> & {
@@ -126,8 +125,9 @@ export const formCastle: FieldsCastle[] = [
 ];
 
 export const formCheckUp: FieldsCheckUp[] = [
-    { id: 'diagnostico', label: 'Diagnostico', required: true },
-    { id: 'tratamiento', label: 'Tratamiento', required: true },
+    { id: 'diagnostico', label: 'Diagnostico', required: true, type:'text' },
+    { id: 'tratamiento', label: 'Tratamiento', required: true, type:'text' },
+    { id: 'personal_id', label: 'Veterinario', required: true, type:'select' },
 ];
 export const formService: FieldsService[] = [
     { id: 'observacion', label: 'Observación', required: true, type: 'text' },
@@ -144,6 +144,7 @@ export const formService: FieldsService[] = [
         required: true,
         type: 'number',
     },
+    { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
 ];
 
 export const formBirth: FieldsBirth[] = [
@@ -169,6 +170,7 @@ export const formBirth: FieldsBirth[] = [
         type: 'select',
         select: genderSelect,
     },
+    { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
 ];
 
 export const formSupply: FieldsSupply[] = [
