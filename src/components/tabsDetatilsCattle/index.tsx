@@ -8,6 +8,7 @@ import { Tabs, Tab } from '@nextui-org/tabs';
 import { TitleTab } from '@/ui/TitleTab';
 import { Button } from '@/ui/Button';
 import {  usePathname, useRouter } from 'next/navigation';
+import { ButtonGroupTabDetailCattle } from '@/ui/ButtonGroupTabDetailCattle';
 
 type TabsDetailsCattleProps = Omit<ResponseGanado, 'ganado'> & {eventos:Eventos};
 
@@ -65,12 +66,7 @@ export const TabDetailsCattle = ({
                             content={total_revisiones}
                         />
                         <div className="col-span-full place-self-center">
-                            <Button
-                                onClick={() =>
-                                    router.push(`${pathname}/revision`)
-                                }
-                                content="Ver historial"
-                            />
+                            <ButtonGroupTabDetailCattle route="revision" />
                         </div>
                     </ContainerContentTab>
                 </Tab>
@@ -105,12 +101,7 @@ export const TabDetailsCattle = ({
                             content={efectividad + '%'}
                         />
                         <div className="col-span-full place-self-center">
-                            <Button
-                                onClick={() =>
-                                    router.push(`${pathname}/servicio`)
-                                }
-                                content="Ver historial"
-                            />
+                            <ButtonGroupTabDetailCattle route="servicio" />
                         </div>
                     </ContainerContentTab>
                 </Tab>
@@ -145,10 +136,7 @@ export const TabDetailsCattle = ({
                             content={total_partos}
                         />
                         <div className="col-span-full place-self-center">
-                            <Button
-                                onClick={() => router.push(`${pathname}/parto`)}
-                                content="Ver historial"
-                            />
+                            <ButtonGroupTabDetailCattle route="parto" />
                         </div>
                     </ContainerContentTab>
                 </Tab>
@@ -180,12 +168,7 @@ export const TabDetailsCattle = ({
                         />
 
                         <div className="col-span-full place-self-center">
-                            <Button
-                                onClick={() =>
-                                    router.push(`${pathname}/pesaje_leche`)
-                                }
-                                content="Ver historial"
-                            />
+                            <ButtonGroupTabDetailCattle route="pesajes_leche" />
                         </div>
                     </ContainerContentTab>
                 </Tab>
