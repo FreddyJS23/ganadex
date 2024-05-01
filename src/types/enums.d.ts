@@ -205,23 +205,27 @@ export enum FieldsLabelsCasttle {
 export enum FieldsIdCheckUp {
     diagnostico,
     tratamiento,
+    'personal_id'
 }
 
 export enum FieldsLabelsCheckUp {
     Diagnostico,
     Tratamiento,
+    Veterinario
 }
 
 export enum FieldsIdService {
     observacion,
     'numero_toro',
     tipo,
+    'personal_id',
 }
 
 export enum FieldsLabelsService {
     Observación,
     'Numero del toro',
     Tipo,
+    Veterinario,
 }
 
 export enum FieldsIdBirth {
@@ -230,6 +234,7 @@ export enum FieldsIdBirth {
     numero,
     sexo,
     'peso_nacimiento',
+    'personal_id',
 }
 
 export enum FieldsLabelsBirth {
@@ -238,6 +243,7 @@ export enum FieldsLabelsBirth {
     'Numero de la cría',
     Sexo,
     'Peso de nacimiento',
+    Veterinario,
 }
 
 export enum FieldsIdSupply {
