@@ -15,6 +15,7 @@ export const endPoints = {
     insumos: 'insumo',
     personal: 'personal/',
     todosPersonal: 'personal',
+    veterinariosDisponibles:'veterinarios',
     comprador: 'comprador/',
     compradores: 'comprador',
     ventaGanado: 'ventas/',
