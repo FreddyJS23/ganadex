@@ -22,6 +22,7 @@ import {
     User,
     VentaGanado,
     VentaLeche,
+    veterinario,
 } from './models';
 
 type errors = {
@@ -221,4 +222,8 @@ export type ResponseNotificaciones = {
 
 export type ResponseCargosPersonal = {
     cargos_personal:PositionStaff[];
+};
+
+export type ResponseVeterinariosSelect = {
+    veterinarios:veterinario[];
 };
