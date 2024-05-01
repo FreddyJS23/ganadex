@@ -27,7 +27,7 @@ export const TableHistoryBirths = ({ partos }: ResponsePartos) => {
                             </td>
                             <td>{parto.observacion} </td>
                             <td>
-                                <Link href={`${pathname}/${parto.id}`}>
+                                <Link href={`${pathname}/ver/${parto.id}`}>
                                     <IconSearch
                                         className={'size-8 cursor-pointer '}
                                     />

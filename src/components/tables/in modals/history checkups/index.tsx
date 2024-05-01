@@ -28,7 +28,7 @@ export const TableHistoryCheckUps = ({ revisiones }: ResponseRevisiones) => {
                                 </td>
                                 <td>{revision.diagnostico} </td>
                                 <td>
-                                    <Link href={`${pathname}/${revision.id}`}>
+                                    <Link href={`${pathname}/ver/${revision.id}`}>
                                         <IconSearch
                                             className={'size-8 cursor-pointer '}
                                         />
