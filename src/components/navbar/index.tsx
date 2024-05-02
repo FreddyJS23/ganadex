@@ -80,8 +80,8 @@ export const Navbar = async () => {
                             <li>
                                 <a className="justify-between">Profile</a>
                             </li>
-                            <li>
-                                <a>Logout</a>
+                            <li className='bg-error rounded-md'>
+                                <Link href={'/api/signOut'}>Logout</Link>
                             </li>
                         </ul>
                     </div>
