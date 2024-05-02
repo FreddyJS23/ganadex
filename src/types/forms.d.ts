@@ -8,6 +8,7 @@ import { createCustomerShema } from "@/validations/Customer";
 import { createDeathCastleShema } from "@/validations/deathCastle";
 import { createPriceMilkShema} from "@/validations/priceMilkShema";
 import { rangeDatesToReportsShema } from "@/validations/rangeDatesShema";
+import { createSaleCattleShema } from "@/validations/saleCattle";
 import { createSaleMilkShema } from "@/validations/saleMilkShema";
 import { createServeShema } from "@/validations/serveShema";
 import { createStaffShema } from "@/validations/staffShema";
@@ -67,3 +68,5 @@ export type CreateWeightMilk=z.infer<typeof createWeightMilkShema>
 export type RangeDatesToReports=z.infer<typeof rangeDatesToReportsShema>
 
 export type YearToReports=z.infer<typeof yearsToGenerateReportShema>
+
+export type CreateSaleCattle=z.infer<typeof createSaleCattleShema>

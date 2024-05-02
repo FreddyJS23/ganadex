@@ -56,7 +56,7 @@ export enum StateCattle {
     pendiente_pesaje_leche,
 }
 export enum URLS {
-    '/',
+    '/dashboard',
     '/ganado',
     '/venta_leche',
     '/partos',
