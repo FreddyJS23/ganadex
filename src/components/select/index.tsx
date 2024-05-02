@@ -1,14 +1,14 @@
 import { InputProps } from '@/types';
 import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
-import { ControllerRenderProps} from 'react-hook-form';
+import { ControllerRenderProps, FieldPath, FieldValues} from 'react-hook-form';
 
 type SelectProps = Pick<
     InputProps,
     'id' | 'description' | 'label' | 'endContent' | 'required' | 'errors'
 > & {
-    items: { value: string | number; label: string }[];
+    items: { value: string | number; label: string | number }[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    field:ControllerRenderProps<any>;
+    field: any;
 };
 
 const EndElement = ({ content }: { content: '$' | 'KG' }) => {
@@ -55,9 +55,9 @@ export const Select = ({
                     }}
                     endContent={endContent && endContents[endContent]}
                     isInvalid={errors[id] && true}
-                    errorMessage={errors[id] && (errors[id].message as string)}
+                    errorMessage={errors[id] && (errors[id]?.message as string)}
                 >
-                    {({ label, value }) => (
+                    {({ label, value }:{ value: string | number; label: string | number }) => (
                         <SelectItem key={value}>{label}</SelectItem>
                     )}
                 </SelectNextUI>

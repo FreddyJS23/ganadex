@@ -48,7 +48,7 @@ export const Input = ({
             size={size ? size : 'md'}
             {...register(id, type == 'number' ? {setValueAs:(value)=> value === "" ? undefined : parseInt(value,10)} : {})}
             isInvalid={errors[id] && true}
-            errorMessage={errors[id] && errors[id].message as string}
+            errorMessage={errors[id] && errors[id]?.message as string}
             defaultValue={defaultValue}
         />
     );

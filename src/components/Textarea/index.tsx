@@ -23,7 +23,7 @@ export const Textarea = ({
             isRequired={required}
               {...register(id,{})}
             isInvalid={errors[id] && true}
-            errorMessage={errors[id] && errors[id].message as string}
+            errorMessage={errors[id] && errors[id]?.message as string}
         />
     );
 };
