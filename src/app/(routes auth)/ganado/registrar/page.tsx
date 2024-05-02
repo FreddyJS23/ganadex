@@ -116,8 +116,7 @@ export default function Page() {
                                                     }
                                                     errorMessage={
                                                         errors[id] &&
-                                                        (errors[id]
-                                                            .message as string)
+                                                        errors[id]?.message
                                                     }
                                                     classNames={{
                                                         innerWrapper: 'h-fit',
