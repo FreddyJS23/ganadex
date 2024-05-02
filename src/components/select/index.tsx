@@ -1,11 +1,14 @@
 import { InputProps } from '@/types';
 import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
+import { ControllerRenderProps} from 'react-hook-form';
 
 type SelectProps = Pick<
     InputProps,
-    'id' | 'description' | 'label' | 'required' | 'endContent'
+    'id' | 'description' | 'label' | 'endContent' | 'required' | 'errors'
 > & {
     items: { value: string | number; label: string }[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    field:ControllerRenderProps<any>;
 };
 
 const EndElement = ({ content }: { content: '$' | 'KG' }) => {
@@ -25,6 +28,8 @@ export const Select = ({
     required,
     items,
     endContent,
+    errors,
+    field
 }: SelectProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
@@ -33,22 +38,30 @@ export const Select = ({
     };
 
     return (
-        <SelectNextUI
-            id={id}
-            label={label}
-            items={items}
-            variant="underlined"
-            color="primary"
-            description={description}
-            isRequired={required}
-            classNames={{
-                label: 'text-current font-bold',
-                value: 'text-current',
-                popoverContent: 'bg-base-100',
-            }}
-            endContent={endContent && endContents[endContent]}
-        >
-            {({ label, value }) => <SelectItem key={value}>{label}</SelectItem>}
-        </SelectNextUI>
+        
+                <SelectNextUI
+                {...field}    
+                id={id}
+                    label={label}
+                    items={items}
+                    variant="underlined"
+                    color="primary"
+                    isRequired={required}
+                    description={description}
+                    classNames={{
+                        label: 'text-current font-bold',
+                        value: 'text-current',
+                        popoverContent: 'bg-base-100',
+                    }}
+                    endContent={endContent && endContents[endContent]}
+                    isInvalid={errors[id] && true}
+                    errorMessage={errors[id] && (errors[id].message as string)}
+                >
+                    {({ label, value }) => (
+                        <SelectItem key={value}>{label}</SelectItem>
+                    )}
+                </SelectNextUI>
+            
+        
     );
 };

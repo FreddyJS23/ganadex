@@ -1,26 +1,44 @@
+'use server'
+
 import { endPoints, endPointsCattle } from '@/collections/endPointsApi';
-import { auth } from '@/services/auth';
+import { handleResponse } from './handleResponseApi';
+import { ResponseError } from '@/types';
+import { auth } from '@/auth';
+import { Session } from 'next-auth';
 
 export async function getData(
     endPoint: keyof typeof endPoints,
+    method:'GET' | 'POST' | 'DELETE' | 'PUT'='GET',
+    data?:unknown,
     id?: number,
     endPointCattle?: keyof typeof endPointsCattle,
     id2?: number,
 ) {
 
-    const login = await auth();
-   /*  const token = login.login.token; */
-     const token = '36|eJqVOt2g2yKtxCFceDeRLrFCRCsfK5UlLMx8vQOj3e2e5ccc'; 
+    const session = await auth() as Session;
+
+    const {user}=session
+
+   /*  const {token,cookieCsrf}=user */
+    const {token}=user
 
     let url = 'http://127.0.0.1:8000/' + 'api/' + endPoints[endPoint];
+    
+    const headers = new Headers({
+        Accept: 'application/json',
+        Origin: process.env.ORIGIN,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+    });
+
+   /*  if(method == 'POST') headers.append('X-XSRF-TOKEN', cookieCsrf[0].token); */
+    
     const optionFetch: RequestInit = {
         cache: 'no-store',
-        headers: {
-            Accept: 'application/json',
-            Origin: process.env.ORIGIN,
-            Authorization: `Bearer ${token}`,
-        },
+        method: method,
+        headers: headers,
         credentials: 'include',
+     body: JSON.stringify(data),
     };
 
     if (id) url = url + id;
@@ -30,10 +48,14 @@ export async function getData(
     try {
         const res = await fetch(url, optionFetch);
 
-        
-        return res.json();
-    } catch (e) {
-        throw new Error('error in fetch');
+        const { data, status } = await handleResponse(res);
 
+        if (status == 200 || status == 201) return data;
+        else if (status == 422 || status == 401 || status == 500 || status == 404 || status == 419 || status != 200)
+            throw { status: status, data: data };
+    } catch (e) {
+        if (e instanceof Error) throw e;
+        const { status, data } = e as ResponseError;
+        throw (`código ${status} ${data.message}`);
     }
 }

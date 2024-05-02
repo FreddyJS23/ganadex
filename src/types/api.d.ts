@@ -11,6 +11,7 @@ import {
     Personal,
     PesajeLecheGanado,
     PesajesLeche,
+    PositionStaff,
     PreciosDeLeche,
     Revision,
     Revisiones,
@@ -21,6 +22,7 @@ import {
     User,
     VentaGanado,
     VentaLeche,
+    veterinario,
 } from './models';
 
 type errors = {
@@ -35,9 +37,20 @@ export type Response = {
     status: number;
 };
 
+/** Respuesta del servidor */
+export type ResponseCorrect = {
+    /** Informacion de la repuesta */
+    message:string;
+   
+};
+
 export type ResponseErrorCampos = {
     message: string;
     errors: errors;
+};
+export type ResponseError = {
+    status: number;
+    data: ResponseErrorCampos;
 };
 
 export type ResponseGanado = {
@@ -151,8 +164,16 @@ export type ResponsePreciosLeche = {
     precios: PreciosDeLeche[];
 };
 
+export type ResponsePrecioLeche = {
+    precio: PreciosDeLeche;
+};
+
 export type ResponseVentasLeche = {
     ventas_de_leche: VentaLeche[];
+};
+
+export type ResponseVentaLeche = {
+    venta_leche: VentaLeche;
 };
 
 export type ResponseComprador = {
@@ -197,4 +218,12 @@ export type ResponsePartosGeneral = {
 
 export type ResponseNotificaciones = {
     notificaciones: TypesNotification;
+};
+
+export type ResponseCargosPersonal = {
+    cargos_personal:PositionStaff[];
+};
+
+export type ResponseVeterinariosSelect = {
+    veterinarios:veterinario[];
 };

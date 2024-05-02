@@ -56,7 +56,7 @@ export enum StateCattle {
     pendiente_pesaje_leche,
 }
 export enum URLS {
-    '/',
+    '/dashboard',
     '/ganado',
     '/venta_leche',
     '/partos',
@@ -157,6 +157,7 @@ export enum TitlesModals {
     'Historial de precio de la leche',
     'Venta de leche',
     'Crear nuevo comprador',
+    'Compradores registrados',
     'Venta de ganado',
     'Nuevo fallecimiento',
     'Historial de revisiones',
@@ -166,6 +167,8 @@ export enum TitlesModals {
     'Historial de partos',
     'Parto del ',
     'Historial pesajes mensuales de leche',
+    'Escoja un rango de fechas para el reporte',
+    'Año a filtrar el resumen'
 }
 
 export enum FieldsIdCasttle {
@@ -202,23 +205,27 @@ export enum FieldsLabelsCasttle {
 export enum FieldsIdCheckUp {
     diagnostico,
     tratamiento,
+    'personal_id'
 }
 
 export enum FieldsLabelsCheckUp {
     Diagnostico,
     Tratamiento,
+    Veterinario
 }
 
 export enum FieldsIdService {
     observacion,
     'numero_toro',
     tipo,
+    'personal_id',
 }
 
 export enum FieldsLabelsService {
     Observación,
     'Numero del toro',
     Tipo,
+    Veterinario,
 }
 
 export enum FieldsIdBirth {
@@ -227,6 +234,7 @@ export enum FieldsIdBirth {
     numero,
     sexo,
     'peso_nacimiento',
+    'personal_id',
 }
 
 export enum FieldsLabelsBirth {
@@ -235,6 +243,7 @@ export enum FieldsLabelsBirth {
     'Numero de la cría',
     Sexo,
     'Peso de nacimiento',
+    Veterinario,
 }
 
 export enum FieldsIdSupply {
@@ -253,14 +262,16 @@ export enum FieldsIdStaff {
     ci,
     nombre,
     apellido,
+    telefono,
     'fecha_nacimiento',
-    cargo,
+    'cargo_id',
 }
 
 export enum FieldsLabelsStaff {
     Cedula,
     Nombre,
     Apellido,
+    Telefono,
     'Fecha de nacimiento',
     Cargo,
 }

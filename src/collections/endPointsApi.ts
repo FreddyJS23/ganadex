@@ -2,15 +2,20 @@ export const endPoints = {
     ganado: 'ganado/',
     todosGanado: 'ganado',
     toro: 'toro/',
+    crearUsuario:'register',
     todosToro: 'toro',
     criasNumeracion: 'crias_pendiente_numeracion',
+    asignarNumeroCria: 'asignar_numero_cria/',
     criasCapar: 'crias_pendiente_capar',
+    caparCria: 'capar_cria/',
+    crearPrecioLeche:'precio/',
     preciosLeche: 'precio',
     ventasLeche: 'venta_leche',
     insumo: 'insumo/',
     insumos: 'insumo',
     personal: 'personal/',
     todosPersonal: 'personal',
+    veterinariosDisponibles:'veterinarios',
     comprador: 'comprador/',
     compradores: 'comprador',
     ventaGanado: 'ventas/',
@@ -21,6 +26,7 @@ export const endPoints = {
     servicios: 'servicios',
     partos: 'partos',
     pesajesLeche: 'pesaje_leche',
+    cargosPersonal: 'cargos_personal',
     dashboardPrincipaltotalGanadoTipo: 'dashboard_principal/total_ganado_tipo',
     dashboardPrincipaltotalPersonal: 'dashboard_principal/total_personal',
     dashboardPrincipalvacasGestacion: 'dashboard_principal/vacas_gestacion',
@@ -53,3 +59,13 @@ export const endPointsCattle = {
     pesajeLeche: '/pesaje_leche/',
     pesajesLeche: '/pesaje_leche',
 };
+
+/**Rutas para el endpoint de laravel   */
+export const endpointsReports={
+    venta_leche:'reportes/venta_leche',
+    fallecimiento:'reportes/fallecimiento',
+}
+/**Rutas para el endpoint de laravel   */
+export const endpointsReportsAnnual={
+    venta_ganado:'reportes/venta_ganado',
+}

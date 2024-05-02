@@ -1,0 +1,23 @@
+import { NextResponse } from 'next/server';
+import { auth as middleware } from '@/auth';
+
+export default middleware((request) => {
+    if (!request.auth) {
+        return NextResponse.redirect(new URL('/login', request.url));
+    }
+});
+
+export const config = {
+    matcher: [
+        /*
+         * Match all request paths except for the ones starting with:
+         * - api (API routes)
+         * - _next/static (static files)
+         * - _next/image (image optimization files)
+         * - favicon.ico (favicon file)
+         * - login
+         */
+
+        '/((?!api|_next/static|login|_next/image|favicon.ico).*)',
+    ],
+};

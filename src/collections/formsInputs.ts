@@ -18,35 +18,35 @@ import { typeCasttleSelect } from './typeCastleSelect';
 import { stateCasttleSelect } from './statesCasttleSelect';
 import { typeServicesForCasttle } from './typesServicesForCasttle';
 
-type FieldsCastle = Omit<InputProps, 'id' | 'label'> & {
+type FieldsCastle =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdCasttle;
     label: keyof typeof FieldsLabelsCasttle;
     select?: { value: string | number; label: string }[];
 };
 
-type FieldsCheckUp = Omit<InputProps, 'id' | 'type' | 'label'> & {
+type FieldsCheckUp = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdCheckUp;
     label: keyof typeof FieldsLabelsCheckUp;
 };
 
-type FieldsService = Omit<InputProps, 'id' | 'label'> & {
+type FieldsService =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdService;
     label: keyof typeof FieldsLabelsService;
     select?: { value: string | number; label: string }[];
 };
 
-type FieldsBirth = Omit<InputProps, 'id' | 'label'> & {
+type FieldsBirth =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdBirth;
     label: keyof typeof FieldsLabelsBirth;
     select?: { value: string | number; label: string }[];
 };
 
-type FieldsSupply = Omit<InputProps, 'id' | 'label'> & {
+type FieldsSupply =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdSupply;
     label: keyof typeof FieldsLabelsSupply;
 };
 
-type FieldsStaff = Omit<InputProps, 'id' | 'label'> & {
+type FieldsStaff =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdStaff;
     label: keyof typeof FieldsLabelsStaff;
 };
@@ -79,28 +79,28 @@ export const formCastle: FieldsCastle[] = [
         id: 'peso_actual',
         label: 'Peso actual',
         required: false,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
         id: 'peso_destete',
         label: 'Peso de destete',
         required: false,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
         id: 'peso_nacimiento',
         label: 'Peso de nacimiento',
         required: false,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
         id: 'peso_2year',
         label: 'Peso de 2 años',
         required: false,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
@@ -125,8 +125,9 @@ export const formCastle: FieldsCastle[] = [
 ];
 
 export const formCheckUp: FieldsCheckUp[] = [
-    { id: 'diagnostico', label: 'Diagnostico', required: true },
-    { id: 'tratamiento', label: 'Tratamiento', required: true },
+    { id: 'diagnostico', label: 'Diagnostico', required: true, type:'text' },
+    { id: 'tratamiento', label: 'Tratamiento', required: true, type:'text' },
+    { id: 'personal_id', label: 'Veterinario', required: true, type:'select' },
 ];
 export const formService: FieldsService[] = [
     { id: 'observacion', label: 'Observación', required: true, type: 'text' },
@@ -143,6 +144,7 @@ export const formService: FieldsService[] = [
         required: true,
         type: 'number',
     },
+    { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
 ];
 
 export const formBirth: FieldsBirth[] = [
@@ -158,7 +160,7 @@ export const formBirth: FieldsBirth[] = [
         id: 'peso_nacimiento',
         label: 'Peso de nacimiento',
         required: true,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
@@ -168,16 +170,18 @@ export const formBirth: FieldsBirth[] = [
         type: 'select',
         select: genderSelect,
     },
+    { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
 ];
 
 export const formSupply: FieldsSupply[] = [
     { id: 'insumo', label: 'Insumo', required: true, type: 'text' },
-    { id: 'cantidad', label: 'Cantidad', required: true, type: 'text' },
+    { id: 'cantidad', label: 'Cantidad', required: true, type: 'number' },
     { id: 'precio', label: 'Precio', required: true, type: 'number' },
 ];
 export const formStaff: FieldsStaff[] = [
     { id: 'ci', label: 'Cedula', required: true, type: 'number' },
     { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
+    { id: 'telefono', label: 'Telefono', required: true, type: 'tel' },
     { id: 'apellido', label: 'Apellido', required: true, type: 'text' },
     {
         id: 'fecha_nacimiento',
@@ -185,5 +189,5 @@ export const formStaff: FieldsStaff[] = [
         required: true,
         type: 'date',
     },
-    { id: 'cargo', label: 'Cargo', required: true, type: 'text' },
+    { id: 'cargo_id', label: 'Cargo', required: true, type: 'select' },
 ];

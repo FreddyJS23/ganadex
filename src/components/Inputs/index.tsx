@@ -19,6 +19,10 @@ export const Input = ({
     required,
     endContent,
     size,
+    register,
+    errors,
+    defaultValue
+
 }: InputProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
@@ -42,6 +46,10 @@ export const Input = ({
             isRequired={required}
             endContent={endContent && endContents[endContent]}
             size={size ? size : 'md'}
+            {...register(id, type == 'number' ? {setValueAs:(value)=> value === "" ? undefined : parseInt(value,10)} : {})}
+            isInvalid={errors[id] && true}
+            errorMessage={errors[id] && errors[id].message as string}
+            defaultValue={defaultValue}
         />
     );
 };

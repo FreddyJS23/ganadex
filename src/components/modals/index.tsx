@@ -9,6 +9,9 @@ import {
     ModalFooter,
 } from '@nextui-org/modal';
 import { useRouter } from 'next/navigation';
+import { MutableRefObject, useEffect, useState } from 'react';
+
+
 
 export const LayoutModal = ({
     titleModal,
@@ -18,9 +21,17 @@ export const LayoutModal = ({
     children,
     isOpen,
     onOpenChange,
+    refForm,
+    onClick
 }: LayoutModalProps) => {
     const Icon = iconsModal[icon];
-    const submit = () => {};
+    const [currentRefForm, setcurrentRefForm] = useState<MutableRefObject<HTMLFormElement | null> | undefined>(undefined)
+   useEffect(() => {
+     setcurrentRefForm(refForm)
+   }, [refForm])
+    const submit = () => {
+        currentRefForm?.current?.dispatchEvent(new Event('submit'))
+    };
     const router = useRouter();
 
     const onClose = () => {
@@ -50,7 +61,7 @@ export const LayoutModal = ({
                         <ModalBody>{children}</ModalBody>
                         {footer && (
                             <ModalFooter className="flex flex-col sm:flex-row-reverse ">
-                                <Button onClick={submit} content="Confirmar" />
+                                <Button type='submit' onClick={onClick ? onClick : submit} content="Confirmar"  form={currentRefForm && currentRefForm.current ? currentRefForm.current.id : ''}  />
                                 <Button
                                     onClick={onClose}
                                     color="default"

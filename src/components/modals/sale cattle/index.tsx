@@ -2,6 +2,12 @@ import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
 import { Comprador, ModalProps } from '@/types';
 import { Select } from '@/components/select';
+import { Controller, useForm } from 'react-hook-form';
+import { createSaleCattleShema } from '@/validations/saleCattle';
+import { useRouter } from 'next/router';
+import { useRef } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CreateSaleCattle } from '@/types/forms';
 
 export const ModalSaleCattle = ({
     isOpen,
@@ -14,6 +20,18 @@ export const ModalSaleCattle = ({
     selectCompradores.map(({ id, nombre }) =>
         itemsSelect.push({ value: id, label: nombre }),
     );
+   const {
+       register,
+       formState: { errors },
+       handleSubmit,
+       control
+   } = useForm<CreateSaleCattle>({
+       resolver: zodResolver(createSaleCattleShema),
+   });
+
+   const router = useRouter();
+   const formRef = useRef(null);
+
 
     return (
         <LayoutModal
@@ -36,13 +54,23 @@ export const ModalSaleCattle = ({
                     type="number"
                     endContent="dolar"
                     size="lg"
+                    errors={errors}
+                    register={register}
                 />
-                <Select
-                    id="comprador"
-                    label="Compradores"
-                    required
-                    description="Compradores disponibles, creados previamente"
-                    items={itemsSelect}
+                <Controller
+                    name="comprador_id"
+                    control={control}
+                    render={({ field }) => (
+                        <Select
+                            id="comprador_id"
+                            label="Compradores"
+                            required
+                            description="Compradores disponibles, creados previamente"
+                            items={itemsSelect}
+                            errors={errors}
+                            field={field}
+                        />
+                    )}
                 />
             </form>
         </LayoutModal>

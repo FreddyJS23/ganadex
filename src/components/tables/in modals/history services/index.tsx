@@ -27,7 +27,7 @@ export const TableHistoryServices = ({ servicios }: ResponseServicios) => {
                             </td>
                             <td>{servicio.toro.numero} </td>
                             <td>
-                                <Link href={`${pathname}/${servicio.id}`}>
+                                <Link href={`${pathname}/ver/${servicio.id}`}>
                                     <IconSearch
                                         className={'size-8 cursor-pointer '}
                                     />
