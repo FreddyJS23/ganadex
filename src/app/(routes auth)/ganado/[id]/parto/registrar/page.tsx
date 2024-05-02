@@ -1,53 +1,28 @@
-'use client';
-
-import { formBirth } from '@/collections/formsInputs';
-import { Input } from '@/components/Inputs';
-import { Select } from '@/components/select';
-import { Button } from '@/ui/Button';
+import { FormCreateBirth } from '@/components/forms/create birth';
+import { ResponseGanado, ResponseVeterinariosSelect } from '@/types';
 import { TitlePage } from '@/ui/TitlePage';
+import { getData } from '@/utils/getData';
 
-export default function Page() {
-    const submit = () => {};
+type ParamsPage = {
+    params: { id: number };
+};
+
+export default async function Page({params}:ParamsPage) {
+    const { ganado }: ResponseGanado = await getData(
+        'ganado',
+        'GET',
+        undefined,
+        params.id,
+    );
+
+    const { veterinarios }: ResponseVeterinariosSelect = await getData(
+        'veterinariosDisponibles',
+    );
     return (
         <>
-            <TitlePage title="Registrar parto" />
+            <TitlePage title={`Registrar parto para la vaca ${ganado.numero}`} />
 
-            <form
-                action=""
-                className="flex flex-col items-center gap-8 p-4 m-auto "
-            >
-                <div className="flex gap-6 w-full flex-col justify-center max-w-80 sm:justify-evenly sm:flex-row sm:flex-wrap sm:max-w-fit ">
-                    {formBirth.map(
-                        ({ id, label, required, type, endContent, select }) => (
-                            <div key={id} className={'sm:w-44'}>
-                                {type != 'select' && (
-                                    <Input
-                                        key={id}
-                                        id={id}
-                                        label={label}
-                                        required={required}
-                                        type={type}
-                                        endContent={endContent}
-                                    />
-                                )}
-
-                                {type == 'select' && (
-                                    <Select
-                                        key={id}
-                                        id={id}
-                                        label={label}
-                                        required={required}
-                                        items={select ? select : []}
-                                    />
-                                )}
-                            </div>
-                        ),
-                    )}
-                </div>
-                <div className="w-full sm:max-w-72">
-                    <Button onClick={submit} content="Registrar" />
-                </div>
-            </form>
+       <FormCreateBirth veterinarios={veterinarios} />
         </>
     );
 }
