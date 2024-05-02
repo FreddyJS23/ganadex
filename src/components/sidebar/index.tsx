@@ -40,7 +40,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
                             icon="dashboard"
                             optionMultiple={false}
                             responsive={false}
-                            url="/"
+                            url="/dashboard"
                         />
 
                         {sidebarElements(false)}
@@ -61,7 +61,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
                             icon="dashboard"
                             optionMultiple={false}
                             responsive={true}
-                            url="/"
+                            url="/dashboard"
                         />
 
                         {sidebarElements(true)}
