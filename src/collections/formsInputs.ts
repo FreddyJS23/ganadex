@@ -160,7 +160,7 @@ export const formBirth: FieldsBirth[] = [
         id: 'peso_nacimiento',
         label: 'Peso de nacimiento',
         required: true,
-        type: 'number',
+        type: 'text',
         endContent: 'weight',
     },
     {
