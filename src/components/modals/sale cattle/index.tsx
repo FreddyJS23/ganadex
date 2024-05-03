@@ -4,7 +4,7 @@ import { Comprador, ModalProps } from '@/types';
 import { Select } from '@/components/select';
 import { Controller, useForm } from 'react-hook-form';
 import { createSaleCattleShema } from '@/validations/saleCattle';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateSaleCattle } from '@/types/forms';
