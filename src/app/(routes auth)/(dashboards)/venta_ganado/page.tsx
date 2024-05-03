@@ -27,16 +27,16 @@ export default async function Page() {
             {/* cards */}
             <article className="flex justify-around flex-wrap gap-4 items-center">
                 <CardDashboardSaleCattle
-                    data={comprador.nombre}
+                    data={comprador.nombre ?? ''}
                     title="Mejor comprador"
                     multipleOption
                 />
                 <CardDashboardSaleCattle
-                    data={mejorVenta.precio}
+                    data={mejorVenta.precio ?? ''}
                     title="Mejor venta"
                 />
                 <CardDashboardSaleCattle
-                    data={peorVenta.precio}
+                    data={peorVenta.precio ?? ''}
                     title="Peor venta"
                 />
             </article>
