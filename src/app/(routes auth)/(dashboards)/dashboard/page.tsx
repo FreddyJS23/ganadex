@@ -21,6 +21,7 @@ import IconImprimir from '@/icons/icono-imprimir.svg';
 import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle production bar';
 import { CircularProgress } from '@/components/circules progress dashboard';
 import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual balance milk';
+import { ButtonGenerateReport } from '@/components/buttonPrintReports';
 
 export default async function Home() {
   
@@ -60,12 +61,7 @@ export default async function Home() {
             <article className="p-4 bg-base-100 col-span-full max-w-xl md:col-span-2 lex justify-center flex-col  w-full shadow-cards">
                 <div className="flex justify-between">
                     <h3>Cabezas de ganado</h3>
-                    <a
-                        target="_blank"
-                        href={`http://127.0.0.1:8000/reportes/general`}
-                    >
-                        <IconImprimir className={'size-8'} />
-                    </a>
+                   <ButtonGenerateReport report={'dashboard'} />
                     <IconCatle
                         className={
                             'size-8 bg-primary opacity-70 p-1 rounded-full'
@@ -129,16 +125,16 @@ export default async function Home() {
                     </div>
                     <div className="flex">
                         <CircularProgress
-                            value={mayor_cantidad_insumo.cantidad}
+                            value={mayor_cantidad_insumo ? mayor_cantidad_insumo.cantidad : 0}
                             positive={true}
-                            label={mayor_cantidad_insumo.insumo}
-                            rangeMaxValue={mayor_cantidad_insumo.cantidad}
+                            label={mayor_cantidad_insumo ? mayor_cantidad_insumo.insumo : ''}
+                            rangeMaxValue={mayor_cantidad_insumo ? mayor_cantidad_insumo.cantidad : 0}
                         />
                         <CircularProgress
-                            value={menor_cantidad_insumo.cantidad}
+                            value={menor_cantidad_insumo ? menor_cantidad_insumo.cantidad : 0}
                             positive={false}
-                            label={menor_cantidad_insumo.insumo}
-                            rangeMaxValue={mayor_cantidad_insumo.cantidad}
+                            label={menor_cantidad_insumo ? menor_cantidad_insumo.insumo : ''}
+                             rangeMaxValue={mayor_cantidad_insumo ? mayor_cantidad_insumo.cantidad : 0}
                         />
                     </div>
                 </article>

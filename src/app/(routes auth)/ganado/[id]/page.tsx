@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import cattleImage from 'public/cattle.png';
 import IconoImprimir from '@/icons/icono-imprimir.svg';
+import { ButtonGenerateReport } from '@/components/buttonPrintReports';
 
 type ParamsPageCattle = {
     params: { id: number };
@@ -35,7 +36,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                     <h3 className=" font-bold text-2xl">
                         Detalle del animal {ganado.numero}
                     </h3>
-                    <a target='_blank' href={`http://127.0.0.1:8000/reportes/ganado/${ganado.id}`} > <IconoImprimir className={'size-8'} /></a>
+                    <ButtonGenerateReport report='ganado' id={ganado.id} />
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row items-center ">
                     <div className="">
