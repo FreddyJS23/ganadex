@@ -10,7 +10,7 @@ export async function generateReportsYear(
 ): Promise<Blob | ResponseError | undefined> {
     try {
         const file = await fetch(
-            `http://localhost:3000/api/reportes_anual/${report}?year=${formData.year}`,
+            `/api/reportes_anual/${report}?year=${formData.year}`,
         );
         if (file.status == 200) return await file.blob();
         else throw (file) ?? 'error';
