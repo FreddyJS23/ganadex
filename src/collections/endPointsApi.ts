@@ -4,6 +4,8 @@ export const endPoints = {
     toro: 'toro/',
     crearUsuario:'register',
     todosToro: 'toro',
+    todosReses: 'res',
+    res: 'res/',
     criasNumeracion: 'crias_pendiente_numeracion',
     asignarNumeroCria: 'asignar_numero_cria/',
     criasCapar: 'crias_pendiente_capar',
