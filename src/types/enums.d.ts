@@ -33,6 +33,8 @@ export enum IconsModal {
 export enum ElementSidebar {
     Dashboard,
     Ganado,
+    Toros,
+    Reses,
     'Venta de leche',
     Revisiones,
     Servicios,
