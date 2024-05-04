@@ -11,6 +11,18 @@ export const options: Pick<
         optionMultiple: false,
     },
     {
+        element: 'Toros',
+        icon: 'cattle',
+        url: '/toros',
+        optionMultiple: true,
+    },
+    {
+        element: 'Reses',
+        icon: 'cattle',
+        url: '/reses',
+        optionMultiple: true,
+    },
+    {
         element: 'Venta de leche',
         icon: 'milk',
         url: '/venta_leche',
