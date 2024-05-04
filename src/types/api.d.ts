@@ -88,9 +88,6 @@ export type ResponseGanados = {
 
 export type ResponseToro = {
     toro: Toro;
-    efectividad: number | null;
-    padre_en_partos: number;
-    servicios: number;
 };
 export type ResponseToros = {
     toros: Toro[];
