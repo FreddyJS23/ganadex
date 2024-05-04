@@ -64,6 +64,7 @@ export type Toro =Pick<Ganado, 'id' | 'nombre' | 'numero' | 'origen' | 'fecha_na
     servicios:number
     }
 
+export type Res = Omit<Toro,'efectividad' | 'padre_en_partos' | 'servicios'>
 
 export type Insumo = {
     id: number;
