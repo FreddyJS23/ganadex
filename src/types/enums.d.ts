@@ -60,6 +60,8 @@ export enum StateCattle {
 export enum URLS {
     '/dashboard',
     '/ganado',
+    '/toros',
+    '/reses',
     '/venta_leche',
     '/partos',
     '/revisiones',
