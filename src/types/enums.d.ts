@@ -205,6 +205,50 @@ export enum FieldsLabelsCasttle {
     'Fecha de defunción',
     'Causa de defunción',
 }
+export enum FieldsIdBull {
+    nombre,
+    numero,
+    origen,
+    tipo_id,
+    fecha_nacimiento,
+    peso_nacimiento,
+    peso_destete,
+    peso_2year,
+    peso_actual,
+}
+export enum FieldsLabelsBull {
+    Nombre,
+    Numero,
+    Origen,
+    Tipo,
+    'Fecha de nacimiento',
+    'Peso de nacimiento',
+    'Peso de destete',
+    'Peso de 2 años',
+    'Peso actual',
+}
+export enum FieldsIdBeef {
+    nombre,
+    numero,
+    origen,
+    tipo_id,
+    fecha_nacimiento,
+    peso_nacimiento,
+    peso_destete,
+    peso_2year,
+    peso_actual,
+}
+export enum FieldsLabelsBeef {
+    Nombre,
+    Numero,
+    Origen,
+    Tipo,
+    'Fecha de nacimiento',
+    'Peso de nacimiento',
+    'Peso de destete',
+    'Peso de 2 años',
+    'Peso actual',
+}
 
 export enum FieldsIdCheckUp {
     diagnostico,
