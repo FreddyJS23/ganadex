@@ -10,16 +10,28 @@ import {
     PesajeLecheGanado,
     PesajesLeche,
     PreciosDeLeche,
+    Res,
     Revision,
     Revisiones,
     Servicio,
     Servicios,
+    Toro,
     VentaGanado,
     VentaLeche,
 } from '@/types';
 
 type headersColumns = {
     key: keyof CabezasGanado;
+    label: string;
+};
+
+type headersColumnsBull = {
+    key: keyof Toro;
+    label: string;
+};
+
+type headersColumnsBeef = {
+    key: keyof Res;
     label: string;
 };
 
@@ -109,6 +121,21 @@ export const headerCasttle: headersColumns[] = [
     { key: 'tipo', label: 'Tipo' },
     { key: 'origen', label: 'Origen' },
     { key: 'estados', label: 'Estados' },
+];
+export const headerBull: headersColumnsBull[] = [
+    { key: 'numero', label: 'Numero' },
+    { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
+    { key: 'pesos', label: 'Peso actual' },
+    { key: 'servicios', label: 'Servicios hechos' },
+    { key: 'padre_en_partos', label: 'Padre en partos' },
+    { key: 'efectividad', label: 'Efectividad' },
+ 
+];
+export const headerBeef: headersColumnsBeef[] = [
+    { key: 'numero', label: 'Numero' },
+    { key: 'nombre', label: 'Nombre' },
+    { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
+    { key: 'pesos', label: 'Peso actual' },
 ];
 
 export const headerSaleCasttle: headersColumnsSaleCasttle[] = [
