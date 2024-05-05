@@ -233,3 +233,7 @@ export type ResponseCargosPersonal = {
 export type ResponseVeterinariosSelect = {
     veterinarios:veterinario[];
 };
+
+export type ResponseFechaUltimoRespaldo = {
+    ultimo_backup:string | null;
+};
