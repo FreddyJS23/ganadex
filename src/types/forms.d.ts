@@ -1,5 +1,7 @@
-import { assignmentNumberBullCalfShema, createBullshema } from "@/validations/assignmentNumberBullCalfShema";
+import { assignmentNumberBullCalfShema } from "@/validations/assignmentNumberBullCalfShema";
 import { createBirthShema } from "@/validations/birthShema";
+import { createBullShema } from "@/validations/bullShema";
+import { createBeefShema } from "@/validations/beefShema";
 import { castleShema } from "@/validations/castleShema";
 import { createCheckUpShema } from "@/validations/checkUpShema";
 import { createConfigurationShema } from "@/validations/configurationShema";
@@ -35,7 +37,9 @@ export type CreateCastle=z.infer<typeof castleShema>
 
 export type CreateBirth=z.infer<typeof createBirthShema>
 
-export type CreateBull=z.infer<typeof createBullshema>
+export type CreateBull=z.infer<typeof createBullShema>
+
+export type CreateBeef = z.infer<typeof createBeefShema>;
 
 export type CreateAssigmentNumberBullCalf=z.infer<typeof assignmentNumberBullCalfShema>
 

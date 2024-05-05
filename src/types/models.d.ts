@@ -56,15 +56,15 @@ export type Ganado = {
     eventos:Eventos
 };
 
-export type Toro = {
-    id: number;
-    nombre: string;
-    numero: number | null;
-    origen: string | null;
-    sexo: 'M';
-    tipo: string;
-    fecha_nacimiento: string | null;
-};
+export type Toro =Pick<Ganado, 'id' | 'nombre' | 'numero' | 'origen' | 'fecha_nacimiento' | 'pesos' | 'tipo'> 
+& {
+     sexo :'M'
+    efectividad:number;
+    padre_en_partos:number;
+    servicios:number
+    }
+
+export type Res = Omit<Toro,'efectividad' | 'padre_en_partos' | 'servicios'>
 
 export type Insumo = {
     id: number;

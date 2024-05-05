@@ -4,6 +4,8 @@ export const endPoints = {
     toro: 'toro/',
     crearUsuario:'register',
     todosToro: 'toro',
+    todosReses: 'res',
+    res: 'res/',
     criasNumeracion: 'crias_pendiente_numeracion',
     asignarNumeroCria: 'asignar_numero_cria/',
     criasCapar: 'crias_pendiente_capar',
@@ -47,6 +49,7 @@ export const endPoints = {
     dashboardVentaGanadoventasMesGanado: 'dashboard_venta_ganado/venta_mes',
     dahboardFallecimientos: 'dashboard_fallecimientos/causas_frecuentes',
     notificaciones: 'notificaciones',
+    fechaUltimoRespaldo:'ultimo_respaldo'
 };
 
 export const endPointsCattle = {
@@ -64,6 +67,8 @@ export const endPointsCattle = {
 export const endpointsReports={
     venta_leche:'reportes/venta_leche',
     fallecimiento:'reportes/fallecimiento',
+    dashboard:'reportes/general',
+    ganado:'reportes/ganado'
 }
 /**Rutas para el endpoint de laravel   */
 export const endpointsReportsAnnual={

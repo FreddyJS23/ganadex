@@ -1,11 +1,15 @@
 import {
+    FieldsIdBeef,
     FieldsIdBirth,
+    FieldsIdBull,
     FieldsIdCasttle,
     FieldsIdCheckUp,
     FieldsIdService,
     FieldsIdStaff,
     FieldsIdSupply,
+    FieldsLabelsBeef,
     FieldsLabelsBirth,
+    FieldsLabelsBull,
     FieldsLabelsCasttle,
     FieldsLabelsCheckUp,
     FieldsLabelsService,
@@ -21,6 +25,18 @@ import { typeServicesForCasttle } from './typesServicesForCasttle';
 type FieldsCastle =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdCasttle;
     label: keyof typeof FieldsLabelsCasttle;
+    select?: { value: string | number; label: string }[];
+};
+
+type FieldsBull =Pick<InputProps,'type' | 'endContent' | 'required'> & {
+    id: keyof typeof FieldsIdBull;
+    label: keyof typeof FieldsLabelsBull;
+    select?: { value: string | number; label: string }[];
+};
+
+type FieldsBeef =Pick<InputProps,'type' | 'endContent' | 'required'> & {
+    id: keyof typeof FieldsIdBeef;
+    label: keyof typeof FieldsLabelsBeef;
     select?: { value: string | number; label: string }[];
 };
 
@@ -123,6 +139,99 @@ export const formCastle: FieldsCastle[] = [
         select: stateCasttleSelect,
     },
 ];
+export const formBull: FieldsBull[] = [
+    { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
+    { id: 'numero', label: 'Numero', required: true, type: 'number' },
+    {
+        id: 'tipo_id',
+        label: 'Tipo',
+        required: true,
+        type: 'select',
+        select: typeCasttleSelect,
+    },
+    {
+        id: 'fecha_nacimiento',
+        label: 'Fecha de nacimiento',
+        required: false,
+        type: 'date',
+    },
+    { id: 'origen', label: 'Origen', required: false, type: 'text' },
+    {
+        id: 'peso_actual',
+        label: 'Peso actual',
+        required: false,
+        type: 'text',
+        endContent: 'weight',
+    },
+    {
+        id: 'peso_destete',
+        label: 'Peso de destete',
+        required: false,
+        type: 'text',
+        endContent: 'weight',
+    },
+    {
+        id: 'peso_nacimiento',
+        label: 'Peso de nacimiento',
+        required: false,
+        type: 'text',
+        endContent: 'weight',
+    },
+    {
+        id: 'peso_2year',
+        label: 'Peso de 2 años',
+        required: false,
+        type: 'text',
+        endContent: 'weight',
+    },
+];
+export const formBeef: FieldsBeef[] = [
+    { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
+    { id: 'numero', label: 'Numero', required: true, type: 'number' },
+    {
+        id: 'tipo_id',
+        label: 'Tipo',
+        required: true,
+        type: 'select',
+        select: typeCasttleSelect,
+    },
+    {
+        id: 'fecha_nacimiento',
+        label: 'Fecha de nacimiento',
+        required: false,
+        type: 'date',
+    },
+    { id: 'origen', label: 'Origen', required: false, type: 'text' },
+    {
+        id: 'peso_actual',
+        label: 'Peso actual',
+        required: false,
+        type: 'text',
+        endContent: 'weight',
+    },
+    {
+        id: 'peso_destete',
+        label: 'Peso de destete',
+        required: false,
+        type: 'text',
+        endContent: 'weight',
+    },
+    {
+        id: 'peso_nacimiento',
+        label: 'Peso de nacimiento',
+        required: false,
+        type: 'text',
+        endContent: 'weight',
+    },
+    {
+        id: 'peso_2year',
+        label: 'Peso de 2 años',
+        required: false,
+        type: 'text',
+        endContent: 'weight',
+    },
+];
+
 
 export const formCheckUp: FieldsCheckUp[] = [
     { id: 'diagnostico', label: 'Diagnostico', required: true, type:'text' },

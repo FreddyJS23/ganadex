@@ -1,19 +1,21 @@
 import { CheckboxTheme } from '../../ui/CheckboxTheme';
 import IconoNotificacion from '@/icons/icono-notificacion.svg';
 import IconoUser from '@/icons/icono-user.svg';
-import IconoBackup from '@/icons/icono-descargar.svg';
-import IconoRestore from '@/icons/icono-subir.svg';
 import { BadgeNotification } from '@/ui/BadgeNotification';
 import { NotificationMain } from '../notifications';
 import { HamburgerButton } from '@/ui/HamburgerButton';
 import { Sidebar } from '../sidebar';
 import { getData } from '@/utils/getData';
-import { ResponseNotificaciones } from '@/types';
+import { ResponseFechaUltimoRespaldo, ResponseNotificaciones } from '@/types';
 import Link from 'next/link';
+import {  ButtonRestoreBd } from '../buttonRestoreBd';
+import { ButtonBackupBd } from '../buttonBackuppBd';
 
 export const Navbar = async () => {
 
     const {notificaciones}:ResponseNotificaciones=await getData('notificaciones')
+    
+    const {ultimo_backup}:ResponseFechaUltimoRespaldo=await getData('fechaUltimoRespaldo')
     
     const {parto=[],revision=[],secado=[]}=notificaciones
 
@@ -47,9 +49,11 @@ export const Navbar = async () => {
                     </div>
                 </div>
                 <div className=" flex gap-4">
+                   {/* restaurar y respaldar BD */}
+                   <ButtonBackupBd/>                   
+                   <ButtonRestoreBd dateLastBackup={ultimo_backup ?? null}/>                   
+                  
                     {/*  notificacion */}
-                   <Link target='_blank' href={'http://127.0.0.1:8000/respaldo'}><IconoBackup className={'size-8'}/></Link>
-                   <Link target='_blank' href={'http://127.0.0.1:8000/restaurar'}><IconoRestore className={'size-8'}/></Link>
                     <div className="dropdown dropdown-end">
                         <div
                             tabIndex={0}
@@ -80,8 +84,8 @@ export const Navbar = async () => {
                             <li>
                                 <a className="justify-between">Profile</a>
                             </li>
-                            <li>
-                                <a>Logout</a>
+                            <li className='bg-error rounded-md'>
+                                <Link href={'/api/signOut'}>Logout</Link>
                             </li>
                         </ul>
                     </div>

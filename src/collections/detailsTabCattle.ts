@@ -48,3 +48,9 @@ export const DetailsWeightingMilk = {
     peor_pesaje: 'Peor pesaje',
     estado_actual: 'Estado actual',
 };
+
+export const DetailsEfficiencyBull = {
+    efectividad: 'Efectividad',
+    padre_partos: 'Padre en partos',
+    servicios: 'Servicios hechos',
+};

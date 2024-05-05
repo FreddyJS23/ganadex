@@ -13,6 +13,7 @@ import {
     PesajesLeche,
     PositionStaff,
     PreciosDeLeche,
+    Res,
     Revision,
     Revisiones,
     Servicio,
@@ -88,12 +89,17 @@ export type ResponseGanados = {
 
 export type ResponseToro = {
     toro: Toro;
-    efectividad: number | null;
-    padre_en_partos: number;
-    servicios: number;
 };
 export type ResponseToros = {
     toros: Toro[];
+};
+
+export type ResponseReses = {
+    reses: Res[];
+  
+};
+export type ResponseRes = {
+    res: Res;
 };
 
 export type ResponseInsumo = {
@@ -226,4 +232,8 @@ export type ResponseCargosPersonal = {
 
 export type ResponseVeterinariosSelect = {
     veterinarios:veterinario[];
+};
+
+export type ResponseFechaUltimoRespaldo = {
+    ultimo_backup:string | null;
 };

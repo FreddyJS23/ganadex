@@ -27,12 +27,15 @@ export enum IconsModal {
     serve,
     pregnancy,
     customer,
+    restoreBd
 }
 
 
 export enum ElementSidebar {
     Dashboard,
     Ganado,
+    Toros,
+    Reses,
     'Venta de leche',
     Revisiones,
     Servicios,
@@ -58,6 +61,8 @@ export enum StateCattle {
 export enum URLS {
     '/dashboard',
     '/ganado',
+    '/toros',
+    '/reses',
     '/venta_leche',
     '/partos',
     '/revisiones',
@@ -168,7 +173,8 @@ export enum TitlesModals {
     'Parto del ',
     'Historial pesajes mensuales de leche',
     'Escoja un rango de fechas para el reporte',
-    'Año a filtrar el resumen'
+    'Año a filtrar el resumen',
+    'Restaurar base de datos'
 }
 
 export enum FieldsIdCasttle {
@@ -200,6 +206,50 @@ export enum FieldsLabelsCasttle {
     Estados,
     'Fecha de defunción',
     'Causa de defunción',
+}
+export enum FieldsIdBull {
+    nombre,
+    numero,
+    origen,
+    tipo_id,
+    fecha_nacimiento,
+    peso_nacimiento,
+    peso_destete,
+    peso_2year,
+    peso_actual,
+}
+export enum FieldsLabelsBull {
+    Nombre,
+    Numero,
+    Origen,
+    Tipo,
+    'Fecha de nacimiento',
+    'Peso de nacimiento',
+    'Peso de destete',
+    'Peso de 2 años',
+    'Peso actual',
+}
+export enum FieldsIdBeef {
+    nombre,
+    numero,
+    origen,
+    tipo_id,
+    fecha_nacimiento,
+    peso_nacimiento,
+    peso_destete,
+    peso_2year,
+    peso_actual,
+}
+export enum FieldsLabelsBeef {
+    Nombre,
+    Numero,
+    Origen,
+    Tipo,
+    'Fecha de nacimiento',
+    'Peso de nacimiento',
+    'Peso de destete',
+    'Peso de 2 años',
+    'Peso actual',
 }
 
 export enum FieldsIdCheckUp {

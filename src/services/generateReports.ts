@@ -9,6 +9,7 @@ export const GetReports = async (
     endPoint: keyof typeof endpointsReports,
     startDate?: string,
     endDate?: string,
+    id?: number,
 ) => {
     const session = (await auth()) as Session;
 
@@ -17,9 +18,19 @@ export const GetReports = async (
     /*  const {token,cookieCsrf}=user */
     const { token } = user;
 
-    const url =
-        'http://127.0.0.1:8000' +
-        `/${endpointsReports[endPoint]}?start=${startDate}&end=${endDate}`;
+    let url = '';
+    if (endPoint == 'dashboard') {
+        url =
+            'http://127.0.0.1:8000' +
+            `/${endpointsReports[endPoint]}`;
+    } else if (endPoint == 'ganado') {
+       url= 'http://127.0.0.1:8000' +
+            `/${endpointsReports[endPoint]}/${id}`;
+    } else if (endPoint == 'venta_leche' || endPoint == 'fallecimiento') {
+        url =
+            'http://127.0.0.1:8000' +
+            `/${endpointsReports[endPoint]}?start=${startDate}&end=${endDate}`;
+    }
 
     const headers = new Headers({
         Accept: '*/*',

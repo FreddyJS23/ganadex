@@ -17,8 +17,9 @@ export async function GET(
    
     const dateStart = searchParams.get('start') ?? formatDate;
     const dateEnd = searchParams.get('end') ?? formatDate;
-
-    const filePdf = await GetReports(params.reporte, dateStart, dateEnd);
+    const idElement = searchParams.get('id') ?? '0' ;
+  
+    const filePdf = await GetReports(params.reporte, dateStart, dateEnd,parseInt(idElement));
     if (filePdf instanceof Blob  && filePdf.size > 0) return new NextResponse(filePdf, {
         status: 200,
         headers:{ 'content-type':'application/pdf'}

@@ -14,6 +14,6 @@ export const castleShema = z.object({
     peso_2year: z.string().regex(/^\d+(\.\d+)?KG$/),
     peso_actual: z.string().regex(/^\d+(\.\d+)?KG$/),
     estado_id: z.string().transform((values)=>values.split(',').map((string)=>parseInt(string))),
-    fecha_defuncion: z.string().regex(regexDate),
-    causa_defuncion: z.string().max(255),
+    fecha_defuncion: z.string().regex(regexDate).optional(),
+    causa_defuncion: z.string().max(255).optional(),
 });
