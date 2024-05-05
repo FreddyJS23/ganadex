@@ -72,6 +72,7 @@ export type LayoutModalProps = {
     onOpen?: () => void;
     onOpenChange?: () => void;
     onClick?:()=> void
+    onClose?:()=> void
 };
 
 export type ModalProps = Pick<
