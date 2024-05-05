@@ -22,7 +22,8 @@ export const LayoutModal = ({
     isOpen,
     onOpenChange,
     refForm,
-    onClick
+    onClick,
+    onClose
 }: LayoutModalProps) => {
     const Icon = iconsModal[icon];
     const [currentRefForm, setcurrentRefForm] = useState<MutableRefObject<HTMLFormElement | null> | undefined>(undefined)
@@ -34,7 +35,7 @@ export const LayoutModal = ({
     };
     const router = useRouter();
 
-    const onClose = () => {
+    const onCloseWhenIsRoute = () => {
         router.back();
     };
 
@@ -44,7 +45,7 @@ export const LayoutModal = ({
             onOpenChange={onOpenChange}
             classNames={{ base: 'bg-base-100' }}
             placement="center"
-            onClose={onClose}
+            onClose={onClose ? onClose : onCloseWhenIsRoute}
         >
             <ModalContent>
                 {(onClose) => (

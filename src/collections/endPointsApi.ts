@@ -49,6 +49,7 @@ export const endPoints = {
     dashboardVentaGanadoventasMesGanado: 'dashboard_venta_ganado/venta_mes',
     dahboardFallecimientos: 'dashboard_fallecimientos/causas_frecuentes',
     notificaciones: 'notificaciones',
+    fechaUltimoRespaldo:'ultimo_respaldo'
 };
 
 export const endPointsCattle = {
