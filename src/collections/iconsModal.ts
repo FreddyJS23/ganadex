@@ -11,4 +11,5 @@ export const iconsModal = {
     pregnancy: dynamic(() => import('@/icons/icono-preñadas.svg')),
     serve: dynamic(() => import('@/icons/icono-servir.svg')),
     customer: dynamic(() => import('@/icons/icono-comprador.svg')),
+    restoreBd: dynamic(() => import('@/icons/icono-subir.svg')),
 };
