@@ -27,6 +27,7 @@ export enum IconsModal {
     serve,
     pregnancy,
     customer,
+    restoreBd
 }
 
 
@@ -172,7 +173,8 @@ export enum TitlesModals {
     'Parto del ',
     'Historial pesajes mensuales de leche',
     'Escoja un rango de fechas para el reporte',
-    'Año a filtrar el resumen'
+    'Año a filtrar el resumen',
+    'Restaurar base de datos'
 }
 
 export enum FieldsIdCasttle {
