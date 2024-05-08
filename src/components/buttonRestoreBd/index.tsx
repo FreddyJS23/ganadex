@@ -1,6 +1,6 @@
 'use client';
 
-import IconRestoreBd from '@/icons/icono-subir.svg';
+import IconRestoreBd from '@/icons/icono-restaurar.svg';
 import { toast } from 'sonner';
 import { useDisclosure } from '@nextui-org/modal';
 import { restoreBd } from '@/actions/restoreBd';
