@@ -121,6 +121,7 @@ export const headerCasttle: headersColumns[] = [
     { key: 'tipo', label: 'Tipo' },
     { key: 'origen', label: 'Origen' },
     { key: 'estados', label: 'Estados' },
+    { key: 'id', label: 'Acciones' },
 ];
 export const headerBull: headersColumnsBull[] = [
     { key: 'numero', label: 'Numero' },
