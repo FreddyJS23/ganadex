@@ -5,9 +5,8 @@ export const DropdownStatesCattle = ({
 }: {
     estados: EstadosGanado[];
 }) => {
-    const estado1 = estados.length >= 1 && estados.shift();
-    const estado2 = estados.length >= 2 && estados.shift();
-
+    const estado1 = estados.length >= 1 && estados[0];
+    const estado2 = estados.length >= 2 && estados[1];
     return (
         <div className="flex flex-wrap gap-1 max-w-md">
             {estado1 && (
