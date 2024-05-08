@@ -11,7 +11,7 @@ import {
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
-import Link from 'next/link';
+import { RedirectInTable } from '@/components/redirectsInTables';
 
 export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
     const renderCell = useCallback((partos: Partos, columnKey: Key) => {
@@ -20,13 +20,35 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
             case 'cria': {
                 const cria = cellValue as Cria;
 
-                return <Link href={``}>{cria.numero}</Link>;
+                return (
+                    <RedirectInTable
+                        id={cria.id}
+                        label={cria.numero ?? ''}
+                        redirect="ganado"
+                    />
+                );
+
+                break;
+            }
+            case 'numero': {
+                const numero = cellValue as number;
+               return <RedirectInTable
+                    id={partos['numero']}
+                    label={numero ?? ''}
+                    redirect="ganado"
+                />;
                 break;
             }
             case 'toro': {
                 const toro = cellValue as Toro;
 
-                return <Link href={``}>{toro.numero}</Link>;
+                return (
+                    <RedirectInTable
+                        id={toro.id}
+                        label={toro.numero ?? ''}
+                        redirect="toros"
+                    />
+                );
                 break;
             }
 

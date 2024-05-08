@@ -11,7 +11,7 @@ import {
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
-import Link from 'next/link';
+import { RedirectInTable } from '@/components/redirectsInTables';
 
 export const TableAllServes = ({
     todos_servicios,
@@ -20,11 +20,29 @@ export const TableAllServes = ({
         (servicios: Servicios, columnKey:Key) => {
             const cellValue = servicios[columnKey as keyof Servicios];
             switch (columnKey) {
-                case 'toro':{
+               
+                case 'numero': {
+                    const numero = cellValue as number;
+                   return <RedirectInTable
+                        id={servicios['numero']}
+                        label={numero ?? ''}
+                        redirect="ganado"
+                    />;
+                    break;
+                }
+
+                case 'toro': {
                     const toro = cellValue as ToroDeServicio;
 
-                    return <Link href={`toro/${toro.id}`}>{toro.numero}</Link>;
-                    break;}
+                    return (
+                        <RedirectInTable
+                            id={toro.id}
+                            label={toro.numero ?? ''}
+                            redirect="ganado"
+                        />
+                    );
+                    break;
+                }
 
                 default:
                     break;

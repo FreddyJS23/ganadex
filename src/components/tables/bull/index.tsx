@@ -12,6 +12,7 @@ import {
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import Link from 'next/link';
+import { RedirectInTable } from '@/components/redirectsInTables';
 
 export const TableBull = ({ toros }: ResponseToros) => {
     const renderCell = useCallback((toro: Toro, columnKey: Key) => {
@@ -20,7 +21,13 @@ export const TableBull = ({ toros }: ResponseToros) => {
         switch (columnKey as keyof Toro) {
             case 'numero': {
                 const numero = cellValue as number;
-                return <Link href={`toros/${toro['id']}`}>{numero}</Link>;
+                return (
+                    <RedirectInTable
+                        id={toro['id']}
+                        label={numero}
+                        redirect="toros"
+                    />
+                );;
             }
             case 'pesos': {
                 const pesos = cellValue as Pesos;
