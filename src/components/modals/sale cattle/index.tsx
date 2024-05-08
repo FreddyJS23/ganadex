@@ -4,10 +4,15 @@ import { Comprador, ModalProps } from '@/types';
 import { Select } from '@/components/select';
 import { Controller, useForm } from 'react-hook-form';
 import { createSaleCattleShema } from '@/validations/saleCattle';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateSaleCattle } from '@/types/forms';
+import { createSaleCattle } from '@/actions/createSaleCattle';
+import { toast } from 'sonner';
+import { endpointsReports } from '@/collections/endPointsApi';
+import { Button } from '@/ui/Button';
+import IconPrint from '@/icons/icono-imprimir.svg'
 
 export const ModalSaleCattle = ({
     isOpen,
@@ -29,9 +34,51 @@ export const ModalSaleCattle = ({
        resolver: zodResolver(createSaleCattleShema),
    });
 
+
+
    const router = useRouter();
    const formRef = useRef(null);
+   const params = useParams<{id:string}>();
 
+const generateReportSale = async (endPoint: keyof typeof endpointsReports) => {
+    try {
+        const getFile = await fetch(
+            `/api/reportes/${endPoint}`,
+        );
+        toast.success(`Generando nota de venta...`);
+        const file = await getFile.blob();
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(file as Blob);
+        link.download = `Reporte_${endPoint}.pdf`;
+        link.click();
+    } catch (error) {
+        const message = error as string;
+        return toast.error(message);
+    }
+};
+
+const actionCreateSaleCattle: () => void = handleSubmit(async (data) => {
+    try {
+        const saleCattle = await createSaleCattle(data,parseInt(params.id));
+        toast.success(`Se ha realizado la venta del ganado ${saleCattle} `, {
+            action: (
+                <div className="max-w-24">
+                    <Button
+                        content={<IconPrint className={'size-6'} />}
+                        onClick={async () =>
+                            await generateReportSale('notaVenta')
+                        }
+                    />
+                </div>
+            ),
+        });
+         router.back();
+        router.refresh(); 
+    } catch (error) {
+        const message = error as string;
+        return toast.error(message);
+    }
+});
 
     return (
         <LayoutModal
@@ -41,14 +88,17 @@ export const ModalSaleCattle = ({
             isOpen={isOpen}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
+            refForm={formRef}
         >
             <form
-                action=""
-                method="post"
+                id="form-createSaleCattle"
+                action={actionCreateSaleCattle}
                 className="m-auto flex flex-col gap-4 w-2/4 "
+                method='post'
+                ref={formRef}
             >
                 <Input
-                    id="price"
+                    id="precio"
                     label="Precio"
                     required
                     type="number"

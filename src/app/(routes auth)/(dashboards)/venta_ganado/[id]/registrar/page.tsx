@@ -6,6 +6,7 @@ export default async function Page() {
     const { compradores }: ResponseCompradores = await getData(
         'compradores',
     );
+    
 
     return <CreateSaleCattle ListaCompradoresRegistrados={compradores} />;
 }

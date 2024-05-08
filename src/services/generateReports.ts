@@ -19,7 +19,7 @@ export const GetReports = async (
     const { token } = user;
 
     let url = '';
-    if (endPoint == 'dashboard') {
+    if (endPoint == 'dashboard' || endPoint == 'notaVenta') {
         url =
             'http://127.0.0.1:8000' +
             `/${endpointsReports[endPoint]}`;
