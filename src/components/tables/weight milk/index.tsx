@@ -15,6 +15,7 @@ import IconButton from '@/icons/icono-peso.svg';
 import Link from 'next/link';
 import IconCheck from '@/icons/icono-check.svg';
 import IconError from '@/icons/icono-error.svg';
+import { RedirectInTable } from '@/components/redirectsInTables';
 
 export const TableAllWeightMilk = ({
     todos_pesaje_leche,
@@ -25,7 +26,7 @@ export const TableAllWeightMilk = ({
 
             switch (columnKey as keyof PesajesLeche) {
                 /* button icon */
-                case 'id':{
+                case 'id': {
                     const id = cellValue as number;
                     return (
                         <>
@@ -33,8 +34,17 @@ export const TableAllWeightMilk = ({
                                 <IconButton className={'size-6'} />
                             </Link>
                         </>
-                    );}
-
+                    );
+                }
+                case 'numero': {
+                    const numero = cellValue as number;
+                    <RedirectInTable
+                        id={pesajeLeche['numero']}
+                        label={numero ?? ''}
+                        redirect="ganado"
+                    />;
+                    break;
+                }
                 case 'pesaje_este_mes':{
                     const pesadaEsteMes = pesajeLeche['pesaje_este_mes'];
                     return pesadaEsteMes ? (

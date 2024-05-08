@@ -12,8 +12,9 @@ import {
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
-import Link from 'next/link';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
+import { DropDownOptionsCattle } from '@/components/dropdown options cattle';
+import { RedirectInTable } from '@/components/redirectsInTables';
 
 export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
     const renderCell = useCallback(
@@ -24,9 +25,7 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                 case 'numero': {
                     const numero = cellValue as number;
                     return (
-                        <Link href={`ganado/${cabeza_ganado['id']}`}>
-                            {numero}
-                        </Link>
+                        <RedirectInTable id={cabeza_ganado['id'] } label={numero} redirect='ganado' />
                     );
                 }
                 case 'pesos': {
@@ -46,6 +45,11 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                 case 'fecha_nacimiento': {
                     const fecha_nacimiento = cellValue as string;
                     return <div>{getAge(fecha_nacimiento)}</div>;
+                }
+               
+                case 'id': {
+                    const id = cellValue as number;
+                    return <DropDownOptionsCattle idCattle={id}/>;
                 }
 
                 default:
