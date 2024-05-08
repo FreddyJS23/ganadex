@@ -2,7 +2,7 @@ import { Button as ButtonNextUI } from '@nextui-org/button';
 import { useFormStatus } from 'react-dom';
 
 type ButtonProps = {
-    content: string;
+    content: string | JSX.Element;
     color?:
         | 'primary'
         | 'default'
