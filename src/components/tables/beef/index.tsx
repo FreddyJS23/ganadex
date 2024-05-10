@@ -11,7 +11,7 @@ import {
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
-import Link from 'next/link';
+import { RedirectInTable } from '@/components/redirectsInTables';
 
 export const TableBeef = ({ reses }: ResponseReses) => {
     const renderCell = useCallback((res: Res, columnKey: Key) => {
@@ -20,7 +20,13 @@ export const TableBeef = ({ reses }: ResponseReses) => {
         switch (columnKey as keyof Res) {
             case 'numero': {
                 const numero = cellValue as number;
-                return <Link href={`reses/${res['id']}`}>{numero}</Link>;
+                return (
+                    <RedirectInTable
+                        id={res['id']}
+                        label={numero ?? ''}
+                        redirect="reses"
+                    />
+                );;
             }
             case 'pesos': {
                 const pesos = cellValue as Pesos;

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import cattleImage from 'public/cattle.png';
 import IconoImprimir from '@/icons/icono-imprimir.svg';
 import { ButtonGenerateReport } from '@/components/buttonPrintReports';
+import { DropDownOptionsCattle } from '@/components/dropdown options cattle';
 
 type ParamsPageCattle = {
     params: { id: number };
@@ -32,11 +33,12 @@ export default async function Page({ params }: ParamsPageCattle) {
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
-                <div className='flex gap-2'>
+                <div className='flex gap-6'>
                     <h3 className=" font-bold text-2xl">
                         Detalle del animal {ganado.numero}
                     </h3>
                     <ButtonGenerateReport report='ganado' id={ganado.id} />
+                    <DropDownOptionsCattle idCattle={ganado.id} />
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row items-center ">
                     <div className="">
