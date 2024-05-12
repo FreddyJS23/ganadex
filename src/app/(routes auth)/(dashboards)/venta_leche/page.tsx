@@ -2,7 +2,7 @@ import { CardDashboardSaleMilk } from '@/components/cards';
 import { ChartEarningsMilkMonth } from '@/components/charts/dashboard/earnings milk month';
 import { TableSaleMilk } from '@/components/tables/sale milk';
 import { ResponseVentasLeche } from '@/types';
-import { GanaciasMes, PrecioActual, VariacionPrecio } from '@/types/dashboard';
+import { BalanceMensualVentaLeche, GanaciasMes, PrecioActual, VariacionPrecio } from '@/types/dashboard';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 import IconImprimir from '@/icons/icono-imprimir.svg';
@@ -20,6 +20,10 @@ export default async function Page() {
     );
     const { ganancias }: GanaciasMes = await getData(
         'dashboardVentaLechegananciasDelMes',
+    );
+   
+    const { balance_mensual }: BalanceMensualVentaLeche = await getData(
+        'dashboardVentaLecheBalanceMensual',
     );
 
     return (
@@ -52,7 +56,7 @@ export default async function Page() {
                     {/* Ganancias */}
                     <span className="mb-1 text-lg">{ganancias}</span>
                     {/* grafico */}
-                    <ChartEarningsMilkMonth />
+                    <ChartEarningsMilkMonth balance_mensual={balance_mensual} />
                 </article>
 
                 {/* tabla ventas */}

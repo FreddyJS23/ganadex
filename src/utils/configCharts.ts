@@ -123,6 +123,10 @@ export const optionChartLineAnnualMilk: ChartOptions<'line'> = {
 };
 
 export const optionChartLineEarningsMilkMonth: ChartOptions<'line'> = {
+    parsing: {
+        xAxisKey: 'fecha',
+        yAxisKey: 'cantidad',
+    },
     scales: {
         y: {
             beginAtZero: true,
@@ -164,6 +168,13 @@ export const optionChartLineEarningsMilkMonth: ChartOptions<'line'> = {
 };
 
 export const optionChartLineSalesCatle: ChartOptions<'bar'> = {
+     
+    parsing: {
+        xAxisKey: 'mes',
+        yAxisKey: 'ventas',
+        },
+   
+    
     /* cartesiano */
     scales: {
         y: {
