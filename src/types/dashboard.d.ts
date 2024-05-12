@@ -80,6 +80,16 @@ export type GanaciasMes = {
     ganancias: number;
 };
 
+type BalanceDiarioVentaLeche =  {
+    fecha: string;
+    cantidad?: number;
+};
+
+export type BalanceMensualVentaLeche = {
+    balance_mensual: BalanceDiarioVentaLeche[];
+};
+
+
 /* ------------------------------ Venta ganado ------------------------------ */
 
 export type MejorComprador = {
