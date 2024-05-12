@@ -3,7 +3,6 @@ import { SalesCatle } from '@/components/charts/dashboard/sales catle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
 import {  ResponseVentasGanado } from '@/types';
 import { BalanceAnualVentaGanado, MejorComprador, MejorVenta, PeorVenta } from '@/types/dashboard';
-import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 import IconImprimir from '@/icons/icono-imprimir.svg';
 import Link from 'next/link';
@@ -57,7 +56,6 @@ export default async function Page() {
                         <IconImprimir className={'size-8'} />
                     </Link>
                     {/* boton y modal crear venta */}
-                    <ButtonCreateItem href={'venta_ganado/registrar'} />
                 </div>
                 {/* grafico */}
                 <SalesCatle balance_anual={balance_anual} />
