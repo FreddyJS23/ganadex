@@ -1,5 +1,6 @@
 'use client';
 
+import { BalanceAnualVentaGanado, BalanceMensualVentaGanado } from '@/types/dashboard';
 import {
     optionChartLineSalesCatle,
     paletteBackground,
@@ -26,27 +27,13 @@ ChartJS.register(
     Legend,
 );
 
-const meses = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre',
-];
 
-export const SalesCatle = () => {
-    const data: ChartData<'bar', number[]> = {
-        labels: meses,
+export const SalesCatle = ({balance_anual}:BalanceAnualVentaGanado) => {
+   
+    const data: ChartData<'bar', BalanceMensualVentaGanado[]> = {
         datasets: [
             {
-                data: [2, 5],
+                data: balance_anual,
                 backgroundColor: paletteBackground,
                 borderColor: paletteBorderColor,
                 borderWidth: 1,
