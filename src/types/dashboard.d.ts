@@ -102,6 +102,16 @@ export type MejorVenta = {
 
 export type PeorVenta = MejorVenta;
 
+type BalanceMensualVentaGanado = BalanceMensual & {
+    ventas: number;
+};
+
+
+export type BalanceAnualVentaGanado = {
+    balance_anual: BalanceMensualVentaGanado[];
+};
+
+
 /* ----------------------------- fallecimientos ----------------------------- */
 
 type CausaFrecuente = {
