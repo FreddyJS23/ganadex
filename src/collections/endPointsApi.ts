@@ -43,10 +43,12 @@ export const endPoints = {
     dashboardVentaLechevariacionPRecio: 'dashboard_venta_leche/variacion_precio',
     dashboardVentaLechegananciasDelMes: 'dashboard_venta_leche/ganancias_mes',
     dashboardVentaLecheventasMesLeche: 'dashboard_venta_leche/ventas_mes',
+    dashboardVentaLecheBalanceMensual: 'dashboard_venta_leche/balance_mensual',
     dashboardVentaGanadomejorComprador: 'dashboard_venta_ganado/mejor_comprador',
     dashboardVentaGanadomejorVenta: 'dashboard_venta_ganado/mejor_venta',
     dashboardVentaGanadopeorVenta: 'dashboard_venta_ganado/peor_venta',
     dashboardVentaGanadoventasMesGanado: 'dashboard_venta_ganado/venta_mes',
+    dashboardVentaGanadoBalanceAnual: 'dashboard_venta_ganado/balance_anual',
     dahboardFallecimientos: 'dashboard_fallecimientos/causas_frecuentes',
     notificaciones: 'notificaciones',
     fechaUltimoRespaldo:'ultimo_respaldo'
