@@ -46,7 +46,8 @@ export default async function Page() {
                         >
                             <IconImprimir className={'size-8'} />
                         </Link>
-                    
+                        {/* boton y modal crear venta leche */}
+                        <ButtonCreateItem href={'venta_leche/registrar'} />
                     </div>
                     {/* Ganancias */}
                     <span className="mb-1 text-lg">{ganancias}</span>
