@@ -55,22 +55,42 @@ export default async function Page({ params }: ParamsPageBeef) {
                                     Pesos
                                 </h3>
                                 <div className="flex gap-6 flex-wrap justify-between sm:gap-4">
-                                    <Details
-                                        tittle={DetailsWeights.peso_nacimiento}
-                                        content={pesos.peso_nacimiento ?? ''}
-                                    />
-                                    <Details
-                                        tittle={DetailsWeights.peso_destete}
-                                        content={pesos.peso_destete ?? ''}
-                                    />
-                                    <Details
-                                        tittle={DetailsWeights.peso_2year}
-                                        content={pesos.peso_2year ?? ''}
-                                    />
-                                    <Details
-                                        tittle={DetailsWeights.peso_actual}
-                                        content={pesos.peso_actual ?? ''}
-                                    />
+                                  {pesos    ?    
+                                    <>
+                                        <Details
+                                            tittle={
+                                                DetailsWeights.peso_nacimiento
+                                            }
+                                            content={
+                                                pesos?.peso_nacimiento ?? ''
+                                            }
+                                        />
+                                        <Details
+                                            tittle={
+                                                DetailsWeights.peso_destete
+                                            }
+                                            content={
+                                                pesos?.peso_destete ?? ''
+                                            }
+                                        />
+                                        <Details
+                                            tittle={
+                                                DetailsWeights.peso_2year
+                                            }
+                                            content={
+                                                pesos?.peso_2year ?? ''
+                                            }
+                                        />
+                                        <Details
+                                            tittle={
+                                                DetailsWeights.peso_actual
+                                            }
+                                            content={
+                                                pesos?.peso_actual ?? ''
+                                            }
+                                        />
+                                    </>
+                                    : <div className='m-auto'>No disponibles</div>}
                                 </div>
                             </div>
                         </div>

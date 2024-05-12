@@ -49,7 +49,7 @@ export type Ganado = {
     sexo: 'H' | 'M';
     tipo: keyof typeof TypesCattle;
     fecha_nacimiento: string | null;
-    pesos:Pesos;
+    pesos?:Pesos;
     estados: EstadosGanado[];
     fecha_defuncion: string | null;
     causa_defuncion: string | null;
