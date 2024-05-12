@@ -6,6 +6,11 @@ import {
     VentaGanado,
 } from './models';
 
+
+type BalanceMensual = {
+    mes: keyof typeof Months;
+};
+
 /* --------------------------- Principal -------------------------- */
 
 type vacaProductora = {
@@ -15,9 +20,8 @@ type vacaProductora = {
 
 type vacaMenosProductora = vacaProductora;
 
-type BalanceMensualLeche = {
-    mes: keyof typeof Months;
-    promedio_pesaje: number;
+type BalanceMensualLeche=BalanceMensual & {
+promedio_mensual:number
 };
 
 export type TotalTiposGanado = {
