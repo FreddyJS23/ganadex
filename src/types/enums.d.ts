@@ -57,6 +57,7 @@ export enum URLS {
     '/personal',
     '/insumos',
     '/ajustes',
+    '/pesajes_leche',
 }
 
 export enum Months {
