@@ -11,6 +11,7 @@ import { MutableRefObject } from 'react';
 import { iconsSidebar } from '@/collections';
 
 type optionsSubmenuSidebar = {
+    url:keyof Pick<typeof URLS,  '/ganado' | '/toros' | '/reses' | '/venta_leche' | '/venta_ganado' | '/personal' | '/insumos' | '/revisiones' | '/servicios' | '/partos' | '/pesajes_leche'>;
     option: 'Vaca' | 'Vacas' | 'Toro' | 'Toros' | 'Res' | 'Reses' | 'Ganado' | 'Leche'  | 'Personal' | 'Insumos' | 'Revisiones' | 'Servicios' | 'Partos' | 'Pesajes de leche' | 'Registrar';
 };
 
@@ -25,7 +26,7 @@ export type SidebarElementProps = {
     /** Icono del elemento */
     icon: keyof typeof iconsSidebar;
     /** Url del elemento */
-    url: keyof typeof URLS;
+    url: keyof typeof URLS | null;
 };
 
 /** Detallar un item de informacion, que contiene un titulo y un contenido */
