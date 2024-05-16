@@ -3,7 +3,7 @@
 import { Button } from '@/ui/Button';
 import { Input } from '../Inputs';
 import { Tab, Tabs } from '@nextui-org/tabs';
-import { useState} from 'react';
+import { useRef, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { authenticate } from '@/actions/login';
 import { toast } from 'sonner';
@@ -18,6 +18,8 @@ export const TabLogin = () => {
     const [selected, setSelected] = useState<string | number>('login');
     const router = useRouter();
 
+            const form = useRef<HTMLFormElement | null>(null)
+    
     const {
         register,
         formState: { errors },
@@ -32,6 +34,7 @@ export const TabLogin = () => {
     const actionCreateUser:()=>void = handleSubmitCreateUser(async (data) => {
         try {
             const response = await createUser(data);
+            form.current?.reset();
             toast.success(response as string);
         } catch (error) {
             const { data, status } = error as ResponseError;
@@ -104,6 +107,7 @@ export const TabLogin = () => {
                 <form
                     className="flex flex-col gap-4 bg-base-100 pb-4 px-2 sm:max-w-96 sm:m-auto"
                     action={actionCreateUser}
+                    ref={form}
                 >
                     <div className="flex gap-3">
                         <Input
