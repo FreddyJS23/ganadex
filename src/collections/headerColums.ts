@@ -174,6 +174,7 @@ export const headerAllCheckup: headersColumnsAllCheckups[] = [
     { key: 'proxima_revision', label: 'Proxima revision' },
     { key: 'ultima_revision', label: 'Ultima revision' },
     { key: 'total_revisiones', label: 'Total de revisiones' },
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerAllServes: headersColumnsAllServes[] = [
@@ -182,6 +183,7 @@ export const headerAllServes: headersColumnsAllServes[] = [
     { key: 'total_servicios', label: 'Total de servicios' },
     { key: 'ultimo_servicio', label: 'Ultimo servicio' },
     { key: 'efectividad', label: 'Efectividad' },
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerAllBirths: headersColumnsAllBirhs[] = [
@@ -190,7 +192,7 @@ export const headerAllBirths: headersColumnsAllBirhs[] = [
     { key: 'cria', label: 'Cria' },
     { key: 'toro', label: 'Toro' },
     { key: 'total_partos', label: 'Total de partos' },
-   
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerAssignmentNumberBullCalf: headersColumnsAssignmentNumberBullCalf[] =
@@ -212,6 +214,7 @@ export const headerAllWeightMilk: headersColumnsAllWeightMilk[] = [
     { key: 'pesaje_este_mes', label: 'Pesaje mes actual' },
     { key: 'ultimo_pesaje', label: 'ultimo pesaje' },
     { key: 'id', label: 'Pesar' },
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerHistoryPriceMilk: headersColumnsHistoryPriceMilk[] = [
