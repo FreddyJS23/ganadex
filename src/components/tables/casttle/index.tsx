@@ -13,7 +13,7 @@ import {
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
-import { DropDownOptionsCattle } from '@/components/dropdown options cattle';
+import { DropDownOptions } from '@/components/dropdown options';
 import { RedirectInTable } from '@/components/redirectsInTables';
 
 export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
@@ -49,7 +49,7 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                
                 case 'id': {
                     const id = cellValue as number;
-                    return <DropDownOptionsCattle idCattle={id}/>;
+                    return <DropDownOptions idCattle={id} optionType='cattle'/>;
                 }
 
                 default:

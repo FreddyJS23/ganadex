@@ -12,6 +12,7 @@ import {
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import { RedirectInTable } from '@/components/redirectsInTables';
+import { DropDownOptions } from '@/components/dropdown options';
 
 export const TableAllCheckups = ({
     todas_revisiones,
@@ -21,12 +22,18 @@ export const TableAllCheckups = ({
         switch (columnKey as keyof Revisiones) {
             case 'numero': {
                 const numero = cellValue as number;
-              return  <RedirectInTable
-                    id={revisiones['numero']}
-                    label={numero ?? ''}
-                    redirect="ganado"
-                />;
+                return (
+                    <RedirectInTable
+                        id={revisiones['numero']}
+                        label={numero ?? ''}
+                        redirect="ganado"
+                    />
+                );
                 break;
+            }
+            case 'id': {
+                const id = cellValue as number;
+                return <DropDownOptions idCattle={id} optionType="checkup" />;
             }
 
             default:

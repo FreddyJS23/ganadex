@@ -12,6 +12,7 @@ import {
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import { RedirectInTable } from '@/components/redirectsInTables';
+import { DropDownOptions } from '@/components/dropdown options';
 
 export const TableAllServes = ({
     todos_servicios,
@@ -20,14 +21,15 @@ export const TableAllServes = ({
         (servicios: Servicios, columnKey:Key) => {
             const cellValue = servicios[columnKey as keyof Servicios];
             switch (columnKey) {
-               
                 case 'numero': {
                     const numero = cellValue as number;
-                   return <RedirectInTable
-                        id={servicios['numero']}
-                        label={numero ?? ''}
-                        redirect="ganado"
-                    />;
+                    return (
+                        <RedirectInTable
+                            id={servicios['numero']}
+                            label={numero ?? ''}
+                            redirect="ganado"
+                        />
+                    );
                     break;
                 }
 
@@ -42,6 +44,12 @@ export const TableAllServes = ({
                         />
                     );
                     break;
+                }
+                case 'id': {
+                    const id = cellValue as number;
+                    return (
+                        <DropDownOptions idCattle={id} optionType="serve" />
+                    );
                 }
 
                 default:
