@@ -5,17 +5,7 @@ export enum TypeNotification {
     secado
 }
 
-export enum IconsSidebar {
-    dashboard,
-    cattle,
-    milk,
-    checkUp,
-    serve,
-    pregnancy,
-    supplies,
-    staff,
-    setting,
-}
+
 export enum IconsModal {
     weight,
     bullCalf,

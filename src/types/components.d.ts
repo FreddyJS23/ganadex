@@ -4,11 +4,11 @@ import {
     ElementSidebar,
     EndContentInput,
     IconsModal,
-    IconsSidebar,
     TitlesModals,
     URLS,
 } from '.';
 import { MutableRefObject } from 'react';
+import { iconsSidebar } from '@/collections';
 
 /**opcion del sidebar */
 export type SidebarElementProps = {
@@ -21,7 +21,7 @@ export type SidebarElementProps = {
     /** Determina si el elemento  tendra un menu para responsive*/
     responsive: boolean;
     /** Icono del elemento */
-    icon: keyof typeof IconsSidebar;
+    icon: keyof typeof iconsSidebar;
     /** Url del elemento */
     url: keyof typeof URLS;
 };
