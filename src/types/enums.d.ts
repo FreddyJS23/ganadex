@@ -5,17 +5,7 @@ export enum TypeNotification {
     secado
 }
 
-export enum IconsSidebar {
-    dashboard,
-    cattle,
-    milk,
-    checkUp,
-    serve,
-    pregnancy,
-    supplies,
-    staff,
-    setting,
-}
+
 export enum IconsModal {
     weight,
     bullCalf,
@@ -33,16 +23,13 @@ export enum IconsModal {
 
 export enum ElementSidebar {
     Dashboard,
-    Ganado,
-    Toros,
-    Reses,
-    'Venta de leche',
-    Revisiones,
-    Servicios,
-    Partos,
-    Insumos,
+    Ventas,
     Personal,
+    Insumos,
     Ajustes,
+    'Registrar',
+    Consultar,
+    Operaciones,
 }
 
 export enum StateCattle {
@@ -70,6 +57,7 @@ export enum URLS {
     '/personal',
     '/insumos',
     '/ajustes',
+    '/pesajes_leche',
 }
 
 export enum Months {

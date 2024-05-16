@@ -4,26 +4,29 @@ import {
     ElementSidebar,
     EndContentInput,
     IconsModal,
-    IconsSidebar,
     TitlesModals,
     URLS,
 } from '.';
 import { MutableRefObject } from 'react';
+import { iconsSidebar } from '@/collections';
+
+type optionsSubmenuSidebar = {
+    url:keyof Pick<typeof URLS,  '/ganado' | '/toros' | '/reses' | '/venta_leche' | '/venta_ganado' | '/personal' | '/insumos' | '/revisiones' | '/servicios' | '/partos' | '/pesajes_leche'>;
+    option: 'Vaca' | 'Vacas' | 'Toro' | 'Toros' | 'Res' | 'Reses' | 'Ganado' | 'Leche'  | 'Personal' | 'Insumos' | 'Revisiones' | 'Servicios' | 'Partos' | 'Pesajes de leche' | 'Registrar';
+};
 
 /**opcion del sidebar */
 export type SidebarElementProps = {
     /** Determina el nombre del elemento */
     element: keyof typeof ElementSidebar;
-    /** Determina si el elemento tendra mas opciones */
-    optionMultiple: boolean;
-    /** Determina si el elemento es la opcion ganado */
-    optionCattle?: boolean;
+    /** Determina si el elemento  mas opciones */
+    options?: optionsSubmenuSidebar[];
     /** Determina si el elemento  tendra un menu para responsive*/
     responsive: boolean;
     /** Icono del elemento */
-    icon: keyof typeof IconsSidebar;
+    icon: keyof typeof iconsSidebar;
     /** Url del elemento */
-    url: keyof typeof URLS;
+    url: keyof typeof URLS | null;
 };
 
 /** Detallar un item de informacion, que contiene un titulo y un contenido */
