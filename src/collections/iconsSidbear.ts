@@ -2,12 +2,11 @@ import dynamic from 'next/dynamic';
 
 export const iconsSidebar = {
     dashboard: dynamic(() => import('@/icons/icono-dashboard.svg')),
-    setting: dynamic(() => import('@/icons/icono-ajuste.svg')),
-    cattle: dynamic(() => import('@/icons/icono-ganado.svg')),
+    register: dynamic(() => import('@/icons/icono-registrar.svg')),
+    consult: dynamic(() => import('@/icons/icono-consultar.svg')),
+    operations: dynamic(() => import('@/icons/icono-operaciones.svg')),
+    sales: dynamic(() => import('@/icons/icono-ventas.svg')),
     supplies: dynamic(() => import('@/icons/icono-insumo.svg')),
-    milk: dynamic(() => import('@/icons/icono-leche.svg')),
     staff: dynamic(() => import('@/icons/icono-personal.svg')),
-    pregnancy: dynamic(() => import('@/icons/icono-preñadas.svg')),
-    checkUp: dynamic(() => import('@/icons/icono-revision.svg')),
-    serve: dynamic(() => import('@/icons/icono-servir.svg')),
+    setting: dynamic(() => import('@/icons/icono-ajuste.svg')),
 };
