@@ -10,14 +10,16 @@ import {
 import { MutableRefObject } from 'react';
 import { iconsSidebar } from '@/collections';
 
+type optionsSubmenuSidebar = {
+    option: 'Vaca' | 'Vacas' | 'Toro' | 'Toros' | 'Res' | 'Reses' | 'Ganado' | 'Leche'  | 'Personal' | 'Insumos' | 'Revisiones' | 'Servicios' | 'Partos' | 'Pesajes de leche' | 'Registrar';
+};
+
 /**opcion del sidebar */
 export type SidebarElementProps = {
     /** Determina el nombre del elemento */
     element: keyof typeof ElementSidebar;
-    /** Determina si el elemento tendra mas opciones */
-    optionMultiple: boolean;
-    /** Determina si el elemento es la opcion ganado */
-    optionCattle?: boolean;
+    /** Determina si el elemento  mas opciones */
+    options?: optionsSubmenuSidebar[];
     /** Determina si el elemento  tendra un menu para responsive*/
     responsive: boolean;
     /** Icono del elemento */
