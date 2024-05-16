@@ -9,7 +9,7 @@ import Link from 'next/link';
 import cattleImage from 'public/cattle.png';
 import IconoImprimir from '@/icons/icono-imprimir.svg';
 import { ButtonGenerateReport } from '@/components/buttonPrintReports';
-import { DropDownOptionsCattle } from '@/components/dropdown options cattle';
+import { DropDownOptionsCattle } from '@/components/dropdown options';
 
 type ParamsPageCattle = {
     params: { id: number };
