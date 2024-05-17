@@ -49,7 +49,9 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                
                 case 'id': {
                     const id = cellValue as number;
-                    return <DropDownOptions idCattle={id} optionType='cattle'/>;
+                    const estados = cabeza_ganado['estados'] as EstadosGanado[];
+                    
+                   return !estados.some(({estado})=> estado == 'fallecido' || estado == 'vendido' ) &&  <DropDownOptions idCattle={id} optionType='cattle'/>; 
                 }
 
                 default:
