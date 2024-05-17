@@ -1,5 +1,6 @@
 import { DetailsCattle, DetailsEfficiencyBull, DetailsWeights } from '@/collections';
 import { Details } from '@/components/details';
+import { DropdownStatesCattle } from '@/components/dropdown states cattle';
 import {  ResponseToro } from '@/types';
 import { getData } from '@/utils/getData';
 import Image from 'next/image';
@@ -12,7 +13,7 @@ type ParamsPageBull = {
 export default async function Page({ params }: ParamsPageBull) {
     const {toro}: ResponseToro = await getData('toro', 'GET', undefined, params.id);
 
-    const {numero,nombre,origen,fecha_nacimiento,efectividad,padre_en_partos,pesos,servicios,tipo} = toro;
+    const {numero,nombre,origen,fecha_nacimiento,efectividad,padre_en_partos,pesos,servicios,tipo,estados} = toro;
 
 
     return (
@@ -50,6 +51,13 @@ export default async function Page({ params }: ParamsPageBull) {
                                 tittle={DetailsCattle.tipo}
                                 content={tipo}
                             />
+
+                            <div className="flex flex-col items-center">
+                                <h3 className="font-bold text-lg">Estados</h3>
+                                <DropdownStatesCattle
+                                    estados={estados}
+                                />
+                            </div>
                             {/* Pesos */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">
                                 <h3 className="self-center text-xl font-bold">
@@ -91,7 +99,11 @@ export default async function Page({ params }: ParamsPageBull) {
                                                 }
                                             />
                                         </>
-                                    ) : <div className='m-auto'>No disponibles</div>}
+                                    ) : (
+                                        <div className="m-auto">
+                                            No disponibles
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                             {/*Eficiencia */}
