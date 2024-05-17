@@ -20,7 +20,7 @@ console.log(estados)
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
                 <div className="flex gap-2">
                     <h3 className=" font-bold text-2xl">
-                        Detalle del toro {numero}
+                        Detalle de la res {numero}
                     </h3>
                     {/*  <ButtonGenerateReport report='ganado' id={ganado.id} /> */}
                 </div>
