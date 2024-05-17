@@ -15,6 +15,7 @@ import { LayoutTable } from '..';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
 import { DropDownOptions } from '@/components/dropdown options';
 import { RedirectInTable } from '@/components/redirectsInTables';
+import IconCheck from '@/icons/icono-check.svg';
 
 export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
     const renderCell = useCallback(
@@ -51,7 +52,7 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                     const id = cellValue as number;
                     const estados = cabeza_ganado['estados'] as EstadosGanado[];
                     
-                   return !estados.some(({estado})=> estado == 'fallecido' || estado == 'vendido' ) &&  <DropDownOptions idCattle={id} optionType='cattle'/>; 
+                   return !estados.some(({estado})=> estado == 'fallecido' || estado == 'vendido' ) ?  <DropDownOptions idCattle={id} optionType='cattle'/> : <IconCheck className={'size-8'} />; 
                 }
 
                 default:

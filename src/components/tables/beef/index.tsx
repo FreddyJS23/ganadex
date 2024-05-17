@@ -1,7 +1,7 @@
 'use client';
 
 import { headerBeef } from '@/collections/headerColums';
-import { Pesos, Res, ResponseReses } from '@/types';
+import { EstadosGanado, Pesos, Res, ResponseReses } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -12,6 +12,9 @@ import {
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import { RedirectInTable } from '@/components/redirectsInTables';
+import { DropDownOptions } from '@/components/dropdown options';
+import { DropdownStatesCattle } from '@/components/dropdown states cattle';
+import IconCheck from '@/icons/icono-check.svg';
 
 export const TableBeef = ({ reses }: ResponseReses) => {
     const renderCell = useCallback((res: Res, columnKey: Key) => {
@@ -26,7 +29,7 @@ export const TableBeef = ({ reses }: ResponseReses) => {
                         label={numero ?? ''}
                         redirect="reses"
                     />
-                );;
+                );
             }
             case 'pesos': {
                 const pesos = cellValue as Pesos;
@@ -41,6 +44,24 @@ export const TableBeef = ({ reses }: ResponseReses) => {
                     </div>
                 );
             }
+            case 'estados': {
+                const estados = cellValue as EstadosGanado[];
+
+                return <DropdownStatesCattle estados={estados} />;
+            }
+            case 'id': {
+                const id = res['ganado_id'];
+                 const estados = res['estados'] as EstadosGanado[];
+                return !estados.some(
+                    ({ estado }) =>
+                        estado == 'fallecido' || estado == 'vendido',
+                ) ? (
+                    <DropDownOptions idCattle={id} optionType="cattle" />
+                ) : (
+                    <IconCheck className={'size-8'} />
+                );
+            }
+
             default:
                 return cellValue as ReactNode;
         }
