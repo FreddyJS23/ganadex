@@ -130,13 +130,16 @@ export const headerBull: headersColumnsBull[] = [
     { key: 'servicios', label: 'Servicios hechos' },
     { key: 'padre_en_partos', label: 'Padre en partos' },
     { key: 'efectividad', label: 'Efectividad' },
- 
+    { key: 'estados', label: 'Estados' },
+    { key: 'id', label: 'Acciones' },
 ];
 export const headerBeef: headersColumnsBeef[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
     { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
     { key: 'pesos', label: 'Peso actual' },
+    { key: 'estados', label: 'Estados' },
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerSaleCasttle: headersColumnsSaleCasttle[] = [
@@ -214,7 +217,6 @@ export const headerAllWeightMilk: headersColumnsAllWeightMilk[] = [
     { key: 'pesaje_este_mes', label: 'Pesaje mes actual' },
     { key: 'ultimo_pesaje', label: 'ultimo pesaje' },
     { key: 'id', label: 'Pesar' },
-    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerHistoryPriceMilk: headersColumnsHistoryPriceMilk[] = [
