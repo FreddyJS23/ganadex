@@ -45,6 +45,13 @@ export const TableAllServes = ({
                     );
                     break;
                 }
+
+                case 'efectividad': {
+                    const efectividad = cellValue as number;
+
+                    return <span>{efectividad ? `${efectividad}%` : ''}</span>;
+                }
+
                 case 'id': {
                     const id = cellValue as number;
                     return (
