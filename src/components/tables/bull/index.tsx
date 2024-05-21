@@ -51,7 +51,12 @@ export const TableBull = ({ toros }: ResponseToros) => {
 
                 return <DropdownStatesCattle estados={estados} />;
             }
+            
+            case 'efectividad': {
+                const efectividad = cellValue as number;
 
+             return <span>{efectividad ? `${efectividad}%` : ''}</span>;
+            }
 
             case 'id': {
                 const id = toro['ganado_id'];
