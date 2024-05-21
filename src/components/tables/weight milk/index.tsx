@@ -38,7 +38,7 @@ export const TableAllWeightMilk = ({
                 }
                 case 'numero': {
                     const numero = cellValue as number;
-                    <RedirectInTable
+                   return <RedirectInTable
                         id={pesajeLeche['numero']}
                         label={numero ?? ''}
                         redirect="ganado"
