@@ -85,13 +85,6 @@ export const formCastle: FieldsCastle[] = [
     { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
     { id: 'numero', label: 'Numero', required: true, type: 'number' },
     {
-        id: 'sexo',
-        label: 'Sexo',
-        required: true,
-        type: 'select',
-        select: genderSelect,
-    },
-    {
         id: 'tipo_id',
         label: 'Tipo',
         required: true,
@@ -132,18 +125,6 @@ export const formCastle: FieldsCastle[] = [
         required: false,
         type: 'text',
         endContent: 'weight',
-    },
-    {
-        id: 'fecha_defuncion',
-        label: 'Fecha de defunción',
-        required: false,
-        type: 'date',
-    },
-    {
-        id: 'causa_defuncion',
-        label: 'Causa de defunción',
-        required: false,
-        type: 'text',
     },
     {
         id: 'estado_id',
