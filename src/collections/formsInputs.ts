@@ -4,6 +4,8 @@ import {
     FieldsIdBull,
     FieldsIdCasttle,
     FieldsIdCheckUp,
+    FieldsIdDeadCattle,
+    FieldsIdSaleCattle,
     FieldsIdService,
     FieldsIdStaff,
     FieldsIdSupply,
@@ -12,6 +14,8 @@ import {
     FieldsLabelsBull,
     FieldsLabelsCasttle,
     FieldsLabelsCheckUp,
+    FieldsLabelsDeadCattle,
+    FieldsLabelsSaleCattle,
     FieldsLabelsService,
     FieldsLabelsStaff,
     FieldsLabelsSupply,
@@ -65,6 +69,16 @@ type FieldsSupply =Pick<InputProps,'type' | 'endContent' | 'required'> & {
 type FieldsStaff =Pick<InputProps,'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdStaff;
     label: keyof typeof FieldsLabelsStaff;
+};
+
+type FieldsDeadCattle =Pick<InputProps,'type' | 'endContent' | 'required'> & {
+    id: keyof typeof FieldsIdDeadCattle;
+    label: keyof typeof FieldsLabelsDeadCattle;
+};
+
+type FieldsSaleCattle =Pick<InputProps,'type' | 'endContent' | 'required'> & {
+    id: keyof typeof FieldsIdSaleCattle;
+    label: keyof typeof FieldsLabelsSaleCattle;
 };
 
 export const formCastle: FieldsCastle[] = [
@@ -299,4 +313,20 @@ export const formStaff: FieldsStaff[] = [
         type: 'date',
     },
     { id: 'cargo_id', label: 'Cargo', required: true, type: 'select' },
+];
+export const formDeadCattle: FieldsDeadCattle[] = [
+    { id: 'fecha', label: 'Fecha de defunción', required: true, type: 'date' },
+    { id: 'causa', label: 'Causa de defunción', required: true, type: 'text' },
+];
+
+export const formSaleCattle: FieldsSaleCattle[] = [
+    { id: 'precio', label: 'Precio', required: true, type: 'number' },
+    { id: 'comprador_id', label: 'Compradores', required: true, type: 'select' },
+];
+
+export const formSaleCattleInFormCattle: FieldsSaleCattle[] = formSaleCattle.concat([{ id: 'fecha_venta', label: 'Fecha de venta', required: true, type: 'date' }]);
+
+export const formDeadCattleInFormCattle: FieldsDeadCattle[] = [
+    { id: 'fecha_fallecimiento', label: 'Fecha de defunción', required: true, type: 'date' },
+    { id: 'causa', label: 'Causa de defunción', required: true, type: 'text' },
 ];
