@@ -58,6 +58,7 @@ export enum URLS {
     '/insumos',
     '/ajustes',
     '/pesajes_leche',
+    '/fallecimientos',
 }
 
 export enum Months {
