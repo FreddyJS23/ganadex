@@ -68,10 +68,10 @@ export const endPointsCattle = {
 /**Rutas para el endpoint de laravel   */
 export const endpointsReports={
     venta_leche:'reportes/venta_leche',
-    fallecimiento:'reportes/fallecimiento',
+    fallecimiento:'reportes/causas_fallecimientos',
     dashboard:'reportes/general',
     ganado:'reportes/ganado',
-    notaVenta:'reportes/nota_venta'
+    notaVenta:'reportes/nota_venta',
 }
 /**Rutas para el endpoint de laravel   */
 export const endpointsReportsAnnual={
