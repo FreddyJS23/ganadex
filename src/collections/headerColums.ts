@@ -3,6 +3,7 @@ import {
     Comprador,
     CriaPendienteCapar,
     CriaPendienteNumeracion,
+    Fallecimiento,
     Insumo,
     Parto,
     Partos,
@@ -109,6 +110,11 @@ type headersColumnsAllWeightMilk = {
 
 type headersColumnsCustomer = {
     key: keyof Comprador;
+    label: string;
+};
+
+type headersColumnDeadCattle = {
+    key: keyof Fallecimiento;
     label: string;
 };
 
@@ -246,4 +252,10 @@ export const headerWeightMilk: headersColumnsWeightMilk[] = [
 
 export const headerCustomers: headersColumnsCustomer[] = [
     { key: 'nombre', label: 'Nombre' },
+];
+
+export const headerDeadCattle: headersColumnDeadCattle[] = [
+    { key: 'causa', label: 'Causa' },
+    { key: 'fecha', label: 'Fecha' },
+    { key: 'ganado', label: 'Ganado' },
 ];
