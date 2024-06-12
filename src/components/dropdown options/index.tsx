@@ -34,7 +34,7 @@ export const DropDownOptions = ({ idCattle, optionType }: DropDownOptions) => {
             <DropdownMenu aria-label="Static Actions" items={optionsDropdown}>
                 {({ url, label }) => (
                     <DropdownItem key={url + label}>
-                        {url == 'fallecimientos' || url == 'venta_ganado' ? (
+                        {url == 'fallecimientos/registrar' || url == 'venta_ganado' ? (
                             <Link
                                 className="block w-full"
                                 href={`/${url}/${idCattle}`}

@@ -49,7 +49,7 @@ export const endPoints = {
     dashboardVentaGanadopeorVenta: 'dashboard_venta_ganado/peor_venta',
     dashboardVentaGanadoventasMesGanado: 'dashboard_venta_ganado/venta_mes',
     dashboardVentaGanadoBalanceAnual: 'dashboard_venta_ganado/balance_anual',
-    dahboardFallecimientos: 'dashboard_fallecimientos/causas_frecuentes',
+    dashboardFallecimientosCausasFrecuentes: 'dashboard_fallecimientos/causas_frecuentes',
     notificaciones: 'notificaciones',
     fechaUltimoRespaldo:'ultimo_respaldo'
 };
@@ -68,10 +68,10 @@ export const endPointsCattle = {
 /**Rutas para el endpoint de laravel   */
 export const endpointsReports={
     venta_leche:'reportes/venta_leche',
-    fallecimiento:'reportes/fallecimiento',
+    fallecimiento:'reportes/causas_fallecimientos',
     dashboard:'reportes/general',
     ganado:'reportes/ganado',
-    notaVenta:'reportes/nota_venta'
+    notaVenta:'reportes/nota_venta',
 }
 /**Rutas para el endpoint de laravel   */
 export const endpointsReportsAnnual={

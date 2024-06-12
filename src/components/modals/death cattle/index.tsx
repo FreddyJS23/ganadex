@@ -5,18 +5,19 @@ import { useForm } from 'react-hook-form';
 import { CreateDeathCastle } from '@/types/forms';
 import { createDeathCastleShema } from '@/validations/deathCastle';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/router';
 import { useRef } from 'react';
+import { createDeathCattle } from '@/actions/createSaleDeath';
+import { useParams, useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 export const ModalDeathCattle = ({
     isOpen,
-    
     onOpen,
     onOpenChange,
     dataHeader,
 }: ModalProps) => {
-    
-     const {
+
+    const {
          register,
          formState: { errors },
          handleSubmit,
@@ -26,7 +27,21 @@ export const ModalDeathCattle = ({
 
      const router = useRouter();
      const formRef = useRef(null);
+     const params = useParams<{ id: string }>();
     
+
+const actionCreateDeathCattle: () => void = handleSubmit(async (data) => {
+    try {
+        const deathCattle = await createDeathCattle(data, parseInt(params.id));
+        toast.success(`Se ha realizado el fallecimiento del ganado ${deathCattle} `);
+        router.back();
+        router.refresh();
+    } catch (error) {
+        const message = error as string;
+        return toast.error(message);
+    }
+});
+
     return (
         <LayoutModal
             icon="dead"
@@ -36,11 +51,13 @@ export const ModalDeathCattle = ({
             onOpen={onOpen}
             onOpenChange={onOpenChange}
             dataHeader={dataHeader}
+            refForm={formRef}
         >
             <form
-                action=""
-                method="post"
+                ref={formRef}
+                action={actionCreateDeathCattle}
                 className="m-auto flex flex-col gap-4 w-2/4 "
+                id={'form-createDeathCattle'}
             >
                 <Input
                     id="causa"

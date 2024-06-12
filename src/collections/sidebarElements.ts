@@ -63,6 +63,10 @@ export const options: Pick<
                 option: 'Pesajes de leche',
                 url: '/pesajes_leche',
             },
+            {
+                option: 'Fallecimientos',
+                url: '/fallecimientos',
+            },
         ],
     },
 

@@ -1,11 +1,11 @@
 export type OptionsDropdown={
-    url:'venta_ganado' | 'fallecimientos' | 'revision' | 'servicio' |  'parto' ;
+    url:'venta_ganado' | 'fallecimientos/registrar' | 'revision' | 'servicio' |  'parto' ;
     label:'Vender' | 'Fallecer' | 'Nuevo' | 'Ver historial'; 
 }
 
 export const optionsDropdownCattle:OptionsDropdown[]=[
     {url:'venta_ganado',label:'Vender'},
-    {url:'fallecimientos',label:'Fallecer'},
+    {url:'fallecimientos/registrar',label:'Fallecer'},
 ]
 export const optionsDropdownCheckup:OptionsDropdown[]=[
     {url:'revision',label:'Nuevo'},
