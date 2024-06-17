@@ -22,7 +22,7 @@ export default function Page() {
                     />
                 </div>
                 {/*seccion izquierda formularios */}
-                <div className="flex size-full z-10 pt-16 flex-col justify-center items-center rounded-lg gap-4  sm:bg-base-100 sm:p-4 sm:w-2/4 sm:h-[500px]">
+                <div className="flex size-full z-10 pt-16 flex-col justify-center items-center rounded-lg gap-4  sm:bg-base-100 sm:p-4 sm:w-2/4 sm:h-[500px] sm:max-h-[100%]">
                     <Logos small={false} />
 
                     <TabLogin />
