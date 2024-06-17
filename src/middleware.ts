@@ -3,11 +3,13 @@ import { auth as middleware } from '@/auth';
 
 export default middleware((request) => {
     if (!request.auth) {
-        if (!request.nextUrl.pathname.startsWith('/login'))
+        if (!request.nextUrl.pathname.startsWith('/login')) {
             return NextResponse.redirect(new URL('/login', request.url));
+        }
     } else {
-        if (request.nextUrl.pathname.startsWith('/login'))
+        if (request.nextUrl.pathname.startsWith('/login')) {
             return NextResponse.redirect(new URL('/dashboard', request.url));
+        }
     }
 });
 
