@@ -31,7 +31,7 @@ export const CarouselTextLogin = () => {
             {textCarouselLogin.map(({ text },index) => {
                 return (
                     <div key={index} >
-                        <p className="text-wrap text-center">{text}</p>
+                        <p style={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }} className="text-wrap text-center">{text}</p>
                     </div>
                 );
             })}
