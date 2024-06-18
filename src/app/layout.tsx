@@ -1,5 +1,6 @@
 import './globals.tailwind.css';
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import { Providers } from './providers';
 import localFont from 'next/font/local';
 import { Toaster } from 'sonner';
@@ -20,16 +21,14 @@ export const metadata: Metadata = {
     title: 'Ganadex | Gestión eficiente'
 };
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang="en" data-theme={'ganadexThemeDark'} className="dark">
+        <html lang='es' data-theme='ganadexThemeDark' className='dark'>
             <body
-                className={`${nunito.variable} ${bebasNue.variable} font-nunito   bg-background dark:bg-background-dark`}
-            >
+                className={`
+                    ${nunito.variable} ${bebasNue.variable} font-nunito
+                    bg-background dark:bg-background-dark
+                `}>
                 <Providers>
                     {children}
                     <Toaster richColors />
