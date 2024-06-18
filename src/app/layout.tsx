@@ -1,6 +1,5 @@
+import './globals.tailwind.css';
 import type { Metadata } from 'next';
-
-import './globals.css';
 import { Providers } from './providers';
 import localFont from 'next/font/local';
 import { Toaster } from 'sonner';
