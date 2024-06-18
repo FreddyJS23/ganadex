@@ -6,10 +6,8 @@ export default middleware((request) => {
         if (!request.nextUrl.pathname.startsWith('/login')) {
             return NextResponse.redirect(new URL('/login', request.url));
         }
-    } else {
-        if (request.nextUrl.pathname.startsWith('/login')) {
-            return NextResponse.redirect(new URL('/dashboard', request.url));
-        }
+    } else if (request.nextUrl.pathname.startsWith('/login')) {
+        return NextResponse.redirect(new URL('/dashboard', request.url));
     }
 });
 
