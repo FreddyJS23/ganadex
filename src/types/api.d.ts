@@ -203,7 +203,7 @@ export type ResponseFallecimiento = {
 };
 
 export type ResponseFallecimientos = {
-    fallecimientos: Fallecimiento[];
+    fallecidos: Fallecimiento[];
 };
 
 export type ResponseRevisionesGeneral = {

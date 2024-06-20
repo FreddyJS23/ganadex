@@ -1,12 +1,15 @@
 export const textCarouselLogin = [
     {
-        text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit  iure, earum nisi voluptas magni eveniet qui debitis fugit     totam perferendis velit voluptates, officiis doloribus natus
-                est reprehenderit corrupti aperiam ducimus.`,
+        text: `Bienvenido a Ganadex, un sistema automatizado administrativo para
+        la gestión visual y eficiente de tu ganado.`,
     },
     {
-        text: ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Omnis non eius architecto ipsam obcaecati voluptas est id
-                    ducimus explicabo, quam unde atque culpa magnam vero
-                    praesentium odit nobis assumenda. Ipsum!`,
+        text: `Para iniciar la mejor experiencia en gestión ganadera,
+        regístrate como un nuevo usuario o si ya tienes una cuenta, puedes
+        ingresar usando tus credenciales de acceso.`
     },
+    {
+        text: `Planteado, diseñado y desarrollado por los estudiantes de la UPTM
+        Kléber Ramírez del Proyecto Nacional de Formación en Informática (PNFI).`
+    }
 ];

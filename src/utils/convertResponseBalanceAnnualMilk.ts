@@ -5,8 +5,8 @@ export const getBalanceMonthFromAnnual = (
 ) => {
     const balanceMonth: number[] = [];
 
-    balanceAnnual.forEach(({ promedio_pesaje }) =>
-        balanceMonth.push(promedio_pesaje),
+    balanceAnnual.forEach(({ promedio_mensual }) =>
+        balanceMonth.push(promedio_mensual),
     );
 
     return { balanceMonth };

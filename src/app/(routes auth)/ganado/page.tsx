@@ -8,7 +8,7 @@ export default async function Page() {
         await getData('todosGanado');
     return (
         <>
-            <TitlePage title="Cabezas de ganado" />
+            <TitlePage title="Vacas" />
             <TableCasttle cabezas_ganado={cabezas_ganado} />
         </>
     );

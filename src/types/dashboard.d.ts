@@ -6,6 +6,11 @@ import {
     VentaGanado,
 } from './models';
 
+
+type BalanceMensual = {
+    mes: keyof typeof Months;
+};
+
 /* --------------------------- Principal -------------------------- */
 
 type vacaProductora = {
@@ -15,9 +20,8 @@ type vacaProductora = {
 
 type vacaMenosProductora = vacaProductora;
 
-type BalanceMensualLeche = {
-    mes: keyof typeof Months;
-    promedio_pesaje: number;
+type BalanceMensualLeche=BalanceMensual & {
+promedio_mensual:number
 };
 
 export type TotalTiposGanado = {
@@ -76,6 +80,16 @@ export type GanaciasMes = {
     ganancias: number;
 };
 
+type BalanceDiarioVentaLeche =  {
+    fecha: string;
+    cantidad?: number;
+};
+
+export type BalanceMensualVentaLeche = {
+    balance_mensual: BalanceDiarioVentaLeche[];
+};
+
+
 /* ------------------------------ Venta ganado ------------------------------ */
 
 export type MejorComprador = {
@@ -87,6 +101,16 @@ export type MejorVenta = {
 };
 
 export type PeorVenta = MejorVenta;
+
+type BalanceMensualVentaGanado = BalanceMensual & {
+    ventas: number;
+};
+
+
+export type BalanceAnualVentaGanado = {
+    balance_anual: BalanceMensualVentaGanado[];
+};
+
 
 /* ----------------------------- fallecimientos ----------------------------- */
 

@@ -2,66 +2,115 @@ import { SidebarElementProps } from '@/types';
 
 export const options: Pick<
     SidebarElementProps,
-    'element' | 'icon' | 'url' | 'optionMultiple'
+    'element' | 'icon' | 'url' | 'options'
 >[] = [
     {
-        element: 'Ganado',
-        icon: 'cattle',
-        url: '/ganado',
-        optionMultiple: false,
+        element: 'Registrar',
+        icon: 'register',
+        url: null,
+        options: [
+            {
+                option: 'Vaca',
+                url: '/ganado',
+            },
+            {
+                option: 'Toro',
+                url: '/toros',
+            },
+            {
+                option: 'Res',
+                url: '/reses',
+            },
+        ],
     },
     {
-        element: 'Toros',
-        icon: 'cattle',
-        url: '/toros',
-        optionMultiple: true,
+        element: 'Consultar',
+        icon: 'consult',
+        url: null,
+        options: [
+            {
+                option: 'Vacas',
+                url: '/ganado',
+            },
+            {
+                option: 'Toros',
+                url: '/toros',
+            },
+            {
+                option: 'Reses',
+                url: '/reses',
+            },
+        ],
     },
     {
-        element: 'Reses',
-        icon: 'cattle',
-        url: '/reses',
-        optionMultiple: true,
+        element: 'Operaciones',
+        icon: 'operations',
+        url: null,
+        options: [
+            {
+                option: 'Revisiones',
+                url: '/revisiones',
+            },
+            {
+                option: 'Servicios',
+                url: '/servicios',
+            },
+            {
+                option: 'Partos',
+                url: '/partos',
+            },
+            {
+                option: 'Pesajes de leche',
+                url: '/pesajes_leche',
+            },
+            {
+                option: 'Fallecimientos',
+                url: '/fallecimientos',
+            },
+        ],
     },
+
     {
-        element: 'Venta de leche',
-        icon: 'milk',
-        url: '/venta_leche',
-        optionMultiple: false,
+        element: 'Ventas',
+        icon: 'sales',
+        url: null,
+        options: [
+            {
+                option: 'Leche',
+                url: '/venta_leche',
+            },
+            {
+                option: 'Ganado',
+                url: '/venta_ganado',
+            },
+        ],
     },
-    {
-        element: 'Revisiones',
-        icon: 'checkUp',
-        url: '/revisiones',
-        optionMultiple: false,
-    },
-    {
-        element: 'Servicios',
-        icon: 'serve',
-        url: '/servicios',
-        optionMultiple: false,
-    },
-    {
-        element: 'Partos',
-        icon: 'pregnancy',
-        url: '/partos',
-        optionMultiple: false,
-    },
+
     {
         element: 'Insumos',
         icon: 'supplies',
         url: '/insumos',
-        optionMultiple: true,
+        options: [
+            {
+                option: 'Registrar',
+                url: '/insumos',
+            },
+        ],
     },
     {
         element: 'Personal',
         icon: 'staff',
         url: '/personal',
-        optionMultiple: true,
+        options: [
+            {
+                option: 'Registrar',
+                url: '/personal',
+            },
+        ],
     },
     {
         element: 'Ajustes',
         icon: 'setting',
         url: '/ajustes',
-        optionMultiple: true,
     },
 ];

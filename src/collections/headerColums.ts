@@ -3,6 +3,7 @@ import {
     Comprador,
     CriaPendienteCapar,
     CriaPendienteNumeracion,
+    Fallecimiento,
     Insumo,
     Parto,
     Partos,
@@ -112,6 +113,11 @@ type headersColumnsCustomer = {
     label: string;
 };
 
+type headersColumnDeadCattle = {
+    key: keyof Fallecimiento;
+    label: string;
+};
+
 export const headerCasttle: headersColumns[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
@@ -130,13 +136,16 @@ export const headerBull: headersColumnsBull[] = [
     { key: 'servicios', label: 'Servicios hechos' },
     { key: 'padre_en_partos', label: 'Padre en partos' },
     { key: 'efectividad', label: 'Efectividad' },
- 
+    { key: 'estados', label: 'Estados' },
+    { key: 'id', label: 'Acciones' },
 ];
 export const headerBeef: headersColumnsBeef[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
     { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
     { key: 'pesos', label: 'Peso actual' },
+    { key: 'estados', label: 'Estados' },
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerSaleCasttle: headersColumnsSaleCasttle[] = [
@@ -174,6 +183,7 @@ export const headerAllCheckup: headersColumnsAllCheckups[] = [
     { key: 'proxima_revision', label: 'Proxima revision' },
     { key: 'ultima_revision', label: 'Ultima revision' },
     { key: 'total_revisiones', label: 'Total de revisiones' },
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerAllServes: headersColumnsAllServes[] = [
@@ -182,6 +192,7 @@ export const headerAllServes: headersColumnsAllServes[] = [
     { key: 'total_servicios', label: 'Total de servicios' },
     { key: 'ultimo_servicio', label: 'Ultimo servicio' },
     { key: 'efectividad', label: 'Efectividad' },
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerAllBirths: headersColumnsAllBirhs[] = [
@@ -190,7 +201,7 @@ export const headerAllBirths: headersColumnsAllBirhs[] = [
     { key: 'cria', label: 'Cria' },
     { key: 'toro', label: 'Toro' },
     { key: 'total_partos', label: 'Total de partos' },
-   
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerAssignmentNumberBullCalf: headersColumnsAssignmentNumberBullCalf[] =
@@ -241,4 +252,10 @@ export const headerWeightMilk: headersColumnsWeightMilk[] = [
 
 export const headerCustomers: headersColumnsCustomer[] = [
     { key: 'nombre', label: 'Nombre' },
+];
+
+export const headerDeadCattle: headersColumnDeadCattle[] = [
+    { key: 'causa', label: 'Causa' },
+    { key: 'fecha', label: 'Fecha' },
+    { key: 'ganado', label: 'Ganado' },
 ];

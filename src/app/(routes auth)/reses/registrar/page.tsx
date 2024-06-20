@@ -11,10 +11,12 @@ import { CreateBeef, } from '@/types/forms';
 import { toast } from 'sonner';
 import { createBeefShema } from '@/validations/beefShema';
 import { createBeef } from '@/actions/createBeef';
+import { useRef } from 'react';
 
 
 export default function Page() {
     
+        const form = useRef<HTMLFormElement | null>(null);
         const {
             register,
             formState: { errors },
@@ -28,6 +30,7 @@ export default function Page() {
             async (data) => {
                 try {
                     const response = await createBeef(data) as string | number;
+                    form.current?.reset();
                     toast.success(`Res numero ${response} ha sido registrado`);
                 } catch (error) {
                 const  message  = error as string;
@@ -41,6 +44,7 @@ export default function Page() {
             <TitlePage title="Registrar res" />
 
             <form
+                ref={form}
                 action={actionBeef}
                 className="grid grid-cols-2 m-auto max-w-5xl p-1 gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
             >

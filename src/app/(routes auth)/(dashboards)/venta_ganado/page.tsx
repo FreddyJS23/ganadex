@@ -2,7 +2,7 @@ import { CardDashboardSaleCattle } from '@/components/cards';
 import { SalesCatle } from '@/components/charts/dashboard/sales catle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
 import {  ResponseVentasGanado } from '@/types';
-import { MejorComprador, MejorVenta, PeorVenta } from '@/types/dashboard';
+import { BalanceAnualVentaGanado, MejorComprador, MejorVenta, PeorVenta } from '@/types/dashboard';
 import { getData } from '@/utils/getData';
 import IconImprimir from '@/icons/icono-imprimir.svg';
 import Link from 'next/link';
@@ -19,6 +19,9 @@ export default async function Page() {
     );
     const { venta:peorVenta }: PeorVenta = await getData(
         'dashboardVentaGanadopeorVenta',
+    );
+    const { balance_anual }: BalanceAnualVentaGanado = await getData(
+        'dashboardVentaGanadoBalanceAnual',
     );
 
     return (
@@ -52,9 +55,10 @@ export default async function Page() {
                     >
                         <IconImprimir className={'size-8'} />
                     </Link>
+                    {/* boton y modal crear venta */}
                 </div>
                 {/* grafico */}
-                <SalesCatle />
+                <SalesCatle balance_anual={balance_anual} />
             </article>
 
             {/* tabla ventas */}

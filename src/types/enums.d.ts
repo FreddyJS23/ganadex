@@ -5,17 +5,7 @@ export enum TypeNotification {
     secado
 }
 
-export enum IconsSidebar {
-    dashboard,
-    cattle,
-    milk,
-    checkUp,
-    serve,
-    pregnancy,
-    supplies,
-    staff,
-    setting,
-}
+
 export enum IconsModal {
     weight,
     bullCalf,
@@ -33,16 +23,13 @@ export enum IconsModal {
 
 export enum ElementSidebar {
     Dashboard,
-    Ganado,
-    Toros,
-    Reses,
-    'Venta de leche',
-    Revisiones,
-    Servicios,
-    Partos,
-    Insumos,
+    Ventas,
     Personal,
+    Insumos,
     Ajustes,
+    'Registrar',
+    Consultar,
+    Operaciones,
 }
 
 export enum StateCattle {
@@ -70,6 +57,8 @@ export enum URLS {
     '/personal',
     '/insumos',
     '/ajustes',
+    '/pesajes_leche',
+    '/fallecimientos',
 }
 
 export enum Months {
@@ -181,7 +170,6 @@ export enum FieldsIdCasttle {
     nombre,
     numero,
     origen,
-    sexo,
     tipo_id,
     fecha_nacimiento,
     peso_nacimiento,
@@ -189,14 +177,11 @@ export enum FieldsIdCasttle {
     peso_2year,
     peso_actual,
     estado_id,
-    fecha_defuncion,
-    causa_defuncion,
 }
 export enum FieldsLabelsCasttle {
     Nombre,
     Numero,
     Origen,
-    Sexo,
     Tipo,
     'Fecha de nacimiento',
     'Peso de nacimiento',
@@ -204,8 +189,6 @@ export enum FieldsLabelsCasttle {
     'Peso de 2 años',
     'Peso actual',
     Estados,
-    'Fecha de defunción',
-    'Causa de defunción',
 }
 export enum FieldsIdBull {
     nombre,
@@ -324,4 +307,27 @@ export enum FieldsLabelsStaff {
     Telefono,
     'Fecha de nacimiento',
     Cargo,
+}
+export enum FieldsIdDeadCattle {
+    fecha,
+    causa,
+    /* use id in form cattle to register dead cattle */
+    fecha_fallecimiento
+}
+
+export enum FieldsLabelsDeadCattle {
+   'Fecha de defunción',
+   'Causa de defunción',
+}
+
+export enum FieldsIdSaleCattle {
+    precio,
+    comprador_id,
+    fecha_venta
+}
+
+export enum FieldsLabelsSaleCattle {
+   Precio,
+   Compradores,
+   'Fecha de venta',
 }

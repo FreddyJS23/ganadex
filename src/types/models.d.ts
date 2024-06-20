@@ -49,19 +49,20 @@ export type Ganado = {
     sexo: 'H' | 'M';
     tipo: keyof typeof TypesCattle;
     fecha_nacimiento: string | null;
-    pesos:Pesos;
+    pesos?:Pesos;
     estados: EstadosGanado[];
     fecha_defuncion: string | null;
     causa_defuncion: string | null;
     eventos:Eventos
 };
 
-export type Toro =Pick<Ganado, 'id' | 'nombre' | 'numero' | 'origen' | 'fecha_nacimiento' | 'pesos' | 'tipo'> 
+export type Toro =Pick<Ganado, 'id' | 'nombre' | 'numero' | 'origen' | 'fecha_nacimiento' | 'pesos' | 'tipo' | 'estados'> 
 & {
      sexo :'M'
     efectividad:number;
     padre_en_partos:number;
     servicios:number
+    ganado_id:number
     }
 
 export type Res = Omit<Toro,'efectividad' | 'padre_en_partos' | 'servicios'>

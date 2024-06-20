@@ -12,6 +12,7 @@ import {
 import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 import { RedirectInTable } from '@/components/redirectsInTables';
+import { DropDownOptions } from '@/components/dropdown options';
 
 export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
     const renderCell = useCallback((partos: Partos, columnKey: Key) => {
@@ -32,11 +33,13 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
             }
             case 'numero': {
                 const numero = cellValue as number;
-               return <RedirectInTable
-                    id={partos['numero']}
-                    label={numero ?? ''}
-                    redirect="ganado"
-                />;
+                return (
+                    <RedirectInTable
+                        id={partos['numero']}
+                        label={numero ?? ''}
+                        redirect="ganado"
+                    />
+                );
                 break;
             }
             case 'toro': {
@@ -50,6 +53,10 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
                     />
                 );
                 break;
+            }
+            case 'id': {
+                const id = cellValue as number;
+                return <DropDownOptions idCattle={id} optionType="birth" />;
             }
 
             default:

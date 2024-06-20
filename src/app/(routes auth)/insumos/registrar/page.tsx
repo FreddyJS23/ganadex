@@ -8,6 +8,7 @@ import { Button } from '@/ui/Button';
 import { TitlePage } from '@/ui/TitlePage';
 import { createSupplyShema } from '@/validations/supplyShema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -21,9 +22,12 @@ export default function Page() {
             resolver: zodResolver(createSupplyShema),
         });
 
+        const form = useRef<HTMLFormElement | null>(null)
+
         const actionSupply: () => void = handleSubmit(async (data) => {
             try {
                 const response = (await createSupply(data)) as string ;
+                form.current?.reset()
                 toast.success(
                     `Insumo ${response} ha sido registrado`,
                 );
@@ -39,6 +43,7 @@ export default function Page() {
             <TitlePage title="Registrar Insumo" />
 
             <form
+                ref={form}
                 action={actionSupply}
                 className="flex flex-col items-center gap-6 p-4 max-w-lg m-auto"
             >
