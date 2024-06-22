@@ -15,7 +15,7 @@ type ButtonProps = {
     form?:string
 };
 
-export const Button = ({ content, color, onClick,type='button',form, ...props }: ButtonProps) => {
+export const Button = ({ content, color, onClick,type='button',form }: ButtonProps) => {
     const { pending } = useFormStatus();
    if(form) {return (
         <ButtonNextUI
@@ -36,7 +36,6 @@ export const Button = ({ content, color, onClick,type='button',form, ...props }:
             color={`${color ? color : 'primary'}`}
             type={type}
             isLoading={type == 'submit' && pending}
-            {...props}
         >
             {content}
         </ButtonNextUI>
