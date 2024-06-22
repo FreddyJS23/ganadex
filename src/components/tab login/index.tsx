@@ -99,10 +99,6 @@ export const TabLogin = () => {
                             color="primary"
                             content="Ingresar"
                             type="submit"
-                            style={{
-                                background: '#af842d',
-                                fontWeight: 'bold'
-                            }}
                         />
                     </div>
                 </form>
@@ -177,10 +173,6 @@ export const TabLogin = () => {
                             color="primary"
                             content="Registrarse"
                             type="submit"
-                            style={{
-                                background: '#af842d',
-                                fontWeight: 'bold'
-                            }}
                         />
                     </div>
                 </form>
