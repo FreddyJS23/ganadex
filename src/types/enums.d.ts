@@ -49,7 +49,7 @@ export enum URLS {
     '/dashboard',
     '/ganado',
     '/toros',
-    '/reses',
+    '/ganado_descarte',
     '/venta_leche',
     '/partos',
     '/revisiones',
@@ -81,7 +81,6 @@ export enum TypesCattle {
     maute,
     novillo,
     adulto,
-    res,
 }
 
 export enum EndPointsFakeApi {

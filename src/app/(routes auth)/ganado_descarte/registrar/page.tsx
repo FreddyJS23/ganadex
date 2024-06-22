@@ -31,7 +31,7 @@ export default function Page() {
                 try {
                     const response = await createBeef(data) as string | number;
                     form.current?.reset();
-                    toast.success(`Res numero ${response} ha sido registrado`);
+                    toast.success(`GanadoDescarte numero ${response} ha sido registrado`);
                 } catch (error) {
                 const  message  = error as string;
                     return toast.error(message);
@@ -41,7 +41,7 @@ export default function Page() {
     
     return (
         <>
-            <TitlePage title="Registrar res" />
+            <TitlePage title="Registrar ganadoDescarte" />
 
             <form
                 ref={form}

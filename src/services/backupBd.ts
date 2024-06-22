@@ -29,10 +29,10 @@ export const GetBackup = async () => {
         credentials: 'include',
     };
     try {
-        const res = await fetch(url, optionFetch);
-        const zip = await res.blob();
-        if (res.status == 200) return zip;
-        else throw { status: res.status, data: await res.json() };
+        const ganadoDescarte = await fetch(url, optionFetch);
+        const zip = await ganadoDescarte.blob();
+        if (ganadoDescarte.status == 200) return zip;
+        else throw { status: ganadoDescarte.status, data: await ganadoDescarte.json() };
     } catch (e) {
         if (e instanceof Error) throw e;
         const { status, data } = e as ResponseError;

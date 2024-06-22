@@ -1,6 +1,6 @@
 import { StateCattle, TypeNotification, TypesCattle } from './enums';
 
-export type PesajeGanado = `${string}-KG`;
+
 
 export type PesajeLeche = `${string}-KG`;
 
@@ -10,10 +10,10 @@ type EstadosGanado = {
 };
 
 type Pesos = {
-    peso_nacimiento: PesajeGanado | null;
-    peso_destete: PesajeGanado | null;
-    peso_2year: PesajeGanado | null;
-    peso_actual: PesajeGanado | null;
+    peso_nacimiento: number | null;
+    peso_destete: number | null;
+    peso_2year: number | null;
+    peso_actual: number | null;
 };
 
 type Eventos = {
@@ -65,7 +65,7 @@ export type Toro =Pick<Ganado, 'id' | 'nombre' | 'numero' | 'origen' | 'fecha_na
     ganado_id:number
     }
 
-export type Res = Omit<Toro,'efectividad' | 'padre_en_partos' | 'servicios'>
+export type GanadoDescarte = Omit<Toro,'efectividad' | 'padre_en_partos' | 'servicios'>
 
 export type Insumo = {
     id: number;

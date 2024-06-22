@@ -11,7 +11,7 @@ import {
     PesajeLecheGanado,
     PesajesLeche,
     PreciosDeLeche,
-    Res,
+    GanadoDescarte,
     Revision,
     Revisiones,
     Servicio,
@@ -32,7 +32,7 @@ type headersColumnsBull = {
 };
 
 type headersColumnsBeef = {
-    key: keyof Res;
+    key: keyof GanadoDescarte;
     label: string;
 };
 

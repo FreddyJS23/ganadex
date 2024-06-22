@@ -4,7 +4,7 @@ import IconRedirect from '@/icons/icono-redireccionar.svg';
 type RedirectInTable = {
     label: number | string | null;
     id: number | string;
-    redirect: 'ganado' | 'toros' | 'reses';
+    redirect: 'ganado' | 'toros' | 'ganado_descarte';
 };
 
 export const RedirectInTable = ({ id, label, redirect }: RedirectInTable) => {

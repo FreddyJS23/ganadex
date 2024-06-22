@@ -46,9 +46,9 @@ export async function getData(
     if (id2) url = url + id2;
 
     try {
-        const res = await fetch(url, optionFetch);
+        const dataApi = await fetch(url, optionFetch);
 
-        const { data, status } = await handleResponse(res);
+        const { data, status } = await handleResponse(dataApi);
 
         if (status == 200 || status == 201) return data;
         else if (status == 422 || status == 401 || status == 500 || status == 404 || status == 419 || status != 200)

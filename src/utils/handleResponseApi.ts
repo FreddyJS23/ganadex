@@ -1,3 +1,3 @@
-export const handleResponse = async (res: Response) => {
-    return { status: res.status, data: await res.json() };
+export const handleResponse = async (dataApi: Response) => {
+    return { status: dataApi.status, data: await dataApi.json() };
 };

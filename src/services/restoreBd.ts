@@ -29,10 +29,10 @@ export const RestoreLastBackup= async () => {
         credentials: 'include',
     };
     try {
-        const res = await fetch(url, optionFetch);
+        const ganadoDescarte = await fetch(url, optionFetch);
         
-        if (res.status == 200) return res.status;
-        else throw { status: res.status, data: await res.json() };
+        if (ganadoDescarte.status == 200) return ganadoDescarte.status;
+        else throw { status: ganadoDescarte.status, data: await ganadoDescarte.json() };
     } catch (e) {
        console.log(e)
         if (e instanceof Error) throw e;
