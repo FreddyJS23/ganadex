@@ -50,7 +50,7 @@ export const TabLogin = () => {
             onSelectionChange={setSelected}
             color="primary"
             classNames={{
-                tabList: 'bg-[#e8dea0] dark:bg-[#af842d]',
+                tabList: 'bg-[#e8dea0] dark:bg-[#9aff90]',
                 tab: 'font-bold',
             }}
         >
