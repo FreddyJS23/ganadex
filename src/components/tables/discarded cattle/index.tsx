@@ -1,7 +1,7 @@
 'use client';
 
 import { headerBeef } from '@/collections/headerColums';
-import { EstadosGanado, Pesos, Res, ResponseReses } from '@/types';
+import { EstadosGanado, Pesos, GanadoDescarte, ResponseGanadoDescartes } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -17,47 +17,47 @@ import { DropdownStatesCattle } from '@/components/dropdown states cattle';
 import IconCheck from '@/icons/icono-check.svg';
 import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
-export const TableBeef = ({ reses }: ResponseReses) => {
+export const TableDiscardedCattle = ({ ganado_descartes }: ResponseGanadoDescartes) => {
     
-    const [beefs, setBeef] = useState<Res[]>(reses);
+    const [discardedCattles, setDiscardedCattles] = useState<GanadoDescarte[]>(ganado_descartes);
 
     const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
         'all',
     );
 
     const beefDeath = () => {
-        const beefDeath = reses.filter(({ estados }) => {
+        const beefDeath = ganado_descartes.filter(({ estados }) => {
             return estados.some(({ estado }) => estado == 'fallecido');
         });
-        setBeef(beefDeath);
+        setDiscardedCattles(beefDeath);
         setFilterActive('death');
     };
 
     const beefSales = () => {
-        const beefSales = reses.filter(({ estados }) => {
+        const beefSales = ganado_descartes.filter(({ estados }) => {
             return estados.some(({ estado }) => estado == 'vendido');
         });
-        setBeef(beefSales);
+        setDiscardedCattles(beefSales);
         setFilterActive('sales');
     };
 
     const allBeef = () => {
-        setBeef(reses);
+        setDiscardedCattles(discardedCattles);
         setFilterActive('all');
     };
 
     
-    const renderCell = useCallback((res: Res, columnKey: Key) => {
-        const cellValue = res[columnKey as keyof Res];
+    const renderCell = useCallback((ganado_descarte: GanadoDescarte, columnKey: Key) => {
+        const cellValue = ganado_descarte[columnKey as keyof GanadoDescarte];
 
-        switch (columnKey as keyof Res) {
+        switch (columnKey as keyof GanadoDescarte) {
             case 'numero': {
                 const numero = cellValue as number;
                 return (
                     <RedirectInTable
-                        id={res['id']}
+                        id={ganado_descarte['id']}
                         label={numero ?? ''}
-                        redirect="reses"
+                        redirect="ganado_descarte"
                     />
                 );
             }
@@ -80,8 +80,8 @@ export const TableBeef = ({ reses }: ResponseReses) => {
                 return <DropdownStatesCattle estados={estados} />;
             }
             case 'id': {
-                const id = res['ganado_id'];
-                 const estados = res['estados'] as EstadosGanado[];
+                const id = ganado_descarte['ganado_id'];
+                 const estados = ganado_descarte['estados'] as EstadosGanado[];
                 return !estados.some(
                     ({ estado }) =>
                         estado == 'fallecido' || estado == 'vendido',
@@ -112,12 +112,12 @@ export const TableBeef = ({ reses }: ResponseReses) => {
                         <TableColumn key={key}>{label}</TableColumn>
                     )}
                 </TableHeader>
-                <TableBody items={beefs}>
-                    {(res) => (
-                        <TableRow key={res.id}>
+                <TableBody items={discardedCattles}>
+                    {(ganado_descarte) => (
+                        <TableRow key={ganado_descarte.id}>
                             {(columnKey) => (
                                 <TableCell>
-                                    {renderCell(res, columnKey)}
+                                    {renderCell(ganado_descarte, columnKey)}
                                 </TableCell>
                             )}
                         </TableRow>

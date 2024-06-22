@@ -50,7 +50,7 @@ export const TabLogin = () => {
             onSelectionChange={setSelected}
             color="primary"
             classNames={{
-                tabList: 'bg-[#e8dea0] dark:bg-[#af842d]',
+                tabList: 'bg-[#e8dea0] dark:bg-[#9aff90]',
                 tab: 'font-bold',
             }}
         >
@@ -99,10 +99,6 @@ export const TabLogin = () => {
                             color="primary"
                             content="Ingresar"
                             type="submit"
-                            style={{
-                                background: '#af842d',
-                                fontWeight: 'bold'
-                            }}
                         />
                     </div>
                 </form>
@@ -177,10 +173,6 @@ export const TabLogin = () => {
                             color="primary"
                             content="Registrarse"
                             type="submit"
-                            style={{
-                                background: '#af842d',
-                                fontWeight: 'bold'
-                            }}
                         />
                     </div>
                 </form>

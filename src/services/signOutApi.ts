@@ -24,8 +24,8 @@ export async function signOutApi() {
         credentials: 'include',
     };
     try {
-        const res = await fetch(url, optionFetch);
-        const { data, status } = await handleResponse(res);
+        const ganadoDescarte = await fetch(url, optionFetch);
+        const { data, status } = await handleResponse(ganadoDescarte);
         if (status == 200 ){
    console.log(status)
 return status;

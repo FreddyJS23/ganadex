@@ -18,11 +18,11 @@ export async function authApi(
     };
 
     try {
-     const res = await fetch(url, optionFetch);
+     const ganadoDescarte = await fetch(url, optionFetch);
         /*   
-        const getCookieXSCRFTOKEN = (res: Response) => {
+        const getCookieXSCRFTOKEN = (ganadoDescarte: Response) => {
             const dataCookie: CookieCsrf[] = [];
-            const setCookieXsrfToken = res.headers.getSetCookie();
+            const setCookieXsrfToken = ganadoDescarte.headers.getSetCookie();
             setCookieXsrfToken.forEach((setCookie) => {
                 setCookie.split(';').forEach((partsOfcookie) => {
                     const [name, value] = partsOfcookie.split('=');
@@ -49,9 +49,9 @@ export async function authApi(
             });
             return dataCookie;
         }; */
-        const { data, status } = await handleResponse(res);
+        const { data, status } = await handleResponse(ganadoDescarte);
         if (status == 200 || status == 201)
-            return { ...data.login, /* cookieCsrf: getCookieXSCRFTOKEN(res)  */};
+            return { ...data.login, /* cookieCsrf: getCookieXSCRFTOKEN(ganadoDescarte)  */};
         else if (status == 422 || status == 401 || status == 500)
             throw { status: status, data: data };
     } catch (e) {

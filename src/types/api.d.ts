@@ -13,7 +13,7 @@ import {
     PesajesLeche,
     PositionStaff,
     PreciosDeLeche,
-    Res,
+    GanadoDescarte,
     Revision,
     Revisiones,
     Servicio,
@@ -94,12 +94,12 @@ export type ResponseToros = {
     toros: Toro[];
 };
 
-export type ResponseReses = {
-    reses: Res[];
+export type ResponseGanadoDescartes = {
+    ganado_descartes: GanadoDescarte[];
   
 };
-export type ResponseRes = {
-    res: Res;
+export type ResponseGanadoDescarte = {
+    ganado_descarte: GanadoDescarte;
 };
 
 export type ResponseInsumo = {

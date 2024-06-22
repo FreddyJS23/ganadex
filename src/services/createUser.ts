@@ -19,8 +19,8 @@ export async function createUserApi(data?: unknown) {
     };
 
     try {
-        const res = await fetch(url, optionFetch);
-        const { data, status } = await handleResponse(res);
+        const ganadoDescarte = await fetch(url, optionFetch);
+        const { data, status } = await handleResponse(ganadoDescarte);
         if (status == 201) return data;
         else throw { status: status, data: data };
     } catch (e) {

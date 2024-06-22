@@ -11,8 +11,8 @@ import { MutableRefObject } from 'react';
 import { iconsSidebar } from '@/collections';
 
 type optionsSubmenuSidebar = {
-    url:keyof Pick<typeof URLS,  '/ganado' | '/toros' | '/reses' | '/venta_leche' | '/venta_ganado' | '/personal' | '/insumos' | '/revisiones' | '/servicios' | '/partos' | '/pesajes_leche' | '/fallecimientos'>;
-    option: 'Vaca' | 'Vacas' | 'Toro' | 'Toros' | 'Res' | 'Reses' | 'Ganado' | 'Leche'  | 'Personal' | 'Insumos' | 'Revisiones' | 'Servicios' | 'Partos' | 'Pesajes de leche' | 'Registrar' | 'Fallecimientos';
+    url:keyof Pick<typeof URLS,  '/ganado' | '/toros' | '/ganado_descarte' | '/venta_leche' | '/venta_ganado' | '/personal' | '/insumos' | '/revisiones' | '/servicios' | '/partos' | '/pesajes_leche' | '/fallecimientos'>;
+    option: 'Vaca' | 'Vacas' | 'Toro' | 'Toros' | 'Ganado descarte' | 'Reses' | 'Ganado' | 'Leche'  | 'Personal' | 'Insumos' | 'Revisiones' | 'Servicios' | 'Partos' | 'Pesajes de leche' | 'Registrar' | 'Fallecimientos';
 };
 
 /**opcion del sidebar */

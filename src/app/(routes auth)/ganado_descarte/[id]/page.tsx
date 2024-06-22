@@ -1,7 +1,7 @@
 import { DetailsCattle, DetailsWeights } from '@/collections';
 import { Details } from '@/components/details';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
-import {  ResponseRes, } from '@/types';
+import {  ResponseGanadoDescarte, } from '@/types';
 import { getData } from '@/utils/getData';
 import Image from 'next/image';
 import cattleImage from 'public/cattle.png';
@@ -11,16 +11,16 @@ type ParamsPageBeef = {
 };
 
 export default async function Page({ params }: ParamsPageBeef) {
-    const {res}: ResponseRes = await getData('res', 'GET', undefined, params.id);
+    const {ganado_descarte}: ResponseGanadoDescarte = await getData('ganadoDescarte', 'GET', undefined, params.id);
 
-    const {numero,nombre,origen,fecha_nacimiento,pesos,tipo,estados} = res;
+    const {numero,nombre,origen,fecha_nacimiento,pesos,tipo,estados} = ganado_descarte;
 console.log(estados)
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
                 <div className="flex gap-2">
                     <h3 className=" font-bold text-2xl">
-                        Detalle de la res {numero}
+                        Detalle de la ganadoDescarte {numero}
                     </h3>
                     {/*  <ButtonGenerateReport report='ganado' id={ganado.id} /> */}
                 </div>

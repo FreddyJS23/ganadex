@@ -18,8 +18,8 @@ export const options: Pick<
                 url: '/toros',
             },
             {
-                option: 'Res',
-                url: '/reses',
+                option: 'Ganado descarte',
+                url: '/ganado_descarte',
             },
         ],
     },
@@ -37,8 +37,8 @@ export const options: Pick<
                 url: '/toros',
             },
             {
-                option: 'Reses',
-                url: '/reses',
+                option: 'Ganado descarte',
+                url: '/ganado_descarte',
             },
         ],
     },
