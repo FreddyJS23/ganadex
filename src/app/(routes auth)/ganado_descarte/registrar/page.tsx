@@ -9,7 +9,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateBeef, } from '@/types/forms';
 import { toast } from 'sonner';
-import { createBeefShema } from '@/validations/beefShema';
+import { createDiscardedCattleShema } from '@/validations/discardedCattleShema';
 import { createBeef } from '@/actions/createBeef';
 import { useRef } from 'react';
 
@@ -23,7 +23,7 @@ export default function Page() {
             handleSubmit,
             control,
         } = useForm<CreateBeef>({
-            resolver: zodResolver(createBeefShema)
+            resolver: zodResolver(createDiscardedCattleShema)
         });
 
         const actionBeef: () => void = handleSubmit(

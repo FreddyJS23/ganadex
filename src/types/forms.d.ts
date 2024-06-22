@@ -1,7 +1,7 @@
 import { assignmentNumberBullCalfShema } from "@/validations/assignmentNumberBullCalfShema";
 import { createBirthShema } from "@/validations/birthShema";
 import { createBullShema } from "@/validations/bullShema";
-import { createBeefShema } from "@/validations/beefShema";
+import { createBeefShema } from "@/validations/discardedCattleShema";
 import { castleShema } from "@/validations/castleShema";
 import { createCheckUpShema } from "@/validations/checkUpShema";
 import { createConfigurationShema } from "@/validations/configurationShema";
