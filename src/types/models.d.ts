@@ -176,9 +176,7 @@ export type Revisiones = {
 };
 
 /**Servicios de todas las cabeza de  ganado  */
-export type Servicios = {
-    id: number;
-    numero: number;
+export type Servicios = Pick<Ganado, 'id' | 'numero'> & {
     ultimo_servicio: string;
     toro: ToroDeServicio;
     efectividad: number;
@@ -186,18 +184,13 @@ export type Servicios = {
 };
 
 /**Pesajes de leche de todas las cabeza de  ganado  */
-export type PesajesLeche = {
-    id: number;
-    nombre: string;
-    numero: number;
+export type PesajesLeche = Pick<Ganado, 'id' | 'numero' | 'nombre'> & {
     ultimo_pesaje: PesajeLeche;
     pesaje_este_mes: boolean;
 };
 
 /**Partos de todas las cabeza de ganado  */
-export type Partos = {
-    id: number;
-    numero: number;
+export type Partos = Pick<Ganado, 'id' | 'numero'> & {
     ultimo_parto: string | null;
     total_partos: number;
     toro: Pick <Toro,'id'| 'numero'>;
