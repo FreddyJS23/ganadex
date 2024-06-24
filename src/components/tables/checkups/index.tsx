@@ -24,7 +24,7 @@ export const TableAllCheckups = ({
                 const numero = cellValue as number;
                 return (
                     <RedirectInTable
-                        id={revisiones['numero']}
+                        id={revisiones['id']}
                         label={numero ?? ''}
                         redirect="ganado"
                     />

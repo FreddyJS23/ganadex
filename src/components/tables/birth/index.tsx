@@ -35,7 +35,7 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
                 const numero = cellValue as number;
                 return (
                     <RedirectInTable
-                        id={partos['numero']}
+                        id={partos['id']}
                         label={numero ?? ''}
                         redirect="ganado"
                     />

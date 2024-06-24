@@ -25,7 +25,7 @@ export const TableAllServes = ({
                     const numero = cellValue as number;
                     return (
                         <RedirectInTable
-                            id={servicios['numero']}
+                            id={servicios['id']}
                             label={numero ?? ''}
                             redirect="ganado"
                         />
@@ -40,7 +40,7 @@ export const TableAllServes = ({
                         <RedirectInTable
                             id={toro.id}
                             label={toro.numero ?? ''}
-                            redirect="ganado"
+                            redirect="toros"
                         />
                     );
                     break;
