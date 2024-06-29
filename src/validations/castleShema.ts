@@ -22,12 +22,12 @@ export const castleShema = z.object({
     {message:'El peso nacimiento no puede ser mayor que el peso destete',
     path:['peso_nacimiento']})
     .refine(({peso_nacimiento,peso_2year}) =>peso_2year  && peso_nacimiento &&  peso_nacimiento >= 1 ?  peso_nacimiento  <= peso_2year : true,
-    {message:'El peso nacimiento no puede ser mayor que el peso de dos años',
+    {message:'El peso nacimiento no puede ser mayor que el peso de 2 años',
     path:['peso_nacimiento']})
     .refine(({peso_nacimiento,peso_actual}) =>peso_actual  && peso_nacimiento &&  peso_nacimiento >= 1 ?  peso_nacimiento  <= peso_actual : true,
     {message:'El peso nacimiento no puede ser mayor que el peso actual',
     path:['peso_nacimiento']})
-    .refine(({peso_destete,peso_2year}) =>peso_destete  && peso_2year &&  peso_destete >= 1 ?  peso_destete  < peso_2year : true,{message:'El peso destete no puede ser mayor que el peso de dos año',path:['peso_destete']})
+    .refine(({peso_destete,peso_2year}) =>peso_destete  && peso_2year &&  peso_destete >= 1 ?  peso_destete  < peso_2year : true,{message:'El peso destete no puede ser mayor que el peso de 2 año',path:['peso_destete']})
     .refine(({peso_destete,peso_actual}) =>peso_destete  && peso_actual &&  peso_destete >= 1 ?  peso_destete  < peso_actual : true,{message:'El peso destete no puede ser mayor que el peso actual',path:['peso_destete']})
     .refine(({peso_2year,peso_actual}) =>peso_2year  && peso_actual && peso_2year >= 1 ?  peso_2year  < peso_actual : true,{message:'El peso de dos años no puede ser mayor que el peso actual',path:['peso_2year']})
    
