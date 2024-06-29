@@ -59,7 +59,7 @@ export const TabDetailsCattle = ({
                         />
                         <Details
                             tittle={DetailsChecks.proxima}
-                            content={eventos.prox_revision}
+                            content={eventos?.prox_revision}
                         />
                         <Details
                             tittle={DetailsChecks.totales}
@@ -129,7 +129,7 @@ export const TabDetailsCattle = ({
 
                         <Details
                             tittle={DetailsBirht.proximo}
-                            content={eventos.prox_parto}
+                            content={eventos?.prox_parto}
                         />
                         <Details
                             tittle={DetailsBirht.totales}
