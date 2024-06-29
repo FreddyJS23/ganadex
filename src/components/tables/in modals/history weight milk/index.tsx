@@ -1,4 +1,4 @@
-import { headerServices } from '@/collections/headerColums';
+import { headerServices, headerWeightMilk } from '@/collections/headerColums';
 import { ResponsePesajesLeche } from '@/types';
 
 export const TableHistoryWeightMilk = ({
@@ -9,7 +9,8 @@ export const TableHistoryWeightMilk = ({
             <table className="table">
                 <thead>
                     <tr>
-                        {headerServices.map(({ label }) => (
+                        {headerWeightMilk
+                        .map(({ label }) => (
                             <th key={label}>{label}</th>
                         ))}
                     </tr>
@@ -18,7 +19,7 @@ export const TableHistoryWeightMilk = ({
                     {pesajes_leche.map(({ id, fecha, pesaje }) => (
                         <tr key={id}>
                             <td>{typeof fecha == 'string' ? fecha : ''} </td>
-                            <td>{pesaje} </td>
+                            <td>{pesaje}KG </td>
                         </tr>
                     ))}
                 </tbody>
