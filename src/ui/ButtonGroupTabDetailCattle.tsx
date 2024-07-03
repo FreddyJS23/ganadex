@@ -51,7 +51,7 @@ export const ButtonGroupTabDetailCattle = ({
             />
             <Dropdown placement="bottom-end" className="bg-base-100">
                 <DropdownTrigger>
-                    <ButtonNextUI color='primary' variant="flat" isIconOnly>
+                    <ButtonNextUI color="primary" variant="flat" isIconOnly>
                         <svg
                             fill="none"
                             height="14"

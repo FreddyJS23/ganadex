@@ -51,7 +51,12 @@ export const ModalCreateCustomer = ({
             onOpenChange={onOpenChange}
             refForm={formRef}
         >
-            <form ref={formRef} action={actionCreateCustomer} id={'form-createCustomer'} className="m-auto w-2/4 ">
+            <form
+                ref={formRef}
+                action={actionCreateCustomer}
+                id={'form-createCustomer'}
+                className="m-auto w-2/4 "
+            >
                 <Input
                     id="nombre"
                     label="Comprador"

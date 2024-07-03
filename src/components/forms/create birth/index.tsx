@@ -1,12 +1,12 @@
 'use client';
 
 import { createBirth } from '@/actions/createBirth';
-import { formBirth,  } from '@/collections/formsInputs';
+import { formBirth } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
 import { Textarea } from '@/components/Textarea';
 import { ResponseVeterinariosSelect } from '@/types';
-import { CreateBirth, } from '@/types/forms';
+import { CreateBirth } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { createBirthShema } from '@/validations/birthShema';
@@ -48,7 +48,7 @@ export const FormCreateBirth = ({
                 className="flex flex-col items-center gap-8 p-4 m-auto "
             >
                 <div className="flex gap-6 flex-col justify-center max-w-80 sm:justify-evenly sm:flex-row sm:flex-wrap sm:max-w-fit ">
-                    {formBirth.map(({ id, label, required, type,select }) => (
+                    {formBirth.map(({ id, label, required, type, select }) => (
                         <div key={id} className={'sm:w-44'}>
                             {id == 'observacion' && (
                                 <Textarea
@@ -80,9 +80,13 @@ export const FormCreateBirth = ({
                                         <Select
                                             field={field}
                                             id={id}
-                                            items={id == 'personal_id' ?  converToSelectOptions(
-                                                veterinarios as [],
-                                            ) : select! }
+                                            items={
+                                                id == 'personal_id'
+                                                    ? converToSelectOptions(
+                                                          veterinarios as [],
+                                                      )
+                                                    : select!
+                                            }
                                             label={label}
                                             errors={errors}
                                             required={required}

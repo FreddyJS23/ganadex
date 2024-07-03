@@ -17,58 +17,51 @@ import { DropDownOptions } from '@/components/dropdown options';
 export const TableAllServes = ({
     todos_servicios,
 }: ResponseServiciosGeneral) => {
-    const renderCell = useCallback(
-        (servicios: Servicios, columnKey:Key) => {
-            const cellValue = servicios[columnKey as keyof Servicios];
-            switch (columnKey) {
-                case 'numero': {
-                    const numero = cellValue as number;
-                    return (
-                        <RedirectInTable
-                            id={servicios['id']}
-                            label={numero ?? ''}
-                            redirect="ganado"
-                        />
-                    );
-                    break;
-                }
-
-                case 'toro': {
-                    const toro = cellValue as ToroDeServicio;
-
-                    return (
-                        <RedirectInTable
-                            id={toro.id}
-                            label={toro.numero ?? ''}
-                            redirect="toros"
-                        />
-                    );
-                    break;
-                }
-
-                case 'efectividad': {
-                    const efectividad = cellValue as number;
-
-                    return <span>{efectividad ? `${efectividad}%` : ''}</span>;
-                }
-
-                case 'id': {
-                    const id = cellValue as number;
-                    return (
-                        <DropDownOptions idCattle={id} optionType="serve" />
-                    );
-                }
-
-                default:
-                    break;
+    const renderCell = useCallback((servicios: Servicios, columnKey: Key) => {
+        const cellValue = servicios[columnKey as keyof Servicios];
+        switch (columnKey) {
+            case 'numero': {
+                const numero = cellValue as number;
+                return (
+                    <RedirectInTable
+                        id={servicios['id']}
+                        label={numero ?? ''}
+                        redirect="ganado"
+                    />
+                );
+                break;
             }
 
-          return (
-            cellValue as ReactNode
-          );
-        },
-        [],
-    );
+            case 'toro': {
+                const toro = cellValue as ToroDeServicio;
+
+                return (
+                    <RedirectInTable
+                        id={toro.id}
+                        label={toro.numero ?? ''}
+                        redirect="toros"
+                    />
+                );
+                break;
+            }
+
+            case 'efectividad': {
+                const efectividad = cellValue as number;
+
+                return <span>{efectividad ? `${efectividad}%` : ''}</span>;
+            }
+
+            case 'id': {
+                const id = cellValue as number;
+                return <DropDownOptions idCattle={id} optionType="serve" />;
+            }
+
+            default:
+                break;
+        }
+
+        return cellValue as ReactNode;
+    }, []);
 
     return (
         <LayoutTable type="serves">

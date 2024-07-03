@@ -11,18 +11,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (user) {
                 token.usuario = user.usuario;
                 token.token = user.token;
-            /*     token.cookieCsrf=user.cookieCsrf */
+                /*     token.cookieCsrf=user.cookieCsrf */
             }
             return token;
         },
         session({ session, token }) {
             session.user.token = token.token;
             session.user.usuario = token.usuario;
-           /*  session.user.cookieCsrf=token.cookieCsrf */
+            /*  session.user.cookieCsrf=token.cookieCsrf */
             return session;
         },
     },
-    pages: { signIn: '/login'},
+    pages: { signIn: '/login' },
     providers: [
         Credentials({
             // You can specify which fields should be submitted, by adding keys to the `credentials` object.
@@ -36,15 +36,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 try {
                     // logic to verify if user exists
                     user = await authApi(credentials);
-                    console.log(user)
+                    console.log(user);
                     return user;
                 } catch (errorServe) {
-                    if (errorServe instanceof Error) throw new AuthError(ERROR_SERVER);
-                    
-                    const codeStatusServe=errorServe as ResponseError
-                    
-                    if (codeStatusServe.status != 401) throw new AuthError(ERROR_SERVER);
-                    else if( codeStatusServe.status == 401) throw new AuthError(ERROR_SIGNIN);
+                    if (errorServe instanceof Error)
+                        throw new AuthError(ERROR_SERVER);
+
+                    const codeStatusServe = errorServe as ResponseError;
+
+                    if (codeStatusServe.status != 401)
+                        throw new AuthError(ERROR_SERVER);
+                    else if (codeStatusServe.status == 401)
+                        throw new AuthError(ERROR_SIGNIN);
                 }
             },
         }),

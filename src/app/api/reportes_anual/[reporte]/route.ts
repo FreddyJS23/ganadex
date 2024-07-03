@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import {  endpointsReportsAnnual } from '@/collections/endPointsApi';
+import { endpointsReportsAnnual } from '@/collections/endPointsApi';
 import { GetReportsYear } from '@/services/generateReportsYear';
 
 type Params = {

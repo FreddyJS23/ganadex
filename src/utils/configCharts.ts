@@ -168,13 +168,11 @@ export const optionChartLineEarningsMilkMonth: ChartOptions<'line'> = {
 };
 
 export const optionChartLineSalesCatle: ChartOptions<'bar'> = {
-     
     parsing: {
         xAxisKey: 'mes',
         yAxisKey: 'ventas',
-        },
-   
-    
+    },
+
     /* cartesiano */
     scales: {
         y: {

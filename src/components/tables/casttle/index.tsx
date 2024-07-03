@@ -19,32 +19,33 @@ import IconCheck from '@/icons/icono-check.svg';
 import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
 export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
-    
     const [cattles, setCattles] = useState<CabezasGanado[]>(cabezas_ganado);
- 
-    const [filterActive, setFilterActive] = useState<'all'|'death'|'sales'>('all');
 
-    const cattlesDeath=()=>{
-       const cattlesDeath=cabezas_ganado.filter(({estados})=>{
-        return estados.some(({estado})=> estado == 'fallecido');
-       })
-       setCattles(cattlesDeath);
-       setFilterActive('death');
-    }
-        
-    const cattlesSales=()=>{
-       const cattlesSales=cabezas_ganado.filter(({estados})=>{
-        return estados.some(({estado})=> estado == 'vendido');
-       })
+    const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
+        'all',
+    );
+
+    const cattlesDeath = () => {
+        const cattlesDeath = cabezas_ganado.filter(({ estados }) => {
+            return estados.some(({ estado }) => estado == 'fallecido');
+        });
+        setCattles(cattlesDeath);
+        setFilterActive('death');
+    };
+
+    const cattlesSales = () => {
+        const cattlesSales = cabezas_ganado.filter(({ estados }) => {
+            return estados.some(({ estado }) => estado == 'vendido');
+        });
         setCattles(cattlesSales);
         setFilterActive('sales');
-    }
-    
-        const allCattles=()=>{
+    };
+
+    const allCattles = () => {
         setCattles(cabezas_ganado);
         setFilterActive('all');
-    }
-    
+    };
+
     const renderCell = useCallback(
         (cabeza_ganado: CabezasGanado, columnKey: Key) => {
             const cellValue = cabeza_ganado[columnKey as keyof CabezasGanado];
@@ -53,14 +54,24 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                 case 'numero': {
                     const numero = cellValue as number;
                     return (
-                        <RedirectInTable id={cabeza_ganado['id'] } label={numero} redirect='ganado' />
+                        <RedirectInTable
+                            id={cabeza_ganado['id']}
+                            label={numero}
+                            redirect="ganado"
+                        />
                     );
                 }
                 case 'pesos': {
                     const pesos = cellValue as Pesos;
-                    
+
                     return (
-                      <div>{pesos ?  pesos.peso_actual ? pesos.peso_actual : 'desconocido' : 'desconocido'}</div>
+                        <div>
+                            {pesos
+                                ? pesos.peso_actual
+                                    ? pesos.peso_actual
+                                    : 'desconocido'
+                                : 'desconocido'}
+                        </div>
                     );
                 }
 
@@ -74,12 +85,19 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                     const fecha_nacimiento = cellValue as string;
                     return <div>{getAge(fecha_nacimiento)}</div>;
                 }
-               
+
                 case 'id': {
                     const id = cellValue as number;
                     const estados = cabeza_ganado['estados'] as EstadosGanado[];
-                    
-                   return !estados.some(({estado})=> estado == 'fallecido' || estado == 'vendido' ) ?  <DropDownOptions idCattle={id} optionType='cattle'/> : <IconCheck className={'size-8'} />; 
+
+                    return !estados.some(
+                        ({ estado }) =>
+                            estado == 'fallecido' || estado == 'vendido',
+                    ) ? (
+                        <DropDownOptions idCattle={id} optionType="cattle" />
+                    ) : (
+                        <IconCheck className={'size-8'} />
+                    );
                 }
 
                 default:
@@ -91,7 +109,12 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
 
     return (
         <>
-            <ButtonFilterStateCattle filterActive={filterActive} cattlesDeath={cattlesDeath} cattlesSales={cattlesSales} allCattles={allCattles} />
+            <ButtonFilterStateCattle
+                filterActive={filterActive}
+                cattlesDeath={cattlesDeath}
+                cattlesSales={cattlesSales}
+                allCattles={allCattles}
+            />
             <LayoutTable type="casttle">
                 <TableHeader columns={headerCasttle}>
                     {({ key, label }) => (

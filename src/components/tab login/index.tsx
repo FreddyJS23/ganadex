@@ -3,7 +3,7 @@
 import { Button } from '@/ui/Button';
 import { Input } from '../Inputs';
 import { Tab, Tabs } from '@nextui-org/tabs';
-import { useRef, useState} from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { authenticate } from '@/actions/login';
 import { toast } from 'sonner';
@@ -18,8 +18,8 @@ export const TabLogin = () => {
     const [selected, setSelected] = useState<string | number>('login');
     const router = useRouter();
 
-            const form = useRef<HTMLFormElement | null>(null)
-    
+    const form = useRef<HTMLFormElement | null>(null);
+
     const {
         register,
         formState: { errors },
@@ -31,16 +31,18 @@ export const TabLogin = () => {
         handleSubmit: handleSubmitCreateUser,
     } = useForm<CreateUser>({ resolver: zodResolver(createUserShema) });
 
-    const actionCreateUser:()=>void = handleSubmitCreateUser(async (data) => {
-        try {
-            const response = await createUser(data);
-            form.current?.reset();
-            toast.success(response as string);
-        } catch (error) {
-            const { data, status } = error as ResponseError;
-            toast.error(`Error ${status}: ${data.message}`);
-        }
-    });
+    const actionCreateUser: () => void = handleSubmitCreateUser(
+        async (data) => {
+            try {
+                const response = await createUser(data);
+                form.current?.reset();
+                toast.success(response as string);
+            } catch (error) {
+                const { data, status } = error as ResponseError;
+                toast.error(`Error ${status}: ${data.message}`);
+            }
+        },
+    );
 
     return (
         <Tabs

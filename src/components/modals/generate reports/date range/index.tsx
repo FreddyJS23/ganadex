@@ -36,15 +36,14 @@ export const ModalGenerateReport = ({
             link.href = window.URL.createObjectURL(file as Blob);
             link.download = `Reporte_${type}.pdf`;
             link.click();
-
         } catch (error) {
             const message = error as string;
             return toast.error(message);
         }
     });
- const dateNow = new Date();
- /* Y-m-d */
- const [formatDate] =dateNow.toISOString().split('T');
+    const dateNow = new Date();
+    /* Y-m-d */
+    const [formatDate] = dateNow.toISOString().split('T');
     return (
         <LayoutModal
             icon="bullCalf"

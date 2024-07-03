@@ -7,8 +7,11 @@ export const Textarea = ({
     description,
     required,
     errors,
-    register
-}: Pick<InputProps, 'id' | 'label' | 'required' | 'description' | 'errors' | 'register'>) => {
+    register,
+}: Pick<
+    InputProps,
+    'id' | 'label' | 'required' | 'description' | 'errors' | 'register'
+>) => {
     return (
         <TextareaNextUI
             id={id}
@@ -21,9 +24,9 @@ export const Textarea = ({
             label={label}
             description={description}
             isRequired={required}
-              {...register(id,{})}
+            {...register(id, {})}
             isInvalid={errors[id] && true}
-            errorMessage={errors[id] && errors[id]?.message as string}
+            errorMessage={errors[id] && (errors[id]?.message as string)}
         />
     );
 };

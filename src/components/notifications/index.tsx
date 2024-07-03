@@ -1,14 +1,14 @@
 'use client';
 
-import {  TypesNotification } from '@/types';
+import { TypesNotification } from '@/types';
 import { NotificationBody } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
 import { LegacyRef, useRef } from 'react';
 
 export const NotificationMain = ({
-    revision=[],
-    parto=[],
-    secado=[],
+    revision = [],
+    parto = [],
+    secado = [],
 }: TypesNotification) => {
     const containerNotificationRef: LegacyRef<HTMLDivElement> = useRef(null);
 

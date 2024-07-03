@@ -16,7 +16,7 @@ type DropDownOptionsCardsDashboardProps = {
 
 export const DropDownOptionsCardsDashboard = ({
     tipo,
-}:DropDownOptionsCardsDashboardProps) => {
+}: DropDownOptionsCardsDashboardProps) => {
     const tipoPlural =
         (tipo == 'precio' && 'precios') ||
         (tipo == 'comprador' && 'compradores');
@@ -34,11 +34,12 @@ export const DropDownOptionsCardsDashboard = ({
             >
                 {({ key, label }) => (
                     <DropdownItem key={key + tipo}>
-                        <Link className='block w-full' href={`/${key.includes('create_') ? `${tipo}/registrar` : tipo}`}>
+                        <Link
+                            className="block w-full"
+                            href={`/${key.includes('create_') ? `${tipo}/registrar` : tipo}`}
+                        >
                             {label}
-                            { key.includes('create_')
-                                ? tipo
-                                : tipoPlural}
+                            {key.includes('create_') ? tipo : tipoPlural}
                         </Link>
                     </DropdownItem>
                 )}

@@ -1,4 +1,4 @@
-export const optionsDropdownCardsDashboard=[
-    {key:'create_',label:'Crear '},
-    {key:'view_',label:'Ver '},
-]
+export const optionsDropdownCardsDashboard = [
+    { key: 'create_', label: 'Crear ' },
+    { key: 'view_', label: 'Ver ' },
+];

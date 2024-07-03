@@ -18,7 +18,7 @@ const nunito = localFont({
 });
 
 export const metadata: Metadata = {
-    title: 'Ganadex | Gestión eficiente'
+    title: 'Ganadex | Gestión eficiente',
 };
 
 export default function RootLayout({

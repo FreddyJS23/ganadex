@@ -6,13 +6,18 @@ import { endpointsReports } from '@/collections/endPointsApi';
 
 type ButtonGenerateReportProps = {
     report: keyof typeof endpointsReports;
-    id?:number
+    id?: number;
 };
 
-export const ButtonGenerateReport = ({ report,id }: ButtonGenerateReportProps) => {
+export const ButtonGenerateReport = ({
+    report,
+    id,
+}: ButtonGenerateReportProps) => {
     const generateReport = async (endPoint: keyof typeof endpointsReports) => {
         try {
-            const getFile = await fetch(`/api/reportes/${endPoint}${id ?  `?id=${id}` : '' }  ` );
+            const getFile = await fetch(
+                `/api/reportes/${endPoint}${id ? `?id=${id}` : ''}  `,
+            );
             toast.success(`Generando reporte...`);
             const file = await getFile.blob();
             const link = document.createElement('a');

@@ -6,7 +6,8 @@ type ConvertToSelecetOptionsParams = {
 export const converToSelectOptions = (
     data: ConvertToSelecetOptionsParams[],
 ) => {
-    const itemsSelect: { value: string | number; label: string | number }[] = [];
+    const itemsSelect: { value: string | number; label: string | number }[] =
+        [];
 
     data.map((items) => {
         const [id, item] = Object.entries(items);

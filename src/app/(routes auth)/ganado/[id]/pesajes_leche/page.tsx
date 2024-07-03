@@ -1,5 +1,5 @@
 import { ModalHistoryWeightMilk } from '@/components/modals/historys/history weight milk';
-import { ResponsePesajesLeche,} from '@/types';
+import { ResponsePesajesLeche } from '@/types';
 import { getData } from '@/utils/getData';
 
 type ParamsPage = {

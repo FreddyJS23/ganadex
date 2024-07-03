@@ -1,6 +1,6 @@
 'use client';
 
-import { CausaFrecuente} from '@/types/dashboard';
+import { CausaFrecuente } from '@/types/dashboard';
 import {
     optionChartTotalTypesCattle,
     paletteBackground,
@@ -17,8 +17,13 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const TortaCausasFallecimientosGanado = ({causas_frecuentes}:{causas_frecuentes:CausaFrecuente[]}) => {
-    const { causeDead,totalDead} = getCommonCausesDeadAndTotalDead(causas_frecuentes);
+export const TortaCausasFallecimientosGanado = ({
+    causas_frecuentes,
+}: {
+    causas_frecuentes: CausaFrecuente[];
+}) => {
+    const { causeDead, totalDead } =
+        getCommonCausesDeadAndTotalDead(causas_frecuentes);
 
     const datasets: ChartData<'doughnut', number[]> = {
         labels: causeDead,

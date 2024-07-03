@@ -1,6 +1,8 @@
 import { CausaFrecuente } from '@/types/dashboard';
 
-export const getCommonCausesDeadAndTotalDead = (causesDead: CausaFrecuente[]) => {
+export const getCommonCausesDeadAndTotalDead = (
+    causesDead: CausaFrecuente[],
+) => {
     const causeDead: Array<string> = [];
     const totalDead: number[] = [];
 

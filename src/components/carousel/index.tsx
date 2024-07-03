@@ -18,7 +18,11 @@ export const CarouselImagesLogin = () => {
             {imagesSliderLogin.map((image) => {
                 return (
                     <div key={image.alt}>
-                        <Image {...image} alt={image.alt} className="h-[132px] md:h-[140px]" />
+                        <Image
+                            {...image}
+                            alt={image.alt}
+                            className="h-[132px] md:h-[140px]"
+                        />
                     </div>
                 );
             })}
@@ -28,10 +32,19 @@ export const CarouselImagesLogin = () => {
 export const CarouselTextLogin = () => {
     return (
         <Slider {...settings}>
-            {textCarouselLogin.map(({ text },index) => {
+            {textCarouselLogin.map(({ text }, index) => {
                 return (
-                    <div key={index} >
-                        <p style={{ color: 'black', fontWeight: 'bold', fontSize: '18px' }} className="text-wrap text-center">{text}</p>
+                    <div key={index}>
+                        <p
+                            style={{
+                                color: 'black',
+                                fontWeight: 'bold',
+                                fontSize: '18px',
+                            }}
+                            className="text-wrap text-center"
+                        >
+                            {text}
+                        </p>
                     </div>
                 );
             })}

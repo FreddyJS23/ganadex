@@ -20,12 +20,9 @@ export const GetReports = async (
 
     let url = '';
     if (endPoint == 'dashboard' || endPoint == 'notaVenta') {
-        url =
-            'http://127.0.0.1:8000' +
-            `/${endpointsReports[endPoint]}`;
+        url = 'http://127.0.0.1:8000' + `/${endpointsReports[endPoint]}`;
     } else if (endPoint == 'ganado') {
-       url= 'http://127.0.0.1:8000' +
-            `/${endpointsReports[endPoint]}/${id}`;
+        url = 'http://127.0.0.1:8000' + `/${endpointsReports[endPoint]}/${id}`;
     } else if (endPoint == 'venta_leche' || endPoint == 'fallecimiento') {
         url =
             'http://127.0.0.1:8000' +
@@ -51,7 +48,11 @@ export const GetReports = async (
         const pdf = await ganadoDescarte.blob();
 
         if (ganadoDescarte.status == 200) return pdf;
-        else throw { status: ganadoDescarte.status, data: await ganadoDescarte.json() };
+        else
+            throw {
+                status: ganadoDescarte.status,
+                data: await ganadoDescarte.json(),
+            };
     } catch (e) {
         if (e instanceof Error) throw e;
         const { status, data } = e as ResponseError;

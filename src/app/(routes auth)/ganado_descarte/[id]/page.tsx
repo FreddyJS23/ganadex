@@ -1,7 +1,7 @@
 import { DetailsCattle, DetailsWeights } from '@/collections';
 import { Details } from '@/components/details';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
-import {  ResponseGanadoDescarte, } from '@/types';
+import { ResponseGanadoDescarte } from '@/types';
 import { getData } from '@/utils/getData';
 import Image from 'next/image';
 import cattleImage from 'public/cattle.png';
@@ -11,10 +11,16 @@ type ParamsPageBeef = {
 };
 
 export default async function Page({ params }: ParamsPageBeef) {
-    const {ganado_descarte}: ResponseGanadoDescarte = await getData('ganadoDescarte', 'GET', undefined, params.id);
+    const { ganado_descarte }: ResponseGanadoDescarte = await getData(
+        'ganadoDescarte',
+        'GET',
+        undefined,
+        params.id,
+    );
 
-    const {numero,nombre,origen,fecha_nacimiento,pesos,tipo,estados} = ganado_descarte;
-console.log(estados)
+    const { numero, nombre, origen, fecha_nacimiento, pesos, tipo, estados } =
+        ganado_descarte;
+    console.log(estados);
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
@@ -52,9 +58,7 @@ console.log(estados)
                             />
                             <div className="flex flex-col items-center">
                                 <h3 className="font-bold text-lg">Estados</h3>
-                                <DropdownStatesCattle
-                                    estados={estados}
-                                />
+                                <DropdownStatesCattle estados={estados} />
                             </div>
                             {/* Pesos */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">

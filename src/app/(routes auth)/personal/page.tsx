@@ -4,9 +4,8 @@ import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
-    const { todo_personal }: ResponseTodoPersonal = await getData(
-        'todosPersonal',
-    );
+    const { todo_personal }: ResponseTodoPersonal =
+        await getData('todosPersonal');
     return (
         <section>
             <TitlePage title="Personal" />

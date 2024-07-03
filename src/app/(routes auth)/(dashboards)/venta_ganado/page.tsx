@@ -1,23 +1,26 @@
 import { CardDashboardSaleCattle } from '@/components/cards';
 import { SalesCatle } from '@/components/charts/dashboard/sales catle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
-import {  ResponseVentasGanado } from '@/types';
-import { BalanceAnualVentaGanado, MejorComprador, MejorVenta, PeorVenta } from '@/types/dashboard';
+import { ResponseVentasGanado } from '@/types';
+import {
+    BalanceAnualVentaGanado,
+    MejorComprador,
+    MejorVenta,
+    PeorVenta,
+} from '@/types/dashboard';
 import { getData } from '@/utils/getData';
 import IconImprimir from '@/icons/icono-imprimir.svg';
 import Link from 'next/link';
 
 export default async function Page() {
-    const { ventas }: ResponseVentasGanado = await getData(
-        'ventasGanado',
-    );
-    const { comprador }:MejorComprador  = await getData(
+    const { ventas }: ResponseVentasGanado = await getData('ventasGanado');
+    const { comprador }: MejorComprador = await getData(
         'dashboardVentaGanadomejorComprador',
     );
-    const { venta:mejorVenta }: MejorVenta = await getData(
+    const { venta: mejorVenta }: MejorVenta = await getData(
         'dashboardVentaGanadomejorVenta',
     );
-    const { venta:peorVenta }: PeorVenta = await getData(
+    const { venta: peorVenta }: PeorVenta = await getData(
         'dashboardVentaGanadopeorVenta',
     );
     const { balance_anual }: BalanceAnualVentaGanado = await getData(
@@ -50,9 +53,7 @@ export default async function Page() {
                     <span className="text-2xl">
                         Ganancia acumulada del mes actual
                     </span>
-                    <Link
-                        href={`/reporte_anual/venta_ganado`}
-                    >
+                    <Link href={`/reporte_anual/venta_ganado`}>
                         <IconImprimir className={'size-8'} />
                     </Link>
                     {/* boton y modal crear venta */}

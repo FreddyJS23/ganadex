@@ -1,7 +1,5 @@
 import { StateCattle, TypeNotification, TypesCattle } from './enums';
 
-
-
 export type PesajeLeche = `${string}-KG`;
 
 type EstadosGanado = {
@@ -23,21 +21,15 @@ type Eventos = {
     prox_secado: string | null;
 };
 
-type veterinario={
-    id:number;
-    nombre:string;
-}
+type veterinario = {
+    id: number;
+    nombre: string;
+};
 
 type Cria = Pick<
     Ganado,
-    | 'id'
-    | 'nombre'
-    | 'numero'
-    | 'sexo'
-    | 'origen'
-    | 'fecha_nacimiento'
-    
->& {peso:Pick <Pesos,'peso_nacimiento'>};
+    'id' | 'nombre' | 'numero' | 'sexo' | 'origen' | 'fecha_nacimiento'
+> & { peso: Pick<Pesos, 'peso_nacimiento'> };
 
 type ToroDeServicio = Pick<Toro, 'id' | 'numero'>;
 
@@ -49,23 +41,35 @@ export type Ganado = {
     sexo: 'H' | 'M';
     tipo: keyof typeof TypesCattle;
     fecha_nacimiento: string | null;
-    pesos?:Pesos;
+    pesos?: Pesos;
     estados: EstadosGanado[];
     fecha_defuncion: string | null;
     causa_defuncion: string | null;
-    eventos:Eventos
+    eventos: Eventos;
 };
 
-export type Toro =Pick<Ganado, 'id' | 'nombre' | 'numero' | 'origen' | 'fecha_nacimiento' | 'pesos' | 'tipo' | 'estados'> 
-& {
-     sexo :'M'
-    efectividad:number;
-    padre_en_partos:number;
-    servicios:number
-    ganado_id:number
-    }
+export type Toro = Pick<
+    Ganado,
+    | 'id'
+    | 'nombre'
+    | 'numero'
+    | 'origen'
+    | 'fecha_nacimiento'
+    | 'pesos'
+    | 'tipo'
+    | 'estados'
+> & {
+    sexo: 'M';
+    efectividad: number;
+    padre_en_partos: number;
+    servicios: number;
+    ganado_id: number;
+};
 
-export type GanadoDescarte = Omit<Toro,'efectividad' | 'padre_en_partos' | 'servicios'>
+export type GanadoDescarte = Omit<
+    Toro,
+    'efectividad' | 'padre_en_partos' | 'servicios'
+>;
 
 export type Insumo = {
     id: number;
@@ -80,7 +84,7 @@ export type Personal = {
     nombre: string;
     apellido: string;
     fecha_nacimiento: string;
-    telefono:string;
+    telefono: string;
     cargo: string;
 };
 
@@ -96,7 +100,7 @@ export type Revision = {
     fecha: string;
     diagnostico: string;
     tratamiento: string;
-    veterinario:veterinario
+    veterinario: veterinario;
 };
 
 /**Servicio individual de una cabeza de ganado */
@@ -105,7 +109,7 @@ export type Servicio = {
     fecha: string;
     observacion: string;
     tipo: string;
-    toro:Pick <Toro,'id' | 'numero'>
+    toro: Pick<Toro, 'id' | 'numero'>;
     veterinario: veterinario;
 };
 
@@ -152,7 +156,7 @@ export type VentaGanado = {
     id: number;
     fecha: string;
     peso: PesajeGanado;
-    ganado:Pick <Ganado,'id' | 'numero'>
+    ganado: Pick<Ganado, 'id' | 'numero'>;
     precio: number;
     precio_kg: number;
     comprador: string;
@@ -193,8 +197,8 @@ export type PesajesLeche = Pick<Ganado, 'id' | 'numero' | 'nombre'> & {
 export type Partos = Pick<Ganado, 'id' | 'numero'> & {
     ultimo_parto: string | null;
     total_partos: number;
-    toro: Pick <Toro,'id'| 'numero'>;
-    cria: Pick <Cria,'id'| 'numero'>;
+    toro: Pick<Toro, 'id' | 'numero'>;
+    cria: Pick<Cria, 'id' | 'numero'>;
 };
 
 export type Comprador = {
@@ -204,10 +208,10 @@ export type Comprador = {
 
 export type Notification = {
     id: number;
-    tipo:keyof typeof TypeNotification;
-    leido:boolean;
-    dias_para_evento:number;
-    ganado:Pick<Ganado,'id' | 'numero'>
+    tipo: keyof typeof TypeNotification;
+    leido: boolean;
+    dias_para_evento: number;
+    ganado: Pick<Ganado, 'id' | 'numero'>;
 };
 
 export type TypesNotification = {
@@ -217,6 +221,6 @@ export type TypesNotification = {
 };
 
 export type PositionStaff = {
-    id:number;
-    cargo:'obrero' | 'veterinario';
-}
+    id: number;
+    cargo: 'obrero' | 'veterinario';
+};

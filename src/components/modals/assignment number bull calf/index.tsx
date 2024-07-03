@@ -7,7 +7,7 @@ import { useDisclosure } from '@nextui-org/react';
 import { CreateAssigmentNumberBullCalf } from '@/types/forms';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {assignmentNumberBullCalf} from '@/actions/assigmentNumberBullCalf'
+import { assignmentNumberBullCalf } from '@/actions/assigmentNumberBullCalf';
 import { toast } from 'sonner';
 import { assignmentNumberBullCalfShema } from '@/validations/assignmentNumberBullCalfShema';
 import { useRef } from 'react';
@@ -18,28 +18,31 @@ export const ModalAssignmentNumberBullCalf = ({
 }: Pick<ModalProps, 'dataHeader'>) => {
     const { onOpen, onOpenChange } = useDisclosure();
 
-const {
-    register,
-    formState: { errors },
-    handleSubmit,
-} = useForm<CreateAssigmentNumberBullCalf>({resolver:zodResolver(assignmentNumberBullCalfShema)});
-
-const router = useRouter();
-const formRef=useRef(null)
-const params = useParams<{ id: string}>();
- 
-const actionAssigmentNumberBullCalf: () => void = handleSubmit(async (data) => {
-        try {
-            await assignmentNumberBullCalf(data, parseInt(params.id));
-            toast.success('Operación exitosa');
-              router.back(); 
-              router.refresh(); 
-        } catch (error) {
-            
-            const message = error as string;
-            return toast.error(message);
-        }
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+    } = useForm<CreateAssigmentNumberBullCalf>({
+        resolver: zodResolver(assignmentNumberBullCalfShema),
     });
+
+    const router = useRouter();
+    const formRef = useRef(null);
+    const params = useParams<{ id: string }>();
+
+    const actionAssigmentNumberBullCalf: () => void = handleSubmit(
+        async (data) => {
+            try {
+                await assignmentNumberBullCalf(data, parseInt(params.id));
+                toast.success('Operación exitosa');
+                router.back();
+                router.refresh();
+            } catch (error) {
+                const message = error as string;
+                return toast.error(message);
+            }
+        },
+    );
 
     return (
         <LayoutModal
@@ -52,7 +55,12 @@ const actionAssigmentNumberBullCalf: () => void = handleSubmit(async (data) => {
             onOpenChange={onOpenChange}
             refForm={formRef}
         >
-            <form ref={formRef} id='form-assignmentNumber' action={actionAssigmentNumberBullCalf}  className="m-auto w-2/4 ">
+            <form
+                ref={formRef}
+                id="form-assignmentNumber"
+                action={actionAssigmentNumberBullCalf}
+                className="m-auto w-2/4 "
+            >
                 <Input
                     id="numero"
                     label="Numero"

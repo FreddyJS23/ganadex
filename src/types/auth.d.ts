@@ -15,17 +15,16 @@ export type ResponseLogin = {
     login: User;
 };
 
-export type ResponseLoginAuthJs ={
-    login:boolean;
-    redirect:'/dashboard' | null;
-    message:string | null;
-
-}
+export type ResponseLoginAuthJs = {
+    login: boolean;
+    redirect: '/dashboard' | null;
+    message: string | null;
+};
 
 export type CookieCsrf = {
-    nameCookie:string;
-    token:string;
-}
+    nameCookie: string;
+    token: string;
+};
 
 declare module 'next-auth' {
     export interface User {
@@ -33,7 +32,7 @@ declare module 'next-auth' {
         id: number;
         usuario: string;
         token: string;
-        cookieCsrf:CookieCsrf[]
+        cookieCsrf: CookieCsrf[];
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
     /**
@@ -51,5 +50,4 @@ declare module 'next-auth/jwt' {
         token: string;
         cookieCsrf: CookieCsrf[];
     }
-    
 }

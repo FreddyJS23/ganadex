@@ -1,7 +1,7 @@
 'use client';
 
 import { headerDeadCattle } from '@/collections/headerColums';
-import { Fallecimiento, Ganado, ResponseFallecimientos  } from '@/types';
+import { Fallecimiento, Ganado, ResponseFallecimientos } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -14,22 +14,22 @@ import { LayoutTable } from '..';
 import Link from 'next/link';
 
 export const TableDeadCattle = ({ fallecidos }: ResponseFallecimientos) => {
-    
     const renderCell = useCallback(
         (fallecimiento: Fallecimiento, columnKey: Key) => {
             const cellValue = fallecimiento[columnKey as keyof Fallecimiento];
 
             switch (columnKey as keyof Fallecimiento) {
-                case 'ganado':
-                    {const ganado = cellValue as Pick<Ganado, 'id' | 'numero'>;
+                case 'ganado': {
+                    const ganado = cellValue as Pick<Ganado, 'id' | 'numero'>;
                     return (
                         <Link href={`ganado/${ganado.id}`}>
                             {ganado.numero}
                         </Link>
-                    );}
+                    );
+                }
 
                 default:
-                return cellValue as ReactNode;
+                    return cellValue as ReactNode;
             }
         },
         [],

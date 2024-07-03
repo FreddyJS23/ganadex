@@ -1,10 +1,9 @@
 /**Tipos de notificaciones */
 export enum TypeNotification {
-    revision, 
+    revision,
     parto,
-    secado
+    secado,
 }
-
 
 export enum IconsModal {
     weight,
@@ -17,9 +16,8 @@ export enum IconsModal {
     serve,
     pregnancy,
     customer,
-    restoreBd
+    restoreBd,
 }
-
 
 export enum ElementSidebar {
     Dashboard,
@@ -162,7 +160,7 @@ export enum TitlesModals {
     'Historial pesajes mensuales de leche',
     'Escoja un rango de fechas para el reporte',
     'Año a filtrar el resumen',
-    'Restaurar base de datos'
+    'Restaurar base de datos',
 }
 
 export enum FieldsIdCasttle {
@@ -237,13 +235,13 @@ export enum FieldsLabelsBeef {
 export enum FieldsIdCheckUp {
     diagnostico,
     tratamiento,
-    'personal_id'
+    'personal_id',
 }
 
 export enum FieldsLabelsCheckUp {
     Diagnostico,
     Tratamiento,
-    Veterinario
+    Veterinario,
 }
 
 export enum FieldsIdService {
@@ -311,22 +309,22 @@ export enum FieldsIdDeadCattle {
     fecha,
     causa,
     /* use id in form cattle to register dead cattle */
-    fecha_fallecimiento
+    fecha_fallecimiento,
 }
 
 export enum FieldsLabelsDeadCattle {
-   'Fecha de defunción',
-   'Causa de defunción',
+    'Fecha de defunción',
+    'Causa de defunción',
 }
 
 export enum FieldsIdSaleCattle {
     precio,
     comprador_id,
-    fecha_venta
+    fecha_venta,
 }
 
 export enum FieldsLabelsSaleCattle {
-   Precio,
-   Compradores,
-   'Fecha de venta',
+    Precio,
+    Compradores,
+    'Fecha de venta',
 }

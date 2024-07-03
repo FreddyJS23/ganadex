@@ -1,7 +1,6 @@
 import { notifications } from '@/collections';
 import { NotificationMessageTupla, TypeNotification } from '@/types';
 
-
 const notificationsArray = Object.entries(
     notifications,
 ) as NotificationMessageTupla[];

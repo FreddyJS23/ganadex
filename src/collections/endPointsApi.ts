@@ -2,7 +2,7 @@ export const endPoints = {
     ganado: 'ganado/',
     todosGanado: 'ganado',
     toro: 'toro/',
-    crearUsuario:'register',
+    crearUsuario: 'register',
     todosToro: 'toro',
     todosGanadoDescarte: 'ganado_descarte',
     ganadoDescarte: 'ganado_descarte/',
@@ -10,14 +10,14 @@ export const endPoints = {
     asignarNumeroCria: 'asignar_numero_cria/',
     criasCapar: 'crias_pendiente_capar',
     caparCria: 'capar_cria/',
-    crearPrecioLeche:'precio/',
+    crearPrecioLeche: 'precio/',
     preciosLeche: 'precio',
     ventasLeche: 'venta_leche',
     insumo: 'insumo/',
     insumos: 'insumo',
     personal: 'personal/',
     todosPersonal: 'personal',
-    veterinariosDisponibles:'veterinarios',
+    veterinariosDisponibles: 'veterinarios',
     comprador: 'comprador/',
     compradores: 'comprador',
     ventaGanado: 'ventas/',
@@ -33,25 +33,32 @@ export const endPoints = {
     dashboardPrincipaltotalPersonal: 'dashboard_principal/total_personal',
     dashboardPrincipalvacasGestacion: 'dashboard_principal/vacas_gestacion',
     dashboardPrincipalvacasProductoras: 'dashboard_principal/vacas_productoras',
-    dashboardPrincipalvacasMenosProductoras: 'dashboard_principal/vacas_menos_productoras',
-    dashboardPrincipalpendienteRevision: 'dashboard_principal/ganado_pendiente_revision',
-    dashboardPrincipalcantidadNovillasMontar: 'dashboard_principal/cantidad_novillas_montar',
+    dashboardPrincipalvacasMenosProductoras:
+        'dashboard_principal/vacas_menos_productoras',
+    dashboardPrincipalpendienteRevision:
+        'dashboard_principal/ganado_pendiente_revision',
+    dashboardPrincipalcantidadNovillasMontar:
+        'dashboard_principal/cantidad_novillas_montar',
     dashboardPrincipalinsumoMenorExistencia: 'dashboard_principal/menor_insumo',
     dashboardPrincipalinsumoMayorExistencia: 'dashboard_principal/mayor_insumo',
-    dashboardPrincipalbalanceAnualLeche: 'dashboard_principal/balance_anual_leche',
+    dashboardPrincipalbalanceAnualLeche:
+        'dashboard_principal/balance_anual_leche',
     dashboardVentaLecheprecioActual: 'dashboard_venta_leche/precio_actual',
-    dashboardVentaLechevariacionPRecio: 'dashboard_venta_leche/variacion_precio',
+    dashboardVentaLechevariacionPRecio:
+        'dashboard_venta_leche/variacion_precio',
     dashboardVentaLechegananciasDelMes: 'dashboard_venta_leche/ganancias_mes',
     dashboardVentaLecheventasMesLeche: 'dashboard_venta_leche/ventas_mes',
     dashboardVentaLecheBalanceMensual: 'dashboard_venta_leche/balance_mensual',
-    dashboardVentaGanadomejorComprador: 'dashboard_venta_ganado/mejor_comprador',
+    dashboardVentaGanadomejorComprador:
+        'dashboard_venta_ganado/mejor_comprador',
     dashboardVentaGanadomejorVenta: 'dashboard_venta_ganado/mejor_venta',
     dashboardVentaGanadopeorVenta: 'dashboard_venta_ganado/peor_venta',
     dashboardVentaGanadoventasMesGanado: 'dashboard_venta_ganado/venta_mes',
     dashboardVentaGanadoBalanceAnual: 'dashboard_venta_ganado/balance_anual',
-    dashboardFallecimientosCausasFrecuentes: 'dashboard_fallecimientos/causas_frecuentes',
+    dashboardFallecimientosCausasFrecuentes:
+        'dashboard_fallecimientos/causas_frecuentes',
     notificaciones: 'notificaciones',
-    fechaUltimoRespaldo:'ultimo_respaldo'
+    fechaUltimoRespaldo: 'ultimo_respaldo',
 };
 
 export const endPointsCattle = {
@@ -66,14 +73,14 @@ export const endPointsCattle = {
 };
 
 /**Rutas para el endpoint de laravel   */
-export const endpointsReports={
-    venta_leche:'reportes/venta_leche',
-    fallecimiento:'reportes/causas_fallecimientos',
-    dashboard:'reportes/general',
-    ganado:'reportes/ganado',
-    notaVenta:'reportes/nota_venta',
-}
+export const endpointsReports = {
+    venta_leche: 'reportes/venta_leche',
+    fallecimiento: 'reportes/causas_fallecimientos',
+    dashboard: 'reportes/general',
+    ganado: 'reportes/ganado',
+    notaVenta: 'reportes/nota_venta',
+};
 /**Rutas para el endpoint de laravel   */
-export const endpointsReportsAnnual={
-    venta_ganado:'reportes/venta_ganado',
-}
+export const endpointsReportsAnnual = {
+    venta_ganado: 'reportes/venta_ganado',
+};

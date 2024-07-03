@@ -11,33 +11,42 @@ type ButtonProps = {
         | 'warning'
         | 'danger';
     onClick: () => void;
-    type?:"button" | "submit" | "reset" 
-    form?:string
+    type?: 'button' | 'submit' | 'reset';
+    form?: string;
 };
 
-export const Button = ({ content, color, onClick,type='button',form }: ButtonProps) => {
+export const Button = ({
+    content,
+    color,
+    onClick,
+    type = 'button',
+    form,
+}: ButtonProps) => {
     const { pending } = useFormStatus();
-   if(form) {return (
-        <ButtonNextUI
-            onClick={onClick}
-            className="w-full"
-            color={`${color ? color : 'primary'}`}
-            type={type}
-            isLoading={type == 'submit' && pending}
-             form={form} 
-        >
-            {content}
-        </ButtonNextUI>
-    );}
-   else{ return (
-        <ButtonNextUI
-            onClick={onClick}
-            className="w-full"
-            color={`${color ? color : 'primary'}`}
-            type={type}
-            isLoading={type == 'submit' && pending}
-        >
-            {content}
-        </ButtonNextUI>
-    );}
+    if (form) {
+        return (
+            <ButtonNextUI
+                onClick={onClick}
+                className="w-full"
+                color={`${color ? color : 'primary'}`}
+                type={type}
+                isLoading={type == 'submit' && pending}
+                form={form}
+            >
+                {content}
+            </ButtonNextUI>
+        );
+    } else {
+        return (
+            <ButtonNextUI
+                onClick={onClick}
+                className="w-full"
+                color={`${color ? color : 'primary'}`}
+                type={type}
+                isLoading={type == 'submit' && pending}
+            >
+                {content}
+            </ButtonNextUI>
+        );
+    }
 };

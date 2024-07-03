@@ -1,11 +1,11 @@
 'use client';
 
 import { LayoutModal } from '../..';
-import { Comprador, ModalProps, } from '@/types';
+import { Comprador, ModalProps } from '@/types';
 import { ContainerTableHistory } from '..';
 import { TableCustomers } from '@/components/tables/in modals/customers';
 
-export const ModalCustomers= ({
+export const ModalCustomers = ({
     compradores,
 }: ModalProps & { compradores: Comprador[] }) => {
     return (

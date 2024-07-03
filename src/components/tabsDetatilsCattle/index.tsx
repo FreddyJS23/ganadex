@@ -1,16 +1,23 @@
 'use client';
 
 import { Details } from '../details';
-import { DetailsBirht, DetailsChecks, DetailsServe, DetailsWeightingMilk } from '@/collections';
+import {
+    DetailsBirht,
+    DetailsChecks,
+    DetailsServe,
+    DetailsWeightingMilk,
+} from '@/collections';
 import { Eventos, ResponseGanado } from '@/types';
 import { ContainerContentTab } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
 import { TitleTab } from '@/ui/TitleTab';
 import { Button } from '@/ui/Button';
-import {  usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { ButtonGroupTabDetailCattle } from '@/ui/ButtonGroupTabDetailCattle';
 
-type TabsDetailsCattleProps = Omit<ResponseGanado, 'ganado'> & {eventos:Eventos};
+type TabsDetailsCattleProps = Omit<ResponseGanado, 'ganado'> & {
+    eventos: Eventos;
+};
 
 export const TabDetailsCattle = ({
     revision_reciente,

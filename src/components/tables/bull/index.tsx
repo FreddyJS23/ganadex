@@ -19,34 +19,32 @@ import IconCheck from '@/icons/icono-check.svg';
 import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
 export const TableBull = ({ toros }: ResponseToros) => {
+    const [bulls, setBulls] = useState<Toro[]>(toros);
 
- const [bulls, setBulls] = useState<Toro[]>(toros);
+    const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
+        'all',
+    );
 
- const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
-     'all',
- );
+    const bullDeath = () => {
+        const bullDeath = toros.filter(({ estados }) => {
+            return estados.some(({ estado }) => estado == 'fallecido');
+        });
+        setBulls(bullDeath);
+        setFilterActive('death');
+    };
 
- const bullDeath = () => {
-     const bullDeath = toros.filter(({ estados }) => {
-         return estados.some(({ estado }) => estado == 'fallecido');
-     });
-     setBulls(bullDeath);
-     setFilterActive('death');
- };
+    const bullSales = () => {
+        const bullSales = toros.filter(({ estados }) => {
+            return estados.some(({ estado }) => estado == 'vendido');
+        });
+        setBulls(bullSales);
+        setFilterActive('sales');
+    };
 
- const bullSales = () => {
-     const bullSales = toros.filter(({ estados }) => {
-         return estados.some(({ estado }) => estado == 'vendido');
-     });
-     setBulls(bullSales);
-     setFilterActive('sales');
- };
-
- const allbull = () => {
-     setBulls(toros);
-     setFilterActive('all');
- };
-
+    const allbull = () => {
+        setBulls(toros);
+        setFilterActive('all');
+    };
 
     const renderCell = useCallback((toro: Toro, columnKey: Key) => {
         const cellValue = toro[columnKey as keyof Toro];
@@ -81,16 +79,16 @@ export const TableBull = ({ toros }: ResponseToros) => {
 
                 return <DropdownStatesCattle estados={estados} />;
             }
-            
+
             case 'efectividad': {
                 const efectividad = cellValue as number;
 
-             return <span>{efectividad ? `${efectividad}%` : ''}</span>;
+                return <span>{efectividad ? `${efectividad}%` : ''}</span>;
             }
 
             case 'id': {
                 const id = toro['ganado_id'];
-              const estados = toro['estados'] as EstadosGanado[];
+                const estados = toro['estados'] as EstadosGanado[];
                 return !estados.some(
                     ({ estado }) =>
                         estado == 'fallecido' || estado == 'vendido',
@@ -108,7 +106,12 @@ export const TableBull = ({ toros }: ResponseToros) => {
 
     return (
         <>
-           <ButtonFilterStateCattle filterActive={filterActive} cattlesDeath={bullDeath} cattlesSales={bullSales} allCattles={allbull} />
+            <ButtonFilterStateCattle
+                filterActive={filterActive}
+                cattlesDeath={bullDeath}
+                cattlesSales={bullSales}
+                allCattles={allbull}
+            />
             <LayoutTable type="bull">
                 <TableHeader columns={headerBull}>
                     {({ key, label }) => (

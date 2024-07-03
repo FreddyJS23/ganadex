@@ -13,13 +13,10 @@ import { Key, ReactNode, useCallback } from 'react';
 import { LayoutTable } from '..';
 
 export const TableStaff = ({ todo_personal }: ResponseTodoPersonal) => {
-    const renderCell = useCallback(
-        (personal: Personal, columnKey: Key) => {
-            const cellValue = personal[columnKey as keyof Personal];
-          return cellValue as ReactNode;
-        },
-        [],
-    );
+    const renderCell = useCallback((personal: Personal, columnKey: Key) => {
+        const cellValue = personal[columnKey as keyof Personal];
+        return cellValue as ReactNode;
+    }, []);
 
     return (
         <LayoutTable type="staff">

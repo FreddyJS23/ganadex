@@ -1,4 +1,4 @@
-import { headerCustomers, } from '@/collections/headerColums';
+import { headerCustomers } from '@/collections/headerColums';
 import { ResponseCompradores } from '@/types';
 
 export const TableCustomers = ({ compradores }: ResponseCompradores) => {
@@ -13,7 +13,7 @@ export const TableCustomers = ({ compradores }: ResponseCompradores) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {compradores.map(({ id,nombre}) => (
+                    {compradores.map(({ id, nombre }) => (
                         <tr key={id}>
                             <td>{nombre} </td>
                         </tr>

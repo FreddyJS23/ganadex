@@ -24,9 +24,8 @@ import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual bal
 import { ButtonGenerateReport } from '@/components/buttonPrintReports';
 
 export default async function Home() {
-  
     const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(
-        'dashboardPrincipaltotalGanadoTipo'
+        'dashboardPrincipaltotalGanadoTipo',
     );
     const { top_vacas_productoras }: TopVacasProductoras = await getData(
         'dashboardPrincipalvacasProductoras',
@@ -42,18 +41,16 @@ export default async function Home() {
     const { balance_anual }: balanceAnualLeche = await getData(
         'dashboardPrincipalbalanceAnualLeche',
     );
-    const { ganado_pendiente_revision }: TotalGanadoPendienteRevision = await getData(
-        'dashboardPrincipalpendienteRevision',
-    );
+    const { ganado_pendiente_revision }: TotalGanadoPendienteRevision =
+        await getData('dashboardPrincipalpendienteRevision');
     const { total_personal }: TotalPersonal = await getData(
         'dashboardPrincipaltotalPersonal',
     );
     const { vacas_en_gestacion }: TotalVacasEnGestacion = await getData(
         'dashboardPrincipalvacasGestacion',
     );
-    const { cantidad_vacas_para_servir }: TotalGanadoPendienteservir = await getData(
-        'dashboardPrincipalcantidadNovillasMontar',
-    );
+    const { cantidad_vacas_para_servir }: TotalGanadoPendienteservir =
+        await getData('dashboardPrincipalcantidadNovillasMontar');
 
     return (
         <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
@@ -61,7 +58,7 @@ export default async function Home() {
             <article className="p-4 bg-base-100 col-span-full max-w-xl md:col-span-2 lex justify-center flex-col  w-full shadow-cards">
                 <div className="flex justify-between">
                     <h3>Cabezas de ganado</h3>
-                   <ButtonGenerateReport report={'dashboard'} />
+                    <ButtonGenerateReport report={'dashboard'} />
                     <IconCatle
                         className={
                             'size-8 bg-primary opacity-70 p-1 rounded-full'
@@ -88,7 +85,11 @@ export default async function Home() {
                     title="Pendiente de revision"
                     icon="checkUp"
                 />
-                <CardDashboard data={total_personal} title="Personal" icon="staff" />
+                <CardDashboard
+                    data={total_personal}
+                    title="Personal"
+                    icon="staff"
+                />
             </article>
             <div className="col-span-full flex flex-col justify-around sm:flex-row">
                 {/*    grafico vacas productoras */}
@@ -125,16 +126,40 @@ export default async function Home() {
                     </div>
                     <div className="flex">
                         <CircularProgress
-                            value={mayor_cantidad_insumo ? mayor_cantidad_insumo.cantidad : 0}
+                            value={
+                                mayor_cantidad_insumo
+                                    ? mayor_cantidad_insumo.cantidad
+                                    : 0
+                            }
                             positive={true}
-                            label={mayor_cantidad_insumo ? mayor_cantidad_insumo.insumo : ''}
-                            rangeMaxValue={mayor_cantidad_insumo ? mayor_cantidad_insumo.cantidad : 0}
+                            label={
+                                mayor_cantidad_insumo
+                                    ? mayor_cantidad_insumo.insumo
+                                    : ''
+                            }
+                            rangeMaxValue={
+                                mayor_cantidad_insumo
+                                    ? mayor_cantidad_insumo.cantidad
+                                    : 0
+                            }
                         />
                         <CircularProgress
-                            value={menor_cantidad_insumo ? menor_cantidad_insumo.cantidad : 0}
+                            value={
+                                menor_cantidad_insumo
+                                    ? menor_cantidad_insumo.cantidad
+                                    : 0
+                            }
                             positive={false}
-                            label={menor_cantidad_insumo ? menor_cantidad_insumo.insumo : ''}
-                             rangeMaxValue={mayor_cantidad_insumo ? mayor_cantidad_insumo.cantidad : 0}
+                            label={
+                                menor_cantidad_insumo
+                                    ? menor_cantidad_insumo.insumo
+                                    : ''
+                            }
+                            rangeMaxValue={
+                                mayor_cantidad_insumo
+                                    ? mayor_cantidad_insumo.cantidad
+                                    : 0
+                            }
                         />
                     </div>
                 </article>

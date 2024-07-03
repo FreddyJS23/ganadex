@@ -1,7 +1,7 @@
 'use client';
 
 import { ModalSaleMilk } from '@/components/modals/sale milk';
-import {  PreciosDeLeche,  } from '@/types';
+import { PreciosDeLeche } from '@/types';
 import { useDisclosure } from '@nextui-org/react';
 
 type ListaPreciosRegistradosProps = {

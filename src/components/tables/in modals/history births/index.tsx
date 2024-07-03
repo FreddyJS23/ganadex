@@ -1,5 +1,5 @@
 import { headerBirths } from '@/collections/headerColums';
-import {  ResponsePartos } from '@/types';
+import { ResponsePartos } from '@/types';
 import IconSearch from '@/icons/icono-Revisar.svg';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';

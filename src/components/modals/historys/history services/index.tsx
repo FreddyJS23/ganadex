@@ -20,7 +20,6 @@ export const ModalHistoryServices = ({
             <ContainerTableHistory>
                 <TableHistoryServices servicios={servicios} />
             </ContainerTableHistory>
-            
         </LayoutModal>
     );
 };

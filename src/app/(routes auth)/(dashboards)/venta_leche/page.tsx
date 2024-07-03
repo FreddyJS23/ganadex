@@ -2,16 +2,20 @@ import { CardDashboardSaleMilk } from '@/components/cards';
 import { ChartEarningsMilkMonth } from '@/components/charts/dashboard/earnings milk month';
 import { TableSaleMilk } from '@/components/tables/sale milk';
 import { ResponseVentasLeche } from '@/types';
-import { BalanceMensualVentaLeche, GanaciasMes, PrecioActual, VariacionPrecio } from '@/types/dashboard';
+import {
+    BalanceMensualVentaLeche,
+    GanaciasMes,
+    PrecioActual,
+    VariacionPrecio,
+} from '@/types/dashboard';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 import IconImprimir from '@/icons/icono-imprimir.svg';
 import Link from 'next/link';
 
 export default async function Page() {
-    const { ventas_de_leche }: ResponseVentasLeche = await getData(
-        'ventasLeche',
-    );
+    const { ventas_de_leche }: ResponseVentasLeche =
+        await getData('ventasLeche');
     const { precio_actual }: PrecioActual = await getData(
         'dashboardVentaLecheprecioActual',
     );
@@ -21,7 +25,7 @@ export default async function Page() {
     const { ganancias }: GanaciasMes = await getData(
         'dashboardVentaLechegananciasDelMes',
     );
-   
+
     const { balance_mensual }: BalanceMensualVentaLeche = await getData(
         'dashboardVentaLecheBalanceMensual',
     );
@@ -45,9 +49,7 @@ export default async function Page() {
                         <span className="text-2xl">
                             Ganancia acumulada del mes actual
                         </span>
-                        <Link
-                            href={`/reporte/venta_leche`}
-                        >
+                        <Link href={`/reporte/venta_leche`}>
                             <IconImprimir className={'size-8'} />
                         </Link>
                         {/* boton y modal crear venta leche */}

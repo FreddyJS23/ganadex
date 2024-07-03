@@ -74,15 +74,14 @@ export const SidebarElement = ({
                         }`}
                     >
                         {options.map(({ option, url }, index) => (
-                          
-                           <li
+                            <li
                                 key={index}
                                 className="flex p-2 items-center rounded gap-3 hover:bg-base-200 transition-colors duration-75"
                             >
                                 <Link
                                     key={index}
                                     className=""
-                                    href={`${url}${ element == 'Registrar' || option == 'Registrar' ? '/registrar' : ''}`}
+                                    href={`${url}${element == 'Registrar' || option == 'Registrar' ? '/registrar' : ''}`}
                                 >
                                     {option}
                                 </Link>

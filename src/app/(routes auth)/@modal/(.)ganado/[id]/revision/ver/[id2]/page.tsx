@@ -13,7 +13,7 @@ export default async function Page({ params }: ParamsPage) {
         undefined,
         params.id,
         'revision',
-        params.id2
+        params.id2,
     );
 
     return <ModalCheckUp revision={revision} />;

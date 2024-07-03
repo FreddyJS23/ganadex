@@ -33,12 +33,12 @@ export default async function Page({ params }: ParamsPageCattle) {
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
-                <div className='flex gap-6'>
+                <div className="flex gap-6">
                     <h3 className=" font-bold text-2xl">
                         Detalle del animal {ganado.numero}
                     </h3>
-                    <ButtonGenerateReport report='ganado' id={ganado.id} />
-                    <DropDownOptions idCattle={ganado.id} optionType='cattle' />
+                    <ButtonGenerateReport report="ganado" id={ganado.id} />
+                    <DropDownOptions idCattle={ganado.id} optionType="cattle" />
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row items-center ">
                     <div className="">
@@ -82,42 +82,50 @@ export default async function Page({ params }: ParamsPageCattle) {
                                     Pesos
                                 </h3>
                                 <div className="flex gap-6 flex-wrap justify-between sm:gap-4">
-                                {ganado.pesos ?    
-                                    <>
-                                        <Details
-                                            tittle={
-                                                DetailsWeights.peso_nacimiento
-                                            }
-                                            content={
-                                                ganado.pesos?.peso_nacimiento ?? ''
-                                            }
-                                        />
-                                        <Details
-                                            tittle={
-                                                DetailsWeights.peso_destete
-                                            }
-                                            content={
-                                                ganado.pesos?.peso_destete ?? ''
-                                            }
-                                        />
-                                        <Details
-                                            tittle={
-                                                DetailsWeights.peso_2year
-                                            }
-                                            content={
-                                                ganado.pesos?.peso_2year ?? ''
-                                            }
-                                        />
-                                        <Details
-                                            tittle={
-                                                DetailsWeights.peso_actual
-                                            }
-                                            content={
-                                                ganado.pesos?.peso_actual ?? ''
-                                            }
-                                        />
-                                    </>
-                                    : <div className='m-auto'>No disponibles</div>}
+                                    {ganado.pesos ? (
+                                        <>
+                                            <Details
+                                                tittle={
+                                                    DetailsWeights.peso_nacimiento
+                                                }
+                                                content={
+                                                    ganado.pesos
+                                                        ?.peso_nacimiento ?? ''
+                                                }
+                                            />
+                                            <Details
+                                                tittle={
+                                                    DetailsWeights.peso_destete
+                                                }
+                                                content={
+                                                    ganado.pesos
+                                                        ?.peso_destete ?? ''
+                                                }
+                                            />
+                                            <Details
+                                                tittle={
+                                                    DetailsWeights.peso_2year
+                                                }
+                                                content={
+                                                    ganado.pesos?.peso_2year ??
+                                                    ''
+                                                }
+                                            />
+                                            <Details
+                                                tittle={
+                                                    DetailsWeights.peso_actual
+                                                }
+                                                content={
+                                                    ganado.pesos?.peso_actual ??
+                                                    ''
+                                                }
+                                            />
+                                        </>
+                                    ) : (
+                                        <div className="m-auto">
+                                            No disponibles
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
