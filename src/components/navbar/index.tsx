@@ -8,20 +8,21 @@ import { Sidebar } from '../sidebar';
 import { getData } from '@/utils/getData';
 import { ResponseFechaUltimoRespaldo, ResponseNotificaciones } from '@/types';
 import Link from 'next/link';
-import {  ButtonRestoreBd } from '../buttonRestoreBd';
+import { ButtonRestoreBd } from '../buttonRestoreBd';
 import { ButtonBackupBd } from '../buttonBackuppBd';
 
 export const Navbar = async () => {
+    const { notificaciones }: ResponseNotificaciones =
+        await getData('notificaciones');
 
-    const {notificaciones}:ResponseNotificaciones=await getData('notificaciones')
-    
-    const {ultimo_backup}:ResponseFechaUltimoRespaldo=await getData('fechaUltimoRespaldo')
-    
-    const {parto=[],revision=[],secado=[]}=notificaciones
+    const { ultimo_backup }: ResponseFechaUltimoRespaldo = await getData(
+        'fechaUltimoRespaldo',
+    );
 
-    const totalNotifications=parto.length + revision.length  + secado.length
+    const { parto = [], revision = [], secado = [] } = notificaciones;
 
-    
+    const totalNotifications = parto.length + revision.length + secado.length;
+
     return (
         <>
             <div className="navbar bg-primary sm:bg-transparent ">
@@ -49,10 +50,10 @@ export const Navbar = async () => {
                     </div>
                 </div>
                 <div className=" flex gap-4">
-                   {/* restaurar y respaldar BD */}
-                   <ButtonBackupBd/>                   
-                   <ButtonRestoreBd dateLastBackup={ultimo_backup ?? null}/>                   
-                  
+                    {/* restaurar y respaldar BD */}
+                    <ButtonBackupBd />
+                    <ButtonRestoreBd dateLastBackup={ultimo_backup ?? null} />
+
                     {/*  notificacion */}
                     <div className="dropdown dropdown-end">
                         <div
@@ -62,7 +63,9 @@ export const Navbar = async () => {
                         >
                             <div className="indicator">
                                 <IconoNotificacion className="text-base-100 sm:text-current  size-8" />
-                                <BadgeNotification totalNotifications={totalNotifications} />
+                                <BadgeNotification
+                                    totalNotifications={totalNotifications}
+                                />
                             </div>
                         </div>
 
@@ -84,7 +87,7 @@ export const Navbar = async () => {
                             <li>
                                 <a className="justify-between">Perfil</a>
                             </li>
-                            <li className='bg-error rounded-md'>
+                            <li className="bg-error rounded-md">
                                 <Link href={'/api/signOut'}>Cerrar sesión</Link>
                             </li>
                         </ul>

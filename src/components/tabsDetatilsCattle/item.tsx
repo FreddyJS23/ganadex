@@ -1,5 +1,3 @@
-
-
 type ContainerContentTabProps = {
     children: JSX.Element[];
 };

@@ -1,22 +1,29 @@
 import IconCattle from '@/icons/icono-ganado1.svg';
 import IconCloseNotification from '@/icons/icono-cerrar-notificacion.svg';
 import { getNotificationMessage } from '@/utils';
-import { Notification,  } from '@/types';
+import { Notification } from '@/types';
 import { LegacyRef, useRef } from 'react';
 import Link from 'next/link';
 
 /**body de la notificacion */
-type NotificationBodyProps =Notification
+type NotificationBodyProps = Notification;
 
 export const NotificationBody = ({
     dias_para_evento,
     ganado,
-    tipo
+    tipo,
 }: NotificationBodyProps) => {
-    
-    const eventPast=Math.sign(dias_para_evento) == -1 ? true : false
-    const notificationMessageEventPast: string ='Ya pasaron ' + Math.abs(dias_para_evento) + ' días desde que se tuvo que hacer ' + getNotificationMessage(tipo).replace('para', ' ');
-    const notificationMessage: string ='Faltan ' + Math.abs(dias_para_evento) + ' días para' + getNotificationMessage(tipo);
+    const eventPast = Math.sign(dias_para_evento) == -1 ? true : false;
+    const notificationMessageEventPast: string =
+        'Ya pasaron ' +
+        Math.abs(dias_para_evento) +
+        ' días desde que se tuvo que hacer ' +
+        getNotificationMessage(tipo).replace('para', ' ');
+    const notificationMessage: string =
+        'Faltan ' +
+        Math.abs(dias_para_evento) +
+        ' días para' +
+        getNotificationMessage(tipo);
 
     const notificationBodyRef: LegacyRef<HTMLDivElement> = useRef(null);
 
@@ -36,7 +43,9 @@ export const NotificationBody = ({
                 </span>
                 {/*   texto */}
                 <span className="text-sm sm:text-base">
-                    {eventPast ? notificationMessageEventPast : notificationMessage}
+                    {eventPast
+                        ? notificationMessageEventPast
+                        : notificationMessage}
                 </span>
             </div>
             <IconCloseNotification

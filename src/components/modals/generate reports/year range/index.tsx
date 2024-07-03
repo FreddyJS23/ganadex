@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
 import { toast } from 'sonner';
-import {  endpointsReportsAnnual } from '@/collections/endPointsApi';
+import { endpointsReportsAnnual } from '@/collections/endPointsApi';
 import { generateReportsYear } from '@/actions/generate report year';
 import { yearsToGenerateReportShema } from '@/validations/yearsTotGenerateReportShema';
 import { YearToReports } from '@/types/forms';
@@ -36,14 +36,13 @@ export const ModalGenerateReportYear = ({
             link.href = window.URL.createObjectURL(file as Blob);
             link.download = `Reporte_${type}.pdf`;
             link.click();
-
         } catch (error) {
             const message = error as string;
             return toast.error(message);
         }
     });
- const dateNow = new Date();
- const year =dateNow.getFullYear();
+    const dateNow = new Date();
+    const year = dateNow.getFullYear();
     return (
         <LayoutModal
             icon="bullCalf"

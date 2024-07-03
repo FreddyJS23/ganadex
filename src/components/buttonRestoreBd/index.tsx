@@ -14,7 +14,7 @@ type ButtonRestoreBdProps = {
 
 export const ButtonRestoreBd = ({ dateLastBackup }: ButtonRestoreBdProps) => {
     const { onOpen, onOpenChange } = useDisclosure();
-    const router =useRouter()
+    const router = useRouter();
     const [openModal, setOpenModal] = useState(false);
 
     const onClose = () => setOpenModal(false);
@@ -26,17 +26,17 @@ export const ButtonRestoreBd = ({ dateLastBackup }: ButtonRestoreBdProps) => {
         }
     };
 
-const actionRestoreBd = async () => {
-    try {
-        await restoreBd();
-        toast.success('Restauración exitosa');
-        router.refresh();
+    const actionRestoreBd = async () => {
+        try {
+            await restoreBd();
+            toast.success('Restauración exitosa');
+            router.refresh();
 
-        onClose();
-    } catch (error) {
-        return toast.error('Error al realizar la restauración');
-    }
-};
+            onClose();
+        } catch (error) {
+            return toast.error('Error al realizar la restauración');
+        }
+    };
 
     return (
         <>

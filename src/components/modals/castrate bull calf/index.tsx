@@ -14,17 +14,17 @@ export const ModalCastrateBullCalf = ({
     const router = useRouter();
     const params = useParams<{ id: string }>();
 
-    const actionCastrateBullCalf= async () => {
-    try {
-        await castrateBullCalf(parseInt(params.id));
-        toast.success('Operación exitosa');
-         router.back();
-        router.refresh(); 
-    } catch (error) {
-        const message = error as string;
-        return toast.error(message);
-    }
-};
+    const actionCastrateBullCalf = async () => {
+        try {
+            await castrateBullCalf(parseInt(params.id));
+            toast.success('Operación exitosa');
+            router.back();
+            router.refresh();
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+    };
 
     return (
         <LayoutModal

@@ -1,7 +1,7 @@
 'use client';
 
 import { createServe } from '@/actions/createServe';
-import {  formService } from '@/collections/formsInputs';
+import { formService } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
 import { Textarea } from '@/components/Textarea';
@@ -28,7 +28,7 @@ export const FormCreateService = ({
     });
     const router = useRouter();
     const { id: cattleId } = useParams<{ id: string }>();
-console.log(errors)
+    console.log(errors);
 
     const actionCreateService: () => void = handleSubmit(async (data) => {
         try {
@@ -49,49 +49,57 @@ console.log(errors)
                 className="flex flex-col items-center gap-6 p-4 max-w-2xl m-auto"
             >
                 <div className="flex gap-6 md:gap-12 w-full">
-                    {formService.map(({ id, label, required, type,select }) => (
-                        <>
-                            {type != 'select' && id != 'observacion' && (
-                                <Input
-                                    key={id}
-                                    id={id}
-                                    label={label}
-                                    type={type}
-                                    required={required}
-                                    errors={errors}
-                                    register={register}
-                                />
-                            )}
-                           
-                            {id == 'observacion' && (
-                                <Textarea
-                                    key={id}
-                                    id={id}
-                                    label={label}
-                                    required={required}
-                                    errors={errors}
-                                    register={register}
-                                />
-                            )}
+                    {formService.map(
+                        ({ id, label, required, type, select }) => (
+                            <>
+                                {type != 'select' && id != 'observacion' && (
+                                    <Input
+                                        key={id}
+                                        id={id}
+                                        label={label}
+                                        type={type}
+                                        required={required}
+                                        errors={errors}
+                                        register={register}
+                                    />
+                                )}
 
-                            {type == 'select' && (
-                                <Controller
-                                    name={id}
-                                    control={control}
-                                    render={({ field }) => (
-                                        <Select
-                                            field={field}
-                                            id={id}
-                                            items={id == 'tipo' ? select! : converToSelectOptions(veterinarios as [])}
-                                            label={label}
-                                            errors={errors}
-                                            required={required}
-                                        />
-                                    )}
-                                />
-                            )}
-                        </>
-                    ))}
+                                {id == 'observacion' && (
+                                    <Textarea
+                                        key={id}
+                                        id={id}
+                                        label={label}
+                                        required={required}
+                                        errors={errors}
+                                        register={register}
+                                    />
+                                )}
+
+                                {type == 'select' && (
+                                    <Controller
+                                        name={id}
+                                        control={control}
+                                        render={({ field }) => (
+                                            <Select
+                                                field={field}
+                                                id={id}
+                                                items={
+                                                    id == 'tipo'
+                                                        ? select!
+                                                        : converToSelectOptions(
+                                                              veterinarios as [],
+                                                          )
+                                                }
+                                                label={label}
+                                                errors={errors}
+                                                required={required}
+                                            />
+                                        )}
+                                    />
+                                )}
+                            </>
+                        ),
+                    )}
                 </div>
                 <div className="w-full sm:max-w-72">
                     <Button

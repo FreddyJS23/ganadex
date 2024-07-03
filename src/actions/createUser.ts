@@ -8,11 +8,11 @@ export async function createUser(
     formData: CreateUser,
 ): Promise<string | ResponseError> {
     try {
-        const { message }: ResponseCorrect = await createUserApi(formData,);
+        const { message }: ResponseCorrect = await createUserApi(formData);
         return message;
     } catch (error) {
         const { data, status } = error as ResponseError;
-        
+
         throw { data, status };
     }
 }

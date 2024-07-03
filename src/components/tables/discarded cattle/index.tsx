@@ -1,7 +1,12 @@
 'use client';
 
 import { headerBeef } from '@/collections/headerColums';
-import { EstadosGanado, Pesos, GanadoDescarte, ResponseGanadoDescartes } from '@/types';
+import {
+    EstadosGanado,
+    Pesos,
+    GanadoDescarte,
+    ResponseGanadoDescartes,
+} from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -17,9 +22,11 @@ import { DropdownStatesCattle } from '@/components/dropdown states cattle';
 import IconCheck from '@/icons/icono-check.svg';
 import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
-export const TableDiscardedCattle = ({ ganado_descartes }: ResponseGanadoDescartes) => {
-    
-    const [discardedCattles, setDiscardedCattles] = useState<GanadoDescarte[]>(ganado_descartes);
+export const TableDiscardedCattle = ({
+    ganado_descartes,
+}: ResponseGanadoDescartes) => {
+    const [discardedCattles, setDiscardedCattles] =
+        useState<GanadoDescarte[]>(ganado_descartes);
 
     const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
         'all',
@@ -46,56 +53,61 @@ export const TableDiscardedCattle = ({ ganado_descartes }: ResponseGanadoDescart
         setFilterActive('all');
     };
 
-    
-    const renderCell = useCallback((ganado_descarte: GanadoDescarte, columnKey: Key) => {
-        const cellValue = ganado_descarte[columnKey as keyof GanadoDescarte];
+    const renderCell = useCallback(
+        (ganado_descarte: GanadoDescarte, columnKey: Key) => {
+            const cellValue =
+                ganado_descarte[columnKey as keyof GanadoDescarte];
 
-        switch (columnKey as keyof GanadoDescarte) {
-            case 'numero': {
-                const numero = cellValue as number;
-                return (
-                    <RedirectInTable
-                        id={ganado_descarte['id']}
-                        label={numero ?? ''}
-                        redirect="ganado_descarte"
-                    />
-                );
-            }
-            case 'pesos': {
-                const pesos = cellValue as Pesos;
+            switch (columnKey as keyof GanadoDescarte) {
+                case 'numero': {
+                    const numero = cellValue as number;
+                    return (
+                        <RedirectInTable
+                            id={ganado_descarte['id']}
+                            label={numero ?? ''}
+                            redirect="ganado_descarte"
+                        />
+                    );
+                }
+                case 'pesos': {
+                    const pesos = cellValue as Pesos;
 
-                return (
-                    <div>
-                        {pesos
-                            ? pesos.peso_actual
+                    return (
+                        <div>
+                            {pesos
                                 ? pesos.peso_actual
-                                : 'desconocido'
-                            : 'desconocido'}
-                    </div>
-                );
-            }
-            case 'estados': {
-                const estados = cellValue as EstadosGanado[];
+                                    ? pesos.peso_actual
+                                    : 'desconocido'
+                                : 'desconocido'}
+                        </div>
+                    );
+                }
+                case 'estados': {
+                    const estados = cellValue as EstadosGanado[];
 
-                return <DropdownStatesCattle estados={estados} />;
-            }
-            case 'id': {
-                const id = ganado_descarte['ganado_id'];
-                 const estados = ganado_descarte['estados'] as EstadosGanado[];
-                return !estados.some(
-                    ({ estado }) =>
-                        estado == 'fallecido' || estado == 'vendido',
-                ) ? (
-                    <DropDownOptions idCattle={id} optionType="cattle" />
-                ) : (
-                    <IconCheck className={'size-8'} />
-                );
-            }
+                    return <DropdownStatesCattle estados={estados} />;
+                }
+                case 'id': {
+                    const id = ganado_descarte['ganado_id'];
+                    const estados = ganado_descarte[
+                        'estados'
+                    ] as EstadosGanado[];
+                    return !estados.some(
+                        ({ estado }) =>
+                            estado == 'fallecido' || estado == 'vendido',
+                    ) ? (
+                        <DropDownOptions idCattle={id} optionType="cattle" />
+                    ) : (
+                        <IconCheck className={'size-8'} />
+                    );
+                }
 
-            default:
-                return cellValue as ReactNode;
-        }
-    }, []);
+                default:
+                    return cellValue as ReactNode;
+            }
+        },
+        [],
+    );
 
     return (
         <>

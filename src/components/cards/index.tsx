@@ -18,7 +18,7 @@ type ContentCardProp = {
 type ContentCardSaleCattleProp = {
     title: 'Mejor comprador' | 'Mejor venta' | 'Peor venta';
     data: string | number;
-    multipleOption?:boolean;
+    multipleOption?: boolean;
 };
 
 type ContentCardSaleMilkProp = {
@@ -27,7 +27,7 @@ type ContentCardSaleMilkProp = {
     value: number;
     /**Porcentaje de variacion respecto al precio anterior del actual */
     variationValue: number;
-    multipleOption?:boolean;
+    multipleOption?: boolean;
 };
 
 export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
@@ -56,13 +56,15 @@ export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
 export const CardDashboardSaleCattle = ({
     title,
     data,
-    multipleOption
+    multipleOption,
 }: ContentCardSaleCattleProp) => {
     return (
         <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
             <div className="flex">
                 <span>{title}</span>
-                 {multipleOption && <DropDownOptionsCardsDashboard tipo="comprador" /> } 
+                {multipleOption && (
+                    <DropDownOptionsCardsDashboard tipo="comprador" />
+                )}
             </div>
 
             <span className="font-bold text-xl font-bebasNue">{`${data} ${typeof data == 'number' ? '$' : ''}`}</span>
@@ -74,14 +76,16 @@ export const CardDashboardSaleMilk = ({
     title,
     value,
     variationValue,
-    multipleOption
+    multipleOption,
 }: ContentCardSaleMilkProp) => {
- const isNegative = Math.sign(variationValue); 
+    const isNegative = Math.sign(variationValue);
     return (
         <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
             <div className="flex items-center justify-between">
                 <span>{title}</span>
-                {multipleOption && <DropDownOptionsCardsDashboard tipo="precio" /> }  
+                {multipleOption && (
+                    <DropDownOptionsCardsDashboard tipo="precio" />
+                )}
             </div>
             <div className="flex justify-between items-center">
                 <span className="font-bold text-xl font-bebasNue">{`${value}$`}</span>

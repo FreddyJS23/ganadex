@@ -1,9 +1,8 @@
 import { redirect } from 'next/navigation';
 
 export default function Page() {
-   
-  redirect('/dashboard')
-  return (
+    redirect('/dashboard');
+    return (
         <>
             <div>Hola</div>
         </>

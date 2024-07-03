@@ -41,8 +41,7 @@ export type Response = {
 /** Respuesta del servidor */
 export type ResponseCorrect = {
     /** Informacion de la repuesta */
-    message:string;
-   
+    message: string;
 };
 
 export type ResponseErrorCampos = {
@@ -61,14 +60,14 @@ export type ResponseGanado = {
     revision_reciente: Revision | null;
     total_revisiones: number;
     total_partos: number;
-    parto_reciente:Parto;
-    efectividad:number;
-    info_pesajes_leche:{
-        reciente:PesajeLecheGanado
-        mejor:PesajeLecheGanado
-        peor:PesajeLecheGanado
-        estado:string
-    }
+    parto_reciente: Parto;
+    efectividad: number;
+    info_pesajes_leche: {
+        reciente: PesajeLecheGanado;
+        mejor: PesajeLecheGanado;
+        peor: PesajeLecheGanado;
+        estado: string;
+    };
 };
 
 export type CabezasGanado = Omit<
@@ -96,7 +95,6 @@ export type ResponseToros = {
 
 export type ResponseGanadoDescartes = {
     ganado_descartes: GanadoDescarte[];
-  
 };
 export type ResponseGanadoDescarte = {
     ganado_descarte: GanadoDescarte;
@@ -227,13 +225,13 @@ export type ResponseNotificaciones = {
 };
 
 export type ResponseCargosPersonal = {
-    cargos_personal:PositionStaff[];
+    cargos_personal: PositionStaff[];
 };
 
 export type ResponseVeterinariosSelect = {
-    veterinarios:veterinario[];
+    veterinarios: veterinario[];
 };
 
 export type ResponseFechaUltimoRespaldo = {
-    ultimo_backup:string | null;
+    ultimo_backup: string | null;
 };

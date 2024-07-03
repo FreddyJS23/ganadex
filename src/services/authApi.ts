@@ -1,4 +1,4 @@
-import {  ResponseError } from '@/types';
+import { ResponseError } from '@/types';
 import { handleResponse } from '@/utils/handleResponseApi';
 
 export async function authApi(
@@ -18,7 +18,7 @@ export async function authApi(
     };
 
     try {
-     const ganadoDescarte = await fetch(url, optionFetch);
+        const ganadoDescarte = await fetch(url, optionFetch);
         /*   
         const getCookieXSCRFTOKEN = (ganadoDescarte: Response) => {
             const dataCookie: CookieCsrf[] = [];
@@ -51,7 +51,9 @@ export async function authApi(
         }; */
         const { data, status } = await handleResponse(ganadoDescarte);
         if (status == 200 || status == 201)
-            return { ...data.login, /* cookieCsrf: getCookieXSCRFTOKEN(ganadoDescarte)  */};
+            return {
+                ...data.login /* cookieCsrf: getCookieXSCRFTOKEN(ganadoDescarte)  */,
+            };
         else if (status == 422 || status == 401 || status == 500)
             throw { status: status, data: data };
     } catch (e) {

@@ -4,7 +4,7 @@ import { createStaff } from '@/actions/createStaff';
 import { formStaff } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
-import {  ResponseCargosPersonal } from '@/types';
+import { ResponseCargosPersonal } from '@/types';
 import { CreateStaff } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
@@ -14,7 +14,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-export  const FormCreateStaff =({cargos_personal}:ResponseCargosPersonal) => {
+export const FormCreateStaff = ({
+    cargos_personal,
+}: ResponseCargosPersonal) => {
     const {
         register,
         formState: { errors },
@@ -26,11 +28,11 @@ export  const FormCreateStaff =({cargos_personal}:ResponseCargosPersonal) => {
 
     const actionStaff: () => void = handleSubmit(async (data) => {
         try {
-            console.log('33')
+            console.log('33');
             const response = (await createStaff(data)) as string;
             toast.success(`${response} ha sido registrado`);
         } catch (error) {
-            console.log('33')
+            console.log('33');
             const message = error as string;
             return toast.error(message);
         }
@@ -44,18 +46,18 @@ export  const FormCreateStaff =({cargos_personal}:ResponseCargosPersonal) => {
             <div className="flex flex-col gap-6 flex-wrap justify-around md:gap-12 sm:flex-row ">
                 {formStaff.map(({ id, label, required, type, endContent }) => (
                     <div key={id} className="sm:w-44">
-                      
-                      {type != 'select' && ( 
-                        <Input
-                            key={id}
-                            id={id}
-                            label={label}
-                            required={required}
-                            type={type}
-                            endContent={endContent}
-                            register={register}
-                            errors={errors}
-                        />)}
+                        {type != 'select' && (
+                            <Input
+                                key={id}
+                                id={id}
+                                label={label}
+                                required={required}
+                                type={type}
+                                endContent={endContent}
+                                register={register}
+                                errors={errors}
+                            />
+                        )}
 
                         {/*  select normal */}
                         {type == 'select' && (
@@ -66,7 +68,9 @@ export  const FormCreateStaff =({cargos_personal}:ResponseCargosPersonal) => {
                                     <Select
                                         field={field}
                                         id={id}
-                                        items={converToSelectOptions(cargos_personal as [])}
+                                        items={converToSelectOptions(
+                                            cargos_personal as [],
+                                        )}
                                         label={label}
                                         errors={errors}
                                         required={required}
@@ -88,4 +92,4 @@ export  const FormCreateStaff =({cargos_personal}:ResponseCargosPersonal) => {
             </div>
         </form>
     );
-}
+};

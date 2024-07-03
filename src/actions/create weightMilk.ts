@@ -1,6 +1,6 @@
 'use serve';
 
-import { ResponseError, ResponsePesajeLeche, } from '@/types';
+import { ResponseError, ResponsePesajeLeche } from '@/types';
 import { CreateWeightMilk } from '@/types/forms';
 import { getData } from '@/utils/getData';
 

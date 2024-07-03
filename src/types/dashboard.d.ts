@@ -1,11 +1,5 @@
 import { Months, TypesCattle, TypesCattle } from '.';
-import {
-    Comprador,
-    Ganado,
-    Insumo,
-    VentaGanado,
-} from './models';
-
+import { Comprador, Ganado, Insumo, VentaGanado } from './models';
 
 type BalanceMensual = {
     mes: keyof typeof Months;
@@ -14,14 +8,14 @@ type BalanceMensual = {
 /* --------------------------- Principal -------------------------- */
 
 type vacaProductora = {
-    ganado:Pick<Ganado,'id'|'numero'>
+    ganado: Pick<Ganado, 'id' | 'numero'>;
     peso_leche: number;
 };
 
 type vacaMenosProductora = vacaProductora;
 
-type BalanceMensualLeche=BalanceMensual & {
-promedio_mensual:number
+type BalanceMensualLeche = BalanceMensual & {
+    promedio_mensual: number;
 };
 
 export type TotalTiposGanado = {
@@ -80,7 +74,7 @@ export type GanaciasMes = {
     ganancias: number;
 };
 
-type BalanceDiarioVentaLeche =  {
+type BalanceDiarioVentaLeche = {
     fecha: string;
     cantidad?: number;
 };
@@ -88,7 +82,6 @@ type BalanceDiarioVentaLeche =  {
 export type BalanceMensualVentaLeche = {
     balance_mensual: BalanceDiarioVentaLeche[];
 };
-
 
 /* ------------------------------ Venta ganado ------------------------------ */
 
@@ -106,11 +99,9 @@ type BalanceMensualVentaGanado = BalanceMensual & {
     ventas: number;
 };
 
-
 export type BalanceAnualVentaGanado = {
     balance_anual: BalanceMensualVentaGanado[];
 };
-
 
 /* ----------------------------- fallecimientos ----------------------------- */
 

@@ -14,7 +14,6 @@ export async function createSupply(
             formData,
         );
         return insumo.insumo;
-       
     } catch (error) {
         const { message } = error as Error;
         throw message;

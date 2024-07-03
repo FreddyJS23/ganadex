@@ -9,8 +9,7 @@ export const TableHistoryWeightMilk = ({
             <table className="table">
                 <thead>
                     <tr>
-                        {headerWeightMilk
-                        .map(({ label }) => (
+                        {headerWeightMilk.map(({ label }) => (
                             <th key={label}>{label}</th>
                         ))}
                     </tr>

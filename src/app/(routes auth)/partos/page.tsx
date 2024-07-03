@@ -4,9 +4,7 @@ import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
-    const { todos_partos }: ResponsePartosGeneral = await getData(
-        'partos',
-    );
+    const { todos_partos }: ResponsePartosGeneral = await getData('partos');
 
     return (
         <section>

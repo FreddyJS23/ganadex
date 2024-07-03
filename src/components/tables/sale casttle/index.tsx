@@ -19,16 +19,17 @@ export const TableSaleCasttle = ({ ventas }: ResponseVentasGanado) => {
             const cellValue = venta_ganado[columnKey as keyof VentaGanado];
 
             switch (columnKey as keyof VentaGanado) {
-                case 'ganado':
-                    {const ganado = cellValue as Pick<Ganado, 'id' | 'numero'>;
+                case 'ganado': {
+                    const ganado = cellValue as Pick<Ganado, 'id' | 'numero'>;
                     return (
                         <Link href={`ganado/${ganado.id}`}>
                             {ganado.numero}
                         </Link>
-                    );}
+                    );
+                }
 
                 default:
-                return cellValue as ReactNode;
+                    return cellValue as ReactNode;
             }
         },
         [],

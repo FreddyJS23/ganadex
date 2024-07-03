@@ -14,7 +14,7 @@ import { LayoutTable } from '..';
 
 export const TableSaleMilk = ({ ventas_de_leche }: ResponseVentasLeche) => {
     const renderCell = useCallback(
-        (venta_ganado: VentaLeche, columnKey:Key) => {
+        (venta_ganado: VentaLeche, columnKey: Key) => {
             const cellValue = venta_ganado[columnKey as keyof VentaLeche];
 
             return cellValue as ReactNode;

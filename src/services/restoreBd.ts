@@ -4,7 +4,7 @@ import { ResponseError } from '@/types';
 import { auth } from '@/auth';
 import { Session } from 'next-auth';
 
-export const RestoreLastBackup= async () => {
+export const RestoreLastBackup = async () => {
     const session = (await auth()) as Session;
 
     const { user } = session;
@@ -13,7 +13,6 @@ export const RestoreLastBackup= async () => {
     const { token } = user;
 
     const url = 'http://127.0.0.1:8000/api/restaurar';
-
 
     const headers = new Headers({
         Accept: '*/*',
@@ -30,11 +29,15 @@ export const RestoreLastBackup= async () => {
     };
     try {
         const ganadoDescarte = await fetch(url, optionFetch);
-        
+
         if (ganadoDescarte.status == 200) return ganadoDescarte.status;
-        else throw { status: ganadoDescarte.status, data: await ganadoDescarte.json() };
+        else
+            throw {
+                status: ganadoDescarte.status,
+                data: await ganadoDescarte.json(),
+            };
     } catch (e) {
-       console.log(e)
+        console.log(e);
         if (e instanceof Error) throw e;
         const { status, data } = e as ResponseError;
         throw `código ${status} ${data.message}`;

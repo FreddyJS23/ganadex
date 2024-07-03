@@ -8,22 +8,27 @@ import {
 } from '@nextui-org/dropdown';
 import IconOpcionesCard from '@/icons/icono-opcionesEnCard.svg';
 import Link from 'next/link';
-import { optionsDropdownCattle, optionsDropdownCheckup, optionsDropdownServe, optionsDropdownBirh, OptionsDropdown } from '@/collections/optionsDropdown';
+import {
+    optionsDropdownCattle,
+    optionsDropdownCheckup,
+    optionsDropdownServe,
+    optionsDropdownBirh,
+    OptionsDropdown,
+} from '@/collections/optionsDropdown';
 
 type DropDownOptions = {
     idCattle: number;
-    optionType:'cattle' | 'checkup' | 'serve' | 'birth';
+    optionType: 'cattle' | 'checkup' | 'serve' | 'birth';
 };
 
 export const DropDownOptions = ({ idCattle, optionType }: DropDownOptions) => {
-    let optionsDropdown:OptionsDropdown[]=[];
+    let optionsDropdown: OptionsDropdown[] = [];
 
-    if(optionType=='cattle') optionsDropdown=optionsDropdownCattle;
-    else if(optionType=='checkup') optionsDropdown=optionsDropdownCheckup;
-    else if(optionType=='serve') optionsDropdown=optionsDropdownServe;
-    else if(optionType=='birth')optionsDropdown=optionsDropdownBirh;
-    
-    
+    if (optionType == 'cattle') optionsDropdown = optionsDropdownCattle;
+    else if (optionType == 'checkup') optionsDropdown = optionsDropdownCheckup;
+    else if (optionType == 'serve') optionsDropdown = optionsDropdownServe;
+    else if (optionType == 'birth') optionsDropdown = optionsDropdownBirh;
+
     return (
         <Dropdown className="bg-base-100">
             <DropdownTrigger>
@@ -34,7 +39,8 @@ export const DropDownOptions = ({ idCattle, optionType }: DropDownOptions) => {
             <DropdownMenu aria-label="Static Actions" items={optionsDropdown}>
                 {({ url, label }) => (
                     <DropdownItem key={url + label}>
-                        {url == 'fallecimientos/registrar' || url == 'venta_ganado' ? (
+                        {url == 'fallecimientos/registrar' ||
+                        url == 'venta_ganado' ? (
                             <Link
                                 className="block w-full"
                                 href={`/${url}/${idCattle}`}
@@ -44,7 +50,7 @@ export const DropDownOptions = ({ idCattle, optionType }: DropDownOptions) => {
                         ) : (
                             <Link
                                 className="block w-full"
-                                href={`/ganado/${idCattle}/${url}/${label == 'Nuevo' ? 'registrar' : '' }`}
+                                href={`/ganado/${idCattle}/${url}/${label == 'Nuevo' ? 'registrar' : ''}`}
                             >
                                 {label}
                             </Link>

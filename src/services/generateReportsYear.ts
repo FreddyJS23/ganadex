@@ -39,7 +39,11 @@ export const GetReportsYear = async (
         const pdf = await ganadoDescarte.blob();
 
         if (ganadoDescarte.status == 200) return pdf;
-        else throw { status: ganadoDescarte.status, data: await ganadoDescarte.json() };
+        else
+            throw {
+                status: ganadoDescarte.status,
+                data: await ganadoDescarte.json(),
+            };
     } catch (e) {
         if (e instanceof Error) throw e;
         const { status, data } = e as ResponseError;

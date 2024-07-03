@@ -1,12 +1,7 @@
 'use client';
 
-import {
-    headerCastreteBullCalf,
-} from '@/collections/headerColums';
-import {
-    CriaPendienteCapar,
-    ResponseCriasPendienteCapar,
-} from '@/types';
+import { headerCastreteBullCalf } from '@/collections/headerColums';
+import { CriaPendienteCapar, ResponseCriasPendienteCapar } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -23,28 +18,28 @@ export const TableCastreteBullCalf = ({
     crias_pendiente_capar,
 }: ResponseCriasPendienteCapar) => {
     const renderCell = useCallback(
-        (
-            criaPendienteCapar: CriaPendienteCapar,
-            columnKey: Key,
-        ) => {
-            const cellValue = criaPendienteCapar[columnKey as keyof CriaPendienteCapar];
+        (criaPendienteCapar: CriaPendienteCapar, columnKey: Key) => {
+            const cellValue =
+                criaPendienteCapar[columnKey as keyof CriaPendienteCapar];
 
             switch (columnKey as keyof CriaPendienteCapar) {
-                case 'nombre':{
+                case 'nombre': {
                     const nombre = cellValue as string;
                     return (
                         <Link href={`ganado/${criaPendienteCapar['id']}`}>
                             {nombre}
                         </Link>
-                    );}
+                    );
+                }
                 /* button icon */
-                case 'id':{
+                case 'id': {
                     const id = cellValue as number;
                     return (
                         <Link href={`capar_becerro/${id}`}>
                             <IconButton className={'size-6'} />
                         </Link>
-                    );}
+                    );
+                }
 
                 default:
                     return cellValue as ReactNode;

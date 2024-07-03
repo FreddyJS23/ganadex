@@ -4,8 +4,7 @@ import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
-    const { toros }: ResponseToros =
-        await getData('todosToro');
+    const { toros }: ResponseToros = await getData('todosToro');
     return (
         <>
             <TitlePage title="Toros" />

@@ -1,5 +1,4 @@
-
-import { FieldErrors,UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import {
     ElementSidebar,
     EndContentInput,
@@ -11,8 +10,38 @@ import { MutableRefObject } from 'react';
 import { iconsSidebar } from '@/collections';
 
 type optionsSubmenuSidebar = {
-    url:keyof Pick<typeof URLS,  '/ganado' | '/toros' | '/ganado_descarte' | '/venta_leche' | '/venta_ganado' | '/personal' | '/insumos' | '/revisiones' | '/servicios' | '/partos' | '/pesajes_leche' | '/fallecimientos'>;
-    option: 'Vaca' | 'Vacas' | 'Toro' | 'Toros' | 'Ganado descarte' | 'Reses' | 'Ganado' | 'Leche'  | 'Personal' | 'Insumos' | 'Revisiones' | 'Servicios' | 'Partos' | 'Pesajes de leche' | 'Registrar' | 'Fallecimientos';
+    url: keyof Pick<
+        typeof URLS,
+        | '/ganado'
+        | '/toros'
+        | '/ganado_descarte'
+        | '/venta_leche'
+        | '/venta_ganado'
+        | '/personal'
+        | '/insumos'
+        | '/revisiones'
+        | '/servicios'
+        | '/partos'
+        | '/pesajes_leche'
+        | '/fallecimientos'
+    >;
+    option:
+        | 'Vaca'
+        | 'Vacas'
+        | 'Toro'
+        | 'Toros'
+        | 'Ganado descarte'
+        | 'Reses'
+        | 'Ganado'
+        | 'Leche'
+        | 'Personal'
+        | 'Insumos'
+        | 'Revisiones'
+        | 'Servicios'
+        | 'Partos'
+        | 'Pesajes de leche'
+        | 'Registrar'
+        | 'Fallecimientos';
 };
 
 /**opcion del sidebar */
@@ -57,7 +86,7 @@ export type InputProps = {
     register: UseFormRegister<any>;
     /**Objeto con los campos que no pasen su validación, para asignar un clase error al label */
     errors: FieldErrors;
-    defaultValue?:string
+    defaultValue?: string;
 };
 
 export type LayoutModalProps = {
@@ -74,8 +103,8 @@ export type LayoutModalProps = {
     isOpen?: boolean;
     onOpen?: () => void;
     onOpenChange?: () => void;
-    onClick?:()=> void
-    onClose?:()=> void
+    onClick?: () => void;
+    onClose?: () => void;
 };
 
 export type ModalProps = Pick<

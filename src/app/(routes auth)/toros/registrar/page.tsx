@@ -13,32 +13,28 @@ import { createBullShema } from '@/validations/bullShema';
 import { createBull } from '@/actions/createBull';
 import { useRef } from 'react';
 
-
 export default function Page() {
-    
-        const form = useRef<HTMLFormElement | null>(null);
-        const {
-            register,
-            formState: { errors },
-            handleSubmit,
-            control,
-        } = useForm<CreateBull>({
-            resolver: zodResolver(createBullShema)
-        });
+    const form = useRef<HTMLFormElement | null>(null);
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        control,
+    } = useForm<CreateBull>({
+        resolver: zodResolver(createBullShema),
+    });
 
-        const actionBull: () => void = handleSubmit(
-            async (data) => {
-                try {
-                    const response = await createBull(data) as string | number;
-                    form.current?.reset();
-                    toast.success(`Toro numero ${response} ha sido registrado`);
-                } catch (error) {
-                const  message  = error as string;
-                    return toast.error(message);
-                }
-            },
-        );
-    
+    const actionBull: () => void = handleSubmit(async (data) => {
+        try {
+            const response = (await createBull(data)) as string | number;
+            form.current?.reset();
+            toast.success(`Toro numero ${response} ha sido registrado`);
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+    });
+
     return (
         <>
             <TitlePage title="Registrar toro" />
@@ -49,14 +45,7 @@ export default function Page() {
                 className="grid grid-cols-2 m-auto max-w-5xl p-1 gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
             >
                 {formBull.map(
-                    ({
-                        id,
-                        label,
-                        required,
-                        type,
-                        select,
-                        endContent,
-                    }) => (
+                    ({ id, label, required, type, select, endContent }) => (
                         <>
                             {
                                 <div key={id}>
@@ -74,22 +63,22 @@ export default function Page() {
                                     {/*  select normal */}
                                     {type == 'select' && select && (
                                         <Controller
-                                        name={id}
-                                        control={control}
-                                        render={({field})=>
-                                        <Select
-                                        field={field}
-                                        id={id}
-                                        items={select}
-                                        label={label}
-                                        errors={errors}
-                                        required={required}
-                                        />}
-                                        /> 
+                                            name={id}
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Select
+                                                    field={field}
+                                                    id={id}
+                                                    items={select}
+                                                    label={label}
+                                                    errors={errors}
+                                                    required={required}
+                                                />
+                                            )}
+                                        />
                                     )}
                                 </div>
                             }
-                        
                         </>
                     ),
                 )}

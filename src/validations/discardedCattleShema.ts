@@ -1,3 +1,3 @@
-import { createBullShema } from "./bullShema";
+import { createBullShema } from './bullShema';
 
 export const createDiscardedCattleShema = createBullShema;

@@ -6,10 +6,10 @@ export const textCarouselLogin = [
     {
         text: `Para iniciar la mejor experiencia en gestión ganadera,
         regístrate como un nuevo usuario o si ya tienes una cuenta, puedes
-        ingresar usando tus credenciales de acceso.`
+        ingresar usando tus credenciales de acceso.`,
     },
     {
         text: `Planteado, diseñado y desarrollado por los estudiantes de la UPTM
-        Kléber Ramírez del Proyecto Nacional de Formación en Informática (PNFI).`
-    }
+        Kléber Ramírez del Proyecto Nacional de Formación en Informática (PNFI).`,
+    },
 ];

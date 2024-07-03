@@ -3,7 +3,6 @@
 import { ModalNewPriceMilk } from '@/components/modals/new price milk';
 import { useDisclosure } from '@nextui-org/react';
 
-
 export const CreatePriceMilk = () => {
     const { onOpen, onOpenChange } = useDisclosure();
 

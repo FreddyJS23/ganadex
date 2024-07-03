@@ -8,14 +8,12 @@ import { TortaCausasFallecimientosGanado } from '@/components/charts/dashboard/c
 import { TableDeadCattle } from '@/components/tables/death cattle';
 
 export default async function Page() {
-    const { fallecidos }: ResponseFallecimientos = await getData(
-        'fallecimientos',
-    );
-   
-    const { causas_frecuentes, total_fallecidos }: Fallecimientos = await getData(
-        'dashboardFallecimientosCausasFrecuentes', 
-    );
-   
+    const { fallecidos }: ResponseFallecimientos =
+        await getData('fallecimientos');
+
+    const { causas_frecuentes, total_fallecidos }: Fallecimientos =
+        await getData('dashboardFallecimientosCausasFrecuentes');
+
     return (
         <section className="flex p-4  gap-8 flex-col sm:pl-12">
             <div className="flex gap-6 flex-col lg:flex-row w-full">
@@ -26,26 +24,27 @@ export default async function Page() {
                         <span className="text-2xl">
                             Causas mas frecuentes de fallecimientos
                         </span>
-                        <Link
-                            href={`/reporte/causas_fallecimientos`}
-                        >
+                        <Link href={`/reporte/causas_fallecimientos`}>
                             <IconImprimir className={'size-8'} />
                         </Link>
-                      
                     </div>
                     {/* grafico fallecimientos  */}
-                    <span className="mb-1 text-lg">{total_fallecidos} fallecidos</span>
+                    <span className="mb-1 text-lg">
+                        {total_fallecidos} fallecidos
+                    </span>
                     {/* grafico */}
-                    <TortaCausasFallecimientosGanado  causas_frecuentes={causas_frecuentes}/>
+                    <TortaCausasFallecimientosGanado
+                        causas_frecuentes={causas_frecuentes}
+                    />
                 </article>
 
                 {/* tabla fallecimientos */}
-                  <article className="flex flex-col gap-2 grow">
+                <article className="flex flex-col gap-2 grow">
                     <h3 className="ml-2 text-lg md:text-xl">
                         Historial de fallecimientos
                     </h3>
-                    <TableDeadCattle fallecidos={fallecidos}/>
-                </article>  
+                    <TableDeadCattle fallecidos={fallecidos} />
+                </article>
             </div>
         </section>
     );

@@ -13,31 +13,27 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
 export default function Page() {
-  
-        const {
-            register,
-            formState: { errors },
-            handleSubmit,
-        } = useForm<CreateSupply>({
-            resolver: zodResolver(createSupplyShema),
-        });
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+    } = useForm<CreateSupply>({
+        resolver: zodResolver(createSupplyShema),
+    });
 
-        const form = useRef<HTMLFormElement | null>(null)
+    const form = useRef<HTMLFormElement | null>(null);
 
-        const actionSupply: () => void = handleSubmit(async (data) => {
-            try {
-                const response = (await createSupply(data)) as string ;
-                form.current?.reset()
-                toast.success(
-                    `Insumo ${response} ha sido registrado`,
-                );
-            } catch (error) {
-                const message = error as string;
-                return toast.error(message);
-            }
-        });
-   
-   
+    const actionSupply: () => void = handleSubmit(async (data) => {
+        try {
+            const response = (await createSupply(data)) as string;
+            form.current?.reset();
+            toast.success(`Insumo ${response} ha sido registrado`);
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+    });
+
     return (
         <>
             <TitlePage title="Registrar Insumo" />
@@ -64,7 +60,13 @@ export default function Page() {
                     )}
                 </div>
                 <div className="w-full sm:max-w-72">
-                    <Button type='submit' onClick={()=>{return}} content="Registrar" />
+                    <Button
+                        type="submit"
+                        onClick={() => {
+                            return;
+                        }}
+                        content="Registrar"
+                    />
                 </div>
             </form>
         </>

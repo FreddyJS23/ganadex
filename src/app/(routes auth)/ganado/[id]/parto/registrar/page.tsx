@@ -7,7 +7,7 @@ type ParamsPage = {
     params: { id: number };
 };
 
-export default async function Page({params}:ParamsPage) {
+export default async function Page({ params }: ParamsPage) {
     const { ganado }: ResponseGanado = await getData(
         'ganado',
         'GET',
@@ -20,9 +20,11 @@ export default async function Page({params}:ParamsPage) {
     );
     return (
         <>
-            <TitlePage title={`Registrar parto para la vaca ${ganado.numero}`} />
+            <TitlePage
+                title={`Registrar parto para la vaca ${ganado.numero}`}
+            />
 
-       <FormCreateBirth veterinarios={veterinarios} />
+            <FormCreateBirth veterinarios={veterinarios} />
         </>
     );
 }

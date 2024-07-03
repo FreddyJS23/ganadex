@@ -18,32 +18,29 @@ export const ModalSaleMilk = ({
     onOpenChange,
     selectPrecios,
 }: ModalProps & { selectPrecios: PreciosDeLeche[] }) => {
-   
+    const {
+        register,
+        formState: { errors },
+        control,
+        handleSubmit,
+    } = useForm<CreateSaleMilk>({
+        resolver: zodResolver(createSaleMilkShema),
+    });
 
+    const router = useRouter();
+    const formRef = useRef(null);
 
-const {
-    register,
-    formState: { errors },
-    control,
-    handleSubmit,
-} = useForm<CreateSaleMilk>({
-    resolver: zodResolver(createSaleMilkShema),
-});
-
-const router = useRouter();
-const formRef = useRef(null);
-
-const actionCreateSaleMilk: () => void = handleSubmit(async (data) => {
-    try {
-       const saleMilk=await createSaleMilk(data);
-        toast.success(`Se ha realizado la venta de ${saleMilk} de leche`);
-         router.back();
-        router.refresh(); 
-    } catch (error) {
-        const message = error as string;
-        return toast.error(message);
-    }
-});
+    const actionCreateSaleMilk: () => void = handleSubmit(async (data) => {
+        try {
+            const saleMilk = await createSaleMilk(data);
+            toast.success(`Se ha realizado la venta de ${saleMilk} de leche`);
+            router.back();
+            router.refresh();
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+    });
 
     return (
         <LayoutModal
@@ -56,7 +53,7 @@ const actionCreateSaleMilk: () => void = handleSubmit(async (data) => {
             refForm={formRef}
         >
             <form
-                id='form-createSaleMilk'
+                id="form-createSaleMilk"
                 ref={formRef}
                 action={actionCreateSaleMilk}
                 method="post"

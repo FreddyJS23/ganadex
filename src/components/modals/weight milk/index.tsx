@@ -36,7 +36,9 @@ export const ModalWeightMilk = ({
                 data,
                 parseInt(params.id),
             );
-            toast.success(`Pesaje de ${weightMilk}KG de la vaca ${dataHeader} ha sido registrado`);
+            toast.success(
+                `Pesaje de ${weightMilk}KG de la vaca ${dataHeader} ha sido registrado`,
+            );
             router.back();
             router.refresh();
         } catch (error) {

@@ -12,7 +12,7 @@ import { createSaleCattle } from '@/actions/createSaleCattle';
 import { toast } from 'sonner';
 import { endpointsReports } from '@/collections/endPointsApi';
 import { Button } from '@/ui/Button';
-import IconPrint from '@/icons/icono-imprimir.svg'
+import IconPrint from '@/icons/icono-imprimir.svg';
 
 export const ModalSaleCattle = ({
     isOpen,
@@ -25,60 +25,64 @@ export const ModalSaleCattle = ({
     selectCompradores.map(({ id, nombre }) =>
         itemsSelect.push({ value: id, label: nombre }),
     );
-   const {
-       register,
-       formState: { errors },
-       handleSubmit,
-       control
-   } = useForm<CreateSaleCattle>({
-       resolver: zodResolver(createSaleCattleShema),
-   });
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        control,
+    } = useForm<CreateSaleCattle>({
+        resolver: zodResolver(createSaleCattleShema),
+    });
 
+    const router = useRouter();
+    const formRef = useRef(null);
+    const params = useParams<{ id: string }>();
 
+    const generateReportSale = async (
+        endPoint: keyof typeof endpointsReports,
+    ) => {
+        try {
+            const getFile = await fetch(`/api/reportes/${endPoint}`);
+            toast.success(`Generando nota de venta...`);
+            const file = await getFile.blob();
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(file as Blob);
+            link.download = `Reporte_${endPoint}.pdf`;
+            link.click();
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+    };
 
-   const router = useRouter();
-   const formRef = useRef(null);
-   const params = useParams<{id:string}>();
-
-const generateReportSale = async (endPoint: keyof typeof endpointsReports) => {
-    try {
-        const getFile = await fetch(
-            `/api/reportes/${endPoint}`,
-        );
-        toast.success(`Generando nota de venta...`);
-        const file = await getFile.blob();
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(file as Blob);
-        link.download = `Reporte_${endPoint}.pdf`;
-        link.click();
-    } catch (error) {
-        const message = error as string;
-        return toast.error(message);
-    }
-};
-
-const actionCreateSaleCattle: () => void = handleSubmit(async (data) => {
-    try {
-        const saleCattle = await createSaleCattle(data,parseInt(params.id));
-        toast.success(`Se ha realizado la venta del ganado ${saleCattle} `, {
-            action: (
-                <div className="max-w-24">
-                    <Button
-                        content={<IconPrint className={'size-6'} />}
-                        onClick={async () =>
-                            await generateReportSale('notaVenta')
-                        }
-                    />
-                </div>
-            ),
-        });
-         router.back();
-        router.refresh(); 
-    } catch (error) {
-        const message = error as string;
-        return toast.error(message);
-    }
-});
+    const actionCreateSaleCattle: () => void = handleSubmit(async (data) => {
+        try {
+            const saleCattle = await createSaleCattle(
+                data,
+                parseInt(params.id),
+            );
+            toast.success(
+                `Se ha realizado la venta del ganado ${saleCattle} `,
+                {
+                    action: (
+                        <div className="max-w-24">
+                            <Button
+                                content={<IconPrint className={'size-6'} />}
+                                onClick={async () =>
+                                    await generateReportSale('notaVenta')
+                                }
+                            />
+                        </div>
+                    ),
+                },
+            );
+            router.back();
+            router.refresh();
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+    });
 
     return (
         <LayoutModal
@@ -94,7 +98,7 @@ const actionCreateSaleCattle: () => void = handleSubmit(async (data) => {
                 id="form-createSaleCattle"
                 action={actionCreateSaleCattle}
                 className="m-auto flex flex-col gap-4 w-2/4 "
-                method='post'
+                method="post"
                 ref={formRef}
             >
                 <Input

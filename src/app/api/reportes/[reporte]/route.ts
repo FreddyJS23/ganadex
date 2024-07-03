@@ -11,18 +11,28 @@ export async function GET(
 ): Promise<NextResponse> {
     const dateNow = new Date();
     /* Y-m-d */
-  const [formatDate] = dateNow.toISOString().split('T');
+    const [formatDate] = dateNow.toISOString().split('T');
 
     const searchParams = req.nextUrl.searchParams;
-   
+
     const dateStart = searchParams.get('start') ?? formatDate;
     const dateEnd = searchParams.get('end') ?? formatDate;
-    const idElement = searchParams.get('id') ?? '0' ;
-  
-    const filePdf = await GetReports(params.reporte, dateStart, dateEnd,parseInt(idElement));
-    if (filePdf instanceof Blob  && filePdf.size > 0) return new NextResponse(filePdf, {
-        status: 200,
-        headers:{ 'content-type':'application/pdf'}
-    });
-    else return  NextResponse.json({message:'No se ha podido general el pdf'}, {status: 500, });
+    const idElement = searchParams.get('id') ?? '0';
+
+    const filePdf = await GetReports(
+        params.reporte,
+        dateStart,
+        dateEnd,
+        parseInt(idElement),
+    );
+    if (filePdf instanceof Blob && filePdf.size > 0)
+        return new NextResponse(filePdf, {
+            status: 200,
+            headers: { 'content-type': 'application/pdf' },
+        });
+    else
+        return NextResponse.json(
+            { message: 'No se ha podido general el pdf' },
+            { status: 500 },
+        );
 }

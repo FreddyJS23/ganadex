@@ -16,31 +16,34 @@ export const ModalDeathCattle = ({
     onOpenChange,
     dataHeader,
 }: ModalProps) => {
-
     const {
-         register,
-         formState: { errors },
-         handleSubmit,
-     } = useForm<CreateDeathCastle>({
-         resolver: zodResolver(createDeathCastleShema),
-     });
+        register,
+        formState: { errors },
+        handleSubmit,
+    } = useForm<CreateDeathCastle>({
+        resolver: zodResolver(createDeathCastleShema),
+    });
 
-     const router = useRouter();
-     const formRef = useRef(null);
-     const params = useParams<{ id: string }>();
-    
+    const router = useRouter();
+    const formRef = useRef(null);
+    const params = useParams<{ id: string }>();
 
-const actionCreateDeathCattle: () => void = handleSubmit(async (data) => {
-    try {
-        const deathCattle = await createDeathCattle(data, parseInt(params.id));
-        toast.success(`Se ha realizado el fallecimiento del ganado ${deathCattle} `);
-        router.back();
-        router.refresh();
-    } catch (error) {
-        const message = error as string;
-        return toast.error(message);
-    }
-});
+    const actionCreateDeathCattle: () => void = handleSubmit(async (data) => {
+        try {
+            const deathCattle = await createDeathCattle(
+                data,
+                parseInt(params.id),
+            );
+            toast.success(
+                `Se ha realizado el fallecimiento del ganado ${deathCattle} `,
+            );
+            router.back();
+            router.refresh();
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+    });
 
     return (
         <LayoutModal

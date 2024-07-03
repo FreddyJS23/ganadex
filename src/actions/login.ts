@@ -6,7 +6,6 @@ import { ResponseLoginAuthJs } from '@/types';
 import { AuthError } from 'next-auth';
 import { isRedirectError } from 'next/dist/client/components/redirect';
 
-
 export async function authenticate(
     formData: FormData,
 ): Promise<ResponseLoginAuthJs | undefined> {
@@ -14,11 +13,11 @@ export async function authenticate(
         await signIn('credentials', {
             usuario: formData.get('usuario'),
             password: formData.get('password'),
-            redirectTo: '/dashboard',  
+            redirectTo: '/dashboard',
         });
     } catch (error) {
         if (isRedirectError(error)) {
-           /*  const session = await auth() as Session;
+            /*  const session = await auth() as Session;
 
             const { user } = session;
 
@@ -31,7 +30,7 @@ export async function authenticate(
             return {
                 login: true,
                 message: 'Credenciales correctas',
-                redirect: '/dashboard',  
+                redirect: '/dashboard',
             };
         }
         if (error instanceof AuthError) {
@@ -39,7 +38,7 @@ export async function authenticate(
                 `${ERROR_SERVER}|${ERROR_SIGNIN}`,
             );
             const messageError = error.message.match(regexMessageErrors);
-            throw messageError && messageError[0]
+            throw messageError && messageError[0];
         }
     }
 }

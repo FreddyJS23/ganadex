@@ -1,5 +1,5 @@
 import { iconsModal } from '@/collections/iconsModal';
-import {  LayoutModalProps,  } from '@/types';
+import { LayoutModalProps } from '@/types';
 import { Button } from '@/ui/Button';
 import {
     Modal,
@@ -11,8 +11,6 @@ import {
 import { useRouter } from 'next/navigation';
 import { MutableRefObject, useEffect, useState } from 'react';
 
-
-
 export const LayoutModal = ({
     titleModal,
     dataHeader,
@@ -23,15 +21,17 @@ export const LayoutModal = ({
     onOpenChange,
     refForm,
     onClick,
-    onClose
+    onClose,
 }: LayoutModalProps) => {
     const Icon = iconsModal[icon];
-    const [currentRefForm, setcurrentRefForm] = useState<MutableRefObject<HTMLFormElement | null> | undefined>(undefined)
-   useEffect(() => {
-     setcurrentRefForm(refForm)
-   }, [refForm])
+    const [currentRefForm, setcurrentRefForm] = useState<
+        MutableRefObject<HTMLFormElement | null> | undefined
+    >(undefined);
+    useEffect(() => {
+        setcurrentRefForm(refForm);
+    }, [refForm]);
     const submit = () => {
-        currentRefForm?.current?.dispatchEvent(new Event('submit'))
+        currentRefForm?.current?.dispatchEvent(new Event('submit'));
     };
     const router = useRouter();
 
@@ -62,7 +62,16 @@ export const LayoutModal = ({
                         <ModalBody>{children}</ModalBody>
                         {footer && (
                             <ModalFooter className="flex flex-col sm:flex-row-reverse ">
-                                <Button type='submit' onClick={onClick ? onClick : submit} content="Confirmar"  form={currentRefForm && currentRefForm.current ? currentRefForm.current.id : ''}  />
+                                <Button
+                                    type="submit"
+                                    onClick={onClick ? onClick : submit}
+                                    content="Confirmar"
+                                    form={
+                                        currentRefForm && currentRefForm.current
+                                            ? currentRefForm.current.id
+                                            : ''
+                                    }
+                                />
                                 <Button
                                     onClick={onClose}
                                     color="default"

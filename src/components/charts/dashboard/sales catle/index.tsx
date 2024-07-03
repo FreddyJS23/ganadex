@@ -1,6 +1,9 @@
 'use client';
 
-import { BalanceAnualVentaGanado, BalanceMensualVentaGanado } from '@/types/dashboard';
+import {
+    BalanceAnualVentaGanado,
+    BalanceMensualVentaGanado,
+} from '@/types/dashboard';
 import {
     optionChartLineSalesCatle,
     paletteBackground,
@@ -27,9 +30,7 @@ ChartJS.register(
     Legend,
 );
 
-
-export const SalesCatle = ({balance_anual}:BalanceAnualVentaGanado) => {
-   
+export const SalesCatle = ({ balance_anual }: BalanceAnualVentaGanado) => {
     const data: ChartData<'bar', BalanceMensualVentaGanado[]> = {
         datasets: [
             {

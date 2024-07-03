@@ -1,44 +1,42 @@
 'use client';
 
-import { formBeef, } from '@/collections/formsInputs';
+import { formBeef } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Button } from '@/ui/Button';
 import { TitlePage } from '@/ui/TitlePage';
 import { Select } from '@/components/select';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CreateBeef, } from '@/types/forms';
+import { CreateBeef } from '@/types/forms';
 import { toast } from 'sonner';
 import { createDiscardedCattleShema } from '@/validations/discardedCattleShema';
 import { createBeef } from '@/actions/createBeef';
 import { useRef } from 'react';
 
-
 export default function Page() {
-    
-        const form = useRef<HTMLFormElement | null>(null);
-        const {
-            register,
-            formState: { errors },
-            handleSubmit,
-            control,
-        } = useForm<CreateBeef>({
-            resolver: zodResolver(createDiscardedCattleShema)
-        });
+    const form = useRef<HTMLFormElement | null>(null);
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        control,
+    } = useForm<CreateBeef>({
+        resolver: zodResolver(createDiscardedCattleShema),
+    });
 
-        const actionBeef: () => void = handleSubmit(
-            async (data) => {
-                try {
-                    const response = await createBeef(data) as string | number;
-                    form.current?.reset();
-                    toast.success(`GanadoDescarte numero ${response} ha sido registrado`);
-                } catch (error) {
-                const  message  = error as string;
-                    return toast.error(message);
-                }
-            },
-        );
-    
+    const actionBeef: () => void = handleSubmit(async (data) => {
+        try {
+            const response = (await createBeef(data)) as string | number;
+            form.current?.reset();
+            toast.success(
+                `GanadoDescarte numero ${response} ha sido registrado`,
+            );
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+    });
+
     return (
         <>
             <TitlePage title="Registrar ganadoDescarte" />
@@ -49,14 +47,7 @@ export default function Page() {
                 className="grid grid-cols-2 m-auto max-w-5xl p-1 gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
             >
                 {formBeef.map(
-                    ({
-                        id,
-                        label,
-                        required,
-                        type,
-                        select,
-                        endContent,
-                    }) => (
+                    ({ id, label, required, type, select, endContent }) => (
                         <>
                             {
                                 <div key={id}>
@@ -74,22 +65,22 @@ export default function Page() {
                                     {/*  select normal */}
                                     {type == 'select' && select && (
                                         <Controller
-                                        name={id}
-                                        control={control}
-                                        render={({field})=>
-                                        <Select
-                                        field={field}
-                                        id={id}
-                                        items={select}
-                                        label={label}
-                                        errors={errors}
-                                        required={required}
-                                        />}
-                                        /> 
+                                            name={id}
+                                            control={control}
+                                            render={({ field }) => (
+                                                <Select
+                                                    field={field}
+                                                    id={id}
+                                                    items={select}
+                                                    label={label}
+                                                    errors={errors}
+                                                    required={required}
+                                                />
+                                            )}
+                                        />
                                     )}
                                 </div>
                             }
-                        
                         </>
                     ),
                 )}

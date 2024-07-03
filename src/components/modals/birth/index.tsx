@@ -1,12 +1,12 @@
 'use client';
 
 import { LayoutModal } from '..';
-import { ModalProps, Parto,  } from '@/types';
+import { ModalProps, Parto } from '@/types';
 
 export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
-    const { cria, fecha, observacion, padre_toro,veterinario } = parto;
+    const { cria, fecha, observacion, padre_toro, veterinario } = parto;
     const { nombre, numero, sexo, peso } = cria;
-   
+
     return (
         <LayoutModal
             icon="pregnancy"
@@ -36,7 +36,8 @@ export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
                     <b>Sexo de la cría: </b> {sexo}
                 </p>
                 <p>
-                    <b>Veterinario que atendió el parto: </b> {veterinario.nombre}
+                    <b>Veterinario que atendió el parto: </b>{' '}
+                    {veterinario.nombre}
                 </p>
             </div>
         </LayoutModal>

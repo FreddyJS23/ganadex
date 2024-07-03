@@ -38,23 +38,26 @@ export const TableAllWeightMilk = ({
                 }
                 case 'numero': {
                     const numero = cellValue as number;
-                   return <RedirectInTable
-                        id={pesajeLeche['numero']}
-                        label={numero ?? ''}
-                        redirect="ganado"
-                    />;
+                    return (
+                        <RedirectInTable
+                            id={pesajeLeche['numero']}
+                            label={numero ?? ''}
+                            redirect="ganado"
+                        />
+                    );
                     break;
                 }
-                case 'pesaje_este_mes':{
+                case 'pesaje_este_mes': {
                     const pesadaEsteMes = pesajeLeche['pesaje_este_mes'];
                     return pesadaEsteMes ? (
                         <IconCheck className={'size-8'} />
                     ) : (
                         <IconError className={'size-8'} />
-                    );}
+                    );
+                }
 
                 default:
-                        return cellValue as ReactNode;
+                    return cellValue as ReactNode;
             }
         },
         [],
