@@ -15,14 +15,29 @@ import { useRef } from 'react';
 
 export default function Page() {
     const form = useRef<HTMLFormElement | null>(null);
+    const containerInputsForm = useRef<HTMLDivElement[]>([]);
+
     const {
         register,
         formState: { errors },
         handleSubmit,
         control,
+        setValue,
     } = useForm<CreateBull>({
         resolver: zodResolver(createBullShema),
     });
+
+    const handleSelectionTypeBullChange = (select: number | string) => {
+        /* pocision del container campo peso dos años */
+        const inputWeight2year = containerInputsForm
+            .current[7] as HTMLDivElement;
+
+        if (select == 1) {
+            /* se usa el setValue porque el resetField no funciona, no borra el valor en el input */
+            setValue('peso_2year', undefined);
+            inputWeight2year.classList.add('hidden');
+        } else inputWeight2year.classList.remove('hidden');
+    };
 
     const actionBull: () => void = handleSubmit(async (data) => {
         try {
@@ -73,6 +88,9 @@ export default function Page() {
                                                     label={label}
                                                     errors={errors}
                                                     required={required}
+                                                    handleSelectionChange={
+                                                        handleSelectionTypeBullChange
+                                                    }
                                                 />
                                             )}
                                         />
