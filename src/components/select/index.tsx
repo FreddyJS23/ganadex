@@ -1,5 +1,7 @@
 import { InputProps } from '@/types';
+import { Selection } from '@nextui-org/react';
 import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
+import { ChangeEvent, useState } from 'react';
 import { ControllerRenderProps, FieldPath, FieldValues} from 'react-hook-form';
 
 type SelectProps = Pick<
@@ -9,6 +11,7 @@ type SelectProps = Pick<
     items: { value: string | number; label: string | number }[];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     field: any;
+    handleSelectionChange?: (select:string | number) => void;
 };
 
 const EndElement = ({ content }: { content: '$' | 'KG' }) => {
@@ -29,7 +32,8 @@ export const Select = ({
     items,
     endContent,
     errors,
-    field
+    field,
+    handleSelectionChange
 }: SelectProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
@@ -37,6 +41,16 @@ export const Select = ({
         'weight-milk': <EndElement content="KG" />,
     };
 
+    const [value, setValue] = useState<Selection>(new Set([]));
+    
+    const onChange = (
+        select:Selection,  
+    ) => {
+      const valueSelect = Array.from(select)[0];
+    
+       handleSelectionChange && handleSelectionChange(valueSelect as string | number);
+    }
+        
     return (
         
                 <SelectNextUI
@@ -46,8 +60,10 @@ export const Select = ({
                     items={items}
                     variant="underlined"
                     color="primary"
+                    selectedKeys={value}
                     isRequired={required}
                     description={description}
+                    onSelectionChange={(keys)=>{setValue(keys);onChange(keys)}}
                     classNames={{
                         label: 'text-current font-bold',
                         value: 'text-current',
