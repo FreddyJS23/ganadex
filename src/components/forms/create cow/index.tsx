@@ -26,6 +26,8 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
     const [states, setStates] = useState<Selection>(new Set('1'));
     
     const form = useRef<HTMLFormElement | null>(null);
+    const containerInputsForm = useRef<HTMLDivElement[]>([]);
+    
     const {
         register,
         formState: { errors },
@@ -34,7 +36,7 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
         control,
     } = useForm<CreateCastle>({
         resolver: zodResolver(castleShema),
-            defaultValues: {estado_id:['1']}
+            defaultValues: {estado_id:['1'], peso_2year:1}
     });
 
     const actionCastle: () => void = handleSubmit(async (data) => {
@@ -77,7 +79,19 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
             setStates(new Set(valuesStates));
         }
     };
-
+     
+    const handleSelectionTypeCattleChange = (select:number | string) => {
+        /* pocision del container campo peso dos años */
+        const inputWeight2year = containerInputsForm.current[7] as HTMLDivElement;
+        
+        if(select == 1){          
+            /* se usa el setValue porque el resetField no funciona, no borra el valor en el input */
+            setValue('peso_2year',undefined);
+            inputWeight2year.classList.add('hidden');
+        } 
+        else inputWeight2year.classList.remove('hidden');
+        }
+    
     return (
         <form
             ref={form}
@@ -88,7 +102,7 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
                 ({ id, label, required, type, select, endContent }) => (
                     <>
                         {id != 'estado_id' && (
-                            <div key={id}>
+                            <div key={id} ref={(element) => (containerInputsForm.current.push(element as HTMLDivElement))}>
                                 {type != 'select' && (
                                     <Input
                                         id={id}
@@ -113,6 +127,7 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
                                                 label={label}
                                                 errors={errors}
                                                 required={required}
+                                                handleSelectionChange={handleSelectionTypeCattleChange}
                                             />
                                         )}
                                     />
