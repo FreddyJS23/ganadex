@@ -161,6 +161,7 @@ export enum TitlesModals {
     'Escoja un rango de fechas para el reporte',
     'Año a filtrar el resumen',
     'Restaurar base de datos',
+    'Añadir a la sección de descarte al animal ',
 }
 
 export enum FieldsIdCasttle {
