@@ -4,13 +4,15 @@ export type OptionsDropdown = {
         | 'fallecimientos/registrar'
         | 'revision'
         | 'servicio'
-        | 'parto';
-    label: 'Vender' | 'Fallecer' | 'Nuevo' | 'Ver historial';
+        | 'parto'
+        | 'descartar_ganado';
+    label: 'Vender' | 'Fallecer' | 'Nuevo' | 'Ver historial' | 'Descartar ganado';
 };
 
 export const optionsDropdownCattle: OptionsDropdown[] = [
     { url: 'venta_ganado', label: 'Vender' },
     { url: 'fallecimientos/registrar', label: 'Fallecer' },
+    { url: 'descartar_ganado', label: 'Descartar ganado' },
 ];
 export const optionsDropdownCheckup: OptionsDropdown[] = [
     { url: 'revision', label: 'Nuevo' },
