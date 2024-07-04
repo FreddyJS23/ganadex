@@ -5,6 +5,7 @@ export const endPoints = {
     crearUsuario: 'register',
     todosToro: 'toro',
     todosGanadoDescarte: 'ganado_descarte',
+    descartarGanado: 'descartar_ganado/',
     ganadoDescarte: 'ganado_descarte/',
     criasNumeracion: 'crias_pendiente_numeracion',
     asignarNumeroCria: 'asignar_numero_cria/',
