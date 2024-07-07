@@ -96,7 +96,7 @@ export const TableDiscardedCattle = ({
                         ({ estado }) =>
                             estado == 'fallecido' || estado == 'vendido',
                     ) ? (
-                        <DropDownOptions idCattle={id} optionType="cattle" />
+                        <DropDownOptions disabledDiscardCattle={true} idCattle={id} optionType="cattle" />
                     ) : (
                         <IconCheck className={'size-8'} />
                     );

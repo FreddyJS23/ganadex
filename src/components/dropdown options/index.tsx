@@ -19,12 +19,17 @@ import {
 type DropDownOptions = {
     idCattle: number;
     optionType: 'cattle' | 'checkup' | 'serve' | 'birth';
+    disabledDiscardCattle?: boolean;
 };
 
-export const DropDownOptions = ({ idCattle, optionType }: DropDownOptions) => {
+export const DropDownOptions = ({ idCattle, optionType, disabledDiscardCattle=false }: DropDownOptions) => {
     let optionsDropdown: OptionsDropdown[] = [];
 
-    if (optionType == 'cattle') optionsDropdown = optionsDropdownCattle;
+    if (optionType == 'cattle') {
+        
+        optionsDropdown = optionsDropdownCattle
+    disabledDiscardCattle ? optionsDropdown = optionsDropdownCattle.filter((option) => option.url != 'descartar_ganado') : optionsDropdown = optionsDropdownCattle
+    }
     else if (optionType == 'checkup') optionsDropdown = optionsDropdownCheckup;
     else if (optionType == 'serve') optionsDropdown = optionsDropdownServe;
     else if (optionType == 'birth') optionsDropdown = optionsDropdownBirh;
@@ -40,6 +45,7 @@ export const DropDownOptions = ({ idCattle, optionType }: DropDownOptions) => {
                 {({ url, label }) => (
                     <DropdownItem key={url + label}>
                         {url == 'fallecimientos/registrar' ||
+                        url == 'descartar_ganado' ||
                         url == 'venta_ganado' ? (
                             <Link
                                 className="block w-full"
