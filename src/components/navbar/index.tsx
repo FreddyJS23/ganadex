@@ -10,6 +10,7 @@ import { ResponseFechaUltimoRespaldo, ResponseNotificaciones } from '@/types';
 import Link from 'next/link';
 import { ButtonRestoreBd } from '../buttonRestoreBd';
 import { ButtonBackupBd } from '../buttonBackuppBd';
+import { ButtonGenerateReport } from '../buttonPrintReports';
 
 export const Navbar = async () => {
     const { notificaciones }: ResponseNotificaciones =
@@ -51,6 +52,7 @@ export const Navbar = async () => {
                 </div>
                 <div className=" flex gap-4">
                     {/* restaurar y respaldar BD */}
+                    <ButtonGenerateReport   />
                     <ButtonBackupBd />
                     <ButtonRestoreBd dateLastBackup={ultimo_backup ?? null} />
 
