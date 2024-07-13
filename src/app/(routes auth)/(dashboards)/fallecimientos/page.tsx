@@ -2,8 +2,6 @@ import { ResponseFallecimientos } from '@/types';
 import { Fallecimientos } from '@/types/dashboard';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
-import IconImprimir from '@/icons/icono-imprimir.svg';
-import Link from 'next/link';
 import { TortaCausasFallecimientosGanado } from '@/components/charts/dashboard/common cause dead doughnut';
 import { TableDeadCattle } from '@/components/tables/death cattle';
 
@@ -24,9 +22,6 @@ export default async function Page() {
                         <span className="text-2xl">
                             Causas mas frecuentes de fallecimientos
                         </span>
-                        <Link href={`/reporte/causas_fallecimientos`}>
-                            <IconImprimir className={'size-8'} />
-                        </Link>
                     </div>
                     {/* grafico fallecimientos  */}
                     <span className="mb-1 text-lg">

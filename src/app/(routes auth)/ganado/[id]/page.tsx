@@ -7,8 +7,6 @@ import { getData } from '@/utils/getData';
 import Image from 'next/image';
 import Link from 'next/link';
 import cattleImage from 'public/cattle.png';
-import IconoImprimir from '@/icons/icono-imprimir.svg';
-import { ButtonGenerateReport } from '@/components/buttonPrintReports';
 import { DropDownOptions } from '@/components/dropdown options';
 
 type ParamsPageCattle = {
@@ -37,7 +35,6 @@ export default async function Page({ params }: ParamsPageCattle) {
                     <h3 className=" font-bold text-2xl">
                         Detalle del animal {ganado.numero}
                     </h3>
-                    <ButtonGenerateReport report="ganado" id={ganado.id} />
                     <DropDownOptions idCattle={ganado.id} optionType="cattle" />
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row items-center ">
