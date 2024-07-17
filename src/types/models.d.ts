@@ -224,3 +224,7 @@ export type PositionStaff = {
     id: number;
     cargo: 'obrero' | 'veterinario';
 };
+
+export type YearSalesCattle = {
+    año: number;
+};
