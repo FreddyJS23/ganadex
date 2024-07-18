@@ -1,5 +1,8 @@
 'use client';
 
+import { getBalanceAnnualSaleCattle } from '@/actions/getBalanceAnnualSaleCattle';
+import { SelectFilterYear } from '@/components/select filter year';
+import { ResponseAñosVentaGanado } from '@/types';
 import {
     BalanceAnualVentaGanado,
     BalanceMensualVentaGanado,
@@ -19,6 +22,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
@@ -30,11 +34,27 @@ ChartJS.register(
     Legend,
 );
 
-export const SalesCatle = ({ balance_anual }: BalanceAnualVentaGanado) => {
+export const SalesCatle = ({ balance_anual,años_ventas_ganado }: BalanceAnualVentaGanado & ResponseAñosVentaGanado) => {
+    
+
+    const [dataGraph, setDataGraph] = useState(balance_anual);
+    
+
+const onChange = async(select: number) => {
+        try {
+            const data = await getBalanceAnnualSaleCattle(
+                select,
+            ) as BalanceMensualVentaGanado[];
+            setDataGraph(data);
+        } catch (error) {
+            ('error');
+        }
+}
+
     const data: ChartData<'bar', BalanceMensualVentaGanado[]> = {
         datasets: [
             {
-                data: balance_anual,
+                data: dataGraph,
                 backgroundColor: paletteBackground,
                 borderColor: paletteBorderColor,
                 borderWidth: 1,
@@ -42,5 +62,17 @@ export const SalesCatle = ({ balance_anual }: BalanceAnualVentaGanado) => {
         ],
     };
 
-    return <Bar options={optionChartLineSalesCatle} data={data} />;
+    return (
+        <>
+            {/* titulo */}
+            <div className="flex gap-4 items-center">
+                <span className="text-2xl">Ganancia anual</span>
+                <div className="w-40">
+                    <SelectFilterYear onChange={onChange}  label="Año" items={años_ventas_ganado} />
+                </div>
+            </div>
+            {/* grafico */}
+            <Bar options={optionChartLineSalesCatle} data={data} />;
+        </>
+    );
 };
