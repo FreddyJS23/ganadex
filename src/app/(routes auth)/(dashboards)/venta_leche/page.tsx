@@ -44,21 +44,9 @@ export default async function Page() {
             <div className="flex gap-6 flex-col lg:flex-row w-full">
                 {/*   grafico ganancia */}
                 <article className="w-full shadow-cards p-4 flex flex-col bg-base-100">
-                    {/* titulo */}
-                    <div className="flex justify-between">
-                        <span className="text-2xl">
-                            Ganancia acumulada del mes actual
-                        </span>
-                        <Link href={`/reporte/venta_leche`}>
-                            <IconImprimir className={'size-8'} />
-                        </Link>
-                        {/* boton y modal crear venta leche */}
-                        <ButtonCreateItem href={'venta_leche/registrar'} />
-                    </div>
-                    {/* Ganancias */}
-                    <span className="mb-1 text-lg">{ganancias}</span>
+                    
                     {/* grafico */}
-                    <ChartEarningsMilkMonth balance_mensual={balance_mensual} />
+                    <ChartEarningsMilkMonth ganancias={ganancias} balance_mensual={balance_mensual} />
                 </article>
 
                 {/* tabla ventas */}

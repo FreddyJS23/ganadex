@@ -45,6 +45,7 @@ export async function getData(
     if (endPointCattle) url = url + endPointsCattle[endPointCattle];
     if (id2) url = url + id2;
     if (endPoint == 'dashboardVentaGanadoBalanceAnual') url = url + '?year=' + data;
+    if (endPoint == 'dashboardVentaLecheBalanceMensual') url = url + '?month=' + data;
     
     try {
         const dataApi = await fetch(url, optionFetch);
