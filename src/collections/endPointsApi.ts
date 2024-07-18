@@ -30,6 +30,7 @@ export const endPoints = {
     partos: 'partos',
     pesajesLeche: 'pesaje_leche',
     cargosPersonal: 'cargos_personal',
+    añosVentaGanado: 'años_ventas_ganado',
     dashboardPrincipaltotalGanadoTipo: 'dashboard_principal/total_ganado_tipo',
     dashboardPrincipaltotalPersonal: 'dashboard_principal/total_personal',
     dashboardPrincipalvacasGestacion: 'dashboard_principal/vacas_gestacion',

@@ -24,6 +24,7 @@ import {
     VentaGanado,
     VentaLeche,
     veterinario,
+    YearSalesCattle,
 } from './models';
 
 type errors = {
@@ -234,4 +235,8 @@ export type ResponseVeterinariosSelect = {
 
 export type ResponseFechaUltimoRespaldo = {
     ultimo_backup: string | null;
+};
+
+export type ResponseAñosVentaGanado = {
+    años_ventas_ganado: YearSalesCattle[];
 };

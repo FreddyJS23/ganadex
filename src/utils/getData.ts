@@ -37,13 +37,15 @@ export async function getData(
         method: method,
         headers: headers,
         credentials: 'include',
-        body: JSON.stringify(data),
     };
+
+   method == 'POST' ? optionFetch.body = JSON.stringify(data) : null;
 
     if (id) url = url + id;
     if (endPointCattle) url = url + endPointsCattle[endPointCattle];
     if (id2) url = url + id2;
-
+    if (endPoint == 'dashboardVentaGanadoBalanceAnual') url = url + '?year=' + data;
+    
     try {
         const dataApi = await fetch(url, optionFetch);
 

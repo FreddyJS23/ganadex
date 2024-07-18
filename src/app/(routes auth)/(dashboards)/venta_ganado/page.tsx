@@ -1,7 +1,7 @@
 import { CardDashboardSaleCattle } from '@/components/cards';
 import { SalesCatle } from '@/components/charts/dashboard/sales catle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
-import { ResponseVentasGanado } from '@/types';
+import { ResponseAñosVentaGanado, ResponseVentasGanado } from '@/types';
 import {
     BalanceAnualVentaGanado,
     MejorComprador,
@@ -23,6 +23,10 @@ export default async function Page() {
     );
     const { balance_anual }: BalanceAnualVentaGanado = await getData(
         'dashboardVentaGanadoBalanceAnual',
+    );
+    
+    const { años_ventas_ganado }: ResponseAñosVentaGanado = await getData(
+        'añosVentaGanado',
     );
 
     return (
@@ -46,15 +50,7 @@ export default async function Page() {
 
             {/*   grafico venta */}
             <article className="w-full shadow-cards bg-base-100 p-4 flex flex-col gap-4">
-                {/* titulo */}
-                <div className="flex justify-between">
-                    <span className="text-2xl">
-                        Ganancia acumulada del mes actual
-                    </span>
-                    {/* boton y modal crear venta */}
-                </div>
-                {/* grafico */}
-                <SalesCatle balance_anual={balance_anual} />
+                <SalesCatle balance_anual={balance_anual} años_ventas_ganado={años_ventas_ganado} />
             </article>
 
             {/* tabla ventas */}
