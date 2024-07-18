@@ -37,8 +37,9 @@ export async function getData(
         method: method,
         headers: headers,
         credentials: 'include',
-        body: JSON.stringify(data),
     };
+
+   method == 'POST' ? optionFetch.body = JSON.stringify(data) : null;
 
     if (id) url = url + id;
     if (endPointCattle) url = url + endPointsCattle[endPointCattle];
