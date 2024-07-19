@@ -240,3 +240,7 @@ export type ResponseFechaUltimoRespaldo = {
 export type ResponseAñosVentaGanado = {
     años_ventas_ganado: YearSalesCattle[];
 };
+
+export type ResponseAñosProduccionLeche = {
+    años_produccion_leche: YearSalesCattle[];
+};

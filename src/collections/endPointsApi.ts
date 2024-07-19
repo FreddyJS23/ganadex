@@ -31,6 +31,7 @@ export const endPoints = {
     pesajesLeche: 'pesaje_leche',
     cargosPersonal: 'cargos_personal',
     añosVentaGanado: 'años_ventas_ganado',
+    añosProduccionLeche: 'años_produccion_leche',
     dashboardPrincipaltotalGanadoTipo: 'dashboard_principal/total_ganado_tipo',
     dashboardPrincipaltotalPersonal: 'dashboard_principal/total_personal',
     dashboardPrincipalvacasGestacion: 'dashboard_principal/vacas_gestacion',
