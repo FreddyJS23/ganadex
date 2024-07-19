@@ -17,7 +17,7 @@ export const SelectFilterYear = ({
     onChange,
 }: SelectFilterYearProps) => {
     const [value, setValue] = useState<Selection>(
-        new Set([items[0].año.toString()]),
+        new Set([new Date().getFullYear().toString()]),
     );
 
     return (
