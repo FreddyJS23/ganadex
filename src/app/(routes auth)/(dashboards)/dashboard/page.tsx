@@ -20,6 +20,7 @@ import IconSupplies from '@/icons/icono-insumo.svg';
 import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle production bar';
 import { CircularProgress } from '@/components/circules progress dashboard';
 import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual balance milk';
+import { ResponseAñosProduccionLeche } from '@/types';
 
 export default async function Home() {
     const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(
@@ -49,6 +50,8 @@ export default async function Home() {
     );
     const { cantidad_vacas_para_servir }: TotalGanadoPendienteservir =
         await getData('dashboardPrincipalcantidadNovillasMontar');
+
+    const { años_produccion_leche }: ResponseAñosProduccionLeche = await getData('añosProduccionLeche');
 
     return (
         <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
@@ -163,10 +166,7 @@ export default async function Home() {
             </div>
             {/* grafico produccion anual leche */}
             <article className="p-4 col-span-full shadow-cards flex flex-col gap-2 bg-base-100 ">
-                <div className="flex justify-between">
-                    <h2 className="text-2xl">Produccion anual de leche</h2>
-                </div>
-                <ChartAnnualBalanceMilk balanceAnual={balance_anual} />
+                <ChartAnnualBalanceMilk años_produccion_leche={años_produccion_leche} balanceAnual={balance_anual} />
             </article>
         </section>
     );
