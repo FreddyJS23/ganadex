@@ -188,7 +188,7 @@ export const headerAllCheckup: headersColumnsAllCheckups[] = [
 
 export const headerAllServes: headersColumnsAllServes[] = [
     { key: 'numero', label: 'Numero' },
-    { key: 'toro', label: 'Toro' },
+    { key: 'toro', label: 'Toro/Pajuela toro' },
     { key: 'total_servicios', label: 'Total de servicios' },
     { key: 'ultimo_servicio', label: 'Ultimo servicio' },
     { key: 'efectividad', label: 'Efectividad' },
@@ -199,7 +199,7 @@ export const headerAllBirths: headersColumnsAllBirhs[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'ultimo_parto', label: 'Ultimo parto' },
     { key: 'cria', label: 'Cria' },
-    { key: 'toro', label: 'Toro' },
+    { key: 'toro', label: 'Toro/Pajuela toro' },
     { key: 'total_partos', label: 'Total de partos' },
     { key: 'id', label: 'Acciones' },
 ];
