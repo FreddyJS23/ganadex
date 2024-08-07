@@ -66,6 +66,11 @@ export type Toro = Pick<
     ganado_id: number;
 };
 
+export type PajuelaToro={
+    id: number;
+    codigo: string;
+}
+
 export type GanadoDescarte = Omit<
     Toro,
     'efectividad' | 'padre_en_partos' | 'servicios'
