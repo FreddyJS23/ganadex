@@ -1,7 +1,7 @@
 'use client';
 
 import { headerAllBirths } from '@/collections/headerColums';
-import { Cria, Partos, ResponsePartosGeneral, Toro } from '@/types';
+import { Cria, Partos, ResponsePartosGeneral, Toro, ToroDeServicio } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -43,15 +43,24 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
                 break;
             }
             case 'toro': {
-                const toro = cellValue as Toro;
+                const toro = cellValue as ToroDeServicio;
 
-                return (
-                    <RedirectInTable
-                        id={toro.id}
-                        label={toro.numero ?? ''}
-                        redirect="toros"
-                    />
-                );
+                if (toro)
+                    return (
+                        <RedirectInTable
+                            id={toro.id}
+                            label={toro.numero ?? ''}
+                            redirect="toros"
+                        />
+                    );
+                else
+                    return (
+                        <RedirectInTable
+                            id={partos['pajuela_toro']!.id}
+                            label={partos['pajuela_toro']!.codigo}
+                            redirect="toros"
+                        />
+                    );
                 break;
             }
             case 'id': {

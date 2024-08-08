@@ -1,7 +1,7 @@
 'use client';
 
 import { headerAllServes } from '@/collections/headerColums';
-import { ResponseServiciosGeneral, Servicios, ToroDeServicio } from '@/types';
+import { PajuelaToro, ResponseServiciosGeneral, Servicios, ToroDeServicio } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -19,7 +19,7 @@ export const TableAllServes = ({
 }: ResponseServiciosGeneral) => {
     const renderCell = useCallback((servicios: Servicios, columnKey: Key) => {
         const cellValue = servicios[columnKey as keyof Servicios];
-        switch (columnKey) {
+        switch (columnKey as keyof Servicios) {
             case 'numero': {
                 const numero = cellValue as number;
                 return (
@@ -34,11 +34,20 @@ export const TableAllServes = ({
 
             case 'toro': {
                 const toro = cellValue as ToroDeServicio;
-
+                
+                if(toro)
                 return (
                     <RedirectInTable
                         id={toro.id}
                         label={toro.numero ?? ''}
+                        redirect="toros"
+                    
+                    />
+                );
+                else   return (
+                    <RedirectInTable
+                        id={servicios['pajuela_toro']!.id}
+                        label={servicios['pajuela_toro']!.codigo}
                         redirect="toros"
                     />
                 );
