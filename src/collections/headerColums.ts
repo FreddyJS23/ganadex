@@ -19,6 +19,7 @@ import {
     Toro,
     VentaGanado,
     VentaLeche,
+    PajuelaToro,
 } from '@/types';
 
 type headersColumns = {
@@ -115,6 +116,11 @@ type headersColumnsCustomer = {
 
 type headersColumnDeadCattle = {
     key: keyof Fallecimiento;
+    label: string;
+};
+
+type headersColumnsPajuelaToro = {
+    key: keyof PajuelaToro;
     label: string;
 };
 
@@ -258,4 +264,8 @@ export const headerDeadCattle: headersColumnDeadCattle[] = [
     { key: 'causa', label: 'Causa' },
     { key: 'fecha', label: 'Fecha' },
     { key: 'ganado', label: 'Ganado' },
+];
+
+export const headerPajuelaToro: headersColumnsPajuelaToro[] = [
+    { key: 'codigo', label: 'Codigo' },
 ];
