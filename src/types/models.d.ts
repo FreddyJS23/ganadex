@@ -66,6 +66,11 @@ export type Toro = Pick<
     ganado_id: number;
 };
 
+export type PajuelaToro={
+    id: number;
+    codigo: string;
+}
+
 export type GanadoDescarte = Omit<
     Toro,
     'efectividad' | 'padre_en_partos' | 'servicios'
@@ -109,7 +114,8 @@ export type Servicio = {
     fecha: string;
     observacion: string;
     tipo: string;
-    toro: Pick<Toro, 'id' | 'numero'>;
+    toro?: Pick<Toro, 'id' | 'numero'>;
+    pajuela_toro?:PajuelaToro
     veterinario: veterinario;
 };
 
@@ -118,7 +124,8 @@ export type Parto = {
     fecha: string;
     observacion: string;
     cria: Cria;
-    padre_toro: Pick<Toro, 'id' | 'numero'>;
+    padre_toro?: Pick<Toro, 'id' | 'numero'>;
+    pajuela_toro?: PajuelaToro;
     veterinario: veterinario;
 };
 
@@ -182,7 +189,8 @@ export type Revisiones = {
 /**Servicios de todas las cabeza de  ganado  */
 export type Servicios = Pick<Ganado, 'id' | 'numero'> & {
     ultimo_servicio: string;
-    toro: ToroDeServicio;
+    toro?: Pick<Toro, 'id' | 'numero'>;
+    pajuela_toro?: PajuelaToro;
     efectividad: number;
     total_servicios: number;
 };
@@ -197,7 +205,8 @@ export type PesajesLeche = Pick<Ganado, 'id' | 'numero' | 'nombre'> & {
 export type Partos = Pick<Ganado, 'id' | 'numero'> & {
     ultimo_parto: string | null;
     total_partos: number;
-    toro: Pick<Toro, 'id' | 'numero'>;
+    toro?: Pick<Toro, 'id' | 'numero'>;
+    pajuela_toro?: PajuelaToro;
     cria: Pick<Cria, 'id' | 'numero'>;
 };
 

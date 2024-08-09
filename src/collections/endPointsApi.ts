@@ -2,6 +2,7 @@ export const endPoints = {
     ganado: 'ganado/',
     todosGanado: 'ganado',
     toro: 'toro/',
+    pajuelaToro: 'pajuela_toros/',
     crearUsuario: 'register',
     todosToro: 'toro',
     todosGanadoDescarte: 'ganado_descarte',

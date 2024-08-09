@@ -57,6 +57,7 @@ export enum URLS {
     '/ajustes',
     '/pesajes_leche',
     '/fallecimientos',
+    '/pajuela_toro',
 }
 
 export enum Months {
@@ -328,4 +329,11 @@ export enum FieldsLabelsSaleCattle {
     Precio,
     Compradores,
     'Fecha de venta',
+}
+
+export enum FieldsIdPajuelaToro {
+   codigo
+}
+export enum FieldsLabelsPajuelaToro {
+    Codigo
 }

@@ -25,6 +25,7 @@ import {
     VentaLeche,
     veterinario,
     YearSalesCattle,
+    PajuelaToro,
 } from './models';
 
 type errors = {
@@ -92,6 +93,14 @@ export type ResponseToro = {
 };
 export type ResponseToros = {
     toros: Toro[];
+};
+
+export type ResponsePajuelaToros = {
+    pajuela_toros: PajuelaToro[];
+};
+
+export type ResponsePajuelaToro = {
+    pajuela_toro: PajuelaToro;
 };
 
 export type ResponseGanadoDescartes = {

@@ -5,6 +5,7 @@ import {
     FieldsIdCasttle,
     FieldsIdCheckUp,
     FieldsIdDeadCattle,
+    FieldsIdPajuelaToro,
     FieldsIdSaleCattle,
     FieldsIdService,
     FieldsIdStaff,
@@ -15,6 +16,7 @@ import {
     FieldsLabelsCasttle,
     FieldsLabelsCheckUp,
     FieldsLabelsDeadCattle,
+    FieldsLabelsPajuelaToro,
     FieldsLabelsSaleCattle,
     FieldsLabelsService,
     FieldsLabelsStaff,
@@ -80,6 +82,13 @@ type FieldsSaleCattle = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdSaleCattle;
     label: keyof typeof FieldsLabelsSaleCattle;
 };
+
+type FieldsPajuelaToro = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
+    id: keyof typeof FieldsIdPajuelaToro;
+    label: keyof typeof FieldsLabelsPajuelaToro;
+};
+
+
 
 export const formCastle: FieldsCastle[] = [
     { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
@@ -327,4 +336,8 @@ export const formDeadCattleInFormCattle: FieldsDeadCattle[] = [
         type: 'date',
     },
     { id: 'causa', label: 'Causa de defunción', required: true, type: 'text' },
+];
+
+export const formPajuelaToro: FieldsPajuelaToro[] = [
+    { id: 'codigo', label: 'Codigo', required: true, type: 'text' },
 ];

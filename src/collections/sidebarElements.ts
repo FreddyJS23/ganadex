@@ -21,6 +21,10 @@ export const options: Pick<
                 option: 'Ganado descarte',
                 url: '/ganado_descarte',
             },
+            {
+                option: 'Pajuela toro',
+                url: '/pajuela_toro',
+            },
         ],
     },
     {
@@ -39,6 +43,10 @@ export const options: Pick<
             {
                 option: 'Ganado descarte',
                 url: '/ganado_descarte',
+            },
+            {
+                option: 'Pajuelas toro',
+                url: '/pajuela_toro',
             },
         ],
     },
