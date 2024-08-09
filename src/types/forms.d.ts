@@ -18,6 +18,7 @@ import { createSupplyShema } from '@/validations/supplyShema';
 import { createWeightMilkShema } from '@/validations/WeightMilkShema';
 import { yearsToGenerateReportShema } from '@/validations/yearsTotGenerateReportShema';
 import { z } from 'zod';
+import { createPajuelaToroSchema } from '@/validations/pajuelaToroShema';
 
 export type Login = {
     usuario: string;
@@ -76,3 +77,5 @@ export type RangeDatesToReports = z.infer<typeof rangeDatesToReportsShema>;
 export type YearToReports = z.infer<typeof yearsToGenerateReportShema>;
 
 export type CreateSaleCattle = z.infer<typeof createSaleCattleShema>;
+
+export type CreatePajuelaToro = z.infer<typeof createPajuelaToroSchema>;
