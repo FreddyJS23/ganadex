@@ -95,6 +95,14 @@ export type ResponseToros = {
     toros: Toro[];
 };
 
+export type ResponsePajuelaToros = {
+    pajuela_toros: PajuelaToro[];
+};
+
+export type ResponsePajuelaToro = {
+    pajuela_toro: PajuelaToro;
+};
+
 export type ResponseGanadoDescartes = {
     ganado_descartes: GanadoDescarte[];
 };
