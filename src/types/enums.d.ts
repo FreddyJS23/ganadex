@@ -330,3 +330,10 @@ export enum FieldsLabelsSaleCattle {
     Compradores,
     'Fecha de venta',
 }
+
+export enum FieldsIdPajuelaToro {
+   codigo
+}
+export enum FieldsLabelsPajuelaToro {
+    Codigo
+}
