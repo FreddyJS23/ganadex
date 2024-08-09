@@ -25,6 +25,7 @@ import {
     VentaLeche,
     veterinario,
     YearSalesCattle,
+    PajuelaToro,
 } from './models';
 
 type errors = {
