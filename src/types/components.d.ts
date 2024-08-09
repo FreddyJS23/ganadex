@@ -24,6 +24,7 @@ type optionsSubmenuSidebar = {
         | '/partos'
         | '/pesajes_leche'
         | '/fallecimientos'
+        | '/pajuela_toro'
     >;
     option:
         | 'Vaca'
@@ -41,7 +42,9 @@ type optionsSubmenuSidebar = {
         | 'Partos'
         | 'Pesajes de leche'
         | 'Registrar'
-        | 'Fallecimientos';
+        | 'Fallecimientos'
+        | 'Pajuela toro'
+        | 'Pajuelas toro';
 };
 
 /**opcion del sidebar */
