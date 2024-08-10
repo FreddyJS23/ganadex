@@ -23,9 +23,15 @@ export const ModalServe = ({
                 <p>
                     <b>Observación: </b> {servicio.observacion}
                 </p>
-                <p>
-                    <b>Toro: </b> {servicio.toro.numero}
-                </p>
+                {servicio.toro ? (
+                    <p>
+                        <b>Toro: </b> {servicio.toro.numero}
+                    </p>
+                ) : (
+                    <p>
+                        <b>Pajuela toro: </b> {servicio.pajuela_toro?.codigo}
+                    </p>
+                )}
                 <p>
                     <b>Tipo: </b> {servicio.tipo}
                 </p>

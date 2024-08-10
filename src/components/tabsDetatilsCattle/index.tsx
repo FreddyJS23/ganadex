@@ -94,10 +94,18 @@ export const TabDetailsCattle = ({
                             tittle={DetailsServe.tipo}
                             content={servicio_reciente?.tipo}
                         />
-                        <Details
-                            tittle={DetailsServe.numero_toro}
-                            content={servicio_reciente?.toro.numero}
-                        />
+
+                        {servicio_reciente?.toro ? (
+                            <Details
+                                tittle={DetailsServe.numero_toro}
+                                content={servicio_reciente?.toro.numero}
+                            />
+                        ) : (
+                            <Details
+                                tittle={DetailsServe.pajuela}
+                                content={servicio_reciente?.pajuela_toro?.codigo}
+                            />
+                        )}
 
                         <Details
                             tittle={DetailsServe.totales}

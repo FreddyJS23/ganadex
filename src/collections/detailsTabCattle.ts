@@ -28,6 +28,7 @@ export const DetailsServe = {
     observacion: 'Observacion',
     tipo: 'Tipo',
     numero_toro: 'Toro',
+    pajuela: 'Pajuela toro',
     efectividad: 'Efectividad',
     totales: 'Totales',
 };

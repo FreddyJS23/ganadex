@@ -90,7 +90,7 @@ type headersColumnsCheckups = {
 };
 
 type headersColumnsServices = {
-    key: keyof Servicio;
+    key: keyof Servicio | 'toro/pajuela';
     label: string;
 };
 
@@ -243,7 +243,7 @@ export const headerCheckups: headersColumnsCheckups[] = [
 
 export const headerServices: headersColumnsServices[] = [
     { key: 'fecha', label: 'Fecha' },
-    { key: 'toro', label: 'Toro' },
+    { key: 'toro/pajuela', label: 'Toro/Pajuela toro' },
 ];
 
 export const headerBirths: headersColumnsBirths[] = [
