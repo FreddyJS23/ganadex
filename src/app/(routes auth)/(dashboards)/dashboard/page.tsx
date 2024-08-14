@@ -1,8 +1,8 @@
 import { CardDashboard } from '@/components/cards';
 import { TortaTipoGanado } from '@/components/charts/dashboard/types catle doughnut';
 import {
-    InsumoMayorExistencia,
-    InsumoMenorExistencia,
+    /* InsumoMayorExistencia,
+    InsumoMenorExistencia, */
     ResponseTotalTiposGanado,
     TopVacasMenosProductoras,
     TopVacasProductoras,
@@ -18,7 +18,7 @@ import IconPositive from '@/icons/icono-ganancia.svg';
 import IconNegative from '@/icons/icono-perdida.svg';
 import IconSupplies from '@/icons/icono-insumo.svg';
 import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle production bar';
-import { CircularProgress } from '@/components/circules progress dashboard';
+/* import { CircularProgress } from '@/components/circules progress dashboard'; */
 import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual balance milk';
 import { ResponseAñosProduccionLeche } from '@/types';
 
@@ -31,12 +31,12 @@ export default async function Home() {
     );
     const { top_vacas_menos_productoras }: TopVacasMenosProductoras =
         await getData('dashboardPrincipalvacasMenosProductoras');
-    const { mayor_cantidad_insumo }: InsumoMayorExistencia = await getData(
+   /*  const { mayor_cantidad_insumo }: InsumoMayorExistencia = await getData(
         'dashboardPrincipalinsumoMayorExistencia',
     );
     const { menor_cantidad_insumo }: InsumoMenorExistencia = await getData(
         'dashboardPrincipalinsumoMenorExistencia',
-    );
+    ); */
     const { balance_anual }: balanceAnualLeche = await getData(
         'dashboardPrincipalbalanceAnualLeche',
     );
@@ -115,7 +115,7 @@ export default async function Home() {
                 </article>
 
                 {/* grafico insumos */}
-                <article className="p-4 flex flex-col bg-base-100 shadow-cards">
+                {/* <article className="p-4 flex flex-col bg-base-100 shadow-cards">
                     <div className="flex justify-between">
                         <h2>Insumos</h2>
                         <IconSupplies
@@ -124,7 +124,7 @@ export default async function Home() {
                             }
                         />
                     </div>
-                    <div className="flex">
+                     <div className="flex">
                         <CircularProgress
                             value={
                                 mayor_cantidad_insumo
@@ -161,8 +161,8 @@ export default async function Home() {
                                     : 0
                             }
                         />
-                    </div>
-                </article>
+                    </div> 
+                </article> */}
             </div>
             {/* grafico produccion anual leche */}
             <article className="p-4 col-span-full shadow-cards flex flex-col gap-2 bg-base-100 ">

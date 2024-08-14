@@ -94,7 +94,7 @@ export const options: Pick<
         ],
     },
 
-    {
+   /*  {
         element: 'Insumos',
         icon: 'supplies',
         url: '/insumos',
@@ -104,7 +104,7 @@ export const options: Pick<
                 url: '/insumos',
             },
         ],
-    },
+    }, */
     {
         element: 'Personal',
         icon: 'staff',
