@@ -83,10 +83,10 @@ export const options: Pick<
         icon: 'sales',
         url: null,
         options: [
-            {
+            /* {
                 option: 'Leche',
                 url: '/venta_leche',
-            },
+            }, */
             {
                 option: 'Ganado',
                 url: '/venta_ganado',
