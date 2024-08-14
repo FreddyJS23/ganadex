@@ -15,8 +15,8 @@ export const endPoints = {
     crearPrecioLeche: 'precio/',
     preciosLeche: 'precio',
     ventasLeche: 'venta_leche',
-    insumo: 'insumo/',
-    insumos: 'insumo',
+   /*  insumo: 'insumo/',
+    insumos: 'insumo', */
     personal: 'personal/',
     todosPersonal: 'personal',
     veterinariosDisponibles: 'veterinarios',
