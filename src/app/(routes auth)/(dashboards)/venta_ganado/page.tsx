@@ -5,8 +5,8 @@ import { ResponseAñosVentaGanado, ResponseVentasGanado } from '@/types';
 import {
     BalanceAnualVentaGanado,
     MejorComprador,
-    MejorVenta,
-    PeorVenta,
+   /*  MejorVenta,
+    PeorVenta, */
 } from '@/types/dashboard';
 import { getData } from '@/utils/getData';
 
@@ -15,12 +15,12 @@ export default async function Page() {
     const { comprador }: MejorComprador = await getData(
         'dashboardVentaGanadomejorComprador',
     );
-    const { venta: mejorVenta }: MejorVenta = await getData(
+   /*  const { venta: mejorVenta }: MejorVenta = await getData(
         'dashboardVentaGanadomejorVenta',
     );
     const { venta: peorVenta }: PeorVenta = await getData(
         'dashboardVentaGanadopeorVenta',
-    );
+    ); */
     const { balance_anual }: BalanceAnualVentaGanado = await getData(
         'dashboardVentaGanadoBalanceAnual',
     );
@@ -38,14 +38,14 @@ export default async function Page() {
                     title="Mejor comprador"
                     multipleOption
                 />
-                <CardDashboardSaleCattle
+              {/*   <CardDashboardSaleCattle
                     data={mejorVenta.precio ?? ''}
                     title="Mejor venta"
                 />
                 <CardDashboardSaleCattle
                     data={peorVenta.precio ?? ''}
                     title="Peor venta"
-                />
+                /> */}
             </article>
 
             {/*   grafico venta */}
