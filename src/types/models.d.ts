@@ -164,8 +164,8 @@ export type VentaGanado = {
     fecha: string;
     peso: PesajeGanado;
     ganado: Pick<Ganado, 'id' | 'numero'>;
-    precio: number;
-    precio_kg: number;
+    /* precio: number;
+    precio_kg: number; */
     comprador: string;
 };
 
