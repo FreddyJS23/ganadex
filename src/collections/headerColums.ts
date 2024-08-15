@@ -158,8 +158,8 @@ export const headerSaleCasttle: headersColumnsSaleCasttle[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'ganado', label: 'Numero de ganado' },
     { key: 'peso', label: 'Peso' },
-    { key: 'precio', label: 'Precio' },
-    { key: 'precio_kg', label: 'Precio por KG' },
+    /* { key: 'precio', label: 'Precio' },
+    { key: 'precio_kg', label: 'Precio por KG' }, */
     { key: 'comprador', label: 'Comprador' },
 ];
 
