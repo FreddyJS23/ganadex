@@ -14,6 +14,7 @@ export const endPoints = {
     caparCria: 'capar_cria/',
     crearPrecioLeche: 'precio/',
     preciosLeche: 'precio',
+    checkSessionApi: 'check_session_activa',
     ventasLeche: 'venta_leche',
    /*  insumo: 'insumo/',
     insumos: 'insumo', */
