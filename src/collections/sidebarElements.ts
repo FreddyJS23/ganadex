@@ -75,6 +75,10 @@ export const options: Pick<
                 option: 'Fallecimientos',
                 url: '/fallecimientos',
             },
+            {
+                option: 'Jornadas vacunacion',
+                url: '/jornadas_vacunacion',
+            },
         ],
     },
 
