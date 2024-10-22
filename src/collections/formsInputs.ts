@@ -10,6 +10,7 @@ import {
     FieldsIdService,
     FieldsIdStaff,
     FieldsIdSupply,
+    FieldsIdVaccinationDay,
     FieldsLabelsBeef,
     FieldsLabelsBirth,
     FieldsLabelsBull,
@@ -21,6 +22,7 @@ import {
     FieldsLabelsService,
     FieldsLabelsStaff,
     FieldsLabelsSupply,
+    FieldsLabelsVaccinationDay,
     InputProps,
 } from '@/types';
 import { genderSelect } from './genderSelect';
@@ -88,6 +90,10 @@ type FieldsPajuelaToro = Pick<InputProps, 'type' | 'endContent' | 'required'> & 
     label: keyof typeof FieldsLabelsPajuelaToro;
 };
 
+type FieldsVaccinationDay = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
+    id: keyof typeof FieldsIdVaccinationDay;
+    label: keyof typeof FieldsLabelsVaccinationDay;
+};
 
 
 export const formCastle: FieldsCastle[] = [
@@ -340,4 +346,10 @@ export const formDeadCattleInFormCattle: FieldsDeadCattle[] = [
 
 export const formPajuelaToro: FieldsPajuelaToro[] = [
     { id: 'codigo', label: 'Codigo', required: true, type: 'text' },
+];
+
+export const formVaccinationDay: FieldsVaccinationDay[] = [
+    { id: 'fecha_inicio', label: 'Fecha de inicio', required: true, type: 'date' },
+    { id: 'fecha_fin', label: 'Fecha fin', required: true, type: 'date' },
+    { id: 'vacuna_id', label: 'Vacuna', required: true, type: 'select' },
 ];
