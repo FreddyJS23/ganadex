@@ -20,6 +20,7 @@ import {
     VentaGanado,
     VentaLeche,
     PajuelaToro,
+    DayVaccination,
 } from '@/types';
 
 type headersColumns = {
@@ -121,6 +122,10 @@ type headersColumnDeadCattle = {
 
 type headersColumnsPajuelaToro = {
     key: keyof PajuelaToro;
+    label: string;
+};
+type headersColumnsJornadasVacunacion = {
+    key: keyof DayVaccination;
     label: string;
 };
 
@@ -268,4 +273,12 @@ export const headerDeadCattle: headersColumnDeadCattle[] = [
 
 export const headerPajuelaToro: headersColumnsPajuelaToro[] = [
     { key: 'codigo', label: 'Codigo' },
+];
+
+export const headerJornadasVacunacion: headersColumnsJornadasVacunacion[] = [
+    { key: 'fecha_inicio', label: 'Fecha inicio' },
+    { key: 'fecha_fin', label: 'Fecha fin' },
+    { key: 'vacuna', label: 'Vacuna' },
+    { key: 'ganado_vacunado', label: 'Ganado vacunado' },
+    { key: 'vacunados', label: 'Vacunados' },
 ];
