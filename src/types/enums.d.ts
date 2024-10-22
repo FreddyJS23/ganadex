@@ -58,6 +58,7 @@ export enum URLS {
     '/pesajes_leche',
     '/fallecimientos',
     '/pajuela_toro',
+    '/jornadas_vacunacion',
 }
 
 export enum Months {
@@ -163,6 +164,7 @@ export enum TitlesModals {
     'Año a filtrar el resumen',
     'Restaurar base de datos',
     'Añadir a la sección de descarte al animal ',
+    'Nueva jornada de vacunación',
 }
 
 export enum FieldsIdCasttle {
@@ -336,4 +338,15 @@ export enum FieldsIdPajuelaToro {
 }
 export enum FieldsLabelsPajuelaToro {
     Codigo
+}
+
+export enum FieldsIdVaccinationDay {
+    fecha_inicio,
+    fecha_fin,
+    vacuna_id,
+}
+export enum FieldsLabelsVaccinationDay {
+    "Fecha de inicio",
+    "Fecha fin",
+    "Vacuna",
 }

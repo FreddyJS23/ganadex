@@ -25,6 +25,7 @@ type optionsSubmenuSidebar = {
         | '/pesajes_leche'
         | '/fallecimientos'
         | '/pajuela_toro'
+        | '/jornadas_vacunacion'
     >;
     option:
         | 'Vaca'
@@ -44,7 +45,8 @@ type optionsSubmenuSidebar = {
         | 'Registrar'
         | 'Fallecimientos'
         | 'Pajuela toro'
-        | 'Pajuelas toro';
+        | 'Pajuelas toro'
+        | 'Jornadas vacunacion';
 };
 
 /**opcion del sidebar */

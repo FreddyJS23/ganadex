@@ -26,6 +26,9 @@ import {
     veterinario,
     YearSalesCattle,
     PajuelaToro,
+    DayVaccination,
+    vacunaDisponible,
+    AvailableVaccines,
 } from './models';
 
 type errors = {
@@ -252,4 +255,16 @@ export type ResponseAñosVentaGanado = {
 
 export type ResponseAñosProduccionLeche = {
     años_produccion_leche: YearSalesCattle[];
+};
+
+export type ResponseJornadasVacunacion = {
+    jornadas_vacunacion: DayVaccination[];
+};
+
+export type ResponseJornadaVacunacion = {
+    jornada_vacunacion: DayVaccination;
+};
+
+export type ResponseVacunasDisponibles = {
+    vacunas_disponibles: AvailableVaccines[];
 };
