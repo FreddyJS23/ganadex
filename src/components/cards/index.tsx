@@ -4,6 +4,7 @@ import IconRevision from '@/icons/icono-revision.svg';
 import IconPersonal from '@/icons/icono-personal.svg';
 import IconFlechaEstadoDolar from '@/icons/icono-flechaEstadoDolar.svg';
 import { DropDownOptionsCardsDashboard } from '../dropdown options cards dashboard';
+import { abbrevationMonths } from '@/collections/abbrevationMonths';
 
 type ContentCardProp = {
     title:
@@ -28,6 +29,12 @@ type ContentCardSaleMilkProp = {
     /**Porcentaje de variacion respecto al precio anterior del actual */
     variationValue: number;
     multipleOption?: boolean;
+};
+
+type ContentCardDayVaccinationProp = {
+    title: string;
+    type: string[];
+    date: Date;
 };
 
 export const CardDashboard = ({ title, data, icon }: ContentCardProp) => {
@@ -100,6 +107,42 @@ export const CardDashboardSaleMilk = ({
                             }
                         />
                     </span>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export const CardDashboardDayVaccination = ({
+    title,
+    date,
+    type,
+}: ContentCardDayVaccinationProp) => {
+    const month = date.getMonth();
+    const day = date.getDate();
+
+    return (
+        <div className=" p-6 ml-6 flex bg-base-100 shadow-cards">
+            {/* zona izquierda */}
+            <div className="flex flex-col items-center gap-2">
+                <div className="text-xl font-bold">
+                    {abbrevationMonths[month]}
+                </div>
+                <div className="text-xl font-bold">{day}</div>
+            </div>
+            {/* divider */}
+
+            <div className="divider divider-horizontal divider-primary opacity-20"></div>
+
+            {/* zona derecha */}
+            <div className="flex flex-col gap-y-2">
+                <div className="">{title}</div>
+                <div className="flex flex-wrap space-x-1">
+                    <span className="opacity-50 ml-1">Tipo</span>
+                        {type.map((type,index) => (
+                            <span key={index}>{type}</span>
+                        ))}
+                    
                 </div>
             </div>
         </div>

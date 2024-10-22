@@ -237,3 +237,17 @@ export type PositionStaff = {
 export type YearSalesCattle = {
     año: number;
 };
+
+export type DayVaccination = {
+    id: number;
+    fecha_inicio: string;
+    fecha_fin: string;
+    vacuna: number;
+    vacunados:number;
+    ganado_vacunado:string[]
+};
+
+export type AvailableVaccines = {
+    id:number,
+    nombre:string,
+}

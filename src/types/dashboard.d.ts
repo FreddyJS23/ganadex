@@ -114,3 +114,19 @@ export type Fallecimientos = {
     total_fallecidos: number;
     causas_frecuentes: CausaFrecuente[];
 };
+
+
+/* ------------------------- jornadas de vacunacion ------------------------- */
+
+type ProximaJornadaVacunacion = {
+    vacuna:string
+    prox_dosis:string
+    ganado_vacunado:string[]
+}
+
+export type ProximasJornadaVacunacion={
+    
+    proximas_jornadas_vacunacion:ProximaJornadaVacunacion[]
+        
+}
+

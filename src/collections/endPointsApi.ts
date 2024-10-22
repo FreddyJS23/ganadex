@@ -18,6 +18,7 @@ export const endPoints = {
     ventasLeche: 'venta_leche',
    /*  insumo: 'insumo/',
     insumos: 'insumo', */
+    jornadasVacunacion: 'jornada_vacunacion',
     personal: 'personal/',
     todosPersonal: 'personal',
     veterinariosDisponibles: 'veterinarios',
@@ -62,8 +63,10 @@ export const endPoints = {
     dashboardVentaGanadoBalanceAnual: 'dashboard_venta_ganado/balance_anual',
     dashboardFallecimientosCausasFrecuentes:
         'dashboard_fallecimientos/causas_frecuentes',
+    dashboarJorndasVacunacionProximasJornadas:'dashboard_jornadas_vacunacion/proximas_jornadas_vacunacion',
     notificaciones: 'notificaciones',
     fechaUltimoRespaldo: 'ultimo_respaldo',
+    vacunasDisponibles: 'vacunas_disponibles',
 };
 
 export const endPointsCattle = {
