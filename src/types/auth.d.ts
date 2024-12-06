@@ -5,6 +5,7 @@ type User = {
     id: number;
     usuario: string;
     token: string;
+    role:'admin'|'veterinario';
 };
 
 export type ResponseRegistroExitoso = {
@@ -32,7 +33,9 @@ declare module 'next-auth' {
         id: number;
         usuario: string;
         token: string;
-        cookieCsrf: CookieCsrf[];
+        role:'admin'|'veterinario';
+        xsrf_token: string;
+        laravel_session: string;
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
     /**
@@ -48,6 +51,8 @@ declare module 'next-auth/jwt' {
         id: number;
         usuario: string;
         token: string;
-        cookieCsrf: CookieCsrf[];
+        role:'admin'|'veterinario';
+        xsrf_token: string;
+        laravel_session: string;
     }
 }
