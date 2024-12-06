@@ -1,7 +1,7 @@
 'use server';
 
 import { signIn } from '@/auth';
-import { ERROR_SERVER, ERROR_SIGNIN } from '@/constants/responseApiMessage';
+import { ERROR_CORS, ERROR_SERVER, ERROR_SIGNIN } from '@/constants/responseApiMessage';
 import { ResponseLoginAuthJs } from '@/types';
 import { AuthError } from 'next-auth';
 import { isRedirectError } from 'next/dist/client/components/redirect';
@@ -35,7 +35,7 @@ export async function authenticate(
         }
         if (error instanceof AuthError) {
             const regexMessageErrors = new RegExp(
-                `${ERROR_SERVER}|${ERROR_SIGNIN}`,
+                `${ERROR_SERVER}|${ERROR_SIGNIN}|${ERROR_CORS}`,
             );
             const messageError = error.message.match(regexMessageErrors);
             throw messageError && messageError[0];
