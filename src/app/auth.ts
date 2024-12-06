@@ -1,4 +1,4 @@
-import { ERROR_SERVER, ERROR_SIGNIN } from '@/constants/responseApiMessage';
+import { ERROR_CORS, ERROR_SERVER, ERROR_SIGNIN } from '@/constants/responseApiMessage';
 import { authApi } from '@/services/authApi';
 import { ResponseError } from '@/types';
 
@@ -41,18 +41,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 try {
                     // logic to verify if user exists
                     user = await authApi(credentials);
-                    console.log(user);
                     return user;
                 } catch (errorServe) {
                     if (errorServe instanceof Error)
                         throw new AuthError(ERROR_SERVER);
 
                     const codeStatusServe = errorServe as ResponseError;
-
-                    if (codeStatusServe.status != 401)
-                        throw new AuthError(ERROR_SERVER);
-                    else if (codeStatusServe.status == 401)
+                    if (codeStatusServe.status == 401)
                         throw new AuthError(ERROR_SIGNIN);
+                    else if (codeStatusServe.status == 419)
+                        throw new AuthError(ERROR_CORS);        
+                    else 
+                        throw new AuthError(ERROR_SERVER);
                 }
             },
         }),
