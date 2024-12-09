@@ -1,14 +1,14 @@
 import { ResponseError } from '@/types';
 import { handleResponse } from '@/utils/handleResponseApi';
-import { getCookieXSCRFTOKEN } from './getCookieCsrf';
-import { getLaravelSession } from '@/utils/getLaravelSession';
+import { getInitCookieXSCRFTOKEN } from './getInitCookieCsrf';
+import { getNewCookiesSession } from '@/utils/getNewCookiesSession';
 
 export async function authApi(
     credentials: Partial<Record<'usuario' | 'password', unknown>>,
 ) {
     const url = 'http://127.0.0.1:8000/' + 'api/' + 'login';
 
-    const{xsrfToken,laravelSession}= await getCookieXSCRFTOKEN();  
+    const{xsrfToken,laravelSession}= await getInitCookieXSCRFTOKEN();  
   
     //Lanzar error si no se encuentra el token
     if(!xsrfToken)  throw {status:500,data:{message:'Error'}}; 
@@ -30,13 +30,14 @@ export async function authApi(
     try {
         const ganadoDescarte = await fetch(url, optionFetch);
         const { data, status } = await handleResponse(ganadoDescarte);
-        if (status == 200 || status == 201)
+        if (status == 200 || status == 201){
+            const {xsrfToken,laravelSession}= getNewCookiesSession(ganadoDescarte.headers);
             return {
                 ...data.login,
                 xsrf_token: xsrfToken,
                 //Obtener nueva session generada por laravel
-                 laravel_session: getLaravelSession(ganadoDescarte.headers), 
-            };
+                 laravel_session: laravelSession, 
+            };}
         else if (status == 422 || status == 401 || status == 500){
             throw { status: status, data: data };
         }

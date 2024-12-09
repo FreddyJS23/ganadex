@@ -1,8 +1,6 @@
-export const getCookieXSCRFTOKEN = async () => {
-    const res = await fetch("http://127.0.0.1:8000/sanctum/csrf-cookie", {
-        method: "GET",
-    })
-    const setCookieHeader = res.headers.get("set-cookie")
+export const getNewCookiesSession = (headers: Headers) => {
+    
+    const setCookieHeader =headers.get("set-cookie")
     const cookies = setCookieHeader?.split(", ")
 
     let xsrfToken = null
@@ -20,8 +18,7 @@ export const getCookieXSCRFTOKEN = async () => {
         if (xsrfToken && laravelSession) break
     }
     return {xsrfToken,laravelSession}
-}; 
+};
 
 
 
- 
