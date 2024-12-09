@@ -1,4 +1,4 @@
-export const getCookieXSCRFTOKEN = async () => {
+export const getInitCookieXSCRFTOKEN = async () => {
     const res = await fetch("http://127.0.0.1:8000/sanctum/csrf-cookie", {
         method: "GET",
     })
