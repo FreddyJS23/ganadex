@@ -1,5 +1,8 @@
 import { z } from './configInitZod';
+import { createDeathCastleShema } from './deathCastle';
+import { createSaleCattleShema } from './saleCattle';
 /* Format dd/mm/yyyy o dd-mm-yyyy */
+
 
 export const castleShema = z
     .object({
@@ -85,3 +88,6 @@ export const castleShema = z
             path: ['peso_2year'],
         },
     );
+
+export const castleShemaWithSale = castleShema.and(createSaleCattleShema)
+export const castleShemaWitDeath = castleShema.and(createDeathCastleShema)

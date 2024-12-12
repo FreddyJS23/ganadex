@@ -328,25 +328,6 @@ export const formSaleCattle: FieldsSaleCattle[] = [
     },
 ];
 
-export const formSaleCattleInFormCattle: FieldsSaleCattle[] =
-    formSaleCattle.concat([
-        {
-            id: 'fecha_venta',
-            label: 'Fecha de venta',
-            required: true,
-            type: 'date',
-        },
-    ]);
-
-export const formDeadCattleInFormCattle: FieldsDeadCattle[] = [
-    {
-        id: 'fecha_fallecimiento',
-        label: 'Fecha de defunción',
-        required: true,
-        type: 'date',
-    },
-    { id: 'causa', label: 'Causa de defunción', required: true, type: 'text' },
-];
 
 export const formPajuelaToro: FieldsPajuelaToro[] = [
     { id: 'codigo', label: 'Codigo', required: true, type: 'text' },

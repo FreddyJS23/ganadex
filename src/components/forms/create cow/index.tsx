@@ -2,8 +2,8 @@
 
 import {
     formCastle,
-    formDeadCattleInFormCattle,
-    formSaleCattleInFormCattle,
+    formDeadCattle,
+    formSaleCattle,
 } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Button } from '@/ui/Button';
@@ -11,7 +11,7 @@ import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
 import { Chip } from '@nextui-org/chip';
 import { Select } from '@/components/select';
 import { Controller, useForm } from 'react-hook-form';
-import { castleShema } from '@/validations/castleShema';
+import { castleShema, castleShemaWitDeath, castleShemaWithSale, } from '@/validations/castleShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateCastle } from '@/types/forms';
 import { createCastle } from '@/actions/createCastle';
@@ -20,6 +20,7 @@ import { ChangeEvent, useRef, useState } from 'react';
 import { Selection } from '@nextui-org/react';
 import { ResponseCompradores } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { getDateNow } from '@/utils/getDateNow';
 
 export const FormCow = ({ compradores }: ResponseCompradores) => {
     /* states of the castle */
@@ -27,6 +28,7 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
 
     const form = useRef<HTMLFormElement | null>(null);
     const containerInputsForm = useRef<HTMLDivElement[]>([]);
+    const [shema, setshema] = useState<typeof castleShema|typeof castleShemaWitDeath|typeof castleShemaWithSale>(castleShema)
 
     const {
         register,
@@ -35,7 +37,7 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
         setValue,
         control,
     } = useForm<CreateCastle>({
-        resolver: zodResolver(castleShema),
+        resolver: zodResolver(shema),
         defaultValues: { estado_id: ['1'], peso_2year: 1 },
     });
 
@@ -63,11 +65,13 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
         const valuesStates = e.target.value.split(',');
         /* state sale */
         if (valuesStates.some((value) => value == '5')) {
+            setshema(castleShemaWithSale)
             setStates(new Set('5'));
             setValue('estado_id', ['5']);
             setShowinputSale(true);
         } else if (valuesStates.some((value) => value == '2')) {
             /* state dead */
+            setshema(castleShemaWitDeath)
             setStates(new Set('2'));
             setValue('estado_id', ['2']);
             setShowinputDead(true);
@@ -75,6 +79,7 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
             /* other states */
             setShowinputDead(false);
             setShowinputSale(false);
+            setshema(castleShema)
             setValue('estado_id', valuesStates);
             setStates(new Set(valuesStates));
         }
@@ -149,11 +154,22 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
 
             {/* inputs dead cattle */}
             {showinputDead &&
-                formDeadCattleInFormCattle.map(
+                formDeadCattle.map(
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {type != 'select' && (
+                                {type != 'select' && id != 'fecha' && (
+                                    <Input
+                                        id={id}
+                                        label={label}
+                                        type={type}
+                                        endContent={endContent}
+                                        register={register}
+                                        errors={errors}
+                                        required={required}
+                                    />
+                                )}
+                                {id == 'fecha' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -171,11 +187,22 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
 
             {/* inputs sale cattle */}
             {showinputSale &&
-                formSaleCattleInFormCattle.map(
+                formSaleCattle.map(
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {type != 'select' && (
+                                {type != 'select' && id != 'fecha' && (
+                                    <Input
+                                        id={id}
+                                        label={label}
+                                        type={type}
+                                        endContent={endContent}
+                                        register={register}
+                                        errors={errors}
+                                        required={required}
+                                    />
+                                )}
+                                {id == 'fecha' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -189,7 +216,10 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
                                 {type == 'select' && (
                                     <Controller
                                         name={id}
-                                        control={control}
+                                        /*Se interpone un any ya que esta heredando el tipo del formulario completo
+                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                        control={control as any}
                                         render={({ field }) => (
                                             <Select
                                                 field={field}
