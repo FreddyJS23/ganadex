@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { createSaleMilk } from '@/actions/createSaleMilk';
 import { toast } from 'sonner';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { getDateNow } from '@/utils/getDateNow';
 
 export const ModalSaleMilk = ({
     isOpen,
@@ -69,6 +70,17 @@ export const ModalSaleMilk = ({
                     register={register}
                     errors={errors}
                 />
+
+                <Input
+                    id="fecha"
+                    label="Fecha"
+                    required
+                    defaultValue={getDateNow()}
+                    type="date"
+                    errors={errors}
+                    register={register}
+                />
+                
                 <Controller
                     name="precio_id"
                     control={control}

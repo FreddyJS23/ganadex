@@ -13,6 +13,7 @@ import { toast } from 'sonner';
 import { endpointsReports } from '@/collections/endPointsApi';
 import { Button } from '@/ui/Button';
 import IconPrint from '@/icons/icono-imprimir.svg';
+import { getDateNow } from '@/utils/getDateNow';
 
 export const ModalSaleCattle = ({
     isOpen,
@@ -111,6 +112,17 @@ export const ModalSaleCattle = ({
                     errors={errors}
                     register={register}
                 />
+
+                <Input
+                    id="fecha"
+                    label="Fecha"
+                    required
+                    type="date"
+                    defaultValue={getDateNow()}
+                    errors={errors}
+                    register={register}
+                />
+                
                 <Controller
                     name="comprador_id"
                     control={control}
