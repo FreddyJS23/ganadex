@@ -9,6 +9,7 @@ import { ResponseVeterinariosSelect } from '@/types';
 import { CreateServe } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { getDateNow } from '@/utils/getDateNow';
 import { createServeShema } from '@/validations/serveShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
@@ -52,7 +53,7 @@ export const FormCreateService = ({
                     {formService.map(
                         ({ id, label, required, type, select }) => (
                             <>
-                                {type != 'select' && id != 'observacion' && (
+                                {type != 'select' && id != 'observacion' && id != 'fecha' && (
                                     <Input
                                         key={id}
                                         id={id}
@@ -74,6 +75,19 @@ export const FormCreateService = ({
                                         register={register}
                                     />
                                 )}
+
+                                {id == 'fecha' && (
+                                    <Input
+                                    key={id}
+                                    id={id}
+                                    label={label}
+                                    required={required}
+                                    defaultValue={getDateNow()}
+                                    type="date"
+                                    errors={errors}
+                                    register={register}
+                                />
+                            )}
 
                                 {type == 'select' && (
                                     <Controller

@@ -9,6 +9,7 @@ import { ResponseVeterinariosSelect } from '@/types';
 import { CreateBirth } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { getDateNow } from '@/utils/getDateNow';
 import { createBirthShema } from '@/validations/birthShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
@@ -60,13 +61,26 @@ export const FormCreateBirth = ({
                                     register={register}
                                 />
                             )}
-                            {type != 'select' && id != 'observacion' && (
+                            {type != 'select' && id != 'observacion' && id != 'fecha' && (
                                 <Input
                                     key={id}
                                     id={id}
                                     label={label}
                                     required={required}
                                     type={type}
+                                    errors={errors}
+                                    register={register}
+                                />
+                            )}
+
+                            {id == 'fecha' && (
+                                <Input
+                                    key={id}
+                                    id={id}
+                                    label={label}
+                                    required={required}
+                                    defaultValue={getDateNow()}
+                                    type="date"
                                     errors={errors}
                                     register={register}
                                 />

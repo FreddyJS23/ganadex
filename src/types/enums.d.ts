@@ -239,11 +239,13 @@ export enum FieldsLabelsBeef {
 export enum FieldsIdCheckUp {
     diagnostico,
     tratamiento,
+    fecha,
     'personal_id',
 }
 
 export enum FieldsLabelsCheckUp {
     Diagnostico,
+    Fecha,
     Tratamiento,
     Veterinario,
 }
@@ -252,6 +254,7 @@ export enum FieldsIdService {
     observacion,
     'numero_toro',
     tipo,
+    fecha,
     'personal_id',
 }
 
@@ -259,6 +262,7 @@ export enum FieldsLabelsService {
     Observación,
     'Numero del toro',
     Tipo,
+    Fecha,
     Veterinario,
 }
 
@@ -268,6 +272,7 @@ export enum FieldsIdBirth {
     numero,
     sexo,
     'peso_nacimiento',
+    fecha,
     'personal_id',
 }
 
@@ -277,6 +282,7 @@ export enum FieldsLabelsBirth {
     'Numero de la cría',
     Sexo,
     'Peso de nacimiento',
+    Fecha,
     Veterinario,
 }
 
@@ -313,7 +319,6 @@ export enum FieldsIdDeadCattle {
     fecha,
     causa,
     /* use id in form cattle to register dead cattle */
-    fecha_fallecimiento,
 }
 
 export enum FieldsLabelsDeadCattle {
@@ -324,7 +329,7 @@ export enum FieldsLabelsDeadCattle {
 export enum FieldsIdSaleCattle {
     precio,
     comprador_id,
-    fecha_venta,
+    fecha,
 }
 
 export enum FieldsLabelsSaleCattle {

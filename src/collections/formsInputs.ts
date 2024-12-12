@@ -246,6 +246,7 @@ export const formCheckUp: FieldsCheckUp[] = [
     { id: 'diagnostico', label: 'Diagnostico', required: true, type: 'text' },
     { id: 'tratamiento', label: 'Tratamiento', required: true, type: 'text' },
     { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
+    { id: 'fecha', label: 'Fecha', required: true, type: 'date' },
 ];
 export const formService: FieldsService[] = [
     { id: 'observacion', label: 'Observación', required: true, type: 'text' },
@@ -263,6 +264,7 @@ export const formService: FieldsService[] = [
         type: 'number',
     },
     { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
+    { id: 'fecha', label: 'Fecha', required: true, type: 'date' },
 ];
 
 export const formBirth: FieldsBirth[] = [
@@ -288,6 +290,7 @@ export const formBirth: FieldsBirth[] = [
         type: 'select',
         select: genderSelect,
     },
+    { id: 'fecha', label: 'Fecha', required: true, type: 'date' },
     { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
 ];
 
@@ -316,6 +319,7 @@ export const formDeadCattle: FieldsDeadCattle[] = [
 
 export const formSaleCattle: FieldsSaleCattle[] = [
     { id: 'precio', label: 'Precio', required: true, type: 'number' },
+    { id: 'fecha', label: 'Fecha de venta', required: true, type: 'date' },
     {
         id: 'comprador_id',
         label: 'Compradores',

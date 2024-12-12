@@ -9,6 +9,7 @@ import { ResponseVeterinariosSelect } from '@/types';
 import { CreateCheckUp } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { getDateNow } from '@/utils/getDateNow';
 import { createCheckUpShema } from '@/validations/checkUpShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
@@ -45,7 +46,7 @@ export const FormCreateCheckUp = ({
         <>
             <form
                 action={actionCreatecheckUp}
-                className="flex flex-col items-center gap-6 p-4 max-w-lg m-auto"
+                className="flex flex-col items-center gap-6 p-4 max-w-2xl m-auto"
             >
                 <div className="flex gap-6 md:gap-12">
                     {formCheckUp.map(({ id, label, required, type }) => (
@@ -71,6 +72,20 @@ export const FormCreateCheckUp = ({
                                     register={register}
                                 />
                             )}
+                            
+                            {id == 'fecha' && (
+                                <Input
+                                    key={id}
+                                    id={id}
+                                    label={label}
+                                    defaultValue={getDateNow()}
+                                    required={required}
+                                    type="date"
+                                    errors={errors}
+                                    register={register}
+                                />
+                            )}
+
 
                             {type == 'select' && (
                                 <Controller

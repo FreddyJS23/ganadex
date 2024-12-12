@@ -9,6 +9,7 @@ import { useRef } from 'react';
 import { createDeathCattle } from '@/actions/createSaleDeath';
 import { useParams, useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { getDateNow } from '@/utils/getDateNow';
 
 export const ModalDeathCattle = ({
     isOpen,
@@ -68,6 +69,16 @@ export const ModalDeathCattle = ({
                     required
                     type="text"
                     size="lg"
+                    errors={errors}
+                    register={register}
+                />
+                <Input
+                    id="fecha"
+                    label="Fecha"
+                    required
+                    type="date"
+                    size="lg"
+                    defaultValue={getDateNow()}
                     errors={errors}
                     register={register}
                 />
