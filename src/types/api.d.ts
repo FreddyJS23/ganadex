@@ -27,7 +27,6 @@ import {
     YearSalesCattle,
     PajuelaToro,
     DayVaccination,
-    vacunaDisponible,
     AvailableVaccines,
 } from './models';
 
