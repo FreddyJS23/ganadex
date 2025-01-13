@@ -253,3 +253,11 @@ export type AvailableVaccines = {
     intervalo_dosis: number;
     tipo_animal:Array<'rebano'|'novillo'|'adulto'|'becerras'>
 }
+
+
+export type ListaVacunas = {
+    id: string;
+    fecha: string;
+    vacuna_id: number;
+    prox_dosis: string;
+};
