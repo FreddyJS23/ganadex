@@ -17,14 +17,24 @@ import { CreateCastle } from '@/types/forms';
 import { createCastle } from '@/actions/createCastle';
 import { toast } from 'sonner';
 import { ChangeEvent, useRef, useState } from 'react';
-import { Selection } from '@nextui-org/react';
-import { ResponseCompradores } from '@/types';
+import { Checkbox, Selection } from '@nextui-org/react';
+import { AvailableVaccines, Comprador, ListaVacunas, ResponseCompradores } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
+import { CreateListVaccination } from '@/components/create list vaccination';
 
-export const FormCow = ({ compradores }: ResponseCompradores) => {
+
+type FormCowProps = {
+    compradores: Comprador[];
+    listaVacunas: AvailableVaccines[];
+}
+
+export const FormCow = ({ compradores,listaVacunas }: FormCowProps) => {
     /* states of the castle */
     const [states, setStates] = useState<Selection>(new Set('1'));
+
+    /* Lista de vacunas */
+    const [listVaccines, setListVaccines] = useState<ListaVacunas[]>([]);
 
     const form = useRef<HTMLFormElement | null>(null);
     const containerInputsForm = useRef<HTMLDivElement[]>([]);
@@ -43,8 +53,9 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
 
     const actionCastle: () => void = handleSubmit(async (data) => {
         try {
-            const response = (await createCastle(data)) as string | number;
-            form.current?.reset();
+            const response = (await createCastle(data,listVaccines)) as string | number;
+             form.current?.reset();
+            setListVaccines([])
             setStates(new Set('1'));
             toast.success(
                 `La cabeza ganado de numero ${response} ha sido registrado`,
@@ -96,7 +107,7 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
             inputWeight2year.classList.add('hidden');
         } else inputWeight2year.classList.remove('hidden');
     };
-
+    const [isSelected, setIsSelected] = useState(false);
     return (
         <form
             ref={form}
@@ -151,7 +162,17 @@ export const FormCow = ({ compradores }: ResponseCompradores) => {
                     </>
                 ),
             )}
-
+            {/* lista de vacunas */}
+                <div className='col-span-full md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-2'>
+                <div className='flex flex-col items-center gap-2'>
+                    <Checkbox  isSelected={isSelected} onValueChange={setIsSelected}>
+                        Vacunas
+                    </Checkbox>
+                 <CreateListVaccination vaccinesSelect={listaVacunas}  listVaccines={listVaccines} setListVaccines={setListVaccines} isChecked={isSelected} />
+                </div>
+                </div>
+                            
+             
             {/* inputs dead cattle */}
             {showinputDead &&
                 formDeadCattle.map(
