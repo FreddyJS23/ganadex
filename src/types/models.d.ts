@@ -248,6 +248,8 @@ export type DayVaccination = {
 };
 
 export type AvailableVaccines = {
-    id:number,
-    nombre:string,
+    id: number;
+    nombre: string;
+    intervalo_dosis: number;
+    tipo_animal:Array<'rebano'|'novillo'|'adulto'|'becerras'>
 }
