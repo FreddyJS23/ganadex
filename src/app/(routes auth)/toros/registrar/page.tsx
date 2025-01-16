@@ -15,7 +15,6 @@ import { useRef } from 'react';
 
 export default function Page() {
     const form = useRef<HTMLFormElement | null>(null);
-    const containerInputsForm = useRef<HTMLDivElement[]>([]);
 
     const {
         register,
@@ -29,9 +28,8 @@ export default function Page() {
 
     const handleSelectionTypeBullChange = (select: number | string) => {
         /* pocision del container campo peso dos años */
-        const inputWeight2year = containerInputsForm
-            .current[7] as HTMLDivElement;
-
+        const inputWeight2year = form.current?.querySelector('#peso_2year') as HTMLDivElement;
+        
         if (select == 1) {
             /* se usa el setValue porque el resetField no funciona, no borra el valor en el input */
             setValue('peso_2year', undefined);
@@ -63,7 +61,7 @@ export default function Page() {
                     ({ id, label, required, type, select, endContent }) => (
                         <>
                             {
-                                <div key={id}>
+                                <div key={id} id={id}>
                                     {type != 'select' && (
                                         <Input
                                             id={id}
