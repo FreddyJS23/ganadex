@@ -65,6 +65,8 @@ export const endPoints = {
         'dashboard_fallecimientos/causas_frecuentes',
     dashboarJorndasVacunacionProximasJornadas:'dashboard_jornadas_vacunacion/proximas_jornadas_vacunacion',
     notificaciones: 'notificaciones',
+    eliminarNotificacion: 'notificaciones/',
+    eliminarTodasNotificaciiones:'borrar_notificaciones',
     fechaUltimoRespaldo: 'ultimo_respaldo',
     vacunasDisponibles: 'vacunas_disponibles',
 };
