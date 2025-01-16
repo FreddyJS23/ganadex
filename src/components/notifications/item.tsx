@@ -4,14 +4,19 @@ import { getNotificationMessage } from '@/utils';
 import { Notification } from '@/types';
 import { LegacyRef, useRef } from 'react';
 import Link from 'next/link';
+import { toast } from 'sonner';
+import { removeNotificationFromDB } from '@/actions/removeNotificationFromDB';
 
 /**body de la notificacion */
-type NotificationBodyProps = Notification;
+type NotificationBodyProps = Notification & { deleteNotificationState: (tipo:Notification['tipo'],index:number) => void; index: number };
 
 export const NotificationBody = ({
+    id,
     dias_para_evento,
     ganado,
     tipo,
+    index,
+    deleteNotificationState
 }: NotificationBodyProps) => {
     const eventPast = Math.sign(dias_para_evento) == -1 ? true : false;
     const notificationMessageEventPast: string =
@@ -25,14 +30,20 @@ export const NotificationBody = ({
         ' días para' +
         getNotificationMessage(tipo);
 
-    const notificationBodyRef: LegacyRef<HTMLDivElement> = useRef(null);
 
-    const removeNotification = () => {
-        notificationBodyRef.current && notificationBodyRef.current.remove();
+    const removeNotification = async() => {
+        try {
+            await removeNotificationFromDB(id)
+            deleteNotificationState(tipo,index)
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
+        }
+        
     };
 
     return (
-        <div ref={notificationBodyRef} className="flex gap-4 p-2 sm:p-4">
+        <div  className="flex gap-4 p-2 sm:p-4">
             {/*  icono */}
             <IconCattle className="size-8 text-black dark:text-white" />
             <div className="flex flex-col">

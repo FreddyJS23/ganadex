@@ -1,7 +1,5 @@
 import { CheckboxTheme } from '../../ui/CheckboxTheme';
-import IconoNotificacion from '@/icons/icono-notificacion.svg';
 import IconoUser from '@/icons/icono-user.svg';
-import { BadgeNotification } from '@/ui/BadgeNotification';
 import { NotificationMain } from '../notifications';
 import { HamburgerButton } from '@/ui/HamburgerButton';
 import { Sidebar } from '../sidebar';
@@ -19,10 +17,6 @@ export const Navbar = async () => {
     const { ultimo_backup }: ResponseFechaUltimoRespaldo = await getData(
         'fechaUltimoRespaldo',
     );
-
-    const { parto = [], revision = [], secado = [] } = notificaciones;
-
-    const totalNotifications = parto.length + revision.length + secado.length;
 
     return (
         <>
@@ -58,19 +52,6 @@ export const Navbar = async () => {
 
                     {/*  notificacion */}
                     <div className="dropdown dropdown-end">
-                        <div
-                            tabIndex={0}
-                            role="button"
-                            className="btn btn-ghost btn-circle"
-                        >
-                            <div className="indicator">
-                                <IconoNotificacion className="text-base-100 sm:text-current  size-8" />
-                                <BadgeNotification
-                                    totalNotifications={totalNotifications}
-                                />
-                            </div>
-                        </div>
-
                         <NotificationMain {...notificaciones} />
                     </div>
 
