@@ -316,7 +316,7 @@ export enum FieldsLabelsStaff {
     Cargo,
 }
 export enum FieldsIdDeadCattle {
-    fecha,
+    fecha_fallecimiento,
     causa,
     /* use id in form cattle to register dead cattle */
 }
@@ -329,7 +329,7 @@ export enum FieldsLabelsDeadCattle {
 export enum FieldsIdSaleCattle {
     precio,
     comprador_id,
-    fecha,
+    fecha_venta,
 }
 
 export enum FieldsLabelsSaleCattle {

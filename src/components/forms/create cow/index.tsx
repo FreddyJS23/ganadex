@@ -179,7 +179,7 @@ export const FormCow = ({ compradores,listaVacunas }: FormCowProps) => {
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {type != 'select' && id != 'fecha' && (
+                                {type != 'select' && id != 'fecha_fallecimiento' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -190,7 +190,7 @@ export const FormCow = ({ compradores,listaVacunas }: FormCowProps) => {
                                         required={required}
                                     />
                                 )}
-                                {id == 'fecha' && (
+                                {id == 'fecha_fallecimiento' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -212,7 +212,7 @@ export const FormCow = ({ compradores,listaVacunas }: FormCowProps) => {
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {type != 'select' && id != 'fecha' && (
+                                {type != 'select' && id != 'fecha_venta' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -223,7 +223,7 @@ export const FormCow = ({ compradores,listaVacunas }: FormCowProps) => {
                                         required={required}
                                     />
                                 )}
-                                {id == 'fecha' && (
+                                {id == 'fecha_venta' && (
                                     <Input
                                         id={id}
                                         label={label}
