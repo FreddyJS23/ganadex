@@ -16,10 +16,11 @@ export const SelectFilterYear = ({
     items,
     onChange,
 }: SelectFilterYearProps) => {
+    
+    //seleccionar año mas alto
     const [value, setValue] = useState<Selection>(
-        new Set([new Date().getFullYear().toString()]),
+        new Set([`${ items.length > 0 ? items[0].año : []}`]),
     );
-
     return (
         <Select
             label={label}
