@@ -1,15 +1,16 @@
 'use client';
 
-import { TypesNotification } from '@/types';
+import { Notification, TypesNotification } from '@/types';
 import { NotificationBody } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
-import { LegacyRef, useRef } from 'react';
+import { LegacyRef, useRef, useState } from 'react';
+import { removeAllNotificationsFromDB } from '@/actions/removeAllNotificationsFromDB';
+import { toast } from 'sonner';
+import { BadgeNotification } from '@/ui/BadgeNotification';
+import IconoNotificacion from '@/icons/icono-notificacion.svg';
 
-export const NotificationMain = ({
-    revision = [],
-    parto = [],
-    secado = [],
-}: TypesNotification) => {
+
+export const NotificationMain = (notifications: TypesNotification) => {
     const containerNotificationRef: LegacyRef<HTMLDivElement> = useRef(null);
 
     const removeAllNotifications = () => {
@@ -19,8 +20,29 @@ export const NotificationMain = ({
             );
         }
     };
+    const {parto:partoNotifications,revision:revisionNotifications,secado:secadoNotifications}=notifications
+    const [parto, setParto] = useState(partoNotifications ?? []);
+    const [revision, setRevision] = useState(revisionNotifications ?? []);
+    const [secado, setSecado] = useState(secadoNotifications ?? []);
+
+    const [totalNotifications, setTotalNotifications] = useState( parto.length + revision.length + secado.length)
+    
 
     return (
+       <>
+        <div
+        tabIndex={0}
+        role="button"
+        className="btn btn-ghost btn-circle"
+    >
+        <div className="indicator">
+            <IconoNotificacion className="text-base-100 sm:text-current  size-8" />
+            <BadgeNotification
+                totalNotifications={totalNotifications}
+            />
+        </div>
+    </div>
+        
         <div
             tabIndex={0}
             className="mt-3 p-4  dropdown-content w-72 sm:w-auto bg-base-100"
@@ -101,5 +123,6 @@ export const NotificationMain = ({
 
             {/*  cuerpo */}
         </div>
+       </>
     );
 };
