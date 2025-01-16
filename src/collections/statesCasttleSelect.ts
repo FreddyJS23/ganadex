@@ -7,7 +7,4 @@ export const stateCasttleSelect = [
     { value: 6, label: 'Pendiente de revision' },
     { value: 7, label: 'Pendiente de servicio' },
     { value: 8, label: 'Pendiente de secar' },
-    { value: 9, label: 'Pendiente de numeración' },
-    { value: 10, label: 'Pendiente de capar' },
-    { value: 11, label: 'Pendiente de pesaje leche' },
 ];
