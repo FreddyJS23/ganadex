@@ -13,11 +13,19 @@ import IconoNotificacion from '@/icons/icono-notificacion.svg';
 export const NotificationMain = (notifications: TypesNotification) => {
     const containerNotificationRef: LegacyRef<HTMLDivElement> = useRef(null);
 
-    const removeAllNotifications = () => {
-        while (containerNotificationRef.current?.firstChild) {
-            containerNotificationRef.current.removeChild(
-                containerNotificationRef.current.firstChild,
-            );
+    const removeAllNotifications =async () => {
+        //evitar peticiones innecesarias al servidor
+        if(totalNotifications== 0 ) return
+        
+        try {
+            await removeAllNotificationsFromDB();
+            setTotalNotifications(0)
+            setParto([])
+            setRevision([])
+            setSecado([])
+        } catch (error) {
+            const message = error as string;
+            return toast.error(message);
         }
     };
     const {parto:partoNotifications,revision:revisionNotifications,secado:secadoNotifications}=notifications
@@ -26,6 +34,17 @@ export const NotificationMain = (notifications: TypesNotification) => {
     const [secado, setSecado] = useState(secadoNotifications ?? []);
 
     const [totalNotifications, setTotalNotifications] = useState( parto.length + revision.length + secado.length)
+    
+    const deleteNotificationState = (tipo:Notification['tipo'],index:number) =>  {
+        //copiar el inicio del array hasta el elemento a eliminar, despues copiar el resto del array
+        const deleteElementArray= (array:[],index:number)=>[...array.splice(0,index),...array.splice(index+1)]
+        
+        if(tipo == 'parto') setParto(deleteElementArray(parto as [],index))
+        else if(tipo == 'revision') setRevision(deleteElementArray(revision as [],index))
+        else if(tipo == 'secado') setSecado(deleteElementArray(secado as [],index))
+        
+        setTotalNotifications(totalNotifications - 1)
+    }
     
 
     return (
@@ -69,20 +88,26 @@ export const NotificationMain = (notifications: TypesNotification) => {
             >
                 <Tab title="General">
                     <div ref={containerNotificationRef}>
-                        {parto.map((notificacion) => (
+                        {parto.map((notificacion,index) => (
                             <NotificationBody
+                            deleteNotificationState={deleteNotificationState}
+                            index={index}
                                 key={notificacion.id}
                                 {...notificacion}
                             />
                         ))}
-                        {revision.map((notificacion) => (
+                        {revision.map((notificacion,index) => (
                             <NotificationBody
+                            deleteNotificationState={deleteNotificationState}
+                            index={index}
                                 key={notificacion.id}
                                 {...notificacion}
                             />
                         ))}
-                        {secado.map((notificacion) => (
+                        {secado.map((notificacion,index) => (
                             <NotificationBody
+                            deleteNotificationState={deleteNotificationState}
+                            index={index}
                                 key={notificacion.id}
                                 {...notificacion}
                             />
@@ -91,8 +116,10 @@ export const NotificationMain = (notifications: TypesNotification) => {
                 </Tab>
                 <Tab title="Revisiones">
                     <div ref={containerNotificationRef}>
-                        {revision.map((notificacion) => (
+                        {revision.map((notificacion,index) => (
                             <NotificationBody
+                            deleteNotificationState={deleteNotificationState}
+                            index={index}
                                 key={notificacion.id}
                                 {...notificacion}
                             />
@@ -101,8 +128,10 @@ export const NotificationMain = (notifications: TypesNotification) => {
                 </Tab>
                 <Tab title="Partos">
                     <div ref={containerNotificationRef}>
-                        {parto.map((notificacion) => (
+                        {parto.map((notificacion,index) => (
                             <NotificationBody
+                            index={index}
+                            deleteNotificationState={deleteNotificationState}
                                 key={notificacion.id}
                                 {...notificacion}
                             />
@@ -111,8 +140,10 @@ export const NotificationMain = (notifications: TypesNotification) => {
                 </Tab>
                 <Tab title="Secado">
                     <div ref={containerNotificationRef}>
-                        {secado.map((notificacion) => (
+                        {secado.map((notificacion,index) => (
                             <NotificationBody
+                            index={index}
+                            deleteNotificationState={deleteNotificationState}
                                 key={notificacion.id}
                                 {...notificacion}
                             />
