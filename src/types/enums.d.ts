@@ -201,6 +201,7 @@ export enum FieldsIdBull {
     peso_destete,
     peso_2year,
     peso_actual,
+    estado_id
 }
 export enum FieldsLabelsBull {
     Nombre,
@@ -212,6 +213,7 @@ export enum FieldsLabelsBull {
     'Peso de destete',
     'Peso de 2 años',
     'Peso actual',
+    'Estados',
 }
 export enum FieldsIdBeef {
     nombre,
@@ -223,6 +225,7 @@ export enum FieldsIdBeef {
     peso_destete,
     peso_2year,
     peso_actual,
+    estado_id
 }
 export enum FieldsLabelsBeef {
     Nombre,
@@ -234,6 +237,7 @@ export enum FieldsLabelsBeef {
     'Peso de destete',
     'Peso de 2 años',
     'Peso actual',
+    'Estados',
 }
 
 export enum FieldsIdCheckUp {
