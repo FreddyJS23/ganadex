@@ -26,6 +26,7 @@ type optionsSubmenuSidebar = {
         | '/fallecimientos'
         | '/pajuela_toro'
         | '/jornadas_vacunacion'
+        | '/capar_becerro'
     >;
     option:
         | 'Vaca'
@@ -46,7 +47,8 @@ type optionsSubmenuSidebar = {
         | 'Fallecimientos'
         | 'Pajuela toro'
         | 'Pajuelas toro'
-        | 'Jornadas vacunacion';
+        | 'Jornadas vacunacion'
+        | 'Capar animal';
 };
 
 /**opcion del sidebar */

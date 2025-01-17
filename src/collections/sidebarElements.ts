@@ -79,6 +79,10 @@ export const options: Pick<
                 option: 'Jornadas vacunacion',
                 url: '/jornadas_vacunacion',
             },
+            {
+                option: 'Capar animal',
+                url: '/capar_becerro',
+            },
         ],
     },
 
