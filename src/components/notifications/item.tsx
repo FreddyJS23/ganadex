@@ -49,8 +49,7 @@ export const NotificationBody = ({
             <div className="flex flex-col">
                 {/*   titulo */}
                 <span className="text-sm sm:text-base font-bold">
-                    Ganado numero
-                    <Link href={`ganado/${ganado.id}`}>{ganado.numero}</Link>
+                    <Link href={`ganado/${ganado.id}`}>{'Vaca ' + ganado.numero}</Link>
                 </span>
                 {/*   texto */}
                 <span className="text-sm sm:text-base">
