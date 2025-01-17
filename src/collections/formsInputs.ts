@@ -29,6 +29,8 @@ import { genderSelect } from './genderSelect';
 import { typeCasttleSelect } from './typeCastleSelect';
 import { stateCasttleSelect } from './statesCasttleSelect';
 import { typeServicesForCasttle } from './typesServicesForCasttle';
+import { stateBullSelect } from './statesBullSelect';
+import { stateBeefSelect } from './statesBeefSelect';
 
 type FieldsCastle = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdCasttle;
@@ -194,6 +196,13 @@ export const formBull: FieldsBull[] = [
         type: 'number',
         endContent: 'weight',
     },
+    {
+        id: 'estado_id',
+        label: 'Estados',
+        required: true,
+        type: 'select',
+        select: stateBullSelect,
+    },
 ];
 export const formBeef: FieldsBeef[] = [
     { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
@@ -239,6 +248,13 @@ export const formBeef: FieldsBeef[] = [
         required: false,
         type: 'number',
         endContent: 'weight',
+    },
+    {
+        id: 'estado_id',
+        label: 'Estados',
+        required: true,
+        type: 'select',
+        select: stateBeefSelect,
     },
 ];
 
