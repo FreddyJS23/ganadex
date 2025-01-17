@@ -1,117 +1,16 @@
-'use client';
+import { FormBeef } from "@/components/forms/create beef";
+import { ResponseCompradores } from "@/types";
+import { TitlePage } from "@/ui/TitlePage";
+import { getData } from "@/utils/getData";
 
-import { formBeef } from '@/collections/formsInputs';
-import { Input } from '@/components/Inputs';
-import { Button } from '@/ui/Button';
-import { TitlePage } from '@/ui/TitlePage';
-import { Select } from '@/components/select';
-import { Controller, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { CreateBeef } from '@/types/forms';
-import { toast } from 'sonner';
-import { createDiscardedCattleShema } from '@/validations/discardedCattleShema';
-import { createBeef } from '@/actions/createBeef';
-import { useRef } from 'react';
+export default async function Page() {
 
-export default function Page() {
-    const form = useRef<HTMLFormElement | null>(null);
-    const containerInputsForm = useRef<HTMLDivElement[]>([]);
-
-    const {
-        register,
-        formState: { errors },
-        handleSubmit,
-        control,
-        setValue,
-    } = useForm<CreateBeef>({
-        resolver: zodResolver(createDiscardedCattleShema),
-    });
-
-    const handleSelectionTypeBeefChange = (select: number | string) => {
-        /* pocision del container campo peso dos años */
-        const inputWeight2year = containerInputsForm
-            .current[7] as HTMLDivElement;
-
-        if (select == 1) {
-            /* se usa el setValue porque el resetField no funciona, no borra el valor en el input */
-            setValue('peso_2year', undefined);
-            inputWeight2year.classList.add('hidden');
-        } else inputWeight2year.classList.remove('hidden');
-    };
-
-    const actionBeef: () => void = handleSubmit(async (data) => {
-        try {
-            const response = (await createBeef(data)) as string | number;
-            form.current?.reset();
-            toast.success(
-                `GanadoDescarte numero ${response} ha sido registrado`,
-            );
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
-    });
+    const { compradores }: ResponseCompradores = await getData('compradores');
 
     return (
         <>
             <TitlePage title="Registrar ganadoDescarte" />
-
-            <form
-                ref={form}
-                action={actionBeef}
-                className="grid grid-cols-2 m-auto max-w-5xl p-1 gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
-            >
-                {formBeef.map(
-                    ({ id, label, required, type, select, endContent }) => (
-                        <>
-                            {
-                                <div key={id}>
-                                    {type != 'select' && (
-                                        <Input
-                                            id={id}
-                                            label={label}
-                                            type={type}
-                                            endContent={endContent}
-                                            register={register}
-                                            errors={errors}
-                                            required={required}
-                                        />
-                                    )}
-                                    {/*  select normal */}
-                                    {type == 'select' && select && (
-                                        <Controller
-                                            name={id}
-                                            control={control}
-                                            render={({ field }) => (
-                                                <Select
-                                                    field={field}
-                                                    id={id}
-                                                    items={select}
-                                                    label={label}
-                                                    errors={errors}
-                                                    required={required}
-                                                    handleSelectionChange={
-                                                        handleSelectionTypeBeefChange
-                                                    }
-                                                />
-                                            )}
-                                        />
-                                    )}
-                                </div>
-                            }
-                        </>
-                    ),
-                )}
-                <div className="col-span-full md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-2">
-                    <Button
-                        onClick={() => {
-                            return;
-                        }}
-                        type="submit"
-                        content="Registrar"
-                    />
-                </div>
-            </form>
+            <FormBeef compradores={compradores} />
         </>
     );
 }
