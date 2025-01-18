@@ -49,7 +49,7 @@ export const FormCreateBirth = ({
                 className="flex flex-col items-center gap-8 p-4 m-auto "
             >
                 <div className="flex gap-6 flex-col justify-center max-w-80 sm:justify-evenly sm:flex-row sm:flex-wrap sm:max-w-fit ">
-                    {formBirth.map(({ id, label, required, type, select }) => (
+                    {formBirth.map(({ id, label, required, type, select,endContent }) => (
                         <div key={id} className={'sm:w-44'}>
                             {id == 'observacion' && (
                                 <Textarea
@@ -70,6 +70,7 @@ export const FormCreateBirth = ({
                                     type={type}
                                     errors={errors}
                                     register={register}
+                                    endContent={endContent}
                                 />
                             )}
 
