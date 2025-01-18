@@ -295,8 +295,8 @@ export const formBirth: FieldsBirth[] = [
     {
         id: 'peso_nacimiento',
         label: 'Peso de nacimiento',
-        required: true,
-        type: 'text',
+        required: false,
+        type: 'number',
         endContent: 'weight',
     },
     {
