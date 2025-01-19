@@ -4,6 +4,6 @@ import { getData } from '@/utils/getData';
 
 export default async function Page() {
     const { vacunas_disponibles }: ResponseVacunasDisponibles =
-        await getData('vacunasDisponigles');
+        await getData('vacunasDisponibles');
     return <CreateVaccinationDay vacunas_disponibles={vacunas_disponibles} />;
 }
