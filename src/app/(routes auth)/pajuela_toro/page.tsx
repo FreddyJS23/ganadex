@@ -8,7 +8,7 @@ export default async function Page() {
     return (
         <>
             <TitlePage title="Pajuela toros" />
-            <section className='max-w-44 mx-auto'>
+            <section className='max-w-44 lg:max-w-4xl mx-auto'>
 
             <TablePajuelaToro pajuela_toros={pajuela_toros} />
             </section>
