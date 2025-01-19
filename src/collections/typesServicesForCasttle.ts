@@ -1,4 +1,4 @@
 export const typeServicesForCasttle = [
-    { label: 'Monta', value: 'monta' },
-    { label: 'Inseminación', value: 'inseminacion' },
+    { value: 'monta', label: 'Monta',  },
+    { value: 'inseminacion', label: 'Inseminación',  },
 ];

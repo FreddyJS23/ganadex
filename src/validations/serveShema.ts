@@ -5,7 +5,8 @@ const regexDate =
 
 export const createServeShema = z.object({
     observacion: z.string().min(3).max(255),
-    numero_toro: z.number(),
+    toro_id: z.string().regex(/\d/),
+    pajuela_toro_id: z.string().regex(/\d/),
     tipo: z.enum(['monta', 'inseminacion']),
     fecha: z.string().regex(regexDate),
     personal_id: z.string().regex(/\d/),
