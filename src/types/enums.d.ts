@@ -345,10 +345,14 @@ export enum FieldsLabelsSaleCattle {
 }
 
 export enum FieldsIdPajuelaToro {
-   codigo
+   codigo,
+   descripcion,
+   fecha
 }
 export enum FieldsLabelsPajuelaToro {
-    Codigo
+    Codigo,
+    Descripcion,
+    Fecha
 }
 
 export enum FieldsIdVaccinationDay {

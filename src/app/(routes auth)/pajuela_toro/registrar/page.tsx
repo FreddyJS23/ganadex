@@ -54,7 +54,7 @@ export default function Page() {
                                     register={register}
                                     errors={errors}
                                     required={required}
-                                    uppercase={true}
+                                    uppercase={id == 'codigo'}
                                 />
                             </div>
                         }

@@ -69,6 +69,8 @@ export type Toro = Pick<
 export type PajuelaToro={
     id: number;
     codigo: string;
+    descripcion: string;
+    fecha: string;
 }
 
 export type GanadoDescarte = Omit<

@@ -352,7 +352,9 @@ export const formSaleCattle: FieldsSaleCattle[] = [
 
 
 export const formPajuelaToro: FieldsPajuelaToro[] = [
-    { id: 'codigo', label: 'Codigo', required: true, type: 'text' },
+    { id: 'codigo', label: 'Codigo', required: true, type: 'text'},
+    { id: 'descripcion', label: 'Descripcion', required:false, type: 'text'},
+    { id: 'fecha', label: 'Fecha', required: true, type: 'date'},
 ];
 
 export const formVaccinationDay: FieldsVaccinationDay[] = [
