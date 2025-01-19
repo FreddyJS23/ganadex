@@ -273,6 +273,8 @@ export const headerDeadCattle: headersColumnDeadCattle[] = [
 
 export const headerPajuelaToro: headersColumnsPajuelaToro[] = [
     { key: 'codigo', label: 'Codigo' },
+    { key: 'descripcion', label: 'Descripcion' },
+    { key: 'fecha', label: 'Fecha' },
 ];
 
 export const headerJornadasVacunacion: headersColumnsJornadasVacunacion[] = [
