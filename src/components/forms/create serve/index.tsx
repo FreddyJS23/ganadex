@@ -4,8 +4,9 @@ import { createServe } from '@/actions/createServe';
 import { formService } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
+import { SelectBulls } from '@/components/select bulls';
 import { Textarea } from '@/components/Textarea';
-import { ResponseVeterinariosSelect } from '@/types';
+import { PajuelaToro, ResponseVeterinariosSelect, Toro, ToroDeServicio, veterinario } from '@/types';
 import { CreateServe } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
@@ -13,12 +14,21 @@ import { getDateNow } from '@/utils/getDateNow';
 import { createServeShema } from '@/validations/serveShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
+type FormCreateServiceProps = {
+    veterinarios: veterinario[];
+    toros:Toro[]
+    pajuelasToro:PajuelaToro[]
+};
+
 export const FormCreateService = ({
     veterinarios,
-}: ResponseVeterinariosSelect) => {
+    toros,
+    pajuelasToro,
+}: FormCreateServiceProps) => {
     const {
         register,
         formState: { errors },
@@ -43,15 +53,28 @@ export const FormCreateService = ({
         }
     });
 
+    // campos select tipo servicio
+    const [typeService, setTypeService] = useState<'monta' | 'inseminacion'>('monta');
+    const {id: tipoId, label: tipoLabel, select: tipoSelect,required: tipoRequired} = formService[1];
+    const handleSelectionTypeServiceChange = (select:string | number) => setTypeService(select as 'monta' | 'inseminacion');
+    
+    //campos select toro
+    const {id: toroId, label: toroLabel,required: toroRequired} = formService[2];
+
+    //campos select pajuela toro
+    const {id: pajuelaToroId, label: pajuelaToroLabel,required: pajuelaToroRequired} = formService[3];
+
+
+        /* pocision del container campo peso dos años */
     return (
         <>
             <form
                 action={actionCreateService}
                 className="flex flex-col items-center gap-6 p-4 max-w-2xl m-auto"
             >
-                <div className="flex gap-6 md:gap-12 w-full">
+                <div className="grid  md:gap-12 lg:grid-cols-3 w-full">
                     {formService.map(
-                        ({ id, label, required, type, select }) => (
+                        ({ id, label, required, type, }) => (
                             <>
                                 {type != 'select' && id != 'observacion' && id != 'fecha' && (
                                     <Input
@@ -89,7 +112,7 @@ export const FormCreateService = ({
                                 />
                             )}
 
-                                {type == 'select' && (
+                                {type == 'select' && id == 'personal_id' && (
                                     <Controller
                                         name={id}
                                         control={control}
@@ -98,9 +121,7 @@ export const FormCreateService = ({
                                                 field={field}
                                                 id={id}
                                                 items={
-                                                    id == 'tipo'
-                                                        ? select!
-                                                        : converToSelectOptions(
+                                                         converToSelectOptions(
                                                               veterinarios as [],
                                                           )
                                                 }
@@ -114,6 +135,72 @@ export const FormCreateService = ({
                             </>
                         ),
                     )}
+                                {/* select tipo servicio */}
+                                    <Controller
+                                        name={tipoId}
+                                        control={control}
+                                        render={({ field }) => (
+                                            <Select
+                                                field={field}
+                                                handleSelectionChange={handleSelectionTypeServiceChange}
+                                                id={tipoId}
+                                                items={
+                                                         converToSelectOptions(
+                                                              tipoSelect as [],
+                                                          )
+                                                }
+                                                label={tipoLabel}
+                                                errors={errors}
+                                                required={tipoRequired}
+
+                                            />
+                                        )}
+                                    />
+
+                                      {/* select toros */}
+                                    {typeService == 'monta' ? ( <Controller
+                                        name={toroId}
+                                        control={control}
+                                        render={({ field }) => (
+                                            <SelectBulls
+                                            field={field}
+                                                id={toroId}
+                                                items={toros}
+                                                label={toroLabel}
+                                                errors={errors}
+                                                required={toroRequired}
+
+                                            />
+                                        )}
+                                    />)
+                                     /* select pajuelas toro */
+                                    :(<Controller
+                                        name={pajuelaToroId}
+                                        control={control}
+                                        render={({ field }) => (
+                                            <Select
+                                                field={field}
+                                                handleSelectionChange={handleSelectionTypeServiceChange}
+                                                id={pajuelaToroId}
+                                                items={
+                                                         converToSelectOptions(
+                                                              pajuelasToro as [],
+                                                          )
+                                                }
+                                                label={pajuelaToroLabel}
+                                                errors={errors}
+                                                required={pajuelaToroRequired}
+   
+                                            />
+                                        )}
+                                    />
+                                        
+                                     
+                                    )
+                                    
+                                    }
+
+                                    
                 </div>
                 <div className="w-full sm:max-w-72">
                     <Button
