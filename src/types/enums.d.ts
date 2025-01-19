@@ -256,7 +256,7 @@ export enum FieldsLabelsCheckUp {
 
 export enum FieldsIdService {
     observacion,
-    'numero_toro',
+    'toro_id',
     tipo,
     fecha,
     'personal_id',
@@ -264,7 +264,7 @@ export enum FieldsIdService {
 
 export enum FieldsLabelsService {
     Observación,
-    'Numero del toro',
+    'Toro',
     Tipo,
     Fecha,
     Veterinario,
