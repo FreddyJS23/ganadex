@@ -263,3 +263,12 @@ export type ListaVacunas = {
     vacuna_id: number;
     prox_dosis: string;
 };
+
+export type Vacuna=Omit<ListaVacunas,'vacuna_id'> & {vacuna:string}
+
+export type AplicacionVacunaHistorial = {
+    vacuna: string;
+    cantidad: number;
+    ultima_dosis: string;
+    prox_dosis: string
+}
