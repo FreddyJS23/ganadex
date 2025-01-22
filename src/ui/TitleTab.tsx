@@ -2,10 +2,11 @@ import IconRevision from '@/icons/icono-revision.svg';
 import IconServicio from '@/icons/icono-servir.svg';
 import IconParto from '@/icons/icono-preñadas.svg';
 import IconLeche from '@/icons/icono-leche.svg';
+import IconVacuna from '@/icons/icono-vacuna.svg';
 
 type TitleTabProps = {
     title: string;
-    icon?: 'checkUp' | 'serve' | 'pregnant' | 'milk';
+    icon?: 'checkUp' | 'serve' | 'pregnant' | 'milk' | 'vaccine';
 };
 
 export const TitleTab = ({ title, icon }: TitleTabProps) => {
@@ -14,6 +15,7 @@ export const TitleTab = ({ title, icon }: TitleTabProps) => {
         serve: <IconServicio />,
         pregnant: <IconParto />,
         milk: <IconLeche />,
+        vaccine: <IconVacuna />,
     };
 
     return (

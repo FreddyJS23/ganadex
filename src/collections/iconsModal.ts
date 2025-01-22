@@ -12,4 +12,5 @@ export const iconsModal = {
     serve: dynamic(() => import('@/icons/icono-servir.svg')),
     customer: dynamic(() => import('@/icons/icono-comprador.svg')),
     restoreBd: dynamic(() => import('@/icons/icono-restaurar.svg')),
+    vaccine: dynamic(() => import('@/icons/icono-vacuna.svg')),
 };

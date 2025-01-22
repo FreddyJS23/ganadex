@@ -21,6 +21,9 @@ import {
     VentaLeche,
     PajuelaToro,
     DayVaccination,
+    ResponseGanado,
+    AplicacionVacunaHistorial,
+    Vacuna,
 } from '@/types';
 
 type headersColumns = {
@@ -128,6 +131,16 @@ type headersColumnsJornadasVacunacion = {
     key: keyof DayVaccination;
     label: string;
 };
+
+type headersColumnsHistoryVaccinesApply={
+    key: keyof AplicacionVacunaHistorial;
+    label: string;
+}
+
+type headersColumnsHistoryVaccines = {
+    key: keyof Vacuna;
+    label: string;
+}
 
 export const headerCasttle: headersColumns[] = [
     { key: 'numero', label: 'Numero' },
@@ -283,4 +296,17 @@ export const headerJornadasVacunacion: headersColumnsJornadasVacunacion[] = [
     { key: 'vacuna', label: 'Vacuna' },
     { key: 'ganado_vacunado', label: 'Ganado vacunado' },
     { key: 'vacunados', label: 'Vacunados' },
+];
+
+export const headerHistoryVaccinesApply: headersColumnsHistoryVaccinesApply[] = [
+    { key: 'vacuna', label: 'Vacuna' },
+    { key: 'cantidad', label: 'Cantidad' },
+    { key: 'ultima_dosis', label: 'Ultima dosis' },
+    { key: 'prox_dosis', label: 'Proxima dosis' },
+];
+
+export const headerHistoryVaccines:headersColumnsHistoryVaccines[] = [
+    { key: 'vacuna', label: 'Vacuna' },
+    { key: 'fecha', label: 'Fecha' },
+    { key: 'prox_dosis', label: 'Proxima dosis' },
 ];

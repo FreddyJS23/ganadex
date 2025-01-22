@@ -24,6 +24,7 @@ export default async function Page({ params }: ParamsPageCattle) {
         parto_reciente,
         total_partos,
         info_pesajes_leche,
+        vacunaciones
     }: ResponseGanado = await getData('ganado', 'GET', undefined, params.id);
 
     const { eventos } = ganado;
@@ -140,6 +141,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                         parto_reciente={parto_reciente}
                         total_partos={total_partos}
                         info_pesajes_leche={info_pesajes_leche}
+                        vacunaciones={vacunaciones}
                     />
                 </div>
             </div>

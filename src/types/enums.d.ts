@@ -17,6 +17,7 @@ export enum IconsModal {
     pregnancy,
     customer,
     restoreBd,
+    vaccine,
 }
 
 export enum ElementSidebar {
@@ -165,6 +166,7 @@ export enum TitlesModals {
     'Restaurar base de datos',
     'Añadir a la sección de descarte al animal ',
     'Nueva jornada de vacunación',
+    'Historial de vacunas aplicadas',
 }
 
 export enum FieldsIdCasttle {
