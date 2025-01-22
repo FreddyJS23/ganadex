@@ -14,6 +14,10 @@ import { TitleTab } from '@/ui/TitleTab';
 import { Button } from '@/ui/Button';
 import { usePathname, useRouter } from 'next/navigation';
 import { ButtonGroupTabDetailCattle } from '@/ui/ButtonGroupTabDetailCattle';
+import { headerHistoryVaccinesApply } from '@/collections/headerColums';
+import { VaccinesAppliedCastle } from '../tables/vaccines Apply castle/index';
+import { useState } from 'react';
+import { ModalHistoryVaccines } from '../modals/historys/history vaccines';
 
 type TabsDetailsCattleProps = Omit<ResponseGanado, 'ganado'> & {
     eventos: Eventos;
@@ -29,6 +33,7 @@ export const TabDetailsCattle = ({
     efectividad,
     parto_reciente,
     total_partos,
+    vacunaciones,
 }: TabsDetailsCattleProps) => {
     const router = useRouter();
     const pathname = usePathname();
@@ -103,7 +108,9 @@ export const TabDetailsCattle = ({
                         ) : (
                             <Details
                                 tittle={DetailsServe.pajuela}
-                                content={servicio_reciente?.pajuela_toro?.codigo}
+                                content={
+                                    servicio_reciente?.pajuela_toro?.codigo
+                                }
                             />
                         )}
 
@@ -184,6 +191,24 @@ export const TabDetailsCattle = ({
 
                         <div className="col-span-full place-self-center">
                             <ButtonGroupTabDetailCattle route="pesajes_leche" />
+                        </div>
+                    </ContainerContentTab>
+                </Tab>
+
+                <Tab
+                    key={'vacunas'}
+                    title={<TitleTab title="Vacunas" icon="vaccine" />}
+                >
+                    <ContainerContentTab>
+                        <div className="grid grid-cols-6 items-center gap-8 w-full">
+                            <div className="col-span-5">
+                                <VaccinesAppliedCastle
+                                    vacunaciones={vacunaciones.vacunas}
+                                />
+                            </div>
+                            <ModalHistoryVaccines
+                                historial={vacunaciones.historial}
+                            />
                         </div>
                     </ContainerContentTab>
                 </Tab>
