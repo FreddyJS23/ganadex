@@ -36,8 +36,8 @@ export const VaccinesAppliedCastle = ({vacunaciones}:{vacunaciones:AplicacionVac
                     <tr key={index}>
                         <td>{vacuna} </td>
                         <td>{cantidad}</td>
-                        <td>{prox_dosis}</td>
                         <td>{ultima_dosis}</td>
+                        <td>{prox_dosis}</td>
                     </tr>
                 ),
             )}
