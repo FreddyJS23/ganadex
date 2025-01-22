@@ -28,6 +28,8 @@ import {
     PajuelaToro,
     DayVaccination,
     AvailableVaccines,
+    Vacuna,
+    AplicacionVacunaHistorial,
 } from './models';
 
 type errors = {
@@ -72,6 +74,10 @@ export type ResponseGanado = {
         peor: PesajeLecheGanado;
         estado: string;
     };
+    vacunaciones: {
+        vacunas: AplicacionVacunaHistorial[],
+        historial:Vacuna[]
+    }
 };
 
 export type CabezasGanado = Omit<
