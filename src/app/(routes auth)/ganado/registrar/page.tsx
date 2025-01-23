@@ -1,5 +1,5 @@
 import { FormCow } from '@/components/forms/create cow';
-import { ResponseCompradores, ResponseVacunasDisponibles } from '@/types';
+import { ResponseCompradores, ResponseSugerirNumero, ResponseVacunasDisponibles } from '@/types';
 import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 
@@ -7,11 +7,13 @@ export default async function Page() {
     const { compradores }: ResponseCompradores = await getData('compradores');
     const { vacunas_disponibles }: ResponseVacunasDisponibles =
     await getData('vacunasDisponibles');
+
+    const { numero_disponible }: ResponseSugerirNumero = await getData('sugerirNumero');
     
     return (
         <>
             <TitlePage title="Registrar vaca" />
-            <FormCow listaVacunas={vacunas_disponibles} compradores={compradores} />
+            <FormCow numero_disponible={numero_disponible} listaVacunas={vacunas_disponibles} compradores={compradores} />
         </>
     );
 }
