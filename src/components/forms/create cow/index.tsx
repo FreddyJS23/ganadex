@@ -27,9 +27,10 @@ import { CreateListVaccination } from '@/components/create list vaccination';
 type FormCowProps = {
     compradores: Comprador[];
     listaVacunas: AvailableVaccines[];
+    numero_disponible:number;
 }
 
-export const FormCow = ({ compradores,listaVacunas }: FormCowProps) => {
+export const FormCow = ({ compradores,listaVacunas,numero_disponible }: FormCowProps) => {
     /* states of the castle */
     const [states, setStates] = useState<Selection>(new Set('1'));
 
@@ -48,9 +49,9 @@ export const FormCow = ({ compradores,listaVacunas }: FormCowProps) => {
         control,
     } = useForm<CreateCastle>({
         resolver: zodResolver(shema),
-        defaultValues: { estado_id: ['1'], peso_2year: 1 },
+        defaultValues: { estado_id: ['1'], peso_2year: 1, numero: numero_disponible },
     });
-
+console.log(numero_disponible)
     const actionCastle: () => void = handleSubmit(async (data) => {
         try {
             const response = (await createCastle(data,listVaccines)) as string | number;
@@ -135,6 +136,7 @@ export const FormCow = ({ compradores,listaVacunas }: FormCowProps) => {
                                         register={register}
                                         errors={errors}
                                         required={required}
+                                        defaultValue={id== 'numero' ? String(numero_disponible) : undefined}
                                     />
                                 )}
                                 {/*  select normal */}

@@ -273,3 +273,7 @@ export type ResponseJornadaVacunacion = {
 export type ResponseVacunasDisponibles = {
     vacunas_disponibles: AvailableVaccines[];
 };
+
+export type ResponseSugerirNumero = {
+    numero_disponible:number;
+};

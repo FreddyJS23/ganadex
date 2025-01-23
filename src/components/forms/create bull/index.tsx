@@ -26,9 +26,10 @@ import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 
 type FormBullProps = {
     compradores: Comprador[];
+    numero_disponible:number;
 };
 
-export const FormBull = ({compradores}: FormBullProps) => {
+export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
     const form = useRef<HTMLFormElement | null>(null);
     const [shema, setshema] = useState<
         | typeof createBullShema
@@ -46,7 +47,7 @@ export const FormBull = ({compradores}: FormBullProps) => {
         setValue,
     } = useForm<CreateBull>({
         resolver: zodResolver(shema),
-        defaultValues: { estado_id: ['1']},
+        defaultValues: { estado_id: ['1'], numero: numero_disponible },
     });
 
     const handleSelectionTypeBullChange = (select: number | string) => {
@@ -125,6 +126,7 @@ export const FormBull = ({compradores}: FormBullProps) => {
                                         register={register}
                                         errors={errors}
                                         required={required}
+                                        defaultValue={id== 'numero' ? String(numero_disponible) : undefined}
                                     />
                                 )}
                                 {/*  select normal */}

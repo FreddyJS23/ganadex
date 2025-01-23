@@ -18,13 +18,15 @@ export default async function Page({ params }: ParamsPage) {
     const { veterinarios }: ResponseVeterinariosSelect = await getData(
         'veterinariosDisponibles',
     );
+    const { numero_disponible }: ResponseSugerirNumero = await getData('sugerirNumero');
+
     return (
         <>
             <TitlePage
                 title={`Registrar parto para la vaca ${ganado.numero}`}
             />
 
-            <FormCreateBirth veterinarios={veterinarios} />
+            <FormCreateBirth numero_disponible={numero_disponible} veterinarios={veterinarios} />
         </>
     );
 }
