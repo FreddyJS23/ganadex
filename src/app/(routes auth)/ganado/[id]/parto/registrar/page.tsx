@@ -1,5 +1,5 @@
 import { FormCreateBirth } from '@/components/forms/create birth';
-import { ResponseGanado, ResponseVeterinariosSelect } from '@/types';
+import { ResponseGanado, ResponseSugerirNumero, ResponseVeterinariosSelect } from '@/types';
 import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 

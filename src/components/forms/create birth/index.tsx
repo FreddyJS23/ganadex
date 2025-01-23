@@ -5,7 +5,7 @@ import { formBirth } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
 import { Textarea } from '@/components/Textarea';
-import { ResponseVeterinariosSelect } from '@/types';
+import { ResponseVeterinariosSelect, veterinario } from '@/types';
 import { CreateBirth } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
@@ -17,7 +17,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
 type FormCreateBirthProps = {
-    veterinarios: string[];
+    veterinarios: veterinario[];
     numero_disponible:number;
 };
 
