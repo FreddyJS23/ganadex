@@ -16,9 +16,17 @@ import { useParams, useRouter } from 'next/navigation';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
+type FormCreateBirthProps = {
+    veterinarios: string[];
+    numero_disponible:number;
+};
+
+
+
 export const FormCreateBirth = ({
     veterinarios,
-}: ResponseVeterinariosSelect) => {
+    numero_disponible
+}: FormCreateBirthProps) => {
     const {
         register,
         formState: { errors },
@@ -26,6 +34,7 @@ export const FormCreateBirth = ({
         handleSubmit,
     } = useForm<CreateBirth>({
         resolver: zodResolver(createBirthShema),
+        defaultValues: {  numero: numero_disponible },
     });
     const router = useRouter();
     const { id: cattleId } = useParams<{ id: string }>();
@@ -71,6 +80,8 @@ export const FormCreateBirth = ({
                                     errors={errors}
                                     register={register}
                                     endContent={endContent}
+                                    defaultValue={id== 'numero' ? String(numero_disponible) : undefined}
+
                                 />
                             )}
 

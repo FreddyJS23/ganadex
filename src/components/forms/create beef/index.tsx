@@ -26,9 +26,10 @@ import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 
 type FormBeffProps = {
     compradores: Comprador[];
+    numero_disponible:number;
 };
 
-export const FormBeef = ({ compradores }: FormBeffProps) => {
+export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
     const form = useRef<HTMLFormElement | null>(null);
 
     const [shema, setshema] = useState<
@@ -47,7 +48,7 @@ export const FormBeef = ({ compradores }: FormBeffProps) => {
         setValue,
     } = useForm<CreateBeef>({
         resolver: zodResolver(shema),
-        defaultValues: { estado_id: ['1'] },
+        defaultValues: { estado_id: ['1'], numero: numero_disponible },
     });
 
     const handleSelectionTypeBeefChange = (select: number | string) => {
@@ -127,6 +128,7 @@ export const FormBeef = ({ compradores }: FormBeffProps) => {
                                         register={register}
                                         errors={errors}
                                         required={required}
+                                        defaultValue={id== 'numero' ? String(numero_disponible) : undefined}
                                     />
                                 )}
                                 {/*  select normal */}
