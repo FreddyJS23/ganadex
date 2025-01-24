@@ -1,7 +1,7 @@
 'use client';
 
 import { headerCasttle } from '@/collections/headerColums';
-import { CabezasGanado, EstadosGanado, Pesos, ResponseGanados } from '@/types';
+import { CabezasGanado, EstadosGanado, Pesos, ResponseGanados, User } from '@/types';
 import { getAge } from '@/utils/getAge';
 import {
     TableHeader,
@@ -18,7 +18,9 @@ import { RedirectInTable } from '@/components/redirectsInTables';
 import IconCheck from '@/icons/icono-check.svg';
 import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
-export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
+
+
+export const TableCasttle = ({ cabezas_ganado,role }: ResponseGanados & {role:User['rol']}) => {
     const [cattles, setCattles] = useState<CabezasGanado[]>(cabezas_ganado);
 
     const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
@@ -94,7 +96,7 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                         ({ estado }) =>
                             estado == 'fallecido' || estado == 'vendido',
                     ) ? (
-                        <DropDownOptions idCattle={id} optionType="cattle" />
+                        <DropDownOptions idCattle={id} optionType="cattle" role={role} />
                     ) : (
                         <IconCheck className={'size-8'} />
                     );
@@ -104,6 +106,7 @@ export const TableCasttle = ({ cabezas_ganado }: ResponseGanados) => {
                     return cellValue as ReactNode;
             }
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [],
     );
 

@@ -9,26 +9,28 @@ import {
 import IconOpcionesCard from '@/icons/icono-opcionesEnCard.svg';
 import Link from 'next/link';
 import {
-    optionsDropdownCattle,
     optionsDropdownCheckup,
     optionsDropdownServe,
     optionsDropdownBirh,
     OptionsDropdown,
+    optionsDropdownCattleAdmin,
+    optionsDropdownCattleVeterinary,
 } from '@/collections/optionsDropdown';
+import { User } from '@/types';
 
 type DropDownOptions = {
     idCattle: number;
     optionType: 'cattle' | 'checkup' | 'serve' | 'birth';
     disabledDiscardCattle?: boolean;
+    role?:User['rol'];
 };
 
-export const DropDownOptions = ({ idCattle, optionType, disabledDiscardCattle=false }: DropDownOptions) => {
+export const DropDownOptions = ({ idCattle, optionType, disabledDiscardCattle=false,role='admin' }: DropDownOptions) => {
     let optionsDropdown: OptionsDropdown[] = [];
-
     if (optionType == 'cattle') {
         
-        optionsDropdown = optionsDropdownCattle
-    disabledDiscardCattle ? optionsDropdown = optionsDropdownCattle.filter((option) => option.url != 'descartar_ganado') : optionsDropdown = optionsDropdownCattle
+        optionsDropdown =role=='admin' ? optionsDropdownCattleAdmin : optionsDropdownCattleVeterinary
+        if(disabledDiscardCattle) optionsDropdown = optionsDropdown.filter((option) => option.url != 'descartar_ganado')
     }
     else if (optionType == 'checkup') optionsDropdown = optionsDropdownCheckup;
     else if (optionType == 'serve') optionsDropdown = optionsDropdownServe;

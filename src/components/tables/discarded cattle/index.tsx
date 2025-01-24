@@ -6,6 +6,7 @@ import {
     Pesos,
     GanadoDescarte,
     ResponseGanadoDescartes,
+    User,
 } from '@/types';
 import {
     TableHeader,
@@ -24,7 +25,8 @@ import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
 export const TableDiscardedCattle = ({
     ganado_descartes,
-}: ResponseGanadoDescartes) => {
+    role,
+}: ResponseGanadoDescartes & {role:User['rol']}) => {
     const [discardedCattles, setDiscardedCattles] =
         useState<GanadoDescarte[]>(ganado_descartes);
 
@@ -96,7 +98,7 @@ export const TableDiscardedCattle = ({
                         ({ estado }) =>
                             estado == 'fallecido' || estado == 'vendido',
                     ) ? (
-                        <DropDownOptions disabledDiscardCattle={true} idCattle={id} optionType="cattle" />
+                        <DropDownOptions disabledDiscardCattle={true} idCattle={id} optionType="cattle" role={role} />
                     ) : (
                         <IconCheck className={'size-8'} />
                     );
@@ -106,6 +108,7 @@ export const TableDiscardedCattle = ({
                     return cellValue as ReactNode;
             }
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [],
     );
 

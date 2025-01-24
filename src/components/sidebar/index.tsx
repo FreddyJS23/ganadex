@@ -1,14 +1,28 @@
-import { options } from '@/collections/sidebarElements';
+import {  optionsSidebarAdmin,optionsSidebarVeterinary } from '@/collections/sidebarElements';
 import { SidebarElement } from './item';
 import { Logos } from '@/ui/Logos';
+import { auth } from '@/app/auth';
+import { Session } from 'next-auth';
 
 type SidebarProps = {
     /**Agrega estilos para pantallas pequeñas */
     android: boolean;
 };
 
-const sidebarElements = (responsive: boolean) => {
-    return options.map(({ element, icon, url, options }, key) => (
+const sidebarElements = (responsive: boolean,role:'admin'|'veterinario') => {
+    
+    if(role == 'admin')  return optionsSidebarAdmin.map(({ element, icon, url, options }, key) => (
+        <SidebarElement
+            key={key}
+            element={element}
+            icon={icon}
+            options={options}
+            responsive={responsive}
+            url={url}
+        />
+    ));
+
+    if(role == 'veterinario' ) return optionsSidebarVeterinary.map(({ element, icon, url, options }, key) => (
         <SidebarElement
             key={key}
             element={element}
@@ -20,7 +34,9 @@ const sidebarElements = (responsive: boolean) => {
     ));
 };
 
-export const Sidebar = ({ android }: SidebarProps) => {
+export const Sidebar =async ({ android }: SidebarProps) => {
+    const session = await auth() as Session
+    const role=session.user.rol
     return (
         <>
             {/* android/desktop */}
@@ -34,14 +50,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
                     <div className="divider divider-primary self-center w-36 mt-0 "></div>
                     {/*  cuerpo */}
                     <ul className="flex flex-col w-full ">
-                        <SidebarElement
-                            element="Dashboard"
-                            icon="dashboard"
-                            responsive={false}
-                            url="/dashboard"
-                        />
-
-                        {sidebarElements(false)}
+                        {sidebarElements(false,role)}
                     </ul>
                 </div>
             </nav>
@@ -54,14 +63,7 @@ export const Sidebar = ({ android }: SidebarProps) => {
                     <div className="divider divider-primary self-center w-12 mt-0 "></div>
                     {/*  cuerpo */}
                     <ul className="flex flex-col ">
-                        <SidebarElement
-                            element="Dashboard"
-                            icon="dashboard"
-                            responsive={true}
-                            url="/dashboard"
-                        />
-
-                        {sidebarElements(true)}
+                        {sidebarElements(true,role)}
                     </ul>
                 </div>
             </nav>
