@@ -8,6 +8,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import cattleImage from 'public/cattle.png';
 import { DropDownOptions } from '@/components/dropdown options';
+import { auth } from '@/app/auth';
+import { Session } from 'next-auth';
 
 type ParamsPageCattle = {
     params: { id: number };
@@ -29,6 +31,8 @@ export default async function Page({ params }: ParamsPageCattle) {
 
     const { eventos } = ganado;
 
+    const session = await auth() as Session
+    const role=session.user.rol
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
@@ -36,7 +40,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                     <h3 className=" font-bold text-2xl">
                         Detalle del animal {ganado.numero}
                     </h3>
-                    <DropDownOptions idCattle={ganado.id} optionType="cattle" />
+                    <DropDownOptions idCattle={ganado.id} optionType="cattle" role={role} />
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row items-center ">
                     <div className="">
