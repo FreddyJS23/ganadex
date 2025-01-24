@@ -1,13 +1,43 @@
 import { NextResponse } from 'next/server';
 import { auth as middleware } from '@/auth';
 
+const routesVerinary = [
+    'ganado',
+    'toros',
+    'ganado_descarte',
+    'servicios',
+    'revisiones',
+    'partos',
+    'fallecimientos',
+    'jornadas_vacunacion',
+    'capar_becerro',
+]
+
+const routeIsAllowed = (url: string) => {
+   const route=url.split('/')[1]
+    return routesVerinary.includes(route)
+    
+};
+
 export default middleware((request) => {
+    //session no iniciada
     if (!request.auth) {
+        //redirigir a login si intentan acceder a rutas
         if (!request.nextUrl.pathname.startsWith('/login'))
             return NextResponse.redirect(new URL('/login', request.url));
     } else {
-        if (request.nextUrl.pathname.startsWith('/login'))
-            return NextResponse.redirect(new URL('/dashboard', request.url));
+        if (request.nextUrl.pathname.startsWith('/login')) {
+            if (request.auth.user.rol == 'admin') return NextResponse.redirect(new URL('/dashboard', request.url));
+            else if (request.auth.user.rol == 'veterinario') return NextResponse.redirect(new URL('/ganado', request.url));
+        }
+        if (request.auth.user.rol == 'veterinario')
+            {
+            //redirigir en caso de login a la ruta de inicio
+            if((request.nextUrl.pathname.startsWith('/dashboard'))) return NextResponse.redirect(new URL('/ganado', request.url));
+            if (!routeIsAllowed(request.nextUrl.pathname)) {
+                return NextResponse.redirect(new URL('/api/signOut', request.url));
+            }
+          }  
     }
 });
 
