@@ -9,4 +9,7 @@ export const iconsSidebar = {
     supplies: dynamic(() => import('@/icons/icono-insumo.svg')),
     staff: dynamic(() => import('@/icons/icono-personal.svg')),
     setting: dynamic(() => import('@/icons/icono-ajuste.svg')),
+    castle: dynamic(() => import('@/icons/icono-ganado.svg')),
+    bull: dynamic(() => import('@/icons/icono-ganado.svg')),
+    beef: dynamic(() => import('@/icons/icono-ganado1.svg')),
 };
