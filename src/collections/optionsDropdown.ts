@@ -9,8 +9,12 @@ export type OptionsDropdown = {
     label: 'Vender' | 'Fallecer' | 'Nuevo' | 'Ver historial' | 'Descartar ganado';
 };
 
-export const optionsDropdownCattle: OptionsDropdown[] = [
+export const optionsDropdownCattleAdmin: OptionsDropdown[] = [
     { url: 'venta_ganado', label: 'Vender' },
+    { url: 'fallecimientos/registrar', label: 'Fallecer' },
+    { url: 'descartar_ganado', label: 'Descartar ganado' },
+];
+export const optionsDropdownCattleVeterinary: OptionsDropdown[] = [
     { url: 'fallecimientos/registrar', label: 'Fallecer' },
     { url: 'descartar_ganado', label: 'Descartar ganado' },
 ];

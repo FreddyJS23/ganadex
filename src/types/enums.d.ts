@@ -29,6 +29,9 @@ export enum ElementSidebar {
     'Registrar',
     Consultar,
     Operaciones,
+    Vacas,
+    Toros,
+    'Ganado descarte',
 }
 
 export enum StateCattle {

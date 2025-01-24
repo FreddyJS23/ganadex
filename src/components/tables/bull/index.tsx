@@ -1,7 +1,7 @@
 'use client';
 
 import { headerBull } from '@/collections/headerColums';
-import { EstadosGanado, Pesos, ResponseToros, Toro } from '@/types';
+import { EstadosGanado, Pesos, ResponseToros, Toro, User } from '@/types';
 import {
     TableHeader,
     TableColumn,
@@ -18,7 +18,7 @@ import { DropdownStatesCattle } from '@/components/dropdown states cattle';
 import IconCheck from '@/icons/icono-check.svg';
 import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
-export const TableBull = ({ toros }: ResponseToros) => {
+export const TableBull = ({ toros,role }: ResponseToros & {role:User['rol']}) => {
     const [bulls, setBulls] = useState<Toro[]>(toros);
 
     const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
@@ -93,7 +93,7 @@ export const TableBull = ({ toros }: ResponseToros) => {
                     ({ estado }) =>
                         estado == 'fallecido' || estado == 'vendido',
                 ) ? (
-                    <DropDownOptions idCattle={id} optionType="cattle" />
+                    <DropDownOptions idCattle={id} optionType="cattle" role={role} />
                 ) : (
                     <IconCheck className={'size-8'} />
                 );
@@ -102,6 +102,7 @@ export const TableBull = ({ toros }: ResponseToros) => {
             default:
                 return cellValue as ReactNode;
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

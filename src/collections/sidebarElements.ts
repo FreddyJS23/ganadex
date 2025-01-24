@@ -1,9 +1,10 @@
 import { SidebarElementProps } from '@/types';
 
-export const options: Pick<
+export const optionsSidebarAdmin: Pick<
     SidebarElementProps,
     'element' | 'icon' | 'url' | 'options'
 >[] = [
+    {element:"Dashboard", icon:"dashboard",url:"/dashboard"},
     {
         element: 'Registrar',
         icon: 'register',
@@ -130,3 +131,43 @@ export const options: Pick<
         url: '/ajustes',
     },
 ];
+
+export const optionsSidebarVeterinary: Pick<
+    SidebarElementProps,
+    'element' | 'icon' | 'url' | 'options'
+>[] =[
+    {element:'Vacas',icon:'castle',url:'/ganado'},
+    {element:'Toros',icon:'bull',url:'/toros'},
+    {element:'Ganado descarte',icon:'beef',url:'/ganado_descarte'},
+    {
+        element: 'Operaciones',
+        icon: 'operations',
+        url: null,
+        options: [
+            {
+                option: 'Revisiones',
+                url: '/revisiones',
+            },
+            {
+                option: 'Servicios',
+                url: '/servicios',
+            },
+            {
+                option: 'Partos',
+                url: '/partos',
+            },
+            {
+                option: 'Fallecimientos',
+                url: '/fallecimientos',
+            },
+            {
+                option: 'Jornadas vacunacion',
+                url: '/jornadas_vacunacion',
+            },
+            {
+                option: 'Capar animal',
+                url: '/capar_becerro',
+            },
+        ],
+    },
+]

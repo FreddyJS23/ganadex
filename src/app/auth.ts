@@ -11,7 +11,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (user) {
                 token.usuario = user.usuario;
                 token.token = user.token;
-                token.role = user.role;
+                token.role = user.rol;
                 token.xsrf_token = user.xsrf_token;
                 token.laravel_session = user.laravel_session;
                 /*     token.cookieCsrf=user.cookieCsrf */
@@ -21,7 +21,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session({ session, token }) {
             session.user.token = token.token;
             session.user.usuario = token.usuario;
-            session.user.role = token.role;
+            session.user.rol = token.role;
             session.user.xsrf_token = token.xsrf_token;
             session.user.laravel_session = token.laravel_session;
             return session;

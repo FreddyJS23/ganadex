@@ -9,6 +9,26 @@ import Link from 'next/link';
 import { ButtonRestoreBd } from '../buttonRestoreBd';
 import { ButtonBackupBd } from '../buttonBackuppBd';
 import { ButtonGenerateReport } from '../buttonPrintReports';
+import { auth } from '@/app/auth';
+import { Session } from 'next-auth';
+
+
+const elementsAdmin=(notificaciones:ResponseNotificaciones['notificaciones'],ultimo_backup:ResponseFechaUltimoRespaldo['ultimo_backup'])=>{
+    return (
+       <>
+          {/* restaurar y respaldar BD */}
+          <ButtonGenerateReport   />
+          <ButtonBackupBd />
+          <ButtonRestoreBd dateLastBackup={ultimo_backup ?? null} />
+
+          {/*  notificacion */}
+          <div className="dropdown dropdown-end">
+              <NotificationMain {...notificaciones} />
+          </div>
+       </>
+    )
+}
+
 
 export const Navbar = async () => {
     const { notificaciones }: ResponseNotificaciones =
@@ -17,6 +37,9 @@ export const Navbar = async () => {
     const { ultimo_backup }: ResponseFechaUltimoRespaldo = await getData(
         'fechaUltimoRespaldo',
     );
+
+    const session = await auth() as Session
+    const role=session.user.rol
 
     return (
         <>
@@ -45,15 +68,7 @@ export const Navbar = async () => {
                     </div>
                 </div>
                 <div className=" flex gap-4">
-                    {/* restaurar y respaldar BD */}
-                    <ButtonGenerateReport   />
-                    <ButtonBackupBd />
-                    <ButtonRestoreBd dateLastBackup={ultimo_backup ?? null} />
-
-                    {/*  notificacion */}
-                    <div className="dropdown dropdown-end">
-                        <NotificationMain {...notificaciones} />
-                    </div>
+                  {role=='admin'&& elementsAdmin(notificaciones,ultimo_backup)}
 
                     <div className="dropdown dropdown-end">
                         <div
