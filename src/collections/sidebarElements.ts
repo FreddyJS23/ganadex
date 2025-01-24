@@ -1,6 +1,6 @@
 import { SidebarElementProps } from '@/types';
 
-export const options: Pick<
+export const optionsSidebarAdmin: Pick<
     SidebarElementProps,
     'element' | 'icon' | 'url' | 'options'
 >[] = [
