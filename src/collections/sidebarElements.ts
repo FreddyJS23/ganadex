@@ -4,6 +4,7 @@ export const options: Pick<
     SidebarElementProps,
     'element' | 'icon' | 'url' | 'options'
 >[] = [
+    {element:"Dashboard", icon:"dashboard",url:"/dashboard"},
     {
         element: 'Registrar',
         icon: 'register',
