@@ -5,6 +5,7 @@ import { handleResponse } from './handleResponseApi';
 import { ResponseError } from '@/types';
 import { auth } from '@/auth';
 import { Session } from 'next-auth';
+import ErrorApp from './errorApp';
 
 export async function getData(
     endPoint: keyof typeof endPoints,
@@ -53,7 +54,6 @@ export async function getData(
         const dataApi = await fetch(url, optionFetch);
 
         const { data, status } = await handleResponse(dataApi);
-
         if (status == 200 || status == 201) return data;
         else if (
             status == 422 ||
@@ -65,8 +65,8 @@ export async function getData(
         )
             throw { status: status, data: data };
     } catch (e) {
-        if (e instanceof Error) throw e;
+        if (e instanceof Error) throw new Error('Error en la conexión con el servidor');
         const { status, data } = e as ResponseError;
-        throw `código ${status} ${data.message}`;
+        throw new Error(`${status}: ${data.message}`);
     }
 }
