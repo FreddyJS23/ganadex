@@ -60,7 +60,7 @@ export const SelectBulls = ({
         >
             <SelectSection title={'Nº <---------------> Efect'}>
                 {converToSelectOptions.map(({ id, numero, efectividad }) => {
-                 return  <SelectItem key={id}>
+                 return  <SelectItem key={id} textValue={numero ? numero.toString() : id.toString()}>
                         <div className="flex justify-between">
                             <span>{numero}</span>
                             <span className="text-xs text-gray-500">
