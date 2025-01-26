@@ -8,7 +8,7 @@ import { createCustomerShema } from '@/validations/Customer';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'sonner';
-import { createCustomer } from '@/actions/createCustomer';
+import { createCustomer } from '@/actions/comprador';
 
 export const ModalCreateCustomer = ({
     isOpen,

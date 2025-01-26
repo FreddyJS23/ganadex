@@ -8,7 +8,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateSaleCattle } from '@/types/forms';
-import { createSaleCattle } from '@/actions/createSaleCattle';
+import { createSaleCattle } from '@/actions/ventaGanado';
 import { toast } from 'sonner';
 import { endpointsReports } from '@/collections/endPointsApi';
 import { Button } from '@/ui/Button';

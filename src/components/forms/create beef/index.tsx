@@ -17,7 +17,7 @@ import {
     createDiscardedCattleWithDeadthShema,
     createDiscardedCattleWithSaleShema,
 } from '@/validations/discardedCattleShema';
-import { createBeef } from '@/actions/createBeef';
+import { createBeef } from '@/actions/ganado_descarte';
 import { ChangeEvent, useRef, useState } from 'react';
 import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
 import { Comprador } from '@/types';

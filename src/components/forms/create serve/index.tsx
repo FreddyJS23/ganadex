@@ -1,6 +1,6 @@
 'use client';
 
-import { createServe } from '@/actions/createServe';
+import { createServe } from '@/actions/servicio';
 import { formService } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';

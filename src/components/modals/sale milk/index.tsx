@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createSaleMilkShema } from '@/validations/saleMilkShema';
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { createSaleMilk } from '@/actions/createSaleMilk';
+import { createSaleMilk } from '@/actions/ventaLeche';
 import { toast } from 'sonner';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';

@@ -1,6 +1,6 @@
 'use client';
 
-import { createStaff } from '@/actions/createStaff';
+import { createStaff } from '@/actions/personal';
 import { formStaff } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';

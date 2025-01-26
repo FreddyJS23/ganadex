@@ -1,6 +1,6 @@
 'use client';
 
-import { createBirth } from '@/actions/createBirth';
+import { createBirth } from '@/actions/parto';
 import { formBirth } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';

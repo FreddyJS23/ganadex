@@ -1,7 +1,7 @@
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
 import { ModalProps } from '@/types';
-import { createPriceMilk } from '@/actions/createPriceMilk';
+import { createPriceMilk } from '@/actions/precioLeche';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';

@@ -18,7 +18,7 @@ import {
     bullShemaWithSale,
     createBullShema,
 } from '@/validations/bullShema';
-import { createBull } from '@/actions/createBull';
+import { createBull } from '@/actions/toro';
 import { ChangeEvent, useRef, useState } from 'react';
 import { Chip, Selection } from '@nextui-org/react';
 import { Comprador } from '@/types';

@@ -11,7 +11,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { createWeightMilk } from '@/actions/create weightMilk';
+import { createWeightMilk } from '@/actions/weightMilk';
 
 export const ModalWeightMilk = ({
     dataHeader,

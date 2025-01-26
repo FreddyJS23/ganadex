@@ -1,4 +1,4 @@
-import { createVaccinationDay } from '@/actions/createVaccinationDay';
+import { createVaccinationDay } from '@/actions/jornadaVacunacion';
 import { formVaccinationDay } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';

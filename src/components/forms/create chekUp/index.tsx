@@ -1,6 +1,6 @@
 'use client';
 
-import { createCheckUp } from '@/actions/createCheckUp';
+import { createCheckUp } from '@/actions/revision';
 import { formCheckUp } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';

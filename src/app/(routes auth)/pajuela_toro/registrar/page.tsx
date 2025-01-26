@@ -10,7 +10,7 @@ import {  CreatePajuelaToro } from '@/types/forms';
 import { toast } from 'sonner';
 import { useRef } from 'react';
 import { createPajuelaToroSchema } from '@/validations/pajuelaToroShema';
-import { createPajuelaToro } from '@/actions/createPajuelaToro';
+import { createPajuelaToro } from '@/actions/pajuelaToro';
 
 export default function Page() {
     const form = useRef<HTMLFormElement | null>(null);

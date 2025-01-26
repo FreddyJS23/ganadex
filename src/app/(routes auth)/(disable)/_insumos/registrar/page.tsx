@@ -1,6 +1,6 @@
 'use client';
 
-import { createSupply } from '@/actions/createSupply';
+import { createSupply } from '@/actions/insumos';
 import { formSupply } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { CreateSupply } from '@/types/forms';

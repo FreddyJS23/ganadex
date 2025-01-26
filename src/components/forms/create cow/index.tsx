@@ -14,7 +14,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { castleShema, castleShemaWitDeath, castleShemaWithSale, } from '@/validations/castleShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateCastle } from '@/types/forms';
-import { createCastle } from '@/actions/createCastle';
+import { createCastle } from '@/actions/vaca';
 import { toast } from 'sonner';
 import { ChangeEvent, useRef, useState } from 'react';
 import { Checkbox, Selection } from '@nextui-org/react';

@@ -9,7 +9,7 @@ import { authenticate } from '@/actions/login';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { CreateUser, Login } from '@/types/forms';
-import { createUser } from '@/actions/createUser';
+import { createUser } from '@/actions/usuario';
 import { ResponseError } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createUserShema } from '@/validations/createUser';

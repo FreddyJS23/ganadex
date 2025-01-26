@@ -6,7 +6,7 @@ import { CreateDeathCastle } from '@/types/forms';
 import { createDeathCastleShema } from '@/validations/deathCastle';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRef } from 'react';
-import { createDeathCattle } from '@/actions/createSaleDeath';
+import { createDeathCattle } from '@/actions/fallecimientos';
 import { useParams, useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { getDateNow } from '@/utils/getDateNow';
