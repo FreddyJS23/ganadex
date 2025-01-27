@@ -83,7 +83,7 @@ export const Navbar = async () => {
                             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                         >
                             <li>
-                                <a className="justify-between">Perfil</a>
+                                <Link href={'/perfil'} className="justify-between">Perfil</Link>
                             </li>
                             <li className="bg-error rounded-md">
                                 <Link href={'/api/signOut'}>Cerrar sesión</Link>
