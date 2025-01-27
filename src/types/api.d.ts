@@ -30,6 +30,9 @@ import {
     AvailableVaccines,
     Vacuna,
     AplicacionVacunaHistorial,
+    UserVeterinaryInfo,
+    UserAdminInfo,
+    UserVeterinary,
 } from './models';
 
 type errors = {
@@ -277,3 +280,19 @@ export type ResponseVacunasDisponibles = {
 export type ResponseSugerirNumero = {
     numero_disponible:number;
 };
+
+export type ResponseVeterinariosUsuario={
+    usuarios_veterinarios:UserVeterinaryInfo[]
+}
+
+export type ResponseVeterinarioUsuario={
+    usuario_veterinario:UserVeterinary
+}
+
+export type ResponseVeterinariosSinUsuario={
+    veterinarios_sin_usuario:veterinario[]
+}
+
+export type ResponseInformacionUsuarioLogeado={
+    user:UserAdminInfo | UserVeterinaryInfo
+}
