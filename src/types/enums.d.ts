@@ -170,6 +170,8 @@ export enum TitlesModals {
     'Añadir a la sección de descarte al animal ',
     'Nueva jornada de vacunación',
     'Historial de vacunas aplicadas',
+    'Actualizar usuario',
+    'Crear finca'
 }
 
 export enum FieldsIdCasttle {
