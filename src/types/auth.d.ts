@@ -36,6 +36,8 @@ declare module 'next-auth' {
         rol:'admin'|'veterinario';
         xsrf_token: string;
         laravel_session: string;
+        userId: number;
+        finca:Pick<Finca,'id'|'nombre'>
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
     /**
@@ -54,5 +56,7 @@ declare module 'next-auth/jwt' {
         role:'admin'|'veterinario';
         xsrf_token: string;
         laravel_session: string;
+        userId: number;
+        finca:Pick<Finca,'id'|'nombre'>
     }
 }
