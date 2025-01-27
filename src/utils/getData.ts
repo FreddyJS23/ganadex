@@ -42,7 +42,7 @@ export async function getData(
         credentials: 'include',
     };
 
-   method == 'POST' ? optionFetch.body = JSON.stringify(data) : null;
+   method == 'POST' || method == 'PUT' ? (optionFetch.body = JSON.stringify(data)) : null;
 
     if (id) url = url + id;
     if (endPointCattle) url = url + endPointsCattle[endPointCattle];

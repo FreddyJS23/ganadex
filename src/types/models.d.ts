@@ -272,3 +272,29 @@ export type AplicacionVacunaHistorial = {
     ultima_dosis: string;
     prox_dosis: string
 }
+
+export type Finca={
+    id:number,
+    nombre:string,
+    fecha_creacion:string
+}
+
+export type UserVeterinaryInfo={
+    id:number,
+    usuario:string,
+    email:string,
+    rol:'veterinario'
+    fecha_creacion:string
+}
+
+export type UserVeterinary=Pick<UserVeterinaryInfo,'id'|'usuario'> & {nombre:string}
+
+export type UserAdminInfo={
+    id:number,
+    usuario:string,
+    email:string,
+    rol:'admin'
+    fincas:Finca[]
+    fecha_creacion:string
+}
+

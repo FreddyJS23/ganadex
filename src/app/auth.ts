@@ -9,21 +9,25 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     callbacks: {
         jwt({ token, user }) {
             if (user) {
+                token.userId = parseInt(user.id as string);
                 token.usuario = user.usuario;
                 token.token = user.token;
                 token.role = user.rol;
                 token.xsrf_token = user.xsrf_token;
                 token.laravel_session = user.laravel_session;
+                token.finca=user.finca
                 /*     token.cookieCsrf=user.cookieCsrf */
             }
             return token;
         },
         session({ session, token }) {
+            session.user.userId = token.userId;
             session.user.token = token.token;
             session.user.usuario = token.usuario;
             session.user.rol = token.role;
             session.user.xsrf_token = token.xsrf_token;
             session.user.laravel_session = token.laravel_session;
+            session.user.finca=token.finca
             return session;
         },
     },

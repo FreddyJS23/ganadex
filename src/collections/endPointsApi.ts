@@ -69,7 +69,11 @@ export const endPoints = {
     eliminarTodasNotificaciiones:'borrar_notificaciones',
     fechaUltimoRespaldo: 'ultimo_respaldo',
     vacunasDisponibles: 'vacunas_disponibles',
-    sugerirNumero:'numero_disponible'
+    sugerirNumero:'numero_disponible',
+    veterinariosSinUsuario: 'veterinarios_sin_usuario',
+    usuariosVeterinarios:'usuarios_veterinarios',
+    usuarioVeterinario: 'usuario_veterinario/',
+    usuario:'usuario/'
 };
 
 export const endPointsCattle = {
