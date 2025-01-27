@@ -24,6 +24,7 @@ import {
     ResponseGanado,
     AplicacionVacunaHistorial,
     Vacuna,
+    UserVeterinaryInfo,
 } from '@/types';
 
 type headersColumns = {
@@ -139,6 +140,11 @@ type headersColumnsHistoryVaccinesApply={
 
 type headersColumnsHistoryVaccines = {
     key: keyof Vacuna;
+    label: string;
+}
+
+type headersColumnsUserVeterinary = {
+    key: keyof UserVeterinaryInfo;
     label: string;
 }
 
@@ -309,4 +315,10 @@ export const headerHistoryVaccines:headersColumnsHistoryVaccines[] = [
     { key: 'vacuna', label: 'Vacuna' },
     { key: 'fecha', label: 'Fecha' },
     { key: 'prox_dosis', label: 'Proxima dosis' },
+];
+
+export const headersColumnsUserVeterinary: headersColumnsUserVeterinary[] = [
+    { key: 'usuario', label: 'Usuario' },
+    { key: 'email', label: 'Email' },
+    { key: 'rol', label: 'Rol' },
 ];
