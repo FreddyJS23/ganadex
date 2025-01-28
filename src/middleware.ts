@@ -19,6 +19,11 @@ const routeIsAllowed = (url: string) => {
     
 };
 
+const redirectRol=(rol:'admin' | 'veterinario',url:string)=>{
+    if (rol == 'admin') return NextResponse.redirect(new URL('/dashboard', url));
+    else if (rol == 'veterinario') return NextResponse.redirect(new URL('/ganado', url));
+}
+
 export default middleware((request) => {
     //session no iniciada
     if (!request.auth) {
@@ -26,9 +31,12 @@ export default middleware((request) => {
         if (!request.nextUrl.pathname.startsWith('/login'))
             return NextResponse.redirect(new URL('/login', request.url));
     } else {
-        if (request.nextUrl.pathname.startsWith('/login')) {
-            if (request.auth.user.rol == 'admin') return NextResponse.redirect(new URL('/dashboard', request.url));
-            else if (request.auth.user.rol == 'veterinario') return NextResponse.redirect(new URL('/ganado', request.url));
+        
+        //logueado pero sin una sesion de finca
+        if(!request.auth.user.sesion_finca && !request.nextUrl.pathname.startsWith('/finca')) return NextResponse.redirect(new URL('/finca', request.url))
+        
+        if (request.nextUrl.pathname.startsWith('/login') || (request.nextUrl.pathname.match('/finca') && request.auth.user.sesion_finca) ) {
+            return redirectRol(request.auth.user.rol,request.url)
         }
         if (request.auth.user.rol == 'veterinario')
             {
