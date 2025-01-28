@@ -296,3 +296,12 @@ export type ResponseVeterinariosSinUsuario={
 export type ResponseInformacionUsuarioLogeado={
     user:UserAdminInfo | UserVeterinaryInfo
 }
+
+export type ResponseFincas={
+    fincas:Finca[]
+}
+
+export type ResponseFinca={
+    finca:Finca
+}
+
