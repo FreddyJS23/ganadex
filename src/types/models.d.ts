@@ -279,22 +279,13 @@ export type Finca={
     fecha_creacion:string
 }
 
-export type UserVeterinaryInfo={
+export type UserVeterinaryInfo=Omit<UserLoginInfo,'rol'> & {rol:'veterinario'}
+
+export type UserLoginInfo={
     id:number,
     usuario:string,
     email:string,
-    rol:'veterinario'
-    fecha_creacion:string
-}
-
-export type UserVeterinary=Pick<UserVeterinaryInfo,'id'|'usuario'> & {nombre:string}
-
-export type UserAdminInfo={
-    id:number,
-    usuario:string,
-    email:string,
-    rol:'admin'
-    fincas:Finca[]
+    rol:'admin' | 'veterinario'
     fecha_creacion:string
 }
 
