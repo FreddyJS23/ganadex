@@ -73,7 +73,10 @@ export const endPoints = {
     veterinariosSinUsuario: 'veterinarios_sin_usuario',
     usuariosVeterinarios:'usuarios_veterinarios',
     usuarioVeterinario: 'usuario_veterinario/',
-    usuario:'usuario/'
+    usuario:'usuario/',
+    finca:'finca',
+    verSesionFinca:'verificar_sesion_finca',
+    crearSesionFinca:'crear_sesion_finca/',
 };
 
 export const endPointsCattle = {
