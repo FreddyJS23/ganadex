@@ -3,7 +3,7 @@
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react';
 import { TableVeterinaryUsers } from '../tables/veterinary users';
 import { SelectVeterinaryNotUser } from '../select veterenary not user';
-import { Finca, UserAdminInfo, UserVeterinaryInfo, veterinario } from '@/types';
+import { Finca, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
 import { Button } from '@/ui/Button';
 import IconEditar from '@/icons/icono-editar.svg';
 import { ModalUpdateUser } from '../modals/update user';
@@ -17,11 +17,12 @@ import { ButtonCreateItem } from '@/ui/ButtonCreate';
 type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];
     veterinarios: veterinario[];
-    user: UserVeterinaryInfo | UserAdminInfo;
-    finca:Pick<Finca,'id'|'nombre'>
+    user: UserLoginInfo;
+    fincaSesion:Finca
+    fincas:Finca[]
 };
 
-const ElementProfileAdmin = ({ user }: { user: UserAdminInfo }) => {
+const ElementProfileAdmin = ({ user }: { user: UserLoginInfo }) => {
     return (
         <>
             <ElementProfile tittle="Usuario" content={user.usuario} />
@@ -33,7 +34,7 @@ const ElementProfileAdmin = ({ user }: { user: UserAdminInfo }) => {
         </>
     );
 };
-const ElementProfileVeterinary = ({ user }: { user: UserVeterinaryInfo }) => {
+const ElementProfileVeterinary = ({ user }: { user: UserLoginInfo }) => {
     return (
         <>
             <ElementProfile tittle="Usuario" content={user.usuario} />
