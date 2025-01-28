@@ -37,7 +37,7 @@ declare module 'next-auth' {
         xsrf_token: string;
         laravel_session: string;
         userId: number;
-        finca:Pick<Finca,'id'|'nombre'>
+        sesion_finca:boolean
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
     /**
@@ -57,6 +57,6 @@ declare module 'next-auth/jwt' {
         xsrf_token: string;
         laravel_session: string;
         userId: number;
-        finca:Pick<Finca,'id'|'nombre'>
+        sesion_finca:boolean
     }
 }

@@ -171,7 +171,8 @@ export enum TitlesModals {
     'Nueva jornada de vacunación',
     'Historial de vacunas aplicadas',
     'Actualizar usuario',
-    'Crear finca'
+    'Crear finca',
+    'Selecionar finca en la que trabajar'
 }
 
 export enum FieldsIdCasttle {

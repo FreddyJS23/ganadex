@@ -3,7 +3,7 @@
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react';
 import { TableVeterinaryUsers } from '../tables/veterinary users';
 import { SelectVeterinaryNotUser } from '../select veterenary not user';
-import { Finca, UserAdminInfo, UserVeterinaryInfo, veterinario } from '@/types';
+import { Finca, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
 import { Button } from '@/ui/Button';
 import IconEditar from '@/icons/icono-editar.svg';
 import { ModalUpdateUser } from '../modals/update user';
@@ -17,11 +17,12 @@ import { ButtonCreateItem } from '@/ui/ButtonCreate';
 type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];
     veterinarios: veterinario[];
-    user: UserVeterinaryInfo | UserAdminInfo;
-    finca:Pick<Finca,'id'|'nombre'>
+    user: UserLoginInfo;
+    fincaSesion:Finca
+    fincas:Finca[]
 };
 
-const ElementProfileAdmin = ({ user }: { user: UserAdminInfo }) => {
+const ElementProfileAdmin = ({ user }: { user: UserLoginInfo }) => {
     return (
         <>
             <ElementProfile tittle="Usuario" content={user.usuario} />
@@ -33,7 +34,7 @@ const ElementProfileAdmin = ({ user }: { user: UserAdminInfo }) => {
         </>
     );
 };
-const ElementProfileVeterinary = ({ user }: { user: UserVeterinaryInfo }) => {
+const ElementProfileVeterinary = ({ user }: { user: UserLoginInfo }) => {
     return (
         <>
             <ElementProfile tittle="Usuario" content={user.usuario} />
@@ -50,7 +51,8 @@ export const TabsProfile = ({
     usuarios_veterinarios,
     veterinarios,
     user,
-    finca
+    fincaSesion,
+    fincas
 }: TabsProfileProps) => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     return (
@@ -140,10 +142,10 @@ export const TabsProfile = ({
                             <div className="flex gap-12 items-center">
                                 <ElementProfile
                                     tittle="Finca en sesion"
-                                    content={finca.nombre}
+                                    content={fincaSesion.nombre}
                                     description="Todos los datos que se representan y las operaciones que se realizen perteneceran a esta finca"
                                 />
-                                {/* button */}
+                                {/* button registrat finca*/}
                                     <ButtonCreateItem
                                         href={'/finca/registrar'}
                                     />
@@ -157,7 +159,7 @@ export const TabsProfile = ({
                                 <div className="divider divider-primary mt-0 opacity-[0.03]"></div>{' '}
                             </div>
                             <>
-                                {user.fincas.map(
+                                {fincas.map(
                                     ({ id, nombre, fecha_creacion }) => (
                                         <ElementProfile
                                             key={id}

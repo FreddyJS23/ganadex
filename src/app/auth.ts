@@ -7,7 +7,7 @@ import Credentials from 'next-auth/providers/credentials';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     callbacks: {
-        jwt({ token, user }) {
+        jwt({ token, user,session,trigger}) {
             if (user) {
                 token.userId = parseInt(user.id as string);
                 token.usuario = user.usuario;
@@ -15,8 +15,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 token.role = user.rol;
                 token.xsrf_token = user.xsrf_token;
                 token.laravel_session = user.laravel_session;
-                token.finca=user.finca
+                token.sesion_finca=user.sesion_finca
                 /*     token.cookieCsrf=user.cookieCsrf */
+            }
+            if(trigger == 'update'){
+                token = {...token,...session.user }
+                return token;
             }
             return token;
         },
@@ -27,7 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             session.user.rol = token.role;
             session.user.xsrf_token = token.xsrf_token;
             session.user.laravel_session = token.laravel_session;
-            session.user.finca=token.finca
+            session.user.sesion_finca=token.sesion_finca         
             return session;
         },
     },

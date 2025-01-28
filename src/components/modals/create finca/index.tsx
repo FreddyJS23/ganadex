@@ -9,13 +9,25 @@ import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'sonner';
 import { createFinca } from '@/actions/finca';
+import { useSession } from 'next-auth/react';
+
+type ModalCreateFincaProps = ModalProps & {
+    isOpen: boolean;
+    onOpen: () => void;
+    onOpenChange: (open: boolean) => void;
+    /**verificar si es la primera finca para redireccionar de una vez y no mostrarle el modal de seleccion de finca,
+     ya que es inncesario crear una finca y despues solo mostrale un select con una sola finca
+     */
+    primeraFinca: boolean;
+};
+
 
 export const ModalCreateFinca = ({
     isOpen,
-
     onOpen,
     onOpenChange,
-}: ModalProps) => {
+    primeraFinca=false,
+}: ModalCreateFincaProps) => {
     const {
         register,
         formState: { errors },
@@ -26,15 +38,27 @@ export const ModalCreateFinca = ({
 
     const router = useRouter();
     const formRef = useRef(null);
+    const { update, data: session } = useSession();
 
     const actionCreateFinca: () => void = handleSubmit(async (data) => {
         try {
-            const priceMilk = await createFinca(data);
+            const finca = await createFinca(data);
             toast.success(
-                `${priceMilk} creada exitosamente`,
+                `${finca} creada exitosamente`,
             );
-            router.back();
-            router.refresh();
+            /* actualizar sesion ya que hay una finca en sesion */
+            if(primeraFinca) {
+                await update({
+                ...session,
+                user: { ...session?.user, sesion_finca: true },
+            });
+            router.push('/api/verificar_sesion_finca');
+            }
+            else {
+                router.back();
+                router.refresh();
+            }
+            
         } catch (error) {
             const message = error as string;
             return toast.error(message);
@@ -58,13 +82,14 @@ export const ModalCreateFinca = ({
                 className="m-auto w-2/4 "
             >
                 <Input
-                    id="finca"
+                    id="nombre"
                     label="Nueva finca"
                     required
                     type="text"
                     size="lg"
                     errors={errors}
                     register={register}
+                    
                 />
             </form>
         </LayoutModal>

@@ -3,7 +3,7 @@
 import { ModalCreateFinca } from '@/components/modals/create finca';
 import { useDisclosure } from '@nextui-org/react';
 
-export const CreateFinca = () => {
+export const CreateFinca = ({ primeraFinca=false }: { primeraFinca?: boolean }) => {
     const { onOpen, onOpenChange } = useDisclosure();
 
     return (
@@ -11,6 +11,7 @@ export const CreateFinca = () => {
             isOpen={true}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
+            primeraFinca={primeraFinca}
         />
     );
 };
