@@ -51,7 +51,8 @@ export const TabsProfile = ({
     usuarios_veterinarios,
     veterinarios,
     user,
-    finca
+    fincaSesion,
+    fincas
 }: TabsProfileProps) => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     return (
@@ -141,10 +142,10 @@ export const TabsProfile = ({
                             <div className="flex gap-12 items-center">
                                 <ElementProfile
                                     tittle="Finca en sesion"
-                                    content={finca.nombre}
+                                    content={fincaSesion.nombre}
                                     description="Todos los datos que se representan y las operaciones que se realizen perteneceran a esta finca"
                                 />
-                                {/* button */}
+                                {/* button registrat finca*/}
                                     <ButtonCreateItem
                                         href={'/finca/registrar'}
                                     />
@@ -158,7 +159,7 @@ export const TabsProfile = ({
                                 <div className="divider divider-primary mt-0 opacity-[0.03]"></div>{' '}
                             </div>
                             <>
-                                {user.fincas.map(
+                                {fincas.map(
                                     ({ id, nombre, fecha_creacion }) => (
                                         <ElementProfile
                                             key={id}
