@@ -113,6 +113,7 @@ export type LayoutModalProps = {
     onOpenChange?: () => void;
     onClick?: () => void;
     onClose?: () => void;
+    isDismissable?:boolean
 };
 
 export type ModalProps = Pick<

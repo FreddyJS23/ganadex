@@ -22,6 +22,7 @@ export const LayoutModal = ({
     refForm,
     onClick,
     onClose,
+    isDismissable=true
 }: LayoutModalProps) => {
     const Icon = iconsModal[icon];
     const [currentRefForm, setcurrentRefForm] = useState<
@@ -46,6 +47,7 @@ export const LayoutModal = ({
             classNames={{ base: 'bg-base-100' }}
             placement="center"
             onClose={onClose ? onClose : onCloseWhenIsRoute}
+            isDismissable={isDismissable}
         >
             <ModalContent>
                 {(onClose) => (
