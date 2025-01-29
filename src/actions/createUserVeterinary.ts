@@ -1,11 +1,11 @@
 'use serve';
 
-import { ResponseError, ResponseVeterinarioUsuario, UserVeterinary  } from '@/types';
+import { ResponseError, ResponseVeterinarioUsuario  } from '@/types';
 import { getData } from '@/utils/getData';
 
 export async function createUserVeterinary(
     id: number,
-): Promise<string | UserVeterinary | ResponseError | undefined> {
+): Promise<string  | ResponseError | undefined> {
     try {
         const { usuario_veterinario }: ResponseVeterinarioUsuario = await getData(
             'usuariosVeterinarios',
