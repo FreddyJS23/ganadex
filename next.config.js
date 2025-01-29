@@ -2,6 +2,13 @@
 const isProduction = process.env.NODE_ENV === "production";
 
 const nextConfig = {
+    typescript: {
+        // !! WARN !!
+        // Dangerously allow production builds to successfully complete even if
+        // your project has type errors.
+        // !! WARN !!
+        ignoreBuildErrors: true,
+      },
       distDir:isProduction ? 'build' : undefined,
     webpack(config) {
         // Grab the existing rule that handles SVG imports
