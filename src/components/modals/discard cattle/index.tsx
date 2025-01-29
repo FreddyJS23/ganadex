@@ -5,7 +5,7 @@ import { LayoutModal } from '..';
 import { ModalProps } from '@/types';
 import { toast } from 'sonner';
 import { useParams, useRouter } from 'next/navigation';
-import { discardCattle } from '@/actions/discardCattle';
+import { discardCattle } from '@/actions/descartarGanado';
 
 export const ModalDiscardCattle   = ({
     dataHeader,
