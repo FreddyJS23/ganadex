@@ -1,6 +1,6 @@
 import { z } from './configInitZod';
-import { createDeathCastleShema } from './deathCastle';
-import { createSaleCattleShema } from './saleCattle';
+import {  createDeathCastleShemaInOthersForm } from './deathCastle';
+import {  createSaleCattleShemaInOthersForm } from './saleCattle';
 /* Format dd/mm/yyyy o dd-mm-yyyy */
 
 
@@ -19,11 +19,6 @@ export const castleShema = z
         peso_2year: z.number().optional(),
         peso_actual: z.number().optional(),
         estado_id: z.string().array(),
-        fecha_fallecimiento: z.string().optional(),
-        causa: z.string().max(255).optional(),
-        precio: z.number().optional(),
-        comprador_id: z.string().optional(),
-        fecha_venta: z.string().optional(),
     })
     .refine(
         ({ peso_nacimiento, peso_destete }) =>
@@ -89,5 +84,5 @@ export const castleShema = z
         },
     );
 
-export const castleShemaWithSale = castleShema.and(createSaleCattleShema)
-export const castleShemaWitDeath = castleShema.and(createDeathCastleShema)
+export const castleShemaWithSale = castleShema.and(createSaleCattleShemaInOthersForm)
+export const castleShemaWitDeath = castleShema.and(createDeathCastleShemaInOthersForm)
