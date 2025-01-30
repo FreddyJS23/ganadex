@@ -8,7 +8,7 @@ export const endPoints = {
     todosGanadoDescarte: 'ganado_descarte',
     descartarGanado: 'descartar_ganado/',
     ganadoDescarte: 'ganado_descarte/',
-    criasNumeracion: 'crias_pendiente_numeracion',
+    /* criasNumeracion: 'crias_pendiente_numeracion', */
     asignarNumeroCria: 'asignar_numero_cria/',
     /* criasCapar: 'crias_pendiente_capar', */
     /* caparCria: 'capar_cria/', */
