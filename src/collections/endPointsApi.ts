@@ -10,8 +10,8 @@ export const endPoints = {
     ganadoDescarte: 'ganado_descarte/',
     criasNumeracion: 'crias_pendiente_numeracion',
     asignarNumeroCria: 'asignar_numero_cria/',
-    criasCapar: 'crias_pendiente_capar',
-    caparCria: 'capar_cria/',
+    /* criasCapar: 'crias_pendiente_capar', */
+    /* caparCria: 'capar_cria/', */
     crearPrecioLeche: 'precio/',
     preciosLeche: 'precio',
     checkSessionApi: 'check_session_activa',

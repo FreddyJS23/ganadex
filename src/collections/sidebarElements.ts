@@ -80,10 +80,10 @@ export const optionsSidebarAdmin: Pick<
                 option: 'Jornadas vacunacion',
                 url: '/jornadas_vacunacion',
             },
-            {
+            /* {
                 option: 'Capar animal',
                 url: '/capar_becerro',
-            },
+            }, */
         ],
     },
 
@@ -164,10 +164,10 @@ export const optionsSidebarVeterinary: Pick<
                 option: 'Jornadas vacunacion',
                 url: '/jornadas_vacunacion',
             },
-            {
+            /* {
                 option: 'Capar animal',
                 url: '/capar_becerro',
-            },
+            }, */
         ],
     },
 ]
