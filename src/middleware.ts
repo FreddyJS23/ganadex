@@ -10,7 +10,6 @@ const routesVerinary = [
     'partos',
     'fallecimientos',
     'jornadas_vacunacion',
-    'capar_becerro',
 ]
 
 const routeIsAllowed = (url: string) => {
