@@ -49,7 +49,7 @@ export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
         resolver: zodResolver(shema),
         defaultValues: { estado_id: ['1'], numero: numero_disponible },
     });
-
+console.log(errors)
     const handleSelectionTypeBullChange = (select: number | string) => {
         /* pocision del container campo peso dos años */
         const inputWeight2year = form.current?.querySelector(
@@ -69,6 +69,8 @@ export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
             const response = (await createBull(data)) as string | number;
             form.current?.reset();
             setStates(new Set('1'));
+            setShowinputDead(false);
+            setShowinputSale(false);
             toast.success(`Toro numero ${response} ha sido registrado`);
         } catch (error) {
             const message = error as string;
@@ -90,12 +92,14 @@ export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
             setStates(new Set('5'));
             setValue('estado_id', ['5']);
             setShowinputSale(true);
+            setShowinputDead(false);
         } else if (valuesStates.some((value) => value == '2')) {
             /* state dead */
             setshema(bullShemaWitDeath);
             setStates(new Set('2'));
             setValue('estado_id', ['2']);
             setShowinputDead(true);
+            setShowinputSale(false);
         } else {
             /* other states */
             setShowinputDead(false);

@@ -69,6 +69,8 @@ export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
             const response = (await createBeef(data)) as string | number;
             form.current?.reset();
             setStates(new Set('1'));
+            setShowinputDead(false);
+            setShowinputSale(false);
             toast.success(
                 `GanadoDescarte numero ${response} ha sido registrado`,
             );
@@ -92,12 +94,14 @@ export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
             setStates(new Set('5'));
             setValue('estado_id', ['5']);
             setShowinputSale(true);
+            setShowinputDead(false);
         } else if (valuesStates.some((value) => value == '2')) {
             /* state dead */
             setshema(createDiscardedCattleWithDeadthShema);
             setStates(new Set('2'));
             setValue('estado_id', ['2']);
             setShowinputDead(true);
+            setShowinputSale(false);
         } else {
             /* other states */
             setShowinputDead(false);

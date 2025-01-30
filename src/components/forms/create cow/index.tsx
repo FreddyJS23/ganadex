@@ -58,6 +58,8 @@ console.log(numero_disponible)
              form.current?.reset();
             setListVaccines([])
             setStates(new Set('1'));
+            setShowinputDead(false);
+            setShowinputSale(false);
             toast.success(
                 `La cabeza ganado de numero ${response} ha sido registrado`,
             );
@@ -81,6 +83,7 @@ console.log(numero_disponible)
             setStates(new Set('5'));
             setValue('estado_id', ['5']);
             setShowinputSale(true);
+            setShowinputDead(false);
         } else if (valuesStates.some((value) => value == '2')) {
             /* state dead */
             setshema(castleShemaWitDeath)
