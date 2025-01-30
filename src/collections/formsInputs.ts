@@ -335,13 +335,13 @@ export const formStaff: FieldsStaff[] = [
     { id: 'cargo_id', label: 'Cargo', required: true, type: 'select' },
 ];
 export const formDeadCattle: FieldsDeadCattle[] = [
-    { id: 'fecha_fallecimiento', label: 'Fecha de defunción', required: true, type: 'date' },
+    { id: 'fecha', label: 'Fecha de defunción', required: true, type: 'date' },
     { id: 'causa', label: 'Causa de defunción', required: true, type: 'text' },
 ];
 
 export const formSaleCattle: FieldsSaleCattle[] = [
     { id: 'precio', label: 'Precio', required: true, type: 'number' },
-    { id: 'fecha_venta', label: 'Fecha de venta', required: true, type: 'date' },
+    { id: 'fecha', label: 'Fecha de venta', required: true, type: 'date' },
     {
         id: 'comprador_id',
         label: 'Compradores',

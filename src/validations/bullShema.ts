@@ -1,6 +1,6 @@
 import { z } from './configInitZod';
-import { createDeathCastleShema } from './deathCastle';
-import { createSaleCattleShema } from './saleCattle';
+import { createDeathCastleShemaInOthersForm } from './deathCastle';
+import { createSaleCattleShemaInOthersForm } from './saleCattle';
 
 /* Format dd/mm/yyyy o dd-mm-yyyy */
 const regexDate =
@@ -86,5 +86,5 @@ export const createBullShema = z
             path: ['peso_2year'],
         },
     );
-    export const bullShemaWithSale = createBullShema.and(createSaleCattleShema)
-    export const bullShemaWitDeath = createBullShema.and(createDeathCastleShema)
+    export const bullShemaWithSale = createBullShema.and(createSaleCattleShemaInOthersForm)
+    export const bullShemaWitDeath = createBullShema.and(createDeathCastleShemaInOthersForm)

@@ -10,6 +10,7 @@ import { createDeathCattle } from '@/actions/fallecimientos';
 import { useParams, useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { getDateNow } from '@/utils/getDateNow';
+import { formDeadCattle } from '@/collections/formsInputs';
 
 export const ModalDeathCattle = ({
     isOpen,
@@ -63,25 +64,42 @@ export const ModalDeathCattle = ({
                 className="m-auto flex flex-col gap-4 w-2/4 "
                 id={'form-createDeathCattle'}
             >
-                <Input
-                    id="causa"
-                    label="Causa"
-                    required
-                    type="text"
-                    size="lg"
-                    errors={errors}
-                    register={register}
-                />
-                <Input
-                    id="fecha"
-                    label="Fecha"
-                    required
-                    type="date"
-                    size="lg"
-                    defaultValue={getDateNow()}
-                    errors={errors}
-                    register={register}
-                />
+              
+
+                    {formDeadCattle.map(
+                    ({ id, label, required, type, endContent }) => (
+                        <>
+                            <div key={id}>
+                                {type != 'select' && id != 'fecha' && (
+                                    <Input
+                                        id={id}
+                                        label={label}
+                                        type={type}
+                                        endContent={endContent}
+                                        register={register}
+                                        size='lg'
+                                        errors={errors}
+                                        required={required}
+                                    />
+                                )}
+                                {id == 'fecha' && (
+                                    <Input
+                                        id={id}
+                                        label={label}
+                                        type={type}
+                                        endContent={endContent}
+                                        register={register}
+                                        size='lg'
+                                        errors={errors}
+                                        required={required}
+                                        defaultValue={getDateNow()}
+                                    />
+                                )}
+                            </div>
+                        </>
+                    ),
+                )}
+
             </form>
         </LayoutModal>
     );

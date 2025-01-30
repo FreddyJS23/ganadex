@@ -11,7 +11,7 @@ import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
 import { Chip } from '@nextui-org/chip';
 import { Select } from '@/components/select';
 import { Controller, useForm } from 'react-hook-form';
-import { castleShema, castleShemaWitDeath, castleShemaWithSale, } from '@/validations/castleShema';
+import { castleShema, castleShemaWitDeath, castleShemaWithSale } from '@/validations/castleShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateCastle } from '@/types/forms';
 import { createCastle } from '@/actions/vaca';
@@ -86,6 +86,7 @@ console.log(numero_disponible)
             setshema(castleShemaWitDeath)
             setStates(new Set('2'));
             setValue('estado_id', ['2']);
+            setShowinputSale(false);
             setShowinputDead(true);
         } else {
             /* other states */
@@ -181,7 +182,7 @@ console.log(numero_disponible)
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {type != 'select' && id != 'fecha_fallecimiento' && (
+                                {id == 'causa' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -192,9 +193,11 @@ console.log(numero_disponible)
                                         required={required}
                                     />
                                 )}
-                                {id == 'fecha_fallecimiento' && (
+                                {id == 'fecha' && (
                                     <Input
-                                        id={id}
+                                    /* El id se debe cambiar ya que se usa una shema validacion diferente
+                                        al original */      
+                                    id={'fecha_fallecimiento'}
                                         label={label}
                                         type={type}
                                         endContent={endContent}
@@ -214,7 +217,7 @@ console.log(numero_disponible)
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {type != 'select' && id != 'fecha_venta' && (
+                                {type != 'select' && type != 'date' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -225,9 +228,11 @@ console.log(numero_disponible)
                                         required={required}
                                     />
                                 )}
-                                {id == 'fecha_venta' && (
+                                {type == 'date' && (
                                     <Input
-                                        id={id}
+                                        /* El id se debe cambiar ya que se usa una shema validacion diferente
+                                        al original */    
+                                        id={'fecha_venta'}
                                         label={label}
                                         type={type}
                                         endContent={endContent}

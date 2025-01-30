@@ -161,21 +161,22 @@ export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {type != 'select' &&
-                                    id != 'fecha_fallecimiento' && (
-                                        <Input
-                                            id={id}
-                                            label={label}
-                                            type={type}
-                                            endContent={endContent}
-                                            register={register}
-                                            errors={errors}
-                                            required={required}
-                                        />
-                                    )}
-                                {id == 'fecha_fallecimiento' && (
+                                {id == 'causa' && (
                                     <Input
                                         id={id}
+                                        label={label}
+                                        type={type}
+                                        endContent={endContent}
+                                        register={register}
+                                        errors={errors}
+                                        required={required}
+                                    />
+                                )}
+                                {id == 'fecha' && (
+                                    <Input
+                                    /* El id se debe cambiar ya que se usa una shema validacion diferente
+                                        al original */      
+                                    id={'fecha_fallecimiento'}
                                         label={label}
                                         type={type}
                                         endContent={endContent}
@@ -195,7 +196,7 @@ export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {type != 'select' && id != 'fecha_venta' && (
+                            {type != 'select' && type != 'date' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -206,9 +207,11 @@ export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
                                         required={required}
                                     />
                                 )}
-                                {id == 'fecha_venta' && (
+                                {type == 'date' && (
                                     <Input
-                                        id={id}
+                                        /* El id se debe cambiar ya que se usa una shema validacion diferente
+                                        al original */    
+                                        id={'fecha_venta'}
                                         label={label}
                                         type={type}
                                         endContent={endContent}

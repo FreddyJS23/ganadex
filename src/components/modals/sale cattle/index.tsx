@@ -14,6 +14,8 @@ import { endpointsReports } from '@/collections/endPointsApi';
 import { Button } from '@/ui/Button';
 import IconPrint from '@/icons/icono-imprimir.svg';
 import { getDateNow } from '@/utils/getDateNow';
+import { formSaleCattle } from '@/collections/formsInputs';
+import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 
 export const ModalSaleCattle = ({
     isOpen,
@@ -102,42 +104,59 @@ export const ModalSaleCattle = ({
                 method="post"
                 ref={formRef}
             >
-                <Input
-                    id="precio"
-                    label="Precio"
-                    required
-                    type="number"
-                    endContent="dolar"
-                    size="lg"
-                    errors={errors}
-                    register={register}
-                />
-
-                <Input
-                    id="fecha"
-                    label="Fecha"
-                    required
-                    type="date"
-                    defaultValue={getDateNow()}
-                    errors={errors}
-                    register={register}
-                />
                 
-                <Controller
-                    name="comprador_id"
-                    control={control}
-                    render={({ field }) => (
-                        <Select
-                            id="comprador_id"
-                            label="Compradores"
-                            required
-                            description="Compradores disponibles, creados previamente"
-                            items={itemsSelect}
-                            errors={errors}
-                            field={field}
-                        />
-                    )}
-                />
+                {formSaleCattle.map(
+                    ({ id, label, required, type, endContent }) => (
+                        <>
+                            <div key={id}>
+                                {type != 'select' && type != 'date' && (
+                                    <Input
+                                        id={id}
+                                        label={label}
+                                        type={type}
+                                        endContent={endContent}
+                                        register={register}
+                                        size='lg'
+                                        errors={errors}
+                                        required={required}
+                                    />
+                                )}
+                                {type == 'date' && (
+                                    <Input
+                                        /* El id se debe cambiar ya que se usa una shema validacion diferente
+                                        al original */    
+                                        id={'fecha_venta'}
+                                        label={label}
+                                        type={type}
+                                        endContent={endContent}
+                                        register={register}
+                                        errors={errors}
+                                        required={required}
+                                    />
+                                )}
+                                {type == 'select' && (
+                                    <Controller
+                                        name={id}
+                                        /*Se interpone un any ya que esta heredando el tipo del formulario completo
+                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                        control={control as any}
+                                        render={({ field }) => (
+                                            <Select
+                                                field={field}
+                                                id={id}
+                                                items={itemsSelect}
+                                                label={label}
+                                                errors={errors}
+                                                required={required}
+                                            />
+                                        )}
+                                    />
+                                )}
+                            </div>
+                        </>
+                    ),
+                )}
             </form>
         </LayoutModal>
     );
