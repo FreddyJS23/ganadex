@@ -123,9 +123,7 @@ export const ModalSaleCattle = ({
                                 )}
                                 {type == 'date' && (
                                     <Input
-                                        /* El id se debe cambiar ya que se usa una shema validacion diferente
-                                        al original */    
-                                        id={'fecha_venta'}
+                                        id={id}
                                         label={label}
                                         type={type}
                                         endContent={endContent}
