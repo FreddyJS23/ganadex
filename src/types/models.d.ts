@@ -8,10 +8,10 @@ type EstadosGanado = {
 };
 
 type Pesos = {
-    peso_nacimiento: number | null;
-    peso_destete: number | null;
-    peso_2year: number | null;
-    peso_actual: number | null;
+    peso_nacimiento: string | null;
+    peso_destete: string | null;
+    peso_2year: string | null;
+    peso_actual: string | null;
 };
 
 type Eventos = {
@@ -96,9 +96,9 @@ export type Personal = {
 };
 
 export type Configuracion = {
-    id: number;
-    dark_mode: boolean;
-    moneda: string;
+    peso_servicio: number;
+    dias_evento_notificacion: number;
+    dias_diferencia_vacunado: number;
 };
 
 /**Revision individual de una cabeza de ganado */
