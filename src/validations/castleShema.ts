@@ -82,7 +82,10 @@ export const castleShema = z
                 'El peso de dos años no puede ser mayor que el peso actual',
             path: ['peso_2year'],
         },
-    );
+    ).refine((data) =>new Date(data.fecha_nacimiento as string) <= new Date(), {
+        message: 'La fecha de nacimiento no puede ser mas alta que la fecha actual',
+        path: ['fecha_nacimiento'],
+    });
 
 export const castleShemaWithSale = castleShema.and(createSaleCattleShemaInOthersForm)
 export const castleShemaWitDeath = castleShema.and(createDeathCastleShemaInOthersForm)

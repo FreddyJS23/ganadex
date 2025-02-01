@@ -85,6 +85,9 @@ export const createBullShema = z
                 'El peso de dos años no puede ser mayor que el peso actual',
             path: ['peso_2year'],
         },
-    );
+    ).refine((data) =>new Date(data.fecha_nacimiento as string) <= new Date(), {
+        message: 'La fecha de nacimiento no puede ser mas alta que la fecha actual',
+        path: ['fecha_nacimiento'],
+    });;
     export const bullShemaWithSale = createBullShema.and(createSaleCattleShemaInOthersForm)
     export const bullShemaWitDeath = createBullShema.and(createDeathCastleShemaInOthersForm)
