@@ -1,11 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { JWT } from 'next-auth/jwt';
+import { Configuracion } from './models';
 
 type User = {
     id: number;
     usuario: string;
     token: string;
     rol:'admin'|'veterinario';
+    configuracion:Configuracion
 };
 
 export type ResponseRegistroExitoso = {
@@ -38,6 +40,7 @@ declare module 'next-auth' {
         laravel_session: string;
         userId: number;
         sesion_finca:boolean
+        configuracion:Configuracion
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
     /**
@@ -58,5 +61,6 @@ declare module 'next-auth/jwt' {
         laravel_session: string;
         userId: number;
         sesion_finca:boolean
+        configuracion:Configuracion
     }
 }
