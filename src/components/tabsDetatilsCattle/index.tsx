@@ -21,6 +21,8 @@ import { ModalHistoryVaccines } from '../modals/historys/history vaccines';
 
 type TabsDetailsCattleProps = Omit<ResponseGanado, 'ganado'> & {
     eventos: Eventos;
+    /**Cuando la vaca no tiene un peso minimo se desactiva algunas opciones */  
+    disabledSomeTabs: boolean;
 };
 
 export const TabDetailsCattle = ({
@@ -34,6 +36,7 @@ export const TabDetailsCattle = ({
     parto_reciente,
     total_partos,
     vacunaciones,
+    disabledSomeTabs,
 }: TabsDetailsCattleProps) => {
     const router = useRouter();
     const pathname = usePathname();
@@ -51,6 +54,7 @@ export const TabDetailsCattle = ({
                 }}
                 size="lg"
                 fullWidth={true}
+                disabledKeys={disabledSomeTabs ? ['servicios', 'partos', 'leche'] : []}
             >
                 <Tab
                     key="revisiones"

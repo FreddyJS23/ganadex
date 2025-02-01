@@ -33,6 +33,12 @@ export default async function Page({ params }: ParamsPageCattle) {
 
     const session = await auth() as Session
     const role=session.user.rol
+    let disabledSomeTabs=true
+    if(ganado.pesos?.peso_actual){
+        if(parseInt(ganado.pesos?.peso_actual) >= session.user.configuracion.peso_servicio)
+        disabledSomeTabs=false
+        else disabledSomeTabs=true
+    }
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
@@ -146,6 +152,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                         total_partos={total_partos}
                         info_pesajes_leche={info_pesajes_leche}
                         vacunaciones={vacunaciones}
+                        disabledSomeTabs={disabledSomeTabs} 
                     />
                 </div>
             </div>
