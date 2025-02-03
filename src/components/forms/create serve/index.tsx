@@ -11,7 +11,7 @@ import { CreateServe } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
-import { createServeShema } from '@/validations/serveShema';
+import { createServeShema, createServeShemaWithPajuelaToroId, createServeShemaWithToroId } from '@/validations/serveShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -29,13 +29,16 @@ export const FormCreateService = ({
     toros,
     pajuelasToro,
 }: FormCreateServiceProps) => {
+   
+    const [shema, setshema] = useState<typeof createServeShemaWithPajuelaToroId |typeof createServeShemaWithToroId>(createServeShemaWithPajuelaToroId)
+
     const {
         register,
         formState: { errors },
         control,
         handleSubmit,
     } = useForm<CreateServe>({
-        resolver: zodResolver(createServeShema),
+        resolver: zodResolver(shema),
     });
     const router = useRouter();
     const { id: cattleId } = useParams<{ id: string }>();
@@ -56,7 +59,10 @@ export const FormCreateService = ({
     // campos select tipo servicio
     const [typeService, setTypeService] = useState<'monta' | 'inseminacion'>('monta');
     const {id: tipoId, label: tipoLabel, select: tipoSelect,required: tipoRequired} = formService[1];
-    const handleSelectionTypeServiceChange = (select:string | number) => setTypeService(select as 'monta' | 'inseminacion');
+    const handleSelectionTypeServiceChange = (select:string | number) => {
+        select ==='monta'?setshema(createServeShemaWithToroId) : setshema(createServeShemaWithPajuelaToroId)
+        setTypeService(select as 'monta' | 'inseminacion')
+    };
     
     //campos select toro
     const {id: toroId, label: toroLabel,required: toroRequired} = formService[2];
