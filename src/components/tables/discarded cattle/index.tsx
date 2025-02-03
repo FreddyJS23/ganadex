@@ -8,15 +8,8 @@ import {
     ResponseGanadoDescartes,
     User,
 } from '@/types';
-import {
-    TableHeader,
-    TableColumn,
-    TableBody,
-    TableRow,
-    TableCell,
-} from '@nextui-org/table';
 import { Key, ReactNode, useCallback, useState } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import { RedirectInTable } from '@/components/redirectsInTables';
 import { DropDownOptions } from '@/components/dropdown options';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
@@ -27,36 +20,9 @@ export const TableDiscardedCattle = ({
     ganado_descartes,
     role,
 }: ResponseGanadoDescartes & {role:User['rol']}) => {
-    const [discardedCattles, setDiscardedCattles] =
-        useState<GanadoDescarte[]>(ganado_descartes);
-
-    const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
-        'all',
-    );
-
-    const beefDeath = () => {
-        const beefDeath = ganado_descartes.filter(({ estados }) => {
-            return estados.some(({ estado }) => estado == 'fallecido');
-        });
-        setDiscardedCattles(beefDeath);
-        setFilterActive('death');
-    };
-
-    const beefSales = () => {
-        const beefSales = ganado_descartes.filter(({ estados }) => {
-            return estados.some(({ estado }) => estado == 'vendido');
-        });
-        setDiscardedCattles(beefSales);
-        setFilterActive('sales');
-    };
-
-    const allBeef = () => {
-        setDiscardedCattles(discardedCattles);
-        setFilterActive('all');
-    };
-
+    
     const renderCell = useCallback(
-        (ganado_descarte: GanadoDescarte, columnKey: Key) => {
+        (ganado_descarte: GanadoDescarte, columnKey:keyof GanadoDescarte) => {
             const cellValue =
                 ganado_descarte[columnKey as keyof GanadoDescarte];
 
@@ -114,31 +80,12 @@ export const TableDiscardedCattle = ({
 
     return (
         <>
-            <ButtonFilterStateCattle
-                filterActive={filterActive}
-                cattlesDeath={beefDeath}
-                cattlesSales={beefSales}
-                allCattles={allBeef}
+            <TableComponent
+                type="beef"
+                columnsCollection={headerBeef}
+                items={ganado_descartes}
+                renderCell={renderCell}
             />
-
-            <LayoutTable type="beef">
-                <TableHeader columns={headerBeef}>
-                    {({ key, label }) => (
-                        <TableColumn key={key}>{label}</TableColumn>
-                    )}
-                </TableHeader>
-                <TableBody items={discardedCattles}>
-                    {(ganado_descarte) => (
-                        <TableRow key={ganado_descarte.id}>
-                            {(columnKey) => (
-                                <TableCell>
-                                    {renderCell(ganado_descarte, columnKey)}
-                                </TableCell>
-                            )}
-                        </TableRow>
-                    )}
-                </TableBody>
-            </LayoutTable>
         </>
     );
 };

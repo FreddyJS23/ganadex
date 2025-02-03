@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import { RedirectInTable } from '@/components/redirectsInTables';
 import { DropDownOptions } from '@/components/dropdown options';
 
@@ -76,23 +76,11 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
     }, []);
 
     return (
-        <LayoutTable type="births">
-            <TableHeader columns={headerAllBirths}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={todos_partos}>
-                {(partos) => (
-                    <TableRow key={partos.id}>
-                        {(columnKey) => (
-                            <TableCell>
-                                {renderCell(partos, columnKey)}
-                            </TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+       <TableComponent
+       columnsCollection={headerAllBirths}
+       items={todos_partos}
+       renderCell={renderCell}
+       type='births'
+       />
     );
 };

@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import { RedirectInTable } from '@/components/redirectsInTables';
 import { DropDownOptions } from '@/components/dropdown options';
 
@@ -73,23 +73,11 @@ export const TableAllServes = ({
     }, []);
 
     return (
-        <LayoutTable type="serves">
-            <TableHeader columns={headerAllServes}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={todos_servicios}>
-                {(servicios) => (
-                    <TableRow key={servicios.id}>
-                        {(columnKey) => (
-                            <TableCell>
-                                {renderCell(servicios, columnKey)}
-                            </TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+        <TableComponent
+            columnsCollection={headerAllServes}
+            items={todos_servicios}
+            renderCell={renderCell}
+            type='serves'
+        />
     );
 };

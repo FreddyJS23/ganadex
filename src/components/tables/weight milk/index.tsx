@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import IconButton from '@/icons/icono-peso.svg';
 import Link from 'next/link';
 import IconCheck from '@/icons/icono-check.svg';
@@ -23,7 +23,7 @@ export const TableAllWeightMilk = ({
     const renderCell = useCallback(
         (pesajeLeche: PesajesLeche, columnKey: Key) => {
             const cellValue = pesajeLeche[columnKey as keyof PesajesLeche];
-
+            
             switch (columnKey as keyof PesajesLeche) {
                 /* button icon */
                 case 'id': {
@@ -64,25 +64,11 @@ export const TableAllWeightMilk = ({
     );
 
     return (
-        <>
-            <LayoutTable type="all weight milk">
-                <TableHeader columns={headerAllWeightMilk}>
-                    {({ key, label }) => (
-                        <TableColumn key={key}>{label}</TableColumn>
-                    )}
-                </TableHeader>
-                <TableBody items={todos_pesaje_leche}>
-                    {(pesajeLeche) => (
-                        <TableRow key={pesajeLeche.id}>
-                            {(columnKey) => (
-                                <TableCell>
-                                    {renderCell(pesajeLeche, columnKey)}
-                                </TableCell>
-                            )}
-                        </TableRow>
-                    )}
-                </TableBody>
-            </LayoutTable>
-        </>
+      <TableComponent
+        columnsCollection={headerAllWeightMilk}
+        items={todos_pesaje_leche}
+        renderCell={renderCell}
+        type='all weight milk'
+      />
     );
 };
