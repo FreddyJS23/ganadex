@@ -2,7 +2,7 @@ import { StateCattle, TypeNotification, TypesCattle } from './enums';
 
 export type PesajeLeche = `${string}-KG`;
 
-type EstadosGanado = {
+export type EstadosGanado = {
     id: number;
     estado: keyof typeof StateCattle;
 };
