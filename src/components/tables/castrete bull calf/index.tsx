@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
 
@@ -49,25 +49,11 @@ export const TableCastreteBullCalf = ({
     );
 
     return (
-        <>
-            <LayoutTable type="castrete bull calf">
-                <TableHeader columns={headerCastreteBullCalf}>
-                    {({ key, label }) => (
-                        <TableColumn key={key}>{label}</TableColumn>
-                    )}
-                </TableHeader>
-                <TableBody items={crias_pendiente_capar}>
-                    {(cria) => (
-                        <TableRow key={cria.id}>
-                            {(columnKey) => (
-                                <TableCell>
-                                    {renderCell(cria, columnKey)}
-                                </TableCell>
-                            )}
-                        </TableRow>
-                    )}
-                </TableBody>
-            </LayoutTable>
-        </>
+       <TableComponent
+            type="castreteBullCalf"
+            columnsCollection={headerCastreteBullCalf}
+            items={crias_pendiente_capar}
+            renderCell={renderCell}
+            />
     );
 };

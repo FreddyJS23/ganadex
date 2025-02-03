@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 
 
 export const TablePajuelaToro = ({ pajuela_toros }: ResponsePajuelaToros) => {
@@ -25,25 +25,11 @@ export const TablePajuelaToro = ({ pajuela_toros }: ResponsePajuelaToros) => {
     }, []);
 
     return (
-        <>
-            <LayoutTable type="pajuela_toro">
-                <TableHeader columns={headerPajuelaToro}>
-                    {({ key, label }) => (
-                        <TableColumn key={key}>{label}</TableColumn>
-                    )}
-                </TableHeader>
-                <TableBody items={pajuela_toros}>
-                    {(pajuela_toro) => (
-                        <TableRow key={pajuela_toro.id}>
-                            {(columnKey) => (
-                                <TableCell>
-                                    {renderCell(pajuela_toro, columnKey)}
-                                </TableCell>
-                            )}
-                        </TableRow>
-                    )}
-                </TableBody>
-            </LayoutTable>
-        </>
+       <TableComponent
+            type="pajuelaToro"
+            columnsCollection={headerPajuelaToro}
+            items={pajuela_toros}
+            renderCell={renderCell}
+            />
     );
 };

@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback, useState } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import Link from 'next/link';
 import { RedirectInTable } from '@/components/redirectsInTables';
 import { DropDownOptions } from '@/components/dropdown options';
@@ -19,32 +19,7 @@ import IconCheck from '@/icons/icono-check.svg';
 import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
 export const TableBull = ({ toros,role }: ResponseToros & {role:User['rol']}) => {
-    const [bulls, setBulls] = useState<Toro[]>(toros);
-
-    const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
-        'all',
-    );
-
-    const bullDeath = () => {
-        const bullDeath = toros.filter(({ estados }) => {
-            return estados.some(({ estado }) => estado == 'fallecido');
-        });
-        setBulls(bullDeath);
-        setFilterActive('death');
-    };
-
-    const bullSales = () => {
-        const bullSales = toros.filter(({ estados }) => {
-            return estados.some(({ estado }) => estado == 'vendido');
-        });
-        setBulls(bullSales);
-        setFilterActive('sales');
-    };
-
-    const allbull = () => {
-        setBulls(toros);
-        setFilterActive('all');
-    };
+  
 
     const renderCell = useCallback((toro: Toro, columnKey: Key) => {
         const cellValue = toro[columnKey as keyof Toro];
@@ -106,31 +81,11 @@ export const TableBull = ({ toros,role }: ResponseToros & {role:User['rol']}) =>
     }, []);
 
     return (
-        <>
-            <ButtonFilterStateCattle
-                filterActive={filterActive}
-                cattlesDeath={bullDeath}
-                cattlesSales={bullSales}
-                allCattles={allbull}
-            />
-            <LayoutTable type="bull">
-                <TableHeader columns={headerBull}>
-                    {({ key, label }) => (
-                        <TableColumn key={key}>{label}</TableColumn>
-                    )}
-                </TableHeader>
-                <TableBody items={bulls}>
-                    {(toro) => (
-                        <TableRow key={toro.id}>
-                            {(columnKey) => (
-                                <TableCell>
-                                    {renderCell(toro, columnKey)}
-                                </TableCell>
-                            )}
-                        </TableRow>
-                    )}
-                </TableBody>
-            </LayoutTable>
-        </>
-    );
+      <TableComponent
+        type="bull"
+        columnsCollection={headerBull}
+        items={toros}
+        renderCell={renderCell}
+        />
+    )
 };

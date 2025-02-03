@@ -11,7 +11,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback, useState } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
 import { DropDownOptions } from '@/components/dropdown options';
 import { RedirectInTable } from '@/components/redirectsInTables';
@@ -21,32 +21,7 @@ import { ButtonFilterStateCattle } from '@/components/filter state cattle';
 
 
 export const TableCasttle = ({ cabezas_ganado,role }: ResponseGanados & {role:User['rol']}) => {
-    const [cattles, setCattles] = useState<CabezasGanado[]>(cabezas_ganado);
 
-    const [filterActive, setFilterActive] = useState<'all' | 'death' | 'sales'>(
-        'all',
-    );
-
-    const cattlesDeath = () => {
-        const cattlesDeath = cabezas_ganado.filter(({ estados }) => {
-            return estados.some(({ estado }) => estado == 'fallecido');
-        });
-        setCattles(cattlesDeath);
-        setFilterActive('death');
-    };
-
-    const cattlesSales = () => {
-        const cattlesSales = cabezas_ganado.filter(({ estados }) => {
-            return estados.some(({ estado }) => estado == 'vendido');
-        });
-        setCattles(cattlesSales);
-        setFilterActive('sales');
-    };
-
-    const allCattles = () => {
-        setCattles(cabezas_ganado);
-        setFilterActive('all');
-    };
 
     const renderCell = useCallback(
         (cabeza_ganado: CabezasGanado, columnKey: Key) => {
@@ -111,31 +86,13 @@ export const TableCasttle = ({ cabezas_ganado,role }: ResponseGanados & {role:Us
     );
 
     return (
-        <>
-            <ButtonFilterStateCattle
-                filterActive={filterActive}
-                cattlesDeath={cattlesDeath}
-                cattlesSales={cattlesSales}
-                allCattles={allCattles}
-            />
-            <LayoutTable type="casttle">
-                <TableHeader columns={headerCasttle}>
-                    {({ key, label }) => (
-                        <TableColumn key={key}>{label}</TableColumn>
-                    )}
-                </TableHeader>
-                <TableBody items={cattles}>
-                    {(cabeza_ganado) => (
-                        <TableRow key={cabeza_ganado.id}>
-                            {(columnKey) => (
-                                <TableCell>
-                                    {renderCell(cabeza_ganado, columnKey)}
-                                </TableCell>
-                            )}
-                        </TableRow>
-                    )}
-                </TableBody>
-            </LayoutTable>
-        </>
+     
+        <TableComponent
+        columnsCollection={headerCasttle}
+        items={cabezas_ganado}
+        renderCell={renderCell}
+        type='cattle'
+        
+        />
     );
 };

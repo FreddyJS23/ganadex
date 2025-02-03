@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import Link from 'next/link';
 
 export const TableDeadCattle = ({ fallecidos }: ResponseFallecimientos) => {
@@ -36,23 +36,11 @@ export const TableDeadCattle = ({ fallecidos }: ResponseFallecimientos) => {
     );
 
     return (
-        <LayoutTable type="dead cattle">
-            <TableHeader columns={headerDeadCattle}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={fallecidos}>
-                {(fallecimiento) => (
-                    <TableRow key={fallecimiento.id}>
-                        {(columnKey) => (
-                            <TableCell>
-                                {renderCell(fallecimiento, columnKey)}
-                            </TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+        <TableComponent
+            type="deadCattle"
+            columnsCollection={headerDeadCattle}
+            items={fallecidos}
+            renderCell={renderCell}
+        />
     );
 };

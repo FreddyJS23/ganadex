@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 
 export const TableSaleMilk = ({ ventas_de_leche }: ResponseVentasLeche) => {
     const renderCell = useCallback(
@@ -23,23 +23,11 @@ export const TableSaleMilk = ({ ventas_de_leche }: ResponseVentasLeche) => {
     );
 
     return (
-        <LayoutTable type="sale casttle">
-            <TableHeader columns={headerSaleMilk}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={ventas_de_leche}>
-                {(venta_leche) => (
-                    <TableRow key={venta_leche.id}>
-                        {(columnKey) => (
-                            <TableCell>
-                                {renderCell(venta_leche, columnKey)}
-                            </TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+        <TableComponent
+            type="saleMilk"
+            columnsCollection={headerSaleMilk}
+            items={ventas_de_leche}
+            renderCell={renderCell}
+        />
     );
 };

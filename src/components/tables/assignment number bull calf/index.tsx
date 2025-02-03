@@ -13,7 +13,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import IconButton from '@/icons/icono-capar-numeracion.svg';
 import Link from 'next/link';
 
@@ -54,25 +54,12 @@ export const TableAssignmentNumberBullCalf = ({
     );
 
     return (
-        <>
-            <LayoutTable type="assignment bull calf">
-                <TableHeader columns={headerAssignmentNumberBullCalf}>
-                    {({ key, label }) => (
-                        <TableColumn key={key}>{label}</TableColumn>
-                    )}
-                </TableHeader>
-                <TableBody items={crias_pendiente_numeracion}>
-                    {(cria) => (
-                        <TableRow key={cria.id}>
-                            {(columnKey) => (
-                                <TableCell>
-                                    {renderCell(cria, columnKey)}
-                                </TableCell>
-                            )}
-                        </TableRow>
-                    )}
-                </TableBody>
-            </LayoutTable>
-        </>
+      <TableComponent
+      columnsCollection={headerAssignmentNumberBullCalf}
+      items={crias_pendiente_numeracion}
+      renderCell={renderCell}
+      type='assignmente number bull calf'
+      
+      />
     );
 };

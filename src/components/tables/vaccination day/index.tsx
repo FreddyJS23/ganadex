@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 
 export const TableVAccinationDay = ({ jornadas_vacunacion }: ResponseJornadasVacunacion) => {
     const renderCell = useCallback((jornadaVacunacion: DayVaccination, columnKey: Key) => {
@@ -29,23 +29,11 @@ export const TableVAccinationDay = ({ jornadas_vacunacion }: ResponseJornadasVac
     }, []);
 
     return (
-        <LayoutTable type="day_vaccination">
-            <TableHeader columns={headerJornadasVacunacion}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={jornadas_vacunacion}>
-                {(jornadaVacunacion) => (
-                    <TableRow key={jornadaVacunacion.id}>
-                        {(columnKey) => (
-                            <TableCell>
-                                {renderCell(jornadaVacunacion, columnKey)}
-                            </TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+        <TableComponent
+            type="vaccinationDay"
+            columnsCollection={headerJornadasVacunacion}
+            items={jornadas_vacunacion}
+            renderCell={renderCell}
+        />
     );
 };

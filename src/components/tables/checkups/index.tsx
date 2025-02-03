@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 import { RedirectInTable } from '@/components/redirectsInTables';
 import { DropDownOptions } from '@/components/dropdown options';
 
@@ -44,23 +44,11 @@ export const TableAllCheckups = ({
     }, []);
 
     return (
-        <LayoutTable type="chkeups">
-            <TableHeader columns={headerAllCheckup}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={todas_revisiones}>
-                {(revisiones) => (
-                    <TableRow key={revisiones.id}>
-                        {(columnKey) => (
-                            <TableCell>
-                                {renderCell(revisiones, columnKey)}
-                            </TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+       <TableComponent
+            type="checkups"
+            columnsCollection={headerAllCheckup}
+            items={todas_revisiones}
+            renderCell={renderCell}
+            />
     );
 };

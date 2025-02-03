@@ -10,7 +10,7 @@ import {
     TableCell,
 } from '@nextui-org/table';
 import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable } from '..';
+import { LayoutTable, TableComponent } from '..';
 
 export const TableSupplies = ({ insumos }: ResponseInsumos) => {
     const renderCell = useCallback((insumo: Insumo, columnKey: Key) => {
@@ -20,23 +20,11 @@ export const TableSupplies = ({ insumos }: ResponseInsumos) => {
     }, []);
 
     return (
-        <LayoutTable type="supplies">
-            <TableHeader columns={headerSupplies}>
-                {({ key, label }) => (
-                    <TableColumn key={key}>{label}</TableColumn>
-                )}
-            </TableHeader>
-            <TableBody items={insumos}>
-                {(insumo) => (
-                    <TableRow key={insumo.id}>
-                        {(columnKey) => (
-                            <TableCell>
-                                {renderCell(insumo, columnKey)}
-                            </TableCell>
-                        )}
-                    </TableRow>
-                )}
-            </TableBody>
-        </LayoutTable>
+        <TableComponent
+            type="supplies"
+            columnsCollection={headerSupplies}
+            items={insumos}
+            renderCell={renderCell}
+        />
     );
 };
