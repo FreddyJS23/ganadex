@@ -27,128 +27,21 @@ import {
     UserVeterinaryInfo,
 } from '@/types';
 
-type headersColumns = {
-    key: keyof CabezasGanado;
-    label: string;
-};
-
-type headersColumnsBull = {
-    key: keyof Toro;
-    label: string;
-};
-
-type headersColumnsBeef = {
-    key: keyof GanadoDescarte;
-    label: string;
-};
-
-type headersColumnsSaleCasttle = {
-    key: keyof VentaGanado;
-    label: string;
-};
-
-type headersColumnsSaleMilk = {
-    key: keyof VentaLeche;
-    label: string;
-};
-
-type headersColumnsSupplies = {
-    key: keyof Insumo;
-    label: string;
-};
-
-type headersColumnsStaff = {
-    key: keyof Personal;
-    label: string;
-};
-
-type headersColumnsAllCheckups = {
-    key: keyof Revisiones;
-    label: string;
-};
-
-type headersColumnsAllServes = {
-    key: keyof Servicios;
-    label: string;
-};
-type headersColumnsAllBirhs = {
-    key: keyof Partos;
-    label: string;
-};
-
-type headersColumnsAssignmentNumberBullCalf = {
-    key: keyof CriaPendienteNumeracion;
-    label: string;
-};
-type headersColumnsCastreteBullCalf = {
-    key: keyof CriaPendienteCapar;
-    label: string;
-};
-
-type headersColumnsHistoryPriceMilk = {
-    key: keyof PreciosDeLeche;
-    label: string;
-};
-type headersColumnsCheckups = {
-    key: keyof Revision;
-    label: string;
-};
-
-type headersColumnsServices = {
-    key: keyof Servicio | 'toro/pajuela';
-    label: string;
-};
-
-type headersColumnsBirths = {
-    key: keyof Parto;
-    label: string;
-};
-
-type headersColumnsWeightMilk = {
-    key: keyof PesajeLecheGanado;
-    label: string;
-};
-
-type headersColumnsAllWeightMilk = {
-    key: keyof PesajesLeche;
-    label: string;
-};
-
-type headersColumnsCustomer = {
-    key: keyof Comprador;
-    label: string;
-};
-
-type headersColumnDeadCattle = {
-    key: keyof Fallecimiento;
-    label: string;
-};
-
-type headersColumnsPajuelaToro = {
-    key: keyof PajuelaToro;
-    label: string;
-};
-type headersColumnsJornadasVacunacion = {
-    key: keyof DayVaccination;
-    label: string;
-};
-
-type headersColumnsHistoryVaccinesApply={
-    key: keyof AplicacionVacunaHistorial;
-    label: string;
+type baseHeaderColunms={
+    label:string
+    tooltip?:string
 }
 
-type headersColumnsHistoryVaccines = {
-    key: keyof Vacuna;
-    label: string;
+type headersColumns<T > =baseHeaderColunms & {
+    key: keyof T;
+};
+
+type headersColumnsServices=baseHeaderColunms & {
+    key:keyof Servicio | 'toro/pajuela'
 }
 
-type headersColumnsUserVeterinary = {
-    key: keyof UserVeterinaryInfo;
-    label: string;
-}
 
-export const headerCasttle: headersColumns[] = [
+export const headerCasttle: headersColumns<CabezasGanado>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
     { key: 'sexo', label: 'Sexo' },
@@ -159,7 +52,7 @@ export const headerCasttle: headersColumns[] = [
     { key: 'estados', label: 'Estados' },
     { key: 'id', label: 'Acciones' },
 ];
-export const headerBull: headersColumnsBull[] = [
+export const headerBull: headersColumns<Toro>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
     { key: 'pesos', label: 'Peso actual' },
@@ -169,7 +62,7 @@ export const headerBull: headersColumnsBull[] = [
     { key: 'estados', label: 'Estados' },
     { key: 'id', label: 'Acciones' },
 ];
-export const headerBeef: headersColumnsBeef[] = [
+export const headerBeef: headersColumns<GanadoDescarte>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
     { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
@@ -178,7 +71,7 @@ export const headerBeef: headersColumnsBeef[] = [
     { key: 'id', label: 'Acciones' },
 ];
 
-export const headerSaleCasttle: headersColumnsSaleCasttle[] = [
+export const headerSaleCasttle: headersColumns<VentaGanado>[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'ganado', label: 'Numero de ganado' },
     { key: 'peso', label: 'Peso' },
@@ -187,19 +80,19 @@ export const headerSaleCasttle: headersColumnsSaleCasttle[] = [
     { key: 'comprador', label: 'Comprador' },
 ];
 
-export const headerSaleMilk: headersColumnsSaleMilk[] = [
+export const headerSaleMilk: headersColumns<VentaLeche>[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'cantidad', label: 'Cantidad' },
     { key: 'precio', label: 'Precio' },
 ];
 
-export const headerSupplies: headersColumnsSupplies[] = [
+export const headerSupplies: headersColumns<Insumo>[] = [
     { key: 'insumo', label: 'Insumo' },
     { key: 'cantidad', label: 'Cantidad en inventario' },
     { key: 'precio', label: 'Coste individual' },
 ];
 
-export const headerStaff: headersColumnsStaff[] = [
+export const headerStaff: headersColumns<Personal>[] = [
     { key: 'ci', label: 'Cedula' },
     { key: 'nombre', label: 'Nombre' },
     { key: 'apellido', label: 'Apellido' },
@@ -207,7 +100,7 @@ export const headerStaff: headersColumnsStaff[] = [
     { key: 'cargo', label: 'Cargo' },
 ];
 
-export const headerAllCheckup: headersColumnsAllCheckups[] = [
+export const headerAllCheckup: headersColumns<Revisiones>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'diagnostico', label: 'Diagnostico' },
     { key: 'proxima_revision', label: 'Proxima revision' },
@@ -216,7 +109,7 @@ export const headerAllCheckup: headersColumnsAllCheckups[] = [
     { key: 'id', label: 'Acciones' },
 ];
 
-export const headerAllServes: headersColumnsAllServes[] = [
+export const headerAllServes: headersColumns<Servicios>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'toro', label: 'Toro/Pajuela toro' },
     { key: 'total_servicios', label: 'Total de servicios' },
@@ -225,7 +118,7 @@ export const headerAllServes: headersColumnsAllServes[] = [
     { key: 'id', label: 'Acciones' },
 ];
 
-export const headerAllBirths: headersColumnsAllBirhs[] = [
+export const headerAllBirths: headersColumns<Partos>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'ultimo_parto', label: 'Ultimo parto' },
     { key: 'cria', label: 'Cria' },
@@ -234,20 +127,20 @@ export const headerAllBirths: headersColumnsAllBirhs[] = [
     { key: 'id', label: 'Acciones' },
 ];
 
-export const headerAssignmentNumberBullCalf: headersColumnsAssignmentNumberBullCalf[] =
+export const headerAssignmentNumberBullCalf: headersColumns<CriaPendienteNumeracion>[] =
     [
         { key: 'nombre', label: 'Nombre' },
         { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
         { key: 'id', label: 'Asignar' },
     ];
 
-export const headerCastreteBullCalf: headersColumnsCastreteBullCalf[] = [
+export const headerCastreteBullCalf: headersColumns<CriaPendienteCapar>[] = [
     { key: 'nombre', label: 'Nombre' },
     { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
     { key: 'id', label: 'Capar' },
 ];
 
-export const headerAllWeightMilk: headersColumnsAllWeightMilk[] = [
+export const headerAllWeightMilk: headersColumns<PesajesLeche>[] = [
     { key: 'nombre', label: 'Nombre' },
     { key: 'numero', label: 'Numero' },
     { key: 'pesaje_este_mes', label: 'Pesaje mes actual' },
@@ -255,12 +148,12 @@ export const headerAllWeightMilk: headersColumnsAllWeightMilk[] = [
     { key: 'id', label: 'Pesar' },
 ];
 
-export const headerHistoryPriceMilk: headersColumnsHistoryPriceMilk[] = [
+export const headerHistoryPriceMilk: headersColumns<PreciosDeLeche>[] = [
     { key: 'precio', label: 'Precio' },
     { key: 'fecha', label: 'Fecha' },
 ];
 
-export const headerCheckups: headersColumnsCheckups[] = [
+export const headerCheckups: headersColumns<Revision>[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'diagnostico', label: 'Diagnostico' },
 ];
@@ -270,33 +163,33 @@ export const headerServices: headersColumnsServices[] = [
     { key: 'toro/pajuela', label: 'Toro/Pajuela toro' },
 ];
 
-export const headerBirths: headersColumnsBirths[] = [
+export const headerBirths: headersColumns<Parto>[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'observacion', label: 'Observación' },
 ];
 
-export const headerWeightMilk: headersColumnsWeightMilk[] = [
+export const headerWeightMilk: headersColumns<PesajeLecheGanado>[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'pesaje', label: 'Pesaje' },
 ];
 
-export const headerCustomers: headersColumnsCustomer[] = [
+export const headerCustomers: headersColumns<Comprador>[] = [
     { key: 'nombre', label: 'Nombre' },
 ];
 
-export const headerDeadCattle: headersColumnDeadCattle[] = [
+export const headerDeadCattle: headersColumns<Fallecimiento>[] = [
     { key: 'causa', label: 'Causa' },
     { key: 'fecha', label: 'Fecha' },
     { key: 'ganado', label: 'Ganado' },
 ];
 
-export const headerPajuelaToro: headersColumnsPajuelaToro[] = [
+export const headerPajuelaToro: headersColumns<PajuelaToro>[] = [
     { key: 'codigo', label: 'Codigo' },
     { key: 'descripcion', label: 'Descripcion' },
     { key: 'fecha', label: 'Fecha' },
 ];
 
-export const headerJornadasVacunacion: headersColumnsJornadasVacunacion[] = [
+export const headerJornadasVacunacion: headersColumns<DayVaccination>[] = [
     { key: 'fecha_inicio', label: 'Fecha inicio' },
     { key: 'fecha_fin', label: 'Fecha fin' },
     { key: 'vacuna', label: 'Vacuna' },
@@ -304,20 +197,20 @@ export const headerJornadasVacunacion: headersColumnsJornadasVacunacion[] = [
     { key: 'vacunados', label: 'Vacunados' },
 ];
 
-export const headerHistoryVaccinesApply: headersColumnsHistoryVaccinesApply[] = [
+export const headerHistoryVaccinesApply: headersColumns<AplicacionVacunaHistorial>[] = [
     { key: 'vacuna', label: 'Vacuna' },
     { key: 'cantidad', label: 'Cantidad' },
     { key: 'ultima_dosis', label: 'Ultima dosis' },
     { key: 'prox_dosis', label: 'Proxima dosis' },
 ];
 
-export const headerHistoryVaccines:headersColumnsHistoryVaccines[] = [
+export const headerHistoryVaccines:headersColumns<Vacuna>[] = [
     { key: 'vacuna', label: 'Vacuna' },
     { key: 'fecha', label: 'Fecha' },
     { key: 'prox_dosis', label: 'Proxima dosis' },
 ];
 
-export const headersColumnsUserVeterinary: headersColumnsUserVeterinary[] = [
+export const headersColumnsUserVeterinary: headersColumns<UserVeterinaryInfo>[] = [
     { key: 'usuario', label: 'Usuario' },
     { key: 'email', label: 'Email' },
     { key: 'rol', label: 'Rol' },
