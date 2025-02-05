@@ -7,7 +7,7 @@ export type EstadosGanado = {
     estado: keyof typeof StateCattle;
 };
 
-type Pesos = {
+export type Pesos = {
     peso_nacimiento: string | null;
     peso_destete: string | null;
     peso_2year: string | null;
