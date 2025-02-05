@@ -1,7 +1,7 @@
 'use serve';
 
-import { ResponseError, ResponseToro } from '@/types';
-import { CreateBull } from '@/types/forms';
+import { Pesos, ResponseError, ResponseToro } from '@/types';
+import { CreateBull, updateWeight } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
 export async function createBull(
@@ -16,3 +16,22 @@ export async function createBull(
         throw message;
     }
 }
+
+export async function updateWeightBull(
+    id:number,
+    formData:updateWeight,
+): Promise<Pesos| ResponseError | undefined>{
+        try {
+        const { toro }: ResponseToro = await getData(
+                'toro',
+                'PUT',
+            formData,
+                id
+            );  
+            return toro.pesos;
+        } catch (error) {
+            const { message } = error as Error;
+            throw message;
+        }
+}
+

@@ -21,6 +21,7 @@ import { z } from 'zod';
 import { createPajuelaToroSchema } from '@/validations/pajuelaToroShema';
 import { createVaccinationDayShema } from '@/validations/VaccinationDay';
 import { createFincaShema } from '@/validations/finca';
+import { weightsShema } from '@/validations/weightsShema';
 
 export type Login = {
     usuario: string;
@@ -41,6 +42,8 @@ export type UpdateUser = {
     password: string;
 
 };
+
+export type updateWeight= z.infer<typeof weightsShema>;
 
 export type CreateCastle = z.infer<typeof castleShema>;
 

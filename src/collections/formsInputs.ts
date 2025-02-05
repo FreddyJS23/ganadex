@@ -23,7 +23,9 @@ import {
     FieldsLabelsStaff,
     FieldsLabelsSupply,
     FieldsLabelsVaccinationDay,
+    FieldsLabelsWeights,
     InputProps,
+    Pesos,
 } from '@/types';
 import { genderSelect } from './genderSelect';
 import { typeCasttleSelect } from './typeCastleSelect';
@@ -96,7 +98,17 @@ type FieldsVaccinationDay = Pick<InputProps, 'type' | 'endContent' | 'required'>
     id: keyof typeof FieldsIdVaccinationDay;
     label: keyof typeof FieldsLabelsVaccinationDay;
 };
+type FieldsWeights = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
+    id: keyof Pesos;
+    label: keyof typeof FieldsLabelsWeights;
+};
 
+export const formWeights: FieldsWeights[] = [
+    { id: 'peso_nacimiento', label: 'Peso de nacimiento', required: true, type: 'number', endContent: 'weight' },
+    { id: 'peso_destete', label: 'Peso de destete', required: true, type: 'number', endContent: 'weight' },
+    { id: 'peso_2year', label: 'Peso de 2 años', required: true, type: 'number', endContent: 'weight' },
+    { id: 'peso_actual', label: 'Peso actual', required: true, type: 'number', endContent: 'weight' },
+];
 
 export const formCastle: FieldsCastle[] = [
     { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
@@ -151,6 +163,8 @@ export const formCastle: FieldsCastle[] = [
         select: stateCasttleSelect,
     },
 ];
+
+
 export const formBull: FieldsBull[] = [
     { id: 'nombre', label: 'Nombre', required: true, type: 'text' },
     { id: 'numero', label: 'Numero', required: true, type: 'number' },

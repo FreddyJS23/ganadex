@@ -95,6 +95,7 @@ export type InputProps = {
     errors: FieldErrors;
     defaultValue?: string;
     uppercase?: boolean;
+    variant?:"flat" | "bordered" | "underlined" | "faded"
 };
 
 export type LayoutModalProps = {

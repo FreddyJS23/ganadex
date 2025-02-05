@@ -1,7 +1,7 @@
 'use serve';
 
-import { ListaVacunas, ResponseError, ResponseGanado } from '@/types';
-import { CreateCastle } from '@/types/forms';
+import { ListaVacunas, Pesos, ResponseError, ResponseGanado } from '@/types';
+import { CreateCastle, updateWeight } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
 export async function createCastle(
@@ -24,4 +24,22 @@ export async function createCastle(
         const { message } = error as Error;
         throw message;
     }
+}
+
+export async function updateWeightCastle(
+    id:number,
+    formData:updateWeight,
+): Promise<Pesos| ResponseError | undefined>{
+        try {
+        const { ganado }: ResponseGanado = await getData(
+                'ganado',
+                'PUT',
+            formData,
+                id
+            );  
+            return ganado.pesos;
+        } catch (error) {
+            const { message } = error as Error;
+            throw message;
+        }
 }

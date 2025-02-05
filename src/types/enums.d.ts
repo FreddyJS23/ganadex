@@ -373,3 +373,9 @@ export enum FieldsLabelsVaccinationDay {
     "Fecha fin",
     "Vacuna",
 }
+export enum FieldsLabelsWeights {
+    'Peso de nacimiento',
+    'Peso de destete',
+    'Peso de 2 años',
+    'Peso actual',
+}
