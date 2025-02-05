@@ -5,6 +5,7 @@ import {
 } from '@/collections';
 import { Details } from '@/components/details';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
+import { WeightsEditable } from '@/components/editable sections/weights';
 import { ResponseToro } from '@/types';
 import { getData } from '@/utils/getData';
 import Image from 'next/image';
@@ -34,7 +35,8 @@ export default async function Page({ params }: ParamsPageBull) {
         tipo,
         estados,
     } = toro;
-
+//comprobar si tiene estado vendido o fallecido para no editar pesos
+    const checkState=estados.some(({estado})=>estado=='vendido'||estado=='fallecido')
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
@@ -77,51 +79,13 @@ export default async function Page({ params }: ParamsPageBull) {
                             </div>
                             {/* Pesos */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">
-                                <h3 className="self-center text-xl font-bold">
-                                    Pesos
-                                </h3>
-                                <div className="flex gap-6 flex-wrap justify-between sm:gap-4">
-                                    {pesos ? (
-                                        <>
-                                            <Details
-                                                tittle={
-                                                    DetailsWeights.peso_nacimiento
-                                                }
-                                                content={
-                                                    pesos?.peso_nacimiento ?? ''
-                                                }
-                                            />
-                                            <Details
-                                                tittle={
-                                                    DetailsWeights.peso_destete
-                                                }
-                                                content={
-                                                    pesos?.peso_destete ?? ''
-                                                }
-                                            />
-                                            <Details
-                                                tittle={
-                                                    DetailsWeights.peso_2year
-                                                }
-                                                content={
-                                                    pesos?.peso_2year ?? ''
-                                                }
-                                            />
-                                            <Details
-                                                tittle={
-                                                    DetailsWeights.peso_actual
-                                                }
-                                                content={
-                                                    pesos?.peso_actual ?? ''
-                                                }
-                                            />
-                                        </>
-                                    ) : (
-                                        <div className="m-auto">
-                                            No disponibles
-                                        </div>
-                                    )}
-                                </div>
+                               
+                            {pesos ? <WeightsEditable disableEdit={checkState} id={toro.id} pesos={pesos} typeModelWeight={'toro'}  />
+                            
+                            :<>
+                            <h3 className="m-auto">Pesos</h3>
+                            <div className="m-auto">No disponibles</div> 
+                            </>}
                             </div>
                             {/*Eficiencia */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">

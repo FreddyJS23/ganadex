@@ -10,6 +10,7 @@ import cattleImage from 'public/cattle.png';
 import { DropDownOptions } from '@/components/dropdown options';
 import { auth } from '@/app/auth';
 import { Session } from 'next-auth';
+import { WeightsEditable } from '@/components/editable sections/weights';
 
 type ParamsPageCattle = {
     params: { id: number };
@@ -39,6 +40,8 @@ export default async function Page({ params }: ParamsPageCattle) {
         disabledSomeTabs=false
         else disabledSomeTabs=true
     }
+    //comprobar si tiene estado vendido o fallecido para no editar pesos
+    const checkState=ganado.estados.some(({estado})=>estado=='vendido'||estado=='fallecido')
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
@@ -86,55 +89,14 @@ export default async function Page({ params }: ParamsPageCattle) {
                             </div>
                             {/* Pesos */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">
-                                <h3 className="self-center text-xl font-bold">
-                                    Pesos
-                                </h3>
-                                <div className="flex gap-6 flex-wrap justify-between sm:gap-4">
-                                    {ganado.pesos ? (
-                                        <>
-                                            <Details
-                                                tittle={
-                                                    DetailsWeights.peso_nacimiento
-                                                }
-                                                content={
-                                                    ganado.pesos
-                                                        ?.peso_nacimiento ?? ''
-                                                }
-                                            />
-                                            <Details
-                                                tittle={
-                                                    DetailsWeights.peso_destete
-                                                }
-                                                content={
-                                                    ganado.pesos
-                                                        ?.peso_destete ?? ''
-                                                }
-                                            />
-                                            <Details
-                                                tittle={
-                                                    DetailsWeights.peso_2year
-                                                }
-                                                content={
-                                                    ganado.pesos?.peso_2year ??
-                                                    ''
-                                                }
-                                            />
-                                            <Details
-                                                tittle={
-                                                    DetailsWeights.peso_actual
-                                                }
-                                                content={
-                                                    ganado.pesos?.peso_actual ??
-                                                    ''
-                                                }
-                                            />
-                                        </>
-                                    ) : (
-                                        <div className="m-auto">
-                                            No disponibles
-                                        </div>
-                                    )}
-                                </div>
+                            
+                            {ganado.pesos ? <WeightsEditable disableEdit={checkState} id={ganado.id} pesos={ganado.pesos} typeModelWeight={'ganado'} weightConfig={session.user.configuracion.peso_servicio} />
+                            
+                        :<>
+                        <h3 className="m-auto">Pesos</h3>
+                        <div className="m-auto">No disponibles</div> 
+                        </>}
+                                
                             </div>
                         </div>
                     </div>
