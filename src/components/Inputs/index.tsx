@@ -23,6 +23,7 @@ export const Input = ({
     errors,
     defaultValue,
     uppercase = false,
+    variant='underlined'
 }: InputProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
@@ -38,7 +39,7 @@ export const Input = ({
                 label: 'text-current font-bold',
                 input: uppercase ? 'text-current uppercase' : 'text-current',
             }}
-            variant="underlined"
+            variant={variant}
             type={type}
             label={label}
             placeholder={type == 'date' ? ' ' : ''}
