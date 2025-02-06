@@ -172,7 +172,8 @@ export enum TitlesModals {
     'Historial de vacunas aplicadas',
     'Actualizar usuario',
     'Crear finca',
-    'Selecionar finca en la que trabajar'
+    'Selecionar finca en la que trabajar',
+    'Eliminar usuario veterinario: ',
 }
 
 export enum FieldsIdCasttle {

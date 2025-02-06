@@ -2,7 +2,7 @@ import { UserVeterinary, veterinario } from '@/types';
 import { Button, Select, Selection, SelectItem } from '@nextui-org/react';
 import { useState } from 'react';
 import SaveIcon from '@/icons/icono-save.svg';
-import { createUserVeterinary } from '@/actions/createUserVeterinary';
+import { createUserVeterinary } from '@/actions/userVeterinary';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 

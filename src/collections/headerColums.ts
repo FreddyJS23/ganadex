@@ -25,6 +25,7 @@ import {
     AplicacionVacunaHistorial,
     Vacuna,
     UserVeterinaryInfo,
+    UsersVeterinary,
 } from '@/types';
 
 type baseHeaderColunms={
@@ -212,6 +213,8 @@ export const headerHistoryVaccines:headersColumns<Vacuna>[] = [
 
 export const headersColumnsUserVeterinary: headersColumns<UserVeterinaryInfo>[] = [
     { key: 'usuario', label: 'Usuario' },
-    { key: 'email', label: 'Email' },
-    { key: 'rol', label: 'Rol' },
+    { key: 'nombre', label: 'Nombre' },
+    { key: 'telefono', label: 'Telefono' },
+    { key: 'fecha_creacion', label: 'Fecha de creación' },
+    { key: 'id', label: 'Eliminar' },
 ];
