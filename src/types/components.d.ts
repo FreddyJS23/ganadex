@@ -8,6 +8,8 @@ import {
 } from '.';
 import { MutableRefObject } from 'react';
 import { iconsSidebar } from '@/collections';
+import { DASHBOARD_SALE, DASHBOARD_TOOLTIPS, DETAILS_GANADO_TOOLTIPS, FORM_TOOLTIPS, TABLE_TOOLTIPS } from '@/constants/tooltipsMessages';
+
 
 type optionsSubmenuSidebar = {
     url: keyof Pick<
@@ -123,3 +125,13 @@ export type ModalProps = Pick<
 > & {
     dataBody?: string | number;
 };
+
+type TooltipsBase={
+    content:keyof typeof DASHBOARD_TOOLTIPS | keyof typeof DASHBOARD_SALE  | keyof typeof FORM_TOOLTIPS | keyof typeof DETAILS_GANADO_TOOLTIPS | keyof typeof TABLE_TOOLTIPS;
+    placement?:"top" | "bottom" | "right" | "left" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "left-start" | "left-end" | "right-start" | "right-end";
+
+}
+type IconTooltips=TooltipsBase & {type:'icon'}
+type TextTooltips=TooltipsBase & {type:'text',children:React.ReactNode}
+
+export type TooltipsProps=TextTooltips | IconTooltips 
