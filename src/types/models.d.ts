@@ -279,7 +279,11 @@ export type Finca={
     fecha_creacion:string
 }
 
-export type UserVeterinaryInfo=Omit<UserLoginInfo,'rol'> & {rol:'veterinario'}
+
+export type UserVeterinaryInfo=Omit<UserLoginInfo,'rol' | 'email'> &
+ {  nombre:string,
+    telefono:string,
+    rol:'veterinario'}
 
 export type UserLoginInfo={
     id:number,
