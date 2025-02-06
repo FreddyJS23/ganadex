@@ -193,7 +193,7 @@ export const TableComponent = <T extends { id: number }>({
     }, [page, filteredData]);
 
     return (
-        <>
+        <div className='flex flex-col w-full '>
             <div className="flex gap-8">
                {/* Buscador */}
                {typeFilter != 'none' && <Input
@@ -295,6 +295,6 @@ export const TableComponent = <T extends { id: number }>({
                     <TableBody emptyContent={'Sin registros'}>{[]}</TableBody>
                 )}
             </Table>
-        </>
+        </div>
     );
 };
