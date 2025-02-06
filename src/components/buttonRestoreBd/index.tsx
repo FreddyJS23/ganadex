@@ -40,8 +40,8 @@ export const ButtonRestoreBd = ({ dateLastBackup }: ButtonRestoreBdProps) => {
 
     return (
         <>
-            <button onClick={() => clickRestoreBd()}>
-                <IconRestoreBd className={'size-8'} />
+            <button title='Restaurar base de datos' onClick={() => clickRestoreBd()}>
+                <IconRestoreBd  className={'size-8'} />
             </button>
 
             <LayoutModal

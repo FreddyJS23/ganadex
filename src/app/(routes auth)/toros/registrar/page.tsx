@@ -1,6 +1,6 @@
 import { TitlePage } from '@/ui/TitlePage';
 import { FormBull } from '@/components/forms/create bull';
-import { ResponseCompradores } from '@/types';
+import { ResponseCompradores, ResponseSugerirNumero } from '@/types';
 import { getData } from '@/utils/getData';
 
 export default async function Page() {
@@ -10,7 +10,7 @@ export default async function Page() {
 
     return (
         <>
-            <TitlePage title="Registrar toro" />
+            <TitlePage title="Registrar toro" iconTooltip contentTooltip='advertencia_registro' />
             <FormBull compradores={compradores} numero_disponible={numero_disponible} />
         </>
     );

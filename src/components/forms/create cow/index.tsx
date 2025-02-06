@@ -22,6 +22,7 @@ import { AvailableVaccines, Comprador, ListaVacunas, ResponseCompradores } from 
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
 import { CreateListVaccination } from '@/components/create list vaccination';
+import { ToolTipTipoGanado } from '@/components/tooltip';
 
 
 type FormCowProps = {
@@ -120,7 +121,7 @@ console.log(numero_disponible)
             className="grid grid-cols-2 m-auto max-w-5xl p-1 gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
         >
             {formCastle.map(
-                ({ id, label, required, type, select, endContent }) => (
+                ({ id, label, required, type, select, endContent,tooltipTipoGanado }) => (
                     <>
                         {id != 'estado_id' && (
                             <div
@@ -156,9 +157,7 @@ console.log(numero_disponible)
                                                 label={label}
                                                 errors={errors}
                                                 required={required}
-                                                handleSelectionChange={
-                                                    handleSelectionTypeCattleChange
-                                                }
+                                                tooltipTipoGanado={tooltipTipoGanado}
                                             />
                                         )}
                                     />
@@ -171,7 +170,7 @@ console.log(numero_disponible)
             {/* lista de vacunas */}
                 <div className='col-span-full md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-2'>
                 <div className='flex flex-col items-center gap-2'>
-                    <Checkbox  isSelected={isSelected} onValueChange={setIsSelected}>
+                    <Checkbox title='Añadir vacunas'  isSelected={isSelected} onValueChange={setIsSelected}>
                         Vacunas
                     </Checkbox>
                  <CreateListVaccination vaccinesSelect={listaVacunas}  listVaccines={listVaccines} setListVaccines={setListVaccines} isChecked={isSelected} />

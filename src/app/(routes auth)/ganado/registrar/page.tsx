@@ -12,7 +12,8 @@ export default async function Page() {
     
     return (
         <>
-            <TitlePage title="Registrar vaca" />
+            <TitlePage title="Registrar vaca" contentTooltip='advertencia_registro' iconTooltip /> 
+            
             <FormCow numero_disponible={numero_disponible} listaVacunas={vacunas_disponibles} compradores={compradores} />
         </>
     );

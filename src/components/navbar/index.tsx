@@ -44,7 +44,7 @@ export const Navbar = async () => {
     return (
         <>
             <div className="navbar bg-primary sm:bg-transparent ">
-                <div className="hidden sm:flex sm:flex-1">
+                <div title='Cambiar tema oscuro o claro' className="hidden sm:flex sm:flex-1">
                     <CheckboxTheme />
                 </div>
                 {/*  menu sidebar responsive */}
@@ -75,6 +75,7 @@ export const Navbar = async () => {
                             tabIndex={0}
                             role="button"
                             className="btn btn-ghost btn-circle avatar"
+                            title='Ver perfil'
                         >
                             <IconoUser className="text-base-100 sm:text-current size-8" />
                         </div>

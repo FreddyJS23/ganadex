@@ -47,10 +47,12 @@ const meses = [
 
 export const ChartAnnualBalanceMilk = ({
     balanceAnual,
-    años_produccion_leche
+    años_produccion_leche,
+    children
 }: {
     balanceAnual: BalanceMensualLeche[];
     años_produccion_leche:ResponseAñosProduccionLeche['años_produccion_leche'];
+    children: React.ReactNode;
 }) => {
 
     const [dataGraph, setDataGraph] = useState(getBalanceMonthFromAnnual(balanceAnual));
@@ -79,7 +81,7 @@ export const ChartAnnualBalanceMilk = ({
     return (
         <>
             <div className="flex justify-between">
-                <h2 className="text-2xl">Produccion anual de leche</h2>
+               {children}
                 <div className="w-40">
                     <SelectFilterYear
                         onChange={onChange}

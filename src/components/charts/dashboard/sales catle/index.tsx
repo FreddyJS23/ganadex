@@ -19,7 +19,7 @@ import {
     LinearScale,
     BarElement,
     Title,
-    Tooltip,
+    Tooltip as TooltipChart,
     Legend,
 } from 'chart.js';
 import { useState } from 'react';
@@ -30,11 +30,11 @@ ChartJS.register(
     LinearScale,
     BarElement,
     Title,
-    Tooltip,
+    TooltipChart,
     Legend,
 );
 
-export const SalesCatle = ({ balance_anual,años_ventas_ganado }: BalanceAnualVentaGanado & ResponseAñosVentaGanado) => {
+export const SalesCatle = ({ balance_anual,años_ventas_ganado,children }: BalanceAnualVentaGanado & ResponseAñosVentaGanado & {children:React.ReactNode}) => {
     
 
     const [dataGraph, setDataGraph] = useState(balance_anual);
@@ -65,8 +65,8 @@ const onChange = async(select: number) => {
     return (
         <>
             {/* titulo */}
-            <div className="flex gap-4 items-center">
-                <span className="text-2xl">Ganancia anual</span>
+            <div className="flex gap-4 justify-between">
+                {children}
                 <div className="w-40">
                     <SelectFilterYear onChange={onChange}  label="Año" items={años_ventas_ganado} />
                 </div>

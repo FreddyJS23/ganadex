@@ -1,6 +1,7 @@
 import { CardDashboardSaleCattle } from '@/components/cards';
 import { SalesCatle } from '@/components/charts/dashboard/sales catle';
 import { TableSaleCasttle } from '@/components/tables/sale casttle';
+import { Tooltip } from '@/components/tooltip';
 import { ResponseAñosVentaGanado, ResponseVentasGanado } from '@/types';
 import {
     BalanceAnualVentaGanado,
@@ -50,7 +51,13 @@ export default async function Page() {
 
             {/*   grafico venta */}
             <article className="w-full shadow-cards bg-base-100 p-4 flex flex-col gap-4">
-                <SalesCatle balance_anual={balance_anual} años_ventas_ganado={años_ventas_ganado} />
+                
+                <SalesCatle balance_anual={balance_anual} años_ventas_ganado={años_ventas_ganado} >
+                    <div className='flex gap-2 items-center'>
+                    <span className="text-2xl">Ganancia anual</span>
+                    <Tooltip type='icon' content={'ganancia_anual'} placement="right" size='md' />
+                </div>
+                    </SalesCatle>
             </article>
 
             {/* tabla ventas */}

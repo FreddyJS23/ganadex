@@ -26,6 +26,7 @@ import {
     FieldsLabelsWeights,
     InputProps,
     Pesos,
+    TooltipsProps,
 } from '@/types';
 import { genderSelect } from './genderSelect';
 import { typeCasttleSelect } from './typeCastleSelect';
@@ -38,18 +39,21 @@ type FieldsCastle = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdCasttle;
     label: keyof typeof FieldsLabelsCasttle;
     select?: { value: string | number; label: string }[];
+    tooltipTipoGanado?:boolean
 };
 
 type FieldsBull = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdBull;
     label: keyof typeof FieldsLabelsBull;
     select?: { value: string | number; label: string }[];
+    tooltipTipoGanado?:boolean
 };
 
 type FieldsBeef = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdBeef;
     label: keyof typeof FieldsLabelsBeef;
     select?: { value: string | number; label: string }[];
+    tooltipTipoGanado?:boolean
 };
 
 type FieldsCheckUp = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
@@ -119,6 +123,7 @@ export const formCastle: FieldsCastle[] = [
         required: true,
         type: 'select',
         select: typeCasttleSelect,
+        tooltipTipoGanado:true
     },
     {
         id: 'fecha_nacimiento',
@@ -174,6 +179,7 @@ export const formBull: FieldsBull[] = [
         required: true,
         type: 'select',
         select: typeCasttleSelect,
+        tooltipTipoGanado:true
     },
     {
         id: 'fecha_nacimiento',
@@ -227,6 +233,7 @@ export const formBeef: FieldsBeef[] = [
         required: true,
         type: 'select',
         select: typeCasttleSelect,
+        tooltipTipoGanado:true
     },
     {
         id: 'fecha_nacimiento',

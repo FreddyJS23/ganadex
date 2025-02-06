@@ -119,7 +119,7 @@ export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
             className="grid grid-cols-2 m-auto max-w-5xl p-1 gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
         >
             {formBeef.map(
-                ({ id, label, required, type, select, endContent }) => (
+                ({ id, label, required, type, select, endContent,tooltipTipoGanado }) => (
                     <>
                         {id != 'estado_id' &&
                             <div key={id}>
@@ -151,6 +151,8 @@ export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
                                                 handleSelectionChange={
                                                     handleSelectionTypeBeefChange
                                                 }
+                                                tooltipTipoGanado={tooltipTipoGanado}
+                                                tipo='toro'
                                             />
                                         )}
                                     />
