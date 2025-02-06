@@ -5,6 +5,7 @@ import IconPersonal from '@/icons/icono-personal.svg';
 import IconFlechaEstadoDolar from '@/icons/icono-flechaEstadoDolar.svg';
 import { DropDownOptionsCardsDashboard } from '../dropdown options cards dashboard';
 import { abbrevationMonths } from '@/collections/abbrevationMonths';
+import { Tooltip } from '../tooltip';
 
 type ContentCardProp = {
     title:
@@ -68,7 +69,10 @@ export const CardDashboardSaleCattle = ({
     return (
         <div className="w-40 p-2 gap-2 bg-base-100 shadow-cards flex flex-col ">
             <div className="flex">
-                <span>{title}</span>
+               <div className='flex'>
+               <span>{title}</span>
+               <Tooltip type='icon' content={'mejor_comprador'} placement="right" size='md' />
+               </div>
                 {multipleOption && (
                     <DropDownOptionsCardsDashboard tipo="comprador" />
                 )}
