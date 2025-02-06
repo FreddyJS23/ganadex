@@ -3,6 +3,7 @@ import { Selection } from '@nextui-org/react';
 import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
 import { ChangeEvent, useState } from 'react';
 import { ControllerRenderProps, FieldPath, FieldValues } from 'react-hook-form';
+import { TooltipTipoGanado } from '../tooltip';
 
 type SelectProps = Pick<
     InputProps,
@@ -12,6 +13,8 @@ type SelectProps = Pick<
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     field: any;
     handleSelectionChange?: (select: string | number) => void;
+    tooltipTipoGanado?:boolean
+    tipo?:'vaca' | 'toro'
 };
 
 const EndElement = ({ content }: { content: '$' | 'KG' }) => {
@@ -33,7 +36,9 @@ export const Select = ({
     endContent,
     errors,
     field,
+    tipo='vaca',
     handleSelectionChange,
+    tooltipTipoGanado
 }: SelectProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
@@ -50,37 +55,71 @@ export const Select = ({
             handleSelectionChange(valueSelect as string | number);
     };
 
-    return (
-        <SelectNextUI
-            {...field}
-            id={id}
-            label={label}
-            items={items}
-            variant="underlined"
-            color="primary"
-            selectedKeys={value}
-            isRequired={required}
-            description={description}
-            onSelectionChange={(keys) => {
-                setValue(keys);
-                onChange(keys);
-            }}
-            classNames={{
-                label: 'text-current font-bold',
-                value: 'text-current',
-                popoverContent: 'bg-base-100',
-            }}
-            endContent={endContent && endContents[endContent]}
-            isInvalid={errors[id] && true}
-            errorMessage={errors[id] && (errors[id]?.message as string)}
-        >
-            {({
-                label,
-                value,
-            }: {
-                value: string | number;
-                label: string | number;
-            }) => <SelectItem key={value}>{label}</SelectItem>}
-        </SelectNextUI>
-    );
+   if(tooltipTipoGanado) {return (
+    <div className='flex items-center gap-2'>
+        <TooltipTipoGanado tipo={tipo} />
+
+    <SelectNextUI
+    {...field}
+    id={id}
+    label={label}
+    items={items}
+    variant="underlined"
+    color="primary"
+    selectedKeys={value}
+    isRequired={required}
+    description={description}
+    onSelectionChange={(keys) => {
+        setValue(keys);
+        onChange(keys);
+    }}
+    classNames={{
+        label: 'text-current font-bold',
+        value: 'text-current',
+        popoverContent: 'bg-base-100',
+    }}
+    endContent={endContent && endContents[endContent]}
+    isInvalid={errors[id] && true}
+    errorMessage={errors[id] && (errors[id]?.message as string)}
+>
+    {({
+        label,
+        value,
+    }: {
+        value: string | number;
+        label: string | number;
+    }) => <SelectItem key={value}>{label}</SelectItem>}
+</SelectNextUI>
+    </div>
+    )}else return ( <SelectNextUI
+        {...field}
+        id={id}
+        label={label}
+        items={items}
+        variant="underlined"
+        color="primary"
+        selectedKeys={value}
+        isRequired={required}
+        description={description}
+        onSelectionChange={(keys) => {
+            setValue(keys);
+            onChange(keys);
+        }}
+        classNames={{
+            label: 'text-current font-bold',
+            value: 'text-current',
+            popoverContent: 'bg-base-100',
+        }}
+        endContent={endContent && endContents[endContent]}
+        isInvalid={errors[id] && true}
+        errorMessage={errors[id] && (errors[id]?.message as string)}
+    >
+        {({
+            label,
+            value,
+        }: {
+            value: string | number;
+            label: string | number;
+        }) => <SelectItem key={value}>{label}</SelectItem>}
+    </SelectNextUI>)
 };
