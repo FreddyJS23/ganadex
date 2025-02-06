@@ -21,6 +21,7 @@ import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle pro
 /* import { CircularProgress } from '@/components/circules progress dashboard'; */
 import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual balance milk';
 import { ResponseAñosProduccionLeche } from '@/types';
+import { Tooltip } from '@/components/tooltip';
 
 export default async function Home() {
     const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(
@@ -95,7 +96,10 @@ export default async function Home() {
                 {/*    grafico vacas productoras */}
                 <article className="p-4 flex flex-col gap-2  bg-base-100 max-w-72 shadow-cards">
                     <div className="flex justify-between">
-                        <h2>Top vacas productoras</h2>
+                        <div className='flex items-center gap-1'>
+                        <h2>Vacas productoras</h2>
+                        <Tooltip type='icon'  content={'top_vacas_productoras'} placement="right" size='md' />
+                        </div>
                         <IconPositive className={'size-8 '} />
                     </div>
                     <ProduccionVacasTop3
@@ -106,7 +110,10 @@ export default async function Home() {
                 {/*    grafico vacas menos productoras */}
                 <article className="p-4 flex flex-col gap-2  bg-base-100 max-w-72  shadow-cards">
                     <div className="flex justify-between">
-                        <h2>Top vacas menos productoras</h2>
+                        <div className='flex items-center gap-1'>
+                        <h2>Vacas menos productoras</h2>
+                        <Tooltip type='icon'  content={'top_vacas_menos_productoras'} placement="right" size='md' />
+                        </div>
                         <IconNegative className={'size-8 '} />
                     </div>
                     <ProduccionVacasTop3
@@ -166,7 +173,12 @@ export default async function Home() {
             </div>
             {/* grafico produccion anual leche */}
             <article className="p-4 col-span-full shadow-cards flex flex-col gap-2 bg-base-100 ">
-                <ChartAnnualBalanceMilk años_produccion_leche={años_produccion_leche} balanceAnual={balance_anual} />
+                <ChartAnnualBalanceMilk años_produccion_leche={años_produccion_leche} balanceAnual={balance_anual}>
+                    <div className=' flex items-center gap-1'>
+                         <h2 className="text-2xl">Produccion anual de leche</h2>
+                        <Tooltip type='icon' content={'produccion_anual_leche'}  size='md' />
+                     </div>
+                    </ChartAnnualBalanceMilk>
             </article>
         </section>
     );
