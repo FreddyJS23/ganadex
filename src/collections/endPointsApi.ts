@@ -72,7 +72,7 @@ export const endPoints = {
     sugerirNumero:'numero_disponible',
     veterinariosSinUsuario: 'veterinarios_sin_usuario',
     usuariosVeterinarios:'usuarios_veterinarios',
-    usuarioVeterinario: 'usuario_veterinario/',
+    usuarioVeterinario: 'usuarios_veterinarios/',
     usuario:'usuario/',
     finca:'finca',
     verSesionFinca:'verificar_sesion_finca',
