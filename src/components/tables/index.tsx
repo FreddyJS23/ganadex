@@ -173,7 +173,6 @@ export const TableComponent = <T extends { id: number }>({
     }, [
         list.items,
         typeFilter,
-        items,
         hasSearchFilter,
         filterValue,
         statusFilter,
