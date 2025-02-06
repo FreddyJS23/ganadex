@@ -20,8 +20,8 @@ export const ButtonBackupBd = () => {
     };
 
     return (
-        <button onClick={() => generateBackup()}>
-            <IconBackup className={'size-8'} />
+        <button title='Respaldar base de datos' onClick={() => generateBackup()}>
+            <IconBackup  className={'size-8'} />
         </button>
     );
 };

@@ -34,7 +34,7 @@ export const ButtonGenerateReport = () => {
 
     const Button=({endPoint,id}:GenerateReport)=>{
         return (
-           <button onClick={() => generateReport(endPoint,id)}>
+           <button title='Generar reporte' onClick={() => generateReport(endPoint,id)}>
                 <IconImprimir className={'size-8'} />
             </button>
     )}
@@ -48,19 +48,19 @@ export const ButtonGenerateReport = () => {
     else if (pathname == '/venta_leche')
         return (
             <Link href={`/reporte/venta_leche`}>
-                <IconImprimir className={'size-8'} />
+                <IconImprimir tittle='Generar reporte' className={'size-8'} />
             </Link>
         );
     else if (pathname == '/fallecimientos')
         return (
             <Link href={`/reporte/causas_fallecimientos`}>
-                <IconImprimir className={'size-8'} />
+                <IconImprimir tittle='Generar reporte' className={'size-8'} />
             </Link>
         );
     else if (pathname == '/venta_ganado')
         return (
             <Link href={`/reporte_anual/venta_ganado`}>
-                <IconImprimir className={'size-8'} />
+                <IconImprimir tittle='Generar reporte' className={'size-8'} />
             </Link>
         );
  return ( <></>)
