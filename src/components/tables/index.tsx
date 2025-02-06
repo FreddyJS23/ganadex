@@ -79,6 +79,10 @@ export const TableComponent = <T extends { id: number }>({
             };
         },
     });
+
+    /* --------------------------------- refrescar cuando cambia -------------------------------- */
+    items.length > list.items.length || items.length < list.items.length && list.reload()
+    
     /* --------------------------------- buscador y filtro por estados -------------------------------- */
     const [filterValue, setFilterValue] = useState('');
     const [statusFilter, setStatusFilter] = useState<Selection>('all');
@@ -275,7 +279,7 @@ export const TableComponent = <T extends { id: number }>({
                         </TableColumn>
                     )}
                 </TableHeader>
-                {items.length > 1 ? (
+                {items.length >= 1 ? (
                     <TableBody items={itemsBodyTable}>
                         {(item) => (
                             <TableRow key={item.id}>
