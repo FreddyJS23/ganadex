@@ -117,7 +117,7 @@ console.log(errors)
             className="grid grid-cols-2 m-auto max-w-5xl p-1 gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
         >
             {formBull.map(
-                ({ id, label, required, type, select, endContent }) => (
+                ({ id, label, required, type, select, endContent,tooltipTipoGanado }) => (
                     <>
                         {id != 'estado_id' &&
                             <div key={id} id={id}>
@@ -149,6 +149,8 @@ console.log(errors)
                                                 handleSelectionChange={
                                                     handleSelectionTypeBullChange
                                                 }
+                                                tooltipTipoGanado={tooltipTipoGanado}
+                                                tipo='toro'
                                             />
                                         )}
                                     />
