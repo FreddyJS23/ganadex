@@ -38,6 +38,7 @@ export default async function Page() {
                     usuarios_veterinarios={usuarios_veterinarios}
                     veterinarios={veterinarios_sin_usuario}
                     user={user}
+                    configuracion={user.configuracion}  
                 />
             </section>
         </>

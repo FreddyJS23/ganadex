@@ -174,7 +174,8 @@ export enum TitlesModals {
     'Crear finca',
     'Selecionar finca en la que trabajar',
     'Eliminar usuario veterinario: ',
-    'Historial de actividades'
+    'Historial de actividades',
+    'Actualizar configuración'
 }
 
 export enum FieldsIdCasttle {
