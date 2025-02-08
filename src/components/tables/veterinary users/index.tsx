@@ -14,7 +14,9 @@ import { Key, ReactNode, useCallback, useState } from 'react';
 import { LayoutTable, TableComponent } from '..';
 import { useDisclosure } from '@nextui-org/react';
 import IconDelete from '@/icons/icono-error.svg';
+import IconLogs from '@/icons/icono-logs.svg';
 import { ModalDeleteUserVeterinary } from '@/components/modals/delete user veterinary';
+import Link from 'next/link';
 
 export const TableVeterinaryUsers = ({
     usuarios_veterinarios,
@@ -39,9 +41,17 @@ export const TableVeterinaryUsers = ({
                     case 'id': {
                         const id = cellValue as number;
                         return (
-                        <IconDelete 
-                        onClick={()=>handleOpen(id,usuario_veterinario['usuario'])} 
-                        className={'size-6 cursor-pointer'} />
+                      <div className='flex gap-2'>
+                            <IconDelete 
+                            onClick={()=>handleOpen(id,usuario_veterinario['usuario'])} 
+                            className={'size-6 cursor-pointer'} />
+                      
+                        <Link title='Ver actividades' href={`logs_veterinario/${id}`}>
+                            <IconLogs 
+                            
+                            className={'size-6'} />
+                        </Link>
+                      </div>
                             
                         );
                     }
