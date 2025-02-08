@@ -78,6 +78,7 @@ export const endPoints = {
     verSesionFinca:'verificar_sesion_finca',
     crearSesionFinca:'crear_sesion_finca/',
     logsVeterinario:'logs_veterinario/',
+    actualizarConfig:'configuracion/',
 };
 
 export const endPointsCattle = {

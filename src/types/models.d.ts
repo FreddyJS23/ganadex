@@ -98,7 +98,7 @@ export type Personal = {
 export type Configuracion = {
     peso_servicio: number;
     dias_evento_notificacion: number;
-    dias_diferencia_vacunado: number;
+    dias_diferencia_vacuna: number;
 };
 
 /**Revision individual de una cabeza de ganado */

@@ -3,7 +3,7 @@
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react';
 import { TableVeterinaryUsers } from '../tables/veterinary users';
 import { SelectVeterinaryNotUser } from '../select veterenary not user';
-import { Finca, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
+import { Configuracion, Finca, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
 import { Button } from '@/ui/Button';
 import IconEditar from '@/icons/icono-editar.svg';
 import { ModalUpdateUser } from '../modals/update user';
@@ -13,6 +13,7 @@ import {
     LayoutContentTabs,
 } from './items';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
+import Link from 'next/link';
 
 type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];
@@ -20,6 +21,7 @@ type TabsProfileProps = {
     user: UserLoginInfo;
     fincaSesion:Finca
     fincas:Finca[]
+    configuracion:Configuracion
 };
 
 const ElementProfileAdmin = ({ user }: { user: UserLoginInfo }) => {
@@ -52,7 +54,8 @@ export const TabsProfile = ({
     veterinarios,
     user,
     fincaSesion,
-    fincas
+    fincas,
+    configuracion
 }: TabsProfileProps) => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     return (
@@ -63,7 +66,6 @@ export const TabsProfile = ({
                 classNames={{
                     tab: 'font-bold ',
                 }}
-                disabledKeys={['setting']}
                 size="lg"
                 variant="bordered"
             >
@@ -92,13 +94,37 @@ export const TabsProfile = ({
                     </LayoutContentTabs>
                 </Tab>
 
-                {/* tab desactivado configuracion */}
-                <Tab key="setting" title="Configuracion">
-                    <div>Configuracion</div>
-                </Tab>
     
     {/*  ------------------------------ opciones admin ----------------------------- */ }
               
+                 {/* tab desactivado configuracion */}
+                {user.rol == 'admin' && ( <Tab key="setting" title="Configuracion">
+                <LayoutContentTabs>
+                        <div className="flex flex-col">
+                            <div className="self-end w-48">
+                                <Link className='btn' title={'Editar configuracion'} href={'/configuracion'}>
+                                <IconEditar className={'size-6'} />
+                                </Link>
+                            </div>
+                          <ElementProfile
+                            tittle="Peso apta para un servicio"
+                            content={configuracion.peso_servicio.toString()}
+                            description="Representa cual sera el peso ideal para que una novilla pueda estar apta para un servicio"
+                        />
+                          <ElementProfile
+                            tittle="Dias prximos para crear una notificacion"
+                            content={configuracion.dias_evento_notificacion.toString()}
+                            description="Representa cuantos dias antes de la fecha de un evento, se creara una notificacion"
+                        />
+                          <ElementProfile
+                            tittle="Diferencia entre una vacuna y una jornada de vacunacion"
+                            content={configuracion.dias_diferencia_vacuna.toString()}
+                            description="Representa cuantos dias se podria aplazar la dosis de una vacuna individual para asi estar a la par con la proxima jornada de vacunacion de la misma"
+                        />
+                        </div>
+                    </LayoutContentTabs>
+                </Tab>)}
+                
                 {/* tab veterinarios con usuarios */}
                 {user.rol == 'admin' && (
                     <Tab key="user_veterinary" title="Usuarios veterinarios">
