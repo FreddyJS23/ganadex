@@ -56,6 +56,7 @@ export const ModalSelectFincaSesion = ({ fincas }: { fincas: Finca[] }) => {
             onOpenChange={onOpenChange}
             refForm={formRef}
             onClose={onClose}
+            isDismissable={false}
         >
             <form
                 id="form-select-finca"
