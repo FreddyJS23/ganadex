@@ -293,3 +293,10 @@ export type UserLoginInfo={
     fecha_creacion:string
 }
 
+
+export type LogVeterinary={
+    'id':number,
+    'actividad': 'Revision' | 'Servicio' | 'Parto' | 'Login' |'Jornada_vacunacion' | 'Fallecimiento'
+    'actividad_id': number
+    'fecha':string
+}

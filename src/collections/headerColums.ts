@@ -26,6 +26,7 @@ import {
     Vacuna,
     UserVeterinaryInfo,
     UsersVeterinary,
+    LogVeterinary,
 } from '@/types';
 
 type baseHeaderColunms={
@@ -217,4 +218,10 @@ export const headersColumnsUserVeterinary: headersColumns<UserVeterinaryInfo>[] 
     { key: 'telefono', label: 'Telefono' },
     { key: 'fecha_creacion', label: 'Fecha de creación' },
     { key: 'id', label: 'Eliminar' },
+];
+
+export const headersColumnsLogsVeterinary: headersColumns<LogVeterinary>[] = [
+    { key: 'actividad', label: 'Actividad' },
+    { key: 'actividad_id', label: 'Ver actividad' },
+    { key: 'fecha', label: 'Fecha' },
 ];
