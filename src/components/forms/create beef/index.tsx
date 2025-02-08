@@ -122,7 +122,7 @@ export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
                 ({ id, label, required, type, select, endContent,tooltipTipoGanado }) => (
                     <>
                         {id != 'estado_id' &&
-                            <div key={id}>
+                            <div id={id} key={id}>
                                 {type != 'select' && (
                                     <Input
                                         id={id}

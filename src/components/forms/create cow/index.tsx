@@ -104,8 +104,9 @@ console.log(numero_disponible)
 
     const handleSelectionTypeCattleChange = (select: number | string) => {
         /* pocision del container campo peso dos años */
-        const inputWeight2year = containerInputsForm
-            .current[7] as HTMLDivElement;
+        const inputWeight2year = form.current?.querySelector(
+            '#peso_2year',
+        ) as HTMLDivElement;
 
         if (select == 1) {
             /* se usa el setValue porque el resetField no funciona, no borra el valor en el input */
@@ -126,11 +127,7 @@ console.log(numero_disponible)
                         {id != 'estado_id' && (
                             <div
                                 key={id}
-                                ref={(element) =>
-                                    containerInputsForm.current.push(
-                                        element as HTMLDivElement,
-                                    )
-                                }
+                                id={id}
                             >
                                 {type != 'select' && (
                                     <Input
@@ -158,6 +155,7 @@ console.log(numero_disponible)
                                                 errors={errors}
                                                 required={required}
                                                 tooltipTipoGanado={tooltipTipoGanado}
+                                                handleSelectionChange={handleSelectionTypeCattleChange}
                                             />
                                         )}
                                     />
