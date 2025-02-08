@@ -34,7 +34,7 @@ export default middleware((request) => {
         //logueado pero sin una sesion de finca
         if(!request.auth.user.sesion_finca && !request.nextUrl.pathname.startsWith('/finca')) return NextResponse.redirect(new URL('/finca', request.url))
         
-        if (request.nextUrl.pathname.startsWith('/login') || (request.nextUrl.pathname.match('/finca') && request.auth.user.sesion_finca) ) {
+        if (request.nextUrl.pathname.startsWith('/login') || (request.nextUrl.pathname == '/finca' && request.auth.user.sesion_finca) ) {
             return redirectRol(request.auth.user.rol,request.url)
         }
         if (request.auth.user.rol == 'veterinario')
