@@ -305,3 +305,6 @@ export type ResponseFinca={
     finca:Finca
 }
 
+export type ResponseLogsVeterinary={
+    logs:LogVeterinary[]
+}
