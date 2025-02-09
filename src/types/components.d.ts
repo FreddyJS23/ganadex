@@ -127,7 +127,7 @@ export type ModalProps = Pick<
 };
 
 type TooltipsBase={
-    content:keyof typeof DASHBOARD_TOOLTIPS | keyof typeof DASHBOARD_SALE  | keyof typeof FORM_TOOLTIPS | keyof typeof DETAILS_GANADO_TOOLTIPS | keyof typeof TABLE_TOOLTIPS;
+    content:keyof typeof DASHBOARD_TOOLTIPS | keyof typeof DASHBOARD_SALE  | keyof typeof FORM_TOOLTIPS | keyof typeof DETAILS_GANADO_TOOLTIPS | keyof typeof TABLE_TOOLTIPS | keyof typeof DETAILS_TITLES;
     placement?:"top" | "bottom" | "right" | "left" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "left-start" | "left-end" | "right-start" | "right-end";
 
 }
