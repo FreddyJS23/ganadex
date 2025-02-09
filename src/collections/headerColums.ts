@@ -46,7 +46,6 @@ type headersColumnsServices=baseHeaderColunms & {
 export const headerCasttle: headersColumns<CabezasGanado>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
-    { key: 'sexo', label: 'Sexo' },
     { key: 'fecha_nacimiento', label: 'Edad' },
     { key: 'pesos', label: 'Peso actual' },
     { key: 'tipo', label: 'Tipo' },
