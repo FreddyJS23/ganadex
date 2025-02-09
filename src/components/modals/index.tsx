@@ -22,7 +22,7 @@ export const LayoutModal = ({
     refForm,
     onClick,
     onClose,
-    isDismissable=true
+    isDismissable=false
 }: LayoutModalProps) => {
     const Icon = iconsModal[icon];
     const [currentRefForm, setcurrentRefForm] = useState<
