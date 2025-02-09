@@ -22,4 +22,8 @@ export const TABLE_TOOLTIPS = {
 export const DETAILS_GANADO_TOOLTIPS = {
     'editar_peso':'Editar los pesos',
 }
+
+export const DETAILS_TITLES={
+    'ganado_descarte':'Estos animales estan destinado a ser vendidos para el consumo humano',
+}
     

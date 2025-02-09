@@ -13,7 +13,7 @@ export default async function Page() {
     const role=session.user.rol
     return (
         <>
-            <TitlePage title="Reses" />
+            <TitlePage title="Ganado descarte" iconTooltip contentTooltip='Estos animales estan destinado a ser vendidos para el consumo humano'  />
             <TableDiscardedCattle ganado_descartes={ganado_descartes} role={role} />
         </>
     );
