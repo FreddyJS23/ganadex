@@ -7,11 +7,25 @@ import { ProximasJornadaVacunacion } from '@/types/dashboard';
 export const SliderVaccinationDays = ({
     proximas_jornadas_vacunacion,
 }: ProximasJornadaVacunacion) => {
+    const calcularSlides = () => {
+        let countCards=proximas_jornadas_vacunacion.length;
+
+        if (countCards <= 3) return countCards;
+        
+        else if (countCards <= 6) return 3;
+
+        while(countCards > 6)
+            countCards = countCards / 2;
+        ;
+
+        return countCards;
+    };
+    
     const configSlider: Settings = {
         infinite: false,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: calcularSlides(),
+        slidesToScroll: calcularSlides(),
         autoplay: true,
         autoplaySpeed: 6000,
         pauseOnHover: true,

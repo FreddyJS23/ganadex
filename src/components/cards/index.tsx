@@ -6,6 +6,7 @@ import IconFlechaEstadoDolar from '@/icons/icono-flechaEstadoDolar.svg';
 import { DropDownOptionsCardsDashboard } from '../dropdown options cards dashboard';
 import { abbrevationMonths } from '@/collections/abbrevationMonths';
 import { Tooltip } from '../tooltip';
+import { isSameYear } from 'date-fns/fp';
 
 type ContentCardProp = {
     title:
@@ -124,16 +125,25 @@ export const CardDashboardDayVaccination = ({
 }: ContentCardDayVaccinationProp) => {
     const month = date.getMonth();
     const day = date.getDate();
+    const year=date.getFullYear();
+    const sameYear = isSameYear(date, new Date());
 
     return (
         <div className=" p-6 ml-6 flex bg-base-100 shadow-cards">
             {/* zona izquierda */}
-            <div className="flex flex-col items-center gap-2">
+            {sameYear ? (<div className="flex flex-col items-center gap-2">
                 <div className="text-xl font-bold">
                     {abbrevationMonths[month]}
                 </div>
                 <div className="text-xl font-bold">{day}</div>
+            </div>):(<div className="flex flex-col items-center">
+                <div className='text-xs'>{year}</div>
+                <div className="text-base font-bold">
+                    {abbrevationMonths[month]}
+                </div>
+                <div className="text-sm font-bold">{day}</div>
             </div>
+                )}
             {/* divider */}
 
             <div className="divider divider-horizontal divider-primary opacity-20"></div>
