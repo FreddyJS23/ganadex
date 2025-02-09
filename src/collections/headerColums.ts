@@ -66,6 +66,7 @@ export const headerBull: headersColumns<Toro>[] = [
 export const headerBeef: headersColumns<GanadoDescarte>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
+    {key:'sexo',label:'Sexo'},
     { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
     { key: 'pesos', label: 'Peso actual' },
     { key: 'estados', label: 'Estados' },
