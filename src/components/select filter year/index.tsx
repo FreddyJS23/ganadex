@@ -5,26 +5,36 @@ import { Select, Selection, SelectItem } from '@nextui-org/react';
 
 import { useState } from 'react';
 
-type SelectFilterYearProps = {
+type SelectFilterBase = {
     label: string;
-    items: YearSalesCattle[];
     onChange: (select: number) => void;
 };
 
-export const SelectFilterYear = ({
-    label,
-    items,
-    onChange,
-}: SelectFilterYearProps) => {
+type SelectFilterNumber =SelectFilterBase &   {
+    type:'years'
+    items:string[]
+}
+
+type SelectFilterObjects=SelectFilterBase & {
+    type:'yearsFromDB'
+    items: YearSalesCattle[];
+
+}
+
+type SelectFilterYearProps=SelectFilterNumber | SelectFilterObjects
+
+export const SelectFilterYear = (props:SelectFilterYearProps) => {
     
-    //seleccionar año mas alto
-    const [value, setValue] = useState<Selection>(
-        new Set([`${ items.length > 0 ? items[0].año : []}`]),
-    );
-    return (
+    const {label,onChange,type}=props
+    
+    const set=type == 'yearsFromDB' ? new Set([`${ props.items.length > 0 ? props.items[0].año : []}`]) : new Set([`${ props.items.length > 0 ? props.items[0] : []}`])
+
+    const [value, setValue] = useState<Selection>(set);
+    
+   if(type == 'yearsFromDB'){ return (
         <Select
             label={label}
-            items={items}
+            items={props.items}
             variant="bordered"
             size="sm"
             color="primary"
@@ -43,5 +53,32 @@ export const SelectFilterYear = ({
                 <SelectItem key={año}>{`${año}`}</SelectItem>
             )}
         </Select>
-    );
+    )} else 
+    return (
+        <Select
+            label={label}
+            items={props.items}
+            variant="bordered"
+            size="sm"
+            color="primary"
+            selectedKeys={value}
+            onSelectionChange={(keys) => {
+                setValue(keys);
+                onChange(Array.from(keys)[0] as number);
+            }}
+            classNames={{
+                label: 'text-current font-bold',
+                value: 'text-current',
+                popoverContent: 'bg-base-100',
+            }}
+        >
+           {props.items.map((año)=>
+        <SelectItem key={año}>{`${año}`}</SelectItem>
+        )}
+        </Select>
+        
+    )
+    
+    
+    ;
 };
