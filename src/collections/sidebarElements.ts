@@ -125,11 +125,6 @@ export const optionsSidebarAdmin: Pick<
             },
         ],
     },
-    {
-        element: 'Ajustes',
-        icon: 'setting',
-        url: '/ajustes',
-    },
 ];
 
 export const optionsSidebarVeterinary: Pick<
