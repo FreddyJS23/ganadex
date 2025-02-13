@@ -4,6 +4,7 @@ import {
     ResponseFinca,
     ResponseFincas,
     ResponseInformacionUsuarioLogeado,
+    ResponseLogEventos,
     ResponseVeterinariosSinUsuario,
     ResponseVeterinariosUsuario,
 } from '@/types';
@@ -18,6 +19,8 @@ export default async function Page() {
    
     const { finca }: ResponseFinca = await getData('verSesionFinca');
     const { fincas }: ResponseFincas = await getData('finca');
+
+    const {logs_eventos}:ResponseLogEventos= await getData('logsEventos');
    
         const session = (await auth()) as Session;
     const id = session.user.userId;
@@ -38,7 +41,8 @@ export default async function Page() {
                     usuarios_veterinarios={usuarios_veterinarios}
                     veterinarios={veterinarios_sin_usuario}
                     user={user}
-                    configuracion={user.configuracion}  
+                    configuracion={user.configuracion}
+                    logs_eventos={logs_eventos}
                 />
             </section>
         </>

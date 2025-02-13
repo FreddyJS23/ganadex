@@ -300,3 +300,10 @@ export type LogVeterinary={
     'actividad_id': number
     'fecha':string
 }
+
+export type LogEvento={
+    id:number,
+    operacion:string,
+    descripcion:string
+    fecha:string, 
+}

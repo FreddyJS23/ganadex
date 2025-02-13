@@ -317,3 +317,7 @@ export type ResponseResumenNatalidad={
                         tasa_natalidad:number}[]
     nacimientos_año_actual:{año:string,total:number;machos:number;hembras:integer}
 }
+
+export type ResponseLogEventos={
+    logs_eventos:LogEvento[]
+}

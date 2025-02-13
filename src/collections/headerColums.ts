@@ -27,6 +27,7 @@ import {
     UserVeterinaryInfo,
     UsersVeterinary,
     LogVeterinary,
+    LogEvento,
 } from '@/types';
 
 type baseHeaderColunms={
@@ -225,3 +226,9 @@ export const headersColumnsLogsVeterinary: headersColumns<LogVeterinary>[] = [
     { key: 'actividad_id', label: 'Ver actividad' },
     { key: 'fecha', label: 'Fecha' },
 ];
+
+export const headersColumnsLogEventos: headersColumns<LogEvento>[] = [
+    { key: 'operacion', label: 'Operación' },
+    { key: 'descripcion', label: 'Descripción' },
+    { key: 'fecha', label: 'Fecha' },
+]

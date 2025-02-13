@@ -3,7 +3,7 @@
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react';
 import { TableVeterinaryUsers } from '../tables/veterinary users';
 import { SelectVeterinaryNotUser } from '../select veterenary not user';
-import { Configuracion, Finca, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
+import { Configuracion, Finca, LogEvento, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
 import { Button } from '@/ui/Button';
 import IconEditar from '@/icons/icono-editar.svg';
 import { ModalUpdateUser } from '../modals/update user';
@@ -14,6 +14,7 @@ import {
 } from './items';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import Link from 'next/link';
+import { TableLogsEvents } from '../tables/logs veterinary';
 
 type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];
@@ -22,6 +23,7 @@ type TabsProfileProps = {
     fincaSesion:Finca
     fincas:Finca[]
     configuracion:Configuracion
+    logs_eventos:LogEvento[]
 };
 
 const ElementProfileAdmin = ({ user }: { user: UserLoginInfo }) => {
@@ -55,7 +57,8 @@ export const TabsProfile = ({
     user,
     fincaSesion,
     fincas,
-    configuracion
+    configuracion,
+    logs_eventos
 }: TabsProfileProps) => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     return (
@@ -131,6 +134,18 @@ export const TabsProfile = ({
                         <LayoutCenterContentTabs divider={false}>
                             <TableVeterinaryUsers
                                 usuarios_veterinarios={usuarios_veterinarios}
+                            />
+                        </LayoutCenterContentTabs>
+                    </Tab>
+                )}
+               
+                {/* tab logs eventos */}
+                {user.rol == 'admin' && (
+                    <Tab key="user_veterinary" title="Historial eventos del sistema">
+                        <LayoutCenterContentTabs divider={false}>
+                            <TableLogsEvents 
+                            logs_eventos={logs_eventos} 
+                               
                             />
                         </LayoutCenterContentTabs>
                     </Tab>

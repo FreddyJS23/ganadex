@@ -80,6 +80,7 @@ export const endPoints = {
     logsVeterinario:'logs_veterinario/',
     actualizarConfig:'configuracion/',
     resumenNatalidad:'resumen_natalidad?year=',
+    logsEventos:'logs_eventos',
 };
 
 export const endPointsCattle = {

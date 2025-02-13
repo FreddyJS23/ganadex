@@ -17,6 +17,7 @@ export const FORM_TOOLTIPS = {
 export const TABLE_TOOLTIPS = {
     'efectividad_servicio':'Representa cuantos serivicos fueron necesarios para producir un parto, esta efectividad puede variar en cada parto',
     'pesaje_este_mes':'Representa si ya se ha producido el respectivo pesaje de control en este mes',
+    'logs_eventos':'Registro de todos los eventos que han ocurrido en el sistema, por ejemplo cuando se fallece un animal o cuando se registra un nuevo parto',
 }
 
 export const DETAILS_GANADO_TOOLTIPS = {

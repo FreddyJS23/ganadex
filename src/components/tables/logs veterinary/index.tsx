@@ -1,28 +1,18 @@
 'use client';
 
-import { headersColumnsLogsVeterinary } from '@/collections/headerColums';
-import { LogVeterinary, ResponseLogsVeterinary } from '@/types';
+import { headersColumnsLogEventos,  } from '@/collections/headerColums';
+import { LogEvento, ResponseLogEventos  } from '@/types';
 import { Key, ReactNode, useCallback } from 'react';
 import { TableComponent } from '..';
-import IconSearch from '@/icons/icono-Revisar.svg';
-import Link from 'next/link';
+import { Tooltip } from '@/components/tooltip';
 
-export const TableLogsVeterinary = ({ logs }: ResponseLogsVeterinary) => {
+export const TableLogsEvents = ({ logs_eventos }: ResponseLogEventos) => {
+    
     const renderCell = useCallback(
-        (logVeterinary: LogVeterinary, columnKey: Key) => {
-            const cellValue = logVeterinary[columnKey as keyof LogVeterinary];
-            switch (columnKey as keyof LogVeterinary) {
-                /* button icon */
-                case 'actividad_id': { 
-                    const id = cellValue as number;
-                    return (
-                       /*  <Link title={'Ir a la actividad'} >
-                            <IconSearch className={'size-8 cursor-pointer '} />
-                        </Link> */
-                        <div>test</div>
-                    );
-                }
-
+        (logEvento: LogEvento, columnKey: Key) => {
+            const cellValue = logEvento[columnKey as keyof LogEvento];
+            switch (columnKey as keyof LogEvento) {
+                
                 default:
                     return cellValue as ReactNode;
             }
@@ -32,10 +22,11 @@ export const TableLogsVeterinary = ({ logs }: ResponseLogsVeterinary) => {
 
     return (
         <>
+        <Tooltip type='icon' content='logs_eventos' />
             <TableComponent
-                type="logs veterinary"
-                columnsCollection={headersColumnsLogsVeterinary}
-                items={logs}
+                type="logs eventos"
+                columnsCollection={headersColumnsLogEventos}
+                items={logs_eventos}
                 renderCell={renderCell}
             />
         </>
