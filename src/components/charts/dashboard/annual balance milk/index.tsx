@@ -86,6 +86,7 @@ export const ChartAnnualBalanceMilk = ({
                     <SelectFilterYear
                         onChange={onChange}
                         label="Año"
+                        type='yearsFromDB'
                         items={años_produccion_leche}
                     />
                 </div>

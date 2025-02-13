@@ -68,7 +68,7 @@ const onChange = async(select: number) => {
             <div className="flex gap-4 justify-between">
                 {children}
                 <div className="w-40">
-                    <SelectFilterYear onChange={onChange}  label="Año" items={años_ventas_ganado} />
+                    <SelectFilterYear type='yearsFromDB' onChange={onChange}  label="Año" items={años_ventas_ganado} />
                 </div>
             </div>
             {/* grafico */}
