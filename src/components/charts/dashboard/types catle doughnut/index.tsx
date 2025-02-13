@@ -1,6 +1,7 @@
 'use client';
 
 import { ResponseTotalTiposGanado } from '@/types/dashboard';
+import { capitalizeFirstLetter } from '@/utils/capitalizeFirstLetter';
 import {
     optionChartTotalTypesCattle,
     paletteBackground,
@@ -14,13 +15,17 @@ import {
     ChartData,
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import annotationPlugin from 'chartjs-plugin-annotation';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+
+ChartJS.register(ArcElement, Tooltip, Legend,annotationPlugin);
 
 export const TortaTipoGanado = ({
     total_tipos_ganado,
 }: ResponseTotalTiposGanado) => {
     const { numberTypes, typesCattle } = getCastleType(total_tipos_ganado);
+
+    const typesCattleCapitalized = typesCattle.map((type) => capitalizeFirstLetter(type));
 
     const datasets: ChartData<'doughnut', number[]> = {
         labels: typesCattle,
@@ -32,6 +37,24 @@ export const TortaTipoGanado = ({
             },
         ],
     };
+    const configAnotation={annotation: { //plugin anotaciones
+        annotations: {
+            dLabel: {
+                type: 'doughnutLabel',
+                content: ({chart}) => ['Total',
+                    chart.getDatasetMeta(0).total,
+                  ],
+                font:[{size:20,weight:'bold'},{size:18,weight:'normal'}],
+                color:'#ecedee'
+            }
+        }
+    }}
+        //destructurar options
+        //primero se destructura el objeto de opciones
+        //luego se crear un nuevo objecto con la propiedad plugins
+        //se destructora el objeto de plugins
+        //y se añade el plugin anotaciones
+        const options={...optionChartTotalTypesCattle,plugins:{...optionChartTotalTypesCattle.plugins,...configAnotation}}
 
-    return <Doughnut data={datasets} options={optionChartTotalTypesCattle} />;
+    return <Doughnut data={datasets} options={options} />;
 };
