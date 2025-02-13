@@ -18,6 +18,8 @@
     "@types/react-slick": "^0.23.13",
     "chart.js": "^4.4.2",
     "chartjs-adapter-date-fns": "^3.0.0",
+    "chartjs-plugin-annotation": "^3.1.0",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "date-fns": "^3.3.1",
     "framer-motion": "^11.0.3",
     "i18next": "^23.11.2",

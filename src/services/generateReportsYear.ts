@@ -8,11 +8,12 @@ import { Session } from 'next-auth';
 export const GetReportsYear = async (
     endPoint: keyof typeof endpointsReportsAnnual,
     year: number,
+    method:'GET'|'POST'='GET',
+    data?:FormData
 ) => {
     const session = (await auth()) as Session;
 
     const { user } = session;
-
     /*  const {token,cookieCsrf}=user */
     const { token } = user;
 
@@ -23,17 +24,22 @@ export const GetReportsYear = async (
     const headers = new Headers({
         Accept: '*/*',
         Origin: process.env.ORIGIN,
-        'Content-Type': 'application/json',
+        'X-XSRF-TOKEN': user.xsrf_token,
         Authorization: `Bearer ${token}`,
+        Cookie: `XSRF-TOKEN=${user.xsrf_token}; laravel_session=${user.laravel_session}`,
+
     });
     /*  if(method == 'POST') headers.append('X-XSRF-TOKEN', cookieCsrf[0].token); */
 
+    
     const optionFetch: RequestInit = {
         cache: 'no-store',
-        method: 'GET',
+        method: method,
         headers: headers,
         credentials: 'include',
     };
+   
+    if (method == 'POST') optionFetch.body =data;
     try {
         const ganadoDescarte = await fetch(url, optionFetch);
         const pdf = await ganadoDescarte.blob();

@@ -308,3 +308,12 @@ export type ResponseFinca={
 export type ResponseLogsVeterinary={
     logs:LogVeterinary[]
 }
+
+export type ResponseResumenNatalidad={
+    nacimientos_ultimos_5_año:{
+                                año:string;
+                            partos_producidos:number;
+                        poblacion:integer;
+                        tasa_natalidad:number}[]
+    nacimientos_año_actual:{año:string,total:number;machos:number;hembras:integer}
+}

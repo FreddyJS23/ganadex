@@ -1,6 +1,7 @@
 'use client';
 
 import IconImprimir from '@/icons/icono-imprimir.svg';
+import IconGrafico from '@/icons/icono-grafico.svg';
 import { toast } from 'sonner';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
@@ -63,5 +64,12 @@ export const ButtonGenerateReport = () => {
                 <IconImprimir tittle='Generar reporte' className={'size-8'} />
             </Link>
         );
+    else if (pathname == '/partos')
+        return (
+            <Link href={`/partos/resumen`}>
+                <IconGrafico tittle='Ver resumen estadístico' className={'size-8'} />
+            </Link>
+        );
+
  return ( <></>)
 };
