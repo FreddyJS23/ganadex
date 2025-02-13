@@ -79,6 +79,7 @@ export const endPoints = {
     crearSesionFinca:'crear_sesion_finca/',
     logsVeterinario:'logs_veterinario/',
     actualizarConfig:'configuracion/',
+    resumenNatalidad:'resumen_natalidad?year=',
 };
 
 export const endPointsCattle = {
@@ -103,4 +104,6 @@ export const endpointsReports = {
 /**Rutas para el endpoint de laravel   */
 export const endpointsReportsAnnual = {
     venta_ganado: 'reportes/venta_ganado',
+    natalidad:'reportes/natalidad',
+
 };
