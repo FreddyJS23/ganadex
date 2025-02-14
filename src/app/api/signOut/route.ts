@@ -7,7 +7,8 @@ import { redirect } from 'next/navigation';
 export async function GET(): Promise<NextResponse> {
     try {
         await signOutApi();
-        return await signOutAuthJs({ redirectTo: '/login' });
+        await signOutAuthJs({ 'redirect':false });
+        return redirect('/login')
     } catch (error) {
         return redirect('/login');
     }
