@@ -9,6 +9,7 @@ import { UpdateUser } from '@/types/forms';
 import { updateUserShema } from '@/validations/updateUse';
 import {  ModalProps, UserAdminInfo, UserVeterinaryInfo } from '@/types';
 import { useRouter } from 'next/navigation';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type ModalUpdateUserProps = {
     id: number;
@@ -37,17 +38,16 @@ export const ModalUpdateUser = ({
 
     const actionsUpdateUser: () => void = handleSubmit(async (data) => {
         
-        try {
-            const response = (await updateUser(id, data)) as string;
+       
+            const response = (await updateUser(id, data));
+             /* manejar error del backedn y mostar mensaje */
+             if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
             
             toast.success(`${response} es tu nuevo usuario`);
             formRef.current?.reset();
             router.refresh();
             onClose();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+        
     });
 
     return (

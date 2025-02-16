@@ -8,6 +8,7 @@ import { ResponseCargosPersonal } from '@/types';
 import { CreateStaff } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { createStaffShema } from '@/validations/staffShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -27,15 +28,14 @@ export const FormCreateStaff = ({
     });
 
     const actionStaff: () => void = handleSubmit(async (data) => {
-        try {
-            console.log('33');
-            const response = (await createStaff(data)) as string;
-            toast.success(`${response} ha sido registrado`);
-        } catch (error) {
-            console.log('33');
-            const message = error as string;
-            return toast.error(message);
-        }
+       
+            const response = (await createStaff(data));
+            
+            /* manejar error del backedn y mostar mensaje */
+             if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
+            
+                toast.success(`${response} ha sido registrado`);
+        
     });
 
     return (

@@ -16,6 +16,7 @@ import IconPrint from '@/icons/icono-imprimir.svg';
 import { getDateNow } from '@/utils/getDateNow';
 import { formSaleCattle } from '@/collections/formsInputs';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ModalSaleCattle = ({
     isOpen,
@@ -59,11 +60,14 @@ export const ModalSaleCattle = ({
     };
 
     const actionCreateSaleCattle: () => void = handleSubmit(async (data) => {
-        try {
+       
             const saleCattle = await createSaleCattle(
                 data,
                 parseInt(params.id),
             );
+             /* manejar error del backedn y mostar mensaje */
+             if(typeof saleCattle == 'object' && 'error' in saleCattle) return toast.error(messageErrorApi(saleCattle)) 
+
             toast.success(
                 `Se ha realizado la venta del ganado ${saleCattle} `,
                 {
@@ -81,10 +85,7 @@ export const ModalSaleCattle = ({
             );
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+        
     });
 
     return (

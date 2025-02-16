@@ -12,6 +12,7 @@ import { toast } from 'sonner';
 import { LayoutModal } from '..';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ModalCreateVaccinationDay = ({
     isOpen,
@@ -32,15 +33,15 @@ export const ModalCreateVaccinationDay = ({
     const formRef = useRef(null);
 
     const actionVaccinationDay: () => void = handleSubmit(async (data) => {
-        try {
-            await createVaccinationDay(data);
+       
+            
+       const response= await createVaccinationDay(data);
+        /* manejar error del backedn y mostar mensaje */
+        if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
             toast.success(`Jornada de vacunación ha sido registrado`);
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
     return (

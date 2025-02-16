@@ -6,6 +6,7 @@ import { ResponseAñosProduccionLeche } from '@/types';
 import { BalanceMensualLeche } from '@/types/dashboard';
 import { optionChartLineAnnualMilk } from '@/utils/configCharts';
 import { getBalanceMonthFromAnnual } from '@/utils/convertResponseBalanceAnnualMilk';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -19,6 +20,7 @@ import {
 } from 'chart.js';
 import { useState } from 'react';
 import { Line } from 'react-chartjs-2';
+import { toast } from 'sonner';
 
 ChartJS.register(
     CategoryScale,
@@ -58,14 +60,16 @@ export const ChartAnnualBalanceMilk = ({
     const [dataGraph, setDataGraph] = useState(getBalanceMonthFromAnnual(balanceAnual));
     
     const onChange = async (select: number) => {
-        try {
+    
             const data = (await getBalanceAnnualPrudctionMilk(
                 select,
-            )) as BalanceMensualLeche[];
-            setDataGraph(getBalanceMonthFromAnnual(data));
-        } catch (error) {
-            ('error');
-        }
+            ));
+            
+            /* manejar error del backedn y mostar mensaje */
+            if('error' in data) return toast.error(messageErrorApi(data)) 
+            
+                setDataGraph(getBalanceMonthFromAnnual(data));
+       
     };
    
     const data: ChartData<'line'> = {

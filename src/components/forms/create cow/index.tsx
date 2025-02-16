@@ -18,11 +18,12 @@ import { createCastle } from '@/actions/vaca';
 import { toast } from 'sonner';
 import { ChangeEvent, useRef, useState } from 'react';
 import { Checkbox, Selection } from '@nextui-org/react';
-import { AvailableVaccines, Comprador, ListaVacunas, ResponseCompradores } from '@/types';
+import { AvailableVaccines, Comprador, ListaVacunas, ResponseCompradores, ResponseGanado } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
 import { CreateListVaccination } from '@/components/create list vaccination';
 import { ToolTipTipoGanado } from '@/components/tooltip';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 
 type FormCowProps = {
@@ -54,20 +55,23 @@ export const FormCow = ({ compradores,listaVacunas,numero_disponible }: FormCowP
     });
 console.log(numero_disponible)
     const actionCastle: () => void = handleSubmit(async (data) => {
-        try {
-            const response = (await createCastle(data,listVaccines)) as string | number;
-             form.current?.reset();
+    
+            const response = (await createCastle(data,listVaccines));
+         
+            /* manejar error del backedn y mostar mensaje */
+            if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
+            
+            const dataResponse=response as string | number
+           
+            form.current?.reset();
             setListVaccines([])
             setStates(new Set('1'));
             setShowinputDead(false);
             setShowinputSale(false);
             toast.success(
-                `La cabeza ganado de numero ${response} ha sido registrado`,
+                `La cabeza ganado de numero ${dataResponse} ha sido registrado`,
             );
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
     /* select states of the castle */

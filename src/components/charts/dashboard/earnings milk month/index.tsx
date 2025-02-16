@@ -8,6 +8,7 @@ import {
 } from '@/types/dashboard';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { optionChartLineEarningsMilkMonth } from '@/utils/configCharts';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -82,12 +83,12 @@ export const ChartEarningsMilkMonth = ({
     };
 
     const onChangeMonth = async(select: number) => {
-        try {
-            const data=await getBalanceMonthlySaleMilk(select) as BalanceDiarioVentaLeche[];
+      
+            const data=await getBalanceMonthlySaleMilk(select);
+            
+            if('error' in data) return toast.error(messageErrorApi(data))
             setDataGraph(data.concat(rangeData(select)));
-        } catch (error) {
-            ('error')
-        }
+        
     };
 
     return (

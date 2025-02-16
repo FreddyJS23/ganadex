@@ -1,16 +1,15 @@
 'use serve';
 
-import { ResponseError } from '@/types';
-import { getData } from '@/utils/getData';
-
+import { ResponseErrorNext } from '@/types';
+/* import { getData } from '@/utils/getData';
+ */
 export async function castrateBullCalf(
-    id: number,
-): Promise<void | ResponseError | undefined> {
-    try {
-        await getData('caparCria', 'GET', undefined, id);
-    } catch (error) {
-        console.log(error);
-        const { message } = error as Error;
-        throw message;
-    }
+   /*  id: number, */
+): Promise<void | ResponseErrorNext | undefined> {
+   
+   /*     const response = await getData<number,void>('caparCria', 'GET', undefined, id); */
+   return{ error:{message:'disable',status:404}}
+  
+        
+    
 }

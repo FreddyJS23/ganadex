@@ -19,6 +19,7 @@ import { updateWeightBull } from '@/actions/toro';
 import { CircularProgress } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import { updateWeightBeef } from '@/actions/ganado_descarte';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type DetailsWeightsProps = {
     id: number;
@@ -66,16 +67,19 @@ export const WeightsEditable = ({
         },
     });
 
+    const updatesFunctions={
+        ganado:updateWeightCastle,
+        toro:updateWeightBull,
+        descarte:updateWeightBeef
+    }
+    const updateFunction=updatesFunctions[typeModelWeight]
+
     const actionUpdateWeight: () => void = handleSubmit(async (data) => {
-        let response;
         setIsLoading(true);
-        try {
-            if (typeModelWeight == 'ganado')
-                response = (await updateWeightCastle(id, data)) as Pesos;
-            else if (typeModelWeight == 'toro')
-                response = (await updateWeightBull(id, data)) as Pesos;
-            else if (typeModelWeight == 'descarte')
-                response = (await updateWeightBeef(id, data)) as Pesos;
+       
+            const response= await updateFunction(id, data)
+              /* manejar error del backedn y mostar mensaje */
+              if('error' in response) return toast.error(messageErrorApi(response)) 
 
             //En caso de que el nuevo peso sea igual o mayor que el de la configuracion, actualizar para desbloquear las tabs
             if (
@@ -84,15 +88,11 @@ export const WeightsEditable = ({
             )
                 router.refresh();
 
-            setPesos(response as Pesos);
+            setPesos(response);
             setEditable(false);
             setIsLoading(false);
             toast.success(`Los pesos han sido actualizados`);
-        } catch (error) {
-            setIsLoading(false);
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
     const handleClickSave = () => {

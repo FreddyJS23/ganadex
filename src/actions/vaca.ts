@@ -1,45 +1,43 @@
 'use serve';
 
-import { ListaVacunas, Pesos, ResponseError, ResponseGanado } from '@/types';
+import { ListaVacunas, Pesos, ResponseErrorNext, ResponseGanado } from '@/types';
 import { CreateCastle, updateWeight } from '@/types/forms';
 import { getData } from '@/utils/getData';
+
+type vacunasSinId=Omit<ListaVacunas,'id'>
 
 export async function createCastle(
     formData: CreateCastle,
     listVaccines: ListaVacunas[],
-): Promise<string | number | ResponseError | undefined> {
-    try {
+): Promise<ResponseErrorNext | ResponseGanado['ganado']['numero'] | ResponseGanado['ganado']['nombre']> {
+   
       //en esta destructuracion se saca el id y se utiliza el resto del objecto
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const vacunas=listVaccines.map(({id,...rest})=>({...rest}))
     
-    const { ganado }: ResponseGanado = await getData(
+    const response= await getData<CreateCastle & {vacunas:vacunasSinId[]},ResponseGanado>(
             'ganado',
             'POST',
         {...formData,vacunas},
-        );  
-        if (ganado.numero) return ganado.numero;
-        else if (ganado.nombre) return ganado.nombre;
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+        )  
+        if('error' in response) return response
+        else return response.ganado.numero ?? response.ganado.nombre 
+       
+   
 }
 
 export async function updateWeightCastle(
     id:number,
     formData:updateWeight,
-): Promise<Pesos| ResponseError | undefined>{
-        try {
-        const { ganado }: ResponseGanado = await getData(
+): Promise<Pesos| ResponseErrorNext >{
+     
+        const response= await getData<updateWeight,ResponseGanado>(
                 'ganado',
                 'PUT',
             formData,
                 id
             );  
-            return ganado.pesos;
-        } catch (error) {
-            const { message } = error as Error;
-            throw message;
-        }
+            if('error' in response) return response
+            else return response.ganado.pesos! 
+    
 }

@@ -12,6 +12,7 @@ import { useRef } from 'react';
 import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createWeightMilk } from '@/actions/weightMilk';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ModalWeightMilk = ({
     dataHeader,
@@ -31,20 +32,20 @@ export const ModalWeightMilk = ({
     const params = useParams<{ id: string }>();
 
     const actionCreateWeightMilk: () => void = handleSubmit(async (data) => {
-        try {
+      
             const weightMilk = await createWeightMilk(
                 data,
                 parseInt(params.id),
             );
+             /* manejar error del backedn y mostar mensaje */
+             if(typeof weightMilk == 'object' && 'error' in weightMilk) return toast.error(messageErrorApi(weightMilk)) 
+
             toast.success(
                 `Pesaje de ${weightMilk}KG de la vaca ${dataHeader} ha sido registrado`,
             );
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+        
     });
 
     return (

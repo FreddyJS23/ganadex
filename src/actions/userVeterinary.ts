@@ -1,39 +1,33 @@
 'use serve';
 
-import { ResponseCorrect, ResponseError, ResponseVeterinarioUsuario  } from '@/types';
+import { ResponseErrorNext, ResponseVeterinarioUsuario, UserVeterinaryInfo  } from '@/types';
 import { getData } from '@/utils/getData';
 
 export async function createUserVeterinary(
     id: number,
-): Promise<string  | ResponseError | undefined> {
-    try {
-        const { usuario_veterinario }: ResponseVeterinarioUsuario = await getData(
+): Promise<UserVeterinaryInfo | ResponseErrorNext > {
+   
+        const response = await getData<{'personal_id':number},ResponseVeterinarioUsuario>(
             'usuariosVeterinarios',
             'POST',
             {'personal_id':id},
         );
-        if (usuario_veterinario) return usuario_veterinario;
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+      if('error' in response) return response
+      else return response.usuario_veterinario
 }
 
 export async function deleteUserVeterinary(
     id: number,
-): Promise<boolean  | ResponseError | undefined> {
-    try {
-      await getData(
+): Promise<void  | ResponseErrorNext> {
+    
+     const response= await getData<number,void>(
             'usuarioVeterinario',
             'DELETE',
             undefined,
             id,
         );
      
-        return true
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+       return response
+    
 }
 

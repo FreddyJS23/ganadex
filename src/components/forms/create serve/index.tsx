@@ -11,6 +11,7 @@ import { CreateServe } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { createServeShema, createServeShemaWithPajuelaToroId, createServeShemaWithToroId } from '@/validations/serveShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
@@ -45,15 +46,14 @@ export const FormCreateService = ({
     console.log(errors);
 
     const actionCreateService: () => void = handleSubmit(async (data) => {
-        try {
-            await createServe(data, parseInt(cattleId));
+       
+            const response = await createServe(data, parseInt(cattleId));
+             /* manejar error del backedn y mostar mensaje */
+             if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
             toast.success(`Servicio creado`);
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
     // campos select tipo servicio

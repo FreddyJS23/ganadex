@@ -11,6 +11,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { getDateNow } from '@/utils/getDateNow';
 import { formDeadCattle } from '@/collections/formsInputs';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ModalDeathCattle = ({
     isOpen,
@@ -31,20 +32,20 @@ export const ModalDeathCattle = ({
     const params = useParams<{ id: string }>();
 
     const actionCreateDeathCattle: () => void = handleSubmit(async (data) => {
-        try {
+       
             const deathCattle = await createDeathCattle(
                 data,
                 parseInt(params.id),
             );
+           /* manejar error del backedn y mostar mensaje */
+           if( typeof deathCattle == 'object' && 'error' in deathCattle) return toast.error(messageErrorApi(deathCattle)) 
+            
             toast.success(
                 `Se ha realizado el fallecimiento del ganado ${deathCattle} `,
             );
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+        
     });
 
     return (

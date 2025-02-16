@@ -10,6 +10,7 @@ import { CreateBirth } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { createBirthShema } from '@/validations/birthShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
@@ -40,15 +41,14 @@ export const FormCreateBirth = ({
     const { id: cattleId } = useParams<{ id: string }>();
 
     const actionCreateBirth: () => void = handleSubmit(async (data) => {
-        try {
-            await createBirth(data, parseInt(cattleId));
-            toast.success(`Parto creado`);
+       
+           const response= await createBirth(data, parseInt(cattleId));
+            /* manejar error del backedn y mostar mensaje */
+            if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
+           toast.success(`Parto creado`);
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+      
     });
 
     return (

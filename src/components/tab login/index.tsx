@@ -13,6 +13,7 @@ import { createUser } from '@/actions/usuario';
 import { ResponseError } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createUserShema } from '@/validations/createUser';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const TabLogin = () => {
     const [selected, setSelected] = useState<string | number>('login');
@@ -33,14 +34,13 @@ export const TabLogin = () => {
 
     const actionCreateUser: () => void = handleSubmitCreateUser(
         async (data) => {
-            try {
+           
                 const response = await createUser(data);
+               /* manejar error del backedn y mostar mensaje */
+            if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
                 form.current?.reset();
-                toast.success(response as string);
-            } catch (error) {
-                const { data, status } = error as ResponseError;
-                toast.error(`Error ${status}: ${data.message}`);
-            }
+                toast.success(response);
+           
         },
     );
 
@@ -59,16 +59,18 @@ export const TabLogin = () => {
             <Tab key="login" title="Ingresar" className="w-full">
                 <form
                     className="flex flex-col gap-4 bg-base-100 pb-4 px-8 sm:p-2 sm:items-center"
-                    action={(formData) => {
-                        toast.promise(authenticate(formData), {
-                            success: (data) => {
-                                data?.redirect && router.push(data.redirect);
-                                return `${data?.message}`;
-                            },
-                            error: (data: Error) => {
-                                return `${data?.message}`;
-                            },
-                        });
+                    action={async(formData) => {
+                       const res=await authenticate(formData)
+                      
+                       if('error' in  res){
+                           return toast.error(res.error?.message)
+                           
+                       }
+                       else if('message' in res){
+                           toast.success(res.message)
+                           router.push(res.redirect ?? '/')
+                       }
+                       
                     }}
                 >
                     <div className="sm:max-w-64 sm:w-60">

@@ -12,6 +12,7 @@ import { toast } from 'sonner';
 import { assignmentNumberBullCalfShema } from '@/validations/assignmentNumberBullCalfShema';
 import { useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ModalAssignmentNumberBullCalf = ({
     dataHeader,
@@ -32,15 +33,14 @@ export const ModalAssignmentNumberBullCalf = ({
 
     const actionAssigmentNumberBullCalf: () => void = handleSubmit(
         async (data) => {
-            try {
-                await assignmentNumberBullCalf(data, parseInt(params.id));
-                toast.success('Operación exitosa');
+                const response = await assignmentNumberBullCalf(data, parseInt(params.id));
+                /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backedn y mostar mensaje */
+                if(typeof response == 'object' && 'error' in response)  return toast.error(messageErrorApi(response)) 
+                
+                    toast.success('Operación exitosa');
                 router.back();
                 router.refresh();
-            } catch (error) {
-                const message = error as string;
-                return toast.error(message);
-            }
+            
         },
     );
 

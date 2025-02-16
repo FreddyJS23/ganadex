@@ -8,6 +8,6 @@ export async function restoreBd(): Promise<void | ResponseError | undefined> {
         await RestoreLastBackup();
     } catch (error) {
         const { message } = error as Error;
-        throw message;
+         return {error:{message:message}} ;;
     }
 }

@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'sonner';
 import { createCustomer } from '@/actions/comprador';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ModalCreateCustomer = ({
     isOpen,
@@ -28,17 +29,18 @@ export const ModalCreateCustomer = ({
     const formRef = useRef(null);
 
     const actionCreateCustomer: () => void = handleSubmit(async (data) => {
-        try {
-            const priceMilk = await createCustomer(data);
-            toast.success(
-                `${priceMilk} ha sido registrado como nuevo comprador`,
+       
+            const response = await createCustomer(data);
+            
+            /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backedn y mostar mensaje */
+            if(typeof response == 'object')  if('error' in response) return toast.error(messageErrorApi(response)) 
+           
+                toast.success(
+                `${response} ha sido registrado como nuevo comprador`,
             );
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
     return (

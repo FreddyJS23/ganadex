@@ -11,6 +11,7 @@ import { Chart as ChartJS } from 'chart.js';
 import { toast } from 'sonner';
 import IconReport from '@/icons/icono-imprimir.svg';
 import { Button } from '@nextui-org/react';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ResumenNatalidad = (
     resumenNatalidad: ResponseResumenNatalidad,
@@ -33,14 +34,14 @@ export const ResumenNatalidad = (
     /* funcion para cambiar el año seleccionado */
     const onChange = async (select: number) => {
         setSelectValue(select);
-        try {
-            const data = (await getResumenNatalidad(
-                select,
-            )) as ResponseResumenNatalidad;
-            setDataGraph(data);
-        } catch (error) {
-            ('error');
-        }
+       
+        const data = (await getResumenNatalidad(
+            select,
+        )) 
+            if('error' in data) return toast.error(messageErrorApi(data))
+            
+                setDataGraph(data);
+       
     };
 
     /* funcion para extraer los años de los datos de la api y rellenar el select */

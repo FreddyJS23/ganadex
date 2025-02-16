@@ -10,6 +10,7 @@ import { CreateCheckUp } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { createCheckUpShema } from '@/validations/checkUpShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
@@ -31,15 +32,15 @@ export const FormCreateCheckUp = ({
     const { id: cattleId } = useParams<{ id: string }>();
 
     const actionCreatecheckUp: () => void = handleSubmit(async (data) => {
-        try {
-            await createCheckUp(data, parseInt(cattleId));
-            toast.success(`Revision creada`);
+        
+           const response= await createCheckUp(data, parseInt(cattleId));
+            /* manejar error del backedn y mostar mensaje */
+            if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
+            
+                toast.success(`Revision creada`);
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+        
     });
 
     return (

@@ -10,6 +10,7 @@ import {  Configuracion, ModalProps } from '@/types';
 import { useRouter } from 'next/navigation';
 import { updateConfigurationShema } from '@/validations/updateConfiguration';
 import { useSession } from 'next-auth/react';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 
 export const ModalUpdateConfiguracion = ({
@@ -35,8 +36,10 @@ export const ModalUpdateConfiguracion = ({
 
     const actionsUpdateConfiguration: () => void = handleSubmit(async (data) => {
         
-        try {
-            const response = (await updateConfiguration(data)) as Configuracion;
+        
+            const response = (await updateConfiguration(data));
+             /* manejar error del backedn y mostar mensaje */
+             if('error' in response) return toast.error(messageErrorApi(response)) 
             
             toast.success('Configuración actualizada');
             await update({
@@ -46,10 +49,7 @@ export const ModalUpdateConfiguracion = ({
             formRef.current?.reset();
             router.refresh();
             router.back();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+        
     });
 
     return (

@@ -2,19 +2,22 @@
 
 import { endPoints, endPointsCattle } from '@/collections/endPointsApi';
 import { handleResponse } from './handleResponseApi';
-import { ResponseError } from '@/types';
+import { ResponseError, ResponseErrorFromApi, ResponseErrorNext } from '@/types';
 import { auth } from '@/auth';
 import { Session } from 'next-auth';
 import ErrorApp from './errorApp';
+import { handleErrorFromApi } from './handleErrorFromApi';
+import ErrorFromApi from '@/lib/errors/errorFromApi';
 
-export async function getData(
+
+export async function getData<Form,dataResponse>(
     endPoint: keyof typeof endPoints,
     method: 'GET' | 'POST' | 'DELETE' | 'PUT' = 'GET',
-    data?: unknown,
+    data?: Form,
     id?: number,
     endPointCattle?: keyof typeof endPointsCattle,
     id2?: number,
-) {
+):Promise<dataResponse | ResponseErrorNext> {
     const session = (await auth()) as Session;
 
     const { user } = session;
@@ -53,7 +56,7 @@ export async function getData(
     try {
         const dataApi = await fetch(url, optionFetch);
 
-        const { data, status } = await handleResponse(dataApi);
+        const { data, status } = await handleResponse<dataResponse>(dataApi);
         if (status == 200 || status == 201) return data;
         else if (
             status == 422 ||
@@ -63,10 +66,10 @@ export async function getData(
             status == 419 ||
             status != 200
         )
-            throw { status: status, data: data };
-    } catch (e) {
-        if (e instanceof Error) throw new Error('Error en la conexión con el servidor');
-        const { status, data } = e as ResponseError;
-        throw new Error(`${status}: ${data.message}`);
+          throw new ErrorFromApi('error',{status: status, data: data as ResponseErrorFromApi['data']})  ;
+    } catch (e:unknown) {
+      return  handleErrorFromApi(e)
     }
+
+    return handleErrorFromApi('error')
 }

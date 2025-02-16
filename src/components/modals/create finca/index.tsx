@@ -10,6 +10,7 @@ import { useRef } from 'react';
 import { toast } from 'sonner';
 import { createFinca } from '@/actions/finca';
 import { useSession } from 'next-auth/react';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type ModalCreateFincaProps = ModalProps & {
     isOpen: boolean;
@@ -41,8 +42,12 @@ export const ModalCreateFinca = ({
     const { update, data: session } = useSession();
 
     const actionCreateFinca: () => void = handleSubmit(async (data) => {
-        try {
+        
             const finca = await createFinca(data);
+              
+            /* manejar error del backedn y mostar mensaje */
+              if(typeof finca == 'object' && 'error' in finca) return toast.error(messageErrorApi(finca)) 
+            
             toast.success(
                 `${finca} creada exitosamente`,
             );
@@ -59,10 +64,7 @@ export const ModalCreateFinca = ({
                 router.refresh();
             }
             
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
     return (
