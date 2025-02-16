@@ -57,10 +57,21 @@ export type ResponseErrorCampos = {
     message: string;
     errors: errors;
 };
-export type ResponseError = {
+/* export type ResponseError = {
+    status: number;
+    data: ResponseErrorCampos;
+}; */
+
+/** Respuesta del servidor de laravel */
+export type ResponseErrorFromApi = {
     status: number;
     data: ResponseErrorCampos;
 };
+
+/** Respuesta manejada proveniente del servidor de laravel */
+export type ResponseErrorNext={
+    error:{message:string,status:number}
+}
 
 export type ResponseGanado = {
     ganado: Ganado;
@@ -286,7 +297,7 @@ export type ResponseVeterinariosUsuario={
 }
 
 export type ResponseVeterinarioUsuario={
-    usuario_veterinario:UserVeterinary
+    usuario_veterinario:UserVeterinaryInfo
 }
 
 export type ResponseVeterinariosSinUsuario={
