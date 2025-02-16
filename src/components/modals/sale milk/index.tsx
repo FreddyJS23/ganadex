@@ -12,6 +12,7 @@ import { createSaleMilk } from '@/actions/ventaLeche';
 import { toast } from 'sonner';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ModalSaleMilk = ({
     isOpen,
@@ -32,15 +33,15 @@ export const ModalSaleMilk = ({
     const formRef = useRef(null);
 
     const actionCreateSaleMilk: () => void = handleSubmit(async (data) => {
-        try {
+      
             const saleMilk = await createSaleMilk(data);
-            toast.success(`Se ha realizado la venta de ${saleMilk} de leche`);
+             /* manejar error del backedn y mostar mensaje */
+             if(typeof saleMilk == 'object' && 'error' in saleMilk) return toast.error(messageErrorApi(saleMilk)) 
+            
+                toast.success(`Se ha realizado la venta de ${saleMilk} de leche`);
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+        
     });
 
     return (

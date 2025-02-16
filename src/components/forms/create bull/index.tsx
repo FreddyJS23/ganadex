@@ -23,6 +23,7 @@ import { ChangeEvent, useRef, useState } from 'react';
 import { Chip, Selection } from '@nextui-org/react';
 import { Comprador } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type FormBullProps = {
     compradores: Comprador[];
@@ -65,17 +66,17 @@ console.log(errors)
 
     const actionBull: () => void = handleSubmit(async (data) => {
 
-        try {
-            const response = (await createBull(data)) as string | number;
+        
+            const response = (await createBull(data));
+         /* manejar error del backedn y mostar mensaje */
+         if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
+
             form.current?.reset();
             setStates(new Set('1'));
             setShowinputDead(false);
             setShowinputSale(false);
             toast.success(`Toro numero ${response} ha sido registrado`);
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
     /* select states of the castle */

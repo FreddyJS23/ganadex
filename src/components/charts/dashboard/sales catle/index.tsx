@@ -12,6 +12,7 @@ import {
     paletteBackground,
     paletteBorderColor,
 } from '@/utils/configCharts';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { ChartData } from 'chart.js';
 import {
     Chart as ChartJS,
@@ -41,14 +42,16 @@ export const SalesCatle = ({ balance_anual,años_ventas_ganado,children }: Balan
     
 
 const onChange = async(select: number) => {
-        try {
+       
             const data = await getBalanceAnnualSaleCattle(
                 select,
-            ) as BalanceMensualVentaGanado[];
-            setDataGraph(data);
-        } catch (error) {
-            ('error');
-        }
+            );
+            
+             /* manejar error del backedn y mostar mensaje */
+             if('error' in response!) return toast.error(messageErrorApi(response)) 
+            
+                setDataGraph(data);
+        
 }
 
     const data: ChartData<'bar', BalanceMensualVentaGanado[]> = {

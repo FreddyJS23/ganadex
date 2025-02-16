@@ -1,16 +1,14 @@
 'use serve';
 
-import { ResponseError } from '@/types';
+import { ResponseErrorNext } from '@/types';
 import { getData } from '@/utils/getData';
 
 export async function discardCattle(
     ganadoId: number,
-): Promise<void | ResponseError | undefined> {
-    try {
-        await getData('descartarGanado', 'POST',{ganado_id:ganadoId});
-    } catch (error) {
- 
-        const { message } = error as Error;
-        throw message;
-    }
+): Promise<boolean | ResponseErrorNext | undefined> {
+    
+        const response=await getData<{ganado_id:number},void>('descartarGanado', 'POST',{ganado_id:ganadoId});
+        if(typeof response == 'object' && 'error' in response)  return response
+        else return true
+    
 }

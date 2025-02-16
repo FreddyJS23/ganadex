@@ -1,41 +1,36 @@
 'use serve';
 
-import { Pesos, ResponseError, ResponseGanadoDescarte } from '@/types';
+import { Pesos, ResponseErrorNext, ResponseGanadoDescarte } from '@/types';
 import { CreateBeef, updateWeight } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
 export async function createBeef(
     formData: CreateBeef,
-): Promise<string | number | ResponseError | undefined> {
-    try {
-        const { ganado_descarte }: ResponseGanadoDescarte = await getData(
+): Promise<string | number | ResponseErrorNext> {
+    
+        const response= await getData<CreateBeef,ResponseGanadoDescarte>(
             'ganadoDescarte',
             'POST',
             formData,
         );
-        if (ganado_descarte.numero) return ganado_descarte.numero;
-        else if (ganado_descarte.nombre) return ganado_descarte.nombre;
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+       
+        if('error' in response) return response
+        else return response.ganado_descarte.numero ?? response.ganado_descarte.nombre
+    
 }
 
 export async function updateWeightBeef(
     id:number,
     formData:updateWeight,
-): Promise<Pesos| ResponseError | undefined>{
-        try {
-        const { ganado_descarte }: ResponseGanadoDescarte = await getData(
+): Promise<Pesos| ResponseErrorNext >{
+       
+        const response= await getData<updateWeight,ResponseGanadoDescarte>(
                 'ganadoDescarte',
                 'PUT',
             formData,
                 id
             );  
-            return ganado_descarte.pesos;
-        } catch (error) {
-            const { message } = error as Error;
-            throw message;
-        }
+            if('error' in response) return response
+            else return response.ganado_descarte.pesos! 
 }
 

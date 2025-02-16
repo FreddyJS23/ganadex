@@ -8,6 +8,7 @@ import { removeAllNotificationsFromDB } from '@/actions/removeAllNotificationsFr
 import { toast } from 'sonner';
 import { BadgeNotification } from '@/ui/BadgeNotification';
 import IconoNotificacion from '@/icons/icono-notificacion.svg';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 
 export const NotificationMain = (notifications: TypesNotification) => {
@@ -17,16 +18,16 @@ export const NotificationMain = (notifications: TypesNotification) => {
         //evitar peticiones innecesarias al servidor
         if(totalNotifications== 0 ) return
         
-        try {
-            await removeAllNotificationsFromDB();
+        
+            const response=await removeAllNotificationsFromDB();
+             /* manejar error del backedn y mostar mensaje */
+             if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
+
             setTotalNotifications(0)
             setParto([])
             setRevision([])
             setSecado([])
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+        
     };
     const {parto:partoNotifications,revision:revisionNotifications,secado:secadoNotifications}=notifications
     const [parto, setParto] = useState(partoNotifications ?? []);

@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { CreatePriceMilk } from '@/types/forms';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createPriceMilkShema } from '@/validations/priceMilkShema';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 export const ModalNewPriceMilk = ({
     isOpen,
@@ -28,17 +29,17 @@ export const ModalNewPriceMilk = ({
     const formRef = useRef(null);
 
     const actionCreatePriceMilk: () => void = handleSubmit(async (data) => {
-        try {
+       
             const priceMilk = await createPriceMilk(data);
-            toast.success(
+             /* manejar error del backedn y mostar mensaje */
+             if(typeof priceMilk == 'object' && 'error' in priceMilk) return toast.error(messageErrorApi(priceMilk)) 
+           
+                toast.success(
                 `Se ha creado el nuevo precio actual ${priceMilk}$ de leche`,
             );
             router.back();
             router.refresh();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
     return (

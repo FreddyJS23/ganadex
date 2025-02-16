@@ -1,23 +1,20 @@
 'use serve';
 
-import { ResponseError, ResponseVentaGanado } from '@/types';
+import {  ResponseErrorNext, ResponseVentaGanado } from '@/types';
 import { CreateSaleCattle } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
 export async function createSaleCattle(
     formData: CreateSaleCattle,
     id: number,
-): Promise<number | ResponseError | undefined> {
-    try {
-        const { venta }: ResponseVentaGanado = await getData(
+): Promise<number | ResponseErrorNext > {
+   
+        const response = await getData<CreateSaleCattle,ResponseVentaGanado>(
             'ventaGanado',
             'POST',
             Object.assign(formData, { ganado_id: id }),
         );
 
-        return venta.ganado.numero!;
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+    if('error' in response) return response
+    else return response.venta.ganado.numero!
 }

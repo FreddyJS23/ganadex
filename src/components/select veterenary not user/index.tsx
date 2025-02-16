@@ -5,6 +5,7 @@ import SaveIcon from '@/icons/icono-save.svg';
 import { createUserVeterinary } from '@/actions/userVeterinary';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type SelectVeterinaryNotUserProps = {
     veterinarios: veterinario[];
@@ -26,7 +27,10 @@ export const SelectVeterinaryNotUser = ({
         try {
             setIsLoading(true);
             const res=await createUserVeterinary(idVeterinario);
-            const {nombre,usuario}=res as UserVeterinary
+             /* manejar error del backedn y mostar mensaje */
+             if(typeof res == 'object' && 'error' in res!) return toast.error(messageErrorApi(res)) 
+
+            const {nombre,usuario}=res
             toast.success(`Se ha registrado el usuario ${usuario} para el veterinario ${nombre}`);
             setIsLoading(false);
             router.refresh();

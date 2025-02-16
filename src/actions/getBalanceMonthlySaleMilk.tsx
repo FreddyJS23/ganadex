@@ -1,15 +1,14 @@
 'use serve';
 
-import { ResponseError } from '@/types';
+import { ResponseErrorNext } from '@/types';
 import {  BalanceDiarioVentaLeche, BalanceMensualVentaLeche } from '@/types/dashboard';
 import { getData } from '@/utils/getData';
 
-export async function getBalanceMonthlySaleMilk(month:number): Promise<BalanceDiarioVentaLeche[] | ResponseError | undefined> {
-    try {
-        const{ balance_mensual}:BalanceMensualVentaLeche = await getData('dashboardVentaLecheBalanceMensual','GET',month);
-        return balance_mensual;
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+export async function getBalanceMonthlySaleMilk(month:number): Promise<BalanceDiarioVentaLeche[] | ResponseErrorNext > {
+    
+        const response= await getData<number,BalanceMensualVentaLeche>('dashboardVentaLecheBalanceMensual','GET',month);
+        
+        if('error' in response) return response
+        else return response.balance_mensual
+
 }

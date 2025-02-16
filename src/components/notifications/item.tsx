@@ -6,6 +6,7 @@ import { LegacyRef, useRef } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { removeNotificationFromDB } from '@/actions/removeNotificationFromDB';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 /**body de la notificacion */
 type NotificationBodyProps = Notification & { deleteNotificationState: (tipo:Notification['tipo'],index:number) => void; index: number };
@@ -32,13 +33,13 @@ export const NotificationBody = ({
 
 
     const removeNotification = async() => {
-        try {
-            await removeNotificationFromDB(id)
+       
+           const response = await removeNotificationFromDB(id)
+            /* manejar error del backedn y mostar mensaje */
+            if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
+           
             deleteNotificationState(tipo,index)
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
         
     };
 

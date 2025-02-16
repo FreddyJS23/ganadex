@@ -1,21 +1,20 @@
 'use serve';
 
-import { ResponseError, ResponsePrecioLeche } from '@/types';
-import { CreatePriceMilk } from '@/types/forms';
+import {  ResponseErrorNext, ResponsePrecioLeche } from '@/types';
+import {CreatePriceMilk } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
 export async function createPriceMilk(
     formData: CreatePriceMilk,
-): Promise<string | number | ResponseError | undefined> {
-    try {
-        const { precio }: ResponsePrecioLeche = await getData(
+): Promise< number | ResponseErrorNext > {
+  
+        const response = await getData<CreatePriceMilk,ResponsePrecioLeche>(
             'crearPrecioLeche',
             'POST',
             formData,
         );
-        if (precio) return precio.precio;
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+        
+        if('error' in response) return response
+        else return response.precio.precio
+      
 }

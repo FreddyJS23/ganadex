@@ -1,15 +1,15 @@
 'use serve';
 
-import { ResponseError, ResponsePesajeLeche } from '@/types';
+import { ResponseErrorNext, ResponsePesajeLeche } from '@/types';
 import { CreateWeightMilk } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
 export async function createWeightMilk(
     formData: CreateWeightMilk,
     id: number,
-): Promise<string | ResponseError | undefined> {
-    try {
-        const { pesaje_leche }: ResponsePesajeLeche = await getData(
+): Promise<string | ResponseErrorNext> {
+   
+        const response = await getData<CreateWeightMilk,ResponsePesajeLeche>(
             'ganado',
             'POST',
             formData,
@@ -17,9 +17,7 @@ export async function createWeightMilk(
             'pesajeLeche',
         );
 
-        return pesaje_leche.pesaje;
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+      if('error' in response) return response
+      else return response.pesaje_leche.pesaje
+    
 }

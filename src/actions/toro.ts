@@ -1,37 +1,31 @@
 'use serve';
 
-import { Pesos, ResponseError, ResponseToro } from '@/types';
+import { Pesos, ResponseErrorNext, ResponseToro } from '@/types';
 import { CreateBull, updateWeight } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
 export async function createBull(
     formData: CreateBull,
-): Promise<string | number | ResponseError | undefined> {
-    try {
-        const { toro }: ResponseToro = await getData('toro', 'POST', formData);
-        if (toro.numero) return toro.numero;
-        else if (toro.nombre) return toro.nombre;
-    } catch (error) {
-        const { message } = error as Error;
-        throw message;
-    }
+): Promise<string | number | ResponseErrorNext> {
+   
+        const response = await getData<CreateBull,ResponseToro>('toro', 'POST', formData);
+        if('error' in response) return response
+        else return response.toro.numero ?? response.toro.nombre
 }
 
 export async function updateWeightBull(
     id:number,
     formData:updateWeight,
-): Promise<Pesos| ResponseError | undefined>{
-        try {
-        const { toro }: ResponseToro = await getData(
+): Promise<Pesos| ResponseErrorNext>{
+      
+        const response= await getData<updateWeight,ResponseToro>(
                 'toro',
                 'PUT',
             formData,
                 id
             );  
-            return toro.pesos;
-        } catch (error) {
-            const { message } = error as Error;
-            throw message;
-        }
+            if('error' in response) return response
+            else return response.toro.pesos!
+      
 }
 

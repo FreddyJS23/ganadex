@@ -5,6 +5,7 @@ import { LayoutModalProps } from '@/types';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { deleteUserVeterinary } from '@/actions/userVeterinary';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type ModalDeleteUserVeterinaryProps = Pick<
     LayoutModalProps,
@@ -23,15 +24,15 @@ export const ModalDeleteUserVeterinary = ({
     const router = useRouter();
 
     const actionDeleteUserVeterinary = async () => {
-        try {
-            await deleteUserVeterinary(id);
+       
+            const response =await deleteUserVeterinary(id);
+            /* manejar error del backedn y mostar mensaje */
+            if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
+
             toast.success('Usuario eliminado');
             router.refresh();
            onClose && onClose();
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     };
 
     return (
