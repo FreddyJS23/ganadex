@@ -1,7 +1,9 @@
-import { ResponseError } from '@/types';
+import ErrorFromApi from '@/lib/errors/errorFromApi';
+import { ResponseError, ResponseErrorFromApi, ResponseErrorNext } from '@/types';
+import { handleErrorFromApi } from '@/utils/handleErrorFromApi';
 import { handleResponse } from '@/utils/handleResponseApi';
 
-export async function createUserApi(data?: unknown) {
+export async function createUserApi<Form,dataResponse>(data?: Form): Promise<ResponseErrorNext | dataResponse  > {
     const url = 'http://127.0.0.1:8000/' + 'api/' + 'register';
 
     const headers = new Headers({
@@ -21,12 +23,9 @@ export async function createUserApi(data?: unknown) {
     try {
         const ganadoDescarte = await fetch(url, optionFetch);
         const { data, status } = await handleResponse(ganadoDescarte);
-        if (status == 201) return data;
-        else throw { status: status, data: data };
+        if (status == 201) return data as dataResponse;
+        throw new ErrorFromApi('error',{status: status, data: data as ResponseErrorFromApi['data']})  ;
     } catch (e) {
-        if (e instanceof Error) throw e;
-
-        const { status, data } = e as ResponseError;
-        throw { status, data };
+        return  handleErrorFromApi(e)
     }
 }
