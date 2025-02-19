@@ -28,6 +28,7 @@ import {
     UsersVeterinary,
     LogVeterinary,
     LogEvento,
+    ToroServicio,
 } from '@/types';
 
 type baseHeaderColunms={
@@ -164,6 +165,13 @@ export const headerCheckups: headersColumns<Revision>[] = [
 export const headerServices: headersColumnsServices[] = [
     { key: 'fecha', label: 'Fecha' },
     { key: 'toro/pajuela', label: 'Toro/Pajuela toro' },
+];
+
+export const headerServicesBull: headersColumns<ToroServicio>[] = [
+    { key: 'fecha', label: 'Fecha' },
+    { key: 'observacion', label: 'Observación' },
+    { key: 'vaca', label: 'Vaca' },
+    { key: 'veterinario', label: 'Veterinario' },
 ];
 
 export const headerBirths: headersColumns<Parto>[] = [

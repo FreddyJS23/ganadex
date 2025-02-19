@@ -1,14 +1,14 @@
 'use client';
 
 import { LayoutModal } from '../..';
-import { ToroServicio } from '@/types';
+import { Servicio } from '@/types';
+import { TableHistoryServices } from '@/components/tables/in modals/history services';
 import { ContainerTableHistory } from '..';
-import { TableHistoryServicesBull } from '@/components/tables/in modals/history services bull';
 
-export const ModalHistoryServicesBull = ({
+export const ModalHistoryServices = ({
     servicios,
 }: {
-    servicios: ToroServicio[];
+    servicios: Servicio[];
 }) => {
     return (
         <LayoutModal
@@ -18,7 +18,7 @@ export const ModalHistoryServicesBull = ({
             isOpen={true}
         >
             <ContainerTableHistory>
-                <TableHistoryServicesBull servicios={servicios} />
+                <TableHistoryServices servicios={servicios} />
             </ContainerTableHistory>
         </LayoutModal>
     );

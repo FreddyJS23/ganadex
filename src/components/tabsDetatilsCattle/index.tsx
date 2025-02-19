@@ -11,19 +11,39 @@ import { Eventos, ResponseGanado } from '@/types';
 import { ContainerContentTab } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
 import { TitleTab } from '@/ui/TitleTab';
-import { Button } from '@/ui/Button';
 import { usePathname, useRouter } from 'next/navigation';
 import { ButtonGroupTabDetailCattle } from '@/ui/ButtonGroupTabDetailCattle';
 import { headerHistoryVaccinesApply } from '@/collections/headerColums';
 import { VaccinesAppliedCastle } from '../tables/vaccines Apply castle/index';
 import { useState } from 'react';
 import { ModalHistoryVaccines } from '../modals/historys/history vaccines';
+import Link from 'next/link';
+import { Button } from '@nextui-org/react';
 
-type TabsDetailsCattleProps = Omit<ResponseGanado, 'ganado'> & {
-    eventos: Eventos;
+type TabsDetailsCattleProps = Partial<Omit<ResponseGanado, 'ganado'>> & {
+    eventos?: Eventos;
     /**Cuando la vaca no tiene un peso minimo se desactiva algunas opciones */  
-    disabledSomeTabs: boolean;
+    disabledSomeTabs?: boolean;
+    isMale: boolean;
+    disableCreateButton?:boolean
+    /* Se debe acomodar la forma de ver el historial de operacion para vacas o toros que se descarten */
+    ganado_id?:number
 };
+
+const ButonHistory=({url,id}:{url:string,id?:number})=>{
+    const pathname = usePathname();
+    const route=`${pathname}/${url}`
+    return <Button
+    as={Link}
+    color="primary"
+    /* Se debe acomodar la forma de ver el historial de operacion para vacas o toros que se descarten */
+    href={pathname.includes('ganado_descarte')  ? `/ganado/${id}/${url}` : route}
+    variant="solid"
+  >
+    Ver Historial
+  </Button>
+}
+
 
 export const TabDetailsCattle = ({
     revision_reciente,
@@ -32,14 +52,27 @@ export const TabDetailsCattle = ({
     total_servicios,
     info_pesajes_leche,
     eventos,
-    efectividad,
+    efectividad=0,
     parto_reciente,
     total_partos,
     vacunaciones,
-    disabledSomeTabs,
+    disabledSomeTabs=true,
+    isMale,
+    disableCreateButton=false,
+    ganado_id
 }: TabsDetailsCattleProps) => {
     const router = useRouter();
     const pathname = usePathname();
+
+    let disableTabs:Array<string>=[]
+    
+    if(isMale){
+        disableTabs=['revisiones','partos','leche']
+    }
+    else if(disabledSomeTabs){
+        disableTabs=['servicios','partos','leche']
+    } 
+
 
     return (
         <>
@@ -54,7 +87,7 @@ export const TabDetailsCattle = ({
                 }}
                 size="lg"
                 fullWidth={true}
-                disabledKeys={disabledSomeTabs ? ['servicios', 'partos', 'leche'] : []}
+                disabledKeys={disableTabs}
             >
                 <Tab
                     key="revisiones"
@@ -81,9 +114,9 @@ export const TabDetailsCattle = ({
                             tittle={DetailsChecks.totales}
                             content={total_revisiones}
                         />
-                        <div className="col-span-full place-self-center">
+                       {disableCreateButton ? (<ButonHistory url='revision' id={ganado_id} />)  :(<div className="col-span-full place-self-center">
                             <ButtonGroupTabDetailCattle route="revision" />
-                        </div>
+                        </div>)}
                     </ContainerContentTab>
                 </Tab>
                 <Tab
@@ -124,11 +157,12 @@ export const TabDetailsCattle = ({
                         />
                         <Details
                             tittle={DetailsServe.efectividad}
-                            content={efectividad + '%'}
+                            content={efectividad ?? '0'  + '%'}
                         />
-                        <div className="col-span-full place-self-center">
+                        {disableCreateButton ? (<ButonHistory url='servicio'  id={ganado_id}  />)  : 
+                        (<div className="col-span-full place-self-center">
                             <ButtonGroupTabDetailCattle route="servicio" />
-                        </div>
+                        </div>)}
                     </ContainerContentTab>
                 </Tab>
                 <Tab
@@ -161,9 +195,9 @@ export const TabDetailsCattle = ({
                             tittle={DetailsBirht.totales}
                             content={total_partos}
                         />
-                        <div className="col-span-full place-self-center">
+                      {disableCreateButton ? (<ButonHistory url='parto'  id={ganado_id} />)  :(<div className="col-span-full place-self-center">
                             <ButtonGroupTabDetailCattle route="parto" />
-                        </div>
+                        </div>)}
                     </ContainerContentTab>
                 </Tab>
                 <Tab
@@ -173,29 +207,30 @@ export const TabDetailsCattle = ({
                     <ContainerContentTab>
                         <Details
                             tittle={DetailsWeightingMilk.ultimo}
-                            content={info_pesajes_leche.reciente?.fecha}
+                            content={info_pesajes_leche?.reciente?.fecha}
                         />
                         <Details
                             tittle={DetailsWeightingMilk.peso}
-                            content={info_pesajes_leche.reciente?.pesaje + 'kg'}
+                            content={info_pesajes_leche?.reciente?.pesaje ?? '0 ' + 'kg'}
                         />
                         <Details
                             tittle={DetailsWeightingMilk.mejor_pesaje}
-                            content={info_pesajes_leche.mejor?.pesaje + 'kg'}
+                            content={info_pesajes_leche?.mejor?.pesaje ?? '0 ' + 'kg'}
                         />
                         <Details
                             tittle={DetailsWeightingMilk.peor_pesaje}
-                            content={info_pesajes_leche.peor?.pesaje + 'kg'}
+                            content={info_pesajes_leche?.peor?.pesaje ?? '0 ' + 'kg'}
                         />
 
                         <Details
                             tittle={DetailsWeightingMilk.estado_actual}
-                            content={info_pesajes_leche.estado}
+                            content={info_pesajes_leche?.estado}
                         />
 
-                        <div className="col-span-full place-self-center">
+                        {disableCreateButton ?  (<ButonHistory url='pesajes_leche'  id={ganado_id} />) : (
+                            <div className="col-span-full place-self-center">
                             <ButtonGroupTabDetailCattle route="pesajes_leche" />
-                        </div>
+                        </div>)}
                     </ContainerContentTab>
                 </Tab>
 
@@ -206,13 +241,13 @@ export const TabDetailsCattle = ({
                     <ContainerContentTab>
                         <div className="grid grid-cols-6 items-center gap-8 w-full">
                             <div className="col-span-5">
-                                <VaccinesAppliedCastle
+                               {vacunaciones ?( <VaccinesAppliedCastle
                                     vacunaciones={vacunaciones.vacunas}
-                                />
+                                />) : (<div className="text-center">Sin registro de vacunas</div>)}
                             </div>
-                            <ModalHistoryVaccines
+                           {vacunaciones ? (<ModalHistoryVaccines
                                 historial={vacunaciones.historial}
-                            />
+                            />) :  (<div className="text-center">Sin historial de vacunas</div>)}
                         </div>
                     </ContainerContentTab>
                 </Tab>

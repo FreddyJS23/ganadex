@@ -75,8 +75,12 @@ export type PajuelaToro={
 
 export type GanadoDescarte = Omit<
     Toro,
-    'efectividad' | 'padre_en_partos' | 'servicios'
->;
+    'efectividad' | 'padre_en_partos' | 'servicios'|'sexo'
+>&{
+    sexo:'M' | 'H'
+}
+
+;
 
 export type Insumo = {
     id: number;
@@ -120,6 +124,14 @@ export type Servicio = {
     pajuela_toro?:PajuelaToro
     veterinario: veterinario;
 };
+
+export type ToroServicio={
+    id: number;
+    fecha: string;
+    observacion: string;
+    vaca:{id:number,numero:number}
+    veterinario: veterinario;
+}
 
 export type Parto = {
     id: number;

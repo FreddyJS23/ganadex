@@ -6,6 +6,7 @@ import {
 import { Details } from '@/components/details';
 import { DropdownStatesCattle } from '@/components/dropdown states cattle';
 import { WeightsEditable } from '@/components/editable sections/weights';
+import { TabDetailsCattle } from '@/components/tabsDetatilsCattle';
 import { ResponseToro } from '@/types';
 import { getData } from '@/utils/getData';
 import Image from 'next/image';
@@ -16,7 +17,7 @@ type ParamsPageBull = {
 };
 
 export default async function Page({ params }: ParamsPageBull) {
-    const { toro }: ResponseToro = await getData(
+    const { toro,vacunaciones }: ResponseToro = await getData(
         'toro',
         'GET',
         undefined,
@@ -107,12 +108,19 @@ export default async function Page({ params }: ParamsPageBull) {
                                         tittle={
                                             DetailsEfficiencyBull.efectividad
                                         }
-                                        content={efectividad}
+                                        content={efectividad + '%'}
                                     />
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="w-full divide-y divide-primary/[.20]">
+                    <TabDetailsCattle
+                        vacunaciones={vacunaciones}
+                        isMale={true}
+                        disableCreateButton
+                    />
                 </div>
             </div>
         </>
