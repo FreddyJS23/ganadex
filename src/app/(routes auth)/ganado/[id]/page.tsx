@@ -115,6 +115,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                         info_pesajes_leche={info_pesajes_leche}
                         vacunaciones={vacunaciones}
                         disabledSomeTabs={disabledSomeTabs} 
+                        isMale={false}
                     />
                 </div>
             </div>

@@ -33,6 +33,7 @@ import {
     UserVeterinaryInfo,
     UserAdminInfo,
     UserVeterinary,
+    ToroServicio,
 } from './models';
 
 type errors = {
@@ -110,6 +111,10 @@ export type ResponseGanados = {
 
 export type ResponseToro = {
     toro: Toro;
+    vacunaciones: {
+        vacunas: AplicacionVacunaHistorial[],
+        historial:Vacuna[]
+    }
 };
 export type ResponseToros = {
     toros: Toro[];
@@ -128,6 +133,10 @@ export type ResponseGanadoDescartes = {
 };
 export type ResponseGanadoDescarte = {
     ganado_descarte: GanadoDescarte;
+    vacunaciones: {
+        vacunas: AplicacionVacunaHistorial[],
+        historial:Vacuna[]
+    }
 };
 
 export type ResponseInsumo = {
@@ -165,6 +174,10 @@ export type ResponseServicio = {
 
 export type ResponseServicios = {
     servicios: Servicio[];
+};
+
+export type ResponseServiciosToro = {
+    servicios: ToroServicio[];
 };
 
 export type ResponseParto = {
