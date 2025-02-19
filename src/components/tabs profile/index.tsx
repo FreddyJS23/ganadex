@@ -141,7 +141,7 @@ export const TabsProfile = ({
                
                 {/* tab logs eventos */}
                 {user.rol == 'admin' && (
-                    <Tab key="user_veterinary" title="Historial eventos del sistema">
+                    <Tab key="logs_eventos" title="Historial eventos del sistema">
                         <LayoutCenterContentTabs divider={false}>
                             <TableLogsEvents 
                             logs_eventos={logs_eventos} 
