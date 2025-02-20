@@ -20,16 +20,17 @@ import {
 import { createBeef } from '@/actions/ganado_descarte';
 import { ChangeEvent, useRef, useState } from 'react';
 import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
-import { Comprador } from '@/types';
+import { CausaFallecimiento, Comprador } from '@/types';
 import { Chip, Selection } from '@nextui-org/react';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 
 type FormBeffProps = {
     compradores: Comprador[];
     numero_disponible:number;
+    causas_fallecimeinto:CausaFallecimiento[]
 };
 
-export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
+export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto }: FormBeffProps) => {
     const form = useRef<HTMLFormElement | null>(null);
 
     const [shema, setshema] = useState<
@@ -168,7 +169,7 @@ export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {id == 'causa' && (
+                                {type == 'text' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -179,6 +180,25 @@ export const FormBeef = ({ compradores,numero_disponible }: FormBeffProps) => {
                                         required={required}
                                     />
                                 )}
+                                {type == 'select' && (
+                                <Controller
+                                    name={id}
+                                    /*Se interpone un any ya que esta heredando el tipo del formulario completo
+                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                    control={control as any}
+                                    render={({ field }) => (
+                                        <Select
+                                            field={field}
+                                            id={id}
+                                            items={converToSelectOptions(causas_fallecimeinto)}
+                                            label={label}
+                                            errors={errors}
+                                            required={required}
+                                        />
+                                    )}
+                                />
+                            )}
                                 {id == 'fecha' && (
                                     <Input
                                     /* El id se debe cambiar ya que se usa una shema validacion diferente

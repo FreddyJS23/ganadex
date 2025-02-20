@@ -4,7 +4,7 @@ const regexDate =
     /[1-9][0-9][0-9]{2}-([0][1-9]|[1][0-2])-([1-2][0-9]|[0][1-9]|[3][0-1])/;
 
 export const createCheckUpShema = z.object({
-    diagnostico: z.string().min(3).max(255),
+    tipo_revision_id: z.string().regex(/\d/),
     tratamiento: z.string().min(3).max(255),
     fecha: z.string().regex(regexDate),
     personal_id: z.string().regex(/\d/),

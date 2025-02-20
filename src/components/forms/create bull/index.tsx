@@ -21,13 +21,14 @@ import {
 import { createBull } from '@/actions/toro';
 import { ChangeEvent, useRef, useState } from 'react';
 import { Chip, Selection } from '@nextui-org/react';
-import { Comprador } from '@/types';
+import { CausaFallecimiento, Comprador } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type FormBullProps = {
     compradores: Comprador[];
     numero_disponible:number;
+    causas_fallecimeinto:CausaFallecimiento[]
 };
 
 export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
@@ -168,7 +169,7 @@ console.log(errors)
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {id == 'causa' && (
+                                {type == 'text' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -179,6 +180,25 @@ console.log(errors)
                                         required={required}
                                     />
                                 )}
+                                 {type == 'select' && (
+                                <Controller
+                                    name={id}
+                                    /*Se interpone un any ya que esta heredando el tipo del formulario completo
+                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                    control={control as any}
+                                    render={({ field }) => (
+                                        <Select
+                                            field={field}
+                                            id={id}
+                                            items={converToSelectOptions(causas_fallecimeinto)}
+                                            label={label}
+                                            errors={errors}
+                                            required={required}
+                                        />
+                                    )}
+                                />
+                            )}
                                 {id == 'fecha' && (
                                     <Input
                                     /* El id se debe cambiar ya que se usa una shema validacion diferente

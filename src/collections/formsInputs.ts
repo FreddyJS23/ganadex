@@ -280,7 +280,7 @@ export const formBeef: FieldsBeef[] = [
 ];
 
 export const formCheckUp: FieldsCheckUp[] = [
-    { id: 'diagnostico', label: 'Diagnostico', required: true, type: 'text' },
+    { id: 'tipo_revision_id', label: 'Diagnostico', required: true, type: 'select' },
     { id: 'tratamiento', label: 'Tratamiento', required: true, type: 'text' },
     { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
     { id: 'fecha', label: 'Fecha', required: true, type: 'date' },
@@ -357,7 +357,8 @@ export const formStaff: FieldsStaff[] = [
 ];
 export const formDeadCattle: FieldsDeadCattle[] = [
     { id: 'fecha', label: 'Fecha de defunción', required: true, type: 'date' },
-    { id: 'causa', label: 'Causa de defunción', required: true, type: 'text' },
+    { id: 'causas_fallecimiento_id', label: 'Causa de defunción', required: true, type: 'select' },
+    { id: 'descripcion', label: 'Descripcion', required: false, type: 'text' },
 ];
 
 export const formSaleCattle: FieldsSaleCattle[] = [

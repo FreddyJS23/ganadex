@@ -18,7 +18,8 @@ const regexDate =
     });
 
 const deathCastleShema = z.object({
-    causa: z.string().min(3).max(255),
+    causas_fallecimiento_id: z.string().regex(/\d/),
+    descripcion: z.string().min(3).max(255),
 });;
 
 /**Validacion para el form de fallecimiento */

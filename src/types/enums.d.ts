@@ -252,7 +252,7 @@ export enum FieldsLabelsBeef {
 }
 
 export enum FieldsIdCheckUp {
-    diagnostico,
+    'tipo_revision_id',
     tratamiento,
     fecha,
     'personal_id',
@@ -334,13 +334,15 @@ export enum FieldsLabelsStaff {
 }
 export enum FieldsIdDeadCattle {
     fecha,
-    causa,
+    causas_fallecimiento_id,
+    descripcion
     /* use id in form cattle to register dead cattle */
 }
 
 export enum FieldsLabelsDeadCattle {
     'Fecha de defunción',
     'Causa de defunción',
+    'Descripcion',
 }
 
 export enum FieldsIdSaleCattle {
