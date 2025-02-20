@@ -34,6 +34,8 @@ import {
     UserAdminInfo,
     UserVeterinary,
     ToroServicio,
+    TipoRevision,
+    CausaFallecimiento,
 } from './models';
 
 type errors = {
@@ -342,4 +344,18 @@ export type ResponseResumenNatalidad={
 
 export type ResponseLogEventos={
     logs_eventos:LogEvento[]
+}
+
+export type ResponseTiposRevision={
+    tipos_revision:TipoRevision[]
+}
+export type ResponseTipoRevision={
+    tipo_revision:TipoRevision
+}
+
+export type ResponseCausaFallecimiento={
+    causa_fallecimiento:CausaFallecimiento  
+}
+export type ResponseCausasFallecimiento={
+    causas_fallecimiento:CausaFallecimiento[]  
 }

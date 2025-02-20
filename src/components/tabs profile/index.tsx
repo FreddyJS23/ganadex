@@ -1,6 +1,6 @@
 'use client';
 
-import { Tab, Tabs, useDisclosure } from '@nextui-org/react';
+import { Tab, Tabs, useDisclosure,Button as ButtonNextUI } from '@nextui-org/react';
 import { TableVeterinaryUsers } from '../tables/veterinary users';
 import { SelectVeterinaryNotUser } from '../select veterenary not user';
 import { Configuracion, Finca, LogEvento, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
@@ -124,6 +124,31 @@ export const TabsProfile = ({
                             content={configuracion.dias_diferencia_vacuna.toString()}
                             description="Representa cuantos dias se podria aplazar la dosis de una vacuna individual para asi estar a la par con la proxima jornada de vacunacion de la misma"
                         />
+                            <div className='flex justify-between w-9/12 items-center '>
+                                <div className="flex flex-col gap-2 w-80">
+                                    <span className="font-bold text-xl">
+                                        Tipos de revision
+                                    </span>
+                                    <span className="text-sm opacity-60">
+                                        Estas opciones son las que estaran disponible a la hora de hacer una revision,
+                                        tenga en cuenta que las revisiones creadas no podran ser eliminadas ademas
+                                        las revisiones predeterminadas no pueden ser modificadas
+                                    </span>
+                                </div>
+                                <div className='flex gap-4 items-center'>
+                                    <ButtonCreateItem href={'/revisiones/tipo/crear'} />
+                                    <ButtonNextUI
+                                        color="primary"
+                                        as={Link}
+                                        href='/revisiones/tipo'
+                                    >
+                                        Ver tipos guardadas
+                                    </ButtonNextUI>
+                                </div>
+                            </div>
+                            
+                          
+
                         </div>
                     </LayoutContentTabs>
                 </Tab>)}

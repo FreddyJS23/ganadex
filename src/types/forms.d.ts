@@ -23,6 +23,8 @@ import { createVaccinationDayShema } from '@/validations/VaccinationDay';
 import { createFincaShema } from '@/validations/finca';
 import { weightsShema } from '@/validations/weightsShema';
 import { updateConfigurationShema } from '@/validations/updateConfiguration';
+import { createTypeCheckShema } from '@/validations/typeCheck';
+import { createCausaFallecimientoShema } from '@/validations/causaFallecimiento';
 
 export type Login = {
     usuario: string;
@@ -97,3 +99,9 @@ export type CreatePajuelaToro = z.infer<typeof createPajuelaToroSchema>;
 export type CreateVaccinacionDay = z.infer<typeof createVaccinationDayShema>;
 
 export type CreateFinca = z.infer<typeof createFincaShema>;
+
+export type CreateTypeCheck = z.infer<typeof createTypeCheckShema>;
+
+export type CreateCausaFallecimiento = z.infer<
+    typeof createCausaFallecimientoShema
+>;

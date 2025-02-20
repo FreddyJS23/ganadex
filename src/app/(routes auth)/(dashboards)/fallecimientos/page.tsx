@@ -4,6 +4,7 @@ import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
 import { TortaCausasFallecimientosGanado } from '@/components/charts/dashboard/common cause dead doughnut';
 import { TableDeadCattle } from '@/components/tables/death cattle';
+import { DropdownCausaFallecimiento } from '@/components/dropdown causa fallecimiento';
 
 export default async function Page() {
     const { fallecidos }: ResponseFallecimientos =
@@ -18,18 +19,16 @@ export default async function Page() {
                 {/*   grafico ganancia */}
                 <article className="shadow-cards p-4 flex flex-col bg-base-100">
                     {/* titulo */}
-                    <div className="flex justify-between">
+                    <div className="flex justify-between gap-4">
                         <span className="text-2xl">
                             Causas mas frecuentes de fallecimientos
                         </span>
+                        <DropdownCausaFallecimiento />
                     </div>
-                    {/* grafico fallecimientos  */}
-                    <span className="mb-1 text-lg">
-                        {total_fallecidos} fallecidos
-                    </span>
                     {/* grafico */}
                     <TortaCausasFallecimientosGanado
                         causas_frecuentes={causas_frecuentes}
+                        total_fallecidos={total_fallecidos}
                     />
                 </article>
 

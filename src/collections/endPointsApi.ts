@@ -81,6 +81,10 @@ export const endPoints = {
     actualizarConfig:'configuracion/',
     resumenNatalidad:'resumen_natalidad?year=',
     logsEventos:'logs_eventos',
+    tiposRevision:'tipos_revision',
+    tipoRevision:'tipos_revision/',
+    causasFallecimiento:'causas_fallecimiento',
+    causaFallecimiento:'causas_fallecimiento/',
 };
 
 export const endPointsCattle = {

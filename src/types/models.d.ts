@@ -143,6 +143,7 @@ export type Parto = {
     veterinario: veterinario;
 };
 
+
 /**Pesaje leche individual de una cabeza de ganado */
 export type PesajeLecheGanado = {
     id: number;
@@ -318,4 +319,14 @@ export type LogEvento={
     operacion:string,
     descripcion:string
     fecha:string, 
+}
+
+export type TipoRevision = {
+    id: number;
+    tipo:'Gestacion' | 'Descartar' | 'Rutina' | string;
+};
+
+export type CausaFallecimiento={
+    id: number;
+    causa: string;
 }
