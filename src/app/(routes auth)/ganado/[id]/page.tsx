@@ -41,7 +41,13 @@ export default async function Page({ params }: ParamsPageCattle) {
         else disabledSomeTabs=true
     }
     //comprobar si tiene estado vendido o fallecido para no editar pesos
-    const checkState=ganado.estados.some(({estado})=>estado=='vendido'||estado=='fallecido')
+    const chechkState=ganado.estados.some(({estado})=>estado=='vendido'||estado=='fallecido')
+    //activar o desactivar el boton de editar pesos
+    let disableEditWeight=false
+    if(role== 'veterinario') disableEditWeight=true
+    else if(chechkState) disableEditWeight=true
+    
+    
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
@@ -90,7 +96,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                             {/* Pesos */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">
                             
-                            {ganado.pesos ? <WeightsEditable disableEdit={checkState} id={ganado.id} pesos={ganado.pesos} typeModelWeight={'ganado'} weightConfig={session.user.configuracion.peso_servicio} />
+                            {ganado.pesos ? <WeightsEditable disableEdit={disableEditWeight} id={ganado.id} pesos={ganado.pesos} typeModelWeight={'ganado'} weightConfig={session.user.configuracion.peso_servicio} />
                             
                         :<>
                         <h3 className="m-auto">Pesos</h3>
