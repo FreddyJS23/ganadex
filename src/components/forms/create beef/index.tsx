@@ -20,17 +20,19 @@ import {
 import { createBeef } from '@/actions/ganado_descarte';
 import { ChangeEvent, useRef, useState } from 'react';
 import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
-import { CausaFallecimiento, Comprador } from '@/types';
-import { Chip, Selection } from '@nextui-org/react';
+import { AvailableVaccines, CausaFallecimiento, Comprador } from '@/types';
+import { Checkbox, Chip, Selection } from '@nextui-org/react';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
+import { CreateListVaccination } from '@/components/create list vaccination';
 
 type FormBeffProps = {
     compradores: Comprador[];
+    listaVacunas: AvailableVaccines[];
     numero_disponible:number;
     causas_fallecimeinto:CausaFallecimiento[]
 };
 
-export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto }: FormBeffProps) => {
+export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto,listaVacunas }: FormBeffProps) => {
     const form = useRef<HTMLFormElement | null>(null);
 
     const [shema, setshema] = useState<
@@ -40,6 +42,9 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto }:
     >(createDiscardedCattleShema);
     /* states of the bull */
     const [states, setStates] = useState<Selection>(new Set('1'));
+
+     /* Lista de vacunas */
+     const [listVaccines, setListVaccines] = useState<ListaVacunas[]>([]);
 
     const {
         register,
@@ -67,9 +72,10 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto }:
 
     const actionBeef: () => void = handleSubmit(async (data) => {
         try {
-            const response = (await createBeef(data)) as string | number;
+            const response = (await createBeef(data,listVaccines)) as string | number;
             form.current?.reset();
             setStates(new Set('1'));
+            setListVaccines([])
             setShowinputDead(false);
             setShowinputSale(false);
             toast.success(
@@ -112,6 +118,9 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto }:
             setStates(new Set(valuesStates));
         }
     };
+
+      /* control de check para mostrar campos seccion vacuna */
+      const [isSelected, setIsSelected] = useState(false);
 
     return (
         <form
@@ -163,6 +172,17 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto }:
                     </>
                 ),
             )}
+
+              {/* lista de vacunas */}
+              <div className='col-span-full md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-2'>
+                <div className='flex flex-col items-center gap-2'>
+                    <Checkbox title='Añadir vacunas'  isSelected={isSelected} onValueChange={setIsSelected}>
+                        Vacunas
+                    </Checkbox>
+                 <CreateListVaccination vaccinesSelect={listaVacunas}  listVaccines={listVaccines} setListVaccines={setListVaccines} isChecked={isSelected} />
+                </div>
+                </div>
+
             {/* inputs dead cattle */}
             {showinputDead &&
                 formDeadBeef.map(

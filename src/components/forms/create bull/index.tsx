@@ -20,18 +20,20 @@ import {
 } from '@/validations/bullShema';
 import { createBull } from '@/actions/toro';
 import { ChangeEvent, useRef, useState } from 'react';
-import { Chip, Selection } from '@nextui-org/react';
-import { CausaFallecimiento, Comprador } from '@/types';
+import { Checkbox, Chip, Selection } from '@nextui-org/react';
+import { AvailableVaccines, CausaFallecimiento, Comprador } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
+import { CreateListVaccination } from '@/components/create list vaccination';
 
 type FormBullProps = {
     compradores: Comprador[];
+    listaVacunas: AvailableVaccines[];
     numero_disponible:number;
     causas_fallecimeinto:CausaFallecimiento[]
 };
 
-export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
+export const FormBull = ({compradores,numero_disponible,causas_fallecimeinto,listaVacunas}: FormBullProps) => {
     const form = useRef<HTMLFormElement | null>(null);
     const [shema, setshema] = useState<
         | typeof createBullShema
@@ -40,6 +42,9 @@ export const FormBull = ({compradores,numero_disponible}: FormBullProps) => {
     >(createBullShema);
     /* states of the bull */
     const [states, setStates] = useState<Selection>(new Set('1'));
+
+     /* Lista de vacunas */
+     const [listVaccines, setListVaccines] = useState<ListaVacunas[]>([]);
 
     const {
         register,
@@ -68,11 +73,12 @@ console.log(errors)
     const actionBull: () => void = handleSubmit(async (data) => {
 
         
-            const response = (await createBull(data));
+            const response = (await createBull(data,listVaccines));
          /* manejar error del backedn y mostar mensaje */
          if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
 
             form.current?.reset();
+            setListVaccines([])
             setStates(new Set('1'));
             setShowinputDead(false);
             setShowinputSale(false);
@@ -111,6 +117,9 @@ console.log(errors)
             setStates(new Set(valuesStates));
         }
     };
+
+      /* control de check para mostrar campos seccion vacuna */
+      const [isSelected, setIsSelected] = useState(false);
 
     return (
         <form
@@ -162,6 +171,16 @@ console.log(errors)
                     </>
                 ),
             )}
+
+              {/* lista de vacunas */}
+              <div className='col-span-full md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-2'>
+                <div className='flex flex-col items-center gap-2'>
+                    <Checkbox title='Añadir vacunas'  isSelected={isSelected} onValueChange={setIsSelected}>
+                        Vacunas
+                    </Checkbox>
+                 <CreateListVaccination vaccinesSelect={listaVacunas}  listVaccines={listVaccines} setListVaccines={setListVaccines} isChecked={isSelected} />
+                </div>
+                </div>
 
             {/* inputs dead cattle */}
             {showinputDead &&

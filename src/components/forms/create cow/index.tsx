@@ -119,6 +119,8 @@ console.log(numero_disponible)
             inputWeight2year.classList.add('hidden');
         } else inputWeight2year.classList.remove('hidden');
     };
+
+    /* control de check para mostrar campos seccion vacuna */
     const [isSelected, setIsSelected] = useState(false);
     return (
         <form

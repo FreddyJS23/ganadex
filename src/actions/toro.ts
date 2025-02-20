@@ -1,14 +1,21 @@
 'use serve';
 
-import { Pesos, ResponseErrorNext, ResponseToro } from '@/types';
+import { ListaVacunas, Pesos, ResponseErrorNext, ResponseToro } from '@/types';
 import { CreateBull, updateWeight } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
+type vacunasSinId=Omit<ListaVacunas,'id'>
+
 export async function createBull(
     formData: CreateBull,
+    listVaccines: ListaVacunas[],
 ): Promise<string | number | ResponseErrorNext> {
    
-        const response = await getData<CreateBull,ResponseToro>('toro', 'POST', formData);
+    //en esta destructuracion se saca el id y se utiliza el resto del objecto
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const vacunas=listVaccines.map(({id,...rest})=>({...rest}))
+        
+        const response = await getData<CreateBull & {vacunas:vacunasSinId[]},ResponseToro>('toro', 'POST', {...formData,vacunas});
         if('error' in response) return response
         else return response.toro.numero ?? response.toro.nombre
 }

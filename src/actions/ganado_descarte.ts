@@ -1,17 +1,23 @@
 'use serve';
 
-import { Pesos, ResponseErrorNext, ResponseGanadoDescarte } from '@/types';
+import { ListaVacunas, Pesos, ResponseErrorNext, ResponseGanadoDescarte } from '@/types';
 import { CreateBeef, updateWeight } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
 export async function createBeef(
     formData: CreateBeef,
+    listVaccines: ListaVacunas[],
+
 ): Promise<string | number | ResponseErrorNext> {
     
+     //en esta destructuracion se saca el id y se utiliza el resto del objecto
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const vacunas=listVaccines.map(({id,...rest})=>({...rest}))
+
         const response= await getData<CreateBeef,ResponseGanadoDescarte>(
             'ganadoDescarte',
             'POST',
-            formData,
+            {...formData,vacunas},
         );
        
         if('error' in response) return response
