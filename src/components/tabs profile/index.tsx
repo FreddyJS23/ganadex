@@ -14,7 +14,7 @@ import {
 } from './items';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import Link from 'next/link';
-import { TableLogsEvents } from '../tables/logs veterinary';
+import { TableLogsEvents } from '../tables/logs events';
 
 type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];

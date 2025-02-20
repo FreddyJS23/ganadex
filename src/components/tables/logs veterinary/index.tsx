@@ -1,18 +1,28 @@
 'use client';
 
-import { headersColumnsLogEventos,  } from '@/collections/headerColums';
-import { LogEvento, ResponseLogEventos  } from '@/types';
+import { headersColumnsLogsVeterinary } from '@/collections/headerColums';
+import { LogVeterinary, ResponseLogsVeterinary } from '@/types';
 import { Key, ReactNode, useCallback } from 'react';
 import { TableComponent } from '..';
-import { Tooltip } from '@/components/tooltip';
+import IconSearch from '@/icons/icono-Revisar.svg';
+import Link from 'next/link';
 
-export const TableLogsEvents = ({ logs_eventos }: ResponseLogEventos) => {
-    
+export const TableLogsVeterinary = ({ logs }: ResponseLogsVeterinary) => {
     const renderCell = useCallback(
-        (logEvento: LogEvento, columnKey: Key) => {
-            const cellValue = logEvento[columnKey as keyof LogEvento];
-            switch (columnKey as keyof LogEvento) {
-                
+        (logVeterinary: LogVeterinary, columnKey: Key) => {
+            const cellValue = logVeterinary[columnKey as keyof LogVeterinary];
+            switch (columnKey as keyof LogVeterinary) {
+                /* button icon */
+                case 'actividad_id': { 
+                    const id = cellValue as number;
+                    return (
+                       /*  <Link title={'Ir a la actividad'} >
+                            <IconSearch className={'size-8 cursor-pointer '} />
+                        </Link> */
+                        <div>test</div>
+                    );
+                }
+
                 default:
                     return cellValue as ReactNode;
             }
@@ -22,11 +32,10 @@ export const TableLogsEvents = ({ logs_eventos }: ResponseLogEventos) => {
 
     return (
         <>
-        <Tooltip type='icon' content='logs_eventos' />
             <TableComponent
-                type="logs eventos"
-                columnsCollection={headersColumnsLogEventos}
-                items={logs_eventos}
+                type="logs veterinary"
+                columnsCollection={headersColumnsLogsVeterinary}
+                items={logs}
                 renderCell={renderCell}
             />
         </>
