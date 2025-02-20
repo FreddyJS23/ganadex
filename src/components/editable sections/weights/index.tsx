@@ -79,7 +79,10 @@ export const WeightsEditable = ({
        
             const response= await updateFunction(id, data)
               /* manejar error del backedn y mostar mensaje */
-              if('error' in response) return toast.error(messageErrorApi(response)) 
+              if('error' in response) {
+                 setEditable(false);
+            setIsLoading(false);
+                return toast.error(messageErrorApi(response)) }
 
             //En caso de que el nuevo peso sea igual o mayor que el de la configuracion, actualizar para desbloquear las tabs
             if (

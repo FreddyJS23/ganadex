@@ -12,6 +12,7 @@ import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
+import { inputPersonalIdShema } from '@/validations/checkUpShema';
 import { createServeShema, createServeShemaWithPajuelaToroId, createServeShemaWithToroId } from '@/validations/serveShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
@@ -23,12 +24,14 @@ type FormCreateServiceProps = {
     veterinarios: veterinario[];
     toros:Toro[]
     pajuelasToro:PajuelaToro[]
+    isAdmin:boolean
 };
 
 export const FormCreateService = ({
     veterinarios,
     toros,
     pajuelasToro,
+    isAdmin
 }: FormCreateServiceProps) => {
    
     const [shema, setshema] = useState<typeof createServeShemaWithPajuelaToroId |typeof createServeShemaWithToroId>(createServeShemaWithPajuelaToroId)
@@ -39,7 +42,7 @@ export const FormCreateService = ({
         control,
         handleSubmit,
     } = useForm<CreateServe>({
-        resolver: zodResolver(shema),
+        resolver: zodResolver(isAdmin ? shema.and(inputPersonalIdShema) : shema ),
     });
     const router = useRouter();
     const { id: cattleId } = useParams<{ id: string }>();
@@ -118,7 +121,7 @@ export const FormCreateService = ({
                                 />
                             )}
 
-                                {type == 'select' && id == 'personal_id' && (
+                                {type == 'select' && id == 'personal_id' && isAdmin && (
                                     <Controller
                                         name={id}
                                         control={control}

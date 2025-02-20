@@ -6,12 +6,12 @@ import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
 import { Textarea } from '@/components/Textarea';
 import { ResponseVeterinariosSelect, veterinario } from '@/types';
-import { CreateBirth } from '@/types/forms';
+import { CreateAdminBirth, CreateBaseBirth } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
-import { createBirthShema } from '@/validations/birthShema';
+import { createAdminBirthShema, createBaseBirthShema } from '@/validations/birthShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
 import { Controller, useForm } from 'react-hook-form';
@@ -20,26 +20,28 @@ import { toast } from 'sonner';
 type FormCreateBirthProps = {
     veterinarios: veterinario[];
     numero_disponible:number;
+    isAdmin:boolean
 };
 
 
 
 export const FormCreateBirth = ({
     veterinarios,
-    numero_disponible
+    numero_disponible,
+    isAdmin
 }: FormCreateBirthProps) => {
     const {
         register,
         formState: { errors },
         control,
         handleSubmit,
-    } = useForm<CreateBirth>({
-        resolver: zodResolver(createBirthShema),
+    } = useForm<CreateBaseBirth | CreateAdminBirth>({
+        resolver: zodResolver(isAdmin ? createAdminBirthShema : createBaseBirthShema),
         defaultValues: {  numero: numero_disponible },
     });
     const router = useRouter();
     const { id: cattleId } = useParams<{ id: string }>();
-
+console.log(errors)
     const actionCreateBirth: () => void = handleSubmit(async (data) => {
        
            const response= await createBirth(data, parseInt(cattleId));
@@ -98,7 +100,7 @@ export const FormCreateBirth = ({
                                 />
                             )}
 
-                            {type == 'select' && (
+                            {type == 'select' && id != 'personal_id'&& (
                                 <Controller
                                     name={id}
                                     control={control}
@@ -107,11 +109,31 @@ export const FormCreateBirth = ({
                                             field={field}
                                             id={id}
                                             items={
-                                                id == 'personal_id'
-                                                    ? converToSelectOptions(
-                                                          veterinarios as [],
-                                                      )
-                                                    : select!
+                                             
+                                                select!
+                                            }
+                                            label={label}
+                                            errors={errors}
+                                            required={required}
+                                        />
+                                    )}
+                                />
+                            )}
+                           
+                            {type == 'select' && id == 'personal_id'&& isAdmin && (
+                                <Controller
+                                    name={id}
+                                    control={control}
+                                    render={({ field }) => (
+                                        <Select
+                                            field={field}
+                                            id={id}
+                                            items={
+                                            
+                                            converToSelectOptions(
+                                                veterinarios as [],
+                                            )
+                                                    
                                             }
                                             label={label}
                                             errors={errors}

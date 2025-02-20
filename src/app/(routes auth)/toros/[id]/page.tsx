@@ -1,3 +1,4 @@
+import { auth } from '@/app/auth';
 import {
     DetailsCattle,
     DetailsEfficiencyBull,
@@ -9,6 +10,7 @@ import { WeightsEditable } from '@/components/editable sections/weights';
 import { TabDetailsCattle } from '@/components/tabsDetatilsCattle';
 import { ResponseToro } from '@/types';
 import { getData } from '@/utils/getData';
+import { Session } from 'next-auth';
 import Image from 'next/image';
 import cattleImage from 'public/cattle.png';
 
@@ -36,8 +38,18 @@ export default async function Page({ params }: ParamsPageBull) {
         tipo,
         estados,
     } = toro;
-//comprobar si tiene estado vendido o fallecido para no editar pesos
-    const checkState=estados.some(({estado})=>estado=='vendido'||estado=='fallecido')
+
+    const session = await auth() as Session
+    const role=session.user.rol
+
+
+
+    //comprobar si tiene estado vendido o fallecido para no editar pesos
+    const chechkState=estados.some(({estado})=>estado=='vendido'||estado=='fallecido')
+    //activar o desactivar el boton de editar pesos
+    let disableEditWeight=false
+    if(role== 'veterinario') disableEditWeight=true
+    else if(chechkState) disableEditWeight=true
     return (
         <>
             <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
@@ -81,7 +93,7 @@ export default async function Page({ params }: ParamsPageBull) {
                             {/* Pesos */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">
                                
-                            {pesos ? <WeightsEditable disableEdit={checkState} id={toro.id} pesos={pesos} typeModelWeight={'toro'}  />
+                            {pesos ? <WeightsEditable disableEdit={disableEditWeight} id={toro.id} pesos={pesos} typeModelWeight={'toro'}  />
                             
                             :<>
                             <h3 className="m-auto">Pesos</h3>

@@ -6,12 +6,12 @@ import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
 import { Textarea } from '@/components/Textarea';
 import { ResponseVeterinariosSelect, TipoRevision, veterinario } from '@/types';
-import { CreateCheckUp } from '@/types/forms';
+import { CreateAdminCheckUp, CreateBaseCheckUp } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
-import { createCheckUpShema } from '@/validations/checkUpShema';
+import { createAdminCheckUpShema, createBaseCheckUpShema } from '@/validations/checkUpShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useParams, useRouter } from 'next/navigation';
 import { Controller, useForm } from 'react-hook-form';
@@ -20,20 +20,23 @@ import { toast } from 'sonner';
 type FormCreateCheckUpProps = {
     veterinarios: veterinario[];
     typesCheck:TipoRevision[]
+    isAdmin:boolean
 };
 
 export const FormCreateCheckUp = ({
     veterinarios,
-    typesCheck
+    typesCheck,
+    isAdmin
 }: FormCreateCheckUpProps) => {
     const {
         register,
         formState: { errors },
         control,
         handleSubmit,
-    } = useForm<CreateCheckUp>({
-        resolver: zodResolver(createCheckUpShema),
+    } = useForm<CreateBaseCheckUp | CreateAdminCheckUp>({
+        resolver: zodResolver(isAdmin ? createAdminCheckUpShema : createBaseCheckUpShema),
     });
+    console.log(errors,isAdmin)
     const router = useRouter();
     const { id: cattleId } = useParams<{ id: string }>();
 
@@ -93,8 +96,7 @@ export const FormCreateCheckUp = ({
                                 />
                             )}
 
-
-                            {type == 'select' && (
+                            {type == 'select' && id != 'personal_id' &&  (
                                 <Controller
                                     name={id}
                                     control={control}
@@ -103,7 +105,26 @@ export const FormCreateCheckUp = ({
                                             field={field}
                                             id={id}
                                             items={converToSelectOptions(
-                                             id== 'personal_id' ? veterinarios : typesCheck,
+                                              typesCheck,
+                                            )}
+                                            label={label}
+                                            errors={errors}
+                                            required={required}
+                                        />
+                                    )}
+                                />
+                            )}
+                           
+                            {type == 'select' && id == 'personal_id' && isAdmin &&  (
+                                <Controller
+                                    name={id}
+                                    control={control}
+                                    render={({ field }) => (
+                                        <Select
+                                            field={field}
+                                            id={id}
+                                            items={converToSelectOptions(
+                                              veterinarios,
                                             )}
                                             label={label}
                                             errors={errors}
