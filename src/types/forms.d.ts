@@ -1,9 +1,9 @@
 import { assignmentNumberBullCalfShema } from '@/validations/assignmentNumberBullCalfShema';
-import { createBirthShema } from '@/validations/birthShema';
+import { createAdminBirthShema, createBaseBirthShema, createBirthShema } from '@/validations/birthShema';
 import { createBullShema } from '@/validations/bullShema';
 import { createBeefShema } from '@/validations/discardedCattleShema';
 import { castleShema } from '@/validations/castleShema';
-import { createCheckUpShema } from '@/validations/checkUpShema';
+import { createAdminCheckUpShema, createBaseCheckUpShema, } from '@/validations/checkUpShema';
 import { createConfigurationShema } from '@/validations/configurationShema';
 import { createUserShema } from '@/validations/createUser';
 import { createCustomerShema } from '@/validations/Customer';
@@ -52,7 +52,9 @@ export type updateWeight= z.infer<typeof weightsShema>;
 
 export type CreateCastle = z.infer<typeof castleShema>;
 
-export type CreateBirth = z.infer<typeof createBirthShema>;
+export type CreateBaseBirth = z.infer<typeof createBaseBirthShema>;
+
+export type CreateAdminBirth = z.infer<typeof createAdminBirthShema>;
 
 export type CreateBull = z.infer<typeof createBullShema>;
 
@@ -62,9 +64,9 @@ export type CreateAssigmentNumberBullCalf = z.infer<
     typeof assignmentNumberBullCalfShema
 >;
 
-export type CreateCheckUp = z.infer<typeof createCheckUpShema>;
+export type CreateAdminCheckUp = z.infer<typeof createAdminCheckUpShema>;
 
-export type CreateCheckUp = z.infer<typeof createCheckUpShema>;
+export type CreateBaseCheckUp = z.infer<typeof createBaseCheckUpShema>;
 
 export type CreateConfiguration = z.infer<typeof createConfigurationShema>;
 
