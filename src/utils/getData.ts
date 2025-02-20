@@ -68,7 +68,8 @@ export async function getData<Form,dataResponse>(
         )
           throw new ErrorFromApi('error',{status: status, data: data as ResponseErrorFromApi['data']})  ;
     } catch (e:unknown) {
-      return  handleErrorFromApi(e)
+      console.log(e)
+        return  handleErrorFromApi(e)
     }
 
     return handleErrorFromApi('error')
