@@ -1,7 +1,7 @@
 import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
-import { ModalProps } from '@/types';
-import { useForm } from 'react-hook-form';
+import { CausaFallecimiento, ModalProps } from '@/types';
+import { Controller, useForm } from 'react-hook-form';
 import { CreateDeathCastle } from '@/types/forms';
 import { createDeathCastleShema } from '@/validations/deathCastle';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -12,16 +12,20 @@ import { toast } from 'sonner';
 import { getDateNow } from '@/utils/getDateNow';
 import { formDeadCattle } from '@/collections/formsInputs';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
+import { Select } from '@/components/select';
+import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 
 export const ModalDeathCattle = ({
     isOpen,
     onOpen,
     onOpenChange,
     dataHeader,
-}: ModalProps) => {
+    causas_fallecimeinto,
+}: ModalProps & {causas_fallecimeinto:CausaFallecimiento[]}) => {
     const {
         register,
         formState: { errors },
+        control,
         handleSubmit,
     } = useForm<CreateDeathCastle>({
         resolver: zodResolver(createDeathCastleShema),
@@ -32,7 +36,7 @@ export const ModalDeathCattle = ({
     const params = useParams<{ id: string }>();
 
     const actionCreateDeathCattle: () => void = handleSubmit(async (data) => {
-       
+       console.log(data)
             const deathCattle = await createDeathCattle(
                 data,
                 parseInt(params.id),
@@ -83,6 +87,23 @@ export const ModalDeathCattle = ({
                                         required={required}
                                     />
                                 )}
+
+                                {type == 'select' && (
+                                <Controller
+                                    name={id}
+                                    control={control}
+                                    render={({ field }) => (
+                                        <Select
+                                            field={field}
+                                            id={id}
+                                            items={converToSelectOptions(causas_fallecimeinto)}
+                                            label={label}
+                                            errors={errors}
+                                            required={required}
+                                        />
+                                    )}
+                                />
+                            )}
                                 {id == 'fecha' && (
                                     <Input
                                         id={id}

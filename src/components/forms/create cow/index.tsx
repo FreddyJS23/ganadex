@@ -18,7 +18,7 @@ import { createCastle } from '@/actions/vaca';
 import { toast } from 'sonner';
 import { ChangeEvent, useRef, useState } from 'react';
 import { Checkbox, Selection } from '@nextui-org/react';
-import { AvailableVaccines, Comprador, ListaVacunas, ResponseCompradores, ResponseGanado } from '@/types';
+import { AvailableVaccines, CausaFallecimiento, Comprador, ListaVacunas, ResponseCompradores, ResponseGanado } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { getDateNow } from '@/utils/getDateNow';
 import { CreateListVaccination } from '@/components/create list vaccination';
@@ -30,9 +30,10 @@ type FormCowProps = {
     compradores: Comprador[];
     listaVacunas: AvailableVaccines[];
     numero_disponible:number;
+    causas_fallecimeinto:CausaFallecimiento[]
 }
 
-export const FormCow = ({ compradores,listaVacunas,numero_disponible }: FormCowProps) => {
+export const FormCow = ({ compradores,listaVacunas,numero_disponible,causas_fallecimeinto }: FormCowProps) => {
     /* states of the castle */
     const [states, setStates] = useState<Selection>(new Set('1'));
 
@@ -186,7 +187,7 @@ console.log(numero_disponible)
                     ({ id, label, required, type, endContent }) => (
                         <>
                             <div key={id}>
-                                {id == 'causa' && (
+                                {type == 'text' && (
                                     <Input
                                         id={id}
                                         label={label}
@@ -197,6 +198,25 @@ console.log(numero_disponible)
                                         required={required}
                                     />
                                 )}
+                                {type == 'select' && (
+                                <Controller
+                                    name={id}
+                                    /*Se interpone un any ya que esta heredando el tipo del formulario completo
+                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                    control={control as any}
+                                    render={({ field }) => (
+                                        <Select
+                                            field={field}
+                                            id={id}
+                                            items={converToSelectOptions(causas_fallecimeinto)}
+                                            label={label}
+                                            errors={errors}
+                                            required={required}
+                                        />
+                                    )}
+                                />
+                            )}
                                 {id == 'fecha' && (
                                     <Input
                                     /* El id se debe cambiar ya que se usa una shema validacion diferente

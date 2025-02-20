@@ -1,5 +1,5 @@
 import { FormCreateCheckUp } from '@/components/forms/create chekUp';
-import { ResponseGanado, ResponseVeterinariosSelect } from '@/types';
+import { ResponseGanado, ResponseTiposRevision, ResponseVeterinariosSelect } from '@/types';
 import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 type ParamsPage = {
@@ -18,12 +18,14 @@ export default async function Page({ params }: ParamsPage) {
         'veterinariosDisponibles',
     );
 
+    const {tipos_revision}:ResponseTiposRevision = await getData('tiposRevision');
+
     return (
         <>
             <TitlePage
                 title={`Registrar revision para la vaca ${ganado.numero}`}
             />
-            <FormCreateCheckUp veterinarios={veterinarios} />
+            <FormCreateCheckUp veterinarios={veterinarios} typesCheck={tipos_revision} />
         </>
     );
 }

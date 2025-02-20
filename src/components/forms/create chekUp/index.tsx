@@ -5,7 +5,7 @@ import { formCheckUp } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
 import { Textarea } from '@/components/Textarea';
-import { ResponseVeterinariosSelect } from '@/types';
+import { ResponseVeterinariosSelect, TipoRevision, veterinario } from '@/types';
 import { CreateCheckUp } from '@/types/forms';
 import { Button } from '@/ui/Button';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
@@ -17,9 +17,15 @@ import { useParams, useRouter } from 'next/navigation';
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
+type FormCreateCheckUpProps = {
+    veterinarios: veterinario[];
+    typesCheck:TipoRevision[]
+};
+
 export const FormCreateCheckUp = ({
     veterinarios,
-}: ResponseVeterinariosSelect) => {
+    typesCheck
+}: FormCreateCheckUpProps) => {
     const {
         register,
         formState: { errors },
@@ -49,7 +55,7 @@ export const FormCreateCheckUp = ({
                 action={actionCreatecheckUp}
                 className="flex flex-col items-center gap-6 p-4 max-w-2xl m-auto"
             >
-                <div className="flex gap-6 md:gap-12">
+                <div className="grid  md:gap-12 lg:grid-cols-3 w-full">
                     {formCheckUp.map(({ id, label, required, type }) => (
                         <>
                             {id == 'tratamiento' && (
@@ -97,7 +103,7 @@ export const FormCreateCheckUp = ({
                                             field={field}
                                             id={id}
                                             items={converToSelectOptions(
-                                                veterinarios as [],
+                                             id== 'personal_id' ? veterinarios : typesCheck,
                                             )}
                                             label={label}
                                             errors={errors}
