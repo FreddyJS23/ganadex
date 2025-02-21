@@ -4,7 +4,7 @@ import { LayoutModal } from '..';
 import { Finca } from '@/types';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import {
     Select,
@@ -13,16 +13,25 @@ import {
     useDisclosure,
 } from '@nextui-org/react';
 import { createSesionFinca as createSesionFincaAction } from '@/actions/finca';
-import { useSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 
 export const ModalSelectFincaSesion = ({ fincas }: { fincas: Finca[] }) => {
     const { handleSubmit, control } = useForm<{ finca_id: number }>();
     const router = useRouter();
-    const { update, data: session } = useSession();
+    const { update, data: session,status } = useSession();
     const formRef = useRef(null);
     const { onOpen, onOpenChange } = useDisclosure();
     const [value, setValue] = useState<Selection>(new Set([]));
 
+     useEffect(() => {
+        /* Llamar a la sesion para que el status el hook useSession se actualice y pase a authenticated,
+        si no se hace esto el state queda en unauthenticated y no se actualiza, no permitiendo que se llame
+        la funcion update para actualizar la sesion */
+        const fetchSession = async () => await getSession();
+
+        fetchSession();
+      }, []);
+ 
     const createSesionFinca: () => void = handleSubmit(async (data) => {
         if (!data.finca_id) return toast.error('Debe seleccionar una finca');
         try {

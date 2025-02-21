@@ -6,10 +6,10 @@ import { CreateFinca } from '@/types/forms';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createFincaShema } from '@/validations/finca';
 import { useRouter } from 'next/navigation';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { toast } from 'sonner';
 import { createFinca } from '@/actions/finca';
-import { useSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type ModalCreateFincaProps = ModalProps & {
@@ -40,6 +40,16 @@ export const ModalCreateFinca = ({
     const router = useRouter();
     const formRef = useRef(null);
     const { update, data: session } = useSession();
+
+    useEffect(() => {
+        /* Llamar a la sesion para que el status el hook useSession se actualice y pase a authenticated,
+        si no se hace esto el state queda en unauthenticated y no se actualiza, no permitiendo que se llame
+        la funcion update para actualizar la sesion */
+        const fetchSession = async () => await getSession();
+
+        fetchSession();
+      }, []);
+
 
     const actionCreateFinca: () => void = handleSubmit(async (data) => {
         
