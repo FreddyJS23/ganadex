@@ -1,6 +1,7 @@
 import { ChartOptions } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import { de } from 'date-fns/locale';
+import { checkedDark } from './darkmode';
 
 export const paletteBackground = [
     '#1FFF0090',
@@ -22,16 +23,22 @@ export const paletteBorderColor = [
     '#ffa600',
 ];
 
+
+const darkMode=document &&  document.documentElement.classList.contains('dark');
+const letterWhite='#e5e7eb'
+const letterBlack='#111827'
+
+
 export const optionChartTotalTypesCattle: ChartOptions<'doughnut'> = {
     plugins: {
         legend: {
             position: 'right',
-            labels: { color: '#ecedee', padding: 15 },
+            labels: { color: darkMode ? letterWhite : letterBlack, padding: 15 },
         },
         datalabels: { //plugin datalabels
             labels: {
                 value: {
-                    color: '#ecedee',
+                    color: darkMode ? letterWhite : letterBlack,
                     font: {
                         weight: 'bold',
                     }
@@ -48,12 +55,12 @@ export const optionChartTop3CatleProduction: ChartOptions<'bar'> = {
     scales: {
         y: {
             beginAtZero: true,
-            border: { color: '#ecedee' },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 display: false,
             },
             ticks: {
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
                 callback: function (value) {
                     return value + ' KG';
                 },
@@ -62,8 +69,8 @@ export const optionChartTop3CatleProduction: ChartOptions<'bar'> = {
         },
         x: {
             beginAtZero: true,
-            ticks: { color: '#ecedee' },
-            border: { color: '#ecedee' },
+            ticks: { color: darkMode ? letterWhite : letterBlack },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 display: false,
             },
@@ -71,7 +78,7 @@ export const optionChartTop3CatleProduction: ChartOptions<'bar'> = {
     },
     /* elementos chart */
     plugins: {
-        legend: { display: false, labels: { color: '#ecedee' } },
+        legend: { display: false, labels: { color: darkMode ? letterWhite : letterBlack } },
         tooltip: {
             callbacks: {
                 label: function (context) {
@@ -87,13 +94,13 @@ export const optionChartLineAnnualMilk: ChartOptions<'line'> = {
     scales: {
         y: {
             beginAtZero: true,
-            border: { color: '#ecedee' },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 color: '#ecedee30',
                 display: true,
             },
             ticks: {
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
                 callback: function (value) {
                     return value + ' KG';
                 },
@@ -102,8 +109,8 @@ export const optionChartLineAnnualMilk: ChartOptions<'line'> = {
         },
         x: {
             beginAtZero: true,
-            ticks: { color: '#ecedee' },
-            border: { color: '#ecedee' },
+            ticks: { color: darkMode ? letterWhite : letterBlack },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 color: '#ecedee30',
                 display: true,
@@ -120,7 +127,7 @@ export const optionChartLineAnnualMilk: ChartOptions<'line'> = {
         point: { borderWidth: 20, backgroundColor: '#22FF1E' },
     },
     plugins: {
-        legend: { display: false, labels: { color: '#ecedee' } },
+        legend: { display: false, labels: { color: darkMode ? letterWhite : letterBlack } },
         tooltip: {
             callbacks: {
                 label: function (context) {
@@ -140,21 +147,21 @@ export const optionChartLineEarningsMilkMonth: ChartOptions<'line'> = {
     scales: {
         y: {
             beginAtZero: true,
-            border: { color: '#ecedee' },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 color: '#ecedee30',
                 display: true,
             },
             ticks: {
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
             },
         },
         x: {
             adapters: { date: { locale: de } },
             type: 'time',
             time: { unit: 'day' },
-            ticks: { color: '#ecedee' },
-            border: { color: '#ecedee' },
+            ticks: { color: darkMode ? letterWhite : letterBlack },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 color: '#ecedee30',
                 display: true,
@@ -171,7 +178,7 @@ export const optionChartLineEarningsMilkMonth: ChartOptions<'line'> = {
         point: { borderWidth: 20, backgroundColor: '#22FF1E' },
     },
     plugins: {
-        legend: { display: false, labels: { color: '#ecedee' } },
+        legend: { display: false, labels: { color: darkMode ? letterWhite : letterBlack } },
         tooltip: {},
     },
     aspectRatio: 3,
@@ -187,19 +194,19 @@ export const optionChartLineSalesCatle: ChartOptions<'bar'> = {
     scales: {
         y: {
             beginAtZero: true,
-            border: { color: '#ecedee' },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 display: false,
             },
             ticks: {
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
             },
             suggestedMax: 50,
         },
         x: {
             beginAtZero: true,
-            ticks: { color: '#ecedee' },
-            border: { color: '#ecedee' },
+            ticks: { color: darkMode ? letterWhite : letterBlack },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 display: false,
             },
@@ -207,7 +214,7 @@ export const optionChartLineSalesCatle: ChartOptions<'bar'> = {
     },
     /* elementos chart */
     plugins: {
-        legend: { display: false, labels: { color: '#ecedee' } },
+        legend: { display: false, labels: { color: darkMode ? letterWhite : letterBlack } },
     },
     aspectRatio: 7,
 };
@@ -218,23 +225,23 @@ export const optionChartLinePartosTotales: ChartOptions<'line'> = {
     scales: {
         y: {
             beginAtZero: true,
-            border: { color: '#ecedee' },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 display: false,
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
             },
             ticks: {
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
             },
             suggestedMax: 100,
         },
         x: {
             beginAtZero: true,
-            ticks: { color: '#ecedee' },
-            border: { color: '#ecedee' },
+            ticks: { color: darkMode ? letterWhite : letterBlack },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 display: false,
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
                 
             },
         },
@@ -250,14 +257,14 @@ export const optionChartLinePartosTotales: ChartOptions<'line'> = {
         point: { borderWidth: 20, backgroundColor: '#22FF1E' },
     },
     plugins: {
-        legend: { display: false, labels: { color: '#ecedee' } },
+        legend: { display: false, labels: { color: darkMode ? letterWhite : letterBlack } },
         tooltip: {},
         datalabels: { //plugin datalabels
             anchor:'end',
             align:'top',
             labels: {
                 value: {
-                    color: '#ecedee',
+                    color: darkMode ? letterWhite : letterBlack,
                     font: {
                         weight: 'bold',
                         size: 12
@@ -268,7 +275,7 @@ export const optionChartLinePartosTotales: ChartOptions<'line'> = {
         title: {
             display: true,
             text: 'Nacimientos ultimos 5 años',
-            color: '#ecedee',
+            color: darkMode ? letterWhite : letterBlack,
             font: {
                 size: 20,
                 weight: 'bold',
@@ -284,23 +291,23 @@ export const optionChartBarTasaNatalidad: ChartOptions<'bar'> = {
     scales: {
         y: {
             beginAtZero: true,
-            border: { color: '#ecedee' },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 display: false,
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
             },
             ticks: {
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
             },
             suggestedMax: 100,
         },
         x: {
             beginAtZero: true,
-            ticks: { color: '#ecedee' },
-            border: { color: '#ecedee' },
+            ticks: { color: darkMode ? letterWhite : letterBlack },
+            border: { color: darkMode ? letterWhite : letterBlack },
             grid: {
                 display: false,
-                color: '#ecedee',
+                color: darkMode ? letterWhite : letterBlack,
                 
             },
         },
@@ -311,7 +318,7 @@ export const optionChartBarTasaNatalidad: ChartOptions<'bar'> = {
         title: {
             display: true,
             text: 'Tasa de natalidad',
-            color: '#ecedee',
+            color: darkMode ? letterWhite : letterBlack,
             font: {
                 size: 20,
                 weight: 'bold',
@@ -327,7 +334,7 @@ export const optionChartBarTasaNatalidad: ChartOptions<'bar'> = {
             align:'top',
             labels: {
                 value: {
-                    color: '#ecedee',
+                    color: darkMode ? letterWhite : letterBlack,
                     font: {
                         weight: 'bold',
                         size: 12
@@ -335,7 +342,7 @@ export const optionChartBarTasaNatalidad: ChartOptions<'bar'> = {
                 }
             },
         },
-        legend: { display: false, labels: { color: '#ecedee' } },
+        legend: { display: false, labels: { color: darkMode ? letterWhite : letterBlack } },
         tooltip: {
             callbacks: {
                 label: function (context) {
@@ -353,7 +360,7 @@ export const optionChartDoughnutCantidadGanado: ChartOptions<'doughnut'> = {
         title: {
             display: true,
             text: 'Nacimientos del año seleccionado',
-            color: '#ecedee',
+            color: darkMode ? letterWhite : letterBlack,
             font: {
                 size: 20,
                 weight: 'bold',
@@ -363,7 +370,7 @@ export const optionChartDoughnutCantidadGanado: ChartOptions<'doughnut'> = {
         datalabels: { //plugin datalabels
             labels: {
                 value: {
-                    color: '#ecedee',
+                    color: darkMode ? letterWhite : letterBlack,
                     font: {
                         weight: 'bold',
                         size: 20
@@ -373,7 +380,7 @@ export const optionChartDoughnutCantidadGanado: ChartOptions<'doughnut'> = {
         },
         legend: {
             position: 'right',
-            labels: { color: '#ecedee', padding: 15 },
+            labels: { color: darkMode ? letterWhite : letterBlack, padding: 15 },
         },
         
     },
