@@ -58,7 +58,7 @@ export const Input = ({
             )}
             isInvalid={errors[id] && true}
             errorMessage={errors[id] && (errors[id]?.message as string)}
-            defaultValue={defaultValue}
+            value={defaultValue}
             min={1}
         />
     );
