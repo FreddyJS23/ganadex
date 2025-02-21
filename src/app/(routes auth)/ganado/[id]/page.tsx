@@ -55,7 +55,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                     <h3 className=" font-bold text-2xl">
                         Detalle del animal {ganado.numero}
                     </h3>
-                    <DropDownOptions idCattle={ganado.id} optionType="cattle" role={role} />
+                   {!chechkState && <DropDownOptions idCattle={ganado.id} optionType="cattle" role={role} />}
                 </div>
                 <div className="flex flex-col gap-5 md:flex-row items-center ">
                     <div className="">
@@ -122,6 +122,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                         vacunaciones={vacunaciones}
                         disabledSomeTabs={disabledSomeTabs} 
                         isMale={false}
+                        disableCreateButton={chechkState}
                     />
                 </div>
             </div>

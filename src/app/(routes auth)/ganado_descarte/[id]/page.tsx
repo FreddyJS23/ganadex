@@ -53,7 +53,7 @@ export default async function Page({ params }: ParamsPageBeef) {
                     <h3 className=" font-bold text-2xl">
                         Detalle cabeza ganado descartado {numero}
                     </h3>
-                   {!checkState &&  <DropDownOptions idCattle={ganado_id} optionType="cattle" role={role} disabledDiscardCattle />}
+                   {!chechkState &&  <DropDownOptions idCattle={ganado_id} optionType="cattle" role={role} disabledDiscardCattle />}
 
                     {/*  <ButtonGenerateReport report='ganado' id={ganado.id} /> */}
                 </div>
