@@ -13,6 +13,7 @@ import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createWeightMilk } from '@/actions/weightMilk';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
+import { getDateNow } from '@/utils/getDateNow';
 
 export const ModalWeightMilk = ({
     dataHeader,
@@ -74,6 +75,16 @@ export const ModalWeightMilk = ({
                     size="lg"
                     register={register}
                     errors={errors}
+                />
+                    <Input
+                    required
+                    id={'fecha'}
+                    label={'Fecha'}
+                    defaultValue={getDateNow()}
+                    type="date"
+                    size="lg"
+                    errors={errors}
+                    register={register}
                 />
             </form>
         </LayoutModal>
