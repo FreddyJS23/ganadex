@@ -38,6 +38,11 @@ export const TortaCausasFallecimientosGanado = ({
         ],
     };
 
+        const darkMode=document &&  document.documentElement.classList.contains('dark');
+const letterWhite='#e5e7eb'
+const letterBlack='#111827'
+
+
     const configAnotation={annotation: { //plugin anotaciones
         annotations: {
             dLabel: {
@@ -46,7 +51,7 @@ export const TortaCausasFallecimientosGanado = ({
                    total_fallecidos,
                   ],
                 font:[{size:20,weight:'bold'},{size:18,weight:'normal'}],
-                color:'#ecedee'
+                color:darkMode ? letterWhite : letterBlack
             }
         }
     }}

@@ -33,4 +33,5 @@ export const changeThemeDark = (
         removeDarkMode();
         localStorage.setItem('darkMode', 'false');
     }
+window.location.reload();
 };
