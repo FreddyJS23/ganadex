@@ -87,8 +87,8 @@ export const Navbar = async () => {
                                 <Link href={'/perfil'} className="justify-between">Perfil</Link>
                             </li>
                             <li className="bg-error rounded-md">
-                                <Link href={'/api/signOut'}>Cerrar sesión</Link>
-                            </li>
+                                <Link prefetch={false}  href={'api/signOut'}>Cerrar sesión</Link>
+                            </li> 
                         </ul>
                     </div>
                 </div>
