@@ -13,14 +13,13 @@ export async function authenticate(
         await signIn('credentials', {
             usuario: formData.get('usuario'),
             password: formData.get('password'),
-            redirectTo: '/dashboard',
         });
     } catch (error) {
         if (isRedirectError(error)) {
             return {
                 login: true,
                 message: 'Credenciales correctas',
-                redirect: '/dashboard',
+                redirect: '/finca',
             };
         }
         if (error instanceof AuthError) {

@@ -20,7 +20,7 @@ export type ResponseLogin = {
 
 export type ResponseLoginAuthJs = {
     login: boolean;
-    redirect: '/dashboard' | null;
+    redirect: '/finca' | null;
     message: string | null;
 };
 
