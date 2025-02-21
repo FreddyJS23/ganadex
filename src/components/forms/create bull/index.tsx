@@ -25,6 +25,7 @@ import { AvailableVaccines, CausaFallecimiento, Comprador } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { CreateListVaccination } from '@/components/create list vaccination';
+import { useRouter } from 'next/navigation';
 
 type FormBullProps = {
     compradores: Comprador[];
@@ -45,6 +46,8 @@ export const FormBull = ({compradores,numero_disponible,causas_fallecimeinto,lis
 
      /* Lista de vacunas */
      const [listVaccines, setListVaccines] = useState<ListaVacunas[]>([]);
+     const router = useRouter();
+
 
     const {
         register,
@@ -78,6 +81,7 @@ console.log(errors)
          if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
 
             form.current?.reset();
+            router.refresh();
             setListVaccines([])
             setStates(new Set('1'));
             setShowinputDead(false);

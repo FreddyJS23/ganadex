@@ -24,6 +24,7 @@ import { AvailableVaccines, CausaFallecimiento, Comprador } from '@/types';
 import { Checkbox, Chip, Selection } from '@nextui-org/react';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { CreateListVaccination } from '@/components/create list vaccination';
+import { useRouter } from 'next/navigation';
 
 type FormBeffProps = {
     compradores: Comprador[];
@@ -45,6 +46,8 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto,li
 
      /* Lista de vacunas */
      const [listVaccines, setListVaccines] = useState<ListaVacunas[]>([]);
+     const router = useRouter();
+
 
     const {
         register,
@@ -74,6 +77,7 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto,li
         try {
             const response = (await createBeef(data,listVaccines)) as string | number;
             form.current?.reset();
+            router.refresh();
             setStates(new Set('1'));
             setListVaccines([])
             setShowinputDead(false);

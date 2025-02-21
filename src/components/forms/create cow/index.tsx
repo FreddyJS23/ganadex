@@ -16,7 +16,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { CreateCastle } from '@/types/forms';
 import { createCastle } from '@/actions/vaca';
 import { toast } from 'sonner';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Checkbox, Selection } from '@nextui-org/react';
 import { AvailableVaccines, CausaFallecimiento, Comprador, ListaVacunas, ResponseCompradores, ResponseGanado } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
@@ -24,6 +24,7 @@ import { getDateNow } from '@/utils/getDateNow';
 import { CreateListVaccination } from '@/components/create list vaccination';
 import { ToolTipTipoGanado } from '@/components/tooltip';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
+import { useRouter } from 'next/navigation';
 
 
 type FormCowProps = {
@@ -40,6 +41,7 @@ export const FormCow = ({ compradores,listaVacunas,numero_disponible,causas_fall
     /* Lista de vacunas */
     const [listVaccines, setListVaccines] = useState<ListaVacunas[]>([]);
 
+    const router = useRouter();
     const form = useRef<HTMLFormElement | null>(null);
     const containerInputsForm = useRef<HTMLDivElement[]>([]);
     const [shema, setshema] = useState<typeof castleShema|typeof castleShemaWitDeath|typeof castleShemaWithSale>(castleShema)
@@ -65,6 +67,7 @@ console.log(numero_disponible)
             const dataResponse=response as string | number
            
             form.current?.reset();
+            router.refresh();
             setListVaccines([])
             setStates(new Set('1'));
             setShowinputDead(false);
