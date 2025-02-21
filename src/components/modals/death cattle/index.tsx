@@ -29,6 +29,7 @@ export const ModalDeathCattle = ({
         handleSubmit,
     } = useForm<CreateDeathCastle>({
         resolver: zodResolver(createDeathCastleShema),
+        defaultValues:{fecha:getDateNow()}
     });
 
     const router = useRouter();

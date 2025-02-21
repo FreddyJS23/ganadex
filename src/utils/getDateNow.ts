@@ -1,7 +1,9 @@
+/** formato año-mes-dia  */
 export const getDateNow = () => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return `${year}-${month}-${day}`;
+    const dateNow = new Date();
+    /* Y-m-d */
+    const [formatDate] = dateNow.toISOString().split('T');
+   
+    return formatDate;
 };
+

@@ -27,6 +27,7 @@ export const ModalSaleMilk = ({
         handleSubmit,
     } = useForm<CreateSaleMilk>({
         resolver: zodResolver(createSaleMilkShema),
+        defaultValues:{fecha:getDateNow()}
     });
 
     const router = useRouter();

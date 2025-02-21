@@ -36,6 +36,7 @@ export const ModalSaleCattle = ({
         control,
     } = useForm<CreateSaleCattle>({
         resolver: zodResolver(createSaleCattleShema),
+        defaultValues:{fecha:getDateNow()}
     });
 
     const router = useRouter();
@@ -131,6 +132,7 @@ export const ModalSaleCattle = ({
                                         register={register}
                                         errors={errors}
                                         required={required}
+                                        defaultValue={getDateNow()}
                                     />
                                 )}
                                 {type == 'select' && (

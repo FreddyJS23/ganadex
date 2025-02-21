@@ -26,6 +26,7 @@ export const ModalWeightMilk = ({
         handleSubmit,
     } = useForm<CreateWeightMilk>({
         resolver: zodResolver(createWeightMilkShema),
+        defaultValues:{fecha:getDateNow()}
     });
 
     const router = useRouter();

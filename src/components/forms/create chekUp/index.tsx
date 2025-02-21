@@ -35,6 +35,7 @@ export const FormCreateCheckUp = ({
         handleSubmit,
     } = useForm<CreateBaseCheckUp | CreateAdminCheckUp>({
         resolver: zodResolver(isAdmin ? createAdminCheckUpShema : createBaseCheckUpShema),
+        defaultValues:{fecha:getDateNow()}
     });
     console.log(errors,isAdmin)
     const router = useRouter();

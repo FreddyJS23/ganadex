@@ -43,6 +43,7 @@ export const FormCreateService = ({
         handleSubmit,
     } = useForm<CreateServe>({
         resolver: zodResolver(isAdmin ? shema.and(inputPersonalIdShema) : shema ),
+        defaultValues:{fecha:getDateNow()}
     });
     const router = useRouter();
     const { id: cattleId } = useParams<{ id: string }>();

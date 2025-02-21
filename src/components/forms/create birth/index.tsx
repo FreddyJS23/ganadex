@@ -37,7 +37,7 @@ export const FormCreateBirth = ({
         handleSubmit,
     } = useForm<CreateBaseBirth | CreateAdminBirth>({
         resolver: zodResolver(isAdmin ? createAdminBirthShema : createBaseBirthShema),
-        defaultValues: {  numero: numero_disponible },
+        defaultValues: {  numero: numero_disponible,fecha:getDateNow()}
     });
     const router = useRouter();
     const { id: cattleId } = useParams<{ id: string }>();
