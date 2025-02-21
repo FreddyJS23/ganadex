@@ -11,14 +11,14 @@ export const Logos = ({ small }: LogosProps) => {
             <div
                 className={`block dark:hidden  ${small ? 'self-center' : ''} `}
             >
-                <IconoLogo className={small ? 'size-16' : 'size-48'} />
+                <IconoLogo className={small ? 'size-16' : 'size-36'} />
             </div>
             <div className={`hidden dark:block ${small ? 'self-center' : ''} `}>
                 <div className="hidden sm:block">
-                    <IconoLogoDark className={small ? 'size-16' : 'size-48'} />
+                    <IconoLogoDark className={small ? 'size-16' : 'size-36'} />
                 </div>
                 <div className="block sm:hidden">
-                    <IconoLogo className={small ? 'size-16' : 'size-48'} />
+                    <IconoLogo className={small ? 'size-16' : 'size-36'} />
                 </div>
             </div>
         </>
