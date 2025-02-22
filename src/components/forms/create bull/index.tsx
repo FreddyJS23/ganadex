@@ -19,7 +19,7 @@ import {
     createBullShema,
 } from '@/validations/bullShema';
 import { createBull } from '@/actions/toro';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Checkbox, Chip, Selection } from '@nextui-org/react';
 import { AvailableVaccines, CausaFallecimiento, Comprador } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
@@ -89,6 +89,11 @@ console.log(errors)
             toast.success(`Toro numero ${response} ha sido registrado`);
        
     });
+     /* actualizar numero del input al obtener nuevo numero */
+     useEffect(() => {
+        setValue('numero', numero_disponible);
+    }, [numero_disponible,setValue]);
+
 
     /* select states of the castle */
     const { id, label, required, select } = formBull[formBull.length - 1];

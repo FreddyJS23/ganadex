@@ -78,6 +78,11 @@ console.log(numero_disponible)
        
     });
 
+    /* actualizar numero del input al obtener nuevo numero */
+    useEffect(() => {
+        setValue('numero', numero_disponible);
+    }, [numero_disponible,setValue]);
+
     /* select states of the castle */
     const { id, label, required, select } = formCastle[formCastle.length - 1];
 

@@ -18,7 +18,7 @@ import {
     createDiscardedCattleWithSaleShema,
 } from '@/validations/discardedCattleShema';
 import { createBeef } from '@/actions/ganado_descarte';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Select as SelectNextUI, SelectItem } from '@nextui-org/select';
 import { AvailableVaccines, CausaFallecimiento, Comprador } from '@/types';
 import { Checkbox, Chip, Selection } from '@nextui-org/react';
@@ -90,6 +90,12 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto,li
             return toast.error(message);
         }
     });
+
+     /* actualizar numero del input al obtener nuevo numero */
+     useEffect(() => {
+        setValue('numero', numero_disponible);
+    }, [numero_disponible,setValue]);
+
 
     /* select states of the castle */
     const { id, label, required, select } = formBeef[formBeef.length - 1];
