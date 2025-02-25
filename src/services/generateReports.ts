@@ -34,6 +34,8 @@ export const GetReports = async (
         Origin: process.env.ORIGIN,
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
+        'X-XSRF-TOKEN': user.xsrf_token,
+        Cookie: `XSRF-TOKEN=${user.xsrf_token}; laravel_session=${user.laravel_session}`,
     });
     /*  if(method == 'POST') headers.append('X-XSRF-TOKEN', cookieCsrf[0].token); */
 
