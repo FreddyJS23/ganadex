@@ -27,7 +27,7 @@ type optionsSubmenuSidebar = {
         | '/pesajes_leche'
         | '/fallecimientos'
         | '/pajuela_toro'
-        | '/jornadas_vacunacion'
+        | '/planes_sanitario'
         | '/capar_becerro'
     >;
     option:
@@ -49,7 +49,7 @@ type optionsSubmenuSidebar = {
         | 'Fallecimientos'
         | 'Pajuela toro'
         | 'Pajuelas toro'
-        | 'Jornadas vacunacion'
+        | 'Planes sanitario'
         | 'Capar animal';
 };
 

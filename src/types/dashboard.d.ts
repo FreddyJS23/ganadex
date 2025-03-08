@@ -116,17 +116,17 @@ export type Fallecimientos = {
 };
 
 
-/* ------------------------- jornadas de vacunacion ------------------------- */
+/* ------------------------- planes sanitario ------------------------- */
 
-type ProximaJornadaVacunacion = {
+type ProximoPlanSanitario = {
     vacuna:string
     prox_dosis:string
     ganado_vacunado:string[]
 }
 
-export type ProximasJornadaVacunacion={
+export type ProximosPlanSanitario={
     
-    proximas_jornadas_vacunacion:ProximaJornadaVacunacion[]
+    proximos_planes_sanitario:ProximoPlanSanitario[]
         
 }
 
