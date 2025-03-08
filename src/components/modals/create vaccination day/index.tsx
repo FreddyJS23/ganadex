@@ -1,4 +1,4 @@
-import { createVaccinationDay } from '@/actions/jornadaVacunacion';
+import { createVaccinationDay } from '@/actions/planSanitario';
 import { formVaccinationDay } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
@@ -38,7 +38,7 @@ export const ModalCreateVaccinationDay = ({
        const response= await createVaccinationDay(data);
         /* manejar error del backedn y mostar mensaje */
         if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
-            toast.success(`Jornada de vacunación ha sido registrado`);
+            toast.success(`Plan sanitario registrado`);
             router.back();
             router.refresh();
        
@@ -47,7 +47,7 @@ export const ModalCreateVaccinationDay = ({
     return (
         <LayoutModal
             icon="checkUp"
-            titleModal={'Nueva jornada de vacunación'}
+            titleModal={'Nuevo plan sanitario'}
             footer={true}
             isOpen={isOpen}
             onOpen={onOpen}

@@ -9,7 +9,7 @@ const routesVerinary = [
     'revisiones',
     'partos',
     'fallecimientos',
-    'jornadas_vacunacion',
+    'planes_sanitario',
     'perfil'
 ]
 

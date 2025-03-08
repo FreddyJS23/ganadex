@@ -202,7 +202,7 @@ export const headerPajuelaToro: headersColumns<PajuelaToro>[] = [
     { key: 'fecha', label: 'Fecha' },
 ];
 
-export const headerJornadasVacunacion: headersColumns<DayVaccination>[] = [
+export const headerPlanesSanitario: headersColumns<DayVaccination>[] = [
     { key: 'fecha_inicio', label: 'Fecha inicio' },
     { key: 'fecha_fin', label: 'Fecha fin' },
     { key: 'vacuna', label: 'Vacuna' },

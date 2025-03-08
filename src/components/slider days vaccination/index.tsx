@@ -2,13 +2,13 @@
 
 import Slider, { Settings } from 'react-slick';
 import { CardDashboardDayVaccination } from '@/components/cards';
-import { ProximasJornadaVacunacion } from '@/types/dashboard';
+import { ProximosPlanSanitario } from '@/types/dashboard';
 
 export const SliderVaccinationDays = ({
-    proximas_jornadas_vacunacion,
-}: ProximasJornadaVacunacion) => {
+    proximos_planes_sanitario,
+}: ProximosPlanSanitario) => {
     const calcularSlides = () => {
-        let countCards=proximas_jornadas_vacunacion.length;
+        let countCards=proximos_planes_sanitario.length;
 
         if (countCards <= 3) return countCards;
         
@@ -33,7 +33,7 @@ export const SliderVaccinationDays = ({
 
     return (
         <Slider {...configSlider}>
-            {proximas_jornadas_vacunacion.map(
+            {proximos_planes_sanitario.map(
                 ({ vacuna, prox_dosis, ganado_vacunado }, index) => (
                     <CardDashboardDayVaccination
                         key={vacuna + index}

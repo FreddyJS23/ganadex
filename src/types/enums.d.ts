@@ -62,7 +62,7 @@ export enum URLS {
     '/pesajes_leche',
     '/fallecimientos',
     '/pajuela_toro',
-    '/jornadas_vacunacion',
+    '/planes_sanitario',
 }
 
 export enum Months {
@@ -168,7 +168,7 @@ export enum TitlesModals {
     'Año a filtrar el resumen',
     'Restaurar base de datos',
     'Añadir a la sección de descarte al animal ',
-    'Nueva jornada de vacunación',
+    'Nuevo plan sanitario',
     'Historial de vacunas aplicadas',
     'Actualizar usuario',
     'Crear hacienda',

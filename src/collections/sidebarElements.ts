@@ -77,8 +77,8 @@ export const optionsSidebarAdmin: Pick<
                 url: '/fallecimientos',
             },
             {
-                option: 'Jornadas vacunacion',
-                url: '/jornadas_vacunacion',
+                option: 'Planes sanitario',
+                url: '/planes_sanitario',
             },
             /* {
                 option: 'Capar animal',
@@ -156,8 +156,8 @@ export const optionsSidebarVeterinary: Pick<
                 url: '/fallecimientos',
             },
             {
-                option: 'Jornadas vacunacion',
-                url: '/jornadas_vacunacion',
+                option: 'Planes sanitario',
+                url: '/planes_sanitario',
             },
             /* {
                 option: 'Capar animal',

@@ -289,12 +289,12 @@ export type ResponseAñosProduccionLeche = {
     años_produccion_leche: YearSalesCattle[];
 };
 
-export type ResponseJornadasVacunacion = {
-    jornadas_vacunacion: DayVaccination[];
+export type ResponsePlanesSanitario = {
+    planes_sanitario: DayVaccination[];
 };
 
-export type ResponseJornadaVacunacion = {
-    jornada_vacunacion: DayVaccination;
+export type ResponsePlanSanitario = {
+    plan_sanitario: DayVaccination;
 };
 
 export type ResponseVacunasDisponibles = {

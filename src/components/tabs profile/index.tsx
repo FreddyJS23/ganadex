@@ -120,7 +120,7 @@ export const TabsProfile = ({
                             description="Representa cuantos dias antes de la fecha de un evento, se creara una notificacion"
                         />
                           <ElementProfile
-                            tittle="Diferencia entre una vacuna y una jornada de vacunacion"
+                            tittle="Diferencia entre una vacuna y un plan sanitario"
                             content={configuracion.dias_diferencia_vacuna.toString()}
                             description="Representa cuantos dias se podria aplazar la dosis de una vacuna individual para asi estar a la par con la proxima jornada de vacunacion de la misma"
                         />
