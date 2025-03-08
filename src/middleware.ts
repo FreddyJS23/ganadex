@@ -32,10 +32,10 @@ export default middleware((request) => {
             return NextResponse.redirect(new URL('/login', request.url));
     } else {
         
-        //logueado pero sin una sesion de finca
-        if(!request.auth.user.sesion_finca && !request.nextUrl.pathname.startsWith('/finca')) return NextResponse.redirect(new URL('/finca', request.url))
+        //logueado pero sin una sesion de hacienda
+        if(!request.auth.user.sesion_hacienda && !request.nextUrl.pathname.startsWith('/hacienda')) return NextResponse.redirect(new URL('/hacienda', request.url))
         
-        if (request.nextUrl.pathname.startsWith('/login') || (request.nextUrl.pathname == '/finca' && request.auth.user.sesion_finca) ) {
+        if (request.nextUrl.pathname.startsWith('/login') || (request.nextUrl.pathname == '/hacienda' && request.auth.user.sesion_hacienda) ) {
             return redirectRol(request.auth.user.rol,request.url)
         }
         if (request.auth.user.rol == 'veterinario')

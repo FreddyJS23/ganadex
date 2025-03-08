@@ -19,7 +19,7 @@ export async function authenticate(
             return {
                 login: true,
                 message: 'Credenciales correctas',
-                redirect: '/finca',
+                redirect: '/hacienda',
             };
         }
         if (error instanceof AuthError) {

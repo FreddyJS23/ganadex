@@ -20,7 +20,7 @@ import { yearsToGenerateReportShema } from '@/validations/yearsTotGenerateReport
 import { z } from 'zod';
 import { createPajuelaToroSchema } from '@/validations/pajuelaToroShema';
 import { createVaccinationDayShema } from '@/validations/VaccinationDay';
-import { createFincaShema } from '@/validations/finca';
+import { createHaciendaShema } from '@/validations/hacienda';
 import { weightsShema } from '@/validations/weightsShema';
 import { updateConfigurationShema } from '@/validations/updateConfiguration';
 import { createTypeCheckShema } from '@/validations/typeCheck';
@@ -100,7 +100,7 @@ export type CreatePajuelaToro = z.infer<typeof createPajuelaToroSchema>;
 
 export type CreateVaccinacionDay = z.infer<typeof createVaccinationDayShema>;
 
-export type CreateFinca = z.infer<typeof createFincaShema>;
+export type CreateHacienda = z.infer<typeof createHaciendaShema>;
 
 export type CreateTypeCheck = z.infer<typeof createTypeCheckShema>;
 

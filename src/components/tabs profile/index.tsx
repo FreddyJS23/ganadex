@@ -3,7 +3,7 @@
 import { Tab, Tabs, useDisclosure,Button as ButtonNextUI } from '@nextui-org/react';
 import { TableVeterinaryUsers } from '../tables/veterinary users';
 import { SelectVeterinaryNotUser } from '../select veterenary not user';
-import { Configuracion, Finca, LogEvento, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
+import { Configuracion, Hacienda, LogEvento, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
 import { Button } from '@/ui/Button';
 import IconEditar from '@/icons/icono-editar.svg';
 import { ModalUpdateUser } from '../modals/update user';
@@ -20,8 +20,8 @@ type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];
     veterinarios: veterinario[];
     user: UserLoginInfo;
-    fincaSesion:Finca
-    fincas:Finca[]
+    haciendaSesion:Hacienda
+    haciendas:Hacienda[]
     configuracion:Configuracion
     logs_eventos:LogEvento[]
 };
@@ -55,8 +55,8 @@ export const TabsProfile = ({
     usuarios_veterinarios,
     veterinarios,
     user,
-    fincaSesion,
-    fincas,
+    haciendaSesion,
+    haciendas,
     configuracion,
     logs_eventos
 }: TabsProfileProps) => {
@@ -200,32 +200,32 @@ export const TabsProfile = ({
                     </Tab>
                 )}
 
-                {/* fincas */}
+                {/* haciendas */}
                 {user.rol == 'admin' && (
-                    <Tab key="fincas" title="Fincas">
+                    <Tab key="haciendas" title="Haciendas">
                         <LayoutContentTabs>
                             {/* header section */}
                             <div className="flex gap-12 items-center">
                                 <ElementProfile
-                                    tittle="Finca en sesion"
-                                    content={fincaSesion.nombre}
-                                    description="Todos los datos que se representan y las operaciones que se realizen perteneceran a esta finca"
+                                    tittle="Hacienda en sesion"
+                                    content={haciendaSesion.nombre}
+                                    description="Todos los datos que se representan y las operaciones que se realizen perteneceran a esta hacienda"
                                 />
-                                {/* button registrat finca*/}
+                                {/* button registrat hacienda*/}
                                     <ButtonCreateItem
-                                        href={'/finca/registrar'}
+                                        href={'/hacienda/registrar'}
                                     />
                             </div>
                            
-                            {/* list fincas */}
+                            {/* list haciendas */}
                             <div className="flex flex-col mt-8 gap-2">
                                 <h3 className="font-bold text-2xl pl-4">
-                                    Fincas creadas
+                                    Haciendas creadas
                                 </h3>
                                 <div className="divider divider-primary mt-0 opacity-[0.03]"></div>{' '}
                             </div>
                             <>
-                                {fincas.map(
+                                {haciendas.map(
                                     ({ id, nombre, fecha_creacion }) => (
                                         <ElementProfile
                                             key={id}
