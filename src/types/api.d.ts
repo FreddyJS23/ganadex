@@ -321,12 +321,12 @@ export type ResponseInformacionUsuarioLogeado={
     user:UserAdminInfo | UserVeterinaryInfo
 }
 
-export type ResponseFincas={
-    fincas:Finca[]
+export type ResponseHaciendas={
+    haciendas:Hacienda[]
 }
 
-export type ResponseFinca={
-    finca:Finca
+export type ResponseHacienda={
+    hacienda:Hacienda
 }
 
 export type ResponseLogsVeterinary={

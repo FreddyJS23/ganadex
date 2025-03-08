@@ -2,39 +2,39 @@ import { Input } from '@/components/Inputs';
 import { LayoutModal } from '..';
 import { ModalProps } from '@/types';
 import { useForm } from 'react-hook-form';
-import { CreateFinca } from '@/types/forms';
+import { CreateHacienda } from '@/types/forms';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { createFincaShema } from '@/validations/finca';
+import { createHaciendaShema } from '@/validations/hacienda';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import { toast } from 'sonner';
-import { createFinca } from '@/actions/finca';
+import { createHacienda } from '@/actions/hacienda';
 import { getSession, useSession } from 'next-auth/react';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
-type ModalCreateFincaProps = ModalProps & {
+type ModalCreateHaciendaProps = ModalProps & {
     isOpen: boolean;
     onOpen: () => void;
     onOpenChange: (open: boolean) => void;
-    /**verificar si es la primera finca para redireccionar de una vez y no mostrarle el modal de seleccion de finca,
-     ya que es inncesario crear una finca y despues solo mostrale un select con una sola finca
+    /**verificar si es la primera hacienda para redireccionar de una vez y no mostrarle el modal de seleccion de hacienda,
+     ya que es inncesario crear una hacienda y despues solo mostrale un select con una sola hacienda
      */
-    primeraFinca: boolean;
+    primeraHacienda: boolean;
 };
 
 
-export const ModalCreateFinca = ({
+export const ModalCreateHacienda = ({
     isOpen,
     onOpen,
     onOpenChange,
-    primeraFinca=false,
-}: ModalCreateFincaProps) => {
+    primeraHacienda=false,
+}: ModalCreateHaciendaProps) => {
     const {
         register,
         formState: { errors },
         handleSubmit,
-    } = useForm<CreateFinca>({
-        resolver: zodResolver(createFincaShema),
+    } = useForm<CreateHacienda>({
+        resolver: zodResolver(createHaciendaShema),
     });
 
     const router = useRouter();
@@ -51,23 +51,23 @@ export const ModalCreateFinca = ({
       }, []);
 
 
-    const actionCreateFinca: () => void = handleSubmit(async (data) => {
+    const actionCreateHacienda: () => void = handleSubmit(async (data) => {
         
-            const finca = await createFinca(data);
+            const hacienda = await createHacienda(data);
               
             /* manejar error del backedn y mostar mensaje */
-              if(typeof finca == 'object' && 'error' in finca) return toast.error(messageErrorApi(finca)) 
+              if(typeof hacienda == 'object' && 'error' in hacienda) return toast.error(messageErrorApi(hacienda)) 
             
             toast.success(
-                `${finca} creada exitosamente`,
+                `${hacienda} creada exitosamente`,
             );
-            /* actualizar sesion ya que hay una finca en sesion */
-            if(primeraFinca) {
+            /* actualizar sesion ya que hay una hacienda en sesion */
+            if(primeraHacienda) {
                 await update({
                 ...session,
-                user: { ...session?.user, sesion_finca: true },
+                user: { ...session?.user, sesion_hacienda: true },
             });
-            router.push('/api/verificar_sesion_finca');
+            router.push('/api/verificar_sesion_hacienda');
             }
             else {
                 router.back();
@@ -80,7 +80,7 @@ export const ModalCreateFinca = ({
     return (
         <LayoutModal
             icon="customer"
-            titleModal={'Crear finca'}
+            titleModal={'Crear hacienda'}
             footer={true}
             isOpen={isOpen}
             onOpen={onOpen}
@@ -89,13 +89,13 @@ export const ModalCreateFinca = ({
         >
             <form
                 ref={formRef}
-                action={actionCreateFinca}
-                id={'form-createFinca'}
+                action={actionCreateHacienda}
+                id={'form-createHacienda'}
                 className="m-auto w-2/4 "
             >
                 <Input
                     id="nombre"
-                    label="Nueva finca"
+                    label="Nueva hacienda"
                     required
                     type="text"
                     size="lg"

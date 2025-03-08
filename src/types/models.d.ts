@@ -286,7 +286,7 @@ export type AplicacionVacunaHistorial = {
     prox_dosis: string
 }
 
-export type Finca={
+export type Hacienda={
     id:number,
     nombre:string,
     fecha_creacion:string

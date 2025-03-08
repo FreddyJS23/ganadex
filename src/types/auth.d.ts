@@ -20,7 +20,7 @@ export type ResponseLogin = {
 
 export type ResponseLoginAuthJs = {
     login: boolean;
-    redirect: '/finca' | null;
+    redirect: '/hacienda' | null;
     message: string | null;
 };
 
@@ -39,7 +39,7 @@ declare module 'next-auth' {
         xsrf_token: string;
         laravel_session: string;
         userId: number;
-        sesion_finca:boolean
+        sesion_hacienda:boolean
         configuracion:Configuracion
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
@@ -60,7 +60,7 @@ declare module 'next-auth/jwt' {
         xsrf_token: string;
         laravel_session: string;
         userId: number;
-        sesion_finca:boolean
+        sesion_hacienda:boolean
         configuracion:Configuracion
     }
 }

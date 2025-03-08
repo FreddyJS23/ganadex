@@ -171,8 +171,8 @@ export enum TitlesModals {
     'Nueva jornada de vacunación',
     'Historial de vacunas aplicadas',
     'Actualizar usuario',
-    'Crear finca',
-    'Selecionar finca en la que trabajar',
+    'Crear hacienda',
+    'Selecionar hacienda en la que trabajar',
     'Eliminar usuario veterinario: ',
     'Historial de actividades',
     'Actualizar configuración'

@@ -1,8 +1,8 @@
 import { auth } from '@/app/auth';
 import { TabsProfile } from '@/components/tabs profile';
 import {
-    ResponseFinca,
-    ResponseFincas,
+    ResponseHacienda,
+    ResponseHaciendas,
     ResponseInformacionUsuarioLogeado,
     ResponseLogEventos,
     ResponseVeterinariosSinUsuario,
@@ -17,8 +17,8 @@ export default async function Page() {
     const { veterinarios_sin_usuario }: ResponseVeterinariosSinUsuario =
         await getData('veterinariosSinUsuario');
    
-    const { finca }: ResponseFinca = await getData('verSesionFinca');
-    const { fincas }: ResponseFincas = await getData('finca');
+    const { hacienda }: ResponseHacienda = await getData('verSesionHacienda');
+    const { haciendas }: ResponseHaciendas = await getData('hacienda');
 
     const {logs_eventos}:ResponseLogEventos= await getData('logsEventos');
    
@@ -36,8 +36,8 @@ export default async function Page() {
         <>
             <section className="bg-base-100 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
                 <TabsProfile
-                    fincaSesion={finca}
-                    fincas={fincas}
+                    haciendaSesion={hacienda}
+                    haciendas={haciendas}
                     usuarios_veterinarios={usuarios_veterinarios}
                     veterinarios={veterinarios_sin_usuario}
                     user={user}

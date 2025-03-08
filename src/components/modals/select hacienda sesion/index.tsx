@@ -1,7 +1,7 @@
 'use client';
 
 import { LayoutModal } from '..';
-import { Finca } from '@/types';
+import { Hacienda } from '@/types';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -12,11 +12,11 @@ import {
     SelectItem,
     useDisclosure,
 } from '@nextui-org/react';
-import { createSesionFinca as createSesionFincaAction } from '@/actions/finca';
+import { createSesionHacienda as createSesionHaciendaAction } from '@/actions/hacienda';
 import { getSession, useSession } from 'next-auth/react';
 
-export const ModalSelectFincaSesion = ({ fincas }: { fincas: Finca[] }) => {
-    const { handleSubmit, control } = useForm<{ finca_id: number }>();
+export const ModalSelectHaciendaSesion = ({ haciendas }: { haciendas: Hacienda[] }) => {
+    const { handleSubmit, control } = useForm<{ hacienda_id: number }>();
     const router = useRouter();
     const { update, data: session,status } = useSession();
     const formRef = useRef(null);
@@ -32,19 +32,19 @@ export const ModalSelectFincaSesion = ({ fincas }: { fincas: Finca[] }) => {
         fetchSession();
       }, []);
  
-    const createSesionFinca: () => void = handleSubmit(async (data) => {
-        if (!data.finca_id) return toast.error('Debe seleccionar una finca');
+    const createSesionHacienda: () => void = handleSubmit(async (data) => {
+        if (!data.hacienda_id) return toast.error('Debe seleccionar una hacienda');
         try {
-            const res = await createSesionFincaAction(data.finca_id);
-            //actualizar sesion ya que hay una finca en sesion
+            const res = await createSesionHaciendaAction(data.hacienda_id);
+            //actualizar sesion ya que hay una hacienda en sesion
             await update({
                 ...session,
-                user: { ...session?.user, sesion_finca: true },
+                user: { ...session?.user, sesion_hacienda: true },
             });
-            const finca = res as string;
-            toast.success(`Empezando a Trabajar en ${finca}`);
+            const hacienda = res as string;
+            toast.success(`Empezando a Trabajar en ${hacienda}`);
             /*verificar la sesion en el servidor para redireccionar  */
-            router.push('/api/verificar_sesion_finca');
+            router.push('/api/verificar_sesion_hacienda');
         } catch (error) {
             toast.error(error as string);
         }
@@ -58,7 +58,7 @@ export const ModalSelectFincaSesion = ({ fincas }: { fincas: Finca[] }) => {
     return (
         <LayoutModal
             icon="price"
-            titleModal={'Selecionar finca en la que trabajar'}
+            titleModal={'Selecionar hacienda en la que trabajar'}
             footer={true}
             isOpen={true}
             onOpen={onOpen}
@@ -68,25 +68,25 @@ export const ModalSelectFincaSesion = ({ fincas }: { fincas: Finca[] }) => {
             isDismissable={false}
         >
             <form
-                id="form-select-finca"
+                id="form-select-hacienda"
                 className="m-auto"
                 ref={formRef}
-                action={createSesionFinca}
+                action={createSesionHacienda}
             >
                 <Controller
-                    name={'finca_id'}
+                    name={'hacienda_id'}
                     control={control}
                     render={({ field }) => (
                         <Select
                             {...field}
-                            id="finca_id"
+                            id="hacienda_id"
                             className="w-60"
                             variant="underlined"
-                            label="Fincas"
+                            label="Haciendas"
                             required
                             color="primary"
                             selectedKeys={value}
-                            description="Fincas registradas por el usuario"
+                            description="Haciendas registradas por el usuario"
                             onSelectionChange={(keys) => {
                                 setValue(keys);
                             }}
@@ -96,7 +96,7 @@ export const ModalSelectFincaSesion = ({ fincas }: { fincas: Finca[] }) => {
                                 popoverContent: 'bg-base-100',
                             }}
                         >
-                            {fincas.map(({ id, nombre }) => (
+                            {haciendas.map(({ id, nombre }) => (
                                 <SelectItem key={id}>{nombre}</SelectItem>
                             ))}
                         </Select>

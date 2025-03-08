@@ -1,17 +1,17 @@
 'use client';
 
-import { ModalCreateFinca } from '@/components/modals/create finca';
+import { ModalCreateHacienda } from '@/components/modals/create hacienda';
 import { useDisclosure } from '@nextui-org/react';
 
-export const CreateFinca = ({ primeraFinca=false }: { primeraFinca?: boolean }) => {
+export const CreateHacienda = ({ primeraHacienda=false }: { primeraHacienda?: boolean }) => {
     const { onOpen, onOpenChange } = useDisclosure();
 
     return (
-        <ModalCreateFinca
+        <ModalCreateHacienda
             isOpen={true}
             onOpen={onOpen}
             onOpenChange={onOpenChange}
-            primeraFinca={primeraFinca}
+            primeraHacienda={primeraHacienda}
         />
     );
 };
