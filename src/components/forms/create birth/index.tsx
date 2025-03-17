@@ -28,7 +28,8 @@ type FormCreateBirthProps = {
 export const FormCreateBirth = ({
     veterinarios,
     numero_disponible,
-    isAdmin
+    isAdmin,
+    obreros
 }: FormCreateBirthProps) => {
     const {
         register,
@@ -105,14 +106,13 @@ console.log(errors)
                                     name={id}
                                     control={control}
                                     render={({ field }) => (
-                                        <Select
-                                            field={field}
+                                        <SelectVeterinariesAndWorkers
                                             id={id}
-                                            items={
-                                             
-                                                select!
-                                            }
                                             label={label}
+                                            description={'Veterinarios y obreros'}
+                                            field={field}
+                                            veterinaries={veterinarios}
+                                            workers={obreros}
                                             errors={errors}
                                             required={required}
                                         />

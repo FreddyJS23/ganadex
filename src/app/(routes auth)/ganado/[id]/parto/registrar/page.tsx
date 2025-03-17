@@ -20,6 +20,12 @@ export default async function Page({ params }: ParamsPage) {
     const { veterinarios }: ResponseVeterinariosSelect = await getData(
         'veterinariosHaciendaActual',
     );
+    
+    const { obreros }: ResponseObrerosSelect = await getData(
+        'obreros',
+    );
+
+
     const { numero_disponible }: ResponseSugerirNumero = await getData('sugerirNumero');
 
     const{user}=await auth() as Session
@@ -29,7 +35,7 @@ export default async function Page({ params }: ParamsPage) {
                 title={`Registrar parto para la vaca ${ganado.numero}`}
             />
 
-            <FormCreateBirth isAdmin={user.rol == 'admin' ? true : false} numero_disponible={numero_disponible} veterinarios={veterinarios} />
+            <FormCreateBirth isAdmin={user.rol == 'admin' ? true : false} numero_disponible={numero_disponible} veterinarios={veterinarios} obreros={obreros} />
         </>
     );
 }
