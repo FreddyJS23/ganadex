@@ -36,13 +36,16 @@ export const FormCreateService = ({
    
     const [shema, setshema] = useState<typeof createServeShemaWithPajuelaToroId |typeof createServeShemaWithToroId>(createServeShemaWithPajuelaToroId)
 
+    const [disableVeterinary, setDisableVeterinary] = useState(false);
+
     const {
         register,
         formState: { errors },
         control,
         handleSubmit,
     } = useForm<CreateServe>({
-        resolver: zodResolver(isAdmin ? shema.and(inputPersonalIdShema) : shema ),
+        //si es admin se verificara si el veterinario esta deshabilitado para usar el shema orignal
+        resolver: zodResolver(isAdmin ? (!disableVeterinary ? shema.and(inputPersonalIdShema) : shema) : shema ),
         defaultValues:{fecha:getDateNow()}
     });
     const router = useRouter();
@@ -64,7 +67,12 @@ export const FormCreateService = ({
     const [typeService, setTypeService] = useState<'monta' | 'inseminacion'>('monta');
     const {id: tipoId, label: tipoLabel, select: tipoSelect,required: tipoRequired} = formService[1];
     const handleSelectionTypeServiceChange = (select:string | number) => {
-        select ==='monta'?setshema(createServeShemaWithToroId) : setshema(createServeShemaWithPajuelaToroId)
+        if( select ==='monta'){
+            setshema(createServeShemaWithToroId)
+            //los veterinarios no son necesarios para monta
+            setDisableVeterinary(true)
+        }
+        else setshema(createServeShemaWithPajuelaToroId)
         setTypeService(select as 'monta' | 'inseminacion')
     };
     
@@ -122,7 +130,7 @@ export const FormCreateService = ({
                                 />
                             )}
 
-                                {type == 'select' && id == 'personal_id' && isAdmin && (
+                                {type == 'select' && id == 'personal_id' && isAdmin && !disableVeterinary && (
                                     <Controller
                                         name={id}
                                         control={control}
