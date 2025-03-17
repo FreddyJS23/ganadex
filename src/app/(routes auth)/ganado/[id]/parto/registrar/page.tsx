@@ -1,6 +1,6 @@
 import { auth } from '@/app/auth';
 import { FormCreateBirth } from '@/components/forms/create birth';
-import { ResponseGanado, ResponseSugerirNumero, ResponseVeterinariosSelect } from '@/types';
+import { ResponseGanado, ResponseObrerosSelect, ResponseSugerirNumero, ResponseVeterinariosSelect } from '@/types';
 import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 import { Session } from 'next-auth';
@@ -18,7 +18,7 @@ export default async function Page({ params }: ParamsPage) {
     );
 
     const { veterinarios }: ResponseVeterinariosSelect = await getData(
-        'veterinariosDisponibles',
+        'veterinariosHaciendaActual',
     );
     const { numero_disponible }: ResponseSugerirNumero = await getData('sugerirNumero');
 

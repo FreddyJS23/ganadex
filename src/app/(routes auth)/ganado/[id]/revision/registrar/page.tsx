@@ -17,7 +17,7 @@ export default async function Page({ params }: ParamsPage) {
     );
 
     const { veterinarios }: ResponseVeterinariosSelect = await getData(
-        'veterinariosDisponibles',
+        'veterinariosHaciendaActual',
     );
 
     const {tipos_revision}:ResponseTiposRevision = await getData('tiposRevision');
