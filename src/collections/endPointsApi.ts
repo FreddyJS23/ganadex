@@ -22,6 +22,8 @@ export const endPoints = {
     personal: 'personal/',
     todosPersonal: 'personal',
     veterinariosDisponibles: 'veterinarios',
+    veterinariosHaciendaActual: 'veterinarios_hacienda_actual',
+    obreros:'obreros',
     comprador: 'comprador/',
     compradores: 'comprador',
     ventaGanado: 'ventas/',
