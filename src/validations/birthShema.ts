@@ -6,11 +6,14 @@ const regexDate =
 
 export const createBaseBirthShema = z.object({
     observacion: z.string().min(3).max(255),
-    nombre: z.string().min(3).max(255),
-    numero: z.number().gte(1).lte(32767),
-    sexo: z.enum(['H', 'M']),
-    peso_nacimiento: z.number().optional(),
     fecha: z.string().regex(regexDate),
+    crias: z.array(z.object({
+        nombre: z.string().min(3).max(255),
+        numero: z.number().gte(1).lte(32767),
+        sexo: z.enum(['H', 'M', 'T']),
+        peso_nacimiento: z.number().optional(),
+        observacion: z.string().max(255),
+    })),
 }).refine((data) => new Date(data.fecha) <= new Date(), {
     message: 'La fecha no puede ser mas alta que la fecha actual',
     path: ['fecha'],
