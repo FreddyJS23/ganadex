@@ -17,7 +17,7 @@ export default async function Page({ params }: ParamsPage) {
         params.id,
     );
     const { veterinarios }: ResponseVeterinariosSelect = await getData(
-        'veterinariosDisponibles',
+        'veterinariosHaciendaActual',
     );
     const { toros }: ResponseToros = await getData('todosToro', 'GET', undefined);
     const { pajuela_toros }: ResponsePajuelaToros = await getData('pajuelaToro', 'GET', undefined);

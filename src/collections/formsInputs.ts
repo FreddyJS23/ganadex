@@ -2,6 +2,7 @@ import {
     FieldsIdBeef,
     FieldsIdBirth,
     FieldsIdBull,
+    FieldsIdCalfCastle,
     FieldsIdCasttle,
     FieldsIdCheckUp,
     FieldsIdDeadCattle,
@@ -14,6 +15,7 @@ import {
     FieldsLabelsBeef,
     FieldsLabelsBirth,
     FieldsLabelsBull,
+    FieldsLabelsCalfCastle,
     FieldsLabelsCasttle,
     FieldsLabelsCheckUp,
     FieldsLabelsDeadCattle,
@@ -71,6 +73,13 @@ type FieldsBirth = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdBirth;
     label: keyof typeof FieldsLabelsBirth;
     select?: { value: string | number; label: string }[];
+};
+
+export type FieldsCalfCastle = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
+    id: keyof typeof FieldsIdCalfCastle;
+    label: keyof typeof FieldsLabelsCalfCastle;
+    select?: { value: string | number; label: string }[];
+
 };
 
 type FieldsSupply = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
@@ -312,6 +321,11 @@ export const formService: FieldsService[] = [
 
 export const formBirth: FieldsBirth[] = [
     { id: 'observacion', label: 'Observación', required: true, type: 'text' },
+    { id: 'fecha', label: 'Fecha', required: true, type: 'date' },
+    { id: 'personal_id', label: 'Personal', required: true, type: 'select' },
+];
+
+export const formCalfCastle: FieldsCalfCastle[] = [
     { id: 'nombre', label: 'Nombre de la cría', required: true, type: 'text' },
     {
         id: 'numero',
@@ -333,9 +347,9 @@ export const formBirth: FieldsBirth[] = [
         type: 'select',
         select: genderSelect,
     },
-    { id: 'fecha', label: 'Fecha', required: true, type: 'date' },
-    { id: 'personal_id', label: 'Veterinario', required: true, type: 'select' },
-];
+    {id:'observacion', label: 'Observación', required: false, type: 'text'},
+]
+
 
 export const formSupply: FieldsSupply[] = [
     { id: 'insumo', label: 'Insumo', required: true, type: 'text' },

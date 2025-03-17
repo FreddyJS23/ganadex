@@ -1,6 +1,6 @@
 import { auth } from '@/app/auth';
 import { FormCreateBirth } from '@/components/forms/create birth';
-import { ResponseGanado, ResponseSugerirNumero, ResponseVeterinariosSelect } from '@/types';
+import { ResponseGanado, ResponseObrerosSelect, ResponseSugerirNumero, ResponseVeterinariosSelect } from '@/types';
 import { TitlePage } from '@/ui/TitlePage';
 import { getData } from '@/utils/getData';
 import { Session } from 'next-auth';
@@ -18,8 +18,14 @@ export default async function Page({ params }: ParamsPage) {
     );
 
     const { veterinarios }: ResponseVeterinariosSelect = await getData(
-        'veterinariosDisponibles',
+        'veterinariosHaciendaActual',
     );
+    
+    const { obreros }: ResponseObrerosSelect = await getData(
+        'obreros',
+    );
+
+
     const { numero_disponible }: ResponseSugerirNumero = await getData('sugerirNumero');
 
     const{user}=await auth() as Session
@@ -29,7 +35,7 @@ export default async function Page({ params }: ParamsPage) {
                 title={`Registrar parto para la vaca ${ganado.numero}`}
             />
 
-            <FormCreateBirth isAdmin={user.rol == 'admin' ? true : false} numero_disponible={numero_disponible} veterinarios={veterinarios} />
+            <FormCreateBirth isAdmin={user.rol == 'admin' ? true : false} numero_disponible={numero_disponible} veterinarios={veterinarios} obreros={obreros} />
         </>
     );
 }

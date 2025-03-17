@@ -285,22 +285,29 @@ export enum FieldsLabelsService {
 
 export enum FieldsIdBirth {
     observacion,
-    nombre,
-    numero,
-    sexo,
-    'peso_nacimiento',
     fecha,
     'personal_id',
 }
 
 export enum FieldsLabelsBirth {
     Observación,
+    Fecha,
+    Personal,
+}
+export enum FieldsIdCalfCastle {
+    observacion,
+    nombre,
+    numero,
+    sexo,
+    'peso_nacimiento',
+}
+
+export enum FieldsLabelsCalfCastle {
+    Observación,
     'Nombre de la cría',
     'Numero de la cría',
     Sexo,
     'Peso de nacimiento',
-    Fecha,
-    Veterinario,
 }
 
 export enum FieldsIdSupply {
