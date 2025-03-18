@@ -2,6 +2,7 @@ type ElementProfileProps = {
     tittle: string;
     content?: string;
     description?: string;
+    children?: JSX.Element | JSX.Element[] | undefined;
 };
 /**Solo para centrar varios*/ 
 export const LayoutCenterContentTabs = ({
@@ -39,6 +40,7 @@ export const ElementProfile = ({
     tittle,
     content,
     description,
+    children,
 }: ElementProfileProps) => {
     return (
         <>
@@ -46,6 +48,7 @@ export const ElementProfile = ({
                 <div className="flex flex-col gap-1 w-60">
                     <span className="font-bold text-xl">{tittle}</span>
                     <span className="text-sm opacity-60">{description}</span>
+                    {children}
                 </div>
                 <span>{content}</span>
             </div>
