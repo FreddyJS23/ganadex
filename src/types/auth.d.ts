@@ -41,6 +41,7 @@ declare module 'next-auth' {
         userId: number;
         sesion_hacienda:boolean
         configuracion:Configuracion
+        hacienda:Hacienda | null
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
     /**
@@ -62,5 +63,6 @@ declare module 'next-auth/jwt' {
         userId: number;
         sesion_hacienda:boolean
         configuracion:Configuracion
+        hacienda:Hacienda | null
     }
 }

@@ -36,13 +36,16 @@ export const ModalSelectHaciendaSesion = ({ haciendas }: { haciendas: Hacienda[]
         if (!data.hacienda_id) return toast.error('Debe seleccionar una hacienda');
         try {
             const res = await createSesionHaciendaAction(data.hacienda_id);
+           
+            const hacienda = res as Hacienda;
+
             //actualizar sesion ya que hay una hacienda en sesion
             await update({
                 ...session,
-                user: { ...session?.user, sesion_hacienda: true },
+                user: { ...session?.user, sesion_hacienda: true,hacienda:hacienda },
             });
-            const hacienda = res as string;
-            toast.success(`Empezando a Trabajar en ${hacienda}`);
+           
+            toast.success(`Empezando a Trabajar en ${hacienda.nombre}`);
             /*verificar la sesion en el servidor para redireccionar  */
             router.push('/api/verificar_sesion_hacienda');
         } catch (error) {
