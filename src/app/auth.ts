@@ -17,6 +17,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 token.laravel_session = user.laravel_session;
                 token.sesion_hacienda=user.sesion_hacienda
                 token.configuracion=user.configuracion
+                token.hacienda=user.hacienda
                 /*     token.cookieCsrf=user.cookieCsrf */
             }
             if(trigger == 'update'){
@@ -34,6 +35,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             session.user.laravel_session = token.laravel_session;
             session.user.sesion_hacienda=token.sesion_hacienda
             session.user.configuracion=token.configuracion
+            session.user.hacienda=token.hacienda
             return session;
         },
     },
