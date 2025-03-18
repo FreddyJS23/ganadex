@@ -15,6 +15,7 @@ import {
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import Link from 'next/link';
 import { TableLogsEvents } from '../tables/logs events';
+import { ChangeSessionHacienda } from '../change session hacienda';
 
 type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];
@@ -96,6 +97,50 @@ export const TabsProfile = ({
                         </div>
                     </LayoutContentTabs>
                 </Tab>
+
+                 {/* haciendas */}
+                    <Tab key="haciendas" title="Haciendas">
+                        <LayoutContentTabs>
+                            {/* header section */}
+                            <div className="flex gap-12 items-center">
+                                <ElementProfile
+                                    tittle="Hacienda en sesion"
+                                    content={haciendaSesion.nombre}
+                                    description="Todos los datos que se representan y las operaciones que se realizen perteneceran a esta hacienda"
+                                />
+                                {/* button registrat hacienda*/}
+                                    {user.rol == 'admin' &&
+                                    <ButtonCreateItem
+                                    href={'/hacienda/registrar'}
+                                />} 
+                            </div>
+                           
+                            {/* list haciendas */}
+                            <div className="flex flex-col mt-8 gap-2">
+                                <h3 className="font-bold text-2xl pl-4">
+                                    Haciendas creadas
+                                </h3>
+                                <div className="divider divider-primary mt-0 opacity-[0.03]"></div>{' '}
+                            </div>
+                            <>
+                                {haciendas.map(
+                                    (hacienda) => (
+                                        <>
+                                        <ElementProfile
+                                            key={hacienda.id}
+                                            tittle={hacienda.nombre}
+                                            description={`Creada el ${hacienda.fecha_creacion}`}
+                                        >
+                                        {haciendaSesion.id != hacienda.id ? <ChangeSessionHacienda hacienda={hacienda} /> : undefined}
+                                        </ElementProfile>
+                                    
+                                        </>
+                                    ),
+                                )}
+                            </>
+                        </LayoutContentTabs>
+                    </Tab>
+                
 
     
     {/*  ------------------------------ opciones admin ----------------------------- */ }
@@ -200,44 +245,7 @@ export const TabsProfile = ({
                     </Tab>
                 )}
 
-                {/* haciendas */}
-                {user.rol == 'admin' && (
-                    <Tab key="haciendas" title="Haciendas">
-                        <LayoutContentTabs>
-                            {/* header section */}
-                            <div className="flex gap-12 items-center">
-                                <ElementProfile
-                                    tittle="Hacienda en sesion"
-                                    content={haciendaSesion.nombre}
-                                    description="Todos los datos que se representan y las operaciones que se realizen perteneceran a esta hacienda"
-                                />
-                                {/* button registrat hacienda*/}
-                                    <ButtonCreateItem
-                                        href={'/hacienda/registrar'}
-                                    />
-                            </div>
-                           
-                            {/* list haciendas */}
-                            <div className="flex flex-col mt-8 gap-2">
-                                <h3 className="font-bold text-2xl pl-4">
-                                    Haciendas creadas
-                                </h3>
-                                <div className="divider divider-primary mt-0 opacity-[0.03]"></div>{' '}
-                            </div>
-                            <>
-                                {haciendas.map(
-                                    ({ id, nombre, fecha_creacion }) => (
-                                        <ElementProfile
-                                            key={id}
-                                            tittle={nombre}
-                                            description={`Creada el ${fecha_creacion}`}
-                                        />
-                                    ),
-                                )}
-                            </>
-                        </LayoutContentTabs>
-                    </Tab>
-                )}
+               
             </Tabs>
 
             <ModalUpdateUser
