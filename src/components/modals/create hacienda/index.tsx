@@ -59,13 +59,13 @@ export const ModalCreateHacienda = ({
               if(typeof hacienda == 'object' && 'error' in hacienda) return toast.error(messageErrorApi(hacienda)) 
             
             toast.success(
-                `${hacienda} creada exitosamente`,
+                `${hacienda.nombre} creada exitosamente`,
             );
             /* actualizar sesion ya que hay una hacienda en sesion */
             if(primeraHacienda) {
                 await update({
                 ...session,
-                user: { ...session?.user, sesion_hacienda: true },
+                user: { ...session?.user, sesion_hacienda: true,hacienda:hacienda },
             });
             router.push('/api/verificar_sesion_hacienda');
             }
