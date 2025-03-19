@@ -104,6 +104,9 @@ export const headerStaff: headersColumns<Personal>[] = [
     { key: 'apellido', label: 'Apellido' },
     { key: 'fecha_nacimiento', label: 'Fecha de nacimiento' },
     { key: 'cargo', label: 'Cargo' },
+    { key: 'telefono', label: 'Telefono' },
+    { key: 'haciendas', label: 'Haciendas' },
+    { key: 'id', label: 'Acciones' },
 ];
 
 export const headerAllCheckup: headersColumns<Revisiones>[] = [
