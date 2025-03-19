@@ -13,7 +13,7 @@ import { auth } from '@/app/auth';
 import { Session } from 'next-auth';
 
 
-const elementsAdmin=(notificaciones:ResponseNotificaciones['notificaciones'],ultimo_backup:ResponseFechaUltimoRespaldo['ultimo_backup'])=>{
+const elementsAdmin=(ultimo_backup:ResponseFechaUltimoRespaldo['ultimo_backup'])=>{
     return (
        <>
           {/* restaurar y respaldar BD */}
@@ -44,8 +44,9 @@ export const Navbar = async () => {
     return (
         <>
             <div className="navbar bg-primary sm:bg-transparent ">
-                <div title='Cambiar tema oscuro o claro' className="hidden sm:flex sm:flex-1">
+                <div title='Cambiar tema oscuro o claro' className="hidden sm:flex sm:flex-1 gap-2">
                     <CheckboxTheme />
+                <NameHacienda />
                 </div>
                 {/*  menu sidebar responsive */}
                 <div className="drawer flex flex-1 sm:hidden">
