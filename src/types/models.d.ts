@@ -96,7 +96,8 @@ export type Personal = {
     apellido: string;
     fecha_nacimiento: string;
     telefono: string;
-    cargo: string;
+    cargo: 'obrero' | 'veterinario';
+    haciendas: Hacienda[];
 };
 
 export type Configuracion = {
