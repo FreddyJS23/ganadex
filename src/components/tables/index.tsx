@@ -81,6 +81,12 @@ export const TableComponent = <T extends { id: number }>({
         },
     });
 
+    useEffect(() => {
+      list.reload()
+    
+    }, [items])
+    
+
     /* --------------------------------- refrescar cuando cambia -------------------------------- */
     items.length > list.items.length || items.length < list.items.length && list.reload()
     
