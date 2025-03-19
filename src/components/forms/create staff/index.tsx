@@ -1,6 +1,6 @@
 'use client';
 
-import { createStaff } from '@/actions/personal';
+import { addInHacienda, createStaff } from '@/actions/personal';
 import { formStaff } from '@/collections/formsInputs';
 import { Input } from '@/components/Inputs';
 import { Select } from '@/components/select';
@@ -11,6 +11,9 @@ import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { createStaffShema } from '@/validations/staffShema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRef, useState } from 'react';
+import IconAdd from '@/icons/icono-plus.svg';
+
 
 import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -18,6 +21,20 @@ import { toast } from 'sonner';
 export const FormCreateStaff = ({
     cargos_personal,
 }: ResponseCargosPersonal) => {
+    
+    const form = useRef<HTMLFormElement | null>(null);
+
+    const [isLoading, setIsLoading] = useState(false)
+
+
+    const actionAddPersonal = async (personal_id:number) => {
+        setIsLoading(true)
+        const response = await addInHacienda(personal_id);
+        if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response))
+        else toast.success(response);
+      setIsLoading(false)
+    };
+
     const {
         register,
         formState: { errors },
@@ -33,14 +50,31 @@ export const FormCreateStaff = ({
             
             /* manejar error del backedn y mostar mensaje */
              if(typeof response == 'object' && 'error' in response) return toast.error(messageErrorApi(response)) 
-            
-                toast.success(`${response} ha sido registrado`);
+                
+                form.current?.reset();
+
+                toast.success(`${response.nombre} ha sido creado ${response.cargo == 'veterinario' ? ',en el siguiente boton se puede añadir a la hacienda actual' : ''}`,
+                    {
+                        action: (
+                            response.cargo == 'veterinario' && <div className="max-w-24">
+                                <Button
+                                    content={<IconAdd className={'size-6'} />}
+                                    onClick={async () =>
+                                        await actionAddPersonal(response.id)
+                                    }
+                                />
+                            </div>
+                        ),
+                    },
+                );
+
         
     });
 
     return (
         <form
-            action={actionStaff}
+        ref={form}    
+        action={actionStaff}
             className="flex flex-col items-center gap-6 p-4 m-auto max-w-[827px]"
         >
             <div className="flex flex-col gap-6 flex-wrap justify-around md:gap-12 sm:flex-row ">
