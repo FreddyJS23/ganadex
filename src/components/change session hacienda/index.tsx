@@ -11,11 +11,13 @@ import {
     useDisclosure,
 } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/ui/Button';
 import IconHacienda from '@/icons/icono-hacienda.svg';
 import IconArrowRight from '@/icons/icono-flecha_derecha1.svg';
+import { getSession, useSession } from 'next-auth/react';
+import { revalidatePath } from 'next/cache';
 
 type ModalProps = {
     isOpen: boolean;
@@ -47,6 +49,18 @@ const ModalHaciendaSession = ({
 }: ModalProps) => {
     const router = useRouter();
 
+    const { update, data: session,status } = useSession();
+
+
+    useEffect(() => {
+        /* Llamar a la sesion para que el status el hook useSession se actualice y pase a authenticated,
+        si no se hace esto el state queda en unauthenticated y no se actualiza, no permitiendo que se llame
+        la funcion update para actualizar la sesion */
+        const fetchSession = async () => await getSession();
+
+        fetchSession();
+      }, []);
+
     const actionChangeSessionHacienda = async (hacienda_id: number) => {
         const response = await changeSessionHacienda(hacienda_id);
 
@@ -55,8 +69,13 @@ const ModalHaciendaSession = ({
             if ('error' in response)
                 return toast.error(messageErrorApi(response));
 
+         //actualizar hacienda en sesion
+         await update({
+            ...session,
+            user: { ...session?.user, hacienda:hacienda },
+        });
         toast.success(`Empezando a trabajar en ${response.hacienda.nombre}`);
-        router.push(`/api/verificar_sesion_hacienda`);
+         router.push(`/api/verificar_sesion_hacienda`); 
     };
 
     return (
