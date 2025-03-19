@@ -18,11 +18,12 @@ import {
     Input,
     Pagination,
 } from '@nextui-org/react';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { statusOptions } from '@/collections/statusCattleCollection';
-import { EstadosGanado, StateCattle } from '@/types';
+import { EstadosGanado, Hacienda, StateCattle } from '@/types';
 import IconFlechaDerecha from '@/icons/icono-flecha_derecha.svg';
 import IconSearch from '@/icons/icono-buscar.svg';
+import { useSession } from 'next-auth/react';
 
 type TableComponentProps<T> = {
     type: string;
@@ -80,14 +81,24 @@ export const TableComponent = <T extends { id: number }>({
         },
     });
 
+    useEffect(() => {
+      list.reload()
+    
+    }, [items])
+    
+
     /* --------------------------------- refrescar cuando cambia -------------------------------- */
     items.length > list.items.length || items.length < list.items.length && list.reload()
     
     /* --------------------------------- buscador y filtro por estados -------------------------------- */
     const [filterValue, setFilterValue] = useState('');
     const [statusFilter, setStatusFilter] = useState<Selection>('all');
+    const [personalFilter, setPersonalFilter] = useState<Set<'all' | 'some'>>(new Set<'all' | 'some'>(['all']));
+    const  nameHacienda=useSession().data?.user.hacienda?.nombre
+
     let typeFilter: 'none' | 'numero' | 'nombre' | 'codigo' = 'none';
     let filterStateActive = false;
+    let filterHaciendaActive = false;
  
     if(items.length > 0){
         if('numero' in items[0]) typeFilter = 'numero';
@@ -95,6 +106,8 @@ export const TableComponent = <T extends { id: number }>({
         else if('codigo' in items[0])  typeFilter = 'codigo';
 
         if('estados' in items[0]) filterStateActive = true;
+
+        if('haciendas' in items[0]) filterHaciendaActive = true;
         
    }
 
@@ -168,15 +181,26 @@ export const TableComponent = <T extends { id: number }>({
                 );
             }
         
+        //filtro por hacienda para ver todo personal o solo de la hacienda actual
+        if (filterHaciendaActive && Array.from(personalFilter)[0] == 'some') {
+
+            //añadir atributo al tipo de los items para tener mejorar el tipado
+            const filteredItemsWithHacienda = filteredItems as Array<
+                T & { haciendas: Hacienda[]}
+            >;
+            
+            console.log(filteredItemsWithHacienda)
+                filteredItems = filteredItemsWithHacienda.filter((item) =>
+                    item.haciendas.some(({ nombre }) => 
+                        nombre.toLowerCase() == nameHacienda.toLowerCase())
+                        
+                );
+            
+          
+        }
 
         return filteredItems;
-    }, [
-        list.items,
-        typeFilter,
-        hasSearchFilter,
-        filterValue,
-        statusFilter,
-    ]);
+    }, [list.items, typeFilter, statusFilter, filterHaciendaActive, personalFilter, hasSearchFilter, filterValue]);
 
     /* -------------------------------- paginado -------------------------------- */
     const [page, setPage] = useState(1);
@@ -242,6 +266,47 @@ export const TableComponent = <T extends { id: number }>({
                                 className="capitalize"
                             >
                                 {status.label}
+                            </DropdownItem>
+                        ))}
+                    </DropdownMenu>
+                </Dropdown>}
+               
+               
+                {/* Selecion hacienda actual y todas las haciendas personal*/}
+               {filterHaciendaActive && <Dropdown
+                    classNames={{ base: 'bg-base-100', content: 'bg-base-100' }}
+                >
+                    <DropdownTrigger className="hidden sm:flex">
+                        <Button
+                            variant="flat"
+                            endContent={
+                                <IconFlechaDerecha className="w-4 h-4 text-primary rotate-90" />
+                            }
+                        >
+                           Filtrar
+                        </Button>
+                    </DropdownTrigger>
+                    <DropdownMenu
+                        disallowEmptySelection
+                        aria-label="filter personal by hacienda"
+                        closeOnSelect={false}
+                        selectedKeys={personalFilter}
+                        selectionMode="single"
+                        onSelectionChange={(key) => {
+                            console.log(key);
+                            setPersonalFilter(key);
+                        }}
+                        classNames={{ base: 'bg-base-100' }}
+                    >
+                        {[
+                            { id: 'all', filter: 'all', label: 'Todos' },
+                            { id: 'some', filter: 'some', label: 'Hacienda actual' },
+                        ].map((filter) => (
+                            <DropdownItem
+                                key={filter.id}
+                                className="capitalize"
+                            >
+                                {filter.label}
                             </DropdownItem>
                         ))}
                     </DropdownMenu>

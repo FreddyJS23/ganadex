@@ -88,6 +88,8 @@ export const endPoints = {
     causasFallecimiento:'causas_fallecimiento',
     causaFallecimiento:'causas_fallecimiento/',
     cambiarSesisionHacienda:'cambiar_hacienda_sesion/',
+    registrarVeterinarioEnHacienda:'registrar_personal_hacienda',
+    eliminarVeterinarioEnHacienda:'eliminar_personal_hacienda/',
 };
 
 export const endPointsCattle = {
