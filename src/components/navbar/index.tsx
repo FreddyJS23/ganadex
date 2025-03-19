@@ -11,6 +11,7 @@ import { ButtonBackupBd } from '../buttonBackuppBd';
 import { ButtonGenerateReport } from '../buttonPrintReports';
 import { auth } from '@/app/auth';
 import { Session } from 'next-auth';
+import { NameHacienda } from './item';
 
 
 const elementsAdmin=(ultimo_backup:ResponseFechaUltimoRespaldo['ultimo_backup'])=>{
@@ -23,7 +24,7 @@ const elementsAdmin=(ultimo_backup:ResponseFechaUltimoRespaldo['ultimo_backup'])
 
           {/*  notificacion */}
           <div className="dropdown dropdown-end">
-              <NotificationMain {...notificaciones} />
+              <NotificationMain  />
           </div>
        </>
     )
@@ -31,9 +32,7 @@ const elementsAdmin=(ultimo_backup:ResponseFechaUltimoRespaldo['ultimo_backup'])
 
 
 export const Navbar = async () => {
-    const { notificaciones }: ResponseNotificaciones =
-        await getData('notificaciones');
-
+  
     const { ultimo_backup }: ResponseFechaUltimoRespaldo = await getData(
         'fechaUltimoRespaldo',
     );
@@ -69,7 +68,7 @@ export const Navbar = async () => {
                     </div>
                 </div>
                 <div className=" flex gap-4">
-                  {role=='admin'&& elementsAdmin(notificaciones,ultimo_backup)}
+                  {role=='admin'&& elementsAdmin(ultimo_backup)}
 
                     <div className="dropdown dropdown-end">
                         <div
