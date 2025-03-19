@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 import { auth } from '@/auth';
 import { Session } from 'next-auth';
@@ -10,7 +10,6 @@ export async function GET(): Promise<NextResponse> {
     const session = await auth() as Session
     const rol = session.user.rol
     revalidatePath('/','layout')
-
     if (rol == 'admin') return redirect('/dashboard');
 
     else if (rol == 'veterinario') return redirect('/ganado');
