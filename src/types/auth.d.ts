@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { JWT } from 'next-auth/jwt';
-import { Configuracion } from './models';
+import { Configuracion, Hacienda } from './models';
 
 type User = {
     id: number;

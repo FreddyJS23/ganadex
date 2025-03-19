@@ -3,16 +3,44 @@
 import { Notification, TypesNotification } from '@/types';
 import { NotificationBody } from './item';
 import { Tabs, Tab } from '@nextui-org/tabs';
-import { LegacyRef, useRef, useState } from 'react';
+import { LegacyRef, useEffect, useRef, useState } from 'react';
 import { removeAllNotificationsFromDB } from '@/actions/removeAllNotificationsFromDB';
 import { toast } from 'sonner';
 import { BadgeNotification } from '@/ui/BadgeNotification';
 import IconoNotificacion from '@/icons/icono-notificacion.svg';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
+import { useSession } from 'next-auth/react';
 
 
-export const NotificationMain = (notifications: TypesNotification) => {
+export const NotificationMain = () => {
     const containerNotificationRef: LegacyRef<HTMLDivElement> = useRef(null);
+
+    const  nameHacienda=useSession().data?.user.hacienda?.nombre
+    
+    const [parto, setParto] = useState<Notification[]>([]);
+    const [revision, setRevision] = useState<Notification[]>([]);
+    const [secado, setSecado] = useState<Notification[]>([]);
+
+    const [totalNotifications, setTotalNotifications] = useState(0)
+
+    useEffect(() => {
+      const getNotifications = async () => {
+        const response = await fetch('/api/notificaciones');
+        console.log(response)
+        const data:TypesNotification = await response.json();
+        const{parto=[],revision=[],secado=[]}=data
+
+        setParto(parto);
+        setRevision(revision);
+        setSecado(secado);
+        setTotalNotifications(parto.length + revision.length + secado.length )
+        
+      }
+      getNotifications()
+    
+      /* solicitar notificaciones cuando se cambie de sesion en la hacienda */
+    }, [nameHacienda]);
+    
 
     const removeAllNotifications =async () => {
         //evitar peticiones innecesarias al servidor
@@ -29,12 +57,7 @@ export const NotificationMain = (notifications: TypesNotification) => {
             setSecado([])
         
     };
-    const {parto:partoNotifications,revision:revisionNotifications,secado:secadoNotifications}=notifications
-    const [parto, setParto] = useState(partoNotifications ?? []);
-    const [revision, setRevision] = useState(revisionNotifications ?? []);
-    const [secado, setSecado] = useState(secadoNotifications ?? []);
-
-    const [totalNotifications, setTotalNotifications] = useState( parto.length + revision.length + secado.length)
+   
     
     const deleteNotificationState = (tipo:Notification['tipo'],index:number) =>  {
         //copiar el inicio del array hasta el elemento a eliminar, despues copiar el resto del array
