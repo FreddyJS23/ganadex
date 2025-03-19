@@ -133,7 +133,6 @@ export const TableStaff = ({ todo_personal,nameHacienda }: TableStaffProps) => {
             columnsCollection={headerStaff}
             items={todo_personal}
             renderCell={renderCell}
-            reloadData={reloadData}
 
         />
     );
