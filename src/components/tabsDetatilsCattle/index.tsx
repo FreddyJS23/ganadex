@@ -50,6 +50,7 @@ export const TabDetailsCattle = ({
     servicio_reciente,
     total_revisiones,
     total_servicios,
+    total_servicios_acumulados,
     info_pesajes_leche,
     eventos,
     efectividad=0,
@@ -155,6 +156,12 @@ export const TabDetailsCattle = ({
                             tittle={DetailsServe.totales}
                             content={total_servicios}
                         />
+                      
+                        <Details
+                            tittle={DetailsServe.total_acumulado}
+                            content={total_servicios_acumulados}
+                        />
+
                         <Details
                             tittle={DetailsServe.efectividad}
                             content={efectividad ?? '0'  + '%'}
@@ -178,13 +185,16 @@ export const TabDetailsCattle = ({
                             tittle={DetailsBirht.observacion}
                             content={parto_reciente?.observacion}
                         />
+                        {/* se accede manualmente ya que los casos de que el array crias 
+                        tenga mas de 1 elemento son demasiados pocos, pero existe. Para ver mas detalles si el parto tuvo varias crias
+                        se debera ir a la consulta del parto individual */}
                         <Details
                             tittle={DetailsBirht.numero_cria}
-                            content={parto_reciente?.cria.numero}
+                            content={parto_reciente?.crias[0].numero}
                         />
                         <Details
                             tittle={DetailsBirht.sexo}
-                            content={parto_reciente?.cria.sexo}
+                            content={parto_reciente?.crias[0].sexo}
                         />
 
                         <Details
@@ -211,15 +221,25 @@ export const TabDetailsCattle = ({
                         />
                         <Details
                             tittle={DetailsWeightingMilk.peso}
-                            content={info_pesajes_leche?.reciente?.pesaje ?? '0 ' + 'kg'}
+                            content={`${info_pesajes_leche?.reciente?.pesaje ?? '0 '} kg`}
+                        />
+                        
+                        <Details
+                            tittle={DetailsWeightingMilk.dias_produccion}
+                            content={`${info_pesajes_leche?.dias_produccion ?? '0 '}`}
                         />
                         <Details
+                            tittle={DetailsWeightingMilk.produccion_acumulada}
+                            content={`${info_pesajes_leche?.produccion_acumulada ?? '0 '} kg`}
+                        />
+
+                        <Details
                             tittle={DetailsWeightingMilk.mejor_pesaje}
-                            content={info_pesajes_leche?.mejor?.pesaje ?? '0 ' + 'kg'}
+                            content={`${info_pesajes_leche?.mejor?.pesaje ?? '0 '} kg`}
                         />
                         <Details
                             tittle={DetailsWeightingMilk.peor_pesaje}
-                            content={info_pesajes_leche?.peor?.pesaje ?? '0 ' + 'kg'}
+                            content={`${info_pesajes_leche?.peor?.pesaje ?? '0 '} kg`}
                         />
 
                         <Details
