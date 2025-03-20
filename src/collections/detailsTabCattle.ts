@@ -3,6 +3,7 @@ export const DetailsCattle = {
     origen: 'Origen',
     sexo: 'Sexo',
     fecha_nacimiento: 'Fecha nacimiento',
+    fecha_ingreso: 'Fecha ingreso',
     tipo: 'Tipo',
     estado: 'Estado',
 };
@@ -30,7 +31,8 @@ export const DetailsServe = {
     numero_toro: 'Toro',
     pajuela: 'Pajuela toro',
     efectividad: 'Efectividad',
-    totales: 'Totales',
+    totales: 'Totales para el ultimo parto',
+    total_acumulado: 'Total acumulado',
 };
 
 export const DetailsBirht = {
@@ -48,6 +50,8 @@ export const DetailsWeightingMilk = {
     mejor_pesaje: 'Mejor pesaje',
     peor_pesaje: 'Peor pesaje',
     estado_actual: 'Estado actual',
+    produccion_acumulada: 'Producción acumulada',
+    dias_produccion: 'Dias en producción',
 };
 
 export const DetailsEfficiencyBull = {

@@ -22,6 +22,7 @@ export default async function Page({ params }: ParamsPageCattle) {
         revision_reciente,
         servicio_reciente,
         total_revisiones,
+        total_servicios_acumulados,
         total_servicios,
         efectividad,
         parto_reciente,
@@ -75,6 +76,13 @@ export default async function Page({ params }: ParamsPageCattle) {
                                 tittle={DetailsCattle.origen}
                                 content={ganado.origen}
                             />
+                                {ganado.fecha_defuncion &&
+                                <Details
+                                tittle={DetailsCattle.fecha_ingreso}
+                                content={ganado.fecha_ingreso}
+                            />
+                                }
+
                             <Details
                                 tittle={DetailsCattle.sexo}
                                 content={ganado.sexo}
@@ -114,6 +122,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                         servicio_reciente={servicio_reciente}
                         total_revisiones={total_revisiones}
                         total_servicios={total_servicios}
+                        total_servicios_acumulados={total_servicios_acumulados}
                         eventos={eventos}
                         efectividad={efectividad}
                         parto_reciente={parto_reciente}
