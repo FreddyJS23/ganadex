@@ -80,6 +80,7 @@ export type ResponseGanado = {
     ganado: Ganado;
     servicio_reciente: Servicio | null;
     total_servicios: number;
+    total_servicios_acumulados: number;
     revision_reciente: Revision | null;
     total_revisiones: number;
     total_partos: number;
@@ -89,6 +90,9 @@ export type ResponseGanado = {
         reciente: PesajeLecheGanado;
         mejor: PesajeLecheGanado;
         peor: PesajeLecheGanado;
+        promedio:string | null;
+        produccion_acumulada:integer | null;
+        dias_produccion:integer | null;
         estado: string;
     };
     vacunaciones: {
