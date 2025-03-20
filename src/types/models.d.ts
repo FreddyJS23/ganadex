@@ -29,7 +29,12 @@ type veterinario = {
 type Cria = Pick<
     Ganado,
     'id' | 'nombre' | 'numero' | 'sexo' | 'origen' | 'fecha_nacimiento'
-> & { peso: Pick<Pesos, 'peso_nacimiento'> };
+> & { peso: Pick<Pesos, 'peso_nacimiento'>,
+    observacion:string | null,
+    toro_id:number | null,
+    descarte_id:number | null
+    peso_nacimiento:number
+};
 
 type ToroDeServicio = Pick<Toro, 'id' | 'numero'>;
 
@@ -138,10 +143,10 @@ export type Parto = {
     id: number;
     fecha: string;
     observacion: string;
-    cria: Cria;
+    crias: Cria[];
     padre_toro?: Pick<Toro, 'id' | 'numero'>;
     pajuela_toro?: PajuelaToro;
-    veterinario: veterinario;
+    personal: Pick<Personal, 'id' | 'nombre' | 'cargo'>;
 };
 
 
