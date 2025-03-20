@@ -20,8 +20,9 @@ import IconSupplies from '@/icons/icono-insumo.svg';
 import { ProduccionVacasTop3 } from '@/components/charts/dashboard/top catle production bar';
 /* import { CircularProgress } from '@/components/circules progress dashboard'; */
 import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual balance milk';
-import { ResponseAñosProduccionLeche } from '@/types';
+import { ResponseAñosProduccionLeche, ResponsePlanesSanitario } from '@/types';
 import { Tooltip } from '@/components/tooltip';
+import { WarningToast } from '@/components/warning toast';
 
 export default async function Home() {
     const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(
@@ -53,6 +54,11 @@ export default async function Home() {
         await getData('dashboardPrincipalcantidadNovillasMontar');
 
     const { años_produccion_leche }: ResponseAñosProduccionLeche = await getData('añosProduccionLeche');
+
+    const { planes_sanitario }: ResponsePlanesSanitario =
+    await getData('planesSanitariosPendientes');
+
+const existsPlanesSanitario = planes_sanitario.length > 0;
 
     return (
         <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
@@ -180,6 +186,13 @@ export default async function Home() {
                      </div>
                     </ChartAnnualBalanceMilk>
             </article>
+            <WarningToast title="Planes sanitarios pendientes" 
+            description="Hay planes sanitarios que ya sobrepasaron su fecha de proxima dosis. 
+            Por favor si ya se realizaron, 
+            registre para tener los datos actualizados"
+            warning={existsPlanesSanitario} 
+            type='plan_sanitario'
+            />
         </section>
     );
 }
