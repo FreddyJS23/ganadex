@@ -51,6 +51,7 @@ export const endPoints = {
     dashboardPrincipalinsumoMayorExistencia: 'dashboard_principal/mayor_insumo',
     dashboardPrincipalbalanceAnualLeche:
         'dashboard_principal/balance_anual_leche',
+    dashboardPrincipalVacasEnOrdeño: 'dashboard_principal/vacas_en_ordeño',
     dashboardVentaLecheprecioActual: 'dashboard_venta_leche/precio_actual',
     dashboardVentaLechevariacionPRecio:
         'dashboard_venta_leche/variacion_precio',
