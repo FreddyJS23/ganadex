@@ -90,6 +90,7 @@ export const endPoints = {
     cambiarSesisionHacienda:'cambiar_hacienda_sesion/',
     registrarVeterinarioEnHacienda:'registrar_personal_hacienda',
     eliminarVeterinarioEnHacienda:'eliminar_personal_hacienda/',
+    planesSanitariosPendientes:'planes_sanitarios_pendientes',
 };
 
 export const endPointsCattle = {

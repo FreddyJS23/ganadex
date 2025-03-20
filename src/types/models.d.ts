@@ -258,7 +258,7 @@ export type DayVaccination = {
     id: number;
     fecha_inicio: string;
     fecha_fin: string;
-    vacuna: number;
+    vacuna: string;
     vacunados:number;
     ganado_vacunado:string[]
 };
