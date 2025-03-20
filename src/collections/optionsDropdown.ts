@@ -1,6 +1,6 @@
 export type OptionsDropdown = {
     url:
-        | 'venta_ganado'
+        | 'venta_ganado/vender'
         | 'fallecimientos/registrar'
         | 'revision'
         | 'servicio'
@@ -10,7 +10,7 @@ export type OptionsDropdown = {
 };
 
 export const optionsDropdownCattleAdmin: OptionsDropdown[] = [
-    { url: 'venta_ganado', label: 'Vender' },
+    { url: 'venta_ganado/vender', label: 'Vender' },
     { url: 'fallecimientos/registrar', label: 'Fallecer' },
     { url: 'descartar_ganado', label: 'Descartar ganado' },
 ];
