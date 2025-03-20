@@ -60,6 +60,10 @@ export type balanceAnualLeche = {
     balance_anual: BalanceMensualLeche[];
 };
 
+export type TotalVacasEnOrdeño = {
+    total_vacas_en_ordeño: number;
+};
+
 /* ------------------------  Venta de leche ------------------------ */
 
 export type PrecioActual = {

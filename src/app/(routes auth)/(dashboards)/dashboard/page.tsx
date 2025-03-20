@@ -10,6 +10,7 @@ import {
     TotalGanadoPendienteservir,
     TotalPersonal,
     TotalVacasEnGestacion,
+    TotalVacasEnOrdeño,
     balanceAnualLeche,
 } from '@/types/dashboard';
 import { getData } from '@/utils/getData';
@@ -50,6 +51,12 @@ export default async function Home() {
     const { vacas_en_gestacion }: TotalVacasEnGestacion = await getData(
         'dashboardPrincipalvacasGestacion',
     );
+
+    const { total_vacas_en_ordeño }: TotalVacasEnOrdeño = await getData(
+        'dashboardPrincipalVacasEnOrdeño',
+    );
+    console.log(total_vacas_en_ordeño)
+
     const { cantidad_vacas_para_servir }: TotalGanadoPendienteservir =
         await getData('dashboardPrincipalcantidadNovillasMontar');
 
@@ -113,6 +120,14 @@ const existsPlanesSanitario = planes_sanitario.length > 0;
                     />
                 </article>
 
+               <article className='w-52 h-20 self-center'>
+               <CardDashboard
+                    data={total_vacas_en_ordeño}
+                    title="Vacas en ordeño"
+                    icon="pregnant"
+                />
+
+               </article>
                 {/*    grafico vacas menos productoras */}
                 <article className="p-4 flex flex-col gap-2  bg-base-100 max-w-72  shadow-cards">
                     <div className="flex justify-between">
