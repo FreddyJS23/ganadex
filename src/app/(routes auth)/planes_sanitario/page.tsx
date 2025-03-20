@@ -1,9 +1,11 @@
 import { SliderVaccinationDays } from '@/components/slider days vaccination';
 import { TableVAccinationDay } from '@/components/tables/vaccination day';
-import { ResponsePlanesSanitario } from '@/types';
+import { WarningToast } from '@/components/warning toast';
+import { DayVaccination, ResponsePlanesSanitario } from '@/types';
 import { ProximosPlanSanitario } from '@/types/dashboard';
 import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import { getData } from '@/utils/getData';
+import {alert} from "@nextui-org/react";
 
 export default async function Page() {
     const { planes_sanitario }: ResponsePlanesSanitario =
@@ -11,6 +13,18 @@ export default async function Page() {
 
     const { proximos_planes_sanitario }: ProximosPlanSanitario =
         await getData('dashboarPlanesSanitarioProximosPlanes');
+
+        const { planes_sanitario:planes_sanitarios_pendientes }: ResponsePlanesSanitario =
+        await getData('planesSanitariosPendientes');
+    
+        const existsPlanesSanitario = planes_sanitarios_pendientes.length > 0;
+
+        const vacunasPendientes:string[]=[]
+
+       if(existsPlanesSanitario)
+        ( planes_sanitarios_pendientes.forEach((planes_sanitario:DayVaccination)=>{
+            vacunasPendientes.push(planes_sanitario.vacuna)
+        }))
 
     return (
         <>
@@ -37,6 +51,11 @@ export default async function Page() {
                         planes_sanitario={planes_sanitario}
                     />
                 </div>
+                <WarningToast title="Planes sanitarios pendientes" 
+            description={`Los siguientes planes sanitarios de vacunas están pendientes: ${vacunasPendientes.join(', ')}`}
+            warning={existsPlanesSanitario} 
+            type='plan_sanitario'
+            />
             </section>
         </>
     );
