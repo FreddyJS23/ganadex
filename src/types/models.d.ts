@@ -42,7 +42,8 @@ export type Ganado = {
     id: number;
     nombre: string;
     numero: number | null;
-    origen: string | null;
+    origen: string;
+    fecha_ingreso: string | null;
     sexo: 'H' | 'M';
     tipo: keyof typeof TypesCattle;
     fecha_nacimiento: string | null;
