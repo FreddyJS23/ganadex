@@ -29,6 +29,8 @@ type optionsSubmenuSidebar = {
         | '/pajuela_toro'
         | '/planes_sanitario'
         | '/capar_becerro'
+        | '/venta_ganado/animales_disponibles'
+        | '/venta_ganado/historial'
     >;
     option:
         | 'Vaca'
@@ -50,7 +52,9 @@ type optionsSubmenuSidebar = {
         | 'Pajuela toro'
         | 'Pajuelas toro'
         | 'Planes sanitario'
-        | 'Capar animal';
+        | 'Capar animal'
+        | 'Vender'
+        | 'Historial';
 };
 
 /**opcion del sidebar */

@@ -48,7 +48,7 @@ export const DropDownOptions = ({ idCattle, optionType, disabledDiscardCattle=fa
                     <DropdownItem key={url + label}>
                         {url == 'fallecimientos/registrar' ||
                         url == 'descartar_ganado' ||
-                        url == 'venta_ganado' ? (
+                        url == 'venta_ganado/vender' ? (
                             <Link
                                 className="block w-full"
                                 href={`/${url}/${idCattle}`}

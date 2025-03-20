@@ -42,10 +42,6 @@ export const optionsSidebarAdmin: Pick<
                 url: '/toros',
             },
             {
-                option: 'Ganado descarte',
-                url: '/ganado_descarte',
-            },
-            {
                 option: 'Pajuelas toro',
                 url: '/pajuela_toro',
             },
@@ -97,8 +93,12 @@ export const optionsSidebarAdmin: Pick<
                 url: '/venta_leche',
             }, */
             {
-                option: 'Ganado',
-                url: '/venta_ganado',
+                option: 'Vender',
+                url: '/venta_ganado/animales_disponibles',
+            },
+            {
+                option: 'Historial',
+                url: '/venta_ganado/historial',
             },
         ],
     },
