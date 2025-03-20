@@ -13,6 +13,7 @@ type ContentCardProp = {
         | 'Vacas preñadas'
         | 'Pendiente de servir'
         | 'Pendiente de revision'
+        | 'Vacas en ordeño'
         | 'Personal';
     icon: 'pregnant' | 'serve' | 'checkUp' | 'staff';
     data: string | number;
