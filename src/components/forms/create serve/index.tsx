@@ -75,6 +75,9 @@ export const FormCreateService = ({
         else setshema(createServeShemaWithPajuelaToroId)
         setTypeService(select as 'monta' | 'inseminacion')
     };
+
+    /* datos para select veterinario */
+    const {id:personalId ,label:personalLabel,required:personalRequired} = formService[4];
     
     //campos select toro
     const {id: toroId, label: toroLabel,required: toroRequired} = formService[2];
@@ -130,26 +133,6 @@ export const FormCreateService = ({
                                 />
                             )}
 
-                                {type == 'select' && id == 'personal_id' && isAdmin && !disableVeterinary && (
-                                    <Controller
-                                        name={id}
-                                        control={control}
-                                        render={({ field }) => (
-                                            <Select
-                                                field={field}
-                                                id={id}
-                                                items={
-                                                         converToSelectOptions(
-                                                              veterinarios as [],
-                                                          )
-                                                }
-                                                label={label}
-                                                errors={errors}
-                                                required={required}
-                                            />
-                                        )}
-                                    />
-                                )}
                             </>
                         ),
                     )}
@@ -174,6 +157,29 @@ export const FormCreateService = ({
                                             />
                                         )}
                                     />
+                    
+                    {/* select veterinario */}
+                    { isAdmin && !disableVeterinary && (
+                                    <Controller
+                                        name={personalId}
+                                        control={control}
+                                        render={({ field }) => (
+                                            <Select
+                                                field={field}
+                                                id={personalId}
+                                                items={
+                                                         converToSelectOptions(
+                                                              veterinarios as [],
+                                                          )
+                                                }
+                                                label={personalLabel}
+                                                errors={errors}
+                                                required={personalRequired}
+                                            />
+                                        )}
+                                    />
+                                )}
+
 
                                       {/* select toros */}
                                     {typeService == 'monta' ? ( <Controller
