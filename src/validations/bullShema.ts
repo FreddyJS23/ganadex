@@ -15,6 +15,7 @@ export const createBullShema = z
             coerce: true,
             invalid_type_error: 'Elija una opción valida',
         }),
+        fecha_ingreso: z.string().optional(),
         tipo_id: z.number({
             coerce: true,
             invalid_type_error: 'Elija una opción valida',
