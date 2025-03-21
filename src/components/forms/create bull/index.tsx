@@ -21,7 +21,7 @@ import {
 import { createBull } from '@/actions/toro';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Checkbox, Chip, Selection } from '@nextui-org/react';
-import { AvailableVaccines, CausaFallecimiento, Comprador } from '@/types';
+import { AvailableVaccines, CausaFallecimiento, Comprador, ListaVacunas } from '@/types';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { CreateListVaccination } from '@/components/create list vaccination';
@@ -130,8 +130,6 @@ console.log(errors)
       /* control de check para mostrar campos seccion vacuna */
       const [isSelected, setIsSelected] = useState(false);
 
-            /* control de check para mostrar campos seccion vacuna */
-            const [isSelected, setIsSelected] = useState(false);
 
             // campos select tipo origen para coloca campo fecha ingreso en origen externo
       const {id: dateEntryId, label: dateEntryLabel,required: dateEntryRequired} = formBull[6];
@@ -179,10 +177,8 @@ console.log(errors)
                                                 label={label}
                                                 errors={errors}
                                                 required={required}
-                                                handleSelectionChange={
-                                                    handleSelectionTypeBullChange
-                                                }
-                                                tooltipTipoGanado={tooltipTipoGanado}
+                                                tooltipTipoGanado={id != 'origen_id' && tooltipTipoGanado}
+                                                handleSelectionChange={id == 'origen_id' ? handleSelectionOrigenChange : handleSelectionTypeBullChange}
                                                 tipo='toro'
                                             />
                                         )}
