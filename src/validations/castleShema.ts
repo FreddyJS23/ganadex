@@ -8,7 +8,11 @@ export const castleShema = z
     .object({
         nombre: z.string().min(3).max(255),
         numero: z.number().gte(1).lte(32767),
-        origen: z.string().min(3).max(255),
+        origen_id:z.number({
+            coerce: true,
+            invalid_type_error: 'Elija una opción valida',
+        }),
+        fecha_ingreso: z.string().optional(),
         tipo_id: z.number({
             coerce: true,
             invalid_type_error: 'Elija una opción valida',
