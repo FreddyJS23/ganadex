@@ -36,6 +36,7 @@ import { stateCasttleSelect } from './statesCasttleSelect';
 import { typeServicesForCasttle } from './typesServicesForCasttle';
 import { stateBullSelect } from './statesBullSelect';
 import { stateBeefSelect } from './statesBeefSelect';
+import { origenCasttleSelect } from './origenCastleSelect';
 
 type FieldsCastle = Pick<InputProps, 'type' | 'endContent' | 'required'> & {
     id: keyof typeof FieldsIdCasttle;
@@ -134,13 +135,14 @@ export const formCastle: FieldsCastle[] = [
         select: typeCasttleSelect,
         tooltipTipoGanado:true
     },
+    { id: 'origen_id', label: 'Origen', required: true, type: 'select',select: origenCasttleSelect},
+    {id:'fecha_ingreso', label: 'Fecha de ingreso', required: true, type: 'date'},
     {
         id: 'fecha_nacimiento',
         label: 'Fecha de nacimiento',
         required: false,
         type: 'date',
     },
-    { id: 'origen', label: 'Origen', required: false, type: 'text' },
     {
         id: 'peso_nacimiento',
         label: 'Peso de nacimiento',
@@ -196,7 +198,8 @@ export const formBull: FieldsBull[] = [
         required: false,
         type: 'date',
     },
-    { id: 'origen', label: 'Origen', required: false, type: 'text' },
+    { id: 'origen_id', label: 'Origen', required: true, type: 'select',select: origenCasttleSelect},
+    {id:'fecha_ingreso', label: 'Fecha de ingreso', required: true, type: 'date'},
     {
         id: 'peso_nacimiento',
         label: 'Peso de nacimiento',
@@ -250,7 +253,8 @@ export const formBeef: FieldsBeef[] = [
         required: false,
         type: 'date',
     },
-    { id: 'origen', label: 'Origen', required: false, type: 'text' },
+    { id: 'origen_id', label: 'Origen', required: true, type: 'select',select: origenCasttleSelect},
+    {id:'fecha_ingreso', label: 'Fecha de ingreso', required: true, type: 'date'},
     {
         id: 'peso_nacimiento',
         label: 'Peso de nacimiento',

@@ -130,6 +130,19 @@ console.log(errors)
       /* control de check para mostrar campos seccion vacuna */
       const [isSelected, setIsSelected] = useState(false);
 
+            /* control de check para mostrar campos seccion vacuna */
+            const [isSelected, setIsSelected] = useState(false);
+
+            // campos select tipo origen para coloca campo fecha ingreso en origen externo
+      const {id: dateEntryId, label: dateEntryLabel,required: dateEntryRequired} = formBull[6];
+ 
+      const [origen, setOrigen] = useState< 1 | 2>(1);
+           
+      const handleSelectionOrigenChange = (select:string | number) => {
+         setOrigen(select as 1 | 2)
+      };
+ 
+
     return (
         <form
             ref={form}
@@ -139,7 +152,7 @@ console.log(errors)
             {formBull.map(
                 ({ id, label, required, type, select, endContent,tooltipTipoGanado }) => (
                     <>
-                        {id != 'estado_id' &&
+                        {id != 'estado_id' && id != 'fecha_ingreso' &&
                             <div key={id} id={id}>
                                 {type != 'select' && (
                                     <Input
@@ -180,6 +193,19 @@ console.log(errors)
                     </>
                 ),
             )}
+
+
+            {/* campo fecha ingreso condiciona si se selecciono origen externo */}
+            {origen == 2 && (
+                                    <Input
+                                        id={dateEntryId}
+                                        label={dateEntryLabel}
+                                        type={'date'}
+                                        register={register}
+                                        errors={errors}
+                                        required={dateEntryRequired}
+                                    />
+                                )}
 
               {/* lista de vacunas */}
               <div className='col-span-full md:col-start-2 md:col-span-1 lg:col-start-2 lg:col-span-2'>

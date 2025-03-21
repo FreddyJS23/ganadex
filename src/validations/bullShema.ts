@@ -10,8 +10,11 @@ export const createBullShema = z
     .object({
         nombre: z.string().min(3).max(255),
         numero: z.number().gte(1).lte(32767),
-        origen: z.string(),
         estado_id: z.string().array(),
+        origen_id:z.number({
+            coerce: true,
+            invalid_type_error: 'Elija una opción valida',
+        }),
         tipo_id: z.number({
             coerce: true,
             invalid_type_error: 'Elija una opción valida',
