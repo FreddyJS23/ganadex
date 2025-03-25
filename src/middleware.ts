@@ -27,9 +27,13 @@ const redirectRol=(rol:'admin' | 'veterinario',url:string)=>{
 export default middleware((request) => {
     //session no iniciada
     if (!request.auth) {
-        //redirigir a login si intentan acceder a rutas
-        if (!request.nextUrl.pathname.startsWith('/login'))
-            return NextResponse.redirect(new URL('/login', request.url));
+        
+        if(request.nextUrl.pathname.startsWith('/restablecer_acceso')){
+            return NextResponse.next()
+        }
+         //redirigir a login si intentan acceder a rutas
+        if (!request.nextUrl.pathname.startsWith('/login') )
+            return NextResponse.redirect(new URL('/login', request.url)); 
     } else {
         
         //logueado pero sin una sesion de hacienda
