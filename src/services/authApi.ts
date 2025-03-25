@@ -11,7 +11,7 @@ export async function authApi(
     const{xsrfToken,laravelSession}= await getInitCookieXSCRFTOKEN();  
   
     //Lanzar error si no se encuentra el token
-    if(!xsrfToken)  throw {status:500,data:{message:'Error'}}; 
+    if(!xsrfToken)  throw {status:500,data:{message:'Error, token no encontrado'}}
     
     const headers=new Headers({
         Accept: 'application/json',
