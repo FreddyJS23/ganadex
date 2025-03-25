@@ -5,6 +5,8 @@ import {
     ResponseHaciendas,
     ResponseInformacionUsuarioLogeado,
     ResponseLogEventos,
+    ResponsePreguntasSeguridad,
+    ResponseRespuestaSeguridad,
     ResponseVeterinariosSinUsuario,
     ResponseVeterinariosUsuario,
 } from '@/types';
@@ -31,7 +33,12 @@ export default async function Page() {
         id,
     );
     
+    const {preguntas_seguridad}:ResponsePreguntasSeguridad= await getData('preguntasSeguridadDisponibles');
+    
+    const {respuestas_seguridad}:ResponseRespuestaSeguridad= await getData('respuestasSeguridad');
+    
 
+    
     return (
         <>
             <section className="bg-base-100 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
@@ -43,6 +50,8 @@ export default async function Page() {
                     user={user}
                     configuracion={user.configuracion}
                     logs_eventos={logs_eventos}
+                    preguntas_seguridad={preguntas_seguridad}
+                    respuestas_seguridad={respuestas_seguridad}
                 />
             </section>
         </>
