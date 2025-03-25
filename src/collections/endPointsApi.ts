@@ -92,6 +92,9 @@ export const endPoints = {
     registrarVeterinarioEnHacienda:'registrar_personal_hacienda',
     eliminarVeterinarioEnHacienda:'eliminar_personal_hacienda/',
     planesSanitariosPendientes:'planes_sanitarios_pendientes',
+    respuestasSeguridad:'respuestas_seguridad',
+    respuestaSeguridad:'respuestas_seguridad/',
+    preguntasSeguridadDisponibles:'preguntas_seguridad',
 };
 
 export const endPointsCattle = {
