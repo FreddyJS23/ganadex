@@ -3,7 +3,7 @@
 import { Tab, Tabs, useDisclosure,Button as ButtonNextUI } from '@nextui-org/react';
 import { TableVeterinaryUsers } from '../tables/veterinary users';
 import { SelectVeterinaryNotUser } from '../select veterenary not user';
-import { Configuracion, Hacienda, LogEvento, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
+import { Configuracion, Hacienda, LogEvento, PreguntaSeguridad, PreguntasSeguridad, RespuestasSeguridad, UserLoginInfo, UserVeterinaryInfo, veterinario } from '@/types';
 import { Button } from '@/ui/Button';
 import IconEditar from '@/icons/icono-editar.svg';
 import { ModalUpdateUser } from '../modals/update user';
@@ -16,6 +16,8 @@ import { ButtonCreateItem } from '@/ui/ButtonCreate';
 import Link from 'next/link';
 import { TableLogsEvents } from '../tables/logs events';
 import { ChangeSessionHacienda } from '../change session hacienda';
+import { UpdateResponseSecurity } from '../update response security';
+import { QuestionSecurity } from '../question security';
 
 type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];
@@ -25,6 +27,8 @@ type TabsProfileProps = {
     haciendas:Hacienda[]
     configuracion:Configuracion
     logs_eventos:LogEvento[]
+    preguntas_seguridad:PreguntasSeguridad[]
+    respuestas_seguridad:RespuestasSeguridad[]
 };
 
 const ElementProfileAdmin = ({ user }: { user: UserLoginInfo }) => {
@@ -59,7 +63,9 @@ export const TabsProfile = ({
     haciendaSesion,
     haciendas,
     configuracion,
-    logs_eventos
+    logs_eventos,
+    preguntas_seguridad,
+    respuestas_seguridad
 }: TabsProfileProps) => {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     return (
@@ -141,11 +147,26 @@ export const TabsProfile = ({
                         </LayoutContentTabs>
                     </Tab>
                 
+            {/* seguridad */}
+            <Tab key="seguridad" title="Seguridad">
+                        <LayoutContentTabs>
+                            {/* header section */}
+                            <div className="flex gap-12 items-center">
+                                <ElementProfile
+                                    tittle="Preguntas de Seguridad"
+                                    description="Estas preguntas se utilizan para verificar tu identidad en caso de que necesites recuperar tu cuenta."
+                                    divider
+                                />
+                            </div>
+
+                           <QuestionSecurity  preguntas_seguridad={preguntas_seguridad} respuestas_seguridad={respuestas_seguridad} />
+                        </LayoutContentTabs>
+                    </Tab>
 
     
     {/*  ------------------------------ opciones admin ----------------------------- */ }
               
-                 {/* tab desactivado configuracion */}
+                 {/* tab  configuracion */}
                 {user.rol == 'admin' && ( <Tab key="setting" title="Configuracion">
                 <LayoutContentTabs>
                         <div className="flex flex-col">
