@@ -79,6 +79,11 @@ export type ResponseErrorNext={
     error:{message:string,status:number}
 }
 
+export type ResponseRestablecerContraseñaUsuario={
+    token:string
+    preguntas:PreguntaSeguridad[]
+}
+
 export type ResponseGanado = {
     ganado: Ganado;
     servicio_reciente: Servicio | null;
