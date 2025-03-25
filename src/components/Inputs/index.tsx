@@ -23,7 +23,8 @@ export const Input = ({
     errors,
     defaultValue,
     uppercase = false,
-    variant='underlined'
+    variant='underlined',
+    placeholder='',
 }: InputProps) => {
     const endContents = {
         dolar: <EndElement content="$" />,
@@ -42,7 +43,7 @@ export const Input = ({
             variant={variant}
             type={type}
             label={label}
-            placeholder={type == 'date' ? ' ' : ''}
+            placeholder={type == 'date' ? ' ' : placeholder}
             description={description}
             isRequired={required}
             endContent={endContent && endContents[endContent]}
