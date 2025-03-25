@@ -12,16 +12,15 @@ export async function POST(req: NextRequest) {
    
     const cookiesStore = cookies();
 
-    /* Borrar cookies antiguos */
-    cookiesStore.getAll().forEach((cookie) => {
-        cookiesStore.delete(cookie.name);
-    });
-    
+    const laravelSession=cookiesStore.get('laravel_session')?.value
+
+    const xsrfToken=cookiesStore.get('xsrf_token')?.value
+
+    if(!laravelSession || !xsrfToken) return new Response(JSON.stringify({ error:{message: 'Error, token invalidado o no encontrado, por favor vuelva al login' } }), { status: 500 })
+
     const url = 'http://127.0.0.1:8000/' + 'api/' + 'restablecer_acceso';
 
-    /* Obtener cookies de sesion de laravel */
-    const { laravelSession, xsrfToken } = await getInitCookieXSCRFTOKEN()
-    
+
     /*configuracion de cookies*/
     const configCookie: Partial<ResponseCookie> = {
         httpOnly: true,
@@ -30,15 +29,6 @@ export async function POST(req: NextRequest) {
         path: '/',
         maxAge: 60 * 10,
     }
-
-    
-    //Lanzar error si no se encuentra el token
-    if (!xsrfToken || !laravelSession) return new Response(JSON.stringify({ error:{message: 'Error, token invalidado o no encontrado, por favor vuelva a intentar la acción' } }), { status: 500 })
-
-    /* Agregar cookies de sesion de laravel */
-    cookiesStore.set('laravel_session', laravelSession, configCookie)
-    cookiesStore.set('xsrf_token', xsrfToken, configCookie)
-
 
     const headers = new Headers({
         Accept: 'application/json',
