@@ -14,6 +14,7 @@ import { ResponseError } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createUserShema } from '@/validations/createUser';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
+import { Link } from '@nextui-org/react';
 
 export const TabLogin = () => {
     const [selected, setSelected] = useState<string | number>('login');
@@ -106,7 +107,12 @@ export const TabLogin = () => {
                         />
                     </div>
                 </form>
+            
+            {/* restablecer contraseña */}
+            <Link className='mt-2' color='primary' href={'/restablecer_acceso'}>¿Olvidaste tu contraseña?</Link>
+        
             </Tab>
+        
             <Tab key="registrar" title="Registrar" className="w-full">
                 <form
                     className="flex flex-col gap-4 bg-base-100 pb-4 px-2 sm:max-w-96 sm:m-auto"
