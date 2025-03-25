@@ -25,6 +25,7 @@ import { weightsShema } from '@/validations/weightsShema';
 import { updateConfigurationShema } from '@/validations/updateConfiguration';
 import { createTypeCheckShema } from '@/validations/typeCheck';
 import { createCausaFallecimientoShema } from '@/validations/causaFallecimiento';
+import { recoveryPasswordShema } from '@/validations/recoveryPassword';
 import { createOrUpdateResponseSecurityShema, createResponsesSecurityShema, updateResponseSecurityShema } from '@/validations/responseSecurity';
 
 export type Login = {
@@ -108,6 +109,10 @@ export type CreateTypeCheck = z.infer<typeof createTypeCheckShema>;
 export type CreateCausaFallecimiento = z.infer<
     typeof createCausaFallecimientoShema
 >;
+
+export type RecoveryPassword = z.infer<typeof recoveryPasswordShema>;
+
+export type CreateOrUpdateResponseSecurity = z.infer<
     typeof createOrUpdateResponseSecurityShema
 >;
 
