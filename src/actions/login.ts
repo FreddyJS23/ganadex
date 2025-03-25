@@ -5,6 +5,7 @@ import { ERROR_CORS, ERROR_SERVER, ERROR_SIGNIN } from '@/constants/responseApiM
 import { ResponseErrorActionAction, ResponseLoginAuthJs } from '@/types';
 import { AuthError } from 'next-auth';
 import { isRedirectError } from 'next/dist/client/components/redirect';
+import { cookies } from 'next/headers';
 
 export async function authenticate(
     formData: FormData,
@@ -16,6 +17,12 @@ export async function authenticate(
         });
     } catch (error) {
         if (isRedirectError(error)) {
+            /* Borrar cookies iniciales, ya que al hacer login se guardan nuevas cookies
+             enviadas por el backend en la session de authjs, es inncesario tener las cookies antiguas */
+            cookies().getAll().forEach((cookie) => {
+                cookies().delete(cookie.name);
+            });
+          
             return {
                 login: true,
                 message: 'Credenciales correctas',

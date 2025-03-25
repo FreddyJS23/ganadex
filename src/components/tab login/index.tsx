@@ -3,20 +3,34 @@
 import { Button } from '@/ui/Button';
 import { Input } from '../Inputs';
 import { Tab, Tabs } from '@nextui-org/tabs';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { authenticate } from '@/actions/login';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { CreateUser, Login } from '@/types/forms';
 import { createUser } from '@/actions/usuario';
-import { ResponseError } from '@/types';
+import { ResponseError, ResponseErrorNext, ResponseRegistroExitoso } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createUserShema } from '@/validations/createUser';
 import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 import { Link } from '@nextui-org/react';
 
 export const TabLogin = () => {
+    
+ useEffect(() => {
+    
+    const getLaravelSession=async()=>{
+        const response=await fetch(`/api/session_laravel`)
+        const data:ResponseErrorNext | ResponseRegistroExitoso=await response.json()
+    
+        if('error' in data) return toast.error(data.error?.message)
+    }
+
+    getLaravelSession()
+ }, [])
+ 
+    
     const [selected, setSelected] = useState<string | number>('login');
     const router = useRouter();
 

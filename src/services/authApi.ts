@@ -1,17 +1,19 @@
 import { ResponseError } from '@/types';
 import { handleResponse } from '@/utils/handleResponseApi';
-import { getInitCookieXSCRFTOKEN } from './getInitCookieCsrf';
 import { getNewCookiesSession } from '@/utils/getNewCookiesSession';
+import { cookies } from 'next/headers';
 
 export async function authApi(
     credentials: Partial<Record<'usuario' | 'password', unknown>>,
 ) {
     const url = 'http://127.0.0.1:8000/' + 'api/' + 'login';
+    const cookiesStore = cookies();
 
-    const{xsrfToken,laravelSession}= await getInitCookieXSCRFTOKEN();  
-  
-    //Lanzar error si no se encuentra el token
-    if(!xsrfToken)  throw {status:500,data:{message:'Error, token no encontrado'}}
+    const laravelSession=cookiesStore.get('laravel_session')?.value
+
+    const xsrfToken=cookiesStore.get('xsrf_token')?.value
+
+    if(!laravelSession || !xsrfToken)  throw {status:500,data:{message:'Error, token invalidado o no encontrado, por favor vuelva al login o recargue la pagina'}}
     
     const headers=new Headers({
         Accept: 'application/json',
