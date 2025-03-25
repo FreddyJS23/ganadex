@@ -13,6 +13,7 @@ type ButtonProps = {
     onClick: () => void;
     type?: 'button' | 'submit' | 'reset';
     form?: string;
+    title?:string
 };
 
 export const Button = ({
@@ -21,6 +22,7 @@ export const Button = ({
     onClick,
     type = 'button',
     form,
+    title,
 }: ButtonProps) => {
     const { pending } = useFormStatus();
     if (form) {
@@ -32,6 +34,7 @@ export const Button = ({
                 type={type}
                 isLoading={type == 'submit' && pending}
                 form={form}
+                title={title}
             >
                 {content}
             </ButtonNextUI>
@@ -44,6 +47,7 @@ export const Button = ({
                 color={`${color ? color : 'primary'}`}
                 type={type}
                 isLoading={type == 'submit' && pending}
+                title={title}
             >
                 {content}
             </ButtonNextUI>
