@@ -15,6 +15,7 @@ type SelectProps = Pick<
     handleSelectionChange?: (select: string | number) => void;
     tooltipTipoGanado?:boolean
     tipo?:'vaca' | 'toro'
+    value?:string | number
 };
 
 const EndElement = ({ content }: { content: '$' | 'KG' }) => {
@@ -37,6 +38,7 @@ export const Select = ({
     errors,
     field,
     tipo='vaca',
+    value:valueInit,
     handleSelectionChange,
     tooltipTipoGanado
 }: SelectProps) => {
@@ -46,8 +48,8 @@ export const Select = ({
         'weight-milk': <EndElement content="KG" />,
     };
 
-    const [value, setValue] = useState<Selection>(new Set([]));
-
+    /* el valueInit se convierte a string ya asi trabaja el set, con un number da error */    
+    const [value, setValue] = useState<Selection>(valueInit ? new Set([valueInit.toString()]) : new Set([]));
     const onChange = (select: Selection) => {
         const valueSelect = Array.from(select)[0];
 
