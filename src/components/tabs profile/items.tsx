@@ -3,6 +3,7 @@ type ElementProfileProps = {
     content?: string;
     description?: string;
     children?: JSX.Element | JSX.Element[] | undefined;
+    divider?: boolean;
 };
 /**Solo para centrar varios*/ 
 export const LayoutCenterContentTabs = ({
@@ -41,18 +42,19 @@ export const ElementProfile = ({
     content,
     description,
     children,
+    divider=true
 }: ElementProfileProps) => {
     return (
-        <>
-            <div className="flex justify-between w-7/12 items-center ">
-                <div className="flex flex-col gap-1 w-60">
+        <div className="flex flex-col w-full">
+            <div className={`flex justify-between items-center ${content ? 'w-7/12' : 'w-full'} `}>
+                <div className={`flex flex-col gap-1 grow ${content ? 'w-60' : 'w-full'}`}>
                     <span className="font-bold text-xl">{tittle}</span>
-                    <span className="text-sm opacity-60">{description}</span>
+                    <span className={`text-sm opacity-60  ${content && 'text-balance'}`}>{description}</span>
                     {children}
                 </div>
-                <span>{content}</span>
+              {content &&  <span>{content}</span>}
             </div>
-            <Divider />
-        </>
+           {divider && <Divider />}
+        </div>
     );
 };

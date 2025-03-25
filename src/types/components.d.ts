@@ -102,6 +102,7 @@ export type InputProps = {
     defaultValue?: string;
     uppercase?: boolean;
     variant?:"flat" | "bordered" | "underlined" | "faded"
+    placeholder?:string
 };
 
 export type LayoutModalProps = {

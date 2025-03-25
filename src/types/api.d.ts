@@ -36,6 +36,9 @@ import {
     ToroServicio,
     TipoRevision,
     CausaFallecimiento,
+    PreguntasSeguridad,
+    RespuestasSeguridad,
+    
 } from './models';
 
 type errors = {
@@ -366,4 +369,11 @@ export type ResponseCausaFallecimiento={
 }
 export type ResponseCausasFallecimiento={
     causas_fallecimiento:CausaFallecimiento[]  
+}
+export type ResponsePreguntasSeguridad={
+    preguntas_seguridad:PreguntasSeguridad[]
+}
+
+export type ResponseRespuestaSeguridad={
+    respuestas_seguridad:RespuestasSeguridad[]
 }

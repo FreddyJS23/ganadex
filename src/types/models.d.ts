@@ -337,3 +337,17 @@ export type CausaFallecimiento={
     id: number;
     causa: string;
 }
+/**Preguntas de seguridad con su respectiva respuesta encriptada en la base de datos,
+ *  guardadas por el usuario,   */
+export type RespuestasSeguridad = {
+    id:number,
+    pregunta:string,
+    updated_at:string,
+    pregunta_seguridad_id:number,
+    respuesta:string
+}
+
+export type PreguntasSeguridad = {
+    id:number,
+    pregunta:string,
+}
