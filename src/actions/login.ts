@@ -19,9 +19,8 @@ export async function authenticate(
         if (isRedirectError(error)) {
             /* Borrar cookies iniciales, ya que al hacer login se guardan nuevas cookies
              enviadas por el backend en la session de authjs, es inncesario tener las cookies antiguas */
-            cookies().getAll().forEach((cookie) => {
-                cookies().delete(cookie.name);
-            });
+           cookies().delete('laravel_session')
+           cookies().delete('xsrf_token')
           
             return {
                 login: true,
