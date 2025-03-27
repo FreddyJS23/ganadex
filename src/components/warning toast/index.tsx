@@ -32,7 +32,8 @@ function toast(toast: ToastProps) {
         { duration: Infinity,
         /* se usa un id manual ya que el effect se ejecuta dos veces, entonces en teoría crearía dos id
         dando como resultado que se ejecuten dos toasts, que no es lo deseado */
-            id: toast.id,
+            id: toast.title,
+            
          },
         
     );
@@ -71,7 +72,7 @@ type WarningToastProps = {
     title: string;
     description: string;
     warning: boolean;
-    type: 'plan_sanitario';
+    type: 'plan_sanitario' | 'preguntas_seguridad';
 };
 
 export function WarningToast({
