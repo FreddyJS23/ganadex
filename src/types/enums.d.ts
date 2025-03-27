@@ -81,10 +81,10 @@ export enum Months {
 }
 
 export enum TypesCattle {
-    becerro,
-    maute,
-    novillo,
-    adulto,
+    Becerro,
+    Maute,
+    Novillo,
+    Adulto,
 }
 
 export enum EndPointsFakeApi {
