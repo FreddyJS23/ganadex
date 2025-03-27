@@ -104,7 +104,7 @@ export default async function Page({ params }: ParamsPageCattle) {
                             {/* Pesos */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">
                             
-                            {ganado.pesos ? <WeightsEditable disableEdit={disableEditWeight} id={ganado.id} pesos={ganado.pesos} typeModelWeight={'ganado'} weightConfig={session.user.configuracion.peso_servicio} />
+                            {ganado.pesos ? <WeightsEditable typeCattle={ganado.tipo} disableEdit={disableEditWeight} id={ganado.id} pesos={ganado.pesos} typeModelWeight={'ganado'} weightConfig={session.user.configuracion.peso_servicio} />
                             
                         :<>
                         <h3 className="m-auto">Pesos</h3>

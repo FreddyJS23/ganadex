@@ -93,7 +93,7 @@ export default async function Page({ params }: ParamsPageBull) {
                             {/* Pesos */}
                             <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">
                                
-                            {pesos ? <WeightsEditable disableEdit={disableEditWeight} id={toro.id} pesos={pesos} typeModelWeight={'toro'}  />
+                            {pesos ? <WeightsEditable typeCattle={tipo} disableEdit={disableEditWeight} id={toro.id} pesos={pesos} typeModelWeight={'toro'}  />
                             
                             :<>
                             <h3 className="m-auto">Pesos</h3>

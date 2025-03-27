@@ -4,7 +4,7 @@ import { DetailsWeights } from '@/collections';
 import { formWeights } from '@/collections/formsInputs';
 import { Details } from '@/components/details';
 import { Input } from '@/components/Inputs';
-import { Pesos } from '@/types';
+import { Ganado, Pesos } from '@/types';
 import { updateWeight } from '@/types/forms';
 import { weightsShema } from '@/validations/weightsShema';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -27,6 +27,7 @@ type DetailsWeightsProps = {
     typeModelWeight: 'ganado' | 'toro' | 'descarte';
     weightConfig?: number;
     disableEdit?: boolean;
+    typeCattle:Ganado['tipo']
 };
 
 export const WeightsEditable = ({
@@ -35,6 +36,7 @@ export const WeightsEditable = ({
     typeModelWeight,
     weightConfig,
     disableEdit=false,
+    typeCattle
 }: DetailsWeightsProps) => {
     <IconEdit
         className="size-6 cursor-pointer"
@@ -143,8 +145,9 @@ export const WeightsEditable = ({
                 >
                     <>
                         {formWeights.map(
-                            ({ id, label, required, type, endContent }) => (
-                                <div className="w-44" key={id}>
+                            ({ id, label, required, type, endContent }) => { 
+                              
+                                return !(typeCattle == 'becerro' && id == 'peso_2year') && <div className="w-44" key={id}>
                                     <Input
                                         key={id}
                                         id={id}
@@ -161,7 +164,7 @@ export const WeightsEditable = ({
                                         errors={errors}
                                     />
                                 </div>
-                            ),
+},
                         )}
                     </>
                 </form>
