@@ -133,7 +133,6 @@ export const optionsSidebarVeterinary: Pick<
 >[] =[
     {element:'Vacas',icon:'castle',url:'/ganado'},
     {element:'Toros',icon:'bull',url:'/toros'},
-    {element:'Ganado descarte',icon:'beef',url:'/ganado_descarte'},
     {
         element: 'Operaciones',
         icon: 'operations',
