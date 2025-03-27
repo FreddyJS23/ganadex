@@ -24,6 +24,8 @@ import { ChartAnnualBalanceMilk } from '@/components/charts/dashboard/annual bal
 import { ResponseAñosProduccionLeche, ResponsePlanesSanitario } from '@/types';
 import { Tooltip } from '@/components/tooltip';
 import { WarningToast } from '@/components/warning toast';
+import { auth } from '@/app/auth';
+import { Session } from 'next-auth';
 
 export default async function Home() {
     const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(
@@ -66,7 +68,13 @@ export default async function Home() {
     await getData('planesSanitariosPendientes');
 
 const existsPlanesSanitario = planes_sanitario.length > 0;
+const session= await auth() as Session;
+/* comprobar si el usuario tiene preguntas de seguridad */
+/* esto viene del backend y se guarda en la sesion de auth */
+const tiene_preguntas_seguridad=session.user.tiene_preguntas_seguridad
 
+
+console.log(tiene_preguntas_seguridad)
     return (
         <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
             {/*  grafico torta */}
@@ -207,6 +215,12 @@ const existsPlanesSanitario = planes_sanitario.length > 0;
             registre para tener los datos actualizados"
             warning={existsPlanesSanitario} 
             type='plan_sanitario'
+            />
+            <WarningToast title="Preguntas de seguridad requeridas" 
+            description="Actualmente no tiene el mínimo de preguntas de seguridad,
+            por favor vaya al perfil y rellénalas, tenga en cuenta que sin esto no podrá recuperar su contraseña"
+            warning={!tiene_preguntas_seguridad} 
+            type='preguntas_seguridad'
             />
         </section>
     );
