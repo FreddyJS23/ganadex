@@ -60,6 +60,7 @@ export const headerCasttle: headersColumns<CabezasGanado>[] = [
 export const headerBull: headersColumns<Toro>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
+    { key : 'tipo', label: 'Tipo'},
     { key: 'pesos', label: 'Peso actual' },
     { key: 'servicios', label: 'Servicios hechos' },
     { key: 'padre_en_partos', label: 'Padre en partos' },
@@ -71,6 +72,7 @@ export const headerBeef: headersColumns<GanadoDescarte>[] = [
     { key: 'numero', label: 'Numero' },
     { key: 'nombre', label: 'Nombre' },
     {key:'sexo',label:'Sexo'},
+    { key : 'tipo', label: 'Tipo'},
     { key: 'fecha_nacimiento', label: 'Fecha nacimiento' },
     { key: 'pesos', label: 'Peso actual' },
     { key: 'estados', label: 'Estados' },
