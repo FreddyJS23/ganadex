@@ -25,6 +25,7 @@ import { Checkbox, Chip, Selection } from '@nextui-org/react';
 import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
 import { CreateListVaccination } from '@/components/create list vaccination';
 import { useRouter } from 'next/navigation';
+import { messageErrorApi } from '@/utils/handleErrorResponseNext';
 
 type FormBeffProps = {
     compradores: Comprador[];
@@ -74,8 +75,11 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto,li
     };
 
     const actionBeef: () => void = handleSubmit(async (data) => {
-        try {
+        
             const response = (await createBeef(data,listVaccines)) as string | number;
+              /* manejar error del backedn y mostar mensaje */
+              if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
+            
             form.current?.reset();
             router.refresh();
             setStates(new Set('1'));
@@ -83,12 +87,9 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto,li
             setShowinputDead(false);
             setShowinputSale(false);
             toast.success(
-                `GanadoDescarte numero ${response} ha sido registrado`,
+                `Ganado descarte numero ${response} ha sido registrado`,
             );
-        } catch (error) {
-            const message = error as string;
-            return toast.error(message);
-        }
+       
     });
 
      /* actualizar numero del input al obtener nuevo numero */
@@ -133,7 +134,7 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto,li
       const [isSelected, setIsSelected] = useState(false);
 
            // campos select tipo origen para coloca campo fecha ingreso en origen externo
-     const {id: dateEntryId, label: dateEntryLabel,required: dateEntryRequired} = formBeef[6];
+     const {id: dateEntryId, label: dateEntryLabel,required: dateEntryRequired} = formBeef[5];
 
      const [origen, setOrigen] = useState< 1 | 2>(1);
           
@@ -180,7 +181,7 @@ export const FormBeef = ({ compradores,numero_disponible,causas_fallecimeinto,li
                                                 errors={errors}
                                                 required={required}
                                                 handleSelectionChange={
-                                                    handleSelectionTypeBeefChange
+                                                   id== 'origen_id' ? handleSelectionOrigenChange : handleSelectionTypeBeefChange
                                                 }
                                                 tooltipTipoGanado={tooltipTipoGanado}
                                                 tipo='toro'
