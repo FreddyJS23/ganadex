@@ -18,6 +18,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 token.sesion_hacienda=user.sesion_hacienda
                 token.configuracion=user.configuracion
                 token.hacienda=user.hacienda
+                token.tiene_preguntas_seguridad=user.tiene_preguntas_seguridad
                 /*     token.cookieCsrf=user.cookieCsrf */
             }
             if(trigger == 'update'){
@@ -36,6 +37,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             session.user.sesion_hacienda=token.sesion_hacienda
             session.user.configuracion=token.configuracion
             session.user.hacienda=token.hacienda
+            session.user.tiene_preguntas_seguridad=token.tiene_preguntas_seguridad
             return session;
         },
     },

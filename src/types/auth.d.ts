@@ -42,6 +42,7 @@ declare module 'next-auth' {
         sesion_hacienda:boolean
         configuracion:Configuracion
         hacienda:Hacienda | null
+        tiene_preguntas_seguridad:boolean
         // Any other attributes you need from either your User table columns or additional fields during a session callback
     }
     /**
@@ -64,5 +65,6 @@ declare module 'next-auth/jwt' {
         sesion_hacienda:boolean
         configuracion:Configuracion
         hacienda:Hacienda | null
+        tiene_preguntas_seguridad;
     }
 }
