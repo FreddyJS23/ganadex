@@ -20,10 +20,12 @@ import {
 } from '@nextui-org/react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { statusOptions } from '@/collections/statusCattleCollection';
-import { EstadosGanado, Hacienda, StateCattle } from '@/types';
+import { EstadosGanado, Ganado, Hacienda, StateCattle, TypesCattle } from '@/types';
 import IconFlechaDerecha from '@/icons/icono-flecha_derecha.svg';
 import IconSearch from '@/icons/icono-buscar.svg';
 import { useSession } from 'next-auth/react';
+import { types } from 'util';
+import { typeCasttleSelect } from '@/collections/typeCastleSelect';
 
 type TableComponentProps<T> = {
     type: string;
@@ -92,13 +94,18 @@ export const TableComponent = <T extends { id: number }>({
     
     /* --------------------------------- buscador y filtro por estados -------------------------------- */
     const [filterValue, setFilterValue] = useState('');
+    /* el tipo selection de nextui permite seleccionar todo el set con el string (all) */
     const [statusFilter, setStatusFilter] = useState<Selection>('all');
+    const [typesCastleFilter, setTypesCastleFilter] = useState<Selection>('all');
+    const [sexFilter, setSexFilter] = useState<Selection>('all');
     const [personalFilter, setPersonalFilter] = useState<Set<'all' | 'some'>>(new Set<'all' | 'some'>(['all']));
     const  nameHacienda=useSession().data?.user.hacienda?.nombre
 
     let typeFilter: 'none' | 'numero' | 'nombre' | 'codigo' = 'none';
     let filterStateActive = false;
     let filterHaciendaActive = false;
+    let filterTypesCattle=false
+    let filterSexCattle=false
  
     if(items.length > 0){
         if('numero' in items[0]) typeFilter = 'numero';
@@ -108,6 +115,10 @@ export const TableComponent = <T extends { id: number }>({
         if('estados' in items[0]) filterStateActive = true;
 
         if('haciendas' in items[0]) filterHaciendaActive = true;
+
+        if('tipo' in items[0]) filterTypesCattle = true;
+
+        if('sexo' in items[0]) filterSexCattle = true;
         
    }
 
@@ -199,8 +210,39 @@ export const TableComponent = <T extends { id: number }>({
           
         }
 
+        //filtro por tipo de ganado
+        if(typesCastleFilter != 'all' ) {
+            //añadir atributo al tipo de los items para mejorar el tipado
+            const filteredItemsWithType = filteredItems as Array<
+                T & { tipo: keyof typeof TypesCattle }
+            >;
+            /* trasformar el set del select tipo de ganado
+             en un array para poder usar el includes */
+            const typesCattleFiltered = Array.from(typesCastleFilter) as Array<
+            keyof typeof TypesCattle>;
+
+            filteredItems = filteredItemsWithType.filter((item) =>
+                /* filtrar el ganado por el tipo seleccionado en el select */
+                typesCattleFiltered.includes(item.tipo)
+            );
+        }
+
+        if (sexFilter != 'all'  ) {
+            const filteredItemsWithSex = filteredItems as Array<
+                T & { sexo: Ganado['sexo'] }
+            >;
+            const sexFilterArray = Array.from(sexFilter) as Array<
+                 Ganado['sexo']
+            >;
+            filteredItems = filteredItemsWithSex.filter((item) =>
+                /* filtrar el ganado por el tipo seleccionado en el select */
+                sexFilterArray.includes(item.sexo)
+            );
+        }
+
+
         return filteredItems;
-    }, [list.items, typeFilter, statusFilter, filterHaciendaActive, personalFilter, hasSearchFilter, filterValue]);
+    }, [list.items, typeFilter, statusFilter, filterHaciendaActive, personalFilter, hasSearchFilter, filterValue,typesCastleFilter,sexFilter]);
 
     /* -------------------------------- paginado -------------------------------- */
     const [page, setPage] = useState(1);
@@ -266,6 +308,82 @@ export const TableComponent = <T extends { id: number }>({
                                 className="capitalize"
                             >
                                 {status.label}
+                            </DropdownItem>
+                        ))}
+                    </DropdownMenu>
+                </Dropdown>}
+                
+                {/* Selecion de tipos de ganado */}
+               {filterTypesCattle && <Dropdown
+                    classNames={{ base: 'bg-base-100', content: 'bg-base-100' }}
+                >
+                    <DropdownTrigger className="hidden sm:flex">
+                        <Button
+                            variant="flat"
+                            endContent={
+                                <IconFlechaDerecha className="w-4 h-4 text-primary rotate-90" />
+                            }
+                        >
+                            Tipos
+                        </Button>
+                    </DropdownTrigger>
+                    <DropdownMenu
+                        disallowEmptySelection
+                        aria-label="Table Columns"
+                        closeOnSelect={false}
+                        selectedKeys={typesCastleFilter}
+                        selectionMode="multiple"
+                        onSelectionChange={(key) => {
+                            console.log(key)
+                            setTypesCastleFilter(key);
+                        }}
+                        classNames={{ base: 'bg-base-100' }}
+                    >
+                        {typeCasttleSelect.map((type) => (
+                            <DropdownItem
+                                /*se utiliza el label como key, ya que el filtrado se hace por el nombre del tipo */
+                                key={type.label}
+                                className="capitalize"
+                            >
+                                {type.label}
+                            </DropdownItem>
+                        ))}
+                    </DropdownMenu>
+                </Dropdown>}
+               
+               
+                {/* Selecion de sexo ganado */}
+               {filterTypesCattle && <Dropdown
+                    classNames={{ base: 'bg-base-100', content: 'bg-base-100' }}
+                >
+                    <DropdownTrigger className="hidden sm:flex">
+                        <Button
+                            variant="flat"
+                            endContent={
+                                <IconFlechaDerecha className="w-4 h-4 text-primary rotate-90" />
+                            }
+                        >
+                            Sexo
+                        </Button>
+                    </DropdownTrigger>
+                    <DropdownMenu
+                        disallowEmptySelection
+                        aria-label="Table Columns"
+                        closeOnSelect={false}
+                        selectedKeys={sexFilter}
+                        selectionMode="multiple"
+                        onSelectionChange={(key) => {
+                            setSexFilter(key);
+                        }}
+                        classNames={{ base: 'bg-base-100' }}
+                    >
+                        {[{sexo:'H',label:'Hembras'},{sexo:'M',label:'Machos'}].map(({label,sexo}) => (
+                            <DropdownItem
+                                /*se utiliza el label como key, ya que el filtrado se hace por el nombre del tipo */
+                                key={sexo}
+                                className="capitalize"
+                            >
+                                {label}
                             </DropdownItem>
                         ))}
                     </DropdownMenu>
