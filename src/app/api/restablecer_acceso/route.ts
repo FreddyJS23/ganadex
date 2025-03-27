@@ -58,8 +58,8 @@ export async function POST(req: NextRequest) {
         }
         else throw new ErrorFromApi('error', { status: status, data: data as ResponseErrorFromApi['data'] });
     } catch (e) {
-        const { error } = handleErrorFromApi(e)
-        return new Response(JSON.stringify(error), { status: error.status })
+        const  error  = handleErrorFromApi(e)
+        return new Response(JSON.stringify(error), { status: error.error.status })
     }
   
     redirect(`/restablecer_acceso/${token}`);
