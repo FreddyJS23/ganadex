@@ -154,7 +154,8 @@ export const TabsProfile = ({
                             <div className="flex gap-12 items-center">
                                 <ElementProfile
                                     tittle="Preguntas de Seguridad"
-                                    description="Estas preguntas se utilizan para verificar tu identidad en caso de que necesites recuperar tu cuenta."
+                                    description="Estas preguntas se utilizan para verificar tu identidad en caso de que necesites recuperar tu cuenta. 
+                                    Para esto al menos necesitas tener 3 preguntas de seguridad, si no tienes 3 preguntas de seguridad, no podras recuperar tu contraseña"
                                     divider
                                 />
                             </div>
