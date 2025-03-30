@@ -32,8 +32,9 @@ export const SelectVeterinaryNotUser = ({
 
             const {nombre,usuario}=res
             toast.success(`Se ha registrado el usuario ${usuario} para el veterinario ${nombre}`);
-            setIsLoading(false);
+            setValue(new Set([]))
             router.refresh();
+            setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
             toast.error(error as string);
