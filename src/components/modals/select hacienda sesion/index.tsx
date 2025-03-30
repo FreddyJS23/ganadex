@@ -17,7 +17,9 @@ import { getSession, useSession } from "next-auth/react";
 
 export const ModalSelectHaciendaSesion = ({
   haciendas,
-}: { haciendas: Hacienda[] }) => {
+}: {
+  haciendas: Hacienda[];
+}) => {
   const { handleSubmit, control } = useForm<{ hacienda_id: number }>();
   const router = useRouter();
   const { update, data: session, status } = useSession();

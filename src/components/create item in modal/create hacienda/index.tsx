@@ -5,7 +5,9 @@ import { useDisclosure } from "@nextui-org/react";
 
 export const CreateHacienda = ({
   primeraHacienda = false,
-}: { primeraHacienda?: boolean }) => {
+}: {
+  primeraHacienda?: boolean;
+}) => {
   const { onOpen, onOpenChange } = useDisclosure();
 
   return (

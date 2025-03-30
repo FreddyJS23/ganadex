@@ -4,7 +4,9 @@ import React from "react";
 
 export const VaccinesAppliedCastle = ({
   vacunaciones,
-}: { vacunaciones: AplicacionVacunaHistorial[] }) => {
+}: {
+  vacunaciones: AplicacionVacunaHistorial[];
+}) => {
   return (
     <div className="overflow-x-auto">
       <table className="table text-neutral-content">

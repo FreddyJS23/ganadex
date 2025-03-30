@@ -6,7 +6,9 @@ import { useDisclosure } from "@nextui-org/react";
 
 export const CreateDeathCattle = ({
   causas_fallecimeinto,
-}: { causas_fallecimeinto: CausaFallecimiento[] }) => {
+}: {
+  causas_fallecimeinto: CausaFallecimiento[];
+}) => {
   const { onOpen, onOpenChange } = useDisclosure();
   return (
     <>
