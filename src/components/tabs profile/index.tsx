@@ -18,6 +18,7 @@ import { TableLogsEvents } from '../tables/logs events';
 import { ChangeSessionHacienda } from '../change session hacienda';
 import { UpdateResponseSecurity } from '../update response security';
 import { QuestionSecurity } from '../question security';
+import { ListHaciendasProfile } from '../editable sections/hacienda';
 
 type TabsProfileProps = {
     usuarios_veterinarios: UserVeterinaryInfo[];
@@ -128,22 +129,7 @@ export const TabsProfile = ({
                                 </h3>
                                 <div className="divider divider-primary mt-0 opacity-[0.03]"></div>{' '}
                             </div>
-                            <>
-                                {haciendas.map(
-                                    (hacienda) => (
-                                        <>
-                                        <ElementProfile
-                                            key={hacienda.id}
-                                            tittle={hacienda.nombre}
-                                            description={`Creada el ${hacienda.fecha_creacion}`}
-                                        >
-                                        {haciendaSesion.id != hacienda.id ? <ChangeSessionHacienda hacienda={hacienda} /> : undefined}
-                                        </ElementProfile>
-                                    
-                                        </>
-                                    ),
-                                )}
-                            </>
+                            <ListHaciendasProfile haciendaSesion={haciendaSesion} haciendas={haciendas}  userLoginInfo={user} />
                         </LayoutContentTabs>
                     </Tab>
                 

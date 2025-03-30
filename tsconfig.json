@@ -47,7 +47,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "build/types/**/*.ts"
-  ],
+, "src/components/editable sections/hacienda"  ],
   "exclude": [
     "node_modules"
   ]

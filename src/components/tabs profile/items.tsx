@@ -1,5 +1,7 @@
 type ElementProfileProps = {
     tittle: string;
+    /**opcional para mostrar botones de edicion o eliminacion de elementos   */
+    titleOptions?: JSX.Element;
     content?: string;
     description?: string;
     children?: JSX.Element | JSX.Element[] | undefined;
@@ -42,13 +44,18 @@ export const ElementProfile = ({
     content,
     description,
     children,
-    divider=true
+    divider=true,
+    titleOptions,
 }: ElementProfileProps) => {
     return (
         <div className="flex flex-col w-full">
             <div className={`flex justify-between items-center ${content ? 'w-7/12' : 'w-full'} `}>
-                <div className={`flex flex-col gap-1 grow ${content ? 'w-60' : 'w-full'}`}>
+                <div className={`flex flex-col gap-2 grow ${content ? 'w-60' : 'w-full'}`}>
+                   {titleOptions ? (<div className="flex gap-4 items-center"> 
                     <span className="font-bold text-xl">{tittle}</span>
+                     {titleOptions}
+                     </div>) :
+                     ( <span className="font-bold text-xl">{tittle}</span>)}
                     <span className={`text-sm opacity-60  ${content && 'text-balance'}`}>{description}</span>
                     {children}
                 </div>

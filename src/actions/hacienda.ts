@@ -1,6 +1,6 @@
 'use serve';
 
-import {  Hacienda, ResponseErrorNext, ResponseHacienda } from '@/types';
+import {  Hacienda, ResponseErrorNext, ResponseHacienda, ResponseRegistroExitoso } from '@/types';
 import {  CreateHacienda } from '@/types/forms';
 import { getData } from '@/utils/getData';
 
@@ -16,6 +16,37 @@ export async function createHacienda(
       if('error' in response) return response
       else return response.hacienda
 }
+
+export async function editHacienda(
+    id:number,
+    formData: CreateHacienda,
+): Promise<Hacienda | ResponseErrorNext > {
+   
+        const response = await getData<CreateHacienda,ResponseHacienda>(
+            'haciendaAccion',
+            'PUT',
+            formData,
+            id,
+        );
+      if('error' in response) return response
+      else return response.hacienda
+}
+
+export async function deleteHacienda(
+    id:number,
+): Promise<string | ResponseErrorNext > {
+   
+        const response = await getData<CreateHacienda,{idHacienda:number | string}>(
+            'haciendaAccion',
+            'DELETE',
+            undefined,
+            id,
+        );
+      if('error' in response) return response
+      else return response.idHacienda.toString()
+}
+
+
 
 export async function createSesionHacienda(
     haciendaId: number,

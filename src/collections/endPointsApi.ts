@@ -78,6 +78,7 @@ export const endPoints = {
     usuarioVeterinario: 'usuarios_veterinarios/',
     usuario:'usuario/',
     hacienda:'hacienda',
+    haciendaAccion:'hacienda/',
     verSesionHacienda:'verificar_sesion_hacienda',
     crearSesionHacienda:'crear_sesion_hacienda/',
     logsVeterinario:'logs_veterinario/',

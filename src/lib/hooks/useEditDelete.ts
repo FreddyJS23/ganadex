@@ -8,7 +8,7 @@ import { toast } from "sonner";
 /** hook para manejar la edicion y borrado de elementos
  * @param deleteActionResponse Action que se ejecuta para borrar el elemento
  */
-export const useEditDelete = (deleteActionResponse:(id:number)=>Promise<string | ResponseErrorNext>) => {
+export const useEditDelete = (deleteActionResponse?:(id:number)=>Promise<string | ResponseErrorNext>) => {
   
     const router = useRouter();
 
@@ -29,13 +29,19 @@ export const useEditDelete = (deleteActionResponse:(id:number)=>Promise<string |
     const onDelete = async (id: number) => {
         setIsLoading(true);
 
-        const response = await deleteActionResponse(id);
+        const response =deleteActionResponse ? await deleteActionResponse(id) : undefined;
         if (typeof response == 'object' && 'error' in response!)
+        {
+            setIsLoading(false);
+            setEditar(false);
             return toast.error(messageErrorApi(response));
-        else {
+
+        }
+            else {
             setIsLoading(false);
             setEditar(false);
             router.refresh();
+            return toast.success(`Se ha eliminado correctamente`);
         }
     };
 
@@ -44,6 +50,6 @@ export const useEditDelete = (deleteActionResponse:(id:number)=>Promise<string |
         setIdAction(null);
     };
 
-    
     return { editar,idAction,isLoading,onEdit,onDelete,onSaveOrCancel };
+  
 };
