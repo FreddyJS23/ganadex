@@ -6,7 +6,7 @@ import { Details } from '@/components/details';
 import { Input } from '@/components/Inputs';
 import { Ganado, Pesos } from '@/types';
 import { updateWeight } from '@/types/forms';
-import { weightsShema } from '@/validations/weightsShema';
+import { weightsShema,  weightsWith2yearShema } from '@/validations/weightsShema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -54,19 +54,23 @@ export const WeightsEditable = ({
     const convertWeightToNumber = (weight: string | null) => {
         return parseInt(weight ? weight : '');
     };
+    /* pesos por defecto */
+    const defaultValues={
+        peso_destete: convertWeightToNumber(pesos.peso_destete),
+        peso_nacimiento: convertWeightToNumber(pesos.peso_nacimiento),
+        peso_actual: parseInt(pesos.peso_actual ? pesos.peso_actual : ''),
+    }
+
+    /* el peso de dos años solo es agregado al ganado si es tipo es difeente a becerro */
+    const defaultValuesWith2year={...defaultValues,peso_2year: convertWeightToNumber(pesos.peso_2year)}
 
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm<updateWeight>({
-        resolver: zodResolver(weightsShema),
-        defaultValues: {
-            peso_2year: convertWeightToNumber(pesos.peso_2year),
-            peso_destete: convertWeightToNumber(pesos.peso_destete),
-            peso_nacimiento: convertWeightToNumber(pesos.peso_nacimiento),
-            peso_actual: parseInt(pesos.peso_actual ? pesos.peso_actual : ''),
-        },
+        resolver: zodResolver(typeCattle == 'Becerro' ? weightsShema : weightsWith2yearShema),
+        defaultValues:typeCattle == 'Becerro' ? defaultValues : defaultValuesWith2year,
     });
 
     const updatesFunctions={
@@ -147,7 +151,7 @@ export const WeightsEditable = ({
                         {formWeights.map(
                             ({ id, label, required, type, endContent }) => { 
                               
-                                return !(typeCattle == 'becerro' && id == 'peso_2year') && <div className="w-44" key={id}>
+                                return !(typeCattle == 'Becerro' && id == 'peso_2year') && <div className="w-44" key={id}>
                                     <Input
                                         key={id}
                                         id={id}
