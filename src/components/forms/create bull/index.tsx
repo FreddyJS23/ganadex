@@ -137,7 +137,13 @@ console.log(errors)
       const [origen, setOrigen] = useState< 1 | 2>(1);
            
       const handleSelectionOrigenChange = (select:string | number) => {
-         setOrigen(select as 1 | 2)
+        if(select == 1){
+            /* se usa el setValue porque el resetField no funciona, no borra el valor en el input,
+            sin esto el valor se mantiene en el input y al enviar  el backend dara error ya que se esta mandando 
+            el valor de fecha_ingreso en un formato incorrecto */
+            setValue('fecha_ingreso', undefined);
+      }
+      setOrigen(select as 1 | 2)
       };
  
 
