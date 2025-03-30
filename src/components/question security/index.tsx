@@ -29,6 +29,7 @@ import { ButtonsEditedDelete } from '@/ui/Buttons edit-delete';
 import { Select } from '../select';
 import { CreateOrUpdateResponseSecurity } from '@/types/forms';
 import IconSave from '@/icons/icono-save.svg';
+import { useEditDelete } from '@/lib/hooks/useEditDelete';
 
 type QuestionSecurityProps = {
     preguntas_seguridad: PreguntasSeguridad[];
@@ -47,8 +48,7 @@ type EditProps = baseCreateOrEditProps & {
     type: 'edit';
     id: number;
     pregunta_seguridad_id: number;
-    setEditar: React.Dispatch<React.SetStateAction<boolean>>;
-    setIdAction: React.Dispatch<React.SetStateAction<number | null>>;
+    onSave: () => void;
 };
 
 type CreateOrEditProps = CreateProps | EditProps;
@@ -58,35 +58,7 @@ export const QuestionSecurity = ({
     respuestas_seguridad,
 }: QuestionSecurityProps) => {
     
-    const [editar, setEditar] = useState(false);
-    const [idAction, setIdAction] = useState<number | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
-
-    const router = useRouter();
-
-    const onEdit = (id: number) => {
-        setEditar(true);
-        setIdAction(id);
-
-    };
-
-    const onDelete = async (id: number) => {
-        setIsLoading(true);
-
-        const response = await deleteResponseSecurity(id);
-        if (typeof response == 'object' && 'error' in response!)
-            return toast.error(messageErrorApi(response));
-        else {
-            setIsLoading(false);
-            setEditar(false);
-            router.refresh();
-        }
-    };
-
-    const onCancel = () => {
-        setEditar(false);
-        setIdAction(null);
-    };
+    const { editar,idAction,isLoading,onEdit,onDelete,onSaveOrCancel } = useEditDelete(deleteResponseSecurity);
 
     /* desabilitar el boton de crear pregunta de seguridad si ya tiene 7 preguntas */
     const createQuestion = respuestas_seguridad.length < 7;
@@ -119,14 +91,13 @@ export const QuestionSecurity = ({
                                     pregunta_seguridad_id={
                                         pregunta_seguridad_id
                                     }
-                                    setEditar={setEditar}
-                                    setIdAction={setIdAction}
+                                    onSave={onSaveOrCancel}
                                 />
                                 <ButtonsEditedDelete
                                     id={id}
                                     formId="form-edit-question"
                                     state="save"
-                                    onCancel={onCancel}
+                                    onCancel={onSaveOrCancel}
                                     isLoading={isLoading}
                                 />
                             </div>
@@ -204,8 +175,7 @@ const CreateOrEdit = (props: CreateOrEditProps) => {
                 `${type == 'create' ? 'Pregunta creada ' : 'Pregunta editada'}  correctamente`,
             );
             if (type == 'edit') {
-                props.setEditar(false);
-                props.setIdAction(null);
+                props.onSave();
             }
             formRef.current?.reset();
             router.refresh();
