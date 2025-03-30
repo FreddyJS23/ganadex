@@ -1,5 +1,5 @@
-import { z } from './configInitZod';
+import { z } from "./configInitZod";
 
 export const createTypeCheckShema = z.object({
-    tipo: z.string().min(3).max(255),
-})
+  tipo: z.string().min(3).max(255),
+});

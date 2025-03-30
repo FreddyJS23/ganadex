@@ -1,21 +1,21 @@
-import { ModalAssignmentNumberBullCalf } from '@/components/modals/assignment number bull calf';
-import { ResponseGanado } from '@/types';
-import { getData } from '@/utils/getData';
+import { ModalAssignmentNumberBullCalf } from "@/components/modals/assignment number bull calf";
+import { ResponseGanado } from "@/types";
+import { getData } from "@/utils/getData";
 
 type ParamsPage = {
-    params: { id: number };
+  params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-    const { ganado }: ResponseGanado = await getData(
-        'ganado',
-        'GET',
-        undefined,
-        params.id,
-    );
-    const { numero, nombre } = ganado;
+  const { ganado }: ResponseGanado = await getData(
+    "ganado",
+    "GET",
+    undefined,
+    params.id,
+  );
+  const { numero, nombre } = ganado;
 
-    return (
-        <ModalAssignmentNumberBullCalf dataHeader={numero ? numero : nombre} />
-    );
+  return (
+    <ModalAssignmentNumberBullCalf dataHeader={numero ? numero : nombre} />
+  );
 }

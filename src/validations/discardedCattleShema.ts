@@ -1,4 +1,8 @@
-import { bullShemaWitDeath, bullShemaWithSale, createBullShema } from './bullShema';
+import {
+  bullShemaWitDeath,
+  bullShemaWithSale,
+  createBullShema,
+} from "./bullShema";
 
 export const createDiscardedCattleShema = createBullShema;
 export const createDiscardedCattleWithSaleShema = bullShemaWithSale;

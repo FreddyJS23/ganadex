@@ -1,65 +1,62 @@
-'use client';
+"use client";
 
-import { headerAssignmentNumberBullCalf } from '@/collections/headerColums';
+import { headerAssignmentNumberBullCalf } from "@/collections/headerColums";
 import {
-    CriaPendienteNumeracion,
-    ResponseCriasPendienteNumeracion,
-} from '@/types';
+  CriaPendienteNumeracion,
+  ResponseCriasPendienteNumeracion,
+} from "@/types";
 import {
-    TableHeader,
-    TableColumn,
-    TableBody,
-    TableRow,
-    TableCell,
-} from '@nextui-org/table';
-import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable, TableComponent } from '..';
-import IconButton from '@/icons/icono-capar-numeracion.svg';
-import Link from 'next/link';
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@nextui-org/table";
+import { Key, ReactNode, useCallback } from "react";
+import { LayoutTable, TableComponent } from "..";
+import IconButton from "@/icons/icono-capar-numeracion.svg";
+import Link from "next/link";
 
 export const TableAssignmentNumberBullCalf = ({
-    crias_pendiente_numeracion,
+  crias_pendiente_numeracion,
 }: ResponseCriasPendienteNumeracion) => {
-    const renderCell = useCallback(
-        (criaPendienteNumeracion: CriaPendienteNumeracion, columnKey: Key) => {
-            const cellValue =
-                criaPendienteNumeracion[
-                    columnKey as keyof CriaPendienteNumeracion
-                ];
+  const renderCell = useCallback(
+    (criaPendienteNumeracion: CriaPendienteNumeracion, columnKey: Key) => {
+      const cellValue =
+        criaPendienteNumeracion[columnKey as keyof CriaPendienteNumeracion];
 
-            switch (columnKey as keyof CriaPendienteNumeracion) {
-                case 'nombre': {
-                    const nombre = cellValue as string;
-                    return (
-                        <Link href={`ganado/${criaPendienteNumeracion['id']}`}>
-                            {nombre}
-                        </Link>
-                    );
-                }
-                /* button icon */
-                case 'id': {
-                    const id = cellValue as number;
-                    return (
-                        <Link href={`asignar_numero/${id}`}>
-                            <IconButton className={'size-6'} />
-                        </Link>
-                    );
-                }
+      switch (columnKey as keyof CriaPendienteNumeracion) {
+        case "nombre": {
+          const nombre = cellValue as string;
+          return (
+            <Link href={`ganado/${criaPendienteNumeracion["id"]}`}>
+              {nombre}
+            </Link>
+          );
+        }
+        /* button icon */
+        case "id": {
+          const id = cellValue as number;
+          return (
+            <Link href={`asignar_numero/${id}`}>
+              <IconButton className={"size-6"} />
+            </Link>
+          );
+        }
 
-                default:
-                    return cellValue as ReactNode;
-            }
-        },
-        [],
-    );
+        default:
+          return cellValue as ReactNode;
+      }
+    },
+    [],
+  );
 
-    return (
-      <TableComponent
+  return (
+    <TableComponent
       columnsCollection={headerAssignmentNumberBullCalf}
       items={crias_pendiente_numeracion}
       renderCell={renderCell}
-      type='assignmente number bull calf'
-      
-      />
-    );
+      type="assignmente number bull calf"
+    />
+  );
 };

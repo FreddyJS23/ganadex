@@ -1,86 +1,92 @@
-'use client';
+"use client";
 
-import { headerAllBirths } from '@/collections/headerColums';
-import { Cria, Partos, ResponsePartosGeneral, Toro, ToroDeServicio } from '@/types';
+import { headerAllBirths } from "@/collections/headerColums";
 import {
-    TableHeader,
-    TableColumn,
-    TableBody,
-    TableRow,
-    TableCell,
-} from '@nextui-org/table';
-import { Key, ReactNode, useCallback } from 'react';
-import { LayoutTable, TableComponent } from '..';
-import { RedirectInTable } from '@/components/redirectsInTables';
-import { DropDownOptions } from '@/components/dropdown options';
+  Cria,
+  Partos,
+  ResponsePartosGeneral,
+  Toro,
+  ToroDeServicio,
+} from "@/types";
+import {
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@nextui-org/table";
+import { Key, ReactNode, useCallback } from "react";
+import { LayoutTable, TableComponent } from "..";
+import { RedirectInTable } from "@/components/redirectsInTables";
+import { DropDownOptions } from "@/components/dropdown options";
 
 export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
-    const renderCell = useCallback((partos: Partos, columnKey: Key) => {
-        const cellValue = partos[columnKey as keyof Partos];
-        switch (columnKey as keyof Partos) {
-            case 'cria': {
-                const cria = cellValue as Cria;
+  const renderCell = useCallback((partos: Partos, columnKey: Key) => {
+    const cellValue = partos[columnKey as keyof Partos];
+    switch (columnKey as keyof Partos) {
+      case "cria": {
+        const cria = cellValue as Cria;
 
-                return (
-                    <RedirectInTable
-                        id={cria.id}
-                        label={cria.numero ?? ''}
-                        redirect="ganado"
-                    />
-                );
+        return (
+          <RedirectInTable
+            id={cria.id}
+            label={cria.numero ?? ""}
+            redirect="ganado"
+          />
+        );
 
-                break;
-            }
-            case 'numero': {
-                const numero = cellValue as number;
-                return (
-                    <RedirectInTable
-                        id={partos['id']}
-                        label={numero ?? ''}
-                        redirect="ganado"
-                    />
-                );
-                break;
-            }
-            case 'toro': {
-                const toro = cellValue as ToroDeServicio;
+        break;
+      }
+      case "numero": {
+        const numero = cellValue as number;
+        return (
+          <RedirectInTable
+            id={partos["id"]}
+            label={numero ?? ""}
+            redirect="ganado"
+          />
+        );
+        break;
+      }
+      case "toro": {
+        const toro = cellValue as ToroDeServicio;
 
-                if (toro)
-                    return (
-                        <RedirectInTable
-                            id={toro.id}
-                            label={toro.numero ?? ''}
-                            redirect="toros"
-                        />
-                    );
-                else
-                    return (
-                        <RedirectInTable
-                            id={partos['pajuela_toro']!.id}
-                            label={partos['pajuela_toro']!.codigo}
-                            redirect="toros"
-                        />
-                    );
-                break;
-            }
-            case 'id': {
-                const id = cellValue as number;
-                return <DropDownOptions idCattle={id} optionType="birth" />;
-            }
+        if (toro)
+          return (
+            <RedirectInTable
+              id={toro.id}
+              label={toro.numero ?? ""}
+              redirect="toros"
+            />
+          );
+        else
+          return (
+            <RedirectInTable
+              id={partos["pajuela_toro"]!.id}
+              label={partos["pajuela_toro"]!.codigo}
+              redirect="toros"
+            />
+          );
+        break;
+      }
+      case "id": {
+        const id = cellValue as number;
+        return <DropDownOptions idCattle={id} optionType="birth" />;
+      }
 
-            default:
-                break;
-        }
+      default:
+        break;
+    }
 
-        return cellValue as ReactNode;
-    }, []);
+    return cellValue as ReactNode;
+  }, []);
 
-    return (
-       <TableComponent
-       columnsCollection={headerAllBirths}
-       items={todos_partos}
-       renderCell={renderCell}
-       type='births'
-       />
-    );
+  return (
+    <TableComponent
+      columnsCollection={headerAllBirths}
+      items={todos_partos}
+      renderCell={renderCell}
+      type="births"
+    />
+  );
 };

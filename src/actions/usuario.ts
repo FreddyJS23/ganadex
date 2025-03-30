@@ -1,40 +1,49 @@
-'use serve';
+"use serve";
 
-import { createUserApi } from '@/services/createUser';
-import { Configuracion, ResponseConfiguracion, ResponseErrorNext, ResponseUser } from '@/types';
-import { CreateUser, UpdateConfiguration, UpdateUser } from '@/types/forms';
-import { getData } from '@/utils/getData';
+import { createUserApi } from "@/services/createUser";
+import {
+  Configuracion,
+  ResponseConfiguracion,
+  ResponseErrorNext,
+  ResponseUser,
+} from "@/types";
+import { CreateUser, UpdateConfiguration, UpdateUser } from "@/types/forms";
+import { getData } from "@/utils/getData";
 
 export async function createUser(
-    formData: CreateUser,
+  formData: CreateUser,
 ): Promise<string | ResponseErrorNext> {
-    
-        const response= await createUserApi<CreateUser,{message:string}>(formData);
+  const response = await createUserApi<CreateUser, { message: string }>(
+    formData,
+  );
 
-        if ('error' in response) return response;
-        else return response.message
-      
+  if ("error" in response) return response;
+  else return response.message;
 }
 
 export async function updateUser(
-    id:number,
-    formData:UpdateUser,
+  id: number,
+  formData: UpdateUser,
 ): Promise<string | ResponseErrorNext> {
-    
-        const response = await getData<UpdateUser,ResponseUser>('usuario', 'PUT', formData, id);
-        if('error' in response) return response
-        else return response.user.usuario
-   
+  const response = await getData<UpdateUser, ResponseUser>(
+    "usuario",
+    "PUT",
+    formData,
+    id,
+  );
+  if ("error" in response) return response;
+  else return response.user.usuario;
 }
 
 export async function updateConfiguration(
-    formData:UpdateConfiguration,
+  formData: UpdateConfiguration,
 ): Promise<Configuracion | ResponseErrorNext> {
-   
-        const response = await getData<UpdateConfiguration,ResponseConfiguracion>('actualizarConfig', 'PUT', formData);
+  const response = await getData<UpdateConfiguration, ResponseConfiguracion>(
+    "actualizarConfig",
+    "PUT",
+    formData,
+  );
 
-        if('error' in response) return response
-        else return response.configuracion
-    
+  if ("error" in response) return response;
+  else return response.configuracion;
 }
-

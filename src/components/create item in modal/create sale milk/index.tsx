@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import { ModalSaleMilk } from '@/components/modals/sale milk';
-import { PreciosDeLeche } from '@/types';
-import { useDisclosure } from '@nextui-org/react';
+import { ModalSaleMilk } from "@/components/modals/sale milk";
+import { PreciosDeLeche } from "@/types";
+import { useDisclosure } from "@nextui-org/react";
 
 type ListaPreciosRegistradosProps = {
-    ListaPreciosRegistrados: PreciosDeLeche[];
+  ListaPreciosRegistrados: PreciosDeLeche[];
 };
 
 export const CreateSaleMilk = ({
-    ListaPreciosRegistrados,
+  ListaPreciosRegistrados,
 }: ListaPreciosRegistradosProps) => {
-    const { onOpen, onOpenChange } = useDisclosure();
+  const { onOpen, onOpenChange } = useDisclosure();
 
-    return (
-        <ModalSaleMilk
-            isOpen={true}
-            onOpen={onOpen}
-            onOpenChange={onOpenChange}
-            selectPrecios={ListaPreciosRegistrados}
-        />
-    );
+  return (
+    <ModalSaleMilk
+      isOpen={true}
+      onOpen={onOpen}
+      onOpenChange={onOpenChange}
+      selectPrecios={ListaPreciosRegistrados}
+    />
+  );
 };

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -24,21 +20,11 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/icons/*": [
-        "public/assets/icons/*"
-      ],
-      "@/svg/*": [
-        "public/assets/svg/*"
-      ],
-      "@/auth": [
-        "./src/app/auth.ts"
-      ],
-      "@/actions": [
-        "./src/actions/*"
-      ]
+      "@/*": ["./src/*"],
+      "@/icons/*": ["public/assets/icons/*"],
+      "@/svg/*": ["public/assets/svg/*"],
+      "@/auth": ["./src/app/auth.ts"],
+      "@/actions": ["./src/actions/*"]
     }
   },
   "include": [
@@ -46,9 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "build/types/**/*.ts"
-, "src/components/editable sections/hacienda"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "build/types/**/*.ts",
+    "src/components/editable sections/hacienda"
+  ],
+  "exclude": ["node_modules"]
 }

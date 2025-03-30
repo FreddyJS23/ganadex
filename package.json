@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier . --write",
-    "fakeApi": "json-server src/data/db.json -p 4000 "
+    "fakeApi": "json-server src/data/db.json -p 4000",
+    "biome": "biome format ./ --write"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -39,6 +40,7 @@
     "zod-i18n-map": "^2.27.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@next/eslint-plugin-next": "^14.1.4",
     "@types/node": "^20",
     "@types/react": "^18",

@@ -3,8 +3,7 @@ import { UpdateConfiguration } from "@/components/create item in modal/update co
 import { Session } from "next-auth";
 
 export default async function Page() {
-    
-    const session = (await auth()) as Session;
+  const session = (await auth()) as Session;
 
-    return <UpdateConfiguration />;
+  return <UpdateConfiguration />;
 }

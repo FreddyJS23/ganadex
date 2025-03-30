@@ -1,7 +1,7 @@
-'use server';
+"use server";
 
-import { cookies } from 'next/headers';
+import { cookies } from "next/headers";
 
 export async function deleteSession() {
-    cookies().delete('authjs.session-token');
+  cookies().delete("authjs.session-token");
 }

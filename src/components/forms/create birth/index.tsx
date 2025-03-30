@@ -1,234 +1,238 @@
-'use client';
+"use client";
 
-import { createBirth } from '@/actions/parto';
-import {  formBirth, formCalfCastle } from '@/collections/formsInputs';
-import { Input } from '@/components/Inputs';
-import { Select } from '@/components/select';
-import { SelectVeterinariesAndWorkers } from '@/components/select veterinaries & workers';
-import { Textarea } from '@/components/Textarea';
-import {  veterinario } from '@/types';
-import { CreateAdminBirth, CreateBaseBirth } from '@/types/forms';
-import { Button } from '@/ui/Button';
-import { converToSelectOptions } from '@/utils/convertResponseInOptionsSelect';
-import { getDateNow } from '@/utils/getDateNow';
-import { messageErrorApi } from '@/utils/handleErrorResponseNext';
-import { createAdminBirthShema, createBaseBirthShema } from '@/validations/birthShema';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Checkbox } from '@nextui-org/react';
-import { useParams, useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import { toast } from 'sonner';
+import { createBirth } from "@/actions/parto";
+import { formBirth, formCalfCastle } from "@/collections/formsInputs";
+import { Input } from "@/components/Inputs";
+import { Select } from "@/components/select";
+import { SelectVeterinariesAndWorkers } from "@/components/select veterinaries & workers";
+import { Textarea } from "@/components/Textarea";
+import { veterinario } from "@/types";
+import { CreateAdminBirth, CreateBaseBirth } from "@/types/forms";
+import { Button } from "@/ui/Button";
+import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
+import { getDateNow } from "@/utils/getDateNow";
+import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import {
+  createAdminBirthShema,
+  createBaseBirthShema,
+} from "@/validations/birthShema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Checkbox } from "@nextui-org/react";
+import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 type FormCreateBirthProps = {
-    veterinarios: veterinario[];
-    obreros:veterinario[];
-    numero_disponible:number;
-    isAdmin:boolean
+  veterinarios: veterinario[];
+  obreros: veterinario[];
+  numero_disponible: number;
+  isAdmin: boolean;
 };
 
-
-
 export const FormCreateBirth = ({
-    veterinarios,
-    numero_disponible,
-    isAdmin,
-    obreros
+  veterinarios,
+  numero_disponible,
+  isAdmin,
+  obreros,
 }: FormCreateBirthProps) => {
-    /* [key in FieldsCalfCastle['id']]:any */
-    /* valores formulario cria ganado */
-    const valuesInitFormCalfCastle:CreateBaseBirth['crias'][0] = {
-        'nombre':'',
-        'numero':numero_disponible,
-        'sexo':'H',
-        'peso_nacimiento':0,
-        observacion:''
+  /* [key in FieldsCalfCastle['id']]:any */
+  /* valores formulario cria ganado */
+  const valuesInitFormCalfCastle: CreateBaseBirth["crias"][0] = {
+    nombre: "",
+    numero: numero_disponible,
+    sexo: "H",
+    peso_nacimiento: 0,
+    observacion: "",
+  };
+
+  const {
+    register,
+    formState: { errors },
+    control,
+    handleSubmit,
+  } = useForm<CreateBaseBirth | CreateAdminBirth>({
+    resolver: zodResolver(
+      isAdmin ? createAdminBirthShema : createBaseBirthShema,
+    ),
+    defaultValues: { fecha: getDateNow(), crias: [valuesInitFormCalfCastle] },
+  });
+
+  /* campos array crias */
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "crias",
+  });
+
+  /* check doble cria */
+  const [isSelected, setIsSelected] = useState(false);
+
+  const handleChangeCheckbox = () => {
+    //como no hay un renderizado no se actualiza el estado y no se puede obtener el valor actual del select
+    //por ende se asumen que aqui el valor debe ser el contrario
+    const actualValue = !isSelected;
+    console.log({ ...valuesInitFormCalfCastle, numero: numero_disponible + 1 });
+    if (actualValue) {
+      /* para no crear un numero repetido */
+      append({ ...valuesInitFormCalfCastle, numero: numero_disponible + 1 });
+    } else {
+      remove(1);
     }
-    
-    const {
-        register,
-        formState: { errors },
-        control,
-        handleSubmit,
-    } = useForm<CreateBaseBirth | CreateAdminBirth>({
-        resolver: zodResolver(isAdmin ? createAdminBirthShema : createBaseBirthShema),
-        defaultValues: {  fecha:getDateNow(),
-            crias:[valuesInitFormCalfCastle]
-        }
-    });
+  };
 
-    
-    /* campos array crias */
-    const { fields, append, remove } = useFieldArray({
-        control,
-        name: "crias"
-      });
+  const router = useRouter();
+  const { id: cattleId } = useParams<{ id: string }>();
+  console.log(errors);
+  const actionCreateBirth: () => void = handleSubmit(async (data) => {
+    const response = await createBirth(data, parseInt(cattleId));
+    /* manejar error del backedn y mostar mensaje */
+    if (typeof response == "object" && "error" in response!)
+      return toast.error(messageErrorApi(response));
+    toast.success(`Parto creado`);
+    router.back();
+    router.refresh();
+  });
 
-      /* check doble cria */
-      const [isSelected, setIsSelected] = useState(false);
+  return (
+    <>
+      <form
+        action={actionCreateBirth}
+        className="flex flex-col items-center gap-8 p-4 m-auto "
+      >
+        <div className="flex gap-6 flex-col justify-center max-w-80 sm:justify-evenly sm:flex-row sm:flex-wrap sm:max-w-fit ">
+          {formBirth.map(({ id, label, required, type }) => (
+            <div key={id} className={"sm:w-44"}>
+              {id == "observacion" && (
+                <Textarea
+                  key={id}
+                  id={id}
+                  label={label}
+                  required={required}
+                  errors={errors}
+                  register={register}
+                />
+              )}
 
-      const handleChangeCheckbox = () => {
-        
-        //como no hay un renderizado no se actualiza el estado y no se puede obtener el valor actual del select
-        //por ende se asumen que aqui el valor debe ser el contrario
-        const actualValue=!isSelected
-        console.log({...valuesInitFormCalfCastle,numero:numero_disponible + 1 })
-        if(actualValue){
-            /* para no crear un numero repetido */
-            append({...valuesInitFormCalfCastle,numero:numero_disponible + 1 });
-        }
-        else{
-            remove(1);
-        }
-      };
+              {id == "fecha" && (
+                <Input
+                  key={id}
+                  id={id}
+                  label={label}
+                  required={required}
+                  defaultValue={getDateNow()}
+                  type="date"
+                  errors={errors}
+                  register={register}
+                />
+              )}
 
-    const router = useRouter();
-    const { id: cattleId } = useParams<{ id: string }>();
-console.log(errors)
-    const actionCreateBirth: () => void = handleSubmit(async (data) => {
-           const response= await createBirth(data, parseInt(cattleId));
-            /* manejar error del backedn y mostar mensaje */
-            if(typeof response == 'object' && 'error' in response!) return toast.error(messageErrorApi(response)) 
-           toast.success(`Parto creado`);
-            router.back();
-            router.refresh();
-      
-    });
-
-    return (
-        <>
-            <form
-                action={actionCreateBirth}
-                className="flex flex-col items-center gap-8 p-4 m-auto "
-            >
-                <div className="flex gap-6 flex-col justify-center max-w-80 sm:justify-evenly sm:flex-row sm:flex-wrap sm:max-w-fit ">
-                    {formBirth.map(({ id, label, required, type }) => (
-                        <div key={id} className={'sm:w-44'}>
-                            {id == 'observacion' && (
-                                <Textarea
-                                    key={id}
-                                    id={id}
-                                    label={label}
-                                    required={required}
-                                    errors={errors}
-                                    register={register}
-                                />
-                            )}
-                            
-                            {id == 'fecha' && (
-                                <Input
-                                    key={id}
-                                    id={id}
-                                    label={label}
-                                    required={required}
-                                    defaultValue={getDateNow()}
-                                    type="date"
-                                    errors={errors}
-                                    register={register}
-                                />
-                            )}
-
-                            {type == 'select' && id == 'personal_id'&& isAdmin && (
-                                <Controller
-                                    name={id}
-                                    control={control}
-                                    render={({ field }) => (
-                                        <SelectVeterinariesAndWorkers
-                                            id={id}
-                                            label={label}
-                                            description={'Veterinarios y obreros'}
-                                            field={field}
-                                            veterinaries={veterinarios}
-                                            workers={obreros}
-                                            errors={errors}
-                                            required={required}
-                                        />
-                                    )}
-                                />
-                            )}
-                        </div>
-                    ))}
-                </div>
-
-                {/* campos array crias */}
-                <div className='flex flex-col'>
-                  <div className='flex gap-4'>
-                    <h3>Datos de la cria</h3>    
-                    <Checkbox title='Registrar dos crias en caso que la vaca haya tenido morochos' 
-                    isSelected={isSelected} onValueChange={setIsSelected} onClick={handleChangeCheckbox}>
-                            Nacimiento dos crias
-                        </Checkbox>
-                     </div>
-                    
-                    {fields.map((field, index) => (
-                        <div key={field.id} className="flex flex-col gap-4">
-                            {/* numerar crias en caso de que haya dos crias */}
-                              {isSelected && <div> <h3>Cria #{index + 1 }</h3>  </div>}
-                            
-                            <div className="flex gap-4 flex-col justify-center max-w-80 sm:justify-evenly sm:flex-row sm:flex-wrap sm:max-w-fit ">
-                               {formCalfCastle.map(({ id, label, required, type,select }) => (
-                                <div key={id} className={'sm:w-44'}>
-                                    {id == 'observacion' && (
-                                        <Textarea
-                                            id={`crias.${index}.${id}`}
-                                            key={`crias.${index}.${id}`}
-                                            label={label}
-                                            required={required}
-                                            errors={errors}
-                                            register={register}
-                                        />
-                                    )}
-                                    {type != 'select' && id != 'observacion'  && (
-                                        <Input
-                                            key={`crias.${index}.${id}`}
-                                            id={`crias.${index}.${id}`}
-                                            label={label}
-                                            required={required}
-                                            type={type}
-                                            errors={errors}
-                                            register={register}
-                                            defaultValue={id== 'numero' ? String(field.numero) : undefined}
-                                        />
-                                    )}
-                                    
-                                    {type == 'select' && id == 'sexo' && (
-                                        <Controller
-                                            name={`crias.${index}.${id}`}
-                                            control={control}
-                                            render={({ field }) => (
-                                                <Select
-                                                    field={field}
-                                                    id={`crias.${index}.${id}`}
-                                                    items={
-                                                     select!
-                                                        
-                                                    }
-                                                    label={label}
-                                                    errors={errors}
-                                                    required={required}
-                                                />
-                                            )}
-                                        />
-                                    )}
-                                    
-                                </div>
-                            ))}
-                                
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                
-                <div className="w-full sm:max-w-72">
-                    <Button
-                        onClick={() => {
-                            return;
-                        }}
-                        type="submit"
-                        content="Registrar"
+              {type == "select" && id == "personal_id" && isAdmin && (
+                <Controller
+                  name={id}
+                  control={control}
+                  render={({ field }) => (
+                    <SelectVeterinariesAndWorkers
+                      id={id}
+                      label={label}
+                      description={"Veterinarios y obreros"}
+                      field={field}
+                      veterinaries={veterinarios}
+                      workers={obreros}
+                      errors={errors}
+                      required={required}
                     />
+                  )}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* campos array crias */}
+        <div className="flex flex-col">
+          <div className="flex gap-4">
+            <h3>Datos de la cria</h3>
+            <Checkbox
+              title="Registrar dos crias en caso que la vaca haya tenido morochos"
+              isSelected={isSelected}
+              onValueChange={setIsSelected}
+              onClick={handleChangeCheckbox}
+            >
+              Nacimiento dos crias
+            </Checkbox>
+          </div>
+
+          {fields.map((field, index) => (
+            <div key={field.id} className="flex flex-col gap-4">
+              {/* numerar crias en caso de que haya dos crias */}
+              {isSelected && (
+                <div>
+                  {" "}
+                  <h3>Cria #{index + 1}</h3>{" "}
                 </div>
-            </form>
-        </>
-    );
+              )}
+
+              <div className="flex gap-4 flex-col justify-center max-w-80 sm:justify-evenly sm:flex-row sm:flex-wrap sm:max-w-fit ">
+                {formCalfCastle.map(({ id, label, required, type, select }) => (
+                  <div key={id} className={"sm:w-44"}>
+                    {id == "observacion" && (
+                      <Textarea
+                        id={`crias.${index}.${id}`}
+                        key={`crias.${index}.${id}`}
+                        label={label}
+                        required={required}
+                        errors={errors}
+                        register={register}
+                      />
+                    )}
+                    {type != "select" && id != "observacion" && (
+                      <Input
+                        key={`crias.${index}.${id}`}
+                        id={`crias.${index}.${id}`}
+                        label={label}
+                        required={required}
+                        type={type}
+                        errors={errors}
+                        register={register}
+                        defaultValue={
+                          id == "numero" ? String(field.numero) : undefined
+                        }
+                      />
+                    )}
+
+                    {type == "select" && id == "sexo" && (
+                      <Controller
+                        name={`crias.${index}.${id}`}
+                        control={control}
+                        render={({ field }) => (
+                          <Select
+                            field={field}
+                            id={`crias.${index}.${id}`}
+                            items={select!}
+                            label={label}
+                            errors={errors}
+                            required={required}
+                          />
+                        )}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="w-full sm:max-w-72">
+          <Button
+            onClick={() => {
+              return;
+            }}
+            type="submit"
+            content="Registrar"
+          />
+        </div>
+      </form>
+    </>
+  );
 };

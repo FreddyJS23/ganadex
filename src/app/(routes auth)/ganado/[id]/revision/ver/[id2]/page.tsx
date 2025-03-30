@@ -1,20 +1,20 @@
-import { ModalCheckUp } from '@/components/modals/checkup';
-import { ResponseRevision } from '@/types';
-import { getData } from '@/utils/getData';
+import { ModalCheckUp } from "@/components/modals/checkup";
+import { ResponseRevision } from "@/types";
+import { getData } from "@/utils/getData";
 
 type ParamsPage = {
-    params: { id: number; id2: number };
+  params: { id: number; id2: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-    const { revision }: ResponseRevision = await getData(
-        'ganado',
-        'GET',
-        undefined,
-        params.id,
-        'revision',
-        params.id2,
-    );
+  const { revision }: ResponseRevision = await getData(
+    "ganado",
+    "GET",
+    undefined,
+    params.id,
+    "revision",
+    params.id2,
+  );
 
-    return <ModalCheckUp revision={revision} />;
+  return <ModalCheckUp revision={revision} />;
 }

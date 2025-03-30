@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { LayoutModal } from '../..';
-import { ToroServicio } from '@/types';
-import { ContainerTableHistory } from '..';
-import { TableHistoryServicesBull } from '@/components/tables/in modals/history services bull';
+import { LayoutModal } from "../..";
+import { ToroServicio } from "@/types";
+import { ContainerTableHistory } from "..";
+import { TableHistoryServicesBull } from "@/components/tables/in modals/history services bull";
 
 export const ModalHistoryServicesBull = ({
-    servicios,
+  servicios,
 }: {
-    servicios: ToroServicio[];
+  servicios: ToroServicio[];
 }) => {
-    return (
-        <LayoutModal
-            icon="serve"
-            titleModal={'Historial de servicios'}
-            footer={false}
-            isOpen={true}
-        >
-            <ContainerTableHistory>
-                <TableHistoryServicesBull servicios={servicios} />
-            </ContainerTableHistory>
-        </LayoutModal>
-    );
+  return (
+    <LayoutModal
+      icon="serve"
+      titleModal={"Historial de servicios"}
+      footer={false}
+      isOpen={true}
+    >
+      <ContainerTableHistory>
+        <TableHistoryServicesBull servicios={servicios} />
+      </ContainerTableHistory>
+    </LayoutModal>
+  );
 };

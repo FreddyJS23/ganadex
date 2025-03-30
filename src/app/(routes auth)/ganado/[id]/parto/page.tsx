@@ -1,19 +1,19 @@
-import { ModalHistoryBirths } from '@/components/modals/historys/history births';
-import { ResponsePartos } from '@/types';
-import { getData } from '@/utils/getData';
+import { ModalHistoryBirths } from "@/components/modals/historys/history births";
+import { ResponsePartos } from "@/types";
+import { getData } from "@/utils/getData";
 
 type ParamsPage = {
-    params: { id: number };
+  params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-    const { partos }: ResponsePartos = await getData(
-        'ganado',
-        'GET',
-        undefined,
-        params.id,
-        'partos',
-    );
+  const { partos }: ResponsePartos = await getData(
+    "ganado",
+    "GET",
+    undefined,
+    params.id,
+    "partos",
+  );
 
-    return <ModalHistoryBirths partos={partos} />;
+  return <ModalHistoryBirths partos={partos} />;
 }

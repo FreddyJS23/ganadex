@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { LayoutModal } from '../..';
-import { Revision } from '@/types';
-import { TableHistoryCheckUps } from '@/components/tables/in modals/history checkups';
-import { ContainerTableHistory } from '..';
+import { LayoutModal } from "../..";
+import { Revision } from "@/types";
+import { TableHistoryCheckUps } from "@/components/tables/in modals/history checkups";
+import { ContainerTableHistory } from "..";
 
 export const ModalHistoryCheckUps = async ({
-    revisiones,
+  revisiones,
 }: {
-    revisiones: Revision[];
+  revisiones: Revision[];
 }) => {
-    return (
-        <LayoutModal
-            icon="checkUp"
-            titleModal={'Historial de revisiones'}
-            footer={false}
-            isOpen={true}
-        >
-            <ContainerTableHistory>
-                <TableHistoryCheckUps revisiones={revisiones} />
-            </ContainerTableHistory>
-        </LayoutModal>
-    );
+  return (
+    <LayoutModal
+      icon="checkUp"
+      titleModal={"Historial de revisiones"}
+      footer={false}
+      isOpen={true}
+    >
+      <ContainerTableHistory>
+        <TableHistoryCheckUps revisiones={revisiones} />
+      </ContainerTableHistory>
+    </LayoutModal>
+  );
 };

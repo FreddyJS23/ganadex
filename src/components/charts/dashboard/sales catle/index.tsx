@@ -1,81 +1,84 @@
-'use client';
+"use client";
 
-import { getBalanceAnnualSaleCattle } from '@/actions/getBalanceAnnualSaleCattle';
-import { SelectFilterYear } from '@/components/select filter year';
-import { ResponseAñosVentaGanado } from '@/types';
+import { getBalanceAnnualSaleCattle } from "@/actions/getBalanceAnnualSaleCattle";
+import { SelectFilterYear } from "@/components/select filter year";
+import { ResponseAñosVentaGanado } from "@/types";
 import {
-    BalanceAnualVentaGanado,
-    BalanceMensualVentaGanado,
-} from '@/types/dashboard';
+  BalanceAnualVentaGanado,
+  BalanceMensualVentaGanado,
+} from "@/types/dashboard";
 import {
-    optionChartLineSalesCatle,
-    paletteBackground,
-    paletteBorderColor,
-} from '@/utils/configCharts';
-import { messageErrorApi } from '@/utils/handleErrorResponseNext';
-import { ChartData } from 'chart.js';
+  optionChartLineSalesCatle,
+  paletteBackground,
+  paletteBorderColor,
+} from "@/utils/configCharts";
+import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { ChartData } from "chart.js";
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip as TooltipChart,
-    Legend,
-} from 'chart.js';
-import { useState } from 'react';
-import { Bar } from 'react-chartjs-2';
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip as TooltipChart,
+  Legend,
+} from "chart.js";
+import { useState } from "react";
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    TooltipChart,
-    Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  TooltipChart,
+  Legend,
 );
 
-export const SalesCatle = ({ balance_anual,años_ventas_ganado,children }: BalanceAnualVentaGanado & ResponseAñosVentaGanado & {children:React.ReactNode}) => {
-    
+export const SalesCatle = ({
+  balance_anual,
+  años_ventas_ganado,
+  children,
+}: BalanceAnualVentaGanado &
+  ResponseAñosVentaGanado & { children: React.ReactNode }) => {
+  const [dataGraph, setDataGraph] = useState(balance_anual);
 
-    const [dataGraph, setDataGraph] = useState(balance_anual);
-    
+  const onChange = async (select: number) => {
+    const data = await getBalanceAnnualSaleCattle(select);
 
-const onChange = async(select: number) => {
-       
-            const data = await getBalanceAnnualSaleCattle(
-                select,
-            );
-            
-             /* manejar error del backedn y mostar mensaje */
-             if('error' in response!) return toast.error(messageErrorApi(response)) 
-            
-                setDataGraph(data);
-        
-}
+    /* manejar error del backedn y mostar mensaje */
+    if ("error" in response!) return toast.error(messageErrorApi(response));
 
-    const data: ChartData<'bar', BalanceMensualVentaGanado[]> = {
-        datasets: [
-            {
-                data: dataGraph,
-                backgroundColor: paletteBackground,
-                borderColor: paletteBorderColor,
-                borderWidth: 1,
-            },
-        ],
-    };
+    setDataGraph(data);
+  };
 
-    return (
-        <>
-            {/* titulo */}
-            <div className="flex gap-4 justify-between">
-                {children}
-                <div className="w-40">
-                    <SelectFilterYear type='yearsFromDB' onChange={onChange}  label="Año" items={años_ventas_ganado} />
-                </div>
-            </div>
-            {/* grafico */}
-            <Bar options={optionChartLineSalesCatle} data={data} />;
-        </>
-    );
+  const data: ChartData<"bar", BalanceMensualVentaGanado[]> = {
+    datasets: [
+      {
+        data: dataGraph,
+        backgroundColor: paletteBackground,
+        borderColor: paletteBorderColor,
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  return (
+    <>
+      {/* titulo */}
+      <div className="flex gap-4 justify-between">
+        {children}
+        <div className="w-40">
+          <SelectFilterYear
+            type="yearsFromDB"
+            onChange={onChange}
+            label="Año"
+            items={años_ventas_ganado}
+          />
+        </div>
+      </div>
+      {/* grafico */}
+      <Bar options={optionChartLineSalesCatle} data={data} />;
+    </>
+  );
 };

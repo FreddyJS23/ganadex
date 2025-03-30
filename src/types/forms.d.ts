@@ -1,56 +1,66 @@
-import { assignmentNumberBullCalfShema } from '@/validations/assignmentNumberBullCalfShema';
-import { createAdminBirthShema, createBaseBirthShema, createBirthShema } from '@/validations/birthShema';
-import { createBullShema } from '@/validations/bullShema';
-import { createBeefShema } from '@/validations/discardedCattleShema';
-import { castleShema } from '@/validations/castleShema';
-import { createAdminCheckUpShema, createBaseCheckUpShema, } from '@/validations/checkUpShema';
-import { createConfigurationShema } from '@/validations/configurationShema';
-import { createUserShema } from '@/validations/createUser';
-import { createCustomerShema } from '@/validations/Customer';
-import { createDeathCastleShema } from '@/validations/deathCastle';
-import { createPriceMilkShema } from '@/validations/priceMilkShema';
-import { rangeDatesToReportsShema } from '@/validations/rangeDatesShema';
-import { createSaleCattleShema } from '@/validations/saleCattle';
-import { createSaleMilkShema } from '@/validations/saleMilkShema';
-import { createServeShema } from '@/validations/serveShema';
-import { createStaffShema } from '@/validations/staffShema';
-import { createSupplyShema } from '@/validations/supplyShema';
-import { createWeightMilkShema } from '@/validations/WeightMilkShema';
-import { yearsToGenerateReportShema } from '@/validations/yearsTotGenerateReportShema';
-import { z } from 'zod';
-import { createPajuelaToroSchema } from '@/validations/pajuelaToroShema';
-import { createVaccinationDayShema } from '@/validations/VaccinationDay';
-import { createHaciendaShema } from '@/validations/hacienda';
-import { weightsShema } from '@/validations/weightsShema';
-import { updateConfigurationShema } from '@/validations/updateConfiguration';
-import { createTypeCheckShema } from '@/validations/typeCheck';
-import { createCausaFallecimientoShema } from '@/validations/causaFallecimiento';
-import { recoveryPasswordShema } from '@/validations/recoveryPassword';
-import { createOrUpdateResponseSecurityShema, createResponsesSecurityShema, updateResponseSecurityShema } from '@/validations/responseSecurity';
+import { assignmentNumberBullCalfShema } from "@/validations/assignmentNumberBullCalfShema";
+import {
+  createAdminBirthShema,
+  createBaseBirthShema,
+  createBirthShema,
+} from "@/validations/birthShema";
+import { createBullShema } from "@/validations/bullShema";
+import { createBeefShema } from "@/validations/discardedCattleShema";
+import { castleShema } from "@/validations/castleShema";
+import {
+  createAdminCheckUpShema,
+  createBaseCheckUpShema,
+} from "@/validations/checkUpShema";
+import { createConfigurationShema } from "@/validations/configurationShema";
+import { createUserShema } from "@/validations/createUser";
+import { createCustomerShema } from "@/validations/Customer";
+import { createDeathCastleShema } from "@/validations/deathCastle";
+import { createPriceMilkShema } from "@/validations/priceMilkShema";
+import { rangeDatesToReportsShema } from "@/validations/rangeDatesShema";
+import { createSaleCattleShema } from "@/validations/saleCattle";
+import { createSaleMilkShema } from "@/validations/saleMilkShema";
+import { createServeShema } from "@/validations/serveShema";
+import { createStaffShema } from "@/validations/staffShema";
+import { createSupplyShema } from "@/validations/supplyShema";
+import { createWeightMilkShema } from "@/validations/WeightMilkShema";
+import { yearsToGenerateReportShema } from "@/validations/yearsTotGenerateReportShema";
+import { z } from "zod";
+import { createPajuelaToroSchema } from "@/validations/pajuelaToroShema";
+import { createVaccinationDayShema } from "@/validations/VaccinationDay";
+import { createHaciendaShema } from "@/validations/hacienda";
+import { weightsShema } from "@/validations/weightsShema";
+import { updateConfigurationShema } from "@/validations/updateConfiguration";
+import { createTypeCheckShema } from "@/validations/typeCheck";
+import { createCausaFallecimientoShema } from "@/validations/causaFallecimiento";
+import { recoveryPasswordShema } from "@/validations/recoveryPassword";
+import {
+  createOrUpdateResponseSecurityShema,
+  createResponsesSecurityShema,
+  updateResponseSecurityShema,
+} from "@/validations/responseSecurity";
 
 export type Login = {
-    usuario: string;
-    password: string;
+  usuario: string;
+  password: string;
 };
 
 export type CreateUser = {
-    nombre: string;
-    apellido: string;
-    usuario: string;
-    correo: string;
-    password: string;
-    password2: string;
+  nombre: string;
+  apellido: string;
+  usuario: string;
+  correo: string;
+  password: string;
+  password2: string;
 };
 
 export type UpdateUser = {
-    usuario: string;
-    password: string;
-
+  usuario: string;
+  password: string;
 };
 
 export type UpdateConfiguration = z.infer<typeof updateConfigurationShema>;
 
-export type updateWeight= z.infer<typeof weightsShema>;
+export type updateWeight = z.infer<typeof weightsShema>;
 
 export type CreateCastle = z.infer<typeof castleShema>;
 
@@ -63,7 +73,7 @@ export type CreateBull = z.infer<typeof createBullShema>;
 export type CreateBeef = z.infer<typeof createBeefShema>;
 
 export type CreateAssigmentNumberBullCalf = z.infer<
-    typeof assignmentNumberBullCalfShema
+  typeof assignmentNumberBullCalfShema
 >;
 
 export type CreateAdminCheckUp = z.infer<typeof createAdminCheckUpShema>;
@@ -107,14 +117,15 @@ export type CreateHacienda = z.infer<typeof createHaciendaShema>;
 export type CreateTypeCheck = z.infer<typeof createTypeCheckShema>;
 
 export type CreateCausaFallecimiento = z.infer<
-    typeof createCausaFallecimientoShema
+  typeof createCausaFallecimientoShema
 >;
 
 export type RecoveryPassword = z.infer<typeof recoveryPasswordShema>;
 
 export type CreateOrUpdateResponseSecurity = z.infer<
-    typeof createOrUpdateResponseSecurityShema
+  typeof createOrUpdateResponseSecurityShema
 >;
 
-export type CreateResponseSecurity = z.infer<    
-    typeof createResponsesSecurityShema>
+export type CreateResponseSecurity = z.infer<
+  typeof createResponsesSecurityShema
+>;
