@@ -82,7 +82,7 @@ export default async function Page({ params }: ParamsPageBeef) {
             <div className=" flex flex-wrap gap-4 bg-base-100 justify-between md:gap-y-4 p-4 shadow-[0px_0px_6px_-3px] shadow-primary rounded-md border-primary sm:grid grid-cols-2  sm:gap-6 lg:grid-cols-3 lg:justify-items-center ">
             
               {/* boton flotante y modal para editar */}
-            <ModalEditAnimal type={"Ganado descarte"}  ganado={ganado_descarte} />
+        {role == 'admin' && <ModalEditAnimal type={"Ganado descarte"}  ganado={ganado_descarte} />}
 
               
               <Details tittle={DetailsCattle.nombre} content={nombre} />
