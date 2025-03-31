@@ -7,7 +7,9 @@ import { useFormStatus } from "react-dom";
 
 type BaseProps = {
   id: number;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg"
+  /**Desabilitar el boton de eliminacion ya que hay elementos no deben ser eliminados   */
+  hiddenDelete?: boolean;
 };
 
 type EditProps = BaseProps & {
@@ -25,7 +27,7 @@ type SaveProps = BaseProps & {
 };
 
 export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
-  const { id, size, state } = props;
+  const { id, size, state,hiddenDelete=false } = props;
 
   const { pending } = useFormStatus();
   /* se utilizar el variant para evitar error de tipo al destructurar las props
@@ -81,7 +83,7 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
         </Button>
       ) : (
         /* delete */
-        <Button
+       !hiddenDelete && <Button
           {...baseButtonProps("Eliminar")}
           onClick={() => props.onDelete(id)}
           isLoading={props.isLoading}
