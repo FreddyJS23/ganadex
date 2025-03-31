@@ -38,94 +38,15 @@ import { stateBullSelect } from "./statesBullSelect";
 import { stateBeefSelect } from "./statesBeefSelect";
 import { origenCasttleSelect } from "./origenCastleSelect";
 
-type FieldsCastle = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdCasttle;
-  label: keyof typeof FieldsLabelsCasttle;
+export type Fields<Ids,Labels>={
+  id:Ids;
+  label:Labels;
   select?: { value: string | number; label: string }[];
   tooltipTipoGanado?: boolean;
-};
+  } & Pick<InputProps, "type" | "endContent" | "required"> 
+  
 
-type FieldsBull = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdBull;
-  label: keyof typeof FieldsLabelsBull;
-  select?: { value: string | number; label: string }[];
-  tooltipTipoGanado?: boolean;
-};
-
-type FieldsBeef = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdBeef;
-  label: keyof typeof FieldsLabelsBeef;
-  select?: { value: string | number; label: string }[];
-  tooltipTipoGanado?: boolean;
-};
-
-type FieldsCheckUp = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdCheckUp;
-  label: keyof typeof FieldsLabelsCheckUp;
-};
-
-type FieldsService = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdService;
-  label: keyof typeof FieldsLabelsService;
-  select?: { value: string | number; label: string }[];
-};
-
-type FieldsBirth = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdBirth;
-  label: keyof typeof FieldsLabelsBirth;
-  select?: { value: string | number; label: string }[];
-};
-
-export type FieldsCalfCastle = Pick<
-  InputProps,
-  "type" | "endContent" | "required"
-> & {
-  id: keyof typeof FieldsIdCalfCastle;
-  label: keyof typeof FieldsLabelsCalfCastle;
-  select?: { value: string | number; label: string }[];
-};
-
-type FieldsSupply = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdSupply;
-  label: keyof typeof FieldsLabelsSupply;
-};
-
-type FieldsStaff = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdStaff;
-  label: keyof typeof FieldsLabelsStaff;
-};
-
-type FieldsDeadCattle = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdDeadCattle;
-  label: keyof typeof FieldsLabelsDeadCattle;
-};
-
-type FieldsSaleCattle = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof typeof FieldsIdSaleCattle;
-  label: keyof typeof FieldsLabelsSaleCattle;
-};
-
-type FieldsPajuelaToro = Pick<
-  InputProps,
-  "type" | "endContent" | "required"
-> & {
-  id: keyof typeof FieldsIdPajuelaToro;
-  label: keyof typeof FieldsLabelsPajuelaToro;
-};
-
-type FieldsVaccinationDay = Pick<
-  InputProps,
-  "type" | "endContent" | "required"
-> & {
-  id: keyof typeof FieldsIdVaccinationDay;
-  label: keyof typeof FieldsLabelsVaccinationDay;
-};
-type FieldsWeights = Pick<InputProps, "type" | "endContent" | "required"> & {
-  id: keyof Pesos;
-  label: keyof typeof FieldsLabelsWeights;
-};
-
-export const formWeights: FieldsWeights[] = [
+export const formWeights: Fields<keyof Pesos,keyof typeof FieldsLabelsWeights>[] = [
   {
     id: "peso_nacimiento",
     label: "Peso de nacimiento",
@@ -156,7 +77,9 @@ export const formWeights: FieldsWeights[] = [
   },
 ];
 
-export const formCastle: FieldsCastle[] = [
+
+
+export const formCastle: Fields<keyof typeof FieldsIdCasttle,keyof typeof FieldsLabelsCasttle>[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
   { id: "numero", label: "Numero", required: true, type: "number" },
   {
@@ -223,7 +146,7 @@ export const formCastle: FieldsCastle[] = [
   },
 ];
 
-export const formBull: FieldsBull[] = [
+export const formBull: Fields<keyof typeof FieldsIdBull,keyof typeof FieldsLabelsBull>[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
   { id: "numero", label: "Numero", required: true, type: "number" },
   {
@@ -289,7 +212,7 @@ export const formBull: FieldsBull[] = [
     select: stateBullSelect,
   },
 ];
-export const formBeef: FieldsBeef[] = [
+export const formBeef: Fields<keyof typeof FieldsIdBeef,keyof typeof FieldsLabelsBeef>[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
   { id: "numero", label: "Numero", required: true, type: "number" },
   {
@@ -356,7 +279,7 @@ export const formBeef: FieldsBeef[] = [
   },
 ];
 
-export const formCheckUp: FieldsCheckUp[] = [
+export const formCheckUp: Fields<keyof typeof FieldsIdCheckUp,keyof typeof FieldsLabelsCheckUp>[] = [
   {
     id: "tipo_revision_id",
     label: "Diagnostico",
@@ -392,13 +315,13 @@ export const formService: FieldsService[] = [
   { id: "fecha", label: "Fecha", required: true, type: "date" },
 ];
 
-export const formBirth: FieldsBirth[] = [
+export const formBirth: Fields<keyof typeof FieldsIdBirth,keyof typeof FieldsLabelsBirth>[] = [
   { id: "observacion", label: "Observación", required: true, type: "text" },
   { id: "fecha", label: "Fecha", required: true, type: "date" },
   { id: "personal_id", label: "Personal", required: true, type: "select" },
 ];
 
-export const formCalfCastle: FieldsCalfCastle[] = [
+export const formCalfCastle: Fields<keyof typeof FieldsIdCalfCastle,keyof typeof FieldsLabelsCalfCastle>[] = [
   { id: "nombre", label: "Nombre de la cría", required: true, type: "text" },
   {
     id: "numero",
@@ -423,12 +346,12 @@ export const formCalfCastle: FieldsCalfCastle[] = [
   { id: "observacion", label: "Observación", required: false, type: "text" },
 ];
 
-export const formSupply: FieldsSupply[] = [
+export const formSupply: Fields<keyof typeof FieldsIdSupply,keyof typeof FieldsLabelsSupply>[] = [
   { id: "insumo", label: "Insumo", required: true, type: "text" },
   { id: "cantidad", label: "Cantidad", required: true, type: "number" },
   { id: "precio", label: "Precio", required: true, type: "number" },
 ];
-export const formStaff: FieldsStaff[] = [
+export const formStaff: Fields<keyof typeof FieldsIdStaff,keyof typeof FieldsLabelsStaff>[] = [
   { id: "ci", label: "Cedula", required: true, type: "number" },
   { id: "nombre", label: "Nombre", required: true, type: "text" },
   { id: "telefono", label: "Telefono", required: true, type: "tel" },
@@ -441,7 +364,7 @@ export const formStaff: FieldsStaff[] = [
   },
   { id: "cargo_id", label: "Cargo", required: true, type: "select" },
 ];
-export const formDeadCattle: FieldsDeadCattle[] = [
+export const formDeadCattle: Fields<keyof typeof FieldsIdDeadCattle,keyof typeof FieldsLabelsDeadCattle>[] = [
   { id: "fecha", label: "Fecha de defunción", required: true, type: "date" },
   {
     id: "causas_fallecimiento_id",
@@ -452,7 +375,7 @@ export const formDeadCattle: FieldsDeadCattle[] = [
   { id: "descripcion", label: "Descripcion", required: false, type: "text" },
 ];
 
-export const formSaleCattle: FieldsSaleCattle[] = [
+export const formSaleCattle: Fields<keyof typeof FieldsIdSaleCattle,keyof typeof FieldsLabelsSaleCattle>[] = [
   { id: "precio", label: "Precio", required: true, type: "number" },
   { id: "fecha", label: "Fecha de venta", required: true, type: "date" },
   {
@@ -463,13 +386,13 @@ export const formSaleCattle: FieldsSaleCattle[] = [
   },
 ];
 
-export const formPajuelaToro: FieldsPajuelaToro[] = [
+export const formPajuelaToro: Fields<keyof typeof FieldsIdPajuelaToro,keyof typeof FieldsLabelsPajuelaToro>[] = [
   { id: "codigo", label: "Codigo", required: true, type: "text" },
   { id: "descripcion", label: "Descripcion", required: false, type: "text" },
   { id: "fecha", label: "Fecha", required: true, type: "date" },
 ];
 
-export const formVaccinationDay: FieldsVaccinationDay[] = [
+export const formVaccinationDay: Fields<keyof typeof FieldsIdVaccinationDay,keyof typeof FieldsLabelsVaccinationDay>[] = [
   {
     id: "fecha_inicio",
     label: "Fecha de inicio",
