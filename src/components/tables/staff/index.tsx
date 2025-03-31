@@ -1,7 +1,7 @@
 "use client";
 
 import { headerStaff } from "@/collections/headerColums";
-import { Personal, ResponseTodoPersonal } from "@/types";
+import { Personal, PositionStaff } from "@/types";
 import {
   TableHeader,
   TableColumn,
@@ -17,44 +17,32 @@ import { toast } from "sonner";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { addInHacienda, removeInHacienda } from "@/actions/personal";
 import { useRouter } from "next/navigation";
-import { Button } from "@nextui-org/react";
+import { Button, useDisclosure } from "@nextui-org/react";
+import IconEdit from "@/icons/icono-editar.svg";
+import { ModalEditStaff } from "@/components/modals/edit staff";
 
 type TableStaffProps = {
   todo_personal: Personal[];
   nameHacienda: string;
+  cargos_personal: PositionStaff[];
 };
 
 export const TableStaff = ({
   todo_personal,
   nameHacienda,
+  cargos_personal,
 }: TableStaffProps) => {
   //Utilizado para refrescar la tabla cuando se interactúa con datos de la tabla
   const [reloadData, setReloadData] = useState(0);
 
-  const [isLoading, setIsLoading] = useState(false);
+  /* Estado modal */
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  /* data modal */
+  const [dataModal, setDataModal] = useState<Personal | null>(null);
 
-  const router = useRouter();
-
-  const actionAddPersonal = async (personal_id: number) => {
-    setIsLoading(true);
-    const response = await addInHacienda(personal_id);
-    if (typeof response == "object" && "error" in response)
-      return toast.error(messageErrorApi(response));
-    else toast.success(response);
-    router.refresh();
-    setIsLoading(false);
-    setReloadData((prev) => prev + 1);
-  };
-
-  const actionRemovePersonal = async (personal_id: number) => {
-    setIsLoading(true);
-    const response = await removeInHacienda(personal_id);
-    if (typeof response == "object" && "error" in response)
-      return toast.error(messageErrorApi(response));
-    else toast.success(response);
-    router.refresh();
-    setIsLoading(false);
-    setReloadData((prev) => prev + 1);
+  const onEdit = (personal: Personal) => {
+    setDataModal(personal);
+    onOpen();
   };
 
   const haciendasNames = (haciendas: Personal["haciendas"]) => {
@@ -78,38 +66,31 @@ export const TableStaff = ({
         const sameHacienda = haciendasNames(personal["haciendas"]).includes(
           nameHacienda,
         );
-
         if (!sameHacienda && personal["cargo"] == "veterinario") {
           return (
-            <Button
-              isIconOnly
-              title={`Añadir a ${nameHacienda}`}
-              aria-label="Guardar"
-              variant="flat"
-              size="sm"
-              onClick={() => actionAddPersonal(id)}
-              isLoading={isLoading}
-            >
-              <IconAdd className="text-primary size-4" />
-            </Button>
+            <EditButton onEdit={() => onEdit(personal)}>
+              <ButtonAddOrRemoveHacienda
+                type="add"
+                nameHacienda={nameHacienda}
+                id={id}
+                setReloadData={setReloadData}
+              />
+            </EditButton>
           );
         } else if (sameHacienda && personal["cargo"] == "veterinario") {
           return (
-            <Button
-              isIconOnly
-              aria-label="eliminar"
-              variant="flat"
-              size="sm"
-              title={`Eliminar de ${nameHacienda}`}
-              onClick={() => actionRemovePersonal(id)}
-              isLoading={isLoading}
-            >
-              <IconRemove className="text-error size-6" />
-            </Button>
+            <EditButton onEdit={() => onEdit(personal)}>
+              <ButtonAddOrRemoveHacienda
+                type="remove"
+                nameHacienda={nameHacienda}
+                id={id}
+                setReloadData={setReloadData}
+              />
+            </EditButton>
           );
         }
 
-        return <></>;
+        return <EditButton onEdit={() => onEdit(personal)} />;
       }
 
       default:
@@ -120,11 +101,110 @@ export const TableStaff = ({
   }, []);
 
   return (
-    <TableComponent
-      type="staff"
-      columnsCollection={headerStaff}
-      items={todo_personal}
-      renderCell={renderCell}
-    />
+    <>
+      <TableComponent
+        type="staff"
+        columnsCollection={headerStaff}
+        items={todo_personal}
+        renderCell={renderCell}
+      />
+
+      {dataModal && (
+        <ModalEditStaff
+          cargos_personal={cargos_personal}
+          personal={dataModal}
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+          onClose={onClose}
+        />
+      )}
+    </>
+  );
+};
+
+type EditButtonProps = {
+  onEdit: () => void;
+  children?: ReactNode;
+};
+
+const EditButton = ({ children, onEdit }: EditButtonProps) => {
+  return (
+    <div className="flex gap-2">
+      <Button
+        isIconOnly={true}
+        aria-label="Guardar"
+        variant="flat"
+        size="sm"
+        title={`Editar`}
+        onClick={onEdit}
+      >
+        <IconEdit className="size-6" />
+      </Button>
+
+      {children}
+    </div>
+  );
+};
+
+type ButtonAddOrRemoveHaciendaProps = {
+  type: "add" | "remove";
+  nameHacienda: string;
+  id: number;
+  setReloadData: React.Dispatch<React.SetStateAction<number>>;
+};
+/* se usan en un componente externo para poder usar un loading,
+anteriormente se usaba dentro del componente, ocasinando que al hacer
+las acciones no mostrara un loading */
+const ButtonAddOrRemoveHacienda = ({
+  type,
+  nameHacienda,
+  id,
+  setReloadData,
+}: ButtonAddOrRemoveHaciendaProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+
+  const actionAddPersonal = async (personal_id: number) => {
+    setIsLoading(true);
+    const response = await addInHacienda(personal_id);
+    if (typeof response == "object" && "error" in response)
+      return toast.error(messageErrorApi(response));
+    else toast.success(response);
+    router.refresh();
+    setIsLoading(false);
+    setReloadData((prev) => prev + 1);
+  };
+
+  const actionRemovePersonal = async (personal_id: number) => {
+    setIsLoading(true);
+
+    const response = await removeInHacienda(personal_id);
+    if (typeof response == "object" && "error" in response)
+      return toast.error(messageErrorApi(response));
+    else toast.success(response);
+    router.refresh();
+    setIsLoading(false);
+    setReloadData((prev) => prev + 1);
+  };
+
+  return (
+    <Button
+      isIconOnly
+      title={`Añadir a ${nameHacienda}`}
+      aria-label="Guardar"
+      variant="flat"
+      size="sm"
+      isLoading={isLoading}
+      onClick={() => {
+        type == "add" ? actionAddPersonal(id) : actionRemovePersonal(id);
+      }}
+    >
+      {type == "add" ? (
+        <IconAdd className="text-primary size-4" />
+      ) : (
+        <IconRemove className="text-error size-6" />
+      )}
+    </Button>
   );
 };

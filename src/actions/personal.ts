@@ -21,6 +21,20 @@ export async function createStaff(
   else return response.personal;
 }
 
+export async function editStaff(
+  id: number,
+  formData: CreateStaff,
+): Promise<Personal | ResponseErrorNext> {
+  const response = await getData<CreateStaff, ResponsePersonal>(
+    "personal",
+    "PUT",
+    formData,
+    id,
+  );
+  if ("error" in response) return response;
+  else return response.personal;
+}
+
 export async function addInHacienda(id: number) {
   const response = await getData<
     { personal_id: number },
