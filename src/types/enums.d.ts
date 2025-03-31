@@ -176,6 +176,7 @@ export enum TitlesModals {
   "Eliminar usuario veterinario: ",
   "Historial de actividades",
   "Actualizar configuración",
+  "Actualizar ",
 }
 
 export enum FieldsIdCasttle {
