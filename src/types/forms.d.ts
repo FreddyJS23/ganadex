@@ -6,7 +6,7 @@ import {
 } from "@/validations/birthShema";
 import { createBullShema } from "@/validations/bullShema";
 import { createBeefShema } from "@/validations/discardedCattleShema";
-import { castleShema } from "@/validations/castleShema";
+import { castleEditShema, castleShema } from "@/validations/castleShema";
 import {
   createAdminCheckUpShema,
   createBaseCheckUpShema,
@@ -63,6 +63,8 @@ export type UpdateConfiguration = z.infer<typeof updateConfigurationShema>;
 export type updateWeight = z.infer<typeof weightsShema>;
 
 export type CreateCastle = z.infer<typeof castleShema>;
+
+export type EditCastle = z.infer<typeof castleEditShema>;
 
 export type CreateBaseBirth = z.infer<typeof createBaseBirthShema>;
 

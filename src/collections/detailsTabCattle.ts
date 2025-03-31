@@ -4,6 +4,8 @@ export const DetailsCattle = {
   sexo: "Sexo",
   fecha_nacimiento: "Fecha nacimiento",
   fecha_ingreso: "Fecha ingreso",
+  fecha_fallecimiento: "Fecha de fallecimiento",
+  causa_fallecimiento: "Causa de fallecimiento",
   tipo: "Tipo",
   estado: "Estado",
 };

@@ -6,7 +6,7 @@ import {
   ResponseErrorNext,
   ResponseGanado,
 } from "@/types";
-import { CreateCastle, updateWeight } from "@/types/forms";
+import { CreateCastle, EditCastle, updateWeight } from "@/types/forms";
 import { getData } from "@/utils/getData";
 
 type vacunasSinId = Omit<ListaVacunas, "id">;
@@ -30,6 +30,27 @@ export async function createCastle(
   if ("error" in response) return response;
   else return response.ganado.numero ?? response.ganado.nombre;
 }
+
+export async function editCastle(
+  id:number,
+  formData: EditCastle,
+): Promise<
+  | ResponseErrorNext
+  | ResponseGanado["ganado"]["numero"]
+  | ResponseGanado["ganado"]["nombre"]
+> {
+ 
+
+  const response = await getData<
+    EditCastle,
+    ResponseGanado
+  >("ganado", "PUT", formData, id);
+  if ("error" in response) return response;
+  else return response.ganado.numero ?? response.ganado.nombre;
+}
+
+
+
 
 export async function updateWeightCastle(
   id: number,

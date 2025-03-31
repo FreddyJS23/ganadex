@@ -4,9 +4,10 @@ import {
   ListaVacunas,
   Pesos,
   ResponseErrorNext,
+  ResponseGanado,
   ResponseGanadoDescarte,
 } from "@/types";
-import { CreateBeef, updateWeight } from "@/types/forms";
+import { CreateBeef, EditCastle, updateWeight } from "@/types/forms";
 import { getData } from "@/utils/getData";
 
 export async function createBeef(
@@ -27,6 +28,25 @@ export async function createBeef(
   else
     return response.ganado_descarte.numero ?? response.ganado_descarte.nombre;
 }
+
+export async function editBeef(
+  id:number,
+  formData: EditCastle,
+): Promise<
+  | ResponseErrorNext
+  | ResponseGanado["ganado"]["numero"]
+  | ResponseGanado["ganado"]["nombre"]
+> {
+ 
+
+  const response = await getData<
+    EditCastle,
+    ResponseGanadoDescarte
+  >("ganadoDescarte", "PUT", formData, id);
+  if ("error" in response) return response;
+  else return response.ganado_descarte.numero ?? response.ganado_descarte.nombre;
+}
+
 
 export async function updateWeightBeef(
   id: number,

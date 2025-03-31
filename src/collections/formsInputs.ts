@@ -146,6 +146,30 @@ export const formCastle: Fields<keyof typeof FieldsIdCasttle,keyof typeof Fields
   },
 ];
 
+export const formCastleEdit: Fields<keyof typeof FieldsIdCasttle,keyof typeof FieldsLabelsCasttle>[] = [
+  { id: "nombre", label: "Nombre", required: true, type: "text" },
+  { id: "numero", label: "Numero", required: true, type: "number" },
+  {
+    id: "origen_id",
+    label: "Origen",
+    required: true,
+    type: "select",
+    select: origenCasttleSelect,
+  },
+  {
+    id: "fecha_ingreso",
+    label: "Fecha de ingreso",
+    required: true,
+    type: "date",
+  },
+  {
+    id: "fecha_nacimiento",
+    label: "Fecha de nacimiento",
+    required: false,
+    type: "date",
+  },
+]
+
 export const formBull: Fields<keyof typeof FieldsIdBull,keyof typeof FieldsLabelsBull>[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
   { id: "numero", label: "Numero", required: true, type: "number" },

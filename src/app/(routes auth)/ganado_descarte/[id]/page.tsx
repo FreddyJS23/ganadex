@@ -4,6 +4,7 @@ import { Details } from "@/components/details";
 import { DropDownOptions } from "@/components/dropdown options";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import { WeightsEditable } from "@/components/editable sections/weights";
+import { ModalEditAnimal } from "@/components/modals/edit animals";
 import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
 import { ResponseGanado, ResponseGanadoDescarte } from "@/types";
 import { getData } from "@/utils/getData";
@@ -77,14 +78,37 @@ export default async function Page({ params }: ParamsPageBeef) {
           </div>
 
           {/*  detalles */}
-          <div className="flex">
+          <div className="flex relative">
             <div className=" flex flex-wrap gap-4 bg-base-100 justify-between md:gap-y-4 p-4 shadow-[0px_0px_6px_-3px] shadow-primary rounded-md border-primary sm:grid grid-cols-2  sm:gap-6 lg:grid-cols-3 lg:justify-items-center ">
+            
+              {/* boton flotante y modal para editar */}
+            <ModalEditAnimal type={"Ganado descarte"}  ganado={ganado_descarte} />
+
+              
               <Details tittle={DetailsCattle.nombre} content={nombre} />
               <Details tittle={DetailsCattle.origen} content={origen} />
               <Details
                 tittle={DetailsCattle.fecha_nacimiento}
                 content={fecha_nacimiento}
               />
+               {ganado_descarte.fallecimiento && (
+                <>
+                 <Details
+                  tittle={DetailsCattle.fecha_fallecimiento}
+                  content={ganado_descarte.fallecimiento.fecha}
+                />
+                 <Details
+                  tittle={DetailsCattle.causa_fallecimiento}
+                  content={ganado_descarte.fallecimiento.causa}
+                />
+                </>
+              )}
+              {ganado_descarte.fecha_ingreso && (
+                <Details
+                  tittle={DetailsCattle.fecha_ingreso}
+                  content={ganado_descarte.fecha_ingreso}
+                />
+              )}
               <Details tittle={DetailsCattle.tipo} content={tipo} />
               <Details tittle={DetailsCattle.sexo} content={sexo} />
               <div className="flex flex-col items-center">
