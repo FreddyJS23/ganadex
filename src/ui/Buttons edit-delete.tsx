@@ -8,13 +8,13 @@ import { useFormStatus } from "react-dom";
 type BaseProps = {
   id: number;
   size?: "sm" | "md" | "lg";
-  isLoading: boolean;
 };
 
 type EditProps = BaseProps & {
   state: "edit";
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
+  isLoading: boolean;
 };
 
 /* no se utilizar un onSave porque se usa el formId para enviar el formulario */
@@ -25,10 +25,9 @@ type SaveProps = BaseProps & {
 };
 
 export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
-  const { id, size, isLoading, state } = props;
+  const { id, size, state } = props;
 
   const { pending } = useFormStatus();
-
   /* se utilizar el variant para evitar error de tipo al destructurar las props
     ya que si pone flat el tipo sera string y sera incompatible con el variant de nextui */
   const variant:
@@ -66,7 +65,7 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
         <Button
           {...baseButtonProps("Editar")}
           onClick={() => props.onEdit(id)}
-          isLoading={isLoading}
+          isLoading={pending}
         >
           <IconEdit className="size-6" />
         </Button>
@@ -77,7 +76,6 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
         <Button
           {...baseButtonProps("Cancelar")}
           onClick={props.onCancel}
-          isLoading={isLoading}
         >
           <IconCancel className="size-7 fill-white" />
         </Button>
@@ -86,7 +84,7 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
         <Button
           {...baseButtonProps("Eliminar")}
           onClick={() => props.onDelete(id)}
-          isLoading={isLoading}
+          isLoading={props.isLoading}
           className="bg-error"
         >
           <IconDelete className="size-7" />

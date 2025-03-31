@@ -136,6 +136,7 @@ export const TabsProfile = ({
             {/* list haciendas */}
             <div className="flex flex-col mt-8 gap-2">
               <h3 className="font-bold text-2xl pl-4">Haciendas creadas</h3>
+              <span className="text-sm opacity-60 pl-4">Las haciendas con registros no pueden ser eliminadas</span>
               <div className="divider divider-primary mt-0 opacity-[0.03]"></div>{" "}
             </div>
             <ListHaciendasProfile

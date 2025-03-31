@@ -40,10 +40,10 @@ export async function deleteHacienda(
 ): Promise<string | ResponseErrorNext> {
   const response = await getData<
     CreateHacienda,
-    { idHacienda: number | string }
+    { haciendaID: number | string }
   >("haciendaAccion", "DELETE", undefined, id);
   if ("error" in response) return response;
-  else return response.idHacienda.toString();
+  else return response.haciendaID.toString();
 }
 
 export async function createSesionHacienda(

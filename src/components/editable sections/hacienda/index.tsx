@@ -10,7 +10,7 @@ import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { createHaciendaShema } from "@/validations/hacienda";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { ReactNode, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -28,19 +28,24 @@ export const ListHaciendasProfile = ({
   const { editar, idAction, isLoading, onEdit, onSaveOrCancel, onDelete } =
     useEditDelete(deleteHacienda);
 
+
   return haciendas.map((hacienda) => {
     return editar && idAction == hacienda.id ? (
-      <div className="flex gap-2 items-center">
-        <Edit hacienda={hacienda} id={hacienda.id} />
+    /*Editar hacienda */
+    <div className="flex gap-2 items-center">
+        <Edit hacienda={hacienda} id={hacienda.id}  onSave={onSaveOrCancel}>
+
         <ButtonsEditedDelete
           id={hacienda.id}
           formId="form-edit-hacienda"
           state="save"
           onCancel={onSaveOrCancel}
-          isLoading={isLoading}
         />
+        </Edit>
+       
       </div>
     ) : (
+     /* Ver hacienda */
       <ElementProfile
         key={hacienda.id}
         tittle={hacienda.nombre}
@@ -65,7 +70,7 @@ export const ListHaciendasProfile = ({
     );
   });
 };
-const Edit = ({ hacienda, id }: { hacienda: Hacienda; id: number }) => {
+const Edit = ({ hacienda, id , onSave,children }: { hacienda: Hacienda; id: number; onSave: () => void,children: ReactNode }) => {
   const router = useRouter();
   const {
     register,
@@ -79,6 +84,7 @@ const Edit = ({ hacienda, id }: { hacienda: Hacienda; id: number }) => {
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const actionEdit: () => void = handleSubmit(async (data) => {
+    
     const hacienda = await editHacienda(id, data);
 
     /* manejar error del backedn y mostar mensaje */
@@ -88,6 +94,7 @@ const Edit = ({ hacienda, id }: { hacienda: Hacienda; id: number }) => {
     toast.success(`Se ha actualizado correctamente`);
     formRef.current?.reset();
     router.refresh();
+    onSave();
   });
 
   return (
@@ -99,7 +106,7 @@ const Edit = ({ hacienda, id }: { hacienda: Hacienda; id: number }) => {
     >
       <div className="sm:max-w-64 sm:w-60">
         <Input
-          id="hacienda"
+          id="nombre"
           required
           type="text"
           label="Hacienda"
@@ -108,6 +115,7 @@ const Edit = ({ hacienda, id }: { hacienda: Hacienda; id: number }) => {
           defaultValue={hacienda.nombre}
         />
       </div>
+      {children}
     </form>
   );
 };
