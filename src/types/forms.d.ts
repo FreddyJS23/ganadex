@@ -3,6 +3,7 @@ import {
   createAdminBirthShema,
   createBaseBirthShema,
   createBirthShema,
+  updateBirhthShema,
 } from "@/validations/birthShema";
 import { createBullShema } from "@/validations/bullShema";
 import { createBeefShema } from "@/validations/discardedCattleShema";
@@ -77,7 +78,10 @@ export type CreateBeef = z.infer<typeof createBeefShema>;
 
 export type CreateAssigmentNumberBullCalf = z.infer<
   typeof assignmentNumberBullCalfShema
+  
 >;
+
+export type UpdateBirh = z.infer<typeof updateBirhthShema>;
 
 export type CreateAdminCheckUp = z.infer<typeof createAdminCheckUpShema>;
 
