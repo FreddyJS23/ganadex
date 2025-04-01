@@ -1,15 +1,10 @@
 export const textCarouselLogin = [
   {
-    text: `Bienvenido a Ganadex, un sistema automatizado administrativo para
-        la gestión visual y eficiente de tu ganado.`,
+    text: `Bienvenido a Ganadex, un sistema automatizado para monitorear y gestionar cada etapa del ciclo de 
+    vida de los animales bovinos`,
   },
   {
-    text: `Para iniciar la mejor experiencia en gestión ganadera,
-        regístrate como un nuevo usuario o si ya tienes una cuenta, puedes
-        ingresar usando tus credenciales de acceso.`,
-  },
-  {
-    text: `Planteado, diseñado y desarrollado por los estudiantes de la UPTM
-        Kléber Ramírez del Proyecto Nacional de Formación en Informática (PNFI).`,
+    text: `Para comenzar, debes registrarte en la sección de "Registro" y crear una cuenta,
+    o si ya tienes una cuenta, inicia sesión.`,
   },
 ];
