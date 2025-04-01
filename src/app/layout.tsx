@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme={"ganadexThemeDark"} className="dark">
       <body
-        className={`${nunito.variable} ${bebasNue.variable} font-nunito   bg-background dark:bg-background-dark`}
+        className={`${nunito.variable} ${bebasNue.variable} font-nunito   bg-background dark:bg-background-dark min-h-screen`}
       >
         <Providers>
           {children}

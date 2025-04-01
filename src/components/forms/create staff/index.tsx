@@ -70,7 +70,7 @@ export const FormCreateStaff = ({
     <form
       ref={form}
       action={actionStaff}
-      className="flex flex-col items-center gap-6 p-4 m-auto max-w-[827px]"
+      className="flex flex-col items-center gap-6  m-auto max-w-[827px]"
     >
       <div className="flex flex-col gap-6 flex-wrap justify-around md:gap-12 sm:flex-row ">
         {formStaff.map(({ id, label, required, type, endContent }) => (

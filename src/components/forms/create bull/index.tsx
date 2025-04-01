@@ -157,7 +157,7 @@ export const FormBull = ({
     <form
       ref={form}
       action={actionBull}
-      className="grid grid-cols-2 m-auto max-w-5xl p-1 gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
+      className="grid grid-cols-2 m-auto max-w-5xl  gap-4 gap-y-7 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4 "
     >
       {formBull.map(
         ({

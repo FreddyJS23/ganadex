@@ -6,8 +6,8 @@ import cattleBackgroundLogin from "public/cattleBackgroundLogin.png";
 
 export default function Page() {
   return (
-    <>
-      <div className="flex flex-col sm:flex-row max-w-5xl h-screen sm:h-[95vh] sm:mx-auto sm:mt-[2.5vh]">
+    <section className="flex w-full h-screen md:m-auto">
+      <div className="flex flex-col w-full sm:flex-row  max-w-5xl md:m-auto">
         {/* imagen android */}
         <div className="sm:hidden">
           <Image
@@ -53,6 +53,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }

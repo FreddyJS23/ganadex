@@ -61,7 +61,7 @@ export const FormCreateCheckUp = ({
     <>
       <form
         action={actionCreatecheckUp}
-        className="flex flex-col items-center gap-6 p-4 max-w-2xl m-auto"
+        className="flex flex-col items-center gap-6 max-w-2xl m-auto"
       >
         <div className="grid  md:gap-12 lg:grid-cols-3 w-full">
           {formCheckUp.map(({ id, label, required, type }) => (

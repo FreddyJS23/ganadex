@@ -78,7 +78,7 @@ export default async function Home() {
 
   console.log(tiene_preguntas_seguridad);
   return (
-    <section className="flex flex-col gap-8 justify-center items-center max-w-5xl m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12 sm:p-4 sm:pl-8 md:items-center xl:pl-0">
+    <section className="flex flex-col gap-8 justify-center items-center  m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12  md:items-center">
       {/*  grafico torta */}
       <article className="p-4 bg-base-100 col-span-full max-w-xl md:col-span-2 lex justify-center flex-col  w-full shadow-cards">
         <div className="flex justify-between">

@@ -97,7 +97,7 @@ export const FormCreateBirth = ({
     <>
       <form
         action={actionCreateBirth}
-        className="flex flex-col items-center gap-8 p-4 m-auto "
+        className="flex flex-col items-center gap-8  m-auto "
       >
         <div className="flex gap-6 flex-col justify-center max-w-80 sm:justify-evenly sm:flex-row sm:flex-wrap sm:max-w-fit ">
           {formBirth.map(({ id, label, required, type }) => (

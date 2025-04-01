@@ -16,12 +16,12 @@ export const TitlePage = ({
 }: TitlePageProps) => {
   return iconTooltip ? (
     contentTooltip && (
-      <div className="flex justify-center items-center gap-2">
+      <div className="flex justify-center items-center gap-2 mb-4">
         <h3 className="font-bold text-2xl w-fit">{title}</h3>
         <Tooltip content={contentTooltip} placement={placement} type="icon" />
       </div>
     )
   ) : (
-    <h3 className="font-bold text-2xl m-auto w-fit">{title}</h3>
+    <h3 className="font-bold text-2xl m-auto w-fit mb-4">{title}</h3>
   );
 };

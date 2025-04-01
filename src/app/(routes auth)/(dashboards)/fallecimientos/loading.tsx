@@ -6,7 +6,7 @@ import {
 
 export default function Loading() {
   return (
-    <div className="flex p-4  gap-8 flex-col sm:pl-12">
+    <div className="flex gap-8 flex-col ">
       {/* cards */}
       <div className="flex">
         <SkeletonCard />
