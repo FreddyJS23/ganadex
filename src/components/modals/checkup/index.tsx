@@ -106,7 +106,10 @@ const RevisionEdit = ({ revision,setIsLoading,onSaveOrCancel }: RevisionProps) =
     const response = await editCheckUp(revision.id, data, parseInt(cattleId));
     //manejar error del backedn y mostar mensaje
     if (typeof response == "object" && "error" in response)
+     {
+      setIsLoading(false);
       return toast.error(messageErrorApi(response));
+     }
     setIsLoading(false);
     onSaveOrCancel();
     toast.success(`Revision Actualizada`);
