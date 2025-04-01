@@ -37,7 +37,7 @@ export const CheckboxTheme = () => {
       <svg
         className={`${
           checkedDark() ? "swap-off" : "swap-on"
-        }  fill-current w-10 h-10`}
+        }  fill-current size-7 md:size-10`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -48,7 +48,7 @@ export const CheckboxTheme = () => {
       <svg
         className={`${
           checkedDark() ? "swap-on" : "swap-off"
-        }  fill-current w-10 h-10`}
+        }  fill-current size-7 md:size-10`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
