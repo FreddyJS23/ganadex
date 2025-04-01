@@ -7,3 +7,5 @@ export const createWeightMilkShema = z.object({
   peso_leche: z.number().gte(1).lte(32767),
   fecha: z.string().regex(regexDate),
 });
+
+export const updateWeightMilkShema = createWeightMilkShema

@@ -12,6 +12,7 @@ import {
   FieldsIdStaff,
   FieldsIdSupply,
   FieldsIdVaccinationDay,
+  FieldsIdWheightMilk,
   FieldsLabelsBeef,
   FieldsLabelsBirth,
   FieldsLabelsBull,
@@ -19,6 +20,7 @@ import {
   FieldsLabelsCasttle,
   FieldsLabelsCheckUp,
   FieldsLabelsDeadCattle,
+  FieldsLabelsIdWheightMilk,
   FieldsLabelsPajuelaToro,
   FieldsLabelsSaleCattle,
   FieldsLabelsService,
@@ -425,4 +427,15 @@ export const formVaccinationDay: Fields<keyof typeof FieldsIdVaccinationDay,keyo
   },
   { id: "fecha_fin", label: "Fecha fin", required: true, type: "date" },
   { id: "vacuna_id", label: "Vacuna", required: true, type: "select" },
+];
+
+export const formWeightMilk: Fields<keyof typeof FieldsIdWheightMilk,keyof typeof FieldsLabelsIdWheightMilk>[] = [
+  {
+    id: "peso_leche",
+    label: "Pesaje de leche",
+    required: true,
+    type: "number",
+    endContent: "weight",
+  },
+  { id: "fecha", label: "Fecha", required: true, type: "date" },
 ];

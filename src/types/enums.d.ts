@@ -398,3 +398,13 @@ export enum FieldsLabelsWeights {
   "Peso de 2 años",
   "Peso actual",
 }
+
+export enum FieldsIdWheightMilk {
+  peso_leche,
+  fecha
+}
+
+export enum FieldsLabelsIdWheightMilk {
+  "Pesaje de leche",
+  "Fecha",
+}

@@ -34,6 +34,7 @@ export const endPoints = {
   servicios: "servicios",
   partos: "partos",
   pesajesLeche: "pesaje_leche",
+  pesajeLeche: "pesaje_leche/",
   cargosPersonal: "cargos_personal",
   añosVentaGanado: "años_ventas_ganado",
   añosProduccionLeche: "años_produccion_leche",
