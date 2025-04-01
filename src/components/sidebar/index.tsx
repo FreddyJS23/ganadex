@@ -53,10 +53,10 @@ export const Sidebar = async ({ android }: SidebarProps) => {
         className={`${android ? "flex bg-base-100 w-52" : "hidden"} scrollbar scrollbar-w-1 scrollbar-thumb-primary scrollbar-thumb-rounded-full overflow-x-auto h-screen bg-gradient-to-r from-background from-95%   fixed lg:flex lg:flex-col items-center lg:fixed`}
       >
         {/*  container */}
-        <div className="h-full flex flex-col gap-2 items-center w-full ">
+        <div className="h-full flex flex-col gap-2 items-center w-[95%] ">
           <Logos small={false} />
 
-          <div className="divider divider-primary self-center w-36 mt-0 "></div>
+          <div className="divider divider-primary self-center w-36 mt-0 mb-0 "></div>
           {/*  cuerpo */}
           <ul className="flex flex-col w-full ">
             {sidebarElements(false, role)}
@@ -67,11 +67,11 @@ export const Sidebar = async ({ android }: SidebarProps) => {
       {/*tablet*/}
       {/*  container */}
       <nav className="hidden z-50 h-screen bg-gradient-to-r from-background from-95% fixed sm:max-lg:flex sm:max-lg:flex-col items-center sm:max-lg:fixed  ">
-        <div className="flex flex-col gap-2 items-center ">
+        <div className="flex flex-col gap-2 items-center w-full ">
           <Logos small={true} />
-          <div className="divider divider-primary self-center w-12 mt-0 "></div>
+          <div className="divider divider-primary self-center w-6 my-0 "></div>
           {/*  cuerpo */}
-          <ul className="flex flex-col ">{sidebarElements(true, role)}</ul>
+          <ul className="flex flex-col w-full ">{sidebarElements(true, role)}</ul>
         </div>
       </nav>
     </>

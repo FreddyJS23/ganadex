@@ -119,7 +119,7 @@ export const TabLogin = () => {
         </form>
 
         {/* restablecer contraseña */}
-        <Link className="mt-2" color="primary" href={"/restablecer_acceso"}>
+        <Link className="mt-4" color="primary" href={"/restablecer_acceso"}>
           ¿Olvidaste tu contraseña?
         </Link>
       </Tab>

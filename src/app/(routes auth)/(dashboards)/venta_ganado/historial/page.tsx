@@ -30,7 +30,7 @@ export default async function Page() {
     await getData("añosVentaGanado");
 
   return (
-    <section className="flex p-4  gap-8 flex-col sm:pl-12">
+    <section className="flex gap-8 flex-col ">
       {/* cards */}
       <article className="flex justify-around flex-wrap gap-4 items-center">
         <CardDashboardSaleCattle

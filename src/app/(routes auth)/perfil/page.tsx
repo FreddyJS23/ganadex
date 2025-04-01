@@ -44,7 +44,7 @@ export default async function Page() {
 
   return (
     <>
-      <section className="bg-base-100 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
+      <section className="bg-base-100 items-center ">
         <TabsProfile
           haciendaSesion={hacienda}
           haciendas={haciendas}

@@ -15,7 +15,7 @@ export default async function Page() {
   );
 
   return (
-    <section className="flex p-4  gap-8 flex-col sm:pl-12">
+    <section className="flex gap-8 flex-col">
       <div className="flex gap-6 flex-col lg:flex-row w-full">
         {/*   grafico ganancia */}
         <article className="shadow-cards p-4 flex flex-col bg-base-100">

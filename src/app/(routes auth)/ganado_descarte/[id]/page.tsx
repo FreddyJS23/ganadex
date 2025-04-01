@@ -54,7 +54,7 @@ export default async function Page({ params }: ParamsPageBeef) {
 
   return (
     <>
-      <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
+      <div className="flex flex-col gap-8 items-center ">
         <div className="flex gap-2">
           <h3 className=" font-bold text-2xl">
             Detalle cabeza ganado descartado {numero}

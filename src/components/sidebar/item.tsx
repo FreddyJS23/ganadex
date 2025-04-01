@@ -35,9 +35,9 @@ export const SidebarElement = ({
         } rounded-none transition-none`}
       >
         {/*   elemento */}
-        <summary className="!flex p-2 pl-4 pr-4 items-center border-l-4 border-l-transparent gap-3  hover:bg-base-200 hover:border-l-primary  group-focus:bg-base-200 group-focus:border-l-primary transition-colors duration-75">
+        <summary className={`!flex ${responsive ? 'my-1 p-2 pl-1 gap-1' : 'p-2 pl-1 pr-4 gap-3'} items-center border-l-4 border-l-transparent   hover:bg-base-200 hover:border-l-primary  group-focus:bg-base-200 group-focus:border-l-primary transition-colors duration-75`}>
           {/*  Icono del elemento */}
-          <div className={`size-7 ${!options ? "cursor-pointer" : ""}`}>
+          <div className={`${responsive ? 'size-5' : 'size-7'}  ${!options ? "cursor-pointer" : ""}`}>
             {<Icon />}
           </div>
 
