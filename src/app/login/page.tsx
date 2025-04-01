@@ -7,7 +7,7 @@ import cattleBackgroundLogin from "public/cattleBackgroundLogin.png";
 export default function Page() {
   return (
     <section className="flex w-full h-screen md:m-auto">
-      <div className="flex flex-col w-full sm:flex-row  max-w-5xl md:m-auto">
+      <div className="flex flex-col  w-full sm:flex-row  max-w-5xl md:m-auto md:h-4/5">
         {/* imagen android */}
         <div className="sm:hidden">
           <Image
@@ -22,14 +22,14 @@ export default function Page() {
           />
         </div>
         {/*seccion izquierda formularios */}
-        <div className="flex size-full z-10 pt-16 flex-col justify-center items-center rounded-lg gap-4  sm:bg-base-100 sm:p-4 sm:w-2/4 sm:h-[500px] sm:max-h-[100%]">
+        <div className="flex size-full z-10 pt-16 flex-col justify-center items-center rounded-lg gap-4  sm:bg-base-100 sm:p-4 sm:w-2/4  sm:max-h-[100%]">
           <Logos small={false} />
 
           <TabLogin />
         </div>
 
         {/* seccion derecha */}
-        <div className="hidden sm:flex  bg-backgroundLogin w-2/4 flex-col justify-center items-center gap-12">
+        <div className="hidden sm:flex  bg-backgroundLogin w-2/4 bg-cover flex-col justify-center items-center gap-12">
           {/* mockup */}
           <div className="w-full flex flex-col items-center px-8">
             {/* display mockup */}
