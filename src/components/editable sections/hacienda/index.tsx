@@ -25,21 +25,24 @@ export const ListHaciendasProfile = ({
   haciendaSesion,
   userLoginInfo,
 }: ListHaciendasProfileProps) => {
-  const { editar, idAction, isLoading, onEdit, onSaveOrCancel, onDelete } =
+  const { stateButton, idAction, isLoading, onEdit, onSaveOrCancel, onDelete } =
     useEditDelete(deleteHacienda);
 
 
   return haciendas.map((hacienda) => {
-    return editar && idAction == hacienda.id ? (
+    return stateButton == "save" && idAction == hacienda.id ? (
     /*Editar hacienda */
     <div className="flex gap-2 items-center">
         <Edit hacienda={hacienda} id={hacienda.id}  onSave={onSaveOrCancel}>
 
         <ButtonsEditedDelete
           id={hacienda.id}
+          isLoading={isLoading}
+          onEdit={onEdit}
+          onDelete={onDelete}
+          onCancel={onSaveOrCancel}
           formId="form-edit-hacienda"
           state="save"
-          onCancel={onSaveOrCancel}
         />
         </Edit>
        
@@ -54,9 +57,11 @@ export const ListHaciendasProfile = ({
             <ButtonsEditedDelete
               id={hacienda.id}
               state="edit"
+              formId="form-edit-hacienda"
+              onCancel={onSaveOrCancel}
+              isLoading={isLoading}
               onEdit={onEdit}
               onDelete={onDelete}
-              isLoading={isLoading}
               size="sm"
             />
           ) : undefined

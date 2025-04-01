@@ -57,7 +57,7 @@ export const QuestionSecurity = ({
   preguntas_seguridad,
   respuestas_seguridad,
 }: QuestionSecurityProps) => {
-  const { editar, idAction, isLoading, onEdit, onDelete, onSaveOrCancel } =
+  const { stateButton, idAction, isLoading, onEdit, onDelete, onSaveOrCancel } =
     useEditDelete(deleteResponseSecurity);
 
   /* desabilitar el boton de crear pregunta de seguridad si ya tiene 7 preguntas */
@@ -68,7 +68,7 @@ export const QuestionSecurity = ({
       {respuestas_seguridad.map(
         ({ id, pregunta, pregunta_seguridad_id, respuesta, updated_at }) => (
           <LayoutCenterContentTabs key={id}>
-            {editar && idAction == id ? (
+            {stateButton == "save" && idAction == id ? (
               <div className="flex w-full">
                 {/* Editar pregunta */}
                 <CreateOrEdit
@@ -89,6 +89,10 @@ export const QuestionSecurity = ({
                   state="save"
                   onCancel={onSaveOrCancel}
                   isLoading={isLoading}
+                  onDelete={onDelete}
+                  onEdit={onEdit}
+                  size="sm" 
+
                 />
               </div>
             ) : (
@@ -107,6 +111,8 @@ export const QuestionSecurity = ({
                   onEdit={onEdit}
                   onDelete={onDelete}
                   isLoading={isLoading}
+                  onCancel={onSaveOrCancel}
+                  formId="form-edit-question"
                   size="sm"
                 />
               </>
