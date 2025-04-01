@@ -10,6 +10,7 @@ import { castleEditShema, castleShema } from "@/validations/castleShema";
 import {
   createAdminCheckUpShema,
   createBaseCheckUpShema,
+  editCheckUpShema,
 } from "@/validations/checkUpShema";
 import { createConfigurationShema } from "@/validations/configurationShema";
 import { createUserShema } from "@/validations/createUser";
@@ -81,6 +82,8 @@ export type CreateAssigmentNumberBullCalf = z.infer<
 export type CreateAdminCheckUp = z.infer<typeof createAdminCheckUpShema>;
 
 export type CreateBaseCheckUp = z.infer<typeof createBaseCheckUpShema>;
+
+export type EditCheckUp = z.infer<typeof editCheckUpShema>;
 
 export type CreateConfiguration = z.infer<typeof createConfigurationShema>;
 

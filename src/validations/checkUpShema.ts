@@ -19,3 +19,9 @@ export const inputPersonalIdShema = z.object({
 });
 export const createAdminCheckUpShema =
   createBaseCheckUpShema.and(inputPersonalIdShema);
+
+  export const editCheckUpShema = z
+    .object({
+      fecha: z.string().regex(regexDate),
+      tratamiento: z.string().min(3).max(255),
+    })

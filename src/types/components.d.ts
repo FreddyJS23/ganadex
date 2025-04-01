@@ -6,7 +6,7 @@ import {
   TitlesModals,
   URLS,
 } from ".";
-import { MutableRefObject } from "react";
+import { MutableRefObject, ReactNode } from "react";
 import { iconsSidebar } from "@/collections";
 import {
   DASHBOARD_SALE,
@@ -115,7 +115,7 @@ export type LayoutModalProps = {
   children: JSX.Element;
   /**Titulo del modal   */
   titleModal: keyof typeof TitlesModals;
-  dataHeader?: string | number;
+  dataHeader?: string | number | ReactNode;
   /**Icono del modal   */
   icon: keyof typeof IconsModal;
   /**Habilidar botones de registras y cancelar   */

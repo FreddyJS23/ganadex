@@ -1,5 +1,5 @@
 import { iconsModal } from "@/collections/iconsModal";
-import { LayoutModalProps } from "@/types";
+import type { LayoutModalProps } from "@/types";
 import { Button } from "@/ui/Button";
 import {
   Modal,
@@ -9,7 +9,7 @@ import {
   ModalFooter,
 } from "@nextui-org/modal";
 import { useRouter } from "next/navigation";
-import { MutableRefObject, useEffect, useState } from "react";
+import { type MutableRefObject, useEffect, useState } from "react";
 
 export const LayoutModal = ({
   titleModal,
@@ -56,10 +56,20 @@ export const LayoutModal = ({
               <span className="size-12 p-[6px] bg-[#AF842D20] dark:bg-[#22FF1E20] rounded-full ">
                 <Icon />
               </span>
-              <h2>
-                {titleModal}
-                {dataHeader}
-              </h2>
+              {/* titulo modal estatico */}
+              {typeof dataHeader == "number" ||
+              typeof dataHeader == "string" ? (
+                <h2>
+                  {titleModal}
+                  {dataHeader}
+                </h2>
+              ) : (
+                /* titulo modal dinamico con elementos TSX */
+                <div className="flex flex-wrap gap-2 items-center">
+                  <h2>{titleModal}</h2>
+                  {dataHeader}
+                </div>
+              )}
             </ModalHeader>
             <ModalBody>{children}</ModalBody>
             {footer && (
