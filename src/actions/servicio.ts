@@ -18,3 +18,20 @@ export async function createServe(
   if (typeof response == "object" && "error" in response) return response;
   else return;
 }
+
+export async function editServe(
+  idServe: number,
+  idCastle: number,
+  formData: CreateServe,
+): Promise<void | ResponseErrorNext> {
+  const response = await getData<CreateServe, void>(
+    "ganado",
+    "PUT",
+    formData,
+    idCastle,
+    "servicio",
+    idServe,
+  );
+  if (typeof response == "object" && "error" in response) return response;
+  else return;
+}

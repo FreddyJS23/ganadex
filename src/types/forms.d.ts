@@ -20,7 +20,7 @@ import { createPriceMilkShema } from "@/validations/priceMilkShema";
 import { rangeDatesToReportsShema } from "@/validations/rangeDatesShema";
 import { createSaleCattleShema } from "@/validations/saleCattle";
 import { createSaleMilkShema } from "@/validations/saleMilkShema";
-import { createServeShema } from "@/validations/serveShema";
+import { createServeShema, updateServeShema } from "@/validations/serveShema";
 import { createStaffShema } from "@/validations/staffShema";
 import { createSupplyShema } from "@/validations/supplyShema";
 import { createWeightMilkShema } from "@/validations/WeightMilkShema";
@@ -100,6 +100,8 @@ export type CreatePriceMilk = z.infer<typeof createPriceMilkShema>;
 export type CreateSaleMilk = z.infer<typeof createSaleMilkShema>;
 
 export type CreateServe = z.infer<typeof createServeShema>;
+
+export type UpdateServe = z.infer<typeof updateServeShema>;
 
 export type CreateStaff = z.infer<typeof createStaffShema>;
 

@@ -24,4 +24,7 @@ export const createAdminCheckUpShema =
     .object({
       fecha: z.string().regex(regexDate),
       tratamiento: z.string().min(3).max(255),
-    })
+    }).refine((data) => new Date(data.fecha) <= new Date(), {
+      message: "La fecha no puede ser mas alta que la fecha actual",
+      path: ["fecha"],
+    });
