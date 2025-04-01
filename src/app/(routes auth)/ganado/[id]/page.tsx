@@ -96,6 +96,10 @@ export default async function Page({ params }: ParamsPageCattle) {
                   tittle={DetailsCattle.causa_fallecimiento}
                   content={ganado.fallecimiento.causa}
                 />
+                 <Details
+                  tittle={DetailsCattle.descripcion_fallecimiento}
+                  content={ganado.fallecimiento.descripcion}
+                />
                 </>
               )}
               {ganado.fecha_ingreso && (
