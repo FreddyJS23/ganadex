@@ -4,30 +4,25 @@ import IconDelete from "@/icons/icono-borrar.svg";
 import IconSave from "@/icons/icono-save.svg";
 import IconCancel from "@/icons/icono-error.svg";
 import { useFormStatus } from "react-dom";
+import { useEditDelete } from "@/lib/hooks/useEditDelete";
 
-type BaseProps = {
+type ButtonEditProps = {
   id: number;
   size?: "sm" | "md" | "lg"
   /**Desabilitar el boton de eliminacion ya que hay elementos no deben ser eliminados   */
   hiddenDelete?: boolean;
-};
-
-type EditProps = BaseProps & {
-  state: "edit";
   onEdit: (id: number) => void;
   onDelete: (id: number) => void;
   isLoading: boolean;
-};
-
-/* no se utilizar un onSave porque se usa el formId para enviar el formulario */
-type SaveProps = BaseProps & {
-  state: "save";
+  state: "edit" | "save";
   formId: string;
   onCancel: () => void;
 };
 
-export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
-  const { id, size, state,hiddenDelete=false } = props;
+
+
+
+export const ButtonsEditedDelete = ({formId,state,id,size,hiddenDelete=false,onEdit,onDelete,isLoading,onCancel}:ButtonEditProps) => {
 
   const { pending } = useFormStatus();
   /* se utilizar el variant para evitar error de tipo al destructurar las props
@@ -50,6 +45,7 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
     title: action,
   });
 
+
   return (
     <div className="flex gap-4">
       {state == "save" ? (
@@ -57,8 +53,8 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
         <Button
           {...baseButtonProps("Guardar")}
           type="submit"
-          form={props.formId}
-          isLoading={pending}
+          form={formId}
+          isLoading={pending ? pending : isLoading}
         >
           <IconSave className="size-7" />
         </Button>
@@ -66,8 +62,8 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
         /* edit */
         <Button
           {...baseButtonProps("Editar")}
-          onClick={() => props.onEdit(id)}
-          isLoading={pending}
+          onClick={() => onEdit(id)}
+          isLoading={isLoading}
         >
           <IconEdit className="size-6" />
         </Button>
@@ -77,7 +73,7 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
         /* cancel */
         <Button
           {...baseButtonProps("Cancelar")}
-          onClick={props.onCancel}
+          onClick={onCancel}
         >
           <IconCancel className="size-7 fill-white" />
         </Button>
@@ -85,8 +81,8 @@ export const ButtonsEditedDelete = (props: EditProps | SaveProps) => {
         /* delete */
        !hiddenDelete && <Button
           {...baseButtonProps("Eliminar")}
-          onClick={() => props.onDelete(id)}
-          isLoading={props.isLoading}
+          onPress={() => onDelete(id)}
+          isLoading={isLoading}
           className="bg-error"
         >
           <IconDelete className="size-7" />
