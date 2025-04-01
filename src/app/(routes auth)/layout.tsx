@@ -10,14 +10,14 @@ export default function RootLayoutAuth({
 }) {
   return (
     <>
-      <div className=" grid grid-cols-12">
-        <header className="col-span-2">
+      <div className="min-h-screen grid grid-cols-12 grid-rows-[6rem,1fr] md:grid-cols-[3rem,repeat(11,1fr)] lg:grid-cols-[11rem,repeat(11,1fr)]  ">
+        <header className="col-span-1 row-span-full">
           <Sidebar android={false} />
         </header>
-        <nav className="col-span-full z-50 sm:col-start-3 sm:col-end-12 lg:translate-x-6">
+        <nav className="col-span-full row-span-1 z-50 sm:col-start-2  lg:mx-5  ">
           <Navbar />
         </nav>
-        <main className="mt-2 sm:col-start-2 lg:mt-0 lg:col-start-3 col-span-full ">
+        <main className="col-span-full row-start-2 sm:col-start-2 md:p-4 lg:mx-7  ">
           {children}
           {modal}
         </main>
