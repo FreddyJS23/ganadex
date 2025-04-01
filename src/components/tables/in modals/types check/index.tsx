@@ -20,7 +20,8 @@ export const TableTypeCheck = ({ tipos_revision }: ResponseTiposRevision) => {
               <td>{tipo} </td>
               {tipo != "Gestacion" &&
                 tipo != "Descartar" &&
-                tipo != "Rutina" && (
+                tipo != "Rutina" &&
+                tipo != "Aborto" && (
                   <td>
                     <Link href={`/revisiones/tipo/actualizar/${id}`}>
                       <IconEdit className="size-6" />
