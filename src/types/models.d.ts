@@ -202,7 +202,7 @@ export type Revisiones = {
   id: number;
   numero: number;
   ultima_revision: string;
-  diagnostico: string;
+  diagnostico: TipoRevision["tipo"];
   proxima_revision: string | null;
   total_revisiones: number;
 };
@@ -333,7 +333,7 @@ export type LogEvento = {
 
 export type TipoRevision = {
   id: number;
-  tipo: "Gestacion" | "Descartar" | "Rutina" | string;
+  tipo: "Gestación" | "Descartar" | "Rutina" | 'Aborto' | string;
 };
 
 export type CausaFallecimiento = {
