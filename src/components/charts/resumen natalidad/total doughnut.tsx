@@ -41,16 +41,16 @@ const TotalNacimientosAñoActualTorta = forwardRef(function (
     ],
   };
 
-  const totalPartos =
+  const totalPartos:number =
     nacimientos_año_actual.hembras + nacimientos_año_actual.machos;
 
-  const configAnotation = {
+    const configAnotation = {
     annotation: {
       //plugin anotaciones
       annotations: {
         dLabel: {
           type: "doughnutLabel",
-          content: ["Total", totalPartos],
+          content: ["Total", !isNaN(totalPartos) ? totalPartos : 0  ],
           font: [
             { size: 20, weight: "bold" },
             { size: 18, weight: "normal" },
