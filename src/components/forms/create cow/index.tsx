@@ -68,6 +68,7 @@ export const FormCow = ({
     formState: { errors },
     handleSubmit,
     setValue,
+    getValues,
     control,
   } = useForm<CreateCastle>({
     resolver: zodResolver(shema),
@@ -261,6 +262,7 @@ export const FormCow = ({
             listVaccines={listVaccines}
             setListVaccines={setListVaccines}
             isChecked={isSelected}
+            fecha_nacimiento={getValues("fecha_nacimiento")}
           />
         </div>
       </div>

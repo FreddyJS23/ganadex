@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import { AvailableVaccines, ListaVacunas } from "@/types";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { SelectVaccines } from "../select vaccines";
+import { is } from "date-fns/locale";
 
 type ModalProps = {
   isOpen: boolean;
@@ -30,6 +31,8 @@ type CreateListVaccinationProps = {
   setListVaccines: React.Dispatch<React.SetStateAction<ListaVacunas[]>>;
   isChecked: boolean;
   vaccinesSelect: AvailableVaccines[];
+    /**Se usara para no colocar vacunas antes de nacimiento */
+  fecha_nacimiento: string;
 };
 
 export const CreateListVaccination = ({
@@ -37,6 +40,7 @@ export const CreateListVaccination = ({
   setListVaccines,
   isChecked,
   vaccinesSelect,
+  fecha_nacimiento,
 }: CreateListVaccinationProps) => {
   /* Estado del select */
   const [valueSelect, setValueSelect] = useState<number | null>(null);
@@ -53,6 +57,17 @@ export const CreateListVaccination = ({
       /[1-9][0-9][0-9]{2}-([0][1-9]|[1][0-2])-([1-2][0-9]|[0][1-9]|[3][0-1])/;
     return regexDate.test(fecha);
   };
+
+  /* validacion fecha vacuna no sea inferiro a la fecha de nacimiento */
+  const isHigherFechaNacimiento = useMemo(()=>{
+    const FechaNacimiento = new Date(fecha_nacimiento);
+    const FechaVacunacion = new Date(fecha);
+    return FechaNacimiento.getTime() > FechaVacunacion.getTime();
+
+    
+  },[fecha,fecha_nacimiento]);
+
+  isHigherFechaNacimiento;
 
   const isInvalidDate = useMemo(() => {
     if (fecha == "") return true;
@@ -103,6 +118,11 @@ export const CreateListVaccination = ({
     if (checkIsRepeatedVaccine())
       return toast.error(
         "Esta vacuna ya se encuentra en la lista con la fecha seleccionada",
+      );
+   
+      if (isHigherFechaNacimiento)
+      return toast.error(
+        "La vacuna no puede ser antes de la fecha de nacimiento",
       );
 
     const intervaloDosis = vaccinesSelect.find(
