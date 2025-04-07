@@ -12,6 +12,8 @@ import { Session } from "next-auth";
 import ErrorApp from "./errorApp";
 import { handleErrorFromApi } from "./handleErrorFromApi";
 import ErrorFromApi from "@/lib/errors/errorFromApi";
+import { checkSessionLaravel } from "./checkSessionLaravelHeaders";
+import { ERROR_401, ERROR_404, ERROR_419, ERROR_500 } from "@/constants/responseApiMessage";
 
 export async function getData<Form, dataResponse>(
   endPoint: keyof typeof endPoints,
@@ -81,7 +83,15 @@ export async function getData<Form, dataResponse>(
         data: data as ResponseErrorFromApi["data"],
       });
   } catch (e: unknown) {
-    console.log(e);
+    /* manejar otros errores del servidor de laravel */
+    if (e instanceof ErrorFromApi){
+      const {status}=e.error
+      if( status == 404) throw new Error(ERROR_404);
+      else if( status == 401) throw new Error(ERROR_401);
+      else if( status == 500) throw new Error(ERROR_500);
+      else if( status == 419) throw new Error(ERROR_419);
+      
+    };
     return handleErrorFromApi(e);
   }
 
