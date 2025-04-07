@@ -64,7 +64,7 @@ export const ButtonGenerateReport = () => {
         <IconImprimir tittle="Generar reporte" className={"text-base-100 size-8 sm:text-current"} />
       </Link>
     );
-  else if (pathname == "/venta_ganado")
+  else if (pathname == "/venta_ganado/historial")
     return (
       <Link href={`/reporte_anual/venta_ganado`}>
         <IconImprimir tittle="Generar reporte" className={"text-base-100 size-8 sm:text-current"} />
