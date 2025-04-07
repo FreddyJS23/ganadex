@@ -159,7 +159,7 @@ export const TabLogin = () => {
               errors={errorsCreateUser}
             />
             <Input
-              id="correo"
+              id="email"
               required
               type="text"
               label="Correo"
