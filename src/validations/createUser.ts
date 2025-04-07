@@ -5,7 +5,7 @@ export const createUserShema = z
     nombre: z.string().max(15).min(3),
     apellido: z.string().max(15).min(3),
     usuario: z.string().max(15).min(3),
-    correo: z.string().email(),
+    email: z.string().email(),
     password: z
       .string()
       .min(8, "La contraseña debe tener al menos 8 caracteres")

@@ -1,13 +1,13 @@
 import { z } from "zod";
 
 const weightsBaseShema = z.object({
-  peso_nacimiento: z.number().optional(),
-  peso_destete: z.number().optional(),
-  peso_actual: z.number().optional(),
+  peso_nacimiento: z.number().gte(1).lte(100).optional(),
+  peso_destete: z.number().gte(1).lte(250).optional(),
+  peso_actual: z.number().gte(1).lte(2000).optional(),
 });
 
 const weightsBaseWith2yearShema = z.object({
-  peso_2year: z.number().optional(),
+  peso_2year: z.number().gte(1).lte(500).optional(),
 });
 
 export const weightsShema = weightsBaseShema
