@@ -57,7 +57,6 @@ export default async function Home() {
   const { total_vacas_en_ordeño }: TotalVacasEnOrdeño = await getData(
     "dashboardPrincipalVacasEnOrdeño",
   );
-  console.log(total_vacas_en_ordeño);
 
   const { cantidad_vacas_para_servir }: TotalGanadoPendienteservir =
     await getData("dashboardPrincipalcantidadNovillasMontar");
@@ -76,7 +75,6 @@ export default async function Home() {
   /* esto viene del backend y se guarda en la sesion de auth */
   const tiene_preguntas_seguridad = session.user.tiene_preguntas_seguridad;
 
-  console.log(tiene_preguntas_seguridad);
   return (
     <section className="flex flex-col gap-8 justify-center items-center  m-auto sm:grid grid-cols-4 sm:gap-4 sm:gap-y-12  md:items-center">
       {/*  grafico torta */}

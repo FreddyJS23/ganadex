@@ -26,7 +26,6 @@ export async function signOutApi() {
     const ganadoDescarte = await fetch(url, optionFetch);
     const { data, status } = await handleResponse(ganadoDescarte);
     if (status == 200) {
-      console.log(status);
       return status;
     } else if (status == 422 || status == 401 || status == 500)
       throw { status: status, data: data };

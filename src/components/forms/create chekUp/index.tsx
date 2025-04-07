@@ -42,7 +42,6 @@ export const FormCreateCheckUp = ({
     ),
     defaultValues: { fecha: getDateNow() },
   });
-  console.log(errors, isAdmin);
   const router = useRouter();
   const { id: cattleId } = useParams<{ id: string }>();
 

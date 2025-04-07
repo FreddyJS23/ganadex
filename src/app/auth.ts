@@ -59,6 +59,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         try {
           // logic to verify if user exists
           user = await authApi(credentials);
+          console.log(user);
           return user;
         } catch (errorServe) {
           if (errorServe instanceof Error) throw new AuthError(ERROR_SERVER);

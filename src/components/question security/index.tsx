@@ -137,7 +137,6 @@ export const QuestionSecurity = ({
 
 const CreateOrEdit = (props: CreateOrEditProps) => {
   const { type, availableQuestion } = props;
-  console.log(availableQuestion);
   const router = useRouter();
 
   const {

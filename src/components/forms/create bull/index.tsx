@@ -66,7 +66,6 @@ export const FormBull = ({
     resolver: zodResolver(shema),
     defaultValues: { estado_id: ["1"], numero: numero_disponible },
   });
-  console.log(errors);
   const handleSelectionTypeBullChange = (select: number | string) => {
     /* pocision del container campo peso dos años */
     const inputWeight2year = form.current?.querySelector(

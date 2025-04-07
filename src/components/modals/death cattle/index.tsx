@@ -37,7 +37,6 @@ export const ModalDeathCattle = ({
   const params = useParams<{ id: string }>();
 
   const actionCreateDeathCattle: () => void = handleSubmit(async (data) => {
-    console.log(data);
     const deathCattle = await createDeathCattle(data, parseInt(params.id));
     /* manejar error del backedn y mostar mensaje */
     if (typeof deathCattle == "object" && "error" in deathCattle)

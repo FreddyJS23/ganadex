@@ -57,6 +57,5 @@ export async function GET() {
   /* guardar token en las cookies de sesion */
   cookiesStore.set("laravel_session", laravelSession, configCookie);
   cookiesStore.set("xsrf_token", xsrfToken, configCookie);
-  console.log(cookiesStore.getAll());
   return Response.json({ message: "Ok" });
 }

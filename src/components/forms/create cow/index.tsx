@@ -77,7 +77,6 @@ export const FormCow = ({
       numero: numero_disponible,
     },
   });
-  console.log(numero_disponible);
   const actionCastle: () => void = handleSubmit(async (data) => {
     const response = await createCastle(data, listVaccines);
 

@@ -196,7 +196,6 @@ export const TableComponent = <T extends { id: number }>({
         T & { haciendas: Hacienda[] }
       >;
 
-      console.log(filteredItemsWithHacienda);
       filteredItems = filteredItemsWithHacienda.filter((item) =>
         item.haciendas.some(
           ({ nombre }) => nombre.toLowerCase() == nameHacienda.toLowerCase(),
@@ -302,7 +301,6 @@ export const TableComponent = <T extends { id: number }>({
               selectedKeys={statusFilter}
               selectionMode="multiple"
               onSelectionChange={(key) => {
-                console.log(key);
                 setStatusFilter(key);
               }}
               classNames={{ base: "bg-base-100" }}
@@ -338,7 +336,6 @@ export const TableComponent = <T extends { id: number }>({
               selectedKeys={typesCastleFilter}
               selectionMode="multiple"
               onSelectionChange={(key) => {
-                console.log(key);
                 setTypesCastleFilter(key);
               }}
               classNames={{ base: "bg-base-100" }}
@@ -420,7 +417,6 @@ export const TableComponent = <T extends { id: number }>({
               selectedKeys={personalFilter}
               selectionMode="single"
               onSelectionChange={(key) => {
-                console.log(key);
                 setPersonalFilter(key);
               }}
               classNames={{ base: "bg-base-100" }}

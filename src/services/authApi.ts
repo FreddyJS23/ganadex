@@ -38,6 +38,7 @@ export async function authApi(
   };
   try {
     const ganadoDescarte = await fetch(url, optionFetch);
+    console.log(ganadoDescarte);
     const { data, status } = await handleResponse(ganadoDescarte);
     if (status == 200 || status == 201) {
       const { xsrfToken, laravelSession } = getNewCookiesSession(

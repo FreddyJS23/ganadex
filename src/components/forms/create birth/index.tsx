@@ -71,7 +71,6 @@ export const FormCreateBirth = ({
     //como no hay un renderizado no se actualiza el estado y no se puede obtener el valor actual del select
     //por ende se asumen que aqui el valor debe ser el contrario
     const actualValue = !isSelected;
-    console.log({ ...valuesInitFormCalfCastle, numero: numero_disponible + 1 });
     if (actualValue) {
       /* para no crear un numero repetido */
       append({ ...valuesInitFormCalfCastle, numero: numero_disponible + 1 });
@@ -82,7 +81,6 @@ export const FormCreateBirth = ({
 
   const router = useRouter();
   const { id: cattleId } = useParams<{ id: string }>();
-  console.log(errors);
   const actionCreateBirth: () => void = handleSubmit(async (data) => {
     const response = await createBirth(data, parseInt(cattleId));
     /* manejar error del backedn y mostar mensaje */

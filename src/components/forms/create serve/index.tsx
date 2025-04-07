@@ -67,7 +67,6 @@ export const FormCreateService = ({
   });
   const router = useRouter();
   const { id: cattleId } = useParams<{ id: string }>();
-  console.log(errors);
 
   const actionCreateService: () => void = handleSubmit(async (data) => {
     const response = await createServe(data, parseInt(cattleId));

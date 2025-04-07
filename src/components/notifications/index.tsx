@@ -25,7 +25,6 @@ export const NotificationMain = () => {
   useEffect(() => {
     const getNotifications = async () => {
       const response = await fetch("/api/notificaciones");
-      console.log(response);
       const data: TypesNotification = await response.json();
       const { parto = [], revision = [], secado = [] } = data;
 
