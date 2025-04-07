@@ -9,6 +9,7 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  /* si se usa docker, se debe eliminar esto */
   distDir: isProduction ? "build" : undefined,
   webpack(config) {
     // Grab the existing rule that handles SVG imports
