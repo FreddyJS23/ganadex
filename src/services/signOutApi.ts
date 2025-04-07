@@ -4,7 +4,7 @@ import { handleResponse } from "@/utils/handleResponseApi";
 import { Session } from "next-auth";
 
 export async function signOutApi() {
-  const url = "http://127.0.0.1:8000/" + "api/" + "logout";
+  const url = process.env.API_URL + "logout";
   const session = (await auth()) as Session;
 
   const { user } = session;

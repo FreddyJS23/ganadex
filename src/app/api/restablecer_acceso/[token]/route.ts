@@ -16,7 +16,7 @@ export async function POST(
 
   const token = params.token;
 
-  const url = "http://127.0.0.1:8000/" + "api/" + "restablecer_acceso/" + token;
+  const url = process.env.API_URL + "restablecer_acceso/" + token;
 
   //Lanzar error si no se encuentra el token
   if (!xsrfToken || !laravelSession)

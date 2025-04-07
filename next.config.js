@@ -45,9 +45,7 @@ const nextConfig = {
     serverActions: {
       allowedOrigins: [
         "pqck8p44-3000.use2.devtunnels.ms",
-        "pqck8p44-4000.use2.devtunnels.ms",
-        "localhost:3000",
-        "localhost:4000",
+        process.env.API_URL,
       ],
     },
   },

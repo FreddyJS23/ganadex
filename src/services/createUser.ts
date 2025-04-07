@@ -13,7 +13,7 @@ import { cookies } from "next/headers";
 export async function createUserApi<Form, dataResponse>(
   data?: Form,
 ): Promise<ResponseErrorNext | dataResponse> {
-  const url = "http://127.0.0.1:8000/" + "api/" + "register";
+  const url =process.env.API_URL + "register";
 
   const cookiesStore = cookies();
 

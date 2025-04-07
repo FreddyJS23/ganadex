@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 export async function authApi(
   credentials: Partial<Record<"usuario" | "password", unknown>>,
 ) {
-  const url = "http://127.0.0.1:8000/" + "api/" + "login";
+  const url = process.env.API_URL  + "login";
   const cookiesStore = cookies();
 
   const laravelSession = cookiesStore.get("laravel_session")?.value;
@@ -38,7 +38,6 @@ export async function authApi(
   };
   try {
     const ganadoDescarte = await fetch(url, optionFetch);
-    console.log(ganadoDescarte);
     const { data, status } = await handleResponse(ganadoDescarte);
     if (status == 200 || status == 201) {
       const { xsrfToken, laravelSession } = getNewCookiesSession(

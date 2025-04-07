@@ -11,7 +11,7 @@ export async function GET() {
     cookiesStore.delete(cookie.name);
   });
   /* obtener cookies csrf y laravel session */
-  const res = await fetch("http://127.0.0.1:8000/sanctum/csrf-cookie", {
+  const res = await fetch(process.env.API_URL_BASE + "sanctum/csrf-cookie", {
     method: "GET",
   });
   const setCookieHeader = res.headers.get("set-cookie");

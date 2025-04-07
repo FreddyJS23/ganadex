@@ -18,7 +18,7 @@ export const GetReportsYear = async (
   const { token } = user;
 
   const url =
-    "http://127.0.0.1:8000" +
+    process.env.API_URL_BASE +
     `/${endpointsReportsAnnual[endPoint]}?year=${year}`;
 
   const headers = new Headers({

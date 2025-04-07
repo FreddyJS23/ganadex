@@ -30,7 +30,7 @@ export async function getData<Form, dataResponse>(
   /*  const {token,cookieCsrf}=user */
   const { token } = user;
 
-  let url = "http://127.0.0.1:8000/" + "api/" + endPoints[endPoint];
+  let url = process.env.API_URL + endPoints[endPoint];
 
   const headers = new Headers({
     Accept: "application/json",

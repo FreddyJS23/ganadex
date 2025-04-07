@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       { status: 500 },
     );
 
-  const url = "http://127.0.0.1:8000/" + "api/" + "restablecer_acceso";
+  const url = process.env.API_URL + "restablecer_acceso";
 
   /*configuracion de cookies*/
   const configCookie: Partial<ResponseCookie> = {

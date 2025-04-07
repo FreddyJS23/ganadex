@@ -25,7 +25,6 @@ export async function updateResponseSecurity(
     CreateOrUpdateResponseSecurity,
     ResponseRegistroExitoso
   >("respuestaSeguridad", "PUT", formData, id);
-  console.log(response);
   if ("error" in response) return response;
   else return response.message;
 }
@@ -38,7 +37,6 @@ export async function deleteResponseSecurity(
     ResponseRegistroExitoso
   >("respuestaSeguridad", "DELETE", undefined, id);
 
-  console.log(response);
 
   if ("error" in response) return response;
   else return response.message;

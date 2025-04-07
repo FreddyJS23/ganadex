@@ -20,13 +20,13 @@ export const GetReports = async (
 
   let url = "";
   if (endPoint == "dashboard" || endPoint == "notaVenta") {
-    url = "http://127.0.0.1:8000" + `/${endpointsReports[endPoint]}`;
+    url = process.env.API_URL_BASE + `${endpointsReports[endPoint]}`;
   } else if (endPoint == "ganado") {
-    url = "http://127.0.0.1:8000" + `/${endpointsReports[endPoint]}/${id}`;
+    url = process.env.API_URL_BASE + `${endpointsReports[endPoint]}/${id}`;
   } else if (endPoint == "venta_leche" || endPoint == "fallecimiento") {
     url =
-      "http://127.0.0.1:8000" +
-      `/${endpointsReports[endPoint]}?start=${startDate}&end=${endDate}`;
+      process.env.API_URL_BASE +
+      +`${endpointsReports[endPoint]}?start=${startDate}&end=${endDate}`;
   }
 
   const headers = new Headers({
