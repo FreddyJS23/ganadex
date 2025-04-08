@@ -11,6 +11,8 @@ const nextConfig = {
   },
   /* si se usa docker, se debe eliminar esto */
   distDir: isProduction ? "build" : undefined,
+  /* descomentar estas dos lineas si se usa docker */
+  //output: "standalone",
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
