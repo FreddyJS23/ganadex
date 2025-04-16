@@ -22,17 +22,6 @@ export const FormCreateStaff = ({
 }: ResponseCargosPersonal) => {
   const form = useRef<HTMLFormElement | null>(null);
 
-  const [isLoading, setIsLoading] = useState(false);
-
-  const actionAddPersonal = async (personal_id: number) => {
-    setIsLoading(true);
-    const response = await addInHacienda(personal_id);
-    if (typeof response == "object" && "error" in response)
-      return toast.error(messageErrorApi(response));
-    else toast.success(response);
-    setIsLoading(false);
-  };
-
   const {
     register,
     formState: { errors },
@@ -51,19 +40,7 @@ export const FormCreateStaff = ({
 
     form.current?.reset();
 
-    toast.success(
-      `${response.nombre} ha sido creado ${response.cargo == "veterinario" ? ",en el siguiente boton se puede añadir a la hacienda actual" : ""}`,
-      {
-        action: response.cargo == "veterinario" && (
-          <div className="max-w-24">
-            <Button
-              content={<IconAdd className={"size-6"} />}
-              onClick={async () => await actionAddPersonal(response.id)}
-            />
-          </div>
-        ),
-      },
-    );
+    toast.success(`${response.nombre} ha sido creado con exito`);
   });
 
   return (
