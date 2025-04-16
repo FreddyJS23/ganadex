@@ -37,6 +37,12 @@ export const TableAllServes = ({
         break;
       }
 
+      case "pendiente": {
+        const pendiente = cellValue as boolean;
+
+        return <span>{pendiente ? "Sí" : "No"}</span>;
+      }
+
       case "toro": {
         const toro = cellValue as ToroDeServicio;
 
@@ -84,7 +90,7 @@ export const TableAllServes = ({
       columnsCollection={headerAllServes}
       items={todos_servicios}
       renderCell={renderCell}
-      type="serves"
+      type="servicio"
     />
   );
 };

@@ -202,6 +202,8 @@ export type Fallecimiento = {
 export type Revisiones = {
   id: number;
   numero: number;
+  estado:string;
+  pendiente:boolean;
   ultima_revision: string;
   diagnostico: TipoRevision["tipo"];
   proxima_revision: string | null;
@@ -215,6 +217,8 @@ export type Servicios = Pick<Ganado, "id" | "numero"> & {
   pajuela_toro?: PajuelaToro;
   efectividad: number;
   total_servicios: number;
+  estado:string;
+  pendiente:boolean;
 };
 
 /**Pesajes de leche de todas las cabeza de  ganado  */
@@ -227,9 +231,10 @@ export type PesajesLeche = Pick<Ganado, "id" | "numero" | "nombre"> & {
 export type Partos = Pick<Ganado, "id" | "numero"> & {
   ultimo_parto: string | null;
   total_partos: number;
+  estado:'Gestacion' | 'Vacia' | 'Vendida' | 'Fallecida' ;
   toro?: Pick<Toro, "id" | "numero">;
   pajuela_toro?: PajuelaToro;
-  cria: Pick<Cria, "id" | "numero">;
+  cria?: Pick<Cria, "id" | "numero">;
 };
 
 export type Comprador = {

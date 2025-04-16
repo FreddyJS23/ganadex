@@ -113,6 +113,8 @@ export const headerStaff: headersColumns<Personal>[] = [
 export const headerAllCheckup: headersColumns<Revisiones>[] = [
   { key: "numero", label: "Numero" },
   { key: "diagnostico", label: "Diagnostico" },
+  { key: "estado", label: "Estado" },
+  { key: "pendiente", label: "Pendiente revisar" },
   { key: "proxima_revision", label: "Proxima revision" },
   { key: "ultima_revision", label: "Ultima revision" },
   { key: "total_revisiones", label: "Total de revisiones" },
@@ -121,6 +123,8 @@ export const headerAllCheckup: headersColumns<Revisiones>[] = [
 
 export const headerAllServes: headersColumns<Servicios>[] = [
   { key: "numero", label: "Numero" },
+  { key: "estado", label: "Estado" },
+  { key: "pendiente", label: "Pendiente servir" },
   { key: "toro", label: "Toro/Pajuela toro" },
   { key: "total_servicios", label: "Total de servicios" },
   { key: "ultimo_servicio", label: "Ultimo servicio" },
@@ -131,6 +135,7 @@ export const headerAllServes: headersColumns<Servicios>[] = [
 export const headerAllBirths: headersColumns<Partos>[] = [
   { key: "numero", label: "Numero" },
   { key: "ultimo_parto", label: "Ultimo parto" },
+  { key: "estado", label: "Estado" },
   { key: "cria", label: "Cria" },
   { key: "toro", label: "Toro/Pajuela toro" },
   { key: "total_partos", label: "Total de partos" },

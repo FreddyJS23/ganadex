@@ -27,7 +27,7 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
       case "cria": {
         const cria = cellValue as Cria;
 
-        return (
+        return cria && (
           <RedirectInTable
             id={cria.id}
             label={cria.numero ?? ""}
@@ -59,7 +59,7 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
               redirect="toros"
             />
           );
-        else
+        else if (partos["pajuela_toro"])
           return (
             <RedirectInTable
               id={partos["pajuela_toro"]!.id}
@@ -80,13 +80,13 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
 
     return cellValue as ReactNode;
   }, []);
-
+console.log(todos_partos)
   return (
     <TableComponent
       columnsCollection={headerAllBirths}
       items={todos_partos}
       renderCell={renderCell}
-      type="births"
+      type="parto"
     />
   );
 };

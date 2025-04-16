@@ -31,6 +31,13 @@ export const TableAllCheckups = ({
         );
         break;
       }
+      case "pendiente": {
+        const pendiente = cellValue as boolean;
+
+        return <span>{pendiente ? "Sí" : "No"}</span>;
+      }
+
+
       case "id": {
         const id = cellValue as number;
         return <DropDownOptions idCattle={id} optionType="checkup" />;
@@ -45,7 +52,7 @@ export const TableAllCheckups = ({
 
   return (
     <TableComponent
-      type="checkups"
+      type="revision"
       columnsCollection={headerAllCheckup}
       items={todas_revisiones}
       renderCell={renderCell}

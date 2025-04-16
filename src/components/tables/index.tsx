@@ -24,6 +24,8 @@ import {
   EstadosGanado,
   Ganado,
   Hacienda,
+  Partos,
+  Servicios,
   StateCattle,
   TypesCattle,
 } from "@/types";
@@ -95,8 +97,11 @@ export const TableComponent = <T extends { id: number }>({
   const [filterValue, setFilterValue] = useState("");
   /* el tipo selection de nextui permite seleccionar todo el set con el string (all) */
   const [statusFilter, setStatusFilter] = useState<Selection>("all");
+  //filtro aplicado a la tabla de partos
+  const [statusBirthFilter, setstatusBirthFilter] = useState<Selection>("all");
   const [typesCastleFilter, setTypesCastleFilter] = useState<Selection>("all");
   const [sexFilter, setSexFilter] = useState<Selection>("all");
+  const [pendingFilter, setPendingFilter] = useState<Selection>("all");
   const [personalFilter, setPersonalFilter] = useState<Set<"all" | "some">>(
     new Set<"all" | "some">(["all"]),
   );
@@ -107,6 +112,8 @@ export const TableComponent = <T extends { id: number }>({
   let filterHaciendaActive = false;
   let filterTypesCattle = false;
   let filterSexCattle = false;
+  let filterPendingOperation = false;
+  let filterTypeBirhtStates = false;
 
   if (items.length > 0) {
     if ("numero" in items[0]) typeFilter = "numero";
@@ -120,6 +127,10 @@ export const TableComponent = <T extends { id: number }>({
     if ("tipo" in items[0]) filterTypesCattle = true;
 
     if ("sexo" in items[0]) filterSexCattle = true;
+
+    if ("pendiente" in items[0]) filterPendingOperation = true;
+
+    if ("estado" in items[0] && "ultimo_parto" in items[0]) filterTypeBirhtStates = true;
   }
 
   const hasSearchFilter = Boolean(filterValue);
@@ -232,6 +243,33 @@ export const TableComponent = <T extends { id: number }>({
       );
     }
 
+    //filtro tablas revision y servicio para ver esta pendiente de operacion
+    if (pendingFilter != "all") {
+      const filteredItemsWithPending = filteredItems as Array<
+        T & { pendiente: boolean }
+      >;
+      //convertir en booleano opciones del select (si|no)
+      const pendingFilterArray = Array.from(pendingFilter)[0] == 'si'  ;
+       filteredItems = filteredItemsWithPending.filter((item) =>
+         //filtrar el ganado si esta pendiente del estado de la operacion (revision,servicio o parto)
+        item.pendiente == pendingFilterArray
+      ); 
+    }
+    console.log(statusBirthFilter)
+    //filtro tablas parto estados
+    if (statusBirthFilter != "all") {
+      const filteredItemsWithStatesBirth = filteredItems as Array<
+        T & { estado: Partos['estado'] }
+      >;
+      //convertir en booleano opciones del select (si|no)
+      const statusBirthFilterSelected = Array.from(statusBirthFilter)[0] as Partos['estado'];
+
+        filteredItems = filteredItemsWithStatesBirth.filter((item) =>
+         //filtrar vacas por su estado de parto
+        item.estado == statusBirthFilterSelected
+      );  
+    }
+
     return filteredItems;
   }, [
     list.items,
@@ -243,6 +281,8 @@ export const TableComponent = <T extends { id: number }>({
     filterValue,
     typesCastleFilter,
     sexFilter,
+    pendingFilter,
+    statusBirthFilter
   ]);
 
   /* -------------------------------- paginado -------------------------------- */
@@ -424,6 +464,86 @@ export const TableComponent = <T extends { id: number }>({
               {[
                 { id: "all", filter: "all", label: "Todos" },
                 { id: "some", filter: "some", label: "Hacienda actual" },
+              ].map((filter) => (
+                <DropdownItem key={filter.id} className="capitalize">
+                  {filter.label}
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </Dropdown>
+        )}
+
+       
+        {/* Selecion pendiente de una operacion(revision, servicio) */}
+        {filterPendingOperation && (
+          <Dropdown
+            classNames={{ base: "bg-base-100", content: "bg-base-100" }}
+          >
+            <DropdownTrigger className="hidden sm:flex">
+              <Button
+                variant="flat"
+                endContent={
+                  <IconFlechaDerecha className="w-4 h-4 text-primary rotate-90" />
+                }
+              >
+               {`Pendiente ${type}`}
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+              disallowEmptySelection
+              aria-label="filter by pending operation"
+              closeOnSelect={false}
+              selectedKeys={pendingFilter}
+              selectionMode="single"
+              onSelectionChange={(key) => {
+                setPendingFilter(key);
+              }}
+              classNames={{ base: "bg-base-100" }}
+            >
+              {[
+                { id: "si",  label: "Si" },
+                { id: "no", label: "No" },
+              ].map((filter) => (
+                <DropdownItem key={filter.id} className="capitalize">
+                  {filter.label}
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </Dropdown>
+        )}
+        
+        {/* Selecion estados en partos */}
+        {filterTypeBirhtStates && (
+          <Dropdown
+            classNames={{ base: "bg-base-100", content: "bg-base-100" }}
+          >
+            <DropdownTrigger className="hidden sm:flex">
+              <Button
+                variant="flat"
+                endContent={
+                  <IconFlechaDerecha className="w-4 h-4 text-primary rotate-90" />
+                }
+              >
+              Estado
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+              disallowEmptySelection
+              aria-label="filter by pending operation"
+              closeOnSelect={false}
+              selectedKeys={statusBirthFilter}
+              selectionMode="single"
+              onSelectionChange={(key) => {
+                Array.from(key)[0] == "all" ? setstatusBirthFilter("all") : setstatusBirthFilter(key);
+              }}
+              classNames={{ base: "bg-base-100" }}
+            >
+              {[
+                { id: "all", filter: "all", label: "Todos" },
+                { id: "Vacia", label: "Vacias" },
+                { id: "Gestacion", label: "Gestando" },
+                { id: "Vendida", label: "Vendidas" },
+                { id: "Fallecida", label: "Fallecidas" },
               ].map((filter) => (
                 <DropdownItem key={filter.id} className="capitalize">
                   {filter.label}
