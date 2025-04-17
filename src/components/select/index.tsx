@@ -4,6 +4,7 @@ import { Select as SelectNextUI, SelectItem } from "@nextui-org/select";
 import { ChangeEvent, useState } from "react";
 import { ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
 import { TooltipTipoGanado } from "../tooltip";
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 
 type SelectProps = Pick<
   InputProps,
@@ -128,7 +129,7 @@ export const Select = ({
         }: {
           value: string | number;
           label: string | number;
-        }) => <SelectItem key={value}>{label}</SelectItem>}
+        }) => <SelectItem key={value}>{ typeof label == 'string' ? capitalizeFirstLetter(label) : label }</SelectItem>}
       </SelectNextUI>
     );
 };
