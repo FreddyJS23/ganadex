@@ -18,6 +18,7 @@ export default async function Page({ params }: ParamsPage) {
       update={true}
       id={params.id}
       typeCheck={tipo_revision.tipo}
+      codeCheck={tipo_revision.codigo ?? undefined}
     />
   );
 }

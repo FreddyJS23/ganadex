@@ -298,6 +298,8 @@ export const TableComponent = <T extends { id: number }>({
     return filteredData.slice(start, end);
   }, [page, filteredData]);
 
+console.log(itemsBodyTable)
+
   return (
     <div className="flex flex-col w-full ">
       <div className="flex gap-8">
@@ -584,7 +586,7 @@ export const TableComponent = <T extends { id: number }>({
             </TableColumn>
           )}
         </TableHeader>
-        {items.length >= 1 ? (
+        {items.length >= 1 && itemsBodyTable.length > 0 ? (
           <TableBody items={itemsBodyTable}>
             {(item) => (
               <TableRow key={item.id}>

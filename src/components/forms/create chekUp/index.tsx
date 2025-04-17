@@ -4,6 +4,7 @@ import { createCheckUp } from "@/actions/revision";
 import { formCheckUp } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
+import { SelectChecksType } from "@/components/select checks type";
 import { Textarea } from "@/components/Textarea";
 import { ResponseVeterinariosSelect, TipoRevision, veterinario } from "@/types";
 import { CreateAdminCheckUp, CreateBaseCheckUp } from "@/types/forms";
@@ -100,15 +101,15 @@ export const FormCreateCheckUp = ({
                 />
               )}
 
-              {type == "select" && id != "personal_id" && (
+              {type == "select" && id == "tipo_revision_id" && (
                 <Controller
                   name={id}
                   control={control}
                   render={({ field }) => (
-                    <Select
+                    <SelectChecksType
                       field={field}
                       id={id}
-                      items={converToSelectOptions(typesCheck)}
+                      items={typesCheck}
                       label={label}
                       errors={errors}
                       required={required}

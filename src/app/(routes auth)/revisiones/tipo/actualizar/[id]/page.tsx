@@ -14,11 +14,13 @@ export default async function Page({ params }: ParamsPage) {
     params.id,
   );
 
+  console.log(tipo_revision);
   return (
     <ModalCreateUpdateTypeCheck
       update={true}
       id={params.id}
       typeCheck={tipo_revision.tipo}
+      codeCheck={tipo_revision.codigo ?? undefined}
     />
   );
 }
