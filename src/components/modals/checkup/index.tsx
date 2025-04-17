@@ -61,9 +61,32 @@ export const ModalCheckUp = ({ revision }: ModalProps) => {
           <RevisionEdit setIsLoading={setIsLoading} revision={revision} onSaveOrCancel={onSaveOrCancel} />
         ) : (
           <div className="flex flex-col gap-4 mb-4">
-            <p>
-              <b>Diagnostico: </b> {revision.diagnostico}
-            </p>
+            <div className="flex gap-1">
+              <b>Diagnostico: </b>   <div>
+                  {
+                    /* diagnostico desconocido  */
+                    typeof revision?.diagnostico == "string" ? (
+                      revision?.diagnostico
+                    ) : /* tiene diagnostico pero no tiene codigo */
+                    !revision?.diagnostico.codigo ? (
+                      revision?.diagnostico.tipo
+                    ) : (
+                      /* diagnostico tiene codigo */
+                      <div className="flex gap-1">
+                        <div className="flex gap-1">
+                          <span className="text-primary font-bold">
+                            {revision?.diagnostico.codigo}
+                          </span>
+                          <span className="opacity-50"> - </span>
+                        </div>
+                        <span className="">
+                          {revision?.diagnostico.tipo}
+                        </span>
+                      </div>
+                    )
+                  }
+                </div>
+            </div>
             <p>
               <b>Tratamiento: </b> {revision.tratamiento}
             </p>

@@ -28,7 +28,6 @@ export default async function Page({ params }: ParamsPage) {
     await getData("tiposRevision");
 
   const { user } = (await auth()) as Session;
-
   return (
     <>
       <TitlePage title={`Registrar revision para la vaca ${ganado.numero}`} />

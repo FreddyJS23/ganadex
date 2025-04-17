@@ -20,6 +20,7 @@ type ModalCreateTypeCheckProps = {
 type ModalEditTypeCheckProps = {
   id: number;
   typeCheck: string;
+  codeCheck: string | undefined;
   update: boolean;
 };
 
@@ -28,11 +29,14 @@ type ModalTypeCheckProps = ModalCreateTypeCheckProps | ModalEditTypeCheckProps;
 export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
   let update = false;
   let typeCheck: string | undefined = undefined;
+  let codeCheck: string |  undefined  = undefined;
 
   /* comprobar la exitencia del update para evitar problema de tipado typescript */
   if ("update" in props) {
     update = true;
     typeCheck = props.typeCheck;
+    codeCheck = props.codeCheck;
+
   }
 
   const {
@@ -41,7 +45,7 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
     handleSubmit,
   } = useForm<CreateTypeCheck>({
     resolver: zodResolver(createTypeCheckShema),
-    defaultValues: { tipo: typeCheck },
+    defaultValues: { tipo: typeCheck, codigo: codeCheck },
   });
 
   const { onOpen, onOpenChange } = useDisclosure();
@@ -66,9 +70,11 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
 
     toast.success(messageResponse);
     router.back();
-    router.refresh();
+      /* no se usa el refresh ya que esta seccion se ejecuta en una intercesion de ruta,
+    por ende el refresh bloquea la navegacion */ 
+    router.push(`/revisiones/tipo`);
   });
-
+console.log(codeCheck);
   return (
     <LayoutModal
       icon="checkUp"
@@ -97,6 +103,17 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
           register={register}
           errors={errors}
           defaultValue={typeCheck}
+        />
+        <Input
+          id="codigo"
+          label="Codigo de revision"
+          required
+          type="text"
+          size="lg"
+          description="El codigo sera guardado en mayúsculas"
+          register={register}
+          errors={errors}
+          defaultValue={codeCheck}
         />
       </form>
     </LayoutModal>

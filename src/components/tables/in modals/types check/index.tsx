@@ -15,10 +15,25 @@ export const TableTypeCheck = ({ tipos_revision }: ResponseTiposRevision) => {
           </tr>
         </thead>
         <tbody>
-          {tipos_revision.map(({ id, tipo }) => (
+          {tipos_revision.map(({ id, tipo, codigo }) => (
             <tr key={id}>
-              <td>{tipo} </td>
-              {tipo != "Gestacion" &&
+              <td>
+                <div>
+                  {
+                    /* tiene diagnostico pero no tiene codigo */
+                    !codigo ? (
+                      tipo
+                    ) : (
+                      /* diagnostico tiene codigo */
+                      <div className="flex flex-col gap">
+                        <span className="text-primary font-bold">{codigo}</span>
+                        <span className="">{tipo}</span>
+                      </div>
+                    )
+                  }
+                </div>
+              </td>
+              {tipo != "Gestación" &&
                 tipo != "Descartar" &&
                 tipo != "Rutina" &&
                 tipo != "Aborto" && (

@@ -116,7 +116,8 @@ export type Configuracion = {
 export type Revision = {
   id: number;
   fecha: string;
-  diagnostico: string;
+    /**Cuando el tipo es un string, es porque no tiene diagnostico por ende dira (desconocido)   */
+  diagnostico: Pick<TipoRevision, "tipo" | "codigo"> | string;
   tratamiento: string;
   veterinario: veterinario;
 };
@@ -205,7 +206,8 @@ export type Revisiones = {
   estado:string;
   pendiente:boolean;
   ultima_revision: string;
-  diagnostico: TipoRevision["tipo"];
+  /**Cuando el tipo es un string, es porque no tiene diagnostico por ende dira (desconocido)   */
+  diagnostico: Pick<TipoRevision, "tipo" | "codigo"> | string;
   proxima_revision: string | null;
   total_revisiones: number;
 };
@@ -340,6 +342,7 @@ export type LogEvento = {
 export type TipoRevision = {
   id: number;
   tipo: "Gestación" | "Descartar" | "Rutina" | 'Aborto' | string;
+  codigo:string | null;
 };
 
 export type CausaFallecimiento = {

@@ -102,7 +102,32 @@ export const TabDetailsCattle = ({
             />
             <Details
               tittle={DetailsChecks.diagnostico}
-              content={revision_reciente?.diagnostico}
+              content={
+                <div>
+                  {
+                    /* diagnostico desconocido  */
+                    typeof revision_reciente?.diagnostico == "string" ? (
+                      revision_reciente?.diagnostico
+                    ) : /* tiene diagnostico pero no tiene codigo */
+                    !revision_reciente?.diagnostico.codigo ? (
+                      revision_reciente?.diagnostico.tipo
+                    ) : (
+                      /* diagnostico tiene codigo */
+                      <div className="flex gap-1">
+                        <div className="flex">
+                          <span className="text-primary font-bold">
+                            {revision_reciente?.diagnostico.codigo}
+                          </span>
+                          <span className="opacity-50">:</span>
+                        </div>
+                        <span className="">
+                          {revision_reciente?.diagnostico.tipo}
+                        </span>
+                      </div>
+                    )
+                  }
+                </div>
+              }
             />
             <Details
               tittle={DetailsChecks.tratamiento}
