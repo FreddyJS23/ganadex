@@ -59,7 +59,7 @@ export default async function Page({ params }: ParamsPageCattle) {
       <div className="flex flex-col gap-8 p-2  items-center ">
         <div className="flex gap-6">
           <h3 className=" font-bold text-2xl">
-            Detalle del animal {ganado.numero}
+            Detalle de la vaca {ganado.numero}
           </h3>
           {!chechkState && (
             <DropDownOptions
@@ -109,7 +109,6 @@ export default async function Page({ params }: ParamsPageCattle) {
                 />
               )}
 
-              <Details tittle={DetailsCattle.sexo} content={ganado.sexo} />
               <Details
                 tittle={DetailsCattle.fecha_nacimiento}
                 content={ganado.fecha_nacimiento}

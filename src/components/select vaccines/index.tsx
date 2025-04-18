@@ -59,7 +59,7 @@ export const SelectVaccines = ({
       {groupByTipoAnimal(vaccinesSelect).map((tipoAnimalGroupBy) => (
         <SelectSection
           key={tipoAnimalGroupBy}
-          title={capitalizeFirstLetter(tipoAnimalGroupBy)}
+          title={capitalizeFirstLetter(tipoAnimalGroupBy == 'rebano' ? "Rebaño" : tipoAnimalGroupBy)}
         >
           {vaccinesSelect
             .filter(

@@ -5,8 +5,8 @@ import { useEffect } from "react";
 
 export const NameHacienda = () => {
   useEffect(() => {
-    /* Llamar a la sesion para que el status el hook useSession se actualice y pase a authenticated,
-    si no se hace esto el state queda en unauthenticated no pudiendo leer la sesion*/
+    /* Llamar a la sesión para que el status el hook useSession se actualice y pase a authenticated,
+    si no se hace esto el state queda en unauthenticated no pudiendo leer la sesión*/
     const fetchSession = async () => await getSession();
 
     fetchSession();
@@ -14,7 +14,7 @@ export const NameHacienda = () => {
 
   const hacienda = useSession().data?.user.hacienda?.nombre;
   const transformNameHacienda = () => {
-    /* habra veces que el nombre de hacienda que guarden
+    /* habrá veces que el nombre de hacienda que guarden
          no inicie con hacienda, por eso se agrega */
     if (hacienda?.startsWith("Hacienda")) return hacienda;
     else if (!hacienda) return "Sin sesión en hacienda";

@@ -92,7 +92,7 @@ const Edit = ({ hacienda, id , onSave,children }: { hacienda: Hacienda; id: numb
     
     const hacienda = await editHacienda(id, data);
 
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof hacienda == "object" && "error" in hacienda)
       return toast.error(messageErrorApi(hacienda));
 

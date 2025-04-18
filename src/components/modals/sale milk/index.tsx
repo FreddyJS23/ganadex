@@ -1,8 +1,8 @@
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { ModalProps, PreciosDeLeche } from "@/types";
+import type { ModalProps, PreciosDeLeche } from "@/types";
 import { Select } from "@/components/select";
-import { CreateSaleMilk } from "@/types/forms";
+import type { CreateSaleMilk } from "@/types/forms";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createSaleMilkShema } from "@/validations/saleMilkShema";
@@ -35,7 +35,7 @@ export const ModalSaleMilk = ({
 
   const actionCreateSaleMilk: () => void = handleSubmit(async (data) => {
     const saleMilk = await createSaleMilk(data);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof saleMilk == "object" && "error" in saleMilk)
       return toast.error(messageErrorApi(saleMilk));
 

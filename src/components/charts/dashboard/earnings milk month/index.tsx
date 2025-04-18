@@ -24,6 +24,7 @@ import {
 import "chartjs-adapter-date-fns";
 import { useState } from "react";
 import { Line } from "react-chartjs-2";
+import { toast } from "sonner";
 
 ChartJS.register(
   CategoryScale,
@@ -43,7 +44,7 @@ export const ChartEarningsMilkMonth = ({
   /* Crear un array de objetos con la fecha de inicio y fin del mes actual 
    para que el chart tenga la fecha de inicio y fin del mes actual, al no colocar esto
    el chart solo mostrara las fechas obtenidas de la API, al ocurrir esto el chart en el eje x mostrara
-   como la la ultima fecha la obtenida de la API, puediendo ser el dia 15 del mes, lo cual no tendreia sentido ya
+   como la la ultima fecha la obtenida de la API, pudiendo ser el dia 15 del mes, lo cual no tenderían sentido ya
     que debe ser un balance mensual */
   const rangeData = (month?: number): BalanceDiarioVentaLeche[] => {
     const dateNow = new Date();
@@ -100,7 +101,7 @@ export const ChartEarningsMilkMonth = ({
           </div>
         </div>
 
-        {/* boton y modal crear venta leche */}
+        {/* botón y modal crear venta leche */}
         <ButtonCreateItem href={"venta_leche/registrar"} />
       </div>
       {/* Ganancias */}

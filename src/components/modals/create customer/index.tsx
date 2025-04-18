@@ -1,8 +1,8 @@
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { ModalProps } from "@/types";
+import type { ModalProps } from "@/types";
 import { useForm } from "react-hook-form";
-import { CreateCustomer } from "@/types/forms";
+import type { CreateCustomer } from "@/types/forms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createCustomerShema } from "@/validations/Customer";
 import { useRouter } from "next/navigation";
@@ -31,7 +31,7 @@ export const ModalCreateCustomer = ({
   const actionCreateCustomer: () => void = handleSubmit(async (data) => {
     const response = await createCustomer(data);
 
-    /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backedn y mostar mensaje */
+    /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backend y mostrar mensaje */
     if (typeof response == "object")
       if ("error" in response) return toast.error(messageErrorApi(response));
 

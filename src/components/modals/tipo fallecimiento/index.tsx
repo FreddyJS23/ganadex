@@ -2,8 +2,8 @@
 
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { ResponseCausaFallecimiento, ResponseErrorNext } from "@/types";
-import { CreateCausaFallecimiento } from "@/types/forms";
+import type { ResponseCausaFallecimiento, ResponseErrorNext } from "@/types";
+import type { CreateCausaFallecimiento } from "@/types/forms";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
@@ -67,7 +67,7 @@ export const ModalCreateUpdateCausaFallecimiento = (
       messageResponse = "Causa de fallecimiento actualizada";
     }
 
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
 

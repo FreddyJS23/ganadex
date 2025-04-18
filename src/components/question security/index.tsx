@@ -22,12 +22,12 @@ import { LayoutModal } from "../modals";
 import { Input } from "../Inputs";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 
-import { PreguntasSeguridad, RespuestasSeguridad } from "@/types";
+import type { PreguntasSeguridad, RespuestasSeguridad } from "@/types";
 import React from "react";
 import { ElementProfile, LayoutCenterContentTabs } from "../tabs profile/items";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { Select } from "../select";
-import { CreateOrUpdateResponseSecurity } from "@/types/forms";
+import type { CreateOrUpdateResponseSecurity } from "@/types/forms";
 import IconSave from "@/icons/icono-save.svg";
 import { useEditDelete } from "@/lib/hooks/useEditDelete";
 
@@ -60,7 +60,7 @@ export const QuestionSecurity = ({
   const { stateButton, idAction, isLoading, onEdit, onDelete, onSaveOrCancel } =
     useEditDelete(deleteResponseSecurity);
 
-  /* desabilitar el boton de crear pregunta de seguridad si ya tiene 7 preguntas */
+  /* deshabilitar el botón de crear pregunta de seguridad si ya tiene 7 preguntas */
   const createQuestion = respuestas_seguridad.length < 7;
 
   return (
@@ -91,8 +91,7 @@ export const QuestionSecurity = ({
                   isLoading={isLoading}
                   onDelete={onDelete}
                   onEdit={onEdit}
-                  size="sm" 
-
+                  size="sm"
                 />
               </div>
             ) : (
@@ -159,7 +158,7 @@ const CreateOrEdit = (props: CreateOrEditProps) => {
         type == "edit"
           ? await updateResponseSecurity(props.id, data)
           : await createResponseSecurity(data);
-      /* manejar error del backedn y mostar mensaje */
+      /* manejar error del backend y mostrar mensaje */
       if (typeof response == "object" && "error" in response!)
         return toast.error(messageErrorApi(response));
 

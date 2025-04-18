@@ -37,7 +37,7 @@ export const FormCreateBirth = ({
   obreros,
 }: FormCreateBirthProps) => {
   /* [key in FieldsCalfCastle['id']]:any */
-  /* valores formulario cria ganado */
+  /* valores formulario cría ganado */
   const valuesInitFormCalfCastle: CreateBaseBirth["crias"][0] = {
     nombre: "",
     numero: numero_disponible,
@@ -58,7 +58,7 @@ export const FormCreateBirth = ({
     defaultValues: { fecha: getDateNow(), crias: [valuesInitFormCalfCastle] },
   });
 
-  /* campos array crias */
+  /* campos array crías */
   const { fields, append, remove } = useFieldArray({
     control,
     name: "crias",
@@ -69,7 +69,7 @@ export const FormCreateBirth = ({
 
   const handleChangeCheckbox = () => {
     //como no hay un renderizado no se actualiza el estado y no se puede obtener el valor actual del select
-    //por ende se asumen que aqui el valor debe ser el contrario
+    //por ende se asumen que aquí el valor debe ser el contrario
     const actualValue = !isSelected;
     if (actualValue) {
       /* para no crear un numero repetido */
@@ -83,7 +83,7 @@ export const FormCreateBirth = ({
   const { id: cattleId } = useParams<{ id: string }>();
   const actionCreateBirth: () => void = handleSubmit(async (data) => {
     const response = await createBirth(data, parseInt(cattleId));
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response!)
       return toast.error(messageErrorApi(response));
     toast.success(`Parto creado`);
@@ -146,7 +146,7 @@ export const FormCreateBirth = ({
           ))}
         </div>
 
-        {/* campos array crias */}
+        {/* campos array crías */}
         <div className="flex flex-col">
           <div className="flex gap-4">
             <h3>Datos de la cria</h3>
@@ -162,7 +162,7 @@ export const FormCreateBirth = ({
 
           {fields.map((field, index) => (
             <div key={field.id} className="flex flex-col gap-4">
-              {/* numerar crias en caso de que haya dos crias */}
+              {/* numerar crias en caso de que haya dos crías */}
               {isSelected && (
                 <div>
                   {" "}

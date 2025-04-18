@@ -17,16 +17,16 @@ import {
   castleShemaWithSale,
 } from "@/validations/castleShema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateCastle } from "@/types/forms";
+import type { CreateCastle } from "@/types/forms";
 import { createCastle } from "@/actions/vaca";
 import { toast } from "sonner";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { Checkbox, Selection } from "@nextui-org/react";
+import { type ChangeEvent, useEffect, useRef, useState } from "react";
+import { Checkbox, type Selection } from "@nextui-org/react";
 import {
-  AvailableVaccines,
-  CausaFallecimiento,
-  Comprador,
-  ListaVacunas,
+  type AvailableVaccines,
+  type CausaFallecimiento,
+  type Comprador,
+  type ListaVacunas,
   ResponseCompradores,
   ResponseGanado,
 } from "@/types";
@@ -81,7 +81,7 @@ export const FormCow = ({
   const actionCastle: () => void = handleSubmit(async (data) => {
     const response = await createCastle(data, listVaccines);
 
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response!)
       return toast.error(messageErrorApi(response));
 
@@ -136,7 +136,7 @@ export const FormCow = ({
   };
 
   const handleSelectionTypeCattleChange = (select: number | string) => {
-    /* pocision del container campo peso dos años */
+    /* posición del container campo peso dos años */
     const inputWeight2year = form.current?.querySelector(
       "#peso_2year",
     ) as HTMLDivElement;
@@ -160,14 +160,14 @@ export const FormCow = ({
   const handleSelectionOrigenChange = (select: string | number) => {
     if (select == 1) {
       /* se usa el setValue porque el resetField no funciona, no borra el valor en el input,
-              sin esto el valor se mantiene en el input y al enviar  el backend dara error ya que se esta mandando 
+              sin esto el valor se mantiene en el input y al enviar  el backend dará error ya que se esta mandando 
               el valor de fecha_ingreso en un formato incorrecto */
       setValue("fecha_ingreso", undefined);
     }
     setOrigen(select as 1 | 2);
   };
 
-  /* control de check para mostrar campos seccion vacuna */
+  /* control de check para mostrar campos sección vacuna */
   const [isSelected, setIsSelected] = useState(false);
   return (
     <form
@@ -185,7 +185,7 @@ export const FormCow = ({
           endContent,
           tooltipTipoGanado,
         }) => (
-          /* estos campos no estaran en el conjunto de inputs del bucle, ya que se usando manualmente con el indice */
+          /* estos campos no estarán en el conjunto de inputs del bucle, ya que se usando manualmente con el indice */
           <>
             {id != "estado_id" && id != "fecha_ingreso" && (
               <div key={id} id={id}>
@@ -287,7 +287,7 @@ export const FormCow = ({
                 <Controller
                   name={id}
                   /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   control={control as any}
                   render={({ field }) => (
@@ -304,7 +304,7 @@ export const FormCow = ({
               )}
               {id == "fecha" && (
                 <Input
-                  /* El id se debe cambiar ya que se usa una shema validacion diferente
+                  /* El id se debe cambiar ya que se usa una shema validación diferente
                                         al original */
                   id={"fecha_fallecimiento"}
                   label={label}
@@ -337,7 +337,7 @@ export const FormCow = ({
               )}
               {type == "date" && (
                 <Input
-                  /* El id se debe cambiar ya que se usa una shema validacion diferente
+                  /* El id se debe cambiar ya que se usa una shema validación diferente
                                         al original */
                   id={"fecha_venta"}
                   label={label}
@@ -352,7 +352,7 @@ export const FormCow = ({
                 <Controller
                   name={id}
                   /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   control={control as any}
                   render={({ field }) => (
@@ -381,7 +381,7 @@ export const FormCow = ({
             <Controller
               name={id}
               /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               control={control as any}
               render={({ field }) => (

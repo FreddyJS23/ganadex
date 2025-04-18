@@ -8,12 +8,12 @@ import { useForm } from "react-hook-form";
 import { authenticate } from "@/actions/login";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { CreateUser, Login } from "@/types/forms";
+import type { CreateUser, Login } from "@/types/forms";
 import { createUser } from "@/actions/usuario";
 import {
   ResponseError,
-  ResponseErrorNext,
-  ResponseRegistroExitoso,
+  type ResponseErrorNext,
+  type ResponseRegistroExitoso,
 } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createUserShema } from "@/validations/createUser";
@@ -51,7 +51,7 @@ export const TabLogin = () => {
 
   const actionCreateUser: () => void = handleSubmitCreateUser(async (data) => {
     const response = await createUser(data);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
     form.current?.reset();

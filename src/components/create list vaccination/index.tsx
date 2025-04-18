@@ -45,20 +45,20 @@ export const CreateListVaccination = ({
   /* Estado del select */
   const [valueSelect, setValueSelect] = useState<number | null>(null);
 
-  /* estado fecha vacunacion  */
+  /* estado fecha vacunación  */
   const [fecha, setFecha] = useState<string>("");
 
   /* Estado modal */
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  /* Validacion de fecha */
+  /* Validación de fecha */
   const validateDate = (fecha: string) => {
     const regexDate =
       /[1-9][0-9][0-9]{2}-([0][1-9]|[1][0-2])-([1-2][0-9]|[0][1-9]|[3][0-1])/;
     return regexDate.test(fecha);
   };
 
-  /* validacion fecha vacuna no sea inferiro a la fecha de nacimiento */
+  /* validación fecha vacuna no sea inferior a la fecha de nacimiento */
   const isHigherFechaNacimiento = useMemo(()=>{
     const FechaNacimiento = new Date(fecha_nacimiento);
     const FechaVacunacion = new Date(fecha);
@@ -75,7 +75,7 @@ export const CreateListVaccination = ({
     return false;
   }, [fecha]);
 
-  /* Validacion de select vacunas */
+  /* Validación de select vacunas */
   const isInvalidSelect = useMemo(() => {
     if (
       valueSelect == null ||
@@ -174,7 +174,7 @@ export const CreateListVaccination = ({
       )}
 
       {/* botones */}
-      {/* boton, no se usa el etiqueta button porque dispara el evento click */}
+      {/* botón, no se usa el etiqueta button porque dispara el evento click */}
       {isChecked && (
         <div className={`flex gap-3 items-center`}>
           <span

@@ -26,9 +26,9 @@ const saleCattleShema = z.object({
   comprador_id: z.string().regex(/\d/),
 });
 
-/**Validacion para el form de venta */
+/**validación para el form de venta */
 export const createSaleCattleShema = saleCattleShema.and(dateValidation);
-/**Validacion para el form de venta ubicado en otro formulario con otros campos */
+/**validación para el form de venta ubicado en otro formulario con otros campos */
 export const createSaleCattleShemaInOthersForm = saleCattleShema.and(
   dateValidationInOthersForm,
 );

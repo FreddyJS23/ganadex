@@ -21,14 +21,14 @@ export default function Page() {
             src={cattleBackgroundLogin}
           />
         </div>
-        {/*seccion izquierda formularios */}
+        {/*sección izquierda formularios */}
         <div className="flex size-full z-10 pt-16 flex-col justify-center items-center rounded-lg gap-4  sm:bg-base-100 sm:p-4 sm:w-2/4  sm:max-h-[100%]">
           <Logos small={false} />
 
           <TabLogin />
         </div>
 
-        {/* seccion derecha */}
+        {/* sección derecha */}
         <div className="hidden sm:flex  bg-backgroundLogin w-2/4 bg-cover flex-col justify-center items-center gap-12">
           {/* mockup */}
           <div className="w-full flex flex-col items-center px-8">

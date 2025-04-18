@@ -5,8 +5,8 @@ import { updateConfiguration } from "@/actions/usuario";
 import { Input } from "@/components/Inputs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UpdateConfiguration } from "@/types/forms";
-import { Configuracion, ModalProps } from "@/types";
+import type { UpdateConfiguration } from "@/types/forms";
+import type { Configuracion, ModalProps } from "@/types";
 import { useRouter } from "next/navigation";
 import { updateConfigurationShema } from "@/validations/updateConfiguration";
 import { useSession } from "next-auth/react";
@@ -34,7 +34,7 @@ export const ModalUpdateConfiguracion = ({
 
   const actionsUpdateConfiguration: () => void = handleSubmit(async (data) => {
     const response = await updateConfiguration(data);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if ("error" in response) return toast.error(messageErrorApi(response));
 
     toast.success("Configuración actualizada");
@@ -81,7 +81,7 @@ export const ModalUpdateConfiguracion = ({
             id="dias_evento_notificacion"
             required
             type="number"
-            label="Dias de evento notificacion"
+            label="Dias de evento notificación"
             register={register}
             errors={errors}
             defaultValue={configuracion.dias_evento_notificacion.toString()}

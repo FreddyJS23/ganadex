@@ -100,12 +100,12 @@ export const headerSupplies: headersColumns<Insumo>[] = [
 ];
 
 export const headerStaff: headersColumns<Personal>[] = [
-  { key: "ci", label: "Cedula" },
+  { key: "ci", label: "Cédula" },
   { key: "nombre", label: "Nombre" },
   { key: "apellido", label: "Apellido" },
   { key: "fecha_nacimiento", label: "Fecha de nacimiento" },
   { key: "cargo", label: "Cargo" },
-  { key: "telefono", label: "Telefono" },
+  { key: "telefono", label: "Teléfono" },
   { key: "haciendas", label: "Haciendas" },
   { key: "id", label: "Acciones" },
 ];
@@ -136,7 +136,7 @@ export const headerAllBirths: headersColumns<Partos>[] = [
   { key: "numero", label: "Numero" },
   { key: "ultimo_parto", label: "Ultimo parto" },
   { key: "estado", label: "Estado" },
-  { key: "cria", label: "Cria" },
+  { key: "cria", label: "Cría" },
   { key: "toro", label: "Toro/Pajuela toro" },
   { key: "total_partos", label: "Total de partos" },
   { key: "id", label: "Acciones" },
@@ -206,8 +206,8 @@ export const headerDeadCattle: headersColumns<Fallecimiento>[] = [
 ];
 
 export const headerPajuelaToro: headersColumns<PajuelaToro>[] = [
-  { key: "codigo", label: "Codigo" },
-  { key: "descripcion", label: "Descripcion" },
+  { key: "codigo", label: "Código" },
+  { key: "descripcion", label: "Descripción" },
   { key: "fecha", label: "Fecha" },
 ];
 
@@ -237,7 +237,7 @@ export const headersColumnsUserVeterinary: headersColumns<UserVeterinaryInfo>[] 
   [
     { key: "usuario", label: "Usuario" },
     { key: "nombre", label: "Nombre" },
-    { key: "telefono", label: "Telefono" },
+    { key: "telefono", label: "Teléfono" },
     { key: "fecha_creacion", label: "Fecha de creación" },
     { key: "id", label: "Eliminar" },
   ];

@@ -6,8 +6,12 @@ import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
 import { SelectChecksType } from "@/components/select checks type";
 import { Textarea } from "@/components/Textarea";
-import { ResponseVeterinariosSelect, TipoRevision, veterinario } from "@/types";
-import { CreateAdminCheckUp, CreateBaseCheckUp } from "@/types/forms";
+import {
+  ResponseVeterinariosSelect,
+  type TipoRevision,
+  type veterinario,
+} from "@/types";
+import type { CreateAdminCheckUp, CreateBaseCheckUp } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { getDateNow } from "@/utils/getDateNow";
@@ -47,8 +51,8 @@ export const FormCreateCheckUp = ({
   const { id: cattleId } = useParams<{ id: string }>();
 
   const actionCreatecheckUp: () => void = handleSubmit(async (data) => {
-    const response = await createCheckUp(data, parseInt(cattleId));
-    /* manejar error del backedn y mostar mensaje */
+    const response = await createCheckUp(data, Number.parseInt(cattleId));
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
 

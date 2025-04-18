@@ -50,14 +50,14 @@ export const ModalSelectHaciendaSesion = ({
       });
 
       toast.success(`Empezando a Trabajar en ${hacienda.nombre}`);
-      /*verificar la sesion en el servidor para redireccionar  */
+      /*verificar la sesión en el servidor para redireccionar  */
       router.push("/api/verificar_sesion_hacienda");
     } catch (error) {
       toast.error(error as string);
     }
   });
 
-  //descripcion de cuando se cierra la sesion y se redirige a signOut
+  //descripción de cuando se cierra la sesión y se redirige a signOut
   const onClose = () => {
     router.push("/api/signOut");
   };

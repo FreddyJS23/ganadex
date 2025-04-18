@@ -2,8 +2,8 @@
 
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { ResponseErrorNext, ResponseTipoRevision } from "@/types";
-import { CreateTypeCheck } from "@/types/forms";
+import type { ResponseErrorNext, ResponseTipoRevision } from "@/types";
+import type { CreateTypeCheck } from "@/types/forms";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
@@ -29,14 +29,13 @@ type ModalTypeCheckProps = ModalCreateTypeCheckProps | ModalEditTypeCheckProps;
 export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
   let update = false;
   let typeCheck: string | undefined = undefined;
-  let codeCheck: string |  undefined  = undefined;
+  let codeCheck: string | undefined = undefined;
 
-  /* comprobar la exitencia del update para evitar problema de tipado typescript */
+  /* comprobar la existencia del update para evitar problema de tipado typescript */
   if ("update" in props) {
     update = true;
     typeCheck = props.typeCheck;
     codeCheck = props.codeCheck;
-
   }
 
   const {
@@ -64,22 +63,22 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
       messageResponse = "Tipo de revision actualizada";
     }
 
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
 
     toast.success(messageResponse);
     router.back();
-      /* no se usa el refresh ya que esta seccion se ejecuta en una intercesion de ruta,
-    por ende el refresh bloquea la navegacion */ 
+    /* no se usa el refresh ya que esta sección se ejecuta en una intercesión de ruta,
+    por ende el refresh bloquea la navegación */
     router.push(`/revisiones/tipo`);
   });
-console.log(codeCheck);
+  console.log(codeCheck);
   return (
     <LayoutModal
       icon="checkUp"
       titleModal={
-        update ? "Actualizar tipo de revision" : "Crear tipo de revision"
+        update ? "Actualizar tipo de revisión" : "Crear tipo de revisión"
       }
       footer={true}
       isOpen={true}
@@ -106,11 +105,11 @@ console.log(codeCheck);
         />
         <Input
           id="codigo"
-          label="Codigo de revision"
+          label="Código de revision"
           required
           type="text"
           size="lg"
-          description="El codigo sera guardado en mayúsculas"
+          description="El código sera guardado en mayúsculas"
           register={register}
           errors={errors}
           defaultValue={codeCheck}

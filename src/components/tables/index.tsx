@@ -396,7 +396,7 @@ console.log(itemsBodyTable)
         )}
 
         {/* Selecion de sexo ganado */}
-        {filterTypesCattle && (
+        {filterSexCattle && (
           <Dropdown
             classNames={{ base: "bg-base-100", content: "bg-base-100" }}
           >

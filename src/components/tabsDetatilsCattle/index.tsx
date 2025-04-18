@@ -22,11 +22,11 @@ import { Button } from "@nextui-org/react";
 
 type TabsDetailsCattleProps = Partial<Omit<ResponseGanado, "ganado">> & {
   eventos?: Eventos;
-  /**Cuando la vaca no tiene un peso minimo se desactiva algunas opciones */
+  /**Cuando la vaca no tiene un peso mínimo se desactiva algunas opciones */
   disabledSomeTabs?: boolean;
   isMale: boolean;
   disableCreateButton?: boolean;
-  /* Se debe acomodar la forma de ver el historial de operacion para vacas o toros que se descarten */
+  /* Se debe acomodar la forma de ver el historial de operación para vacas o toros que se descarten */
   ganado_id?: number;
 };
 
@@ -37,7 +37,7 @@ const ButonHistory = ({ url, id }: { url: string; id?: number }) => {
     <Button
       as={Link}
       color="primary"
-      /* Se debe acomodar la forma de ver el historial de operacion para vacas o toros que se descarten */
+      /* Se debe acomodar la forma de ver el historial de operación para vacas o toros que se descarten */
       href={
         pathname.includes("ganado_descarte") ? `/ganado/${id}/${url}` : route
       }
@@ -108,11 +108,11 @@ export const TabDetailsCattle = ({
                     /* diagnostico desconocido  */
                     typeof revision_reciente?.diagnostico == "string" ? (
                       revision_reciente?.diagnostico
-                    ) : /* tiene diagnostico pero no tiene codigo */
+                    ) : /* tiene diagnostico pero no tiene código */
                     !revision_reciente?.diagnostico.codigo ? (
                       revision_reciente?.diagnostico.tipo
                     ) : (
-                      /* diagnostico tiene codigo */
+                      /* diagnostico tiene código */
                       <div className="flex gap-1">
                         <div className="flex">
                           <span className="text-primary font-bold">
@@ -210,9 +210,9 @@ export const TabDetailsCattle = ({
               tittle={DetailsBirht.observacion}
               content={parto_reciente?.observacion}
             />
-            {/* se accede manualmente ya que los casos de que el array crias 
-                        tenga mas de 1 elemento son demasiados pocos, pero existe. Para ver mas detalles si el parto tuvo varias crias
-                        se debera ir a la consulta del parto individual */}
+            {/* se accede manualmente ya que los casos de que el array crías 
+                        tenga mas de 1 elemento son demasiados pocos, pero existe. Para ver mas detalles si el parto tuvo varias crías
+                        se deberá ir a la consulta del parto individual */}
             <Details
               tittle={DetailsBirht.numero_cria}
               content={parto_reciente?.crias[0].numero}

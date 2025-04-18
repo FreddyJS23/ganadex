@@ -61,7 +61,7 @@ const ModalHaciendaSession = ({
   useEffect(() => {
     /* Llamar a la sesion para que el status el hook useSession se actualice y pase a authenticated,
         si no se hace esto el state queda en unauthenticated y no se actualiza, no permitiendo que se llame
-        la funcion update para actualizar la sesion */
+        la funcion update para actualizar la sesión */
     const fetchSession = async () => await getSession();
 
     fetchSession();
@@ -70,11 +70,11 @@ const ModalHaciendaSession = ({
   const actionChangeSessionHacienda = async (hacienda_id: number) => {
     const response = await changeSessionHacienda(hacienda_id);
 
-    /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backedn y mostar mensaje */
+    /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backend y mostrar mensaje */
     if (typeof response == "object")
       if ("error" in response) return toast.error(messageErrorApi(response));
 
-    //actualizar hacienda en sesion
+    //actualizar hacienda en sesión
     await update({
       ...session,
       user: { ...session?.user, hacienda: hacienda },

@@ -2,8 +2,8 @@
 
 import { getBalanceAnnualPrudctionMilk } from "@/actions/getBalanceAnnualPrudctionMilk";
 import { SelectFilterYear } from "@/components/select filter year";
-import { ResponseAñosProduccionLeche } from "@/types";
-import { BalanceMensualLeche } from "@/types/dashboard";
+import type { ResponseAñosProduccionLeche } from "@/types";
+import type { BalanceMensualLeche } from "@/types/dashboard";
 import { optionChartLineAnnualMilk } from "@/utils/configCharts";
 import { getBalanceMonthFromAnnual } from "@/utils/convertResponseBalanceAnnualMilk";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
@@ -16,7 +16,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  ChartData,
+  type ChartData,
 } from "chart.js";
 import { useState } from "react";
 import { Line } from "react-chartjs-2";
@@ -63,7 +63,7 @@ export const ChartAnnualBalanceMilk = ({
   const onChange = async (select: number) => {
     const data = await getBalanceAnnualPrudctionMilk(select);
 
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if ("error" in data) return toast.error(messageErrorApi(data));
 
     setDataGraph(getBalanceMonthFromAnnual(data));

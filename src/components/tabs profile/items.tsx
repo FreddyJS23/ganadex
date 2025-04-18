@@ -1,6 +1,6 @@
 type ElementProfileProps = {
   tittle: string;
-  /**opcional para mostrar botones de edicion o eliminacion de elementos   */
+  /**opcional para mostrar botones de edición o eliminación de elementos   */
   titleOptions?: JSX.Element;
   content?: string;
   description?: string;

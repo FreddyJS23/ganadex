@@ -2,8 +2,8 @@ import { createVaccinationDay } from "@/actions/planSanitario";
 import { formVaccinationDay } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
-import { AvailableVaccines, ModalProps } from "@/types";
-import { CreateVaccinacionDay } from "@/types/forms";
+import type { AvailableVaccines, ModalProps } from "@/types";
+import type { CreateVaccinacionDay } from "@/types/forms";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { createVaccinationDayShema } from "@/validations/VaccinationDay";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -34,7 +34,7 @@ export const ModalCreateVaccinationDay = ({
 
   const actionVaccinationDay: () => void = handleSubmit(async (data) => {
     const response = await createVaccinationDay(data);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
     toast.success(`Plan sanitario registrado`);

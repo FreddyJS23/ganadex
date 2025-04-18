@@ -64,7 +64,7 @@ export const WeightsEditable = ({
     peso_actual: parseInt(pesos.peso_actual ? pesos.peso_actual : ""),
   };
 
-  /* el peso de dos años solo es agregado al ganado si es tipo es difeente a becerro */
+  /* el peso de dos años solo es agregado al ganado si es tipo es diferente a becerro */
   const defaultValuesWith2year = {
     ...defaultValues,
     peso_2year: convertWeightToNumber(pesos.peso_2year),
@@ -93,14 +93,14 @@ export const WeightsEditable = ({
     setIsLoading(true);
 
     const response = await updateFunction(id, data);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if ("error" in response) {
       setEditable(false);
       setIsLoading(false);
       return toast.error(messageErrorApi(response));
     }
 
-    //En caso de que el nuevo peso sea igual o mayor que el de la configuracion, actualizar para desbloquear las tabs
+    //En caso de que el nuevo peso sea igual o mayor que el de la configuración, actualizar para desbloquear las tabs
     if (
       response &&
       typeModelWeight == "ganado" &&

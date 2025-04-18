@@ -23,7 +23,7 @@ export const SidebarElement = ({
   responsive,
   url,
 }: SidebarElementProps) => {
-  /* icono dinamico de opcion del sidebar */
+  /* icono dinámico de opción del sidebar */
   const Icon = iconsSidebar[icon];
 
   return (
@@ -52,7 +52,7 @@ export const SidebarElement = ({
           {options && (
             <IconoFlechaDerecha className="w-2 h-3 group-open:rotate-90 cursor-pointer transition-transform duration-75" />
           )}
-          {/* espacio para cubrir el hueco que dejara la flecha en opcion que no tengan submenu */}
+          {/* espacio para cubrir el hueco que dejara la flecha en opción que no tengan submenu */}
           {!options && <span className="w-2 h-3"></span>}
         </summary>
 

@@ -25,6 +25,7 @@ import {
 } from "chart.js";
 import { useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { toast } from "sonner";
 
 ChartJS.register(
   CategoryScale,
@@ -46,8 +47,8 @@ export const SalesCatle = ({
   const onChange = async (select: number) => {
     const data = await getBalanceAnnualSaleCattle(select);
 
-    /* manejar error del backedn y mostar mensaje */
-    if ("error" in response!) return toast.error(messageErrorApi(response));
+    /* manejar error del backend y mostrar mensaje */
+    if ("error" in data!) return toast.error(messageErrorApi(data));
 
     setDataGraph(data);
   };
