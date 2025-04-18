@@ -6,7 +6,7 @@ import { Button } from "@/ui/Button";
 import { TitlePage } from "@/ui/TitlePage";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreatePajuelaToro } from "@/types/forms";
+import type { CreatePajuelaToro } from "@/types/forms";
 import { toast } from "sonner";
 import { useRef } from "react";
 import { createPajuelaToroSchema } from "@/validations/pajuelaToroShema";
@@ -26,7 +26,7 @@ export default function Page() {
 
   const actionPajuelaToro: () => void = handleSubmit(async (data) => {
     const response = await createPajuelaToro(data);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
     form.current?.reset();
@@ -35,7 +35,7 @@ export default function Page() {
 
   return (
     <>
-      <TitlePage title="Registrar pajuela toro" />
+      <TitlePage title="Registrar pajuela de toro" />
 
       <form
         ref={form}

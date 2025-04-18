@@ -1,16 +1,16 @@
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { Comprador, ModalProps } from "@/types";
+import type { Comprador, ModalProps } from "@/types";
 import { Select } from "@/components/select";
 import { Controller, useForm } from "react-hook-form";
 import { createSaleCattleShema } from "@/validations/saleCattle";
 import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateSaleCattle } from "@/types/forms";
+import type { CreateSaleCattle } from "@/types/forms";
 import { createSaleCattle } from "@/actions/ventaGanado";
 import { toast } from "sonner";
-import { endpointsReports } from "@/collections/endPointsApi";
+import type { endpointsReports } from "@/collections/endPointsApi";
 import { Button } from "@/ui/Button";
 import IconPrint from "@/icons/icono-imprimir.svg";
 import { getDateNow } from "@/utils/getDateNow";
@@ -61,8 +61,8 @@ export const ModalSaleCattle = ({
   };
 
   const actionCreateSaleCattle: () => void = handleSubmit(async (data) => {
-    const saleCattle = await createSaleCattle(data, parseInt(params.id));
-    /* manejar error del backedn y mostar mensaje */
+    const saleCattle = await createSaleCattle(data, Number.parseInt(params.id));
+    /* manejar error del backend y mostrar mensaje */
     if (typeof saleCattle == "object" && "error" in saleCattle)
       return toast.error(messageErrorApi(saleCattle));
 
@@ -128,7 +128,7 @@ export const ModalSaleCattle = ({
                 <Controller
                   name={id}
                   /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   control={control as any}
                   render={({ field }) => (

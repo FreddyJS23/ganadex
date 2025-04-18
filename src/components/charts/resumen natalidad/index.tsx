@@ -81,7 +81,7 @@ export const ResumenNatalidad = (
       body: formData,
     };
 
-    /* fecth al manejador de ruta para enviar las imagenes y obtener el blob del pdf */
+    /* fetch al manejador de ruta para enviar las imágenes y obtener el blob del pdf */
     const getFile = await fetch(
       `/api/reporte_natalidad?year=${selectValue}`,
       optionFetch,
@@ -119,7 +119,7 @@ export const ResumenNatalidad = (
         </Button>
       </div>
 
-      {/* graficos */}
+      {/* gráficos */}
 
       <div className=" flex flex-col m-auto w-full gap-4">
         <div className="m-auto bg-base-100 shadow-cards  w-full max-w-md">

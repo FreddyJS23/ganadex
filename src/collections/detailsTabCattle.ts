@@ -29,7 +29,7 @@ export const DetailsChecks = {
 
 export const DetailsServe = {
   fecha: "Ultima",
-  observacion: "Observacion",
+  observacion: "Observación",
   tipo: "Tipo",
   numero_toro: "Toro",
   pajuela: "Pajuela toro",
@@ -40,9 +40,9 @@ export const DetailsServe = {
 
 export const DetailsBirht = {
   fecha: "Ultima",
-  observacion: "Observacion",
+  observacion: "Observación",
   sexo: "Sexo de la cria",
-  numero_cria: "Numero de la cria",
+  numero_cria: "Numero de la cría",
   proximo: "Proximo",
   totales: "Totales",
 };

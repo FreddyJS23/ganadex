@@ -11,7 +11,7 @@ import { Select } from "@/components/select";
 import { Select as SelectNextUI, SelectItem } from "@nextui-org/select";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateBull } from "@/types/forms";
+import type { CreateBull } from "@/types/forms";
 import { toast } from "sonner";
 import {
   bullShemaWitDeath,
@@ -19,9 +19,9 @@ import {
   createBullShema,
 } from "@/validations/bullShema";
 import { createBull } from "@/actions/toro";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
-import { Checkbox, Chip, Selection } from "@nextui-org/react";
-import {
+import { type ChangeEvent, useEffect, useRef, useState } from "react";
+import { Checkbox, Chip, type Selection } from "@nextui-org/react";
+import type {
   AvailableVaccines,
   CausaFallecimiento,
   Comprador,
@@ -67,7 +67,7 @@ export const FormBull = ({
     defaultValues: { estado_id: ["1"], numero: numero_disponible },
   });
   const handleSelectionTypeBullChange = (select: number | string) => {
-    /* pocision del container campo peso dos años */
+    /* posición del container campo peso dos años */
     const inputWeight2year = form.current?.querySelector(
       "#peso_2year",
     ) as HTMLDivElement;
@@ -81,7 +81,7 @@ export const FormBull = ({
 
   const actionBull: () => void = handleSubmit(async (data) => {
     const response = await createBull(data, listVaccines);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response!)
       return toast.error(messageErrorApi(response));
 
@@ -130,7 +130,7 @@ export const FormBull = ({
     }
   };
 
-  /* control de check para mostrar campos seccion vacuna */
+  /* control de check para mostrar campos sección vacuna */
   const [isSelected, setIsSelected] = useState(false);
 
   // campos select tipo origen para coloca campo fecha ingreso en origen externo
@@ -145,7 +145,7 @@ export const FormBull = ({
   const handleSelectionOrigenChange = (select: string | number) => {
     if (select == 1) {
       /* se usa el setValue porque el resetField no funciona, no borra el valor en el input,
-            sin esto el valor se mantiene en el input y al enviar  el backend dara error ya que se esta mandando 
+            sin esto el valor se mantiene en el input y al enviar  el backend dará error ya que se esta mandando 
             el valor de fecha_ingreso en un formato incorrecto */
       setValue("fecha_ingreso", undefined);
     }
@@ -268,7 +268,7 @@ export const FormBull = ({
                 <Controller
                   name={id}
                   /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   control={control as any}
                   render={({ field }) => (
@@ -285,7 +285,7 @@ export const FormBull = ({
               )}
               {id == "fecha" && (
                 <Input
-                  /* El id se debe cambiar ya que se usa una shema validacion diferente
+                  /* El id se debe cambiar ya que se usa una shema validación diferente
                                         al original */
                   id={"fecha_fallecimiento"}
                   label={label}
@@ -318,7 +318,7 @@ export const FormBull = ({
               )}
               {type == "date" && (
                 <Input
-                  /* El id se debe cambiar ya que se usa una shema validacion diferente
+                  /* El id se debe cambiar ya que se usa una shema validación diferente
                                         al original */
                   id={"fecha_venta"}
                   label={label}
@@ -333,7 +333,7 @@ export const FormBull = ({
                 <Controller
                   name={id}
                   /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                            ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                            ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   control={control as any}
                   render={({ field }) => (
@@ -362,7 +362,7 @@ export const FormBull = ({
             <Controller
               name={id}
               /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                            ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                            ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               control={control as any}
               render={({ field }) => (

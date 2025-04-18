@@ -2,10 +2,10 @@
 
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { ModalProps } from "@/types";
+import type { ModalProps } from "@/types";
 import { useDisclosure } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
-import { CreateWeightMilk } from "@/types/forms";
+import type { CreateWeightMilk } from "@/types/forms";
 import { createWeightMilkShema } from "@/validations/WeightMilkShema";
 import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
@@ -34,8 +34,8 @@ export const ModalWeightMilk = ({
   const params = useParams<{ id: string }>();
 
   const actionCreateWeightMilk: () => void = handleSubmit(async (data) => {
-    const weightMilk = await createWeightMilk(data, parseInt(params.id));
-    /* manejar error del backedn y mostar mensaje */
+    const weightMilk = await createWeightMilk(data, Number.parseInt(params.id));
+    /* manejar error del backend y mostrar mensaje */
     if (typeof weightMilk == "object" && "error" in weightMilk)
       return toast.error(messageErrorApi(weightMilk));
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { LayoutModal } from "..";
-import { LayoutModalProps } from "@/types";
+import type { LayoutModalProps } from "@/types";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { deleteUserVeterinary } from "@/actions/userVeterinary";
@@ -25,7 +25,7 @@ export const ModalDeleteUserVeterinary = ({
 
   const actionDeleteUserVeterinary = async () => {
     const response = await deleteUserVeterinary(id);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response!)
       return toast.error(messageErrorApi(response));
 
@@ -45,7 +45,7 @@ export const ModalDeleteUserVeterinary = ({
       onClick={actionDeleteUserVeterinary}
       onClose={onClose}
     >
-      <p>Confirmar la eliminacion de usuario</p>
+      <p>Confirmar la eliminación de usuario</p>
     </LayoutModal>
   );
 };

@@ -172,7 +172,7 @@ export enum TitlesModals {
   "Historial de vacunas aplicadas",
   "Actualizar usuario",
   "Crear hacienda",
-  "Selecionar hacienda en la que trabajar",
+  "Seleccionar hacienda en la que trabajar",
   "Eliminar usuario veterinario: ",
   "Historial de actividades",
   "Actualizar configuración",
@@ -194,7 +194,7 @@ export enum FieldsIdCasttle {
 }
 export enum FieldsLabelsCasttle {
   Nombre,
-  Numero,
+  Número,
   Origen,
   "Fecha de ingreso",
   Tipo,
@@ -220,7 +220,7 @@ export enum FieldsIdBull {
 }
 export enum FieldsLabelsBull {
   Nombre,
-  Numero,
+  Número,
   Origen,
   "Fecha de ingreso",
   Tipo,
@@ -246,7 +246,7 @@ export enum FieldsIdBeef {
 }
 export enum FieldsLabelsBeef {
   Nombre,
-  Numero,
+  Número,
   Origen,
   "Fecha de ingreso",
   Tipo,
@@ -312,7 +312,7 @@ export enum FieldsIdCalfCastle {
 export enum FieldsLabelsCalfCastle {
   Observación,
   "Nombre de la cría",
-  "Numero de la cría",
+  "Número de la cría",
   Sexo,
   "Peso de nacimiento",
 }
@@ -339,10 +339,10 @@ export enum FieldsIdStaff {
 }
 
 export enum FieldsLabelsStaff {
-  Cedula,
+  Cédula,
   Nombre,
   Apellido,
-  Telefono,
+  Teléfono,
   "Fecha de nacimiento",
   Cargo,
 }
@@ -356,7 +356,7 @@ export enum FieldsIdDeadCattle {
 export enum FieldsLabelsDeadCattle {
   "Fecha de defunción",
   "Causa de defunción",
-  Descripcion,
+  Descripción,
 }
 
 export enum FieldsIdSaleCattle {
@@ -377,8 +377,8 @@ export enum FieldsIdPajuelaToro {
   fecha,
 }
 export enum FieldsLabelsPajuelaToro {
-  Codigo,
-  Descripcion,
+  Código,
+  Descripción,
   Fecha,
 }
 

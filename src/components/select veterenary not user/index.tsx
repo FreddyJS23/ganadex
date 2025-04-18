@@ -1,5 +1,5 @@
-import { UserVeterinary, veterinario } from "@/types";
-import { Button, Select, Selection, SelectItem } from "@nextui-org/react";
+import { UserVeterinary, type veterinario } from "@/types";
+import { Button, Select, type Selection, SelectItem } from "@nextui-org/react";
 import { useState } from "react";
 import SaveIcon from "@/icons/icono-save.svg";
 import { createUserVeterinary } from "@/actions/userVeterinary";
@@ -19,14 +19,14 @@ export const SelectVeterinaryNotUser = ({
   const router = useRouter();
 
   const registerUserVeterinary = async () => {
-    const idVeterinario = parseInt(Array.from(value)[0] as string);
+    const idVeterinario = Number.parseInt(Array.from(value)[0] as string);
 
     if (!idVeterinario) return toast.error("Debe seleccionar un veterinario");
 
     try {
       setIsLoading(true);
       const res = await createUserVeterinary(idVeterinario);
-      /* manejar error del backedn y mostar mensaje */
+      /* manejar error del backend y mostrar mensaje */
       if (typeof res == "object" && "error" in res!)
         return toast.error(messageErrorApi(res));
 

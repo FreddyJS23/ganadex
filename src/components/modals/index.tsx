@@ -56,7 +56,7 @@ export const LayoutModal = ({
               <span className="size-12 p-[6px] bg-[#AF842D20] dark:bg-[#22FF1E20] rounded-full ">
                 <Icon />
               </span>
-              {/* titulo modal estatico */}
+              {/* titulo modal estático */}
               {typeof dataHeader == "number" ||
               typeof dataHeader == "string" ? (
                 <h2>
@@ -64,7 +64,7 @@ export const LayoutModal = ({
                   {dataHeader}
                 </h2>
               ) : (
-                /* titulo modal dinamico con elementos TSX */
+                /* titulo modal dinámico con elementos TSX */
                 <div className="flex flex-wrap gap-2 items-center">
                   <h2>{titleModal}</h2>
                   {dataHeader}

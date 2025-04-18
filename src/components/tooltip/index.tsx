@@ -18,7 +18,7 @@ export const Tooltip = forwardRef(function Tooltip(
 ) {
   const { content, placement = "top", size = "lg", type } = props;
 
-  //destrucuturas todos los mensajes para llamarlos por una key y no llamar las cotnantes en cada archiv
+  //destrucuturas todos los mensajes para llamarlos por una key y no llamar las contantes en cada archivo
   const allMessages = {
     ...DASHBOARD_TOOLTIPS,
     ...DASHBOARD_SALE,

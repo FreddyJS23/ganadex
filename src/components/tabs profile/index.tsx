@@ -123,11 +123,11 @@ export const TabsProfile = ({
             {/* header section */}
             <div className="flex gap-12 items-center">
               <ElementProfile
-                tittle="Hacienda en sesion"
+                tittle="Hacienda en sesión"
                 content={haciendaSesion.nombre}
-                description="Todos los datos que se representan y las operaciones que se realizen perteneceran a esta hacienda"
+                description="Todos los datos que se representan y las operaciones que se realicen pertenecerán a esta hacienda"
               />
-              {/* button registrat hacienda*/}
+              {/* button registrar hacienda*/}
               {user.rol == "admin" && (
                 <ButtonCreateItem href={"/hacienda/registrar"} />
               )}
@@ -169,9 +169,9 @@ export const TabsProfile = ({
 
         {/*  ------------------------------ opciones admin ----------------------------- */}
 
-        {/* tab  configuracion */}
+        {/* tab  configuración */}
         {user.rol == "admin" && (
-          <Tab key="setting" title="Configuracion">
+          <Tab key="setting" title="Configuración">
             <LayoutContentTabs>
               <div className="flex flex-col">
                 <div className="self-end w-48">
@@ -184,27 +184,27 @@ export const TabsProfile = ({
                   </Link>
                 </div>
                 <ElementProfile
-                  tittle="Peso apta para un servicio"
+                  tittle="Peso apto para un servicio"
                   content={configuracion.peso_servicio.toString()}
                   description="Representa cual sera el peso ideal para que una novilla pueda estar apta para un servicio"
                 />
                 <ElementProfile
-                  tittle="Dias prximos para crear una notificacion"
+                  tittle="Dias próximos para crear una notificación"
                   content={configuracion.dias_evento_notificacion.toString()}
-                  description="Representa cuantos dias antes de la fecha de un evento, se creara una notificacion"
+                  description="Representa cuantos días antes de la fecha de un evento, se creara una notificación"
                 />
                 <ElementProfile
                   tittle="Diferencia entre una vacuna y un plan sanitario"
                   content={configuracion.dias_diferencia_vacuna.toString()}
-                  description="Representa cuantos dias se podria aplazar la dosis de una vacuna individual para asi estar a la par con la proxima jornada de vacunacion de la misma"
+                  description="Representa cuantos días se podría aplazar la dosis de una vacuna individual para asi estar a la par con el proximo plan sanitario de la misma"
                 />
                 <div className="flex justify-between w-9/12 items-center ">
                   <div className="flex flex-col gap-2 w-80">
-                    <span className="font-bold text-xl">Tipos de revision</span>
+                    <span className="font-bold text-xl">Tipos de revisión</span>
                     <span className="text-sm opacity-60">
-                      Estas opciones son las que estaran disponible a la hora de
-                      hacer una revision, tenga en cuenta que las revisiones
-                      creadas no podran ser eliminadas ademas las revisiones
+                      Estas opciones son las que estarán disponibles a la hora de
+                      hacer una revisión, tenga en cuenta que las revisiones
+                      creadas no podrán ser eliminadas ademas las revisiones
                       predeterminadas no pueden ser modificadas
                     </span>
                   </div>
@@ -215,7 +215,7 @@ export const TabsProfile = ({
                       as={Link}
                       href="/revisiones/tipo"
                     >
-                      Ver tipos guardadas
+                      Ver tipos guardados
                     </ButtonNextUI>
                   </div>
                 </div>
@@ -251,8 +251,8 @@ export const TabsProfile = ({
               <div className="flex flex-col gap-2 w-64">
                 <span className="font-bold text-xl">Veterinarios</span>
                 <span className="text-sm opacity-60">
-                  Estos veterinarios todavia no cuenta con un usuario, la
-                  contraseña por defecto de los usuarios creados sera: 123456
+                  Estos veterinarios todavía no cuenta con un usuario, la
+                  contraseña por defecto de los usuarios creados será: 123456
                 </span>
               </div>
               <SelectVeterinaryNotUser veterinarios={veterinarios} />

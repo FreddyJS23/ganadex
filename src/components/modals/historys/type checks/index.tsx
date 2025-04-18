@@ -11,7 +11,7 @@ export const ModalTypeCheck = ({
   return (
     <LayoutModal
       icon="checkUp"
-      titleModal={"Tipos de revision"}
+      titleModal={"Tipos de revisión"}
       footer={false}
       isOpen={true}
     >

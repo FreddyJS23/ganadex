@@ -2,14 +2,14 @@
 
 import { useDisclosure } from "@nextui-org/react";
 import { LayoutModal } from "..";
-import { ModalProps, Servicio } from "@/types";
+import type { ModalProps, Servicio } from "@/types";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { useEditDelete } from "@/lib/hooks/useEditDelete";
 import { useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UpdateServe } from "@/types/forms";
+import type { UpdateServe } from "@/types/forms";
 import { updateServeShema } from "@/validations/serveShema";
 import { editServe } from "@/actions/servicio";
 import { toast } from "sonner";
@@ -41,7 +41,7 @@ export const ModalServe = ({
       dataHeader={typeof servicio.fecha == "string" ? servicio.fecha : ""}
     >
       <>
-        {/* boton flotante */}
+        {/* botón flotante */}
         {
           <div className="absolute left-[19%] top-[7%]">
             <ButtonsEditedDelete
@@ -121,12 +121,16 @@ const ServicioEdit = ({
 
   const actionEditServe: () => void = handleSubmit(async (data) => {
     setIsLoading(true);
-    const response = await editServe(servicio.id, parseInt(cattleId), data);
-    //manejar error del backedn y mostar mensaje
-    if (typeof response == "object" && "error" in response)
-    { setIsLoading(false);
-       return toast.error(messageErrorApi(response));
-      }
+    const response = await editServe(
+      servicio.id,
+      Number.parseInt(cattleId),
+      data,
+    );
+    //manejar error del backend y mostrar mensaje
+    if (typeof response == "object" && "error" in response) {
+      setIsLoading(false);
+      return toast.error(messageErrorApi(response));
+    }
     setIsLoading(false);
     onSaveOrCancel();
     toast.success(`Servicio Actualizada`);
@@ -154,7 +158,7 @@ const ServicioEdit = ({
 
         <Input
           id="observacion"
-          label="Observacion"
+          label="Observación"
           type="text"
           register={register}
           errors={errors}

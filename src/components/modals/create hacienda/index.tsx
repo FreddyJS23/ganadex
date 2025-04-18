@@ -1,8 +1,8 @@
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { ModalProps } from "@/types";
+import type { ModalProps } from "@/types";
 import { useForm } from "react-hook-form";
-import { CreateHacienda } from "@/types/forms";
+import type { CreateHacienda } from "@/types/forms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createHaciendaShema } from "@/validations/hacienda";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ type ModalCreateHaciendaProps = ModalProps & {
   onOpen: () => void;
   onOpenChange: (open: boolean) => void;
   /**verificar si es la primera hacienda para redireccionar de una vez y no mostrarle el modal de seleccion de hacienda,
-     ya que es inncesario crear una hacienda y despues solo mostrale un select con una sola hacienda
+     ya que es innecesario crear una hacienda y después solo mostrarle un select con una sola hacienda
      */
   primeraHacienda: boolean;
 };
@@ -41,9 +41,9 @@ export const ModalCreateHacienda = ({
   const { update, data: session } = useSession();
 
   useEffect(() => {
-    /* Llamar a la sesion para que el status el hook useSession se actualice y pase a authenticated,
+    /* Llamar a la sesión para que el status el hook useSession se actualice y pase a authenticated,
         si no se hace esto el state queda en unauthenticated y no se actualiza, no permitiendo que se llame
-        la funcion update para actualizar la sesion */
+        la función update para actualizar la sesión */
     const fetchSession = async () => await getSession();
 
     fetchSession();
@@ -52,12 +52,12 @@ export const ModalCreateHacienda = ({
   const actionCreateHacienda: () => void = handleSubmit(async (data) => {
     const hacienda = await createHacienda(data);
 
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof hacienda == "object" && "error" in hacienda)
       return toast.error(messageErrorApi(hacienda));
 
     toast.success(`${hacienda.nombre} creada exitosamente`);
-    /* actualizar sesion ya que hay una hacienda en sesion */
+    /* actualizar sesión ya que hay una hacienda en sesión */
     if (primeraHacienda) {
       await update({
         ...session,

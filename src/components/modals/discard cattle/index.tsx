@@ -39,7 +39,7 @@ export const ModalDiscardCattle = ({
       onOpenChange={onOpenChange}
       onClick={actionDiscardCattle}
     >
-      <p>Esta accion no se puede devolver</p>
+      <p>Esta acción no se puede devolver</p>
     </LayoutModal>
   );
 };

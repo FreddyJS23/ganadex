@@ -2,9 +2,9 @@
 
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { ModalProps } from "@/types";
+import type { ModalProps } from "@/types";
 import { useDisclosure } from "@nextui-org/react";
-import { CreateAssigmentNumberBullCalf } from "@/types/forms";
+import type { CreateAssigmentNumberBullCalf } from "@/types/forms";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { assignmentNumberBullCalf } from "@/actions/assigmentNumberBullCalf";
@@ -35,9 +35,9 @@ export const ModalAssignmentNumberBullCalf = ({
     async (data) => {
       const response = await assignmentNumberBullCalf(
         data,
-        parseInt(params.id),
+        Number.parseInt(params.id),
       );
-      /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backedn y mostar mensaje */
+      /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backend y mostrar mensaje */
       if (typeof response == "object" && "error" in response)
         return toast.error(messageErrorApi(response));
 

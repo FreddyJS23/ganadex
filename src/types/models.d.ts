@@ -45,7 +45,6 @@ export type Ganado = {
   numero: number | null;
   origen: string;
   fecha_ingreso: string | null;
-  sexo: "H" | "M";
   tipo: keyof typeof TypesCattle;
   fecha_nacimiento: string | null;
   pesos?: Pesos;
@@ -67,7 +66,6 @@ export type Toro = Pick<
   | "tipo"
   | "estados"
 > & {
-  sexo: "M";
   efectividad: number;
   padre_en_partos: number;
   servicios: number;

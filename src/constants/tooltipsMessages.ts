@@ -14,12 +14,12 @@ export const DASHBOARD_SALE = {
 
 export const FORM_TOOLTIPS = {
   advertencia_registro:
-    "Recuerde que los registros no se pueden eliminar y solo se podran editar los pesos",
+    "Recuerde que los registros no se pueden eliminar y solo se podrán editar los pesos",
 };
 
 export const TABLE_TOOLTIPS = {
   efectividad_servicio:
-    "Representa cuantos serivicos fueron necesarios para producir un parto, esta efectividad puede variar en cada parto",
+    "Representa cuantos servicios fueron necesarios para producir un parto, esta efectividad puede variar en cada parto",
   pesaje_este_mes:
     "Representa si ya se ha producido el respectivo pesaje de control en este mes",
   logs_eventos:
@@ -32,5 +32,5 @@ export const DETAILS_GANADO_TOOLTIPS = {
 
 export const DETAILS_TITLES = {
   ganado_descarte:
-    "Estos animales estan destinado a ser vendidos para el consumo humano",
+    "Estos animales están destinado a ser vendidos para el consumo humano",
 };

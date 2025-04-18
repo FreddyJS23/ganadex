@@ -10,7 +10,7 @@ import { Button } from "@/ui/Button";
 import { Select } from "@/components/select";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CreateBeef } from "@/types/forms";
+import type { CreateBeef } from "@/types/forms";
 import { toast } from "sonner";
 import {
   createDiscardedCattleShema,
@@ -18,10 +18,10 @@ import {
   createDiscardedCattleWithSaleShema,
 } from "@/validations/discardedCattleShema";
 import { createBeef } from "@/actions/ganado_descarte";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { type ChangeEvent, useEffect, useRef, useState } from "react";
 import { Select as SelectNextUI, SelectItem } from "@nextui-org/select";
-import { AvailableVaccines, CausaFallecimiento, Comprador } from "@/types";
-import { Checkbox, Chip, Selection } from "@nextui-org/react";
+import type { AvailableVaccines, CausaFallecimiento, Comprador } from "@/types";
+import { Checkbox, Chip, type Selection } from "@nextui-org/react";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { CreateListVaccination } from "@/components/create list vaccination";
 import { useRouter } from "next/navigation";
@@ -66,7 +66,7 @@ export const FormBeef = ({
   });
 
   const handleSelectionTypeBeefChange = (select: number | string) => {
-    /* pocision del container campo peso dos años */
+    /* posición del container campo peso dos años */
     const inputWeight2year = form.current?.querySelector(
       "#peso_2year",
     ) as HTMLDivElement;
@@ -80,7 +80,7 @@ export const FormBeef = ({
 
   const actionBeef: () => void = handleSubmit(async (data) => {
     const response = (await createBeef(data, listVaccines)) as string | number;
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response!)
       return toast.error(messageErrorApi(response));
 
@@ -130,7 +130,7 @@ export const FormBeef = ({
     }
   };
 
-  /* control de check para mostrar campos seccion vacuna */
+  /* control de check para mostrar campos sección vacuna */
   const [isSelected, setIsSelected] = useState(false);
 
   // campos select tipo origen para coloca campo fecha ingreso en origen externo
@@ -145,7 +145,7 @@ export const FormBeef = ({
   const handleSelectionOrigenChange = (select: string | number) => {
     if (select == 1) {
       /* se usa el setValue porque el resetField no funciona, no borra el valor en el input,
-            sin esto el valor se mantiene en el input y al enviar  el backend dara error ya que se esta mandando 
+            sin esto el valor se mantiene en el input y al enviar  el backend dará error ya que se esta mandando 
             el valor de fecha_ingreso en un formato incorrecto */
       setValue("fecha_ingreso", undefined);
     }
@@ -266,7 +266,7 @@ export const FormBeef = ({
                 <Controller
                   name={id}
                   /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                                        ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                                        ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   control={control as any}
                   render={({ field }) => (
@@ -283,7 +283,7 @@ export const FormBeef = ({
               )}
               {id == "fecha" && (
                 <Input
-                  /* El id se debe cambiar ya que se usa una shema validacion diferente
+                  /* El id se debe cambiar ya que se usa una shema validación diferente
                                         al original */
                   id={"fecha_fallecimiento"}
                   label={label}
@@ -316,7 +316,7 @@ export const FormBeef = ({
               )}
               {type == "date" && (
                 <Input
-                  /* El id se debe cambiar ya que se usa una shema validacion diferente
+                  /* El id se debe cambiar ya que se usa una shema validación diferente
                                         al original */
                   id={"fecha_venta"}
                   label={label}
@@ -331,7 +331,7 @@ export const FormBeef = ({
                 <Controller
                   name={id}
                   /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                            ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                            ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   control={control as any}
                   render={({ field }) => (
@@ -360,7 +360,7 @@ export const FormBeef = ({
             <Controller
               name={id}
               /*Se interpone un any ya que esta heredando el tipo del formulario completo
-                            ocasionando conflicto de tipos ya que los campos del formulario no estan presentes  */
+                            ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               control={control as any}
               render={({ field }) => (

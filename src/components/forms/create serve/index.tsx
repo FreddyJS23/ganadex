@@ -7,13 +7,13 @@ import { Select } from "@/components/select";
 import { SelectBulls } from "@/components/select bulls";
 import { Textarea } from "@/components/Textarea";
 import {
-  PajuelaToro,
+  type PajuelaToro,
   ResponseVeterinariosSelect,
-  Toro,
+  type Toro,
   ToroDeServicio,
-  veterinario,
+  type veterinario,
 } from "@/types";
-import { CreateServe } from "@/types/forms";
+import type { CreateServe } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { getDateNow } from "@/utils/getDateNow";
@@ -55,7 +55,7 @@ export const FormCreateService = ({
     control,
     handleSubmit,
   } = useForm<CreateServe>({
-    //si es admin se verificara si el veterinario esta deshabilitado para usar el shema orignal
+    //si es admin se verificara si el veterinario esta deshabilitado para usar el shema original
     resolver: zodResolver(
       isAdmin
         ? !disableVeterinary
@@ -69,8 +69,8 @@ export const FormCreateService = ({
   const { id: cattleId } = useParams<{ id: string }>();
 
   const actionCreateService: () => void = handleSubmit(async (data) => {
-    const response = await createServe(data, parseInt(cattleId));
-    /* manejar error del backedn y mostar mensaje */
+    const response = await createServe(data, Number.parseInt(cattleId));
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
     toast.success(`Servicio creado`);
@@ -118,7 +118,7 @@ export const FormCreateService = ({
     required: pajuelaToroRequired,
   } = formService[3];
 
-  /* pocision del container campo peso dos años */
+  /* posición del container campo peso dos años */
   return (
     <>
       <form

@@ -1,12 +1,12 @@
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { ModalProps } from "@/types";
+import type { ModalProps } from "@/types";
 import { createPriceMilk } from "@/actions/precioLeche";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { CreatePriceMilk } from "@/types/forms";
+import type { CreatePriceMilk } from "@/types/forms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createPriceMilkShema } from "@/validations/priceMilkShema";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
@@ -30,7 +30,7 @@ export const ModalNewPriceMilk = ({
 
   const actionCreatePriceMilk: () => void = handleSubmit(async (data) => {
     const priceMilk = await createPriceMilk(data);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof priceMilk == "object" && "error" in priceMilk)
       return toast.error(messageErrorApi(priceMilk));
 

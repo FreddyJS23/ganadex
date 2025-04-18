@@ -65,7 +65,7 @@ const NatalidadUltimos5AñosBarra = forwardRef(function (
 
   return (
     <>
-      {/* grafico */}
+      {/* gráfico */}
       <Bar ref={ref} options={optionChartBarTasaNatalidad} data={dataBar} />
     </>
   );

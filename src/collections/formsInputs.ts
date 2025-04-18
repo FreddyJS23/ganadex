@@ -83,7 +83,7 @@ export const formWeights: Fields<keyof Pesos,keyof typeof FieldsLabelsWeights>[]
 
 export const formCastle: Fields<keyof typeof FieldsIdCasttle,keyof typeof FieldsLabelsCasttle>[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
-  { id: "numero", label: "Numero", required: true, type: "number" },
+  { id: "numero", label: "Número", required: true, type: "number" },
   {
     id: "tipo_id",
     label: "Tipo",
@@ -150,7 +150,7 @@ export const formCastle: Fields<keyof typeof FieldsIdCasttle,keyof typeof Fields
 
 export const formCastleEdit: Fields<keyof typeof FieldsIdCasttle,keyof typeof FieldsLabelsCasttle>[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
-  { id: "numero", label: "Numero", required: true, type: "number" },
+  { id: "numero", label: "Número", required: true, type: "number" },
   {
     id: "origen_id",
     label: "Origen",
@@ -174,7 +174,7 @@ export const formCastleEdit: Fields<keyof typeof FieldsIdCasttle,keyof typeof Fi
 
 export const formBull: Fields<keyof typeof FieldsIdBull,keyof typeof FieldsLabelsBull>[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
-  { id: "numero", label: "Numero", required: true, type: "number" },
+  { id: "numero", label: "Número", required: true, type: "number" },
   {
     id: "tipo_id",
     label: "Tipo",
@@ -240,7 +240,7 @@ export const formBull: Fields<keyof typeof FieldsIdBull,keyof typeof FieldsLabel
 ];
 export const formBeef: Fields<keyof typeof FieldsIdBeef,keyof typeof FieldsLabelsBeef>[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
-  { id: "numero", label: "Numero", required: true, type: "number" },
+  { id: "numero", label: "Número", required: true, type: "number" },
   {
     id: "tipo_id",
     label: "Tipo",
@@ -351,7 +351,7 @@ export const formCalfCastle: Fields<keyof typeof FieldsIdCalfCastle,keyof typeof
   { id: "nombre", label: "Nombre de la cría", required: true, type: "text" },
   {
     id: "numero",
-    label: "Numero de la cría",
+    label: "Número de la cría",
     required: false,
     type: "number",
   },
@@ -380,7 +380,7 @@ export const formSupply: Fields<keyof typeof FieldsIdSupply,keyof typeof FieldsL
 export const formStaff: Fields<keyof typeof FieldsIdStaff,keyof typeof FieldsLabelsStaff>[] = [
   { id: "ci", label: "Cedula", required: true, type: "number" },
   { id: "nombre", label: "Nombre", required: true, type: "text" },
-  { id: "telefono", label: "Telefono", required: true, type: "tel" },
+  { id: "telefono", label: "Teléfono", required: true, type: "tel" },
   { id: "apellido", label: "Apellido", required: true, type: "text" },
   {
     id: "fecha_nacimiento",
@@ -398,7 +398,7 @@ export const formDeadCattle: Fields<keyof typeof FieldsIdDeadCattle,keyof typeof
     required: true,
     type: "select",
   },
-  { id: "descripcion", label: "Descripcion", required: false, type: "text" },
+  { id: "descripcion", label: "Descripción", required: false, type: "text" },
 ];
 
 export const formSaleCattle: Fields<keyof typeof FieldsIdSaleCattle,keyof typeof FieldsLabelsSaleCattle>[] = [
@@ -413,8 +413,8 @@ export const formSaleCattle: Fields<keyof typeof FieldsIdSaleCattle,keyof typeof
 ];
 
 export const formPajuelaToro: Fields<keyof typeof FieldsIdPajuelaToro,keyof typeof FieldsLabelsPajuelaToro>[] = [
-  { id: "codigo", label: "Codigo", required: true, type: "text" },
-  { id: "descripcion", label: "Descripcion", required: false, type: "text" },
+  { id: "codigo", label: "Código", required: true, type: "text" },
+  { id: "descripcion", label: "Descripción", required: false, type: "text" },
   { id: "fecha", label: "Fecha", required: true, type: "date" },
 ];
 

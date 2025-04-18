@@ -29,7 +29,7 @@ type ContentCardSaleMilkProp = {
   title: "Precio actual";
   /**Precio actual */
   value: number;
-  /**Porcentaje de variacion respecto al precio anterior del actual */
+  /**Porcentaje de variación respecto al precio anterior del actual */
   variationValue: number;
   multipleOption?: boolean;
 };

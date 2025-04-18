@@ -4,8 +4,8 @@ import { addInHacienda, createStaff } from "@/actions/personal";
 import { formStaff } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
-import { ResponseCargosPersonal } from "@/types";
-import { CreateStaff } from "@/types/forms";
+import type { ResponseCargosPersonal } from "@/types";
+import type { CreateStaff } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
@@ -34,13 +34,13 @@ export const FormCreateStaff = ({
   const actionStaff: () => void = handleSubmit(async (data) => {
     const response = await createStaff(data);
 
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
 
     form.current?.reset();
 
-    toast.success(`${response.nombre} ha sido creado con exito`);
+    toast.success(`${response.nombre} ha sido creado con éxito`);
   });
 
   return (

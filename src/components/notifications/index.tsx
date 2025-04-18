@@ -1,9 +1,9 @@
 "use client";
 
-import { Notification, TypesNotification } from "@/types";
+import type { Notification, TypesNotification } from "@/types";
 import { NotificationBody } from "./item";
 import { Tabs, Tab } from "@nextui-org/tabs";
-import { LegacyRef, useEffect, useRef, useState } from "react";
+import { type LegacyRef, useEffect, useRef, useState } from "react";
 import { removeAllNotificationsFromDB } from "@/actions/removeAllNotificationsFromDB";
 import { toast } from "sonner";
 import { BadgeNotification } from "@/ui/BadgeNotification";
@@ -35,7 +35,7 @@ export const NotificationMain = () => {
     };
     getNotifications();
 
-    /* solicitar notificaciones cuando se cambie de sesion en la hacienda */
+    /* solicitar notificaciones cuando se cambie de sesión en la hacienda */
   }, [nameHacienda]);
 
   const removeAllNotifications = async () => {
@@ -43,7 +43,7 @@ export const NotificationMain = () => {
     if (totalNotifications == 0) return;
 
     const response = await removeAllNotificationsFromDB();
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
 
@@ -57,7 +57,7 @@ export const NotificationMain = () => {
     tipo: Notification["tipo"],
     index: number,
   ) => {
-    //copiar el inicio del array hasta el elemento a eliminar, despues copiar el resto del array
+    //copiar el inicio del array hasta el elemento a eliminar, después copiar el resto del array
     const deleteElementArray = (array: [], index: number) => [
       ...array.splice(0, index),
       ...array.splice(index + 1),
@@ -85,7 +85,7 @@ export const NotificationMain = () => {
         tabIndex={0}
         className="mt-3 p-4  dropdown-content w-72 sm:w-auto bg-base-100"
       >
-        {/*  cabezera */}
+        {/*  cabecera */}
         <div className="flex items-center justify-between">
           <h4 className="  sm:text-xl  font-bold">Notificaciones</h4>
           <p

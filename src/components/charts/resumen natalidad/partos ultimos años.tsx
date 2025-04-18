@@ -40,7 +40,7 @@ const PartosUltimos5AñosLinea = forwardRef(function (
   ) => {
     const years: string[] = [];
     const partos: number[] = [];
-    //extrarer datos para rellenar grafico
+    //extraer datos para rellenar gráfico
     nacimientos_ultimos_5_año.forEach(({ año, partos_producidos }) => {
       years.push(año);
       partos.push(partos_producidos);
@@ -62,7 +62,7 @@ const PartosUltimos5AñosLinea = forwardRef(function (
 
   return (
     <>
-      {/* grafico */}
+      {/* gráfico */}
       <Line ref={ref} options={optionChartLinePartosTotales} data={dataLine} />
     </>
   );

@@ -2,13 +2,13 @@
 
 import { RedirectInTable } from "@/components/redirectsInTables";
 import { LayoutModal } from "..";
-import { ModalProps, Parto } from "@/types";
+import type { ModalProps, Parto } from "@/types";
 import { useEditDelete } from "@/lib/hooks/useEditDelete";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { UpdateBirh } from "@/types/forms";
+import type { UpdateBirh } from "@/types/forms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updateBirhthShema } from "@/validations/birthShema";
 import { updateBirth } from "@/actions/parto";
@@ -20,7 +20,7 @@ export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
   const { crias, fecha, observacion, padre_toro, pajuela_toro, personal } =
     parto;
 
-  //si hay mas de dos crias en el parto
+  //si hay mas de dos crías en el parto
   const gemelos = crias.length > 1;
 
   const typeBaby = (
@@ -61,7 +61,7 @@ export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
     >
       <>
         <div className="absolute left-[19%] top-[7%]">
-          {/* boton flotante */}
+          {/* botón flotante */}
           <ButtonsEditedDelete
             id={parto.id}
             size="md"
@@ -75,7 +75,7 @@ export const ModalBirth = ({ parto }: ModalProps & { parto: Parto }) => {
           />
         </div>
 
-        {stateButton == 'save' ? (
+        {stateButton == "save" ? (
           <PartoEdit
             setIsLoading={setIsLoading}
             parto={parto}
@@ -178,8 +178,12 @@ const PartoEdit = ({ parto, setIsLoading, onSaveOrCancel }: PartoProps) => {
 
   const actionUpdateBirth: () => void = handleSubmit(async (data) => {
     setIsLoading(true);
-    const response = await updateBirth(parto.id, parseInt(cattleId), data);
-    //manejar error del backedn y mostar mensaje
+    const response = await updateBirth(
+      parto.id,
+      Number.parseInt(cattleId),
+      data,
+    );
+    //manejar error del backend y mostrar mensaje
     if (typeof response == "object" && "error" in response) {
       setIsLoading(false);
       return toast.error(messageErrorApi(response));
@@ -187,7 +191,7 @@ const PartoEdit = ({ parto, setIsLoading, onSaveOrCancel }: PartoProps) => {
     setIsLoading(false);
     onSaveOrCancel();
     toast.success(`Parto Actualizada`);
-    /* no se usa el refresh porque al hacerlo se bugea la navegacion */
+    /* no se usa el refresh porque al hacerlo se bugea la navegación */
     router.push(`/ganado/${cattleId}/parto`);
   });
 

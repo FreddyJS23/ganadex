@@ -5,9 +5,9 @@ import { updateUser } from "@/actions/usuario";
 import { Input } from "@/components/Inputs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UpdateUser } from "@/types/forms";
+import type { UpdateUser } from "@/types/forms";
 import { updateUserShema } from "@/validations/updateUse";
-import { ModalProps, UserAdminInfo, UserVeterinaryInfo } from "@/types";
+import type { ModalProps, UserAdminInfo, UserVeterinaryInfo } from "@/types";
 import { useRouter } from "next/navigation";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 
@@ -39,7 +39,7 @@ export const ModalUpdateUser = ({
 
   const actionsUpdateUser: () => void = handleSubmit(async (data) => {
     const response = await updateUser(id, data);
-    /* manejar error del backedn y mostar mensaje */
+    /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response!)
       return toast.error(messageErrorApi(response));
 

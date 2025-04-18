@@ -26,9 +26,9 @@ const deathCastleShema = z.object({
   descripcion: z.string().min(3).max(255),
 });
 
-/**Validacion para el form de fallecimiento */
+/**validación para el form de fallecimiento */
 export const createDeathCastleShema = deathCastleShema.and(dateValidation);
-/**Validacion para el form de fallecimiento ubicado en otro formulario con otros campos */
+/**validación para el form de fallecimiento ubicado en otro formulario con otros campos */
 export const createDeathCastleShemaInOthersForm = deathCastleShema.and(
   dateValidationInOthersForm,
 );

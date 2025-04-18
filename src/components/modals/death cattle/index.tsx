@@ -1,8 +1,8 @@
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
-import { CausaFallecimiento, ModalProps } from "@/types";
+import type { CausaFallecimiento, ModalProps } from "@/types";
 import { Controller, useForm } from "react-hook-form";
-import { CreateDeathCastle } from "@/types/forms";
+import type { CreateDeathCastle } from "@/types/forms";
 import { createDeathCastleShema } from "@/validations/deathCastle";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
@@ -37,8 +37,11 @@ export const ModalDeathCattle = ({
   const params = useParams<{ id: string }>();
 
   const actionCreateDeathCattle: () => void = handleSubmit(async (data) => {
-    const deathCattle = await createDeathCattle(data, parseInt(params.id));
-    /* manejar error del backedn y mostar mensaje */
+    const deathCattle = await createDeathCattle(
+      data,
+      Number.parseInt(params.id),
+    );
+    /* manejar error del backend y mostrar mensaje */
     if (typeof deathCattle == "object" && "error" in deathCattle)
       return toast.error(messageErrorApi(deathCattle));
 

@@ -14,7 +14,7 @@ export const SelectFilterMonth = ({
   label,
   onChange,
 }: SelectFilterMonthProps) => {
-  /*Al obtener un mes el conteo empieza desde 0, es decir al obtener enero daria 0 */
+  /*Al obtener un mes el conteo empieza desde 0, es decir al obtener enero daría 0 */
   const monthActual = new Date().getMonth() + 1;
 
   const [value, setValue] = useState<Selection>(
