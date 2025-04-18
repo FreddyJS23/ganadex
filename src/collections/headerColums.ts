@@ -47,7 +47,7 @@ type headersColumnsServices = baseHeaderColunms & {
 };
 
 export const headerCasttle: headersColumns<CabezasGanado>[] = [
-  { key: "numero", label: "Numero" },
+  { key: "numero", label: "Número" },
   { key: "nombre", label: "Nombre" },
   { key: "fecha_nacimiento", label: "Edad" },
   { key: "pesos", label: "Peso actual" },
@@ -57,7 +57,7 @@ export const headerCasttle: headersColumns<CabezasGanado>[] = [
   { key: "id", label: "Acciones" },
 ];
 export const headerBull: headersColumns<Toro>[] = [
-  { key: "numero", label: "Numero" },
+  { key: "numero", label: "Número" },
   { key: "fecha_nacimiento", label: "Fecha nacimiento" },
   { key: "tipo", label: "Tipo" },
   { key: "pesos", label: "Peso actual" },
@@ -68,7 +68,7 @@ export const headerBull: headersColumns<Toro>[] = [
   { key: "id", label: "Acciones" },
 ];
 export const headerBeef: headersColumns<GanadoDescarte>[] = [
-  { key: "numero", label: "Numero" },
+  { key: "numero", label: "Número" },
   { key: "nombre", label: "Nombre" },
   { key: "sexo", label: "Sexo" },
   { key: "tipo", label: "Tipo" },
@@ -80,7 +80,7 @@ export const headerBeef: headersColumns<GanadoDescarte>[] = [
 
 export const headerSaleCasttle: headersColumns<VentaGanado>[] = [
   { key: "fecha", label: "Fecha" },
-  { key: "ganado", label: "Numero de ganado" },
+  { key: "ganado", label: "Número de ganado" },
   { key: "peso", label: "Peso" },
   /* { key: 'precio', label: 'Precio' },
     { key: 'precio_kg', label: 'Precio por KG' }, */
@@ -111,18 +111,18 @@ export const headerStaff: headersColumns<Personal>[] = [
 ];
 
 export const headerAllCheckup: headersColumns<Revisiones>[] = [
-  { key: "numero", label: "Numero" },
+  { key: "numero", label: "Número" },
   { key: "diagnostico", label: "Diagnostico" },
   { key: "estado", label: "Estado" },
   { key: "pendiente", label: "Pendiente revisar" },
-  { key: "proxima_revision", label: "Proxima revision" },
-  { key: "ultima_revision", label: "Ultima revision" },
+  { key: "proxima_revision", label: "Proxima revisión" },
+  { key: "ultima_revision", label: "Ultima revisión" },
   { key: "total_revisiones", label: "Total de revisiones" },
   { key: "id", label: "Acciones" },
 ];
 
 export const headerAllServes: headersColumns<Servicios>[] = [
-  { key: "numero", label: "Numero" },
+  { key: "numero", label: "Número" },
   { key: "estado", label: "Estado" },
   { key: "pendiente", label: "Pendiente servir" },
   { key: "toro", label: "Toro/Pajuela toro" },
@@ -133,7 +133,7 @@ export const headerAllServes: headersColumns<Servicios>[] = [
 ];
 
 export const headerAllBirths: headersColumns<Partos>[] = [
-  { key: "numero", label: "Numero" },
+  { key: "numero", label: "Número" },
   { key: "ultimo_parto", label: "Ultimo parto" },
   { key: "estado", label: "Estado" },
   { key: "cria", label: "Cría" },
@@ -157,7 +157,7 @@ export const headerCastreteBullCalf: headersColumns<CriaPendienteCapar>[] = [
 
 export const headerAllWeightMilk: headersColumns<PesajesLeche>[] = [
   { key: "nombre", label: "Nombre" },
-  { key: "numero", label: "Numero" },
+  { key: "numero", label: "Número" },
   { key: "pesaje_este_mes", label: "Pesaje mes actual" },
   { key: "ultimo_pesaje", label: "ultimo pesaje" },
   { key: "id", label: "Pesar" },

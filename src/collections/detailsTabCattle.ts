@@ -19,31 +19,31 @@ export const DetailsWeights = {
 };
 
 export const DetailsChecks = {
-  fecha: "Ultima",
+  fecha: "Última",
   diagnostico: "Diagnostico",
   tratamiento: "Tratamiento",
-  proxima: "Proxima",
-  ultima_realizada: "Ultima realizada",
+  proxima: "Próxima",
+  ultima_realizada: "Última realizada",
   totales: "Totales",
 };
 
 export const DetailsServe = {
-  fecha: "Ultima",
+  fecha: "Última",
   observacion: "Observación",
   tipo: "Tipo",
   numero_toro: "Toro",
   pajuela: "Pajuela toro",
   efectividad: "Efectividad",
-  totales: "Totales para el ultimo parto",
+  totales: "Totales para el último parto",
   total_acumulado: "Total acumulado",
 };
 
 export const DetailsBirht = {
-  fecha: "Ultima",
+  fecha: "Última",
   observacion: "Observación",
   sexo: "Sexo de la cria",
   numero_cria: "Numero de la cría",
-  proximo: "Proximo",
+  proximo: "Próximo",
   totales: "Totales",
 };
 
@@ -54,7 +54,7 @@ export const DetailsWeightingMilk = {
   peor_pesaje: "Peor pesaje",
   estado_actual: "Estado actual",
   produccion_acumulada: "Producción acumulada",
-  dias_produccion: "Dias en producción",
+  dias_produccion: "Días en producción",
 };
 
 export const DetailsEfficiencyBull = {

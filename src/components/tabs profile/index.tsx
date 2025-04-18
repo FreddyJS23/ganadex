@@ -9,15 +9,15 @@ import {
 import { TableVeterinaryUsers } from "../tables/veterinary users";
 import { SelectVeterinaryNotUser } from "../select veterenary not user";
 import {
-  Configuracion,
-  Hacienda,
-  LogEvento,
+  type Configuracion,
+  type Hacienda,
+  type LogEvento,
   PreguntaSeguridad,
-  PreguntasSeguridad,
-  RespuestasSeguridad,
-  UserLoginInfo,
-  UserVeterinaryInfo,
-  veterinario,
+  type PreguntasSeguridad,
+  type RespuestasSeguridad,
+  type UserLoginInfo,
+  type UserVeterinaryInfo,
+  type veterinario,
 } from "@/types";
 import { Button } from "@/ui/Button";
 import IconEditar from "@/icons/icono-editar.svg";
@@ -136,7 +136,9 @@ export const TabsProfile = ({
             {/* list haciendas */}
             <div className="flex flex-col mt-8 gap-2">
               <h3 className="font-bold text-2xl pl-4">Haciendas creadas</h3>
-              <span className="text-sm opacity-60 pl-4">Las haciendas con registros no pueden ser eliminadas</span>
+              <span className="text-sm opacity-60 pl-4">
+                Las haciendas con registros no pueden ser eliminadas
+              </span>
               <div className="divider divider-primary mt-0 opacity-[0.03]"></div>{" "}
             </div>
             <ListHaciendasProfile
@@ -189,7 +191,7 @@ export const TabsProfile = ({
                   description="Representa cual sera el peso ideal para que una novilla pueda estar apta para un servicio"
                 />
                 <ElementProfile
-                  tittle="Dias próximos para crear una notificación"
+                  tittle="Días próximos para crear una notificación"
                   content={configuracion.dias_evento_notificacion.toString()}
                   description="Representa cuantos días antes de la fecha de un evento, se creara una notificación"
                 />
@@ -202,8 +204,8 @@ export const TabsProfile = ({
                   <div className="flex flex-col gap-2 w-80">
                     <span className="font-bold text-xl">Tipos de revisión</span>
                     <span className="text-sm opacity-60">
-                      Estas opciones son las que estarán disponibles a la hora de
-                      hacer una revisión, tenga en cuenta que las revisiones
+                      Estas opciones son las que estarán disponibles a la hora
+                      de hacer una revisión, tenga en cuenta que las revisiones
                       creadas no podrán ser eliminadas ademas las revisiones
                       predeterminadas no pueden ser modificadas
                     </span>

@@ -81,7 +81,7 @@ export const ModalUpdateConfiguracion = ({
             id="dias_evento_notificacion"
             required
             type="number"
-            label="Dias de evento notificación"
+            label="Días de evento notificación"
             register={register}
             errors={errors}
             defaultValue={configuracion.dias_evento_notificacion.toString()}
@@ -93,7 +93,7 @@ export const ModalUpdateConfiguracion = ({
             id="dias_diferencia_vacuna"
             required
             type="number"
-            label="Dias de diferencia vacuna"
+            label="Días de diferencia vacuna"
             register={register}
             errors={errors}
             defaultValue={configuracion.dias_diferencia_vacuna.toString()}
