@@ -17,6 +17,7 @@ import { getDateNow } from "@/utils/getDateNow";
 import { formSaleCattle } from "@/collections/formsInputs";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { ButtonCreateItem } from "@/ui/ButtonCreate";
 
 export const ModalSaleCattle = ({
   isOpen,
@@ -125,23 +126,31 @@ export const ModalSaleCattle = ({
                 />
               )}
               {type == "select" && (
-                <Controller
-                  name={id}
-                  /*Se interpone un any ya que esta heredando el tipo del formulario completo
+                <div className="w-full flex gap-2 items-center">
+                  <ButtonCreateItem
+                    tittle="Nuevo comprador"
+                    small={true}
+                    href={"/comprador/registrar"}
+                  />
+
+                  <Controller
+                    name={id}
+                    /*Se interpone un any ya que esta heredando el tipo del formulario completo
                                         ocasionando conflicto de tipos ya que los campos del formulario no están presentes  */
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  control={control as any}
-                  render={({ field }) => (
-                    <Select
-                      field={field}
-                      id={id}
-                      items={itemsSelect}
-                      label={label}
-                      errors={errors}
-                      required={required}
-                    />
-                  )}
-                />
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    control={control as any}
+                    render={({ field }) => (
+                      <Select
+                        field={field}
+                        id={id}
+                        items={itemsSelect}
+                        label={label}
+                        errors={errors}
+                        required={required}
+                      />
+                    )}
+                  />
+                </div>
               )}
             </div>
           </>

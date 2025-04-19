@@ -3,19 +3,23 @@ import Link from "next/link";
 
 interface ButtonProps {
   href: Url;
+  tittle?:string;
+  /**Recomendado para botones pequeños ubicado al lado de un select dinámico para crear elementos sin necesidad a una sección determinada */
+  small?:boolean;
 }
 
-export const ButtonCreateItem = ({ href }: ButtonProps) => {
+export const ButtonCreateItem = ({ href,tittle="Crear",small=false }: ButtonProps) => {
   return (
     <Link
-      title="Add New"
+      title={tittle}
       className="group cursor-pointer outline-none hover:rotate-90 duration-300"
       href={href}
+      
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="50px"
-        height="50px"
+        width={small ? "23px" : "50px"}
+        height={small ? "23px" : "50px"}
         viewBox="0 0 24 24"
         className="stroke-primary 
                 fill-none group-hover:fill-[#e8dea0]

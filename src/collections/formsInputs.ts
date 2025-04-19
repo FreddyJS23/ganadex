@@ -39,6 +39,7 @@ import { typeServicesForCasttle } from "./typesServicesForCasttle";
 import { stateBullSelect } from "./statesBullSelect";
 import { stateBeefSelect } from "./statesBeefSelect";
 import { origenCasttleSelect } from "./origenCastleSelect";
+import { Field } from "react-hook-form";
 
 export type Fields<Ids,Labels>={
   id:Ids;
@@ -316,7 +317,7 @@ export const formCheckUp: Fields<keyof typeof FieldsIdCheckUp,keyof typeof Field
   { id: "personal_id", label: "Veterinario", required: true, type: "select" },
   { id: "fecha", label: "Fecha", required: true, type: "date" },
 ];
-export const formService: FieldsService[] = [
+export const formService: Fields<keyof typeof FieldsIdService,keyof typeof FieldsLabelsService>[] = [
   { id: "observacion", label: "Observación", required: true, type: "text" },
   {
     id: "tipo",

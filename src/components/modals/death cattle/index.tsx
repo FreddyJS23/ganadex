@@ -14,6 +14,7 @@ import { formDeadCattle } from "@/collections/formsInputs";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { Select } from "@/components/select";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
+import { ButtonCreateItem } from "@/ui/ButtonCreate";
 
 export const ModalDeathCattle = ({
   isOpen,
@@ -86,7 +87,13 @@ export const ModalDeathCattle = ({
               )}
 
               {type == "select" && (
-                <Controller
+              <div className="w-full flex gap-2 items-center">
+                <ButtonCreateItem
+                  tittle="Nueva causa de fallecimiento"
+                  small={true}
+                  href={"/fallecimientos/causa/crear"}
+                />
+                  <Controller
                   name={id}
                   control={control}
                   render={({ field }) => (
@@ -100,6 +107,7 @@ export const ModalDeathCattle = ({
                     />
                   )}
                 />
+              </div>
               )}
               {id == "fecha" && (
                 <Input
