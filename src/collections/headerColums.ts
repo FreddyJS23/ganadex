@@ -112,11 +112,11 @@ export const headerStaff: headersColumns<Personal>[] = [
 
 export const headerAllCheckup: headersColumns<Revisiones>[] = [
   { key: "numero", label: "Número" },
-  { key: "diagnostico", label: "Diagnostico" },
+  { key: "diagnostico", label: "Diagnóstico" },
   { key: "estado", label: "Estado" },
   { key: "pendiente", label: "Pendiente revisar" },
-  { key: "proxima_revision", label: "Proxima revisión" },
-  { key: "ultima_revision", label: "Ultima revisión" },
+  { key: "proxima_revision", label: "Próxima revisión" },
+  { key: "ultima_revision", label: "Última revisión" },
   { key: "total_revisiones", label: "Total de revisiones" },
   { key: "id", label: "Acciones" },
 ];
@@ -127,14 +127,14 @@ export const headerAllServes: headersColumns<Servicios>[] = [
   { key: "pendiente", label: "Pendiente servir" },
   { key: "toro", label: "Toro/Pajuela toro" },
   { key: "total_servicios", label: "Total de servicios" },
-  { key: "ultimo_servicio", label: "Ultimo servicio" },
+  { key: "ultimo_servicio", label: "Último servicio" },
   { key: "efectividad", label: "Efectividad" },
   { key: "id", label: "Acciones" },
 ];
 
 export const headerAllBirths: headersColumns<Partos>[] = [
   { key: "numero", label: "Número" },
-  { key: "ultimo_parto", label: "Ultimo parto" },
+  { key: "ultimo_parto", label: "Último parto" },
   { key: "estado", label: "Estado" },
   { key: "cria", label: "Cría" },
   { key: "toro", label: "Toro/Pajuela toro" },
@@ -159,7 +159,7 @@ export const headerAllWeightMilk: headersColumns<PesajesLeche>[] = [
   { key: "nombre", label: "Nombre" },
   { key: "numero", label: "Número" },
   { key: "pesaje_este_mes", label: "Pesaje mes actual" },
-  { key: "ultimo_pesaje", label: "ultimo pesaje" },
+  { key: "ultimo_pesaje", label: "Último pesaje" },
   { key: "id", label: "Pesar" },
 ];
 
@@ -170,7 +170,7 @@ export const headerHistoryPriceMilk: headersColumns<PreciosDeLeche>[] = [
 
 export const headerCheckups: headersColumns<Revision>[] = [
   { key: "fecha", label: "Fecha" },
-  { key: "diagnostico", label: "Diagnostico" },
+  { key: "diagnostico", label: "Diagnóstico" },
 ];
 
 export const headerServices: headersColumnsServices[] = [
@@ -223,14 +223,14 @@ export const headerHistoryVaccinesApply: headersColumns<AplicacionVacunaHistoria
   [
     { key: "vacuna", label: "Vacuna" },
     { key: "cantidad", label: "Cantidad" },
-    { key: "ultima_dosis", label: "Ultima dosis" },
-    { key: "prox_dosis", label: "Proxima dosis" },
+    { key: "ultima_dosis", label: "Última dosis" },
+    { key: "prox_dosis", label: "Próxima dosis" },
   ];
 
 export const headerHistoryVaccines: headersColumns<Vacuna>[] = [
   { key: "vacuna", label: "Vacuna" },
   { key: "fecha", label: "Fecha" },
-  { key: "prox_dosis", label: "Proxima dosis" },
+  { key: "prox_dosis", label: "Próxima dosis" },
 ];
 
 export const headersColumnsUserVeterinary: headersColumns<UserVeterinaryInfo>[] =

@@ -70,5 +70,5 @@ export const TortaCausasFallecimientosGanado = ({
     plugins: { ...optionChartTotalTypesCattle.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options} />;
+  return <Doughnut data={datasets} options={options} />
 };

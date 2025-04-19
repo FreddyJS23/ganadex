@@ -30,7 +30,7 @@ export default async function Page({ params }: ParamsPage) {
   const { user } = (await auth()) as Session;
   return (
     <>
-      <TitlePage title={`Registrar revision para la vaca ${ganado.numero}`} />
+      <TitlePage title={`Registrar revisión para la vaca ${ganado.numero}`} />
       <FormCreateCheckUp
         veterinarios={veterinarios}
         typesCheck={tipos_revision}

@@ -92,7 +92,7 @@ export const ChartAnnualBalanceMilk = ({
           />
         </div>
       </div>
-      <Line options={optionChartLineAnnualMilk} data={data} />;
+      <Line options={optionChartLineAnnualMilk} data={data} />
     </>
   );
 };

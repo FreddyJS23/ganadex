@@ -20,7 +20,7 @@ export const DetailsWeights = {
 
 export const DetailsChecks = {
   fecha: "Última",
-  diagnostico: "Diagnostico",
+  diagnostico: "Diagnóstico",
   tratamiento: "Tratamiento",
   proxima: "Próxima",
   ultima_realizada: "Última realizada",
@@ -41,14 +41,14 @@ export const DetailsServe = {
 export const DetailsBirht = {
   fecha: "Última",
   observacion: "Observación",
-  sexo: "Sexo de la cria",
-  numero_cria: "Numero de la cría",
+  sexo: "Sexo de la cría",
+  numero_cria: "Número de la cría",
   proximo: "Próximo",
   totales: "Totales",
 };
 
 export const DetailsWeightingMilk = {
-  ultimo: "Ultimo",
+  ultimo: "Último",
   peso: "Peso",
   mejor_pesaje: "Mejor pesaje",
   peor_pesaje: "Peor pesaje",

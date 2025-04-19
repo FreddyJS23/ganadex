@@ -123,7 +123,7 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
       >
         <Input
           id="tipo"
-          label="Tipo de revision"
+          label="Tipo de revisión"
           required
           type="text"
           size="lg"
@@ -133,7 +133,7 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
         />
         <Input
           id="codigo"
-          label="Código de revision"
+          label="Código de revisión"
           required
           type="text"
           size="lg"

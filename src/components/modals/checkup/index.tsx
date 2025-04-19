@@ -81,7 +81,7 @@ export const ModalCheckUp = ({ revision }: ModalProps) => {
         ) : (
           <div className="flex flex-col gap-4 mb-4">
             <div className="flex gap-1">
-              <b>Diagnostico: </b>{" "}
+              <b>Diagnóstico: </b>{" "}
               <div>
                 {
                   /* diagnostico desconocido  */
@@ -109,7 +109,7 @@ export const ModalCheckUp = ({ revision }: ModalProps) => {
               <b>Tratamiento: </b> {revision.tratamiento}
             </p>
             <p>
-              <b>Veterinario que hizo la revision: </b>
+              <b>Veterinario que hizo la revisión: </b>
               {revision.veterinario.nombre}
             </p>
           </div>
