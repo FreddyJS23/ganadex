@@ -15,6 +15,7 @@ import {
 } from "@/types";
 import type { CreateServe } from "@/types/forms";
 import { Button } from "@/ui/Button";
+import { ButtonCreateItem } from "@/ui/ButtonCreate";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { getDateNow } from "@/utils/getDateNow";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
@@ -184,20 +185,28 @@ export const FormCreateService = ({
 
           {/* select veterinario */}
           {isAdmin && !disableVeterinary && (
-            <Controller
-              name={personalId}
-              control={control}
-              render={({ field }) => (
-                <Select
-                  field={field}
-                  id={personalId}
-                  items={converToSelectOptions(veterinarios as [])}
-                  label={personalLabel}
-                  errors={errors}
-                  required={personalRequired}
-                />
-              )}
-            />
+            <div className="w-full flex gap-2 items-center">
+              <ButtonCreateItem
+                tittle="Nuevo veterinario"
+                small={true}
+                href={"/personal/registrar"}
+              />
+              
+              <Controller
+                name={personalId}
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    field={field}
+                    id={personalId}
+                    items={converToSelectOptions(veterinarios as [])}
+                    label={personalLabel}
+                    errors={errors}
+                    required={personalRequired}
+                  />
+                )}
+              />
+            </div>
           )}
 
           {/* select toros */}

@@ -3,7 +3,7 @@
 import { ModalCreateCustomer } from "@/components/modals/create customer";
 import { useDisclosure } from "@nextui-org/react";
 
-export const CreateCustomer = () => {
+export const CreateCustomer = ({referer}:{referer?:string | null}) => {
   const { onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -11,6 +11,7 @@ export const CreateCustomer = () => {
       isOpen={true}
       onOpen={onOpen}
       onOpenChange={onOpenChange}
+      referer={referer}
     />
   );
 };

@@ -13,6 +13,7 @@ import {
 } from "@/types";
 import type { CreateAdminCheckUp, CreateBaseCheckUp } from "@/types/forms";
 import { Button } from "@/ui/Button";
+import { ButtonCreateItem } from "@/ui/ButtonCreate";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { getDateNow } from "@/utils/getDateNow";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
@@ -106,24 +107,40 @@ export const FormCreateCheckUp = ({
               )}
 
               {type == "select" && id == "tipo_revision_id" && (
-                <Controller
-                  name={id}
-                  control={control}
-                  render={({ field }) => (
-                    <SelectChecksType
-                      field={field}
-                      id={id}
-                      items={typesCheck}
-                      label={label}
-                      errors={errors}
-                      required={required}
-                    />
-                  )}
-                />
+                
+                <div className="w-full flex gap-2 items-center">
+                  <ButtonCreateItem
+                    tittle="Nuevo tipo de revisión"
+                    small={true}
+                    href={"/revisiones/tipo/crear"}
+                  />
+
+                  <Controller
+                    name={id}
+                    control={control}
+                    render={({ field }) => (
+                      <SelectChecksType
+                        field={field}
+                        id={id}
+                        items={typesCheck}
+                        label={label}
+                        errors={errors}
+                        required={required}
+                      />
+                    )}
+                  />
+                </div>
               )}
 
               {type == "select" && id == "personal_id" && isAdmin && (
-                <Controller
+                <div className="w-full flex gap-2 items-center">
+                  <ButtonCreateItem
+                    tittle="Nuevo veterinario"
+                    small={true}
+                    href={"/personal/registrar"}
+                  />
+                    
+                  <Controller
                   name={id}
                   control={control}
                   render={({ field }) => (
@@ -137,6 +154,7 @@ export const FormCreateCheckUp = ({
                     />
                   )}
                 />
+                </div>
               )}
             </>
           ))}

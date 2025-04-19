@@ -19,6 +19,7 @@ import {
 
 type ModalCreateCausaFallecimientoProps = {
   create: boolean;
+  referer?: string | null;
 };
 type ModalUpdateCausaFallecimientoProps = {
   id: number;
@@ -35,11 +36,16 @@ export const ModalCreateUpdateCausaFallecimiento = (
 ) => {
   let update = false;
   let causaFallecimiento: string | undefined = undefined;
+  let referer: string | null | undefined = undefined;
 
   /* comprobar la exitencia del update para evitar problema de tipado typescript */
   if ("update" in props) {
     update = true;
     causaFallecimiento = props.causa;
+  }
+
+  if ("referer" in props) {
+    referer = props.referer;
   }
 
   const {
@@ -72,8 +78,29 @@ export const ModalCreateUpdateCausaFallecimiento = (
       return toast.error(messageErrorApi(response));
 
     toast.success(messageResponse);
-    router.back();
+
+    /* ya que esta ruta puede ser usada por intercesión de ruta o una ruta normal la navegación sera diferente.
+    Los datos registrados deben estar lo mas reciente posible, por lo que
+    se hace una navegación para refrescar dependiendo del path donde se llame */
+
+    //rutas dentro de su modulo (/revisiones/tipo)
+    if (!referer) {
+      router.refresh();
+      return router.push(`/fallecimientos`);
+    }
+    const pathOrigin = referer.split("/");
+    //eliminar parte del dominio, ejemplo de referer: http://localhost:3000/fallecimeintos/registrar/35
+    const segmentPath = pathOrigin.slice(3);
+    const lastSegment = parseInt(segmentPath[segmentPath.length - 1]);
+    //reconstruir ruta que hizo referencia
+    const newRoute = segmentPath.join("/");
+    //si es un numero es porque se esta creando fuera de su modulo (fallecimientos/causa/crear)
+    if (typeof lastSegment == "number") {
+      return router.replace(`/${newRoute}`);
+    }
+
     router.refresh();
+    return router.push(`/fallecimientos`);
   });
 
   return (

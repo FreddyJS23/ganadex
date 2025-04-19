@@ -13,10 +13,10 @@ import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 
 export const ModalCreateCustomer = ({
   isOpen,
-
   onOpen,
   onOpenChange,
-}: ModalProps) => {
+  referer,
+}: ModalProps & { referer?: string | null }) => {
   const {
     register,
     formState: { errors },
@@ -36,8 +36,29 @@ export const ModalCreateCustomer = ({
       if ("error" in response) return toast.error(messageErrorApi(response));
 
     toast.success(`${response} ha sido registrado como nuevo comprador`);
-    router.back();
+
+    /* ya que esta ruta puede ser usada por intercesión de ruta o una ruta normal la navegación sera diferente.
+    Los datos registrados deben estar lo mas reciente posible, por lo que
+    se hace una navegación para refrescar dependiendo del path donde se llame */
+
+    //rutas dentro de su modulo (/revisiones/tipo)
+    if (!referer) {
+      router.refresh();
+      return router.push(`/venta_ganado/historial`);
+    }
+    const pathOrigin = referer.split("/");
+    //eliminar parte del dominio, ejemplo de referer: http://localhost:3000/venta_ganado/vender/35
+    const segmentPath = pathOrigin.slice(3);
+    const lastSegment = parseInt(segmentPath[segmentPath.length - 1]);
+    //reconstruir ruta que hizo referencia
+    const newRoute = segmentPath.join("/");
+    //si es un numero es porque se esta creando fuera de su modulo (comprador/registrar)
+    if (typeof lastSegment == "number") {
+      return router.replace(`/${newRoute}`);
+    }
+
     router.refresh();
+    return router.push(`/venta_ganado/historial`);
   });
 
   return (
