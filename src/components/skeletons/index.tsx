@@ -52,10 +52,10 @@ export const SkeletonCard = () => {
   );
 };
 export const SkeletonTable = () => {
-  const cantidadFilas = [0, 1, 2];
+  const cantidadFilas = [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
-    <div className="w-full gap-8 bg-base-100 rounded-large shadow-small flex flex-col justify-center">
+    <div className="w-full pb-12 gap-8 bg-base-100 rounded-large shadow-small flex flex-col justify-center">
       <div className="skeleton h-8 w-11/12 rounded-lg bg-base-200 flex gap-4 justify-around items-center">
         <div className="skeleton h-2 w-20"></div>
         <div className="skeleton h-2 w-20"></div>
