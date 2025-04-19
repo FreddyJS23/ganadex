@@ -106,7 +106,7 @@ export const ChartEarningsMilkMonth = ({
       </div>
       {/* Ganancias */}
       <span className="mb-1 text-lg">{ganancias}</span>
-      <Line options={optionChartLineEarningsMilkMonth} data={data} />;
+      <Line options={optionChartLineEarningsMilkMonth} data={data} />
     </>
   );
 };

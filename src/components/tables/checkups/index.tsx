@@ -72,7 +72,7 @@ export const TableAllCheckups = ({
 console.log(todas_revisiones);
   return (
     <TableComponent
-      type="revision"
+      type="revisión"
       columnsCollection={headerAllCheckup}
       items={todas_revisiones}
       renderCell={renderCell}

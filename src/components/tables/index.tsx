@@ -107,7 +107,7 @@ export const TableComponent = <T extends { id: number }>({
   );
   const nameHacienda = useSession().data?.user.hacienda?.nombre;
 
-  let typeFilter: "none" | "numero" | "nombre" | "codigo" = "none";
+  let typeFilter: "none" | "número" | "nombre" | "código" = "none";
   let filterStateActive = false;
   let filterHaciendaActive = false;
   let filterTypesCattle = false;
@@ -116,9 +116,9 @@ export const TableComponent = <T extends { id: number }>({
   let filterTypeBirhtStates = false;
 
   if (items.length > 0) {
-    if ("numero" in items[0]) typeFilter = "numero";
+    if ("numero" in items[0]) typeFilter = "número";
     else if ("nombre" in items[0]) typeFilter = "nombre";
-    else if ("codigo" in items[0]) typeFilter = "codigo";
+    else if ("codigo" in items[0]) typeFilter = "código";
 
     if ("estados" in items[0]) filterStateActive = true;
 
@@ -151,7 +151,7 @@ export const TableComponent = <T extends { id: number }>({
     if (filteredItems.length == 0) return filteredItems;
 
     //filtro si incluye la columna numero
-    if (typeFilter == "numero") {
+    if (typeFilter == "número") {
       if (hasSearchFilter) {
         const filteredItemsWithNumber = filteredItems as Array<
           T & { numero: number }
@@ -173,7 +173,7 @@ export const TableComponent = <T extends { id: number }>({
       }
     }
     //filtro si incluye la columna codigo
-    else if (typeFilter == "codigo") {
+    else if (typeFilter == "código") {
       if (hasSearchFilter) {
         const filteredItemsWithNombre = filteredItems as Array<
           T & { codigo: string }
@@ -348,7 +348,7 @@ console.log(itemsBodyTable)
               classNames={{ base: "bg-base-100" }}
             >
               {statusOptions.map((status) => (
-                <DropdownItem key={status.estado} className="capitalize">
+                <DropdownItem key={status.estado} >
                   {status.label}
                 </DropdownItem>
               ))}

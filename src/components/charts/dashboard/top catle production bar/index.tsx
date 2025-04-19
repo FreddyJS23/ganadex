@@ -49,5 +49,5 @@ export const ProduccionVacasTop3 = ({
     ],
   };
 
-  return <Bar options={optionChartTop3CatleProduction} data={data} />;
+  return <Bar options={optionChartTop3CatleProduction} data={data} />
 };

@@ -309,7 +309,7 @@ export const formBeef: Fields<keyof typeof FieldsIdBeef,keyof typeof FieldsLabel
 export const formCheckUp: Fields<keyof typeof FieldsIdCheckUp,keyof typeof FieldsLabelsCheckUp>[] = [
   {
     id: "tipo_revision_id",
-    label: "Diagnostico",
+    label: "Diagnóstico",
     required: true,
     type: "select",
   },
@@ -379,7 +379,7 @@ export const formSupply: Fields<keyof typeof FieldsIdSupply,keyof typeof FieldsL
   { id: "precio", label: "Precio", required: true, type: "number" },
 ];
 export const formStaff: Fields<keyof typeof FieldsIdStaff,keyof typeof FieldsLabelsStaff>[] = [
-  { id: "ci", label: "Cedula", required: true, type: "number" },
+  { id: "ci", label: "Cédula", required: true, type: "number" },
   { id: "nombre", label: "Nombre", required: true, type: "text" },
   { id: "telefono", label: "Teléfono", required: true, type: "tel" },
   { id: "apellido", label: "Apellido", required: true, type: "text" },

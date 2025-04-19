@@ -79,7 +79,7 @@ export const SalesCatle = ({
         </div>
       </div>
       {/* grafico */}
-      <Bar options={optionChartLineSalesCatle} data={data} />;
+      <Bar options={optionChartLineSalesCatle} data={data} />
     </>
   );
 };
