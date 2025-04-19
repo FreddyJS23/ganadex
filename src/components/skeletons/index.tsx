@@ -126,3 +126,35 @@ export const SkeletonModal = () => {
     </>
   );
 };
+
+export const SkeletonForm = () => {
+  const Input = () => {
+    return (
+      <div className="flex flex-col gap-2">
+        <div className="skeleton h-2 w-4/12"></div>
+        <div className="skeleton h-9 rounded-md w-10/12"></div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="w-full gap-16 flex flex-col items-center">
+      {/* tittle */}
+      <div className="skeleton h-5 w-4/12 "></div>
+      {/* inputs */}
+      <div className="grid grid-cols-3 gap-12 w-10/12">
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+      </div>
+      {/* button */}
+      <div className="skeleton h-10 w-72 "></div>
+    </div>
+  );
+};
