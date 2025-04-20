@@ -22,7 +22,6 @@ const dateValidationInOthersForm = z
   });
 
 const saleCattleShema = z.object({
-  precio: z.number(),
   comprador_id: z.string().regex(/\d/),
 });
 
