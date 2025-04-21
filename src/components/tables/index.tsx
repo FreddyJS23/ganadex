@@ -5,10 +5,10 @@ import {
   TableRow,
   TableBody,
   TableCell,
-  Selection,
+  type Selection,
 } from "@nextui-org/table";
 import { useAsyncList } from "@react-stately/data";
-import { SortDescriptor } from "../../../node_modules/@react-aria/overlays/node_modules/@react-types/shared";
+import type { SortDescriptor } from "../../../node_modules/@react-aria/overlays/node_modules/@react-types/shared";
 import {
   Button,
   Dropdown,
@@ -18,16 +18,23 @@ import {
   Input,
   Pagination,
 } from "@nextui-org/react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  type Dispatch,
+  type SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { statusOptions } from "@/collections/statusCattleCollection";
 import {
-  EstadosGanado,
-  Ganado,
-  Hacienda,
-  Partos,
+  type EstadosGanado,
+  type Ganado,
+  type Hacienda,
+  type Partos,
   Servicios,
-  StateCattle,
-  TypesCattle,
+  type StateCattle,
+  type TypesCattle,
 } from "@/types";
 import IconFlechaDerecha from "@/icons/icono-flecha_derecha.svg";
 import IconSearch from "@/icons/icono-buscar.svg";
@@ -35,19 +42,26 @@ import { useSession } from "next-auth/react";
 import { types } from "util";
 import { typeCasttleSelect } from "@/collections/typeCastleSelect";
 
-type TableComponentProps<T> = {
+type TableComponentBaseProps<T> = {
   type: string;
   columnsCollection: { key: string; label: string }[];
   items: T[];
   renderCell: (item: T, columnKey: keyof T) => React.ReactNode;
 };
 
-export const TableComponent = <T extends { id: number }>({
-  type,
-  columnsCollection,
-  items,
-  renderCell,
-}: TableComponentProps<T>) => {
+type TableWithSelectionProps<T> = TableComponentBaseProps<T> & {
+  setSelectedIdItems: Dispatch<SetStateAction<Array<number> | null>>;
+};
+
+type TableComponentProps<T> =
+  | (TableComponentBaseProps<T> & { selectionMode?: "none" })
+  | (TableWithSelectionProps<T> & { selectionMode: "multiple" });
+
+export const TableComponent = <T extends { id: number }>(
+  props: TableComponentProps<T>,
+) => {
+  const { columnsCollection, items, renderCell, type } = props;
+
   /* -------------------------- ordenamiento columnas ------------------------- */
   const list = useAsyncList({
     async load() {
@@ -73,7 +87,10 @@ export const TableComponent = <T extends { id: number }>({
             compare = first.localeCompare(second);
           } else
             compare =
-              parseInt(first as string) < parseInt(second as string) ? -1 : 1;
+              Number.parseInt(first as string) <
+              Number.parseInt(second as string)
+                ? -1
+                : 1;
 
           // cortar el orden si se especifica descending
           if (sortDescriptor.direction === "descending") {
@@ -92,6 +109,40 @@ export const TableComponent = <T extends { id: number }>({
   /* --------------------------------- refrescar cuando cambia -------------------------------- */
   items.length > list.items.length ||
     (items.length < list.items.length && list.reload());
+
+  /* ------------------ selección de varias filas en la tabla ----------------- */
+
+  const getIdfromSelectedKeys = (selectedKeys: Selection) => {
+    const idArray = Array.from(selectedKeys).map((key) => {
+      /* para evitar el uso del find, se usa parseInt para convertir el key a un numero
+      (el key vendría siendo un string con el valor del numero de fila seleccionada contando desde 1)
+      y luego se le resta 1 para que el indice del array sea el mismo que el indice de la tabla */
+      const positionNumberElementTable = parseInt(key as string) - 1;
+      // Busca el elemento original en los datos usando la clave seleccionada
+      const selectedItem: T & { ganado_id?: number } =
+        items[positionNumberElementTable];
+
+      //no se encontró el elemento, devolver undefined
+      if (selectedItem == undefined) return 1;
+      //si es un ganado descarte o toro tiene la propiedad ganado_id haciendo referencia al id de la tabla principal, devolver el id del ganado de la tabla principal
+      if ("ganado_id" in selectedItem) return selectedItem.ganado_id as number;
+      
+      return selectedItem.id; // Devuelve el ID original
+    });
+
+    return idArray;
+  };
+
+  const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
+
+  //props condicionales, se usan para que se puedan pasar props de un componente que no tiene seleccion
+  let selectionMode: TableComponentProps<T>["selectionMode"] = "none";
+  let setSelectedIdItems: TableWithSelectionProps<T>["setSelectedIdItems"];
+  //chequear para no tener errores con typescript
+  if (props.selectionMode == "multiple") {
+    selectionMode = props.selectionMode;
+    setSelectedIdItems = props.setSelectedIdItems;
+  }
 
   /* --------------------------------- buscador y filtro por estados -------------------------------- */
   const [filterValue, setFilterValue] = useState("");
@@ -130,7 +181,8 @@ export const TableComponent = <T extends { id: number }>({
 
     if ("pendiente" in items[0]) filterPendingOperation = true;
 
-    if ("estado" in items[0] && "ultimo_parto" in items[0]) filterTypeBirhtStates = true;
+    if ("estado" in items[0] && "ultimo_parto" in items[0])
+      filterTypeBirhtStates = true;
   }
 
   const hasSearchFilter = Boolean(filterValue);
@@ -249,25 +301,29 @@ export const TableComponent = <T extends { id: number }>({
         T & { pendiente: boolean }
       >;
       //convertir en booleano opciones del select (si|no)
-      const pendingFilterArray = Array.from(pendingFilter)[0] == 'si'  ;
-       filteredItems = filteredItemsWithPending.filter((item) =>
-         //filtrar el ganado si esta pendiente del estado de la operacion (revision,servicio o parto)
-        item.pendiente == pendingFilterArray
-      ); 
+      const pendingFilterArray = Array.from(pendingFilter)[0] == "si";
+      filteredItems = filteredItemsWithPending.filter(
+        (item) =>
+          //filtrar el ganado si esta pendiente del estado de la operacion (revision,servicio o parto)
+          item.pendiente == pendingFilterArray,
+      );
     }
-    console.log(statusBirthFilter)
+    console.log(statusBirthFilter);
     //filtro tablas parto estados
     if (statusBirthFilter != "all") {
       const filteredItemsWithStatesBirth = filteredItems as Array<
-        T & { estado: Partos['estado'] }
+        T & { estado: Partos["estado"] }
       >;
       //convertir en booleano opciones del select (si|no)
-      const statusBirthFilterSelected = Array.from(statusBirthFilter)[0] as Partos['estado'];
+      const statusBirthFilterSelected = Array.from(
+        statusBirthFilter,
+      )[0] as Partos["estado"];
 
-        filteredItems = filteredItemsWithStatesBirth.filter((item) =>
-         //filtrar vacas por su estado de parto
-        item.estado == statusBirthFilterSelected
-      );  
+      filteredItems = filteredItemsWithStatesBirth.filter(
+        (item) =>
+          //filtrar vacas por su estado de parto
+          item.estado == statusBirthFilterSelected,
+      );
     }
 
     return filteredItems;
@@ -282,7 +338,7 @@ export const TableComponent = <T extends { id: number }>({
     typesCastleFilter,
     sexFilter,
     pendingFilter,
-    statusBirthFilter
+    statusBirthFilter,
   ]);
 
   /* -------------------------------- paginado -------------------------------- */
@@ -298,7 +354,7 @@ export const TableComponent = <T extends { id: number }>({
     return filteredData.slice(start, end);
   }, [page, filteredData]);
 
-console.log(itemsBodyTable)
+  console.log(itemsBodyTable);
 
   return (
     <div className="flex flex-col w-full ">
@@ -348,9 +404,7 @@ console.log(itemsBodyTable)
               classNames={{ base: "bg-base-100" }}
             >
               {statusOptions.map((status) => (
-                <DropdownItem key={status.estado} >
-                  {status.label}
-                </DropdownItem>
+                <DropdownItem key={status.estado}>{status.label}</DropdownItem>
               ))}
             </DropdownMenu>
           </Dropdown>
@@ -475,7 +529,6 @@ console.log(itemsBodyTable)
           </Dropdown>
         )}
 
-       
         {/* Selecion pendiente de una operacion(revision, servicio) */}
         {filterPendingOperation && (
           <Dropdown
@@ -488,7 +541,7 @@ console.log(itemsBodyTable)
                   <IconFlechaDerecha className="w-4 h-4 text-primary rotate-90" />
                 }
               >
-               {`Pendiente ${type}`}
+                {`Pendiente ${type}`}
               </Button>
             </DropdownTrigger>
             <DropdownMenu
@@ -503,7 +556,7 @@ console.log(itemsBodyTable)
               classNames={{ base: "bg-base-100" }}
             >
               {[
-                { id: "si",  label: "Si" },
+                { id: "si", label: "Si" },
                 { id: "no", label: "No" },
               ].map((filter) => (
                 <DropdownItem key={filter.id} className="capitalize">
@@ -513,7 +566,7 @@ console.log(itemsBodyTable)
             </DropdownMenu>
           </Dropdown>
         )}
-        
+
         {/* Selecion estados en partos */}
         {filterTypeBirhtStates && (
           <Dropdown
@@ -526,7 +579,7 @@ console.log(itemsBodyTable)
                   <IconFlechaDerecha className="w-4 h-4 text-primary rotate-90" />
                 }
               >
-              Estado
+                Estado
               </Button>
             </DropdownTrigger>
             <DropdownMenu
@@ -536,7 +589,9 @@ console.log(itemsBodyTable)
               selectedKeys={statusBirthFilter}
               selectionMode="single"
               onSelectionChange={(key) => {
-                Array.from(key)[0] == "all" ? setstatusBirthFilter("all") : setstatusBirthFilter(key);
+                Array.from(key)[0] == "all"
+                  ? setstatusBirthFilter("all")
+                  : setstatusBirthFilter(key);
               }}
               classNames={{ base: "bg-base-100" }}
             >
@@ -558,6 +613,16 @@ console.log(itemsBodyTable)
 
       <Table
         aria-label={`Table ${type}`}
+        selectedKeys={selectedKeys}
+        selectionMode={selectionMode}
+        onSelectionChange={(keys) => {
+          setSelectedKeys(keys);
+          console.log(keys);
+          //caso de seleccionar todas las filas, se devuelve null
+          if (keys == "all") return setSelectedIdItems(null);
+          const ids: number[] = getIdfromSelectedKeys(keys); // Obtener los IDs originales
+          setSelectedIdItems(ids); // Actualizar el estado con los IDs originales
+        }}
         bottomContent={
           <div className="flex w-full justify-center">
             <Pagination
