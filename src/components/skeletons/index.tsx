@@ -52,10 +52,10 @@ export const SkeletonCard = () => {
   );
 };
 export const SkeletonTable = () => {
-  const cantidadFilas = [0, 1, 2];
+  const cantidadFilas = [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
-    <div className="w-full gap-8 bg-base-100 rounded-large shadow-small flex flex-col justify-center">
+    <div className="w-full pb-12 gap-8 bg-base-100 rounded-large shadow-small flex flex-col justify-center">
       <div className="skeleton h-8 w-11/12 rounded-lg bg-base-200 flex gap-4 justify-around items-center">
         <div className="skeleton h-2 w-20"></div>
         <div className="skeleton h-2 w-20"></div>
@@ -124,5 +124,37 @@ export const SkeletonModal = () => {
         </label>
       </div>
     </>
+  );
+};
+
+export const SkeletonForm = () => {
+  const Input = () => {
+    return (
+      <div className="flex flex-col gap-2">
+        <div className="skeleton h-2 w-4/12"></div>
+        <div className="skeleton h-9 rounded-md w-10/12"></div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="w-full gap-16 flex flex-col items-center">
+      {/* tittle */}
+      <div className="skeleton h-5 w-4/12 "></div>
+      {/* inputs */}
+      <div className="grid grid-cols-3 gap-12 w-10/12">
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+        <Input />
+      </div>
+      {/* button */}
+      <div className="skeleton h-10 w-72 "></div>
+    </div>
   );
 };

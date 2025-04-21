@@ -403,7 +403,6 @@ export const formDeadCattle: Fields<keyof typeof FieldsIdDeadCattle,keyof typeof
 ];
 
 export const formSaleCattle: Fields<keyof typeof FieldsIdSaleCattle,keyof typeof FieldsLabelsSaleCattle>[] = [
-  { id: "precio", label: "Precio", required: true, type: "number" },
   { id: "fecha", label: "Fecha de venta", required: true, type: "date" },
   {
     id: "comprador_id",
