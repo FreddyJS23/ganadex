@@ -28,6 +28,7 @@ export const endPoints = {
   compradores: "comprador",
   ventaGanado: "ventas/",
   ventasGanado: "ventas",
+  ventasGanadoLote: "ventas/lote",
   fallecimiento: "fallecimientos/",
   fallecimientos: "fallecimientos",
   revisiones: "revisiones",
