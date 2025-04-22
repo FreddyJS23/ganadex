@@ -5,7 +5,13 @@ import { signOutApi } from "@/services/signOutApi";
 import { redirect } from "next/navigation";
 
 export async function GET(): Promise<NextResponse> {
-  await signOutApi();
+  try {
+    await signOutApi();
+  } catch (error) {
+    console.error("Error al cerrar sesión en el servidor:");
+  }
+  
+ 
   await signOutAuthJs({ redirect: false });
 
   return redirect("/login");
