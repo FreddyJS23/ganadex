@@ -7,6 +7,7 @@ import {
   GanadoDescarte,
   ResponseGanadoDescartes,
   User,
+  Comprador,
 } from "@/types";
 import { Key, ReactNode, useCallback, useState } from "react";
 import { LayoutTable, TableComponent } from "..";
@@ -15,11 +16,15 @@ import { DropDownOptions } from "@/components/dropdown options";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import IconCheck from "@/icons/icono-check.svg";
 import { ButtonFilterStateCattle } from "@/components/filter state cattle";
+import { Selection, useDisclosure } from "@nextui-org/react";
+import { Button } from "@/ui/Button";
+import { ModalSaleCattle } from "@/components/modals/sale cattle";
 
 export const TableDiscardedCattle = ({
   ganado_descartes,
   role,
-}: ResponseGanadoDescartes & { role: User["rol"] }) => {
+  ListaCompradoresRegistrados
+}: ResponseGanadoDescartes & { role: User["rol"] } & { ListaCompradoresRegistrados:Comprador[]}) => {
   const renderCell = useCallback(
     (ganado_descarte: GanadoDescarte, columnKey: keyof GanadoDescarte) => {
       const cellValue = ganado_descarte[columnKey as keyof GanadoDescarte];
@@ -78,14 +83,43 @@ export const TableDiscardedCattle = ({
     [],
   );
 
+  const [idsItems, setIdsItems] = useState<Array<number> | null>([]);
+
+   /* Estado modal */
+   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+
+  const resetIdsItems = () => {
+    setIdsItems(null);
+  };
   return (
-    <>
+    <div className="w-full relative">
+      {idsItems != null && idsItems.length > 0 && (
+        <div className="flex items-center gap-2 justify-between p-4 bg-[#caffc4] border border-[#22ff1e] rounded-lg  w-64 absolute right-4 -top-12">
+          <p className="font-bold text-balance text-[#00b806]">
+            {idsItems.length}  {idsItems.length > 1 ? "animales seleccionados" : "animal seleccionado"}
+          </p>
+          <Button content={"Vender"} onClick={onOpen} />
+        </div>
+      )}
       <TableComponent
         type="beef"
         columnsCollection={headerBeef}
         items={ganado_descartes}
         renderCell={renderCell}
+        selectionMode="multiple"
+        setSelectedIdItems={setIdsItems}
       />
-    </>
+
+        <ModalSaleCattle
+              isOpen={isOpen}
+              onOpen={onOpen}
+              onOpenChange={onOpenChange}
+              onClose={onClose}
+              selectCompradores={ListaCompradoresRegistrados}
+              sale="multiple"
+              itemsIds={idsItems as number[]}
+              resetItemsIds={resetIdsItems}
+            />
+    </div>
   );
 };

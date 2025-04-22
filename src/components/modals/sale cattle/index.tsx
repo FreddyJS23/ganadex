@@ -8,7 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { CreateSaleCattle } from "@/types/forms";
-import { createSaleCattle } from "@/actions/ventaGanado";
+import { createSaleCattle, ventaGanadoLote } from "@/actions/ventaGanado";
 import { toast } from "sonner";
 import type { endpointsReports } from "@/collections/endPointsApi";
 import { Button } from "@/ui/Button";
@@ -19,12 +19,29 @@ import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 
-export const ModalSaleCattle = ({
-  isOpen,
-  onOpen,
-  onOpenChange,
-  selectCompradores,
-}: ModalProps & { selectCompradores: Comprador[] }) => {
+type ModalBaseProps = Pick<ModalProps, "isOpen" | "onOpen" | "onOpenChange"> & {
+  selectCompradores: Comprador[];
+  /** identificar cuando el modal es para vender un solo animal o varios */
+};
+type ModalManyItemsProps = ModalBaseProps & {
+  itemsIds: number[];
+  onClose: () => void;
+  resetItemsIds: () => void;
+};
+
+type ModalSaleProps =
+  | (ModalBaseProps & { sale?: "single" })
+  | (ModalManyItemsProps & { sale?: "multiple" });
+
+export const ModalSaleCattle = (props: ModalSaleProps) => {
+  const {
+    isOpen,
+    onOpen,
+    onOpenChange,
+    selectCompradores,
+    sale = "single",
+  } = props;
+
   const itemsSelect: { value: string | number; label: string }[] = [];
 
   selectCompradores.map(({ id, nombre }) =>
@@ -62,29 +79,53 @@ export const ModalSaleCattle = ({
   };
 
   const actionCreateSaleCattle: () => void = handleSubmit(async (data) => {
-    const saleCattle = await createSaleCattle(data, Number.parseInt(params.id));
+    const saleCattle =
+      sale === "single"
+        ? //crear venta individual
+          await createSaleCattle(data, Number(params.id))
+        : //crear venta de lote,se usa del prop para no tener error de typescript
+          sale === "multiple" &&
+          props.sale === "multiple" &&
+          (await ventaGanadoLote(data, props.itemsIds));
     /* manejar error del backend y mostrar mensaje */
     if (typeof saleCattle == "object" && "error" in saleCattle)
       return toast.error(messageErrorApi(saleCattle));
 
-    toast.success(`Se ha realizado la venta del ganado ${saleCattle} `, {
-      action: (
-        <div className="max-w-24">
-          <Button
-            content={<IconPrint className={"size-6"} />}
-            onClick={async () => await generateReportSale("notaVenta")}
-          />
-        </div>
-      ),
-    });
-    router.back();
-    router.refresh();
+    //mensaje para venta individual
+    if (sale === "single") {
+      toast.success(`Se ha realizado la venta del ganado ${saleCattle} `, {
+        action: (
+          <div className="max-w-24">
+            <Button
+              content={<IconPrint className={"size-6"} />}
+              onClick={async () => await generateReportSale("notaVenta")}
+            />
+          </div>
+        ),
+      });
+      router.back();
+      router.refresh();
+    }
+    //mensaje para venta de lote
+    else if (props.sale === "multiple") {
+      if (props.itemsIds.length == saleCattle) {
+        toast.success(`Se han vendido ${props.itemsIds.length} animales`);
+        router.refresh();
+        props.resetItemsIds();
+        props.onClose();
+      } else
+        toast.error(
+          `No se han podido vender ${props.itemsIds.length} animales`,
+        );
+    }
   });
 
   return (
     <LayoutModal
       icon="cattleV2"
-      titleModal={"Venta de ganado"}
+      titleModal={
+        sale === "single" ? "Venta de ganado" : "Vender aniamles seleccionado"
+      }
       footer={true}
       isOpen={isOpen}
       onOpen={onOpen}
