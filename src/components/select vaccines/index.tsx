@@ -1,10 +1,11 @@
-import { AvailableVaccines } from "@/types";
+import type { AvailableVaccines } from "@/types";
 import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import {
   Select,
+  SelectedItems,
   SelectItem,
   SelectSection,
-  Selection,
+  type Selection,
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
@@ -13,6 +14,7 @@ type SelectVaccinesProps = {
   isInvalidSelect: boolean;
   setValueSelect: React.Dispatch<React.SetStateAction<number | null>>;
   valueSelect: number | null;
+  filterByTipoVacuna?: "medica" | "plan_sanitario" | "ambas";
 };
 
 export const SelectVaccines = ({
@@ -20,16 +22,22 @@ export const SelectVaccines = ({
   isInvalidSelect,
   setValueSelect,
   valueSelect,
+  filterByTipoVacuna = "ambas",
 }: SelectVaccinesProps) => {
-  const groupByTipoAnimal = (vaccinesSelect: AvailableVaccines[]) => {
-    const tipoAnimal: string[] = [];
-    vaccinesSelect.forEach(({ tipo_animal }) => {
-      tipoAnimal.includes(tipo_animal.toString())
-        ? null
-        : tipoAnimal.push(tipo_animal.toString());
+  const groupByTipoVacuna = (vaccinesSelect: AvailableVaccines[]) => {
+    const tiposVacuna: string[] = [];
+    vaccinesSelect.forEach(({ tipo_vacuna }) => {
+      if (!tiposVacuna.includes(tipo_vacuna)) {
+        tiposVacuna.push(tipo_vacuna);
+      }
     });
-    return tipoAnimal;
+    return tiposVacuna;
   };
+
+  const filteredVaccines = vaccinesSelect.filter(({ tipo_vacuna }) => {
+    if (filterByTipoVacuna === "ambas") return true;
+    return tipo_vacuna === filterByTipoVacuna;
+  });
 
   useEffect(() => {
     valueSelect == null && setValue(new Set([]));
@@ -45,28 +53,42 @@ export const SelectVaccines = ({
       isInvalid={isInvalidSelect}
       variant="underlined"
       selectedKeys={value}
+      items={filteredVaccines}
       description={"vacunas"}
       onSelectionChange={(keys) => {
         setValue(keys);
-        setValueSelect(parseInt(Array.from(keys)[0] as string));
+        setValueSelect(Number.parseInt(Array.from(keys)[0] as string));
       }}
       classNames={{
         label: "text-current font-bold",
         value: "text-current",
         popoverContent: "bg-base-100",
       }}
+      //componente mostrado en el select
+
     >
-      {groupByTipoAnimal(vaccinesSelect).map((tipoAnimalGroupBy) => (
+      {groupByTipoVacuna(filteredVaccines).map((tipoVacuna) => (
         <SelectSection
-          key={tipoAnimalGroupBy}
-          title={capitalizeFirstLetter(tipoAnimalGroupBy == 'rebano' ? "Rebaño" : tipoAnimalGroupBy)}
+          key={tipoVacuna}
+          title={capitalizeFirstLetter(
+            tipoVacuna === "medica" ? "Médica" : "Plan Sanitario",
+          )}
         >
-          {vaccinesSelect
-            .filter(
-              ({ tipo_animal }) => tipo_animal.toString() == tipoAnimalGroupBy,
-            )
+          {filteredVaccines
+            .filter(({ tipo_vacuna }) => tipo_vacuna === tipoVacuna)
             .map((vaccine) => (
-              <SelectItem key={vaccine.id}>{vaccine.nombre}</SelectItem>
+              <SelectItem key={vaccine.id} textValue={vaccine.nombre}>
+                <div className="flex flex-col">
+                  <span>{vaccine.nombre}</span>
+                  <span className="text-[12px] opacity-60">
+                    {vaccine.aplicable_a_todos
+                      ? "Todos"
+                      : vaccine.tipos_ganado
+                          .map(({ tipo, sexo }) => `${tipo} (${sexo})`)
+                          .join(", ")}
+                  </span>
+                </div>
+              </SelectItem>
             ))}
         </SelectSection>
       ))}
