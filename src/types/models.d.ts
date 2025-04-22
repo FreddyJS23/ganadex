@@ -278,7 +278,10 @@ export type AvailableVaccines = {
   id: number;
   nombre: string;
   intervalo_dosis: number;
-  tipo_animal: Array<"rebano" | "novillo" | "adulto" | "becerras">;
+  tipo_vacuna:'medica'|'plan_sanitario'
+  dosis_recomendada_anual:number|null
+  aplicable_a_todos: boolean;
+  tipos_ganado:{tipo:string,sexo:Ganado["sexo"]}[]
 };
 
 export type ListaVacunas = {
