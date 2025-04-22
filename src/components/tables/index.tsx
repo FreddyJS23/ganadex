@@ -114,14 +114,10 @@ export const TableComponent = <T extends { id: number }>(
 
   const getIdfromSelectedKeys = (selectedKeys: Selection) => {
     const idArray = Array.from(selectedKeys).map((key) => {
-      /* para evitar el uso del find, se usa parseInt para convertir el key a un numero
-      (el key vendría siendo un string con el valor del numero de fila seleccionada contando desde 1)
-      y luego se le resta 1 para que el indice del array sea el mismo que el indice de la tabla */
-      const positionNumberElementTable = parseInt(key as string) - 1;
-      // Busca el elemento original en los datos usando la clave seleccionada
-      const selectedItem: T & { ganado_id?: number } =
-        items[positionNumberElementTable];
-
+     
+      // Busca el elemento original siendo la key el id del elemento
+      const selectedItem =
+       items.find((item) => item.id.toString() === key) as T & { ganado_id?: number };
       //no se encontró el elemento, devolver undefined
       if (selectedItem == undefined) return 1;
       //si es un ganado descarte o toro tiene la propiedad ganado_id haciendo referencia al id de la tabla principal, devolver el id del ganado de la tabla principal
