@@ -40,6 +40,7 @@ import {
   createResponsesSecurityShema,
   updateResponseSecurityShema,
 } from "@/validations/responseSecurity";
+import { createVaccineSchema } from "@/validations/vaccineSchema";
 
 export type Login = {
   usuario: string;
@@ -142,3 +143,5 @@ export type CreateOrUpdateResponseSecurity = z.infer<
 export type CreateResponseSecurity = z.infer<
   typeof createResponsesSecurityShema
 >;
+
+export type CreateVaccine= z.infer<typeof createVaccineSchema>;

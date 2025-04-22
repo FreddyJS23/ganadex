@@ -408,3 +408,21 @@ export enum FieldsLabelsIdWheightMilk {
   "Pesaje de leche",
   "Fecha",
 }
+
+export enum FieldsLabelsVaccine {
+  Nombre,
+  "Intervalo de dosis",
+  "Dosis recomendada anual",
+  "Tipo de vacuna",
+  "Aplicable a todos",
+  "Tipo de ganado",
+}
+
+export enum FieldsIdVaccine {
+  nombre,
+  intervalo_dosis,
+  dosis_recomendada_anual,
+  tipo_vacuna,
+  aplicable_a_todos,
+  tipo_ganados,
+}
