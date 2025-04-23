@@ -31,6 +31,8 @@ import {
   ToroServicio,
   TipoRevision,
   CausaFallecimiento,
+  AvailableVaccines,
+  Vaccine,
 } from "@/types";
 
 type baseHeaderColunms = {
@@ -231,6 +233,12 @@ export const headerHistoryVaccines: headersColumns<Vacuna>[] = [
   { key: "vacuna", label: "Vacuna" },
   { key: "fecha", label: "Fecha" },
   { key: "prox_dosis", label: "Próxima dosis" },
+];
+
+export const headerVaccines: headersColumns<Vaccine>[] = [
+  { key: "nombre", label: "Nombre" },
+  { key: "tipo_vacuna", label: "Tipo de vacuna" },
+  { key: "id", label: "Editar" },
 ];
 
 export const headersColumnsUserVeterinary: headersColumns<UserVeterinaryInfo>[] =

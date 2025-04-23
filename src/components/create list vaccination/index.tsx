@@ -18,6 +18,7 @@ import { AvailableVaccines, ListaVacunas } from "@/types";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { SelectVaccines } from "../select vaccines";
 import { is } from "date-fns/locale";
+import { ButtonCreateItem } from "@/ui/ButtonCreate";
 
 type ModalProps = {
   isOpen: boolean;
@@ -31,7 +32,7 @@ type CreateListVaccinationProps = {
   setListVaccines: React.Dispatch<React.SetStateAction<ListaVacunas[]>>;
   isChecked: boolean;
   vaccinesSelect: AvailableVaccines[];
-    /**Se usara para no colocar vacunas antes de nacimiento */
+  /**Se usara para no colocar vacunas antes de nacimiento */
   fecha_nacimiento: string;
 };
 
@@ -59,13 +60,11 @@ export const CreateListVaccination = ({
   };
 
   /* validación fecha vacuna no sea inferior a la fecha de nacimiento */
-  const isHigherFechaNacimiento = useMemo(()=>{
+  const isHigherFechaNacimiento = useMemo(() => {
     const FechaNacimiento = new Date(fecha_nacimiento);
     const FechaVacunacion = new Date(fecha);
     return FechaNacimiento.getTime() > FechaVacunacion.getTime();
-
-    
-  },[fecha,fecha_nacimiento]);
+  }, [fecha, fecha_nacimiento]);
 
   isHigherFechaNacimiento;
 
@@ -119,8 +118,8 @@ export const CreateListVaccination = ({
       return toast.error(
         "Esta vacuna ya se encuentra en la lista con la fecha seleccionada",
       );
-   
-      if (isHigherFechaNacimiento)
+
+    if (isHigherFechaNacimiento)
       return toast.error(
         "La vacuna no puede ser antes de la fecha de nacimiento",
       );
@@ -164,12 +163,19 @@ export const CreateListVaccination = ({
             min={1}
             value={fecha}
           />
-          <SelectVaccines
-            valueSelect={valueSelect}
-            vaccinesSelect={vaccinesSelect}
-            isInvalidSelect={isInvalidSelect}
-            setValueSelect={setValueSelect}
-          />
+          <div className="flex w-full gap-2 items-center">
+            <ButtonCreateItem
+              tittle="Nueva vacuna"
+              small={true}
+              href={"/vacuna"}
+            />
+            <SelectVaccines
+              valueSelect={valueSelect}
+              vaccinesSelect={vaccinesSelect}
+              isInvalidSelect={isInvalidSelect}
+              setValueSelect={setValueSelect}
+            />
+          </div>
         </div>
       )}
 

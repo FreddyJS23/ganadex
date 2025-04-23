@@ -12,6 +12,7 @@ import {
   FieldsIdStaff,
   FieldsIdSupply,
   FieldsIdVaccinationDay,
+  FieldsIdVaccine,
   FieldsIdWheightMilk,
   FieldsLabelsBeef,
   FieldsLabelsBirth,
@@ -27,6 +28,7 @@ import {
   FieldsLabelsStaff,
   FieldsLabelsSupply,
   FieldsLabelsVaccinationDay,
+  FieldsLabelsVaccine,
   FieldsLabelsWeights,
   InputProps,
   Pesos,
@@ -438,4 +440,18 @@ export const formWeightMilk: Fields<keyof typeof FieldsIdWheightMilk,keyof typeo
     endContent: "weight",
   },
   { id: "fecha", label: "Fecha", required: true, type: "date" },
+];
+
+export const formVaccine: Fields<keyof typeof FieldsIdVaccine,keyof typeof FieldsLabelsVaccine>[] = [
+  { id: "nombre", label: "Nombre", required: true, type: "text" },
+  { id: "intervalo_dosis", label: "Intervalo de dosis", required: true, type: "number" },
+  { id: "dosis_recomendada_anual", label: "Dosis recomendada anual", required: false, type: "number" },
+  { id: "tipo_vacuna", label: "Tipo de vacuna", required: true, type: "select", select: [{
+    value: "medica",
+    label: "Medica",
+  },{
+    value: "plan_sanitario",
+    label: "Plan Sanitario",
+  }] },
+  { id: "aplicable_a_todos", label: "Aplicable a todos", required: true, type: "checkbox" },
 ];
