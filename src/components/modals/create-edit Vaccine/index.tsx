@@ -59,8 +59,7 @@ export const ModalCreateEditVaccine = (props: ModalCreateEditVaccineProps) => {
       aplicable_a_todos: false,
     },
   });
-  console.log(props.vaccine)
-  console.log(getValues())
+  
 
   //transformar el tipo ganado para que sea compatible con la validacion del backend
   const transfomedTypeCattleSelect =(typeCastle:Vaccine["tipos_ganado"] | null) => {
@@ -95,9 +94,7 @@ export const ModalCreateEditVaccine = (props: ModalCreateEditVaccineProps) => {
   }, [props]);
 
   const actionVaccine: () => void = handleSubmit(async (data) => {
-    console.log(tipoGanados)
-    const payload =isApplicableToAll ? { ...data, tipo_ganados: tipoGanados } : data;
-console.log(payload)
+    const payload =!isApplicableToAll ? { ...data, tipo_ganados: tipoGanados } : data;
     if (type === "create") {
       const response = await createVaccine(payload);
       if (typeof response == "object" && "error" in response)
