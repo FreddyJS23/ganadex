@@ -281,8 +281,11 @@ export type AvailableVaccines = {
   tipo_vacuna:'medica'|'plan_sanitario'
   dosis_recomendada_anual:number|null
   aplicable_a_todos: boolean;
-  tipos_ganado:{tipo:string,sexo:Ganado["sexo"]}[]
+  tipos_ganado:{tipo:string,sexo:GanadoDescarte["sexo"]}[] | null
 };
+
+export type Vaccine= Omit<AvailableVaccines,"tipos_ganado"> &
+ {tipos_ganado:{id:number,tipo:string,sexo:GanadoDescarte["sexo"]}[] | null}
 
 export type ListaVacunas = {
   id: string;

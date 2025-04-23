@@ -38,6 +38,8 @@ import {
   CausaFallecimiento,
   PreguntasSeguridad,
   RespuestasSeguridad,
+  Vaccines,
+  Vaccine,
 } from "./models";
 
 type errors = {
@@ -315,6 +317,10 @@ export type ResponsePlanSanitario = {
 export type ResponseVacunasDisponibles = {
   vacunas_disponibles: AvailableVaccines[];
 };
+
+export type ResponseVacunas = {
+  vacunas: Vaccine[];
+}
 
 export type ResponseSugerirNumero = {
   numero_disponible: number;

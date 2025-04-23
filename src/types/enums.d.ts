@@ -415,7 +415,6 @@ export enum FieldsLabelsVaccine {
   "Dosis recomendada anual",
   "Tipo de vacuna",
   "Aplicable a todos",
-  "Tipo de ganado",
 }
 
 export enum FieldsIdVaccine {
@@ -424,5 +423,4 @@ export enum FieldsIdVaccine {
   dosis_recomendada_anual,
   tipo_vacuna,
   aplicable_a_todos,
-  tipo_ganados,
 }
