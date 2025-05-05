@@ -6,7 +6,10 @@ const regexDate =
 export const createBaseCheckUpShema = z
   .object({
     tipo_revision_id: z.string().regex(/\d/),
-    tratamiento: z.string().min(3).max(255),
+    vacuna_id: z.string().regex(/\d/).optional(),
+    tratamiento: z.string().min(3).max(255).optional(),
+    observacion: z.string().min(3).max(255).optional(),
+    dosis:z.number().gte(1).lte(32767),
     fecha: z.string().regex(regexDate),
   })
   .refine((data) => new Date(data.fecha) <= new Date(), {

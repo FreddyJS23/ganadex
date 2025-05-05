@@ -37,22 +37,22 @@ export const TableAllCheckups = ({
         return <span>{pendiente ? "Sí" : "No"}</span>;
       }
 
-      case "diagnostico": {
-        const diagnostico = cellValue as
+      case "revision": {
+        const revision = cellValue as
           | string
           | Pick<TipoRevision, "tipo" | "codigo">;
-        //diagnostico desconocido  ola
-        if (typeof diagnostico == "string") return <span>{diagnostico}</span>;
+        //revision desconocido  
+        if (typeof revision == "string") return <span>{revision}</span>;
         else {
           //diagnositco pero no tiene codigo
-          if (!diagnostico.codigo) return <span>{diagnostico.tipo}</span>;
+          if (!revision.codigo) return <span>{revision.tipo}</span>;
           else
             return (
               <div className="flex flex-col">
                 <span className="text-primary font-bold">
-                  {diagnostico.codigo}
+                  {revision.codigo}
                 </span>
-                <span className="">{diagnostico.tipo}</span>
+                <span className="">{revision.tipo}</span>
               </div>
             );
         }

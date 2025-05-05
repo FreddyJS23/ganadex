@@ -115,9 +115,11 @@ export type Revision = {
   id: number;
   fecha: string;
     /**Cuando el tipo es un string, es porque no tiene diagnostico por ende dira (desconocido)   */
-  diagnostico: Pick<TipoRevision, "tipo" | "codigo"> | string;
-  tratamiento: string;
+  revision: Pick<TipoRevision, "tipo" | "codigo"> | string;
+  tratamiento: string|null;
+  observacion: string|null;
   veterinario: veterinario;
+  vacuna:Pick<Vacuna, "id" | "vacuna">|null;
 };
 
 /**Servicio individual de una cabeza de ganado */
@@ -205,7 +207,7 @@ export type Revisiones = {
   pendiente:boolean;
   ultima_revision: string;
   /**Cuando el tipo es un string, es porque no tiene diagnostico por ende dira (desconocido)   */
-  diagnostico: Pick<TipoRevision, "tipo" | "codigo"> | string;
+  revision: Pick<TipoRevision, "tipo" | "codigo"> | string;
   proxima_revision: string | null;
   total_revisiones: number;
 };

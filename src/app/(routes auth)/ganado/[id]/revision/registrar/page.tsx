@@ -3,6 +3,7 @@ import { FormCreateCheckUp } from "@/components/forms/create chekUp";
 import {
   ResponseGanado,
   ResponseTiposRevision,
+  ResponseVacunasDisponibles,
   ResponseVeterinariosSelect,
 } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
@@ -27,6 +28,9 @@ export default async function Page({ params }: ParamsPage) {
   const { tipos_revision }: ResponseTiposRevision =
     await getData("tiposRevision");
 
+     const { vacunas_disponibles }: ResponseVacunasDisponibles =
+        await getData("vacunasDisponibles");
+
   const { user } = (await auth()) as Session;
   return (
     <>
@@ -35,6 +39,7 @@ export default async function Page({ params }: ParamsPage) {
         veterinarios={veterinarios}
         typesCheck={tipos_revision}
         isAdmin={user.rol == "admin" ? true : false}
+        listaVacunas={vacunas_disponibles}
       />
     </>
   );

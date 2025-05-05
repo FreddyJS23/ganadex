@@ -1,7 +1,7 @@
 import { InputProps } from "@/types";
 import { Input as InputNextUI } from "@nextui-org/input";
 
-const EndElement = ({ content }: { content: "$" | "KG" }) => {
+const EndElement = ({ content }: { content: "$" | "KG" | "ml" }) => {
   return (
     <div className="pointer-events-none flex items-center">
       <span className="text-default-400 text-small sm:text-base">
@@ -30,6 +30,7 @@ export const Input = ({
     dolar: <EndElement content="$" />,
     weight: <EndElement content="KG" />,
     "weight-milk": <EndElement content="KG" />,
+    "ml": <EndElement content="ml" />,
   };
 
   return (

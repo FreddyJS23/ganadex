@@ -170,6 +170,7 @@ export const CreateListVaccination = ({
               href={"/vacuna"}
             />
             <SelectVaccines
+              type="listVaccination"
               valueSelect={valueSelect}
               vaccinesSelect={vaccinesSelect}
               isInvalidSelect={isInvalidSelect}

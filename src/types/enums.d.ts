@@ -144,6 +144,7 @@ export enum EndContentInput {
   dolar,
   weight,
   "weight-milk",
+  ml,
 }
 
 export enum TitlesModals {
@@ -260,13 +261,17 @@ export enum FieldsLabelsBeef {
 
 export enum FieldsIdCheckUp {
   tipo_revision_id,
+  vacuna_id,
+  observacion,
   tratamiento,
   fecha,
   personal_id,
 }
 
 export enum FieldsLabelsCheckUp {
-  Diagnostico,
+  Diagnóstico,
+  Vacuna,
+  Observación,
   Fecha,
   Tratamiento,
   Veterinario,
