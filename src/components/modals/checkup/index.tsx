@@ -43,7 +43,7 @@ export const ModalCheckUp = ({ revision }: ModalProps) => {
   return (
     <LayoutModal
       icon="checkUp"
-      titleModal={"Revision del "}
+      titleModal={"Revisión del "}
       footer={false}
       isOpen={true}
       onOpen={onOpen}
