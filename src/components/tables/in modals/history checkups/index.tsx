@@ -28,18 +28,18 @@ export const TableHistoryCheckUps = ({ revisiones }: ResponseRevisiones) => {
                   <div>
                     {
                       /* diagnostico desconocido  */
-                      typeof revision?.diagnostico == "string" ? (
-                        revision?.diagnostico
+                      typeof revision?.revision == "string" ? (
+                        revision?.revision
                       ) : /* tiene diagnostico pero no tiene codigo */
-                      !revision?.diagnostico.codigo ? (
-                        revision?.diagnostico.tipo
+                      !revision?.revision.codigo ? (
+                        revision?.revision.tipo
                       ) : (
                         /* diagnostico tiene codigo */
                         <div className="flex flex-col gap">
                           <span className="text-primary font-bold">
-                            {revision?.diagnostico.codigo}
+                            {revision?.revision.codigo}
                           </span>
-                          <span className="">{revision?.diagnostico.tipo}</span>
+                          <span className="">{revision?.revision.tipo}</span>
                         </div>
                       )
                     }

@@ -106,22 +106,22 @@ export const TabDetailsCattle = ({
                 <div>
                   {
                     /* diagnostico desconocido  */
-                    typeof revision_reciente?.diagnostico == "string" ? (
-                      revision_reciente?.diagnostico
+                    typeof revision_reciente?.revision == "string" ? (
+                      revision_reciente?.revision
                     ) : /* tiene diagnostico pero no tiene código */
-                    !revision_reciente?.diagnostico.codigo ? (
-                      revision_reciente?.diagnostico.tipo
+                    !revision_reciente?.revision.codigo ? (
+                      revision_reciente?.revision.tipo
                     ) : (
                       /* diagnostico tiene código */
                       <div className="flex gap-1">
                         <div className="flex">
                           <span className="text-primary font-bold">
-                            {revision_reciente?.diagnostico.codigo}
+                            {revision_reciente?.revision.codigo}
                           </span>
                           <span className="opacity-50">:</span>
                         </div>
                         <span className="">
-                          {revision_reciente?.diagnostico.tipo}
+                          {revision_reciente?.revision.tipo}
                         </span>
                       </div>
                     )
@@ -130,8 +130,20 @@ export const TabDetailsCattle = ({
               }
             />
             <Details
+              tittle={DetailsChecks.observacion}
+              content={revision_reciente?.observacion}
+            />
+            <Details
               tittle={DetailsChecks.tratamiento}
               content={revision_reciente?.tratamiento}
+            />
+            <Details
+              tittle={DetailsChecks.vacuna}
+              content={revision_reciente?.vacuna?.nombre}
+            />
+            <Details
+              tittle={DetailsChecks.dosis}
+              content={revision_reciente?.dosis}
             />
             <Details
               tittle={DetailsChecks.proxima}

@@ -119,7 +119,8 @@ export type Revision = {
   tratamiento: string|null;
   observacion: string|null;
   veterinario: veterinario;
-  vacuna:Pick<Vacuna, "id" | "vacuna">|null;
+  vacuna:Pick<Vacuna, "id" | "nombre">|null;
+  dosis:string | null
 };
 
 /**Servicio individual de una cabeza de ganado */
@@ -296,7 +297,7 @@ export type ListaVacunas = {
   prox_dosis: string;
 };
 
-export type Vacuna = Omit<ListaVacunas, "vacuna_id"> & { vacuna: string };
+export type Vacuna = Omit<ListaVacunas, "vacuna_id"> & { nombre: string };
 
 export type AplicacionVacunaHistorial = {
   vacuna: string;

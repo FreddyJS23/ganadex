@@ -52,9 +52,9 @@ export const ModalCheckUp = ({ revision }: ModalProps) => {
     >
       <>
         {/* diagnósticos sacados del seeder tipo revision laravel */}
-        {!(
-          revision.diagnostico == "Aborto" ||
-          revision.diagnostico == "Gestación"
+        {(typeof revision.revision != "string") && (
+          revision.revision.tipo == "Aborto" ||
+          revision.revision.tipo == "Gestación"
         ) && (
           <div className="absolute left-[19%] top-[7%]">
             {/* botón flotante */}
@@ -85,26 +85,35 @@ export const ModalCheckUp = ({ revision }: ModalProps) => {
               <div>
                 {
                   /* diagnostico desconocido  */
-                  typeof revision?.diagnostico == "string" ? (
-                    revision?.diagnostico
+                  typeof revision?.revision == "string" ? (
+                    revision.revision
                   ) : /* tiene diagnostico pero no tiene código */
-                  !revision?.diagnostico.codigo ? (
-                    revision?.diagnostico.tipo
+                  !revision?.revision.codigo ? (
+                    revision?.revision.tipo
                   ) : (
                     /* diagnostico tiene código */
                     <div className="flex gap-1">
                       <div className="flex gap-1">
                         <span className="text-primary font-bold">
-                          {revision?.diagnostico.codigo}
+                          {revision.revision.codigo}
                         </span>
                         <span className="opacity-50"> - </span>
                       </div>
-                      <span className="">{revision?.diagnostico.tipo}</span>
+                      <span className="">{revision?.revision.tipo}</span>
                     </div>
                   )
                 }
               </div>
             </div>
+            <p>
+              <b>Observación: </b> {revision.observacion}
+            </p>
+            <p>
+              <b>Vacuna: </b> {revision.vacuna ? revision.vacuna.nombre : "No"}
+            </p>
+            <p>
+              <b>Dosis: </b> {revision.dosis ? revision.dosis : "No"}
+            </p>
             <p>
               <b>Tratamiento: </b> {revision.tratamiento}
             </p>
@@ -142,7 +151,7 @@ const RevisionEdit = ({
     resolver: zodResolver(editCheckUpShema),
     defaultValues: {
       fecha: revision.fecha,
-      tratamiento: revision.tratamiento,
+      tratamiento: revision.tratamiento ? revision.tratamiento :undefined,
     },
   });
 
@@ -190,7 +199,7 @@ const RevisionEdit = ({
           register={register}
           errors={errors}
           required={true}
-          defaultValue={revision.tratamiento}
+          defaultValue={revision.tratamiento ? revision.tratamiento : undefined}
         />
       </div>
     </form>

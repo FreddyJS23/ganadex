@@ -224,7 +224,7 @@ export const headerPlanesSanitario: headersColumns<DayVaccination>[] = [
 export const headerHistoryVaccinesApply: headersColumns<AplicacionVacunaHistorial>[] =
   [
     { key: "vacuna", label: "Vacuna" },
-    { key: "cantidad", label: "Cantidad" },
+    { key: "cantidad", label: "Veces aplicada" },
     { key: "ultima_dosis", label: "Última dosis" },
     { key: "prox_dosis", label: "Próxima dosis" },
   ];
