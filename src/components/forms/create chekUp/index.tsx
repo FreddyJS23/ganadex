@@ -60,15 +60,26 @@ export const FormCreateCheckUp = ({
   });
   const router = useRouter();
   const { id: cattleId } = useParams<{ id: string }>();
-  const vacunaWacth = watch("vacuna_id");
-  console.log(getValues());
 
+  //observar select de vacunas
+  const vacunaWacth = watch("vacuna_id");
+
+  console.log(errors)
   useEffect(() => {
-    !vacunaWacth && unregister("vacuna_id");
+    console.log('eeee')
+    if (!vacunaWacth) {
+      unregister("dosis");
+      unregister("vacuna_id");
+    }else{
+      register("dosis");
+      register("vacuna_id");
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [vacunaWacth]);
 
   const actionCreatecheckUp: () => void = handleSubmit(async (data) => {
+    console.log(data);
     const response = await createCheckUp(data, Number.parseInt(cattleId));
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
@@ -100,7 +111,7 @@ export const FormCreateCheckUp = ({
 
   const handleTypeCheck = (value: string | number) => {
     const tipo = tiposRevisionSistema.find((type) => type.id == value);
-
+    unregister('proxima')
     if (tipo) {
       setTipoRevision(tipo);
       /* el tipo revision no existe en el backend, solo se usa en el frontend para mostrar la select,
@@ -109,6 +120,7 @@ export const FormCreateCheckUp = ({
       //tipo revision medica
       if (value == 0) {
         resetField("tipo_revision_id");
+        register('proxima')
         return;
       }
       // tipo revision aborto
@@ -227,13 +239,21 @@ export const FormCreateCheckUp = ({
                 <Input
                   id="dosis"
                   label="Dosis"
-                  required={true}
+                  required={false}
                   type="number"
                   errors={errors}
                   register={register}
                   endContent="ml"
                 />
               )}
+              <Input
+                id="proxima"
+                label="Próxima revisión"
+                required={false}
+                type="date"
+                errors={errors}
+                register={register}
+              />
             </>
           )}
 

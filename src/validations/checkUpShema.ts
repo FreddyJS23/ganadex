@@ -9,7 +9,8 @@ export const createBaseCheckUpShema = z
     vacuna_id: z.string().regex(/\d/).optional(),
     tratamiento: z.string().min(3).max(255).optional(),
     observacion: z.string().min(3).max(255).optional(),
-    dosis:z.number().gte(1).lte(32767),
+    proxima: z.string().regex(regexDate).optional(),
+    dosis:z.number().gte(1).lte(32767).optional(),
     fecha: z.string().regex(regexDate),
   })
   .refine((data) => new Date(data.fecha) <= new Date(), {
