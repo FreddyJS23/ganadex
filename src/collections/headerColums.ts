@@ -87,6 +87,7 @@ export const headerSaleCasttle: headersColumns<VentaGanado>[] = [
   /* { key: 'precio', label: 'Precio' },
     { key: 'precio_kg', label: 'Precio por KG' }, */
   { key: "comprador", label: "Comprador" },
+  { key: "id", label: "Nota de venta" },
 ];
 
 export const headerSaleMilk: headersColumns<VentaLeche>[] = [
