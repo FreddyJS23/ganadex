@@ -9,7 +9,7 @@ export const messageErrorApi = (res: ResponseErrorNext): string | null => {
       /* errores en los campos del formulario */
       if (status == 422) return `Error en campo: ${message}`;
       /* no existe el recurso  */ else if (status == 404)
-        return "No se encontro el recuerso";
+        return "No se encontró el recurso";
       else return message;
     }
   }
