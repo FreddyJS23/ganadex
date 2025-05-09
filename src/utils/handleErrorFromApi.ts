@@ -9,9 +9,9 @@ export const handleErrorFromApi = (e: unknown): ResponseErrorNext => {
   }
   if (e instanceof Error) {
     console.log(e.message);
-    return { error: { message: "error inesperado", status: 500 } };
+    return { error: { message: "Error inesperado", status: 500 } };
   }
 
   console.log(e);
-  return { error: { message: "error desconocido", status: 500 } };
+  return { error: { message: "Error desconocido", status: 500 } };
 };
