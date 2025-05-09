@@ -1,27 +1,43 @@
 "use client";
 
-import { changeThemeDark, checkedDark, removeDarkMode } from "@/utils/darkmode";
-import { useEffect, useState } from "react";
+import { useThemeStore } from "@/stores/themeStore";
+import { ChangeEvent, useEffect, useState } from "react";
 
 export const CheckboxTheme = () => {
-  const storage = typeof window != "undefined" && window.localStorage;
 
-  const checkStorage = storage && storage.getItem("darkMode");
-  let storageNull: boolean = true;
-  let themeDarkStorage: boolean = false;
 
-  if (typeof checkStorage == "string") {
-    themeDarkStorage = JSON.parse(checkStorage);
-    storageNull = false;
-  } else if (checkStorage == null) storageNull = true;
+  const {darkMode,activateDarkMode,disableDarkMode}=useThemeStore()
 
-  const [themeDark, setThemeDark] = useState(
-    storageNull ? true : themeDarkStorage,
-  );
+  /* add dark mode para tailwindcss y daisyui */
+ const addDarkMode = () => {
+  document.documentElement.classList.add("dark");
+  document.documentElement.setAttribute("data-theme", "ganadexThemeDark");
+};
 
-  useEffect(() => {
-    themeDark == false && removeDarkMode();
-  }, [themeDark]);
+/* remove dark mode para tailwindcss y daisyui */
+ const removeDarkMode = () => {
+  document.documentElement.classList.remove("dark");
+  document.documentElement.setAttribute("data-theme", "ganadexTheme");
+};
+
+
+/** Activar o desactivar el modo oscuro
+ * @param e Evento del checkbox del theme controller de daisyUI
+ */
+ const changeThemeDark = (
+  e: ChangeEvent<HTMLInputElement>,
+) => {
+  const { value } = e.target;
+
+  if (value == "ganadexTheme") {
+    activateDarkMode();
+    addDarkMode();
+  } else if (value == "ganadexThemeDark") {
+    disableDarkMode();
+    removeDarkMode();
+  }
+};
+
 
   return (
     <label className="swap swap-rotate">
@@ -29,15 +45,14 @@ export const CheckboxTheme = () => {
       <input
         type="checkbox"
         className="theme-controller"
-        onChange={(e) => changeThemeDark(e, setThemeDark)}
-        value={themeDark ? "ganadexThemeDark" : "ganadexTheme"}
+        onChange={(e) => changeThemeDark(e)}
+        value={darkMode ? "ganadexThemeDark" : "ganadexTheme"}
+        checked={darkMode}
       />
 
       {/* sun icon */}
       <svg
-        className={`${
-          checkedDark() ? "swap-off" : "swap-on"
-        }  fill-current size-7 md:size-10`}
+        className={`swap-on fill-current size-7 md:size-10`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
@@ -46,9 +61,7 @@ export const CheckboxTheme = () => {
 
       {/* moon icon */}
       <svg
-        className={`${
-          checkedDark() ? "swap-on" : "swap-off"
-        }  fill-current size-7 md:size-10`}
+        className={`swap-off fill-current size-7 md:size-10`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >

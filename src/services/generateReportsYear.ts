@@ -1,9 +1,12 @@
 "use server";
 
 import { endpointsReportsAnnual } from "@/collections/endPointsApi";
-import { ResponseError } from "@/types";
+import { ResponseError, ResponseErrorFromApi } from "@/types";
 import { auth } from "@/auth";
 import { Session } from "next-auth";
+import ErrorFromApi from "@/lib/errors/errorFromApi";
+import { ERROR_401, ERROR_404, ERROR_419, ERROR_500 } from "@/constants/responseApiMessage";
+import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
 
 export const GetReportsYear = async (
   endPoint: keyof typeof endpointsReportsAnnual,
@@ -19,7 +22,7 @@ export const GetReportsYear = async (
 
   const url =
     process.env.API_URL_BASE +
-    `/${endpointsReportsAnnual[endPoint]}?year=${year}`;
+    `${endpointsReportsAnnual[endPoint]}?year=${year}`;
 
   const headers = new Headers({
     Accept: "*/*",
@@ -41,16 +44,21 @@ export const GetReportsYear = async (
   try {
     const ganadoDescarte = await fetch(url, optionFetch);
     const pdf = await ganadoDescarte.blob();
-
     if (ganadoDescarte.status == 200) return pdf;
-    else
-      throw {
-        status: ganadoDescarte.status,
-        data: await ganadoDescarte.json(),
-      };
+    else throw new ErrorFromApi("error", {
+      status: ganadoDescarte.status,
+      data: await ganadoDescarte.json() as ResponseErrorFromApi["data"],
+    });
   } catch (e) {
-    if (e instanceof Error) throw e;
-    const { status, data } = e as ResponseError;
-    throw `código ${status} ${data.message}`;
+     /* manejar otros errores del servidor de laravel */
+     if (e instanceof ErrorFromApi){
+      const {status}=e.error
+      if( status == 404) throw new Error(ERROR_404);
+      else if( status == 401) throw new Error(ERROR_401);
+      else if( status == 500) throw new Error(ERROR_500);
+      else if( status == 419) throw new Error(ERROR_419);
+      
+    };
+    return handleErrorFromApi(e);
   }
 };

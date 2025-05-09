@@ -1,6 +1,6 @@
 import { ResponseResumenNatalidad } from "@/types";
 import {
-  optionChartDoughnutCantidadGanado,
+  optionChartDoughnutCantidadNacimientos,
   paletteBackground,
 } from "@/utils/configCharts";
 import {
@@ -14,6 +14,8 @@ import { Doughnut } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { ForwardedRef, forwardRef } from "react";
+import { useThemeStore } from "@/stores/themeStore";
+import { LETTER_BLACK, LETTER_WHITE } from "@/constants/colorLetters";
 
 ChartJS.register(
   ArcElement,
@@ -43,6 +45,8 @@ const TotalNacimientosAñoActualTorta = forwardRef(function (
 
   const totalPartos:number =
     nacimientos_año_actual.hembras + nacimientos_año_actual.machos;
+    
+    const darkMode = useThemeStore((state) => state.darkMode);
 
     const configAnotation = {
     annotation: {
@@ -55,20 +59,23 @@ const TotalNacimientosAñoActualTorta = forwardRef(function (
             { size: 20, weight: "bold" },
             { size: 18, weight: "normal" },
           ],
-          color: "#ecedee",
+          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
         },
       },
     },
   };
+
+  const optionsChart=optionChartDoughnutCantidadNacimientos(darkMode);
+
   //destructurar options
   //primero se destructura el objeto de opciones
   //luego se crear un nuevo objecto con la propiedad plugins
   //se destructora el objeto de plugins
   //y se añade el plugin anotaciones
   const options = {
-    ...optionChartDoughnutCantidadGanado,
+    ...optionsChart,
     plugins: {
-      ...optionChartDoughnutCantidadGanado.plugins,
+      ...optionsChart.plugins,
       ...configAnotation,
     },
   };

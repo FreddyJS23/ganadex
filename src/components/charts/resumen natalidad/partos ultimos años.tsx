@@ -1,3 +1,4 @@
+import { useThemeStore } from "@/stores/themeStore";
 import { ResponseResumenNatalidad } from "@/types";
 import {
   optionChartLineAnnualMilk,
@@ -50,6 +51,8 @@ const PartosUltimos5AñosLinea = forwardRef(function (
 
   const { partos, years } = extraerDatosUltimosAños(nacimientos_ultimos_5_año);
 
+  const darkMode = useThemeStore((state) => state.darkMode);
+
   const dataLine: ChartData<"line"> = {
     labels: years,
     datasets: [
@@ -63,7 +66,7 @@ const PartosUltimos5AñosLinea = forwardRef(function (
   return (
     <>
       {/* gráfico */}
-      <Line ref={ref} options={optionChartLinePartosTotales} data={dataLine} />
+      <Line ref={ref} options={optionChartLinePartosTotales(darkMode)} data={dataLine} />
     </>
   );
 });

@@ -1,5 +1,6 @@
 "use client";
 
+import { useThemeStore } from "@/stores/themeStore";
 import { vacaProductora } from "@/types/dashboard";
 import {
   optionChartTop3CatleProduction,
@@ -49,5 +50,7 @@ export const ProduccionVacasTop3 = ({
     ],
   };
 
-  return <Bar options={optionChartTop3CatleProduction} data={data} />
+  const darkMode =useThemeStore((state) => state.darkMode)
+
+  return <Bar options={optionChartTop3CatleProduction(darkMode)} data={data} />;
 };

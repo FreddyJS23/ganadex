@@ -2,6 +2,7 @@
 
 import { getBalanceAnnualPrudctionMilk } from "@/actions/getBalanceAnnualPrudctionMilk";
 import { SelectFilterYear } from "@/components/select filter year";
+import { useThemeStore } from "@/stores/themeStore";
 import type { ResponseAñosProduccionLeche } from "@/types";
 import type { BalanceMensualLeche } from "@/types/dashboard";
 import { optionChartLineAnnualMilk } from "@/utils/configCharts";
@@ -79,6 +80,8 @@ export const ChartAnnualBalanceMilk = ({
     ],
   };
 
+  const darkMode =useThemeStore((state) => state.darkMode)
+
   return (
     <>
       <div className="flex justify-between">
@@ -92,7 +95,7 @@ export const ChartAnnualBalanceMilk = ({
           />
         </div>
       </div>
-      <Line options={optionChartLineAnnualMilk} data={data} />
+      <Line options={optionChartLineAnnualMilk(darkMode)} data={data} />
     </>
   );
 };
