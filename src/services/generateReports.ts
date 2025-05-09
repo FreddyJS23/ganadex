@@ -1,9 +1,17 @@
 "use server";
 
 import { endpointsReports } from "@/collections/endPointsApi";
-import { ResponseError } from "@/types";
+import { ResponseError, ResponseErrorFromApi } from "@/types";
 import { auth } from "@/auth";
 import { Session } from "next-auth";
+import ErrorFromApi from "@/lib/errors/errorFromApi";
+import {
+  ERROR_401,
+  ERROR_404,
+  ERROR_419,
+  ERROR_500,
+} from "@/constants/responseApiMessage";
+import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
 
 export const GetReports = async (
   endPoint: keyof typeof endpointsReports,
@@ -25,12 +33,11 @@ export const GetReports = async (
     url = process.env.API_URL_BASE + `${endpointsReports[endPoint]}/${id}`;
   } else if (endPoint == "venta_leche" || endPoint == "fallecimiento") {
     url =
-      process.env.API_URL_BASE +
-      +`${endpointsReports[endPoint]}?start=${startDate}&end=${endDate}`;
+      process.env.API_URL_BASE + `${endpointsReports[endPoint]}?start=${startDate}&end=${endDate}`;
   }
-
+  
   const headers = new Headers({
-    Accept: "*/*",
+    Accept: "application/json",
     Origin: process.env.ORIGIN,
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
@@ -51,13 +58,17 @@ export const GetReports = async (
 
     if (ganadoDescarte.status == 200) return pdf;
     else
-      throw {
+      throw new ErrorFromApi("error", {
         status: ganadoDescarte.status,
-        data: await ganadoDescarte.json(),
-      };
+        data: {
+          message: ganadoDescarte.statusText,
+        } as ResponseErrorFromApi["data"],
+      });
   } catch (e) {
-    if (e instanceof Error) throw e;
-    const { status, data } = e as ResponseError;
-    throw `código ${status} ${data.message}`;
+    /* manejar otros errores del servidor de laravel */
+    if (e instanceof ErrorFromApi) {
+      return handleErrorFromApi(e);
+    }
+    return handleErrorFromApi("error");
   }
 };

@@ -5,7 +5,12 @@ import { ResponseError, ResponseErrorFromApi } from "@/types";
 import { auth } from "@/auth";
 import { Session } from "next-auth";
 import ErrorFromApi from "@/lib/errors/errorFromApi";
-import { ERROR_401, ERROR_404, ERROR_419, ERROR_500 } from "@/constants/responseApiMessage";
+import {
+  ERROR_401,
+  ERROR_404,
+  ERROR_419,
+  ERROR_500,
+} from "@/constants/responseApiMessage";
 import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
 
 export const GetReportsYear = async (
@@ -45,20 +50,18 @@ export const GetReportsYear = async (
     const ganadoDescarte = await fetch(url, optionFetch);
     const pdf = await ganadoDescarte.blob();
     if (ganadoDescarte.status == 200) return pdf;
-    else throw new ErrorFromApi("error", {
-      status: ganadoDescarte.status,
-      data: await ganadoDescarte.json() as ResponseErrorFromApi["data"],
-    });
+    else
+      throw new ErrorFromApi("error", {
+        status: ganadoDescarte.status,
+        data: {
+          message: ganadoDescarte.statusText,
+        } as ResponseErrorFromApi["data"],
+      });
   } catch (e) {
-     /* manejar otros errores del servidor de laravel */
-     if (e instanceof ErrorFromApi){
-      const {status}=e.error
-      if( status == 404) throw new Error(ERROR_404);
-      else if( status == 401) throw new Error(ERROR_401);
-      else if( status == 500) throw new Error(ERROR_500);
-      else if( status == 419) throw new Error(ERROR_419);
-      
-    };
-    return handleErrorFromApi(e);
+    /* manejar otros errores del servidor de laravel */
+    if (e instanceof ErrorFromApi) {
+      return handleErrorFromApi(e);
+    }
+    return handleErrorFromApi("error");
   }
 };

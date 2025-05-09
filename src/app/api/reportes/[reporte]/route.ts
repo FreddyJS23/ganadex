@@ -18,21 +18,26 @@ export async function GET(
   const dateStart = searchParams.get("start") ?? formatDate;
   const dateEnd = searchParams.get("end") ?? formatDate;
   const idElement = searchParams.get("id") ?? "0";
-
   const filePdf = await GetReports(
     params.reporte,
     dateStart,
     dateEnd,
     parseInt(idElement),
   );
+
   if (filePdf instanceof Blob && filePdf.size > 0)
     return new NextResponse(filePdf, {
       status: 200,
       headers: { "content-type": "application/pdf" },
     });
-  else
+  /* si el pdf no se genero devuelve el error */
+    else if (
+    typeof filePdf == "object"
+  ) {
+    return NextResponse.json(filePdf, { status: 500 });
+  } else
     return NextResponse.json(
-      { message: "No se ha podido general el pdf" },
+      { message: "No se ha podido generar el pdf" },
       { status: 500 },
     );
 }

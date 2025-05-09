@@ -1,21 +1,21 @@
 "use serve";
 
 import { endpointsReports } from "@/collections/endPointsApi";
-import { ResponseError } from "@/types";
+import { ResponseErrorNext } from "@/types";
 import { RangeDatesToReports } from "@/types/forms";
 
 export async function generateReports(
   formData: RangeDatesToReports,
   report: keyof typeof endpointsReports,
-): Promise<Blob | ResponseError | undefined> {
-  try {
+): Promise<Blob | ResponseErrorNext > {
+ 
     const file = await fetch(
       `/api/reportes/${report}?start=${formData.start}&end=${formData.end}`,
     );
+
+    console.log(file)
     if (file.status == 200) return await file.blob();
-    else throw file ?? "error";
-  } catch (error) {
-    const { message } = error as Error;
-    throw message;
-  }
+    
+    else  return  await file.json();
+
 }
