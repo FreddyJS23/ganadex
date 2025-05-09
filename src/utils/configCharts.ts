@@ -3,23 +3,25 @@ import "chartjs-adapter-date-fns";
 import { de } from "date-fns/locale";
 import { LETTER_BLACK, LETTER_WHITE } from "@/constants/colorLetters";
 export const paletteBackground = [
-  "#1FFF0090",
+  "#FF6600",
+  "#2563eb",
+  "#00E5FF",
+  "#7FFF00",
+  "#6A00FF",
+  "#FF4081",
+  "#2E8B57",
   "#ff481690",
-  "#2dde9890",
-  "#2529d890",
-  "#fff00090",
-  "#f2b60090",
-  "#ffa60090",
+  "#FFC107",
 ];
 
 export const paletteBorderColor = [
+  "#d90429",
+  "#00B2B3",
+  "#00BCD4",
   "#1FFF00",
-  "#ff4816",
-  "#2dde98",
-  "#2529d8",
-  "#fff000",
-  "#f2b600",
-  "#ffa600",
+  "#FF00FF",
+  "#FFCEFE",
+  "#2a9235",
 ];
 
 
