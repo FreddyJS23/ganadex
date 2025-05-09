@@ -38,7 +38,8 @@
     "sonner": "^1.4.41",
     "tailwind-scrollbar": "^3.0.5",
     "zod": "^3.22.4",
-    "zod-i18n-map": "^2.27.0"
+    "zod-i18n-map": "^2.27.0",
+    "zustand": "^5.0.4"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
