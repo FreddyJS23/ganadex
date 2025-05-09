@@ -2,7 +2,7 @@
 
 import { getResumenNatalidad } from "@/actions/getResumenNatalidad";
 import { SelectFilterYear } from "@/components/select filter year";
-import { ResponseResumenNatalidad } from "@/types";
+import { ResponseErrorNext, ResponseResumenNatalidad } from "@/types";
 import { useRef, useState } from "react";
 import { TotalNacimientosAñoActualTorta } from "./total doughnut";
 import { NatalidadUltimos5AñosBarra } from "./natalidad ultimos años";
@@ -10,8 +10,9 @@ import { PartosUltimos5AñosLinea } from "./partos ultimos años";
 import { Chart as ChartJS } from "chart.js";
 import { toast } from "sonner";
 import IconReport from "@/icons/icono-imprimir.svg";
-import { Button } from "@nextui-org/react";
+import { Button, CircularProgress } from "@nextui-org/react";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { useThemeStore } from "@/stores/themeStore";
 
 export const ResumenNatalidad = (
   resumenNatalidad: ResponseResumenNatalidad,
@@ -20,6 +21,14 @@ export const ResumenNatalidad = (
   const graficoTorta = useRef<ChartJS<"doughnut">>(null);
   const graficoLineal = useRef<ChartJS<"line">>(null);
   const graficoBarra = useRef<ChartJS<"bar">>(null);
+
+  const { darkMode, activateDarkMode, disableDarkMode } = useThemeStore(
+    (state) => state,
+  );
+
+  /* estado para mostrar loading y poner opacidad a los gráfico
+  cuando se genere un reporte y este en modo oscuro */
+  const [hiddenChart, setHiddenChart] = useState(false);
 
   /* guardas datos provenientes de la api para los graficos */
   const [dataGraph, setDataGraph] = useState(resumenNatalidad);
@@ -56,8 +65,14 @@ export const ResumenNatalidad = (
   const generarReporte = async () => {
     /* formdata para enviar las imagenes de los graficos */
     const formData = new FormData();
-
+    //desactivar el modo oscuro para evitar problemas de visualización de los graficos
+    if (darkMode) {
+      disableDarkMode();
+      setHiddenChart(true);
+    }
     setIsLoading(true);
+    // Esperar un pequeño retraso para que los cambios de estilo se reflejen
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     /* verificar que los graficos esten cargados  y evitar problema de tipado*/
     if (graficoTorta.current && graficoLineal.current && graficoBarra.current) {
@@ -86,12 +101,23 @@ export const ResumenNatalidad = (
       `/api/reporte_natalidad?year=${selectValue}`,
       optionFetch,
     );
-    toast.success(`Generando reporte...`);
-    const file = await getFile.blob();
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(file as Blob);
-    link.download = `Reporte_natalidad$ ${selectValue}.pdf`;
-    link.click();
+    if (getFile.status == 500) {
+      const error = (await getFile.json()) as ResponseErrorNext;
+      toast.error(error.error.message);
+    } else {
+      toast.success(`Generando reporte...`);
+      const file = await getFile.blob();
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(file as Blob);
+      link.download = `Reporte_natalidad$ ${selectValue}.pdf`;
+      link.click();
+    }
+
+    if (darkMode) {
+      setHiddenChart(false);
+      activateDarkMode();
+    }
+
     setIsLoading(false);
   };
 
@@ -121,28 +147,47 @@ export const ResumenNatalidad = (
 
       {/* gráficos */}
 
-      <div className=" flex flex-col m-auto w-full gap-4">
-        <div className="m-auto bg-base-100 shadow-cards  w-full max-w-md">
-          <TotalNacimientosAñoActualTorta
-            ref={graficoTorta}
-            nacimientos_año_actual={dataGraph.nacimientos_año_actual}
-          />
-        </div>
-        <div className="flex w-full gap-4">
-          <div className="w-full p-2 max-w-3xl bg-base-100 shadow-cards">
-            <NatalidadUltimos5AñosBarra
-              ref={graficoBarra}
-              nacimientos_ultimos_5_año={dataGraph.nacimientos_ultimos_5_año}
+      <div className=" flex flex-col m-auto w-full gap-4 ">
+        <div className="m-auto bg-base-100 shadow-cards w-full max-w-md relative">
+          {isLoading && hiddenChart && <Loading />}
+          <div className={`${isLoading && hiddenChart ? "opacity-10" : ""}`}>
+            <TotalNacimientosAñoActualTorta
+              ref={graficoTorta}
+              nacimientos_año_actual={dataGraph.nacimientos_año_actual}
             />
           </div>
-          <div className="w-full p-2 max-w-3xl bg-base-100 shadow-cards">
-            <PartosUltimos5AñosLinea
-              ref={graficoLineal}
-              nacimientos_ultimos_5_año={dataGraph.nacimientos_ultimos_5_año}
-            />
+        </div>
+        
+        <div className="flex w-full gap-4">
+          <div className="w-full p-2 max-w-3xl bg-base-100 shadow-cards relative">
+            {isLoading && hiddenChart && <Loading />}
+            <div className={`${isLoading && hiddenChart ? "opacity-10" : ""}`}>
+              <NatalidadUltimos5AñosBarra
+                ref={graficoBarra}
+                nacimientos_ultimos_5_año={dataGraph.nacimientos_ultimos_5_año}
+              />
+            </div>
+          </div>
+        
+          <div className="w-full p-2 max-w-3xl bg-base-100 shadow-cards relative">
+            {isLoading && hiddenChart && <Loading />}
+            <div className={`${isLoading && hiddenChart ? "opacity-10" : ""}`}>
+              <PartosUltimos5AñosLinea
+                ref={graficoLineal}
+                nacimientos_ultimos_5_año={dataGraph.nacimientos_ultimos_5_año}
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
+  );
+};
+
+const Loading = () => {
+  return (
+    <div className="absolute inset-0 m-auto w-fit h-fit">
+      <CircularProgress size={"lg"} />
+    </div>
   );
 };
