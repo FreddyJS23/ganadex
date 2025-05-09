@@ -5,6 +5,8 @@ import IconGrafico from "@/icons/icono-grafico.svg";
 import { toast } from "sonner";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import { useState } from "react";
+import { Button as ButtonNextUI } from "@nextui-org/react";
 
 type GenerateReport = {
   endPoint: "ganado" | "dashboard";
@@ -15,11 +17,14 @@ export const ButtonGenerateReport = () => {
   const { id } = useParams<{ id: string }>();
   const pathname = usePathname();
 
+  const [loading, setLoading] = useState(false);
+
   const generateReport = async (
     endPoint: GenerateReport["endPoint"],
     id?: number,
   ) => {
     try {
+      setLoading(true);
       const getFile = await fetch(
         `/api/reportes/${endPoint}${id ? `?id=${id}` : ""}  `,
       );
@@ -33,16 +38,26 @@ export const ButtonGenerateReport = () => {
       const message = error as string;
       return toast.error(message);
     }
+    finally {
+      setLoading(false);
+    }
   };
 
   const Button = ({ endPoint, id }: GenerateReport) => {
     return (
-      <button
-        title="Generar reporte"
-        onClick={() => generateReport(endPoint, id)}
-      >
-        <IconImprimir className={"size-8"} />
-      </button>
+     
+      <ButtonNextUI
+      isIconOnly
+      title={`Generar reporte`}
+      aria-label="Guardar"
+      variant="flat"
+      size="sm"
+      isLoading={loading}
+      onClick={() => generateReport(endPoint, id)}
+    >
+      <IconImprimir className={"size-8"} />
+    </ButtonNextUI>
+    
     );
   };
 
