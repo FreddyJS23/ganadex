@@ -1,3 +1,4 @@
+import { useThemeStore } from "@/stores/themeStore";
 import { ResponseResumenNatalidad } from "@/types";
 import {
   optionChartBarTasaNatalidad,
@@ -50,6 +51,8 @@ const NatalidadUltimos5AñosBarra = forwardRef(function (
     nacimientos_ultimos_5_año,
   );
 
+  const darkMode = useThemeStore((state) => state.darkMode);
+
   const dataBar: ChartData<"bar"> = {
     labels: years,
     datasets: [
@@ -66,7 +69,7 @@ const NatalidadUltimos5AñosBarra = forwardRef(function (
   return (
     <>
       {/* gráfico */}
-      <Bar ref={ref} options={optionChartBarTasaNatalidad} data={dataBar} />
+      <Bar ref={ref} options={optionChartBarTasaNatalidad(darkMode)} data={dataBar} />
     </>
   );
 });

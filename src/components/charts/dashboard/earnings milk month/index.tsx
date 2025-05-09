@@ -2,6 +2,7 @@
 
 import { getBalanceMonthlySaleMilk } from "@/actions/getBalanceMonthlySaleMilk";
 import { SelectFilterMonth } from "@/components/select filter month";
+import { useThemeStore } from "@/stores/themeStore";
 import {
   BalanceDiarioVentaLeche,
   BalanceMensualVentaLeche,
@@ -90,6 +91,8 @@ export const ChartEarningsMilkMonth = ({
     setDataGraph(data.concat(rangeData(select)));
   };
 
+  const darkMode=useThemeStore((state) => state.darkMode)
+
   return (
     <>
       {/* titulo */}
@@ -106,7 +109,7 @@ export const ChartEarningsMilkMonth = ({
       </div>
       {/* Ganancias */}
       <span className="mb-1 text-lg">{ganancias}</span>
-      <Line options={optionChartLineEarningsMilkMonth} data={data} />
+      <Line options={optionChartLineEarningsMilkMonth(darkMode)} data={data} />
     </>
   );
 };

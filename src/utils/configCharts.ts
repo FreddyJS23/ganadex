@@ -1,8 +1,7 @@
-import { ChartOptions } from "chart.js";
+import type { ChartOptions } from "chart.js";
 import "chartjs-adapter-date-fns";
 import { de } from "date-fns/locale";
-import { checkedDark } from "./darkmode";
-
+import { LETTER_BLACK, LETTER_WHITE } from "@/constants/colorLetters";
 export const paletteBackground = [
   "#1FFF0090",
   "#ff481690",
@@ -23,22 +22,25 @@ export const paletteBorderColor = [
   "#ffa600",
 ];
 
-const darkMode =
-  document && document.documentElement.classList.contains("dark");
-const letterWhite = "#e5e7eb";
-const letterBlack = "#111827";
 
-export const optionChartTotalTypesCattle: ChartOptions<"doughnut"> = {
+
+
+export const optionChartTotalTypesCattle = (
+  darkMode: boolean,
+): ChartOptions<"doughnut"> => ({
   plugins: {
     legend: {
       position: "right",
-      labels: { color: darkMode ? letterWhite : letterBlack, padding: 15 },
+      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK, padding: 20, },
+      fullSize:false,
+      align: "start",
+
     },
     datalabels: {
       //plugin datalabels
       labels: {
         value: {
-          color: darkMode ? letterWhite : letterBlack,
+          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
           font: {
             weight: "bold",
           },
@@ -46,78 +48,63 @@ export const optionChartTotalTypesCattle: ChartOptions<"doughnut"> = {
       },
     },
   },
+   borderColor: darkMode ? LETTER_WHITE : LETTER_BLACK,
   aspectRatio: 2.4,
   layout: { padding: 10 },
-};
+});
 
-export const optionChartTop3CatleProduction: ChartOptions<"bar"> = {
-  /* cartesiano */
+export const optionChartTop3CatleProduction = (
+  darkMode: boolean,
+): ChartOptions<"bar"> => ({
   scales: {
     y: {
       beginAtZero: true,
-      border: { color: darkMode ? letterWhite : letterBlack },
-      grid: {
-        display: false,
-      },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      grid: { display: false },
       ticks: {
-        color: darkMode ? letterWhite : letterBlack,
-        callback: function (value) {
-          return value + " KG";
-        },
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
+        callback: (value) => value + " KG",
       },
       suggestedMax: 120,
     },
     x: {
       beginAtZero: true,
-      ticks: { color: darkMode ? letterWhite : letterBlack },
-      border: { color: darkMode ? letterWhite : letterBlack },
-      grid: {
-        display: false,
-      },
+      ticks: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      grid: { display: false },
     },
   },
-  /* elementos chart */
   plugins: {
     legend: {
       display: false,
-      labels: { color: darkMode ? letterWhite : letterBlack },
+      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
     },
     tooltip: {
       callbacks: {
-        label: function (context) {
-          return context.formattedValue + " KG";
-        },
+        label: (context) => context.formattedValue + " KG",
       },
     },
   },
   aspectRatio: 1.7,
-};
+});
 
-export const optionChartLineAnnualMilk: ChartOptions<"line"> = {
+export const optionChartLineAnnualMilk = (darkMode: boolean): ChartOptions<"line"> => ({
   scales: {
     y: {
       beginAtZero: true,
-      border: { color: darkMode ? letterWhite : letterBlack },
-      grid: {
-        color: "#ecedee30",
-        display: true,
-      },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      grid: { color: "#ecedee30", display: true },
       ticks: {
-        color: darkMode ? letterWhite : letterBlack,
-        callback: function (value) {
-          return value + " KG";
-        },
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
+        callback: (value) => value + " KG",
       },
       suggestedMax: 300,
     },
     x: {
       beginAtZero: true,
-      ticks: { color: darkMode ? letterWhite : letterBlack },
-      border: { color: darkMode ? letterWhite : letterBlack },
-      grid: {
-        color: "#ecedee30",
-        display: true,
-      },
+      ticks: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      grid: { color: "#ecedee30", display: true },
     },
   },
   elements: {
@@ -132,20 +119,17 @@ export const optionChartLineAnnualMilk: ChartOptions<"line"> = {
   plugins: {
     legend: {
       display: false,
-      labels: { color: darkMode ? letterWhite : letterBlack },
-    },
+  },
     tooltip: {
       callbacks: {
-        label: function (context) {
-          return context.formattedValue + " KG";
-        },
+        label: (context) => context.formattedValue + " KG",
       },
     },
   },
   aspectRatio: 3,
-};
+});
 
-export const optionChartLineEarningsMilkMonth: ChartOptions<"line"> = {
+export const optionChartLineEarningsMilkMonth= (darkMode: boolean): ChartOptions<"line"> => ({
   parsing: {
     xAxisKey: "fecha",
     yAxisKey: "cantidad",
@@ -153,21 +137,21 @@ export const optionChartLineEarningsMilkMonth: ChartOptions<"line"> = {
   scales: {
     y: {
       beginAtZero: true,
-      border: { color: darkMode ? letterWhite : letterBlack },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
       grid: {
         color: "#ecedee30",
         display: true,
       },
       ticks: {
-        color: darkMode ? letterWhite : letterBlack,
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
     },
     x: {
       adapters: { date: { locale: de } },
       type: "time",
       time: { unit: "day" },
-      ticks: { color: darkMode ? letterWhite : letterBlack },
-      border: { color: darkMode ? letterWhite : letterBlack },
+      ticks: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
       grid: {
         color: "#ecedee30",
         display: true,
@@ -186,14 +170,14 @@ export const optionChartLineEarningsMilkMonth: ChartOptions<"line"> = {
   plugins: {
     legend: {
       display: false,
-      labels: { color: darkMode ? letterWhite : letterBlack },
+      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
     },
     tooltip: {},
   },
   aspectRatio: 3,
-};
+});
 
-export const optionChartLineSalesCatle: ChartOptions<"bar"> = {
+export const optionChartLineSalesCatle= (darkMode: boolean): ChartOptions<"bar"> => ({
   parsing: {
     xAxisKey: "mes",
     yAxisKey: "ventas",
@@ -203,19 +187,19 @@ export const optionChartLineSalesCatle: ChartOptions<"bar"> = {
   scales: {
     y: {
       beginAtZero: true,
-      border: { color: darkMode ? letterWhite : letterBlack },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
       grid: {
         display: false,
       },
       ticks: {
-        color: darkMode ? letterWhite : letterBlack,
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
       suggestedMax: 50,
     },
     x: {
       beginAtZero: true,
-      ticks: { color: darkMode ? letterWhite : letterBlack },
-      border: { color: darkMode ? letterWhite : letterBlack },
+      ticks: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
       grid: {
         display: false,
       },
@@ -225,33 +209,33 @@ export const optionChartLineSalesCatle: ChartOptions<"bar"> = {
   plugins: {
     legend: {
       display: false,
-      labels: { color: darkMode ? letterWhite : letterBlack },
+      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
     },
   },
   aspectRatio: 7,
-};
+});
 
-export const optionChartLinePartosTotales: ChartOptions<"line"> = {
+export const optionChartLinePartosTotales= (darkMode: boolean): ChartOptions<"line"> => ({
   scales: {
     y: {
       beginAtZero: true,
-      border: { color: darkMode ? letterWhite : letterBlack },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
       grid: {
         display: false,
-        color: darkMode ? letterWhite : letterBlack,
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
       ticks: {
-        color: darkMode ? letterWhite : letterBlack,
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
       suggestedMax: 100,
     },
     x: {
       beginAtZero: true,
-      ticks: { color: darkMode ? letterWhite : letterBlack },
-      border: { color: darkMode ? letterWhite : letterBlack },
+      ticks: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
       grid: {
         display: false,
-        color: darkMode ? letterWhite : letterBlack,
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
     },
   },
@@ -268,7 +252,7 @@ export const optionChartLinePartosTotales: ChartOptions<"line"> = {
   plugins: {
     legend: {
       display: false,
-      labels: { color: darkMode ? letterWhite : letterBlack },
+      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
     },
     tooltip: {},
     datalabels: {
@@ -277,7 +261,7 @@ export const optionChartLinePartosTotales: ChartOptions<"line"> = {
       align: "top",
       labels: {
         value: {
-          color: darkMode ? letterWhite : letterBlack,
+          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
           font: {
             weight: "bold",
             size: 12,
@@ -288,7 +272,7 @@ export const optionChartLinePartosTotales: ChartOptions<"line"> = {
     title: {
       display: true,
       text: "Nacimientos ultimos 5 años",
-      color: darkMode ? letterWhite : letterBlack,
+      color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       font: {
         size: 20,
         weight: "bold",
@@ -297,29 +281,29 @@ export const optionChartLinePartosTotales: ChartOptions<"line"> = {
     },
   },
   aspectRatio: 3,
-};
+});
 
-export const optionChartBarTasaNatalidad: ChartOptions<"bar"> = {
+export const optionChartBarTasaNatalidad=(darkMode: boolean): ChartOptions<"bar"> => ({
   scales: {
     y: {
       beginAtZero: true,
-      border: { color: darkMode ? letterWhite : letterBlack },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
       grid: {
         display: false,
-        color: darkMode ? letterWhite : letterBlack,
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
       ticks: {
-        color: darkMode ? letterWhite : letterBlack,
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
       suggestedMax: 100,
     },
     x: {
       beginAtZero: true,
-      ticks: { color: darkMode ? letterWhite : letterBlack },
-      border: { color: darkMode ? letterWhite : letterBlack },
+      ticks: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
+      border: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
       grid: {
         display: false,
-        color: darkMode ? letterWhite : letterBlack,
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
     },
   },
@@ -329,7 +313,7 @@ export const optionChartBarTasaNatalidad: ChartOptions<"bar"> = {
     title: {
       display: true,
       text: "Tasa de natalidad",
-      color: darkMode ? letterWhite : letterBlack,
+      color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       font: {
         size: 20,
         weight: "bold",
@@ -338,14 +322,12 @@ export const optionChartBarTasaNatalidad: ChartOptions<"bar"> = {
     },
     datalabels: {
       //plugin datalabels
-      formatter: function (value) {
-        return value + "%";
-      },
+      formatter: (value) => value + "%",
       anchor: "end",
       align: "top",
       labels: {
         value: {
-          color: darkMode ? letterWhite : letterBlack,
+          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
           font: {
             weight: "bold",
             size: 12,
@@ -355,25 +337,23 @@ export const optionChartBarTasaNatalidad: ChartOptions<"bar"> = {
     },
     legend: {
       display: false,
-      labels: { color: darkMode ? letterWhite : letterBlack },
+      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK },
     },
     tooltip: {
       callbacks: {
-        label: function (context) {
-          return context.formattedValue + "%";
-        },
+        label: (context) => context.formattedValue + "%",
       },
     },
   },
   aspectRatio: 3,
-};
+});
 
-export const optionChartDoughnutCantidadGanado: ChartOptions<"doughnut"> = {
+export const optionChartDoughnutCantidadNacimientos=(darkMode: boolean): ChartOptions<"doughnut"> => ({
   plugins: {
     title: {
       display: true,
       text: "Nacimientos del año seleccionado",
-      color: darkMode ? letterWhite : letterBlack,
+      color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       font: {
         size: 20,
         weight: "bold",
@@ -384,7 +364,7 @@ export const optionChartDoughnutCantidadGanado: ChartOptions<"doughnut"> = {
       //plugin datalabels
       labels: {
         value: {
-          color: darkMode ? letterWhite : letterBlack,
+          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
           font: {
             weight: "bold",
             size: 20,
@@ -394,9 +374,10 @@ export const optionChartDoughnutCantidadGanado: ChartOptions<"doughnut"> = {
     },
     legend: {
       position: "right",
-      labels: { color: darkMode ? letterWhite : letterBlack, padding: 15 },
+      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK, padding: 15 },
     },
   },
   aspectRatio: 2,
   layout: { padding: 10 },
-};
+  borderColor: darkMode ? LETTER_WHITE : LETTER_BLACK,
+});

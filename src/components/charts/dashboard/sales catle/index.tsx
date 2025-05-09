@@ -2,6 +2,7 @@
 
 import { getBalanceAnnualSaleCattle } from "@/actions/getBalanceAnnualSaleCattle";
 import { SelectFilterYear } from "@/components/select filter year";
+import { useThemeStore } from "@/stores/themeStore";
 import { ResponseAñosVentaGanado } from "@/types";
 import {
   BalanceAnualVentaGanado,
@@ -64,6 +65,8 @@ export const SalesCatle = ({
     ],
   };
 
+  const darkMode =useThemeStore((state) => state.darkMode)
+
   return (
     <>
       {/* titulo */}
@@ -79,7 +82,7 @@ export const SalesCatle = ({
         </div>
       </div>
       {/* grafico */}
-      <Bar options={optionChartLineSalesCatle} data={data} />
+      <Bar options={optionChartLineSalesCatle(darkMode)} data={data} />
     </>
   );
 };

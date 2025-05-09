@@ -16,6 +16,8 @@ import {
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
+import { useThemeStore } from "@/stores/themeStore";
+import { LETTER_BLACK, LETTER_WHITE } from "@/constants/colorLetters";
 
 ChartJS.register(ArcElement, Tooltip, Legend, annotationPlugin);
 
@@ -39,10 +41,8 @@ export const TortaTipoGanado = ({
     ],
   };
 
-  const darkMode =
-    document && document.documentElement.classList.contains("dark");
-  const letterWhite = "#e5e7eb";
-  const letterBlack = "#111827";
+  const darkMode = useThemeStore((state) => state.darkMode);
+
 
   const configAnotation = {
     annotation: {
@@ -55,19 +55,21 @@ export const TortaTipoGanado = ({
             { size: 20, weight: "bold" },
             { size: 18, weight: "normal" },
           ],
-          color: darkMode ? letterWhite : letterBlack,
+          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
         },
       },
     },
   };
+
+  const optionChart=optionChartTotalTypesCattle(darkMode);
   //destructurar options
   //primero se destructura el objeto de opciones
   //luego se crear un nuevo objecto con la propiedad plugins
   //se destructora el objeto de plugins
   //y se añade el plugin anotaciones
   const options = {
-    ...optionChartTotalTypesCattle,
-    plugins: { ...optionChartTotalTypesCattle.plugins, ...configAnotation },
+    ...optionChart,
+    plugins: { ...optionChart.plugins, ...configAnotation },
   };
 
   return <Doughnut data={datasets} options={options} />

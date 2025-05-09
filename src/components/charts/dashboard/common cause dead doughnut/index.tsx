@@ -1,5 +1,7 @@
 "use client";
 
+import { LETTER_BLACK, LETTER_WHITE } from "@/constants/colorLetters";
+import { useThemeStore } from "@/stores/themeStore";
 import { CausaFrecuente } from "@/types/dashboard";
 import {
   optionChartTotalTypesCattle,
@@ -37,11 +39,9 @@ export const TortaCausasFallecimientosGanado = ({
       },
     ],
   };
-
-  const darkMode =
-    document && document.documentElement.classList.contains("dark");
-  const letterWhite = "#e5e7eb";
-  const letterBlack = "#111827";
+ 
+  const darkMode =useThemeStore((state) => state.darkMode)
+ 
 
   const configAnotation = {
     annotation: {
@@ -54,7 +54,7 @@ export const TortaCausasFallecimientosGanado = ({
             { size: 20, weight: "bold" },
             { size: 18, weight: "normal" },
           ],
-          color: darkMode ? letterWhite : letterBlack,
+          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
         },
       },
     },
