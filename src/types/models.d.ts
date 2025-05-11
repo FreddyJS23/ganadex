@@ -51,6 +51,7 @@ export type Ganado = {
   estados: EstadosGanado[];
   eventos: Eventos;
   fallecimiento:Pick<Fallecimiento,"fecha" | "causa" | "descripcion"> | null;
+  venta:Pick<Venta,"fecha" | "comprador"> | null;
 };
 
 export type Toro = Pick<
@@ -65,6 +66,7 @@ export type Toro = Pick<
   | "pesos"
   | "tipo"
   | "estados"
+  | "venta"
 > & {
   efectividad: number;
   padre_en_partos: number;

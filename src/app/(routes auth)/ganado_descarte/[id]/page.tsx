@@ -107,6 +107,20 @@ export default async function Page({ params }: ParamsPageBeef) {
                 />
                 </>
               )}
+              {ganado_descarte.venta && (
+                <>
+                 <Details
+                  tittle={DetailsCattle.fecha_venta}
+                  content={ganado_descarte.venta.fecha}
+                />
+                 <Details
+                  tittle={DetailsCattle.comprador}
+                  content={ganado_descarte.venta.comprador}
+                />
+                
+                </>
+              )}
+
               {ganado_descarte.fecha_ingreso && (
                 <Details
                   tittle={DetailsCattle.fecha_ingreso}

@@ -6,6 +6,8 @@ export const DetailsCattle = {
   fecha_ingreso: "Fecha ingreso",
   fecha_fallecimiento: "Fecha de fallecimiento",
   causa_fallecimiento: "Causa de fallecimiento",
+  fecha_venta: "Fecha de venta",
+  comprador: "Comprador",
   descripcion_fallecimiento: "Descripción de fallecimiento",
   tipo: "Tipo",
   estado: "Estado",
