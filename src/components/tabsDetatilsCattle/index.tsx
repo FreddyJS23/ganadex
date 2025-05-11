@@ -4,6 +4,7 @@ import { Details } from "../details";
 import {
   DetailsBirht,
   DetailsChecks,
+  DetailsEfficiencyBull,
   DetailsServe,
   DetailsWeightingMilk,
 } from "@/collections";
@@ -25,6 +26,11 @@ type TabsDetailsCattleProps = Partial<Omit<ResponseGanado, "ganado">> & {
   /**Cuando la vaca no tiene un peso mínimo se desactiva algunas opciones */
   disabledSomeTabs?: boolean;
   isMale: boolean;
+  servicio_toro?: {
+    efectividad: number;
+    padre_en_partos: number;
+    servicios: number | null;
+  };
   disableCreateButton?: boolean;
   /* Se debe acomodar la forma de ver el historial de operación para vacas o toros que se descarten */
   ganado_id?: number;
@@ -64,6 +70,7 @@ export const TabDetailsCattle = ({
   isMale,
   disableCreateButton = false,
   ganado_id,
+  servicio_toro,
 }: TabsDetailsCattleProps) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -167,42 +174,67 @@ export const TabDetailsCattle = ({
           title={<TitleTab title="Servicios" icon="serve" />}
         >
           <ContainerContentTab>
-            <Details
-              tittle={DetailsServe.fecha}
-              content={servicio_reciente?.fecha}
-            />
-            <Details
-              tittle={DetailsServe.observacion}
-              content={servicio_reciente?.observacion}
-            />
-            <Details
-              tittle={DetailsServe.tipo}
-              content={servicio_reciente?.tipo}
-            />
+            {/* descripción servicios al ver un toro */}
+            {servicio_toro ? (
+              <>
+                <Details
+                  tittle={DetailsEfficiencyBull.padre_partos}
+                  content={servicio_toro.padre_en_partos}
+                />
+                <Details
+                  tittle={DetailsEfficiencyBull.servicios}
+                  content={servicio_toro.servicios}
+                />
+                <Details
+                  tittle={DetailsEfficiencyBull.efectividad}
+                  content={servicio_toro.efectividad + "%"}
+                />
+              </>
+            ) 
+             /* descripción servicios al ver una vaca */
+            : (
+              <>
+                <Details
+                  tittle={DetailsServe.fecha}
+                  content={servicio_reciente?.fecha}
+                />
+                <Details
+                  tittle={DetailsServe.observacion}
+                  content={servicio_reciente?.observacion}
+                />
+                <Details
+                  tittle={DetailsServe.tipo}
+                  content={servicio_reciente?.tipo}
+                />
 
-            {servicio_reciente?.toro ? (
-              <Details
-                tittle={DetailsServe.numero_toro}
-                content={servicio_reciente?.toro.numero}
-              />
-            ) : (
-              <Details
-                tittle={DetailsServe.pajuela}
-                content={servicio_reciente?.pajuela_toro?.codigo}
-              />
+                {servicio_reciente?.toro ? (
+                  <Details
+                    tittle={DetailsServe.numero_toro}
+                    content={servicio_reciente?.toro.numero}
+                  />
+                ) : (
+                  <Details
+                    tittle={DetailsServe.pajuela}
+                    content={servicio_reciente?.pajuela_toro?.codigo}
+                  />
+                )}
+
+                <Details
+                  tittle={DetailsServe.total_acumulado}
+                  content={total_servicios_acumulados}
+                />
+
+                <Details
+                  tittle={DetailsServe.totales}
+                  content={total_servicios}
+                />
+
+                <Details
+                  tittle={DetailsServe.efectividad}
+                  content={efectividad ?? "0" + "%"}
+                />
+              </>
             )}
-
-            <Details tittle={DetailsServe.totales} content={total_servicios} />
-
-            <Details
-              tittle={DetailsServe.total_acumulado}
-              content={total_servicios_acumulados}
-            />
-
-            <Details
-              tittle={DetailsServe.efectividad}
-              content={efectividad ?? "0" + "%"}
-            />
             {disableCreateButton ? (
               <ButonHistory url="servicio" id={ganado_id} />
             ) : (

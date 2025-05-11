@@ -125,29 +125,13 @@ export default async function Page({ params }: ParamsPageBull) {
                   </>
                 )}
               </div>
-              {/*Eficiencia */}
-              <div className="flex flex-col gap-1 col-span-full m-auto sm:m-0 lg:m-0 lg:justify-self-stretch">
-                <h3 className="self-center text-xl font-bold">Eficiencia</h3>
-                <div className="flex gap-6 flex-wrap justify-between sm:gap-4">
-                  <Details
-                    tittle={DetailsEfficiencyBull.padre_partos}
-                    content={padre_en_partos}
-                  />
-                  <Details
-                    tittle={DetailsEfficiencyBull.servicios}
-                    content={servicios}
-                  />
-                  <Details
-                    tittle={DetailsEfficiencyBull.efectividad}
-                    content={efectividad + "%"}
-                  />
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
         <div className="w-full divide-y divide-primary/[.20]">
           <TabDetailsCattle
+            servicio_toro={{efectividad,padre_en_partos,servicios}}
             vacunaciones={vacunaciones}
             isMale={true}
             disableCreateButton
