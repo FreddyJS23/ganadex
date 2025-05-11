@@ -10,6 +10,8 @@ import { useRef } from "react";
 import { toast } from "sonner";
 import { createCustomer } from "@/actions/comprador";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import { useFormManager } from "@/hooks/useFormManager";
 
 export const ModalCreateCustomer = ({
   isOpen,
@@ -17,30 +19,13 @@ export const ModalCreateCustomer = ({
   onOpenChange,
   referer,
 }: ModalProps & { referer?: string | null }) => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<CreateCustomer>({
-    resolver: zodResolver(createCustomerShema),
-  });
-
   const router = useRouter();
-  const formRef = useRef(null);
 
-  const actionCreateCustomer: () => void = handleSubmit(async (data) => {
-    const response = await createCustomer(data);
-
-    /*ver si es tipo objecto para evitar conflictos de tipo para manejar error del backend y mostrar mensaje */
-    if (typeof response == "object")
-      if ("error" in response) return toast.error(messageErrorApi(response));
-
-    toast.success(`${response} ha sido registrado como nuevo comprador`);
+  const customSuccessAction = () => {
 
     /* ya que esta ruta puede ser usada por intercesión de ruta o una ruta normal la navegación sera diferente.
-    Los datos registrados deben estar lo mas reciente posible, por lo que
-    se hace una navegación para refrescar dependiendo del path donde se llame */
-
+  Los datos registrados deben estar lo mas reciente posible, por lo que
+  se hace una navegación para refrescar dependiendo del path donde se llame */
     //rutas dentro de su modulo (/revisiones/tipo)
     if (!referer) {
       router.refresh();
@@ -52,15 +37,27 @@ export const ModalCreateCustomer = ({
     const lastSegment = parseInt(segmentPath[segmentPath.length - 1]);
     //reconstruir ruta que hizo referencia
     const newRoute = segmentPath.join("/");
+    console.log(lastSegment)
     //si es un numero es porque se esta creando fuera de su modulo (comprador/registrar)
-    if (typeof lastSegment == "number") {
+    if (typeof lastSegment == "number" && !Number.isNaN(lastSegment)) {
       return router.replace(`/${newRoute}`);
     }
-
     router.refresh();
-    return router.push(`/venta_ganado/historial`);
-  });
+    return router.back();
+  };
 
+  const { handleSubmitForm, errors, register, formRef } =
+    useFormManager<CreateCustomer, string | number | undefined>({
+      schema: createCustomerShema,
+      typeForm: "create",
+      submitCreateAction: createCustomer,
+      customSuccessAction: customSuccessAction,
+      messageOnSuccess:"crearComprador",
+      routerRefresh:false,
+      routerBack:false,
+    });
+
+ 
   return (
     <LayoutModal
       icon="customer"
@@ -73,7 +70,7 @@ export const ModalCreateCustomer = ({
     >
       <form
         ref={formRef}
-        action={actionCreateCustomer}
+        action={handleSubmitForm}
         id={"form-createCustomer"}
         className="m-auto w-2/4 "
       >

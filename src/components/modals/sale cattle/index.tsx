@@ -18,6 +18,7 @@ import { formSaleCattle } from "@/collections/formsInputs";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
 type ModalBaseProps = Pick<ModalProps, "isOpen" | "onOpen" | "onOpenChange"> & {
   selectCompradores: Comprador[];
@@ -60,11 +61,13 @@ export const ModalSaleCattle = (props: ModalSaleProps) => {
   const router = useRouter();
   const formRef = useRef(null);
   const params = useParams<{ id: string }>();
+  const { activateLoading, disableLoading } = useLoadingButtonModal();
 
   const generateReportSale = async (
     endPoint: keyof typeof endpointsReports,
   ) => {
     try {
+      activateLoading();
       const getFile = await fetch(`/api/reportes/${endPoint}`);
       toast.success(`Generando nota de venta...`);
       const file = await getFile.blob();
@@ -75,10 +78,13 @@ export const ModalSaleCattle = (props: ModalSaleProps) => {
     } catch (error) {
       const message = error as string;
       return toast.error(message);
+    } finally {
+      disableLoading();
     }
   };
 
   const actionCreateSaleCattle: () => void = handleSubmit(async (data) => {
+    activateLoading();
     const saleCattle =
       sale === "single"
         ? //crear venta individual
@@ -88,11 +94,14 @@ export const ModalSaleCattle = (props: ModalSaleProps) => {
           props.sale === "multiple" &&
           (await ventaGanadoLote(data, props.itemsIds));
     /* manejar error del backend y mostrar mensaje */
-    if (typeof saleCattle == "object" && "error" in saleCattle)
+    if (typeof saleCattle == "object" && "error" in saleCattle) {
+      disableLoading();
       return toast.error(messageErrorApi(saleCattle));
+    }
 
     //mensaje para venta individual
     if (sale === "single") {
+      disableLoading();
       toast.success(`Se ha realizado la venta del ganado ${saleCattle} `, {
         action: (
           <div className="max-w-24">
@@ -103,6 +112,7 @@ export const ModalSaleCattle = (props: ModalSaleProps) => {
           </div>
         ),
       });
+      disableLoading;
       router.back();
       router.refresh();
     }

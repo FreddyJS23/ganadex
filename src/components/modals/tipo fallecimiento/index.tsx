@@ -16,6 +16,7 @@ import {
   createCausaFallecimiento,
   updateCausaFallecimiento,
 } from "@/actions/causaFallecimiento";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
 type ModalCreateCausaFallecimientoProps = {
   create: boolean;
@@ -62,8 +63,10 @@ export const ModalCreateUpdateCausaFallecimiento = (
   const formRef = useRef(null);
   let response: ResponseCausaFallecimiento | ResponseErrorNext;
   let messageResponse: string;
+  const { activateLoading, disableLoading } = useLoadingButtonModal();
 
   const actionCausaFallecimiento: () => void = handleSubmit(async (data) => {
+    activateLoading();
     if ("create" in props) {
       response = await createCausaFallecimiento(data);
       if ("causa_fallecimiento" in response)
@@ -74,8 +77,10 @@ export const ModalCreateUpdateCausaFallecimiento = (
     }
 
     /* manejar error del backend y mostrar mensaje */
-    if (typeof response == "object" && "error" in response)
+    if (typeof response == "object" && "error" in response) {
+      disableLoading();
       return toast.error(messageErrorApi(response));
+    }
 
     toast.success(messageResponse);
 
@@ -86,6 +91,7 @@ export const ModalCreateUpdateCausaFallecimiento = (
     //rutas dentro de su modulo (/revisiones/tipo)
     if (!referer) {
       router.refresh();
+      disableLoading()
       return router.push(`/fallecimientos`);
     }
     const pathOrigin = referer.split("/");
@@ -96,9 +102,11 @@ export const ModalCreateUpdateCausaFallecimiento = (
     const newRoute = segmentPath.join("/");
     //si es un numero es porque se esta creando fuera de su modulo (fallecimientos/causa/crear)
     if (typeof lastSegment == "number") {
+      disableLoading();
       return router.replace(`/${newRoute}`);
     }
 
+    disableLoading()
     router.refresh();
     return router.push(`/fallecimientos`);
   });

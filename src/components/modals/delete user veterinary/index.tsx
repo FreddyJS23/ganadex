@@ -6,6 +6,8 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { deleteUserVeterinary } from "@/actions/userVeterinary";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import { useActionId } from "@/hooks/useActionId";
 
 type ModalDeleteUserVeterinaryProps = Pick<
   LayoutModalProps,
@@ -21,18 +23,15 @@ export const ModalDeleteUserVeterinary = ({
   onOpenChange,
   onClose,
 }: ModalDeleteUserVeterinaryProps) => {
-  const router = useRouter();
 
-  const actionDeleteUserVeterinary = async () => {
-    const response = await deleteUserVeterinary(id);
-    /* manejar error del backend y mostrar mensaje */
-    if (typeof response == "object" && "error" in response!)
-      return toast.error(messageErrorApi(response));
-
-    toast.success("Usuario eliminado");
-    router.refresh();
-    onClose && onClose();
-  };
+  const {onAction} = useActionId({
+    action: deleteUserVeterinary,
+    id: id,
+    messageOnSuccess: "usuarioEliminado",
+    onClose: onClose,
+    routerBack:false,
+    justMessageOnSuccess: true,
+  });
 
   return (
     <LayoutModal
@@ -42,7 +41,7 @@ export const ModalDeleteUserVeterinary = ({
       footer={true}
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      onClick={actionDeleteUserVeterinary}
+      onClick={onAction}
       onClose={onClose}
     >
       <p>Confirmar la eliminación de usuario</p>

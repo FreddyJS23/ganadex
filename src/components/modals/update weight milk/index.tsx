@@ -17,6 +17,8 @@ import { formWeightMilk } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { updateWeightMilkShema } from "@/validations/WeightMilkShema";
 import { updateWeightMilk } from "@/actions/weightMilk";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalUpdateWeightMilkProps = Pick<
   LayoutModalProps,
@@ -31,39 +33,32 @@ export const ModalUpdateWeightMilk = ({
   onClose,
   pesajeLeche,
 }: ModalUpdateWeightMilkProps) => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<UpdateWeightMilk>({
-    resolver: zodResolver(updateWeightMilkShema),
-    defaultValues: pesajeLeche,
-  });
-
-  const form = useRef<HTMLFormElement | null>(null);
-
   const { id: cattleId } = useParams<{ id: string }>();
 
   const router = useRouter();
 
-  const actionWeightMilk: () => void = handleSubmit(async (data) => {
-    const response = await updateWeightMilk(
-      pesajeLeche.id,
-      Number.parseInt(cattleId),
-      data,
-    );
-
-    /* manejar error del backend y mostrar mensaje */
-    if (typeof response == "object" && "error" in response)
-      return toast.error(messageErrorApi(response));
-
-    form.current?.reset();
-
-    toast.success("Se ha actualizado correctamente");
+  const customSuccessAction = () => {
     /* no se usa el refresh ya que esta sección se ejecuta en una intercesión de ruta,
-    por ende el refresh bloquea la navegación */
+  por ende el refresh bloquea la navegación */
     router.push(`/ganado/${cattleId}/pesajes_leche`);
     onClose && onClose();
+  };
+
+  const { handleSubmitForm, errors, register, formRef } = useFormManager<
+    UpdateWeightMilk,
+    string
+  >({
+    schema: updateWeightMilkShema,
+    typeForm: "edit",
+    id: pesajeLeche.id,
+    id_related: Number.parseInt(cattleId),
+    submitEditWithIdAction: updateWeightMilk,
+    defaultValues: pesajeLeche,
+    messageOnSuccess: "actualiacion",
+    routerBack: false,
+    routerRefresh: false,
+    customSuccessAction: customSuccessAction,
+    justMessageOnSuccess: true,
   });
 
   return (
@@ -73,13 +68,13 @@ export const ModalUpdateWeightMilk = ({
       footer={true}
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      onClick={actionWeightMilk}
       onClose={onClose}
-      refForm={form}
+      refForm={formRef}
     >
       <form
-        ref={form}
-        action={actionWeightMilk}
+        id="form-updateWeightMilk"
+        ref={formRef}
+        action={handleSubmitForm}
         className="flex flex-col items-center m-auto max-w-[827px]"
       >
         <div className="flex flex-col  gap-6 flex-wrap justify-around md:gap-12 sm:flex-row ">

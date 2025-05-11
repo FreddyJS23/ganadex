@@ -17,6 +17,7 @@ import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { useDisclosure } from "@nextui-org/react";
 import { createTypeCheck, updateTypeCheck } from "@/actions/tipoRevision";
 import { createTypeCheckShema } from "@/validations/typeCheck";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
 type ModalCreateTypeCheckProps = {
   create: boolean;
@@ -62,8 +63,10 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
   const formRef = useRef(null);
   let response: ResponseTipoRevision | ResponseErrorNext;
   let messageResponse: string;
+  const { activateLoading, disableLoading } = useLoadingButtonModal();
 
   const actionTypeCheck: () => void = handleSubmit(async (data) => {
+    activateLoading();
     if ("create" in props) {
       response = await createTypeCheck(data);
       if ("tipo_revision" in response)
@@ -74,8 +77,10 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
     }
 
     /* manejar error del backend y mostrar mensaje */
-    if (typeof response == "object" && "error" in response)
+    if (typeof response == "object" && "error" in response) {
+      disableLoading();
       return toast.error(messageErrorApi(response));
+    }
 
     toast.success(messageResponse);
 
@@ -84,21 +89,25 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
     se hace una navegación para refrescar dependiendo del path donde se llame */
 
     //rutas dentro de su modulo (/revisiones/tipo)
-    if (!referer)
+    if (!referer) {
+      disableLoading();
       /* no se usa el refresh ya que esta sección se ejecuta en una intercesión de ruta,
       por ende el refresh bloquea la navegación */
       return router.push(`/revisiones/tipo`);
+    }
 
     const pathOrigin = referer.split("/");
     //eliminar parte del dominio, ejemplo de referer: http://localhost:3000/ganado/109/revision/registrar
     const segmentPath = pathOrigin.slice(3);
 
     if (segmentPath[segmentPath.length - 1] == "registrar") {
+      disableLoading();
       //aquí se usar el refresh y el back, ya que las rutas donde se llaman no son intersecciones de ruta
       router.back();
       return router.refresh();
     }
 
+    disableLoading();
     return router.push(`/revisiones/tipo`);
   });
   console.log(codeCheck);

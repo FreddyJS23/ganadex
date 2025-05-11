@@ -1,6 +1,12 @@
 "use client";
 
-import type { Ganado, GanadoDescarte, LayoutModalProps, Toro } from "@/types";
+import type {
+  Ganado,
+  GanadoDescarte,
+  LayoutModalProps,
+  ResponseGanado,
+  Toro,
+} from "@/types";
 import type { EditCastle } from "@/types/forms";
 import ButtonEdit from "@/ui/ButtonEdit";
 import { castleEditShema } from "@/validations/castleShema";
@@ -19,6 +25,7 @@ import { useRouter } from "next/navigation";
 import { origenCasttleSelect } from "@/collections/origenCastleSelect";
 import { editBull } from "@/actions/toro";
 import { editBeef } from "@/actions/ganado_descarte";
+import { useFormManager } from "@/hooks/useFormManager";
 
 type dataProps = {
   ganado: Ganado | Toro | GanadoDescarte;
@@ -54,8 +61,6 @@ type ModalEdit = Pick<
   type: "Vaca" | "Toro" | "Ganado descarte";
 };
 const Modal = ({ ganado, isOpen, onOpenChange, onClose, type }: ModalEdit) => {
-  const router = useRouter();
-  const form = useRef<HTMLFormElement | null>(null);
 
   const getIdOrigen = useMemo(() => {
     const origen = origenCasttleSelect.find(
@@ -64,42 +69,38 @@ const Modal = ({ ganado, isOpen, onOpenChange, onClose, type }: ModalEdit) => {
     return origen?.value ?? 1;
   }, [ganado.origen]);
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    setValue,
-    control,
-  } = useForm<EditCastle>({
-    resolver: zodResolver(castleEditShema),
-    defaultValues: {
-      fecha_ingreso: ganado.fecha_ingreso as string | undefined,
-      fecha_nacimiento: ganado.fecha_nacimiento as string | undefined,
-      nombre: ganado.nombre,
-      numero: ganado.numero as number | undefined,
-      origen_id: getIdOrigen,
-    },
-  });
 
   const actionsEdit = {
     Vaca: editCastle,
     Toro: editBull,
     "Ganado descarte": editBeef,
   };
+  const defaultValues = {
+    fecha_ingreso: ganado.fecha_ingreso as string | undefined,
+    fecha_nacimiento: ganado.fecha_nacimiento as string | undefined,
+    nombre: ganado.nombre,
+    numero: ganado.numero as number | undefined,
+    origen_id: getIdOrigen,
+  };
 
-  const actionCastle: () => void = handleSubmit(async (data) => {
-    const response = await actionsEdit[type](ganado.id, data);
+  const { handleSubmitForm, errors, register, formRef, control,setValue } =
+    useFormManager<
+      EditCastle,
+      | ResponseGanado["ganado"]["numero"]
+      | ResponseGanado["ganado"]["nombre"]
+      | undefined
+    >({
+      schema: castleEditShema,
+      typeForm: "edit",
+      id: ganado.id,
+      submitEditAction: actionsEdit[type],
+      defaultValues: defaultValues,
+      messageOnSuccess: ()=> `${type} ${type == "Vaca" ? "actualizada" : 'actualizado'} correctamente`,
+      justMessageOnSuccess: true,
+      onClose: onClose,
+      routerBack:false
+    });
 
-    /* manejar error del backend y mostrar mensaje */
-    if (typeof response == "object" && "error" in response!)
-      return toast.error(messageErrorApi(response));
-
-    form.current?.reset();
-    router.refresh();
-    onClose && onClose();
-
-    toast.success(`${type} actualizada correctamente`);
-  });
 
   //atributos para el input de fecha_ingreso
   const {
@@ -128,13 +129,13 @@ const Modal = ({ ganado, isOpen, onOpenChange, onClose, type }: ModalEdit) => {
       footer={true}
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      onClick={actionCastle}
       onClose={onClose}
-      refForm={form}
+      refForm={formRef}
     >
       <form
-        ref={form}
-        action={actionCastle}
+        id={`form-edit-${type}`}
+        ref={formRef}
+        action={handleSubmitForm}
         className="flex flex-col items-center m-auto max-w-[827px]"
       >
         <div className="flex flex-col  gap-6 flex-wrap justify-around md:gap-12 sm:flex-row ">

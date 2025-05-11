@@ -10,6 +10,8 @@ import { updateUserShema } from "@/validations/updateUse";
 import type { ModalProps, UserAdminInfo, UserVeterinaryInfo } from "@/types";
 import { useRouter } from "next/navigation";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalUpdateUserProps = {
   id: number;
@@ -25,28 +27,19 @@ export const ModalUpdateUser = ({
   onOpenChange,
   onClose,
 }: ModalProps & ModalUpdateUserProps) => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<UpdateUser>({
-    resolver: zodResolver(updateUserShema),
+  
+  const { handleSubmitForm, errors, register, formRef } = useFormManager<
+    UpdateUser,
+    string
+  >({
+    schema: updateUserShema,
+    typeForm: "edit",
+    id: id,
+    submitEditAction: updateUser,
     defaultValues: { usuario: usuario.usuario },
-  });
-
-  const formRef = useRef<HTMLFormElement | null>(null);
-  const router = useRouter();
-
-  const actionsUpdateUser: () => void = handleSubmit(async (data) => {
-    const response = await updateUser(id, data);
-    /* manejar error del backend y mostrar mensaje */
-    if (typeof response == "object" && "error" in response!)
-      return toast.error(messageErrorApi(response));
-
-    toast.success(`${response} es tu nuevo usuario`);
-    formRef.current?.reset();
-    router.refresh();
-    onClose();
+    messageOnSuccess: "usuarioActualizado",
+    routerBack: false,
+    onClose: onClose,
   });
 
   return (
@@ -62,7 +55,7 @@ export const ModalUpdateUser = ({
     >
       <form
         className="flex flex-col gap-4 bg-base-100 pb-4 px-8 sm:p-2 sm:items-center"
-        action={actionsUpdateUser}
+        action={handleSubmitForm}
         ref={formRef}
         id="form-updateUser"
       >

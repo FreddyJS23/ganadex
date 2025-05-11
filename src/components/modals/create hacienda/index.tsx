@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { createHacienda } from "@/actions/hacienda";
 import { getSession, useSession } from "next-auth/react";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
 type ModalCreateHaciendaProps = ModalProps & {
   isOpen: boolean;
@@ -39,6 +40,8 @@ export const ModalCreateHacienda = ({
   const router = useRouter();
   const formRef = useRef(null);
   const { update, data: session } = useSession();
+    const {activateLoading,disableLoading}= useLoadingButtonModal();
+  
 
   useEffect(() => {
     /* Llamar a la sesión para que el status el hook useSession se actualice y pase a authenticated,
@@ -50,11 +53,16 @@ export const ModalCreateHacienda = ({
   }, []);
 
   const actionCreateHacienda: () => void = handleSubmit(async (data) => {
+    activateLoading()
     const hacienda = await createHacienda(data);
 
     /* manejar error del backend y mostrar mensaje */
     if (typeof hacienda == "object" && "error" in hacienda)
+    {
+      disableLoading()
+
       return toast.error(messageErrorApi(hacienda));
+    }
 
     toast.success(`${hacienda.nombre} creada exitosamente`);
     /* actualizar sesión ya que hay una hacienda en sesión */
@@ -63,8 +71,10 @@ export const ModalCreateHacienda = ({
         ...session,
         user: { ...session?.user, sesion_hacienda: true, hacienda: hacienda },
       });
+      disableLoading()
       router.push("/api/verificar_sesion_hacienda");
     } else {
+      disableLoading()
       router.back();
       router.refresh();
     }

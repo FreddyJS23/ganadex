@@ -274,7 +274,7 @@ export type DayVaccination = {
   fecha_fin: string;
   vacuna: string;
   vacunados: number;
-  ganado_vacunado: string[];
+  ganado_vacunado:string;
 };
 
 export type AvailableVaccines = {

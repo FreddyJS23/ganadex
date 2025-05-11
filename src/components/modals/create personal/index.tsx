@@ -7,7 +7,7 @@ import { createStaff } from "@/actions/personal";
 import { formStaff } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
-import type { ResponseCargosPersonal } from "@/types";
+import type { Personal, ResponseCargosPersonal } from "@/types";
 import type { CreateStaff } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
@@ -17,6 +17,8 @@ import { useDisclosure } from "@nextui-org/react";
 import { createStaffShema } from "@/validations/staffShema";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { useRouter } from "next/navigation";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalCreatePersonal = {
   cargos_personal: ResponseCargosPersonal["cargos_personal"];
@@ -27,32 +29,13 @@ export const ModalCreatePersonal = ({
 }: ModalCreatePersonal) => {
   const { onOpen, onOpenChange } = useDisclosure();
 
-  const router = useRouter();
-
-  const formRef = useRef<HTMLFormElement | null>(null);
-
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    control,
-  } = useForm<CreateStaff>({
-    resolver: zodResolver(createStaffShema),
-  });
-
-  const actionStaff: () => void = handleSubmit(async (data) => {
-    const response = await createStaff(data);
-
-    /* manejar error del backend y mostrar mensaje */
-    if (typeof response == "object" && "error" in response)
-      return toast.error(messageErrorApi(response));
-
-    formRef.current?.reset();
-    router.refresh();
-    router.back();
-
-    toast.success(`${response.nombre} ha sido creado con éxito`);
-  });
+  const { handleSubmitForm, errors, register, formRef, control } =
+    useFormManager<CreateStaff, string | undefined>({
+      schema: createStaffShema,
+      typeForm: "create",
+      submitCreateAction: createStaff,
+      messageOnSuccess: "creadoExitosamente",
+    });
 
   return (
     <LayoutModal
@@ -66,7 +49,7 @@ export const ModalCreatePersonal = ({
     >
       <form
         ref={formRef}
-        action={actionStaff}
+        action={handleSubmitForm}
         className="flex flex-col items-center gap-6  m-auto max-w-[827px]"
         id="form-createPersonal"
       >
@@ -83,6 +66,9 @@ export const ModalCreatePersonal = ({
                   endContent={endContent}
                   register={register}
                   errors={errors}
+                  description={
+                    id == "telefono" ? "Formato xxxx-xxxxxxx" : undefined
+                  }
                 />
               )}
 

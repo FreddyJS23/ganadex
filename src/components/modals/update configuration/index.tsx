@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 import { updateConfigurationShema } from "@/validations/updateConfiguration";
 import { useSession } from "next-auth/react";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import { useFormManager } from "@/hooks/useFormManager";
 
 export const ModalUpdateConfiguracion = ({
   isOpen,
@@ -20,32 +22,30 @@ export const ModalUpdateConfiguracion = ({
   const { update, data: session } = useSession();
   const configuracion = session?.user.configuracion as Configuracion;
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<UpdateConfiguration>({
-    resolver: zodResolver(updateConfigurationShema),
-    defaultValues: { ...configuracion },
-  });
-
-  const formRef = useRef<HTMLFormElement | null>(null);
   const router = useRouter();
 
-  const actionsUpdateConfiguration: () => void = handleSubmit(async (data) => {
-    const response = await updateConfiguration(data);
-    /* manejar error del backend y mostrar mensaje */
-    if ("error" in response) return toast.error(messageErrorApi(response));
-
-    toast.success("Configuración actualizada");
+  const handleSucces = async (data: Configuracion) => {
     await update({
       ...session,
-      user: { ...session?.user, configuracion: response },
+      user: { ...session?.user, configuracion: data },
     });
-
-    formRef.current?.reset();
     router.refresh();
     router.back();
+  };
+
+  const { handleSubmitForm, errors, register, formRef } = useFormManager<
+    UpdateConfiguration,
+    Configuracion
+  >({
+    schema: updateConfigurationShema,
+    typeForm: "create",
+    submitCreateAction: updateConfiguration,
+    defaultValues: { ...configuracion },
+    messageOnSuccess: "configuracionActualizada",
+    justMessageOnSuccess: true,
+    customSuccessAction: handleSucces,
+    routerBack: false,
+    routerRefresh: false,
   });
 
   return (
@@ -60,7 +60,7 @@ export const ModalUpdateConfiguracion = ({
     >
       <form
         className="flex flex-col gap-4 bg-base-100 pb-4 px-8 sm:p-2 sm:items-center"
-        action={actionsUpdateConfiguration}
+        action={handleSubmitForm}
         ref={formRef}
         id="form-updateConfiguration"
       >

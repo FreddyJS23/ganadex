@@ -11,6 +11,8 @@ import { toast } from "sonner";
 import { rangeDatesToReportsShema } from "@/validations/rangeDatesShema";
 import { generateReports } from "@/actions/generate report";
 import { endpointsReports } from "@/collections/endPointsApi";
+import { messageErrorApi } from "@/utils/handleErrorResponseNext";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
 export const ModalGenerateReport = ({
   onOpen,
@@ -27,19 +29,25 @@ export const ModalGenerateReport = ({
 
   const formRef = useRef(null);
 
-  const actionGenerateReport: () => void = handleSubmit(async (data) => {
-    try {
-      const file = await generateReports(data, type);
-      toast.success(`Generando reporte...`);
+  const { activateLoading, disableLoading } = useLoadingButtonModal();
 
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(file as Blob);
-      link.download = `Reporte_${type}.pdf`;
-      link.click();
-    } catch (error) {
-      const message = error as string;
-      return toast.error(message);
+  const actionGenerateReport: () => void = handleSubmit(async (data) => {
+    activateLoading();
+
+    const file = await generateReports(data, type);
+
+    if (typeof file == "object" && "error" in file) {
+      disableLoading();
+      return toast.error(messageErrorApi(file));
     }
+
+    toast.success(`Generando reporte...`);
+
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(file);
+    link.download = `Reporte_${type}.pdf`;
+    link.click();
+    disableLoading();
   });
   const dateNow = new Date();
   /* Y-m-d */

@@ -62,6 +62,7 @@ export const FormCreateStaff = ({
                 endContent={endContent}
                 register={register}
                 errors={errors}
+                description={id == "telefono" ? "Formato xxxx-xxxxxxx" : undefined}
               />
             )}
 

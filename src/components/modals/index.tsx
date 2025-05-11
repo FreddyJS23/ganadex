@@ -28,6 +28,7 @@ export const LayoutModal = ({
   const [currentRefForm, setcurrentRefForm] = useState<
     MutableRefObject<HTMLFormElement | null> | undefined
   >(undefined);
+
   useEffect(() => {
     setcurrentRefForm(refForm);
   }, [refForm]);
@@ -76,6 +77,7 @@ export const LayoutModal = ({
               <ModalFooter className="flex flex-col sm:flex-row-reverse ">
                 <Button
                   type="submit"
+                  buttonInModal
                   onClick={onClick ? onClick : submit}
                   content="Confirmar"
                   form={

@@ -14,6 +14,7 @@ import {
 } from "@nextui-org/react";
 import { createSesionHacienda as createSesionHaciendaAction } from "@/actions/hacienda";
 import { getSession, useSession } from "next-auth/react";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
 export const ModalSelectHaciendaSesion = ({
   haciendas,
@@ -26,6 +27,7 @@ export const ModalSelectHaciendaSesion = ({
   const formRef = useRef(null);
   const { onOpen, onOpenChange } = useDisclosure();
   const [value, setValue] = useState<Selection>(new Set([]));
+  const { activateLoading, disableLoading } = useLoadingButtonModal();
 
   useEffect(() => {
     /* Llamar a la sesion para que el status el hook useSession se actualice y pase a authenticated,
@@ -37,7 +39,11 @@ export const ModalSelectHaciendaSesion = ({
   }, []);
 
   const createSesionHacienda: () => void = handleSubmit(async (data) => {
-    if (!data.hacienda_id) return toast.error("Debe seleccionar una hacienda");
+    activateLoading();
+    if (!data.hacienda_id) {
+      disableLoading();
+      return toast.error("Debe seleccionar una hacienda");
+    }
     try {
       const res = await createSesionHaciendaAction(data.hacienda_id);
 
@@ -54,6 +60,9 @@ export const ModalSelectHaciendaSesion = ({
       router.push("/api/verificar_sesion_hacienda");
     } catch (error) {
       toast.error(error as string);
+    }
+    finally{
+      disableLoading()
     }
   });
 

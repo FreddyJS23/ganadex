@@ -15,6 +15,8 @@ import { formStaff } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalEditStaffProps = Pick<
   LayoutModalProps,
@@ -36,33 +38,22 @@ export const ModalEditStaff = ({
     return cargo?.id.toString();
   }, [cargos_personal, personal]);
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    control,
-  } = useForm<CreateStaff>({
-    resolver: zodResolver(createStaffShema),
-    defaultValues: { ...personal, cargo_id: getIdCargo },
-  });
 
-  const form = useRef<HTMLFormElement | null>(null);
+  const defaultValues = { ...personal, cargo_id: getIdCargo };
 
-  const router = useRouter();
+  const { handleSubmitForm, errors, register, formRef, control } =
+    useFormManager<CreateStaff, Personal>({
+      schema: createStaffShema,
+      typeForm: "edit",
+      id: personal.id,
+      submitEditAction: editStaff,
+      defaultValues: defaultValues,
+      messageOnSuccess: "actualiacion",
+      justMessageOnSuccess: true,
+      onClose: onClose,
+      routerBack: false,
+    });
 
-  const actionStaff: () => void = handleSubmit(async (data) => {
-    const response = await editStaff(personal.id, data);
-
-    /* manejar error del backend y mostrar mensaje */
-    if (typeof response == "object" && "error" in response)
-      return toast.error(messageErrorApi(response));
-
-    form.current?.reset();
-
-    toast.success("Se ha actualizado correctamente");
-    router.refresh();
-    onClose && onClose();
-  });
 
   return (
     <LayoutModal
@@ -72,13 +63,13 @@ export const ModalEditStaff = ({
       footer={true}
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      onClick={actionStaff}
       onClose={onClose}
-      refForm={form}
+      refForm={formRef}
     >
       <form
-        ref={form}
-        action={actionStaff}
+        id="form-editStaff"
+        ref={formRef}
+        action={handleSubmitForm}
         className="flex flex-col items-center m-auto max-w-[827px]"
       >
         <div className="flex flex-col  gap-6 flex-wrap justify-around md:gap-12 sm:flex-row ">

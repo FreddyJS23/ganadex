@@ -36,7 +36,7 @@ type ContentCardSaleMilkProp = {
 
 type ContentCardDayVaccinationProp = {
   title: string;
-  type: string[];
+  type: string;
   date: Date;
 };
 
@@ -152,7 +152,7 @@ export const CardDashboardDayVaccination = ({
         <div className="">{title}</div>
         <div className="flex flex-wrap space-x-1">
           <span className="opacity-50 ml-1">Tipo</span>
-          {type.map((type, index) => (
+          {type.split(",").map((type, index) => (
             <span key={index}>{type}</span>
           ))}
         </div>

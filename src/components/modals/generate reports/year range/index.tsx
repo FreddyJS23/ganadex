@@ -11,6 +11,7 @@ import { endpointsReportsAnnual } from "@/collections/endPointsApi";
 import { generateReportsYear } from "@/actions/generate report year";
 import { yearsToGenerateReportShema } from "@/validations/yearsTotGenerateReportShema";
 import { YearToReports } from "@/types/forms";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
 export const ModalGenerateReportYear = ({
   onOpen,
@@ -26,8 +27,13 @@ export const ModalGenerateReportYear = ({
   });
 
   const formRef = useRef(null);
+  const {activateLoading,disableLoading}= useLoadingButtonModal();
+  
 
   const actionGenerateReportYear: () => void = handleSubmit(async (data) => {
+   
+      activateLoading();
+
     try {
       const file = await generateReportsYear(data, type);
       toast.success(`Generando reporte...`);
@@ -39,6 +45,9 @@ export const ModalGenerateReportYear = ({
     } catch (error) {
       const message = error as string;
       return toast.error(message);
+    }
+    finally {
+      disableLoading();
     }
   });
   const dateNow = new Date();

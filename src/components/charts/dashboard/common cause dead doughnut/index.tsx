@@ -60,14 +60,16 @@ export const TortaCausasFallecimientosGanado = ({
     },
   };
 
+  const optionsChart = optionChartTotalTypesCattle(darkMode);
+
   //destructurar options
   //primero se destructura el objeto de opciones
   //luego se crear un nuevo objecto con la propiedad plugins
   //se destructora el objeto de plugins
   //y se añade el plugin anotaciones
   const options = {
-    ...optionChartTotalTypesCattle,
-    plugins: { ...optionChartTotalTypesCattle.plugins, ...configAnotation },
+    ...optionsChart,
+    plugins: { ...optionsChart.plugins, ...configAnotation },
   };
 
   return <Doughnut data={datasets} options={options} />

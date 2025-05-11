@@ -1,3 +1,4 @@
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { Button as ButtonNextUI } from "@nextui-org/button";
 import { useFormStatus } from "react-dom";
 
@@ -14,6 +15,8 @@ type ButtonProps = {
   type?: "button" | "submit" | "reset";
   form?: string;
   title?: string;
+  /**Indica si el botón se encuentra en un modal, para asi activar un loading, ya que el pending no se aplica en modals */
+  buttonInModal?: boolean;
 };
 
 export const Button = ({
@@ -23,8 +26,12 @@ export const Button = ({
   type = "button",
   form,
   title,
+  buttonInModal,
 }: ButtonProps) => {
+  
   const { pending } = useFormStatus();
+  
+  const { isLoading } = useLoadingButtonModal();
   if (form) {
     return (
       <ButtonNextUI
@@ -32,7 +39,7 @@ export const Button = ({
         className="w-full"
         color={`${color ? color : "primary"}`}
         type={type}
-        isLoading={type == "submit" && pending}
+        isLoading={type == "submit" && buttonInModal ? isLoading : pending}
         form={form}
         title={title}
       >
@@ -46,7 +53,7 @@ export const Button = ({
         className="w-full"
         color={`${color ? color : "primary"}`}
         type={type}
-        isLoading={type == "submit" && pending}
+        isLoading={type == "submit" && buttonInModal ? isLoading : pending}
         title={title}
       >
         {content}

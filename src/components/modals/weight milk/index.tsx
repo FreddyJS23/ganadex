@@ -14,36 +14,27 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createWeightMilk } from "@/actions/weightMilk";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { getDateNow } from "@/utils/getDateNow";
+import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import { useFormManager } from "@/hooks/useFormManager";
 
 export const ModalWeightMilk = ({
   dataHeader,
 }: Pick<ModalProps, "dataHeader">) => {
   const { onOpen, onOpenChange } = useDisclosure();
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<CreateWeightMilk>({
-    resolver: zodResolver(createWeightMilkShema),
-    defaultValues: { fecha: getDateNow() },
-  });
-
-  const router = useRouter();
-  const formRef = useRef(null);
   const params = useParams<{ id: string }>();
 
-  const actionCreateWeightMilk: () => void = handleSubmit(async (data) => {
-    const weightMilk = await createWeightMilk(data, Number.parseInt(params.id));
-    /* manejar error del backend y mostrar mensaje */
-    if (typeof weightMilk == "object" && "error" in weightMilk)
-      return toast.error(messageErrorApi(weightMilk));
-
-    toast.success(
-      `Pesaje de ${weightMilk}KG de la vaca ${dataHeader} ha sido registrado`,
-    );
-    router.back();
-    router.refresh();
+  const { handleSubmitForm, errors, register, formRef } = useFormManager<
+    CreateWeightMilk,
+    string
+  >({
+    schema: createWeightMilkShema,
+    typeForm: "create",
+    id: Number.parseInt(params.id),
+    submitCreateWithIdAction: createWeightMilk,
+    defaultValues: { fecha: getDateNow() },
+    messageOnSuccess: "crearPesajeLeche",
+    justMessageOnSuccess: true,
   });
 
   return (
@@ -58,7 +49,7 @@ export const ModalWeightMilk = ({
       refForm={formRef}
     >
       <form
-        action={actionCreateWeightMilk}
+        action={handleSubmitForm}
         id="form-weightMilkCattle"
         ref={formRef}
         className="m-auto w-2/4 "
