@@ -26,7 +26,6 @@ export default async function Page({ params }: ParamsPageBull) {
     undefined,
     params.id,
   );
-
   const {
     numero,
     nombre,
@@ -55,7 +54,7 @@ export default async function Page({ params }: ParamsPageBull) {
     <>
       <div className="flex flex-col gap-8 p-2 sm:ml-6 md:p-4 items-center xl:ml-0">
         <div className="flex gap-2">
-          <h3 className=" font-bold text-2xl">Detalle del toro {numero}</h3>
+          <h3 className=" font-bold text-2xl">Detalles del toro {numero}</h3>
           {/*  <ButtonGenerateReport report='ganado' id={ganado.id} /> */}
         </div>
         <div className="flex flex-col gap-5 md:flex-row items-center ">
@@ -70,7 +69,7 @@ export default async function Page({ params }: ParamsPageBull) {
             <div className=" flex flex-wrap gap-4 bg-base-100 justify-between md:gap-y-4 p-4 shadow-[0px_0px_6px_-3px] shadow-primary rounded-md border-primary sm:grid grid-cols-2  sm:gap-6 lg:grid-cols-3 lg:justify-items-center ">
               
                {/* boton flotante y modal para editar */}
-          {role == 'admin' && <ModalEditAnimal type={"Toro"}  ganado={toro} />}
+          {role == 'admin' && !disableEditWeight && <ModalEditAnimal type={"Toro"}  ganado={toro} />}
               
               <Details tittle={DetailsCattle.nombre} content={nombre} />
               <Details tittle={DetailsCattle.origen} content={origen} />
