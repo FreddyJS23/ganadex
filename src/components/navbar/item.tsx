@@ -16,9 +16,9 @@ export const NameHacienda = () => {
   const transformNameHacienda = () => {
     /* habrá veces que el nombre de hacienda que guarden
          no inicie con hacienda, por eso se agrega */
-    if (hacienda?.startsWith("Hacienda")) return hacienda;
+    if (hacienda?.startsWith("Hacienda")) return `"${hacienda}"`;
     else if (!hacienda) return "Sin sesión en hacienda";
-    else return `Hacienda ${hacienda}`;
+    else return `Hacienda "${hacienda}"`;
   };
 
   return (
