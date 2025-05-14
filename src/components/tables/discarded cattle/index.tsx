@@ -108,6 +108,7 @@ export const TableDiscardedCattle = ({
         renderCell={renderCell}
         selectionMode="multiple"
         setSelectedIdItems={setIdsItems}
+        filterSexCattle
       />
 
         <ModalSaleCattle
