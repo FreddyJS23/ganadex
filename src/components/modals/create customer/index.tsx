@@ -37,7 +37,6 @@ export const ModalCreateCustomer = ({
     const lastSegment = parseInt(segmentPath[segmentPath.length - 1]);
     //reconstruir ruta que hizo referencia
     const newRoute = segmentPath.join("/");
-    console.log(lastSegment)
     //si es un numero es porque se esta creando fuera de su modulo (comprador/registrar)
     if (typeof lastSegment == "number" && !Number.isNaN(lastSegment)) {
       return router.replace(`/${newRoute}`);

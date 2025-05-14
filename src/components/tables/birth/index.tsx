@@ -80,7 +80,6 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
 
     return cellValue as ReactNode;
   }, []);
-console.log(todos_partos)
   return (
     <TableComponent
       columnsCollection={headerAllBirths}

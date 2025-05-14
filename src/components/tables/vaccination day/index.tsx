@@ -22,7 +22,6 @@ export const TableVAccinationDay = ({
       switch (columnKey as keyof DayVaccination) {
         case "ganado_vacunado": {
           const ganado_vacunado = cellValue as string;
-          console.log(ganado_vacunado)
           return <span>{ganado_vacunado}</span>;
         }
         default:

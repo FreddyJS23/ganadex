@@ -9,7 +9,6 @@ export default async function Page() {
   const { cabezas_ganado }: ResponseGanados = await getData("todosGanado");
   const session = (await auth()) as Session;
   const role = session.user.rol;
-  console.log(cabezas_ganado)
   return (
     <>
       <TitlePage title="Vacas" />

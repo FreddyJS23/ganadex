@@ -110,7 +110,6 @@ export const ModalCreateUpdateTypeCheck = (props: ModalTypeCheckProps) => {
     disableLoading();
     return router.push(`/revisiones/tipo`);
   });
-  console.log(codeCheck);
   return (
     <LayoutModal
       icon="checkUp"

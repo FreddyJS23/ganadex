@@ -304,7 +304,6 @@ export const TableComponent = <T extends { id: number }>(
           item.pendiente == pendingFilterArray,
       );
     }
-    console.log(statusBirthFilter);
     //filtro tablas parto estados
     if (statusBirthFilter != "all") {
       const filteredItemsWithStatesBirth = filteredItems as Array<
@@ -350,7 +349,6 @@ export const TableComponent = <T extends { id: number }>(
     return filteredData.slice(start, end);
   }, [page, filteredData]);
 
-  console.log(itemsBodyTable);
 
   return (
     <div className="flex flex-col w-full ">
@@ -613,7 +611,6 @@ export const TableComponent = <T extends { id: number }>(
         selectionMode={selectionMode}
         onSelectionChange={(keys) => {
           setSelectedKeys(keys);
-          console.log(keys);
           //caso de seleccionar todas las filas, se devuelve null
           if (keys == "all") return setSelectedIdItems(null);
           const ids: number[] = getIdfromSelectedKeys(keys); // Obtener los IDs originales

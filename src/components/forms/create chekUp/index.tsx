@@ -64,9 +64,7 @@ export const FormCreateCheckUp = ({
   //observar select de vacunas
   const vacunaWacth = watch("vacuna_id");
 
-  console.log(errors)
   useEffect(() => {
-    console.log('eeee')
     if (!vacunaWacth) {
       unregister("dosis");
       unregister("vacuna_id");

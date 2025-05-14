@@ -69,7 +69,6 @@ export const TableAllCheckups = ({
 
     return cellValue as ReactNode;
   }, []);
-console.log(todas_revisiones);
   return (
     <TableComponent
       type="revisión"

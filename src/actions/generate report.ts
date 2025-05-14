@@ -13,7 +13,6 @@ export async function generateReports(
       `/api/reportes/${report}?start=${formData.start}&end=${formData.end}`,
     );
 
-    console.log(file)
     if (file.status == 200) return await file.blob();
     
     else  return  await file.json();

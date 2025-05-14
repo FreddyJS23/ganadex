@@ -144,6 +144,8 @@ export const useFormManager = <T extends FieldValues, ResponseAction>(
           data,
         );
     }
+
+    console.log(response);
     /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response!) {
       disableLoading();
