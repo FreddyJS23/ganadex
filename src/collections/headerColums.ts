@@ -203,9 +203,10 @@ export const headerCustomers: headersColumns<Comprador>[] = [
 ];
 
 export const headerDeadCattle: headersColumns<Fallecimiento>[] = [
-  { key: "causa", label: "Causa" },
-  { key: "fecha", label: "Fecha" },
   { key: "ganado", label: "Ganado" },
+  { key: "fecha", label: "Fecha" },
+  { key: "causa", label: "Causa" },
+  { key: "descripcion", label: "Descripción" },
 ];
 
 export const headerPajuelaToro: headersColumns<PajuelaToro>[] = [
