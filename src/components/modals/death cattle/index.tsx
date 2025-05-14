@@ -28,12 +28,12 @@ export const ModalDeathCattle = ({
   const params = useParams<{ id: string }>();
 
   const { handleSubmitForm, errors, register, formRef, control } =
-    useFormManager<CreateDeathCastle, number | undefined>({
+    useFormManager<CreateDeathCastle, number | string | undefined>({
       schema: createDeathCastleShema,
       typeForm: "create",
       id: Number.parseInt(params.id),
       submitCreateWithIdAction: createDeathCattle,
-      messageOnSuccess: () => "crearFallecimiento",
+      messageOnSuccess: "crearFallecimiento",
       messageResponseLast: true,
     });
 
