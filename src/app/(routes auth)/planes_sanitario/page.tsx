@@ -25,7 +25,7 @@ export default async function Page() {
 
   if (existsPlanesSanitario)
     planes_sanitarios_pendientes.forEach((planes_sanitario: DayVaccination) => {
-      vacunasPendientes.push(planes_sanitario.vacuna);
+      vacunasPendientes.push(`${planes_sanitario.vacuna}(${planes_sanitario.ganado_vacunado})`);
     });
 
   return (
