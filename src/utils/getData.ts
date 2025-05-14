@@ -83,6 +83,7 @@ export async function getData<Form, dataResponse>(
         data: data as ResponseErrorFromApi["data"],
       });
   } catch (e: unknown) {
+    console.log(e)
     /* manejar otros errores del servidor de laravel */
     if (e instanceof ErrorFromApi){
       const {status}=e.error
