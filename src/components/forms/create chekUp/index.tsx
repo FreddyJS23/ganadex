@@ -77,7 +77,6 @@ export const FormCreateCheckUp = ({
   }, [vacunaWacth]);
 
   const actionCreatecheckUp: () => void = handleSubmit(async (data) => {
-    console.log(data);
     const response = await createCheckUp(data, Number.parseInt(cattleId));
     if (typeof response == "object" && "error" in response)
       return toast.error(messageErrorApi(response));
@@ -122,7 +121,7 @@ export const FormCreateCheckUp = ({
         return;
       }
       // tipo revision aborto
-      else if (value == 3) return;
+      else if (value == 3 && typeof value == "string") setValue("tipo_revision_id", value);
       //resto revisiones
       else {
         unregister("tratamiento");
