@@ -89,7 +89,8 @@ export function WarningToast({
   }, [title, description]);
 
   useEffect(() => {
-    warning && sonner();
+    warning ? sonner() :
+    sonnerToast.dismiss();;
   }, [sonner, warning]);
 
   return <></>;
