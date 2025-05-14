@@ -77,25 +77,24 @@ export const ModalCreateEditVaccine = (props: ModalCreateEditVaccineProps) => {
         return { ganado_tipo_id: item.id, sexo: item.sexo };
       },
     );
-    console.log(typesCattleTranformed);
     return { typesCattleTranformed };
   };
 
   //Estado para el campo tipo ganados
   const [tipoGanados, setTipoGanados] = useState<
-    CreateVaccine["tipo_ganados"] | null
+    CreateVaccine["tipo_ganados"] 
   >(
     type == "update"
       ? transfomedTypeCattleSelect(props.vaccine.tipos_ganado)
           ?.typesCattleTranformed
-      : null,
+      : undefined,
   );
 
   //Estado para el check de aplicabilidad a todos
   const [isApplicableToAll, setIsApplicableToAll] = useState(false);
 
   const handleCheckbox = (value: boolean) => {
-    value && setTipoGanados(null);
+    value && setTipoGanados(undefined);
     setIsApplicableToAll(value);
   };
 
