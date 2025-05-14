@@ -12,6 +12,7 @@ import {
 import { Key, ReactNode, useCallback } from "react";
 import { LayoutTable, TableComponent } from "..";
 import Link from "next/link";
+import { RedirectInTable } from "@/components/redirectsInTables";
 
 export const TableDeadCattle = ({ fallecidos }: ResponseFallecimientos) => {
   const renderCell = useCallback(
@@ -21,8 +22,13 @@ export const TableDeadCattle = ({ fallecidos }: ResponseFallecimientos) => {
       switch (columnKey as keyof Fallecimiento) {
         case "ganado": {
           const ganado = cellValue as Pick<Ganado, "id" | "numero">;
-          return <Link href={`ganado/${ganado.id}`}>{ganado.numero}</Link>;
-        }
+          return (
+                      <RedirectInTable
+                        id={fallecimiento["id"]}
+                        label={ganado.numero}
+                        redirect="ganado"
+                      />
+  )}
 
         default:
           return cellValue as ReactNode;
