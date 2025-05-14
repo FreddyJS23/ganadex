@@ -16,6 +16,7 @@ import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { useFormManager } from "@/hooks/useFormManager";
 import { SelectVaccines } from "@/components/select vaccines";
+import { ButtonCreateItem } from "@/ui/ButtonCreate";
 
 export const ModalCreateVaccinationDay = ({
   isOpen,
@@ -30,7 +31,6 @@ export const ModalCreateVaccinationDay = ({
       submitCreateAction: createVaccinationDay,
       messageOnSuccess: "crearPlanSanitario",
       justMessageOnSuccess: true,
-      
     });
 
   return (
@@ -66,20 +66,27 @@ export const ModalCreateVaccinationDay = ({
 
               {/*  select normal */}
               {type == "select" && (
-                <Controller
-                  name={id}
-                  control={control}
-                  render={({ field }) => (
-                    <SelectVaccines
-                      errors={errors}
-                      field={field}
-                      required={required}
-                      type="form"
-                      vaccinesSelect={vacunas}
-                      filterByTipoVacuna="plan_sanitario"
-                    />
-                  )}
-                />
+                <div className="w-full flex gap-2 items-center">
+                  <ButtonCreateItem
+                    tittle="Nueva vacuna"
+                    small={true}
+                    href={"/vacuna/registrar"}
+                  />
+                  <Controller
+                    name={id}
+                    control={control}
+                    render={({ field }) => (
+                      <SelectVaccines
+                        errors={errors}
+                        field={field}
+                        required={required}
+                        type="form"
+                        vaccinesSelect={vacunas}
+                        filterByTipoVacuna="plan_sanitario"
+                      />
+                    )}
+                  />
+                </div>
               )}
             </div>
           ))}
