@@ -81,18 +81,17 @@ export const ModalCreateUpdateCausaFallecimiento = (
       disableLoading();
       return toast.error(messageErrorApi(response));
     }
-
     toast.success(messageResponse);
 
     /* ya que esta ruta puede ser usada por intercesión de ruta o una ruta normal la navegación sera diferente.
     Los datos registrados deben estar lo mas reciente posible, por lo que
     se hace una navegación para refrescar dependiendo del path donde se llame */
 
-    //rutas dentro de su modulo (/revisiones/tipo)
+    //rutas dentro de su modulo (/fallecimientos/tipo)
     if (!referer) {
       router.refresh();
       disableLoading()
-      return router.push(`/fallecimientos`);
+      return router.back();
     }
     const pathOrigin = referer.split("/");
     //eliminar parte del dominio, ejemplo de referer: http://localhost:3000/fallecimeintos/registrar/35
@@ -101,14 +100,14 @@ export const ModalCreateUpdateCausaFallecimiento = (
     //reconstruir ruta que hizo referencia
     const newRoute = segmentPath.join("/");
     //si es un numero es porque se esta creando fuera de su modulo (fallecimientos/causa/crear)
-    if (typeof lastSegment == "number") {
+    if (typeof lastSegment == "number" && !Number.isNaN(lastSegment)) {
       disableLoading();
       return router.replace(`/${newRoute}`);
     }
-
+    
     disableLoading()
     router.refresh();
-    return router.push(`/fallecimientos`);
+    return router.back();
   });
 
   return (
