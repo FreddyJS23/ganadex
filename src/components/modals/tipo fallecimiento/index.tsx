@@ -70,7 +70,7 @@ export const ModalCreateUpdateCausaFallecimiento = (
     if ("create" in props) {
       response = await createCausaFallecimiento(data);
       if ("causa_fallecimiento" in response)
-        messageResponse = `Causa de fallecimiento ${response.causa_fallecimiento} creada`;
+        messageResponse = `Causa de fallecimiento ${response.causa_fallecimiento.causa} creada`;
     } else if ("update" in props) {
       response = await updateCausaFallecimiento(data, props.id);
       messageResponse = "Causa de fallecimiento actualizada";
