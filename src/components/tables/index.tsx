@@ -47,6 +47,10 @@ type TableComponentBaseProps<T> = {
   columnsCollection: { key: string; label: string }[];
   items: T[];
   renderCell: (item: T, columnKey: keyof T) => React.ReactNode;
+  /** 
+   * @default false
+    */
+  filterSexCattle?: boolean;
 };
 
 type TableWithSelectionProps<T> = TableComponentBaseProps<T> & {
@@ -60,7 +64,7 @@ type TableComponentProps<T> =
 export const TableComponent = <T extends { id: number }>(
   props: TableComponentProps<T>,
 ) => {
-  const { columnsCollection, items, renderCell, type } = props;
+  const { columnsCollection, items, renderCell, type, filterSexCattle:filterSexProp=false } = props;
 
   /* -------------------------- ordenamiento columnas ------------------------- */
   const list = useAsyncList({
@@ -173,7 +177,7 @@ export const TableComponent = <T extends { id: number }>(
 
     if ("tipo" in items[0]) filterTypesCattle = true;
 
-    if ("sexo" in items[0]) filterSexCattle = true;
+    if ("sexo" in items[0] && filterSexProp) filterSexCattle = true;
 
     if ("pendiente" in items[0]) filterPendingOperation = true;
 
@@ -202,10 +206,10 @@ export const TableComponent = <T extends { id: number }>(
     if (typeFilter == "número") {
       if (hasSearchFilter) {
         const filteredItemsWithNumber = filteredItems as Array<
-          T & { numero: number }
+          T & { numero: number | null }
         >;
         filteredItems = filteredItemsWithNumber.filter((item) =>
-          item.numero.toString().includes(filterValue.toString()),
+          item.numero ? item.numero.toString().includes(filterValue.toString()) : false,
         );
       }
     }
