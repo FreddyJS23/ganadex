@@ -36,7 +36,6 @@ export const optionChartTotalTypesCattle = (
       labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK, padding: 20, },
       fullSize:false,
       align: "start",
-
     },
     datalabels: {
       //plugin datalabels
@@ -273,12 +272,12 @@ export const optionChartLinePartosTotales= (darkMode: boolean): ChartOptions<"li
     },
     title: {
       display: true,
-      text: "Nacimientos ultimos 5 años",
+      text: "Nacimientos últimos 5 años",
       color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       font: {
         size: 20,
         weight: "bold",
-        family: "Courier New",
+        family: "sans-serif",
       },
     },
   },
@@ -319,7 +318,7 @@ export const optionChartBarTasaNatalidad=(darkMode: boolean): ChartOptions<"bar"
       font: {
         size: 20,
         weight: "bold",
-        family: "Courier New",
+        family: "sans-serif",
       },
     },
     datalabels: {
@@ -359,7 +358,7 @@ export const optionChartDoughnutCantidadNacimientos=(darkMode: boolean): ChartOp
       font: {
         size: 20,
         weight: "bold",
-        family: "Courier New",
+        family: "sans-serif",
       },
     },
     datalabels: {

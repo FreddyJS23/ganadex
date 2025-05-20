@@ -18,10 +18,10 @@ export default async function Page() {
     <section className="flex gap-8 flex-col">
       <div className="flex gap-6 flex-col lg:flex-row w-full">
         {/*   grafico ganancia */}
-        <article className="shadow-cards p-4 flex flex-col bg-base-100">
+        <article className="shadow-cards p-4 flex flex-col bg-base-100 max-h-72">
           {/* titulo */}
           <div className="flex justify-between gap-4">
-            <span className="text-2xl">
+            <span className="text-xl font-bold ">
               Causas mas frecuentes de fallecimientos
             </span>
             <DropdownCausaFallecimiento />
@@ -35,7 +35,7 @@ export default async function Page() {
 
         {/* tabla fallecimientos */}
         <article className="flex flex-col gap-2 grow">
-          <h3 className="ml-2 text-lg md:text-xl">
+          <h3 className="ml-2 text-lg md:text-xl font-bold">
             Historial de fallecimientos
           </h3>
           <TableDeadCattle fallecidos={fallecidos} />

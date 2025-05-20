@@ -32,7 +32,7 @@ export default async function Page() {
     <>
       <section className="flex flex-col gap-6">
         <div className="flex flex-col gap-5 w-11/12 ">
-          <h3 className="ml-2 text-lg md:text-xl">Proximos planes sanitario</h3>
+          <h3 className="ml-2 text-lg md:text-xl font-bold">Próximos planes sanitario</h3>
           <SliderVaccinationDays
             proximos_planes_sanitario={proximos_planes_sanitario}
           />
@@ -40,7 +40,7 @@ export default async function Page() {
 
         <div className="flex flex-col">
           <div className="flex  items-center justify-around">
-            <h3 className="text-lg md:text-xl">Planes sanitario</h3>
+            <h3 className="text-lg md:text-xl font-bold">Planes sanitario</h3>
             <ButtonCreateItem href={"planes_sanitario/registrar"} />
           </div>
           <TableVAccinationDay planes_sanitario={planes_sanitario} />

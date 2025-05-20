@@ -80,7 +80,7 @@ export default async function Home() {
       {/*  grafico torta */}
       <article className="p-4 bg-base-100 col-span-full max-w-xl md:col-span-2 lex justify-center flex-col  w-full shadow-cards">
         <div className="flex justify-between">
-          <h3>Cabezas de ganado</h3>
+          <h3 className="font-bold">Cabezas de ganado</h3>
           <IconCatle
             className={"size-8 bg-primary opacity-70 p-1 rounded-full"}
           />
@@ -112,7 +112,7 @@ export default async function Home() {
         <article className="p-4 flex flex-col gap-2  bg-base-100 max-w-72 shadow-cards">
           <div className="flex justify-between">
             <div className="flex items-center gap-1">
-              <h2>Vacas productoras</h2>
+              <h2 className="font-bold">Vacas productoras</h2>
               <Tooltip
                 type="icon"
                 content={"top_vacas_productoras"}
@@ -136,7 +136,7 @@ export default async function Home() {
         <article className="p-4 flex flex-col gap-2  bg-base-100 max-w-72  shadow-cards">
           <div className="flex justify-between">
             <div className="flex items-center gap-1">
-              <h2>Vacas menos productoras</h2>
+              <h2 className="font-bold">Vacas menos productoras</h2>
               <Tooltip
                 type="icon"
                 content={"top_vacas_menos_productoras"}
@@ -206,7 +206,7 @@ export default async function Home() {
           balanceAnual={balance_anual}
         >
           <div className=" flex items-center gap-1">
-            <h2 className="text-2xl">Produccion anual de leche</h2>
+            <h2 className="text-2xl font-bold">Producción anual de leche</h2>
             <Tooltip type="icon" content={"produccion_anual_leche"} size="md" />
           </div>
         </ChartAnnualBalanceMilk>

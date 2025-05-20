@@ -57,11 +57,11 @@ const NatalidadUltimos5AñosBarra = forwardRef(function (
     labels: years,
     datasets: [
       {
-        label: "Tasa de natalidad ultimos 5 años",
         data: natalidad,
         backgroundColor: paletteBackground,
         borderColor: paletteBorderColor,
         borderWidth: 1,
+        
       },
     ],
   };

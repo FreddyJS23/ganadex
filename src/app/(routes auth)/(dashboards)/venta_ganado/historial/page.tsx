@@ -55,7 +55,7 @@ export default async function Page() {
           años_ventas_ganado={años_ventas_ganado}
         >
           <div className="flex gap-2 items-center">
-            <span className="text-2xl">Ganancia anual</span>
+            <span className="text-2xl font-bold">Ganancia anual</span>
             <Tooltip
               type="icon"
               content={"ganancia_anual"}
@@ -68,7 +68,7 @@ export default async function Page() {
 
       {/* tabla ventas */}
       <article className="flex flex-col gap-2">
-        <h3 className="ml-2 text-lg md:text-xl">Historial de ventas</h3>
+        <h3 className="ml-2 text-lg md:text-xl font-bold">Historial de ventas</h3>
         <TableSaleCasttle ventas={ventas} />
       </article>
     </section>

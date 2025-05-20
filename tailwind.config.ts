@@ -19,7 +19,7 @@ const config: Config = {
       },
       fontFamily: {
         bebasNue: ["var(--font-bebasNue)"],
-        nunito: ["var(--font-nunito)"],
+        nunito: ["var(--font-nunito)",'sans-serif'],
       },
     },
   },
