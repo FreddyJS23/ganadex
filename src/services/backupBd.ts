@@ -12,7 +12,7 @@ export const GetBackup = async () => {
   /*  const {token,cookieCsrf}=user */
   const { token } = user;
 
-  const url = process.env.API_URL + "/respaldo";
+  const url = process.env.API_URL + "respaldo";
 
   const headers = new Headers({
     Accept: "*/*",
