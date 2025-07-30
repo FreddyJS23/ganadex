@@ -72,7 +72,7 @@ export const SelectVaccines = (
     id: "vacuna_id",
     label: "Vacunas",
     color: color,
-    description: "vacunas",
+    description: "Vacunas",
     variant: variant,
     items: filteredVaccines,
     classNames: {
