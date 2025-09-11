@@ -9,6 +9,7 @@ import { Textarea } from "@/components/Textarea";
 import {
   AvailableVaccines,
   ResponseVeterinariosSelect,
+  Toro,
   type TipoRevision,
   type veterinario,
 } from "@/types";
@@ -26,14 +27,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { SelectVaccines } from "@/components/select vaccines";
+import { Checkbox } from "@nextui-org/react";
+import { SelectBulls } from "@/components/select bulls";
+import { Tooltip } from "@/components/tooltip";
 
 type FormCreateCheckUpProps = {
   veterinarios: veterinario[];
   typesCheck: TipoRevision[];
   listaVacunas: AvailableVaccines[];
   isAdmin: boolean;
+  toros: Toro[];
 };
 
 export const FormCreateCheckUp = ({
@@ -41,6 +46,7 @@ export const FormCreateCheckUp = ({
   typesCheck,
   isAdmin,
   listaVacunas,
+  toros,
 }: FormCreateCheckUpProps) => {
   const {
     register,
@@ -63,18 +69,44 @@ export const FormCreateCheckUp = ({
 
   //observar select de vacunas
   const vacunaWacth = watch("vacuna_id");
+console.log(errors)
+  /* control de check para mostrar campos sección servicio de emergencia */
+  const [checkService, setCheckService] = useState(false);
+
+  const handleSelectService=(e:ChangeEvent<HTMLInputElement>)=>{
+    const checked = e.target.checked;
+    if(checked) {
+      setCheckService(true);
+      setValue("servicio_desconocido",true)
+      return
+    } 
+    setCheckService(false);
+    setValue("servicio_desconocido",false)
+  }
 
   useEffect(() => {
     if (!vacunaWacth) {
       unregister("dosis");
       unregister("vacuna_id");
-    }else{
+    } else {
       register("dosis");
       register("vacuna_id");
     }
 
+    if (checkService) {
+      register("proxima");
+      register("servicio_desconocido");
+      register("dias_feto");
+      register("toro_id");
+    } else {
+      unregister("proxima");
+      unregister("servicio_desconocido");
+      unregister("dias_feto");
+      unregister("toro_id");
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [vacunaWacth]);
+  }, [vacunaWacth, checkService]);
 
   const actionCreatecheckUp: () => void = handleSubmit(async (data) => {
     const response = await createCheckUp(data, Number.parseInt(cattleId));
@@ -108,7 +140,7 @@ export const FormCreateCheckUp = ({
 
   const handleTypeCheck = (value: string | number) => {
     const tipo = tiposRevisionSistema.find((type) => type.id == value);
-    unregister('proxima')
+    unregister("proxima");
     if (tipo) {
       setTipoRevision(tipo);
       /* el tipo revision no existe en el backend, solo se usa en el frontend para mostrar la select,
@@ -117,11 +149,12 @@ export const FormCreateCheckUp = ({
       //tipo revision medica
       if (value == 0) {
         resetField("tipo_revision_id");
-        register('proxima')
+        register("proxima");
         return;
       }
       // tipo revision aborto
-      else if (value == 3 && typeof value == "string") setValue("tipo_revision_id", value);
+      else if (value == 3 && typeof value == "string")
+        setValue("tipo_revision_id", value);
       //resto revisiones
       else {
         unregister("tratamiento");
@@ -287,6 +320,67 @@ export const FormCreateCheckUp = ({
                 )}
               />
             </div>
+          )}
+
+          {tipoRevision?.tipo == "Gestación" &&
+        <div className="flex gap-2 items-center">
+          <Tooltip
+          content="servicio_emergencia"
+          type="icon"
+          
+
+
+          /> 
+    <Checkbox
+              title="Crear servicio"
+              isSelected={checkService}
+              onChange={(e)=>handleSelectService(e)}
+              name="servicio_desconocido"
+  
+              id="servicio_desconocido"
+            >
+              Crear servicio
+            </Checkbox>
+
+        </div>
+          }
+        
+
+          {/* campos para crear servicio de emergencia */}
+          {checkService && (
+            <>
+              <Input
+                id="dias_feto"
+                label="Dias del feto"
+                required={false}
+                type="number"
+                errors={errors}
+                register={register}
+              />
+
+              <Input
+                id="proxima"
+                label="Próxima revisión"
+                required={false}
+                type="date"
+                errors={errors}
+                register={register}
+              />
+              <Controller
+                name={"toro_id"}
+                control={control}
+                render={({ field }) => (
+                  <SelectBulls
+                    field={field}
+                    id={"toro_id"}
+                    items={toros}
+                    label={"Toros"}
+                    errors={errors}
+                    required={true}
+                  />
+                )}
+              />
+            </>
           )}
         </div>
         <div className="w-full sm:max-w-72">

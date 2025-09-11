@@ -12,6 +12,9 @@ export const createBaseCheckUpShema = z
     proxima: z.string().regex(regexDate).optional(),
     dosis:z.number().gte(1).lte(32767).optional(),
     fecha: z.string().regex(regexDate),
+    servicio_desconocido: z.boolean().optional(),
+    dias_feto:  z.number().gte(1).lte(100).optional(),
+    toro_id: z.string().regex(/\d/),
   })
   .refine((data) => new Date(data.fecha) <= new Date(), {
     message: "La fecha no puede ser mas alta que la fecha actual",
