@@ -1,6 +1,6 @@
-/** @type {import('next').NextConfig} */
 const isProduction = process.env.NODE_ENV === "production";
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
     // !! WARN !!
@@ -11,7 +11,7 @@ const nextConfig = {
   },
   /* si se usa docker, comentar el distDir y descomenta el output */
   distDir: isProduction ? "build" : undefined,
-  //output: "standalone",
+  // output: "standalone",
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
@@ -47,7 +47,7 @@ const nextConfig = {
       allowedOrigins: [
         "pqck8p44-3000.use2.devtunnels.ms",
         "localhost:3000",
-        process.env.API_URL,
+        process.env.API_URL || "localhost:3000",
       ],
     },
   },
