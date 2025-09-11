@@ -15,6 +15,7 @@ export const DASHBOARD_SALE = {
 export const FORM_TOOLTIPS = {
   advertencia_registro:
     "Recuerde que los registros no se pueden eliminar y solo se podrán editar los pesos",
+    servicio_emergencia:"Si la vaca esta en gestación pero no tiene un servicio previo, puede crear un servicio rápido",
 };
 
 export const TABLE_TOOLTIPS = {
