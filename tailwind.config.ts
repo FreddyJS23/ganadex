@@ -1,5 +1,5 @@
-import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
@@ -31,9 +31,9 @@ const config: Config = {
           primary: "#AF842D",
           secondary: "#22FF1E",
           "base-100": "#fafafa",
-          /*  header table */
+          /* header table */
           "base-200": "#E2E8F0",
-          /*  body table */
+          /* body table */
           neutral: "#F8FAFC",
           info: "#22d3ee",
           success: "#00c400",
@@ -44,9 +44,9 @@ const config: Config = {
           primary: "#22FF1E",
           secondary: "#AF842D",
           "base-100": "#0F172A",
-          /*  header table */
+          /* header table */
           "base-200": "#334155",
-          /*  body table */
+          /* body table */
           neutral: "#0F172A",
           info: "#22d3ee",
           success: "#00c400",
@@ -91,4 +91,5 @@ const config: Config = {
     }),
   ],
 };
+
 export default config;
