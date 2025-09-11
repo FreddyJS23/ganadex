@@ -1,13 +1,13 @@
 "use client";
 
-import { Input } from "@/components/Inputs";
-import { ResponseErrorNext } from "@/types";
-import { Button } from "@/ui/Button";
-import { userRecoveryShema } from "@/validations/recoveryPassword";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { Input } from "@/components/Inputs";
+import { ResponseErrorNext } from "@/types";
+import { Button } from "@/ui/Button";
+import { userRecoveryShema } from "@/validations/recoveryPassword";
 
 export default function Page() {
   const {

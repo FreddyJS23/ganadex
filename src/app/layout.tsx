@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { Providers } from "./providers";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
+import { Providers } from "./providers";
 
 const bebasNue = localFont({
   src: "../../public/fonts/BebasNeue-Regular.ttf",

@@ -1,3 +1,5 @@
+import NextAuth, { AuthError } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import {
   ERROR_CORS,
   ERROR_SERVER,
@@ -5,9 +7,6 @@ import {
 } from "@/constants/responseApiMessage";
 import { authApi } from "@/services/authApi";
 import { ResponseError } from "@/types";
-
-import NextAuth, { AuthError } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   /* duracion de la session en laravel */

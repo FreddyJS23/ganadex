@@ -1,6 +1,18 @@
+import { Session } from "next-auth";
+import { auth } from "@/app/auth";
 import { CardDashboard } from "@/components/cards";
+/* import { CircularProgress } from '@/components/circules progress dashboard'; */
+import { ChartAnnualBalanceMilk } from "@/components/charts/dashboard/annual balance milk";
+import { ProduccionVacasTop3 } from "@/components/charts/dashboard/top catle production bar";
 import { TortaTipoGanado } from "@/components/charts/dashboard/types catle doughnut";
+import { Tooltip } from "@/components/tooltip";
+import { WarningToast } from "@/components/warning toast";
+import IconCatle from "@/icons/icono-ganado.svg";
+import IconPositive from "@/icons/icono-ganancia.svg";
+import IconNegative from "@/icons/icono-perdida.svg";
+import { ResponseAñosProduccionLeche, ResponsePlanesSanitario } from "@/types";
 import {
+  balanceAnualLeche,
   /* InsumoMayorExistencia,
     InsumoMenorExistencia, */
   ResponseTotalTiposGanado,
@@ -11,20 +23,8 @@ import {
   TotalPersonal,
   TotalVacasEnGestacion,
   TotalVacasEnOrdeño,
-  balanceAnualLeche,
 } from "@/types/dashboard";
 import { getData } from "@/utils/getData";
-import IconCatle from "@/icons/icono-ganado.svg";
-import IconPositive from "@/icons/icono-ganancia.svg";
-import IconNegative from "@/icons/icono-perdida.svg";
-import { ProduccionVacasTop3 } from "@/components/charts/dashboard/top catle production bar";
-/* import { CircularProgress } from '@/components/circules progress dashboard'; */
-import { ChartAnnualBalanceMilk } from "@/components/charts/dashboard/annual balance milk";
-import { ResponseAñosProduccionLeche, ResponsePlanesSanitario } from "@/types";
-import { Tooltip } from "@/components/tooltip";
-import { WarningToast } from "@/components/warning toast";
-import { auth } from "@/app/auth";
-import { Session } from "next-auth";
 
 export default async function Home() {
   const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(

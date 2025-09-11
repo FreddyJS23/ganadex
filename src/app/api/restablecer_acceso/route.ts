@@ -1,3 +1,7 @@
+import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { NextRequest } from "next/server";
 import ErrorFromApi from "@/lib/errors/errorFromApi";
 import {
   ResponseErrorFromApi,
@@ -5,10 +9,6 @@ import {
 } from "@/types";
 import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
 import { handleResponse } from "@/utils/handleResponseApi";
-import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
   const cookiesStore = cookies();

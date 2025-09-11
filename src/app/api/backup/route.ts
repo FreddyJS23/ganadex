@@ -1,5 +1,5 @@
-import { GetBackup } from "@/services/backupBd";
 import { NextResponse } from "next/server";
+import { GetBackup } from "@/services/backupBd";
 
 export async function GET(): Promise<NextResponse> {
   const fileZip = await GetBackup();

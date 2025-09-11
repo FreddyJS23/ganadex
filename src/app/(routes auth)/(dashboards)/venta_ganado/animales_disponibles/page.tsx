@@ -1,9 +1,9 @@
+import type { Session } from "next-auth";
 import { auth } from "@/app/auth";
 import { TableDiscardedCattle } from "@/components/tables/discarded cattle";
 import type { ResponseCompradores, ResponseGanadoDescartes } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
 import { getData } from "@/utils/getData";
-import type { Session } from "next-auth";
 
 export default async function Page() {
   const { ganado_descartes }: ResponseGanadoDescartes = await getData(

@@ -1,9 +1,9 @@
+import { TortaCausasFallecimientosGanado } from "@/components/charts/dashboard/common cause dead doughnut";
+import { DropdownCausaFallecimiento } from "@/components/dropdown causa fallecimiento";
+import { TableDeadCattle } from "@/components/tables/death cattle";
 import { ResponseFallecimientos } from "@/types";
 import { Fallecimientos } from "@/types/dashboard";
 import { getData } from "@/utils/getData";
-import { TortaCausasFallecimientosGanado } from "@/components/charts/dashboard/common cause dead doughnut";
-import { TableDeadCattle } from "@/components/tables/death cattle";
-import { DropdownCausaFallecimiento } from "@/components/dropdown causa fallecimiento";
 
 export default async function Page() {
   const { fallecidos }: ResponseFallecimientos =

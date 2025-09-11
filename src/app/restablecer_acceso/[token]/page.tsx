@@ -1,7 +1,7 @@
-import { NewPasswordRecovery } from "@/components/forms/new password recovery";
-import { PreguntasSeguridad } from "@/types";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { NewPasswordRecovery } from "@/components/forms/new password recovery";
+import { PreguntasSeguridad } from "@/types";
 
 type ParamsPage = {
   params: { token: string };

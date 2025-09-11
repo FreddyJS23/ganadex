@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
-
-import { auth } from "@/auth";
-import { Session } from "next-auth";
-import { redirect, RedirectType } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { RedirectType, redirect } from "next/navigation";
+import { NextResponse } from "next/server";
+import { Session } from "next-auth";
+import { auth } from "@/auth";
 
 export async function GET(): Promise<NextResponse> {
   const session = (await auth()) as Session;

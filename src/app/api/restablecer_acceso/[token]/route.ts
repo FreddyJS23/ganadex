@@ -1,8 +1,8 @@
+import { cookies } from "next/headers";
 import ErrorFromApi from "@/lib/errors/errorFromApi";
 import { ResponseErrorFromApi, ResponseRegistroExitoso } from "@/types";
 import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
 import { handleResponse } from "@/utils/handleResponseApi";
-import { cookies } from "next/headers";
 
 export async function POST(
   req: Request,
