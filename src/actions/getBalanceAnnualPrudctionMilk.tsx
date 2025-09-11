@@ -1,7 +1,7 @@
 "use serve";
 
 import { ResponseErrorNext } from "@/types";
-import { balanceAnualLeche, BalanceMensualLeche } from "@/types/dashboard";
+import { BalanceMensualLeche, balanceAnualLeche } from "@/types/dashboard";
 import { getData } from "@/utils/getData";
 
 export async function getBalanceAnnualPrudctionMilk(

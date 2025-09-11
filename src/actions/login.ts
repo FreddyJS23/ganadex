@@ -1,5 +1,8 @@
 "use server";
 
+import { isRedirectError } from "next/dist/client/components/redirect";
+import { cookies } from "next/headers";
+import { AuthError } from "next-auth";
 import { signIn } from "@/auth";
 import {
   ERROR_CORS,
@@ -7,9 +10,6 @@ import {
   ERROR_SIGNIN,
 } from "@/constants/responseApiMessage";
 import { ResponseErrorActionAction, ResponseLoginAuthJs } from "@/types";
-import { AuthError } from "next-auth";
-import { isRedirectError } from "next/dist/client/components/redirect";
-import { cookies } from "next/headers";
 
 export async function authenticate(
   formData: FormData,
