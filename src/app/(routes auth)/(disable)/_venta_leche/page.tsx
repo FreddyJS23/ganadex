@@ -8,10 +8,7 @@ import {
   PrecioActual,
   VariacionPrecio,
 } from "@/types/dashboard";
-import { ButtonCreateItem } from "@/ui/ButtonCreate";
 import { getData } from "@/utils/getData";
-import IconImprimir from "@/icons/icono-imprimir.svg";
-import Link from "next/link";
 
 export default async function Page() {
   const { ventas_de_leche }: ResponseVentasLeche = await getData("ventasLeche");

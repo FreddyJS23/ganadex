@@ -32,7 +32,6 @@ import {
   type FieldsLabelsWeights,
   type InputProps,
   type Pesos,
-  TooltipsProps,
 } from "@/types";
 import { genderSelect } from "./genderSelect";
 import { typeCasttleSelect } from "./typeCastleSelect";

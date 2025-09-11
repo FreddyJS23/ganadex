@@ -5,7 +5,6 @@ import { DayVaccination, ResponsePlanesSanitario } from "@/types";
 import { ProximosPlanSanitario } from "@/types/dashboard";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 import { getData } from "@/utils/getData";
-import { alert } from "@nextui-org/react";
 
 export default async function Page() {
   const { planes_sanitario }: ResponsePlanesSanitario =

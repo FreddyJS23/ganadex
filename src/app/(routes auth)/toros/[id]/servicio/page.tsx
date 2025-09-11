@@ -1,5 +1,5 @@
 import { ModalHistoryServicesBull } from "@/components/modals/historys/history services";
-import { ResponseServicios, ResponseServiciosToros } from "@/types";
+import { ResponseServiciosToros } from "@/types";
 import { getData } from "@/utils/getData";
 
 type ParamsPage = {

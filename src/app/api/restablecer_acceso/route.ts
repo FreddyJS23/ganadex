@@ -1,5 +1,4 @@
 import ErrorFromApi from "@/lib/errors/errorFromApi";
-import { getInitCookieXSCRFTOKEN } from "@/services/getInitCookieCsrf";
 import {
   ResponseErrorFromApi,
   ResponseRestablecerContraseñaUsuario,

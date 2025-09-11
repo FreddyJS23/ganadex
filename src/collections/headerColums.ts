@@ -21,7 +21,6 @@ import {
   VentaLeche,
   PajuelaToro,
   DayVaccination,
-  ResponseGanado,
   AplicacionVacunaHistorial,
   Vacuna,
   UserVeterinaryInfo,

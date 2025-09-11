@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 import { signOut as signOutAuthJs } from "@/auth";
 import { signOutApi } from "@/services/signOutApi";

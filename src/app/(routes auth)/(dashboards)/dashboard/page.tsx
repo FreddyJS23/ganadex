@@ -17,7 +17,6 @@ import { getData } from "@/utils/getData";
 import IconCatle from "@/icons/icono-ganado.svg";
 import IconPositive from "@/icons/icono-ganancia.svg";
 import IconNegative from "@/icons/icono-perdida.svg";
-import IconSupplies from "@/icons/icono-insumo.svg";
 import { ProduccionVacasTop3 } from "@/components/charts/dashboard/top catle production bar";
 /* import { CircularProgress } from '@/components/circules progress dashboard'; */
 import { ChartAnnualBalanceMilk } from "@/components/charts/dashboard/annual balance milk";

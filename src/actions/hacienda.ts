@@ -4,7 +4,6 @@ import {
   Hacienda,
   ResponseErrorNext,
   ResponseHacienda,
-  ResponseRegistroExitoso,
 } from "@/types";
 import { CreateHacienda } from "@/types/forms";
 import { getData } from "@/utils/getData";

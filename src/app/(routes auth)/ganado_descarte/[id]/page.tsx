@@ -1,5 +1,5 @@
 import { auth } from "@/app/auth";
-import { DetailsCattle, DetailsWeights } from "@/collections";
+import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
 import { DropDownOptions } from "@/components/dropdown options";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
