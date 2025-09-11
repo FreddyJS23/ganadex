@@ -5,7 +5,7 @@
     "start": "next start",
     "lint": "next lint",
     "fakeApi": "json-server src/data/db.json -p 4000",
-    "biome": "biome format ./ --write"
+    "format": "biome format ./ --write"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
