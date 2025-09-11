@@ -1,6 +1,12 @@
 "use serve";
 
-import { ListaVacunas, Pesos, ResponseErrorNext, ResponseGanado, ResponseToro } from "@/types";
+import {
+  ListaVacunas,
+  Pesos,
+  ResponseErrorNext,
+  ResponseGanado,
+  ResponseToro,
+} from "@/types";
 import { CreateBull, EditCastle, updateWeight } from "@/types/forms";
 import { getData } from "@/utils/getData";
 
@@ -23,24 +29,22 @@ export async function createBull(
 }
 
 export async function editBull(
-  id:number,
+  id: number,
   formData: EditCastle,
 ): Promise<
   | ResponseErrorNext
   | ResponseGanado["ganado"]["numero"]
   | ResponseGanado["ganado"]["nombre"]
 > {
- 
-
-  const response = await getData<
-    EditCastle,
-    ResponseToro
-  >("toro", "PUT", formData, id);
+  const response = await getData<EditCastle, ResponseToro>(
+    "toro",
+    "PUT",
+    formData,
+    id,
+  );
   if ("error" in response) return response;
   else return response.toro.numero ?? response.toro.nombre;
 }
-
-
 
 export async function updateWeightBull(
   id: number,

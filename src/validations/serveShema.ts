@@ -26,13 +26,12 @@ export const createServeShemaWithToroId = createServeShema.and(toroIdShema);
 export const createServeShemaWithPajuelaToroId =
   createServeShema.and(pajuelaToroIdShema);
 
-
-export  const updateServeShema = z
-    .object({
-      observacion: z.string().min(3).max(255),
-      fecha: z.string().regex(regexDate),
-    })
-    .refine((data) => new Date(data.fecha) <= new Date(), {
-      message: "La fecha no puede ser mas alta que la fecha actual",
-      path: ["fecha"],
-    });
+export const updateServeShema = z
+  .object({
+    observacion: z.string().min(3).max(255),
+    fecha: z.string().regex(regexDate),
+  })
+  .refine((data) => new Date(data.fecha) <= new Date(), {
+    message: "La fecha no puede ser mas alta que la fecha actual",
+    path: ["fecha"],
+  });

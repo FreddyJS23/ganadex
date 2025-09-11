@@ -129,7 +129,11 @@ export const Select = ({
         }: {
           value: string | number;
           label: string | number;
-        }) => <SelectItem key={value}>{ typeof label == 'string' ? capitalizeFirstLetter(label) : label }</SelectItem>}
+        }) => (
+          <SelectItem key={value}>
+            {typeof label == "string" ? capitalizeFirstLetter(label) : label}
+          </SelectItem>
+        )}
       </SelectNextUI>
     );
 };

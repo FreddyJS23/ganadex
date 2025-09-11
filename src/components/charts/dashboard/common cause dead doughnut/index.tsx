@@ -39,9 +39,8 @@ export const TortaCausasFallecimientosGanado = ({
       },
     ],
   };
- 
-  const darkMode =useThemeStore((state) => state.darkMode)
- 
+
+  const darkMode = useThemeStore((state) => state.darkMode);
 
   const configAnotation = {
     annotation: {
@@ -72,5 +71,5 @@ export const TortaCausasFallecimientosGanado = ({
     plugins: { ...optionsChart.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options} />
+  return <Doughnut data={datasets} options={options} />;
 };

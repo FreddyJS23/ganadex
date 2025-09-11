@@ -61,14 +61,12 @@ type ModalEdit = Pick<
   type: "Vaca" | "Toro" | "Ganado descarte";
 };
 const Modal = ({ ganado, isOpen, onOpenChange, onClose, type }: ModalEdit) => {
-
   const getIdOrigen = useMemo(() => {
     const origen = origenCasttleSelect.find(
       ({ label }) => label == ganado.origen,
     );
     return origen?.value ?? 1;
   }, [ganado.origen]);
-
 
   const actionsEdit = {
     Vaca: editCastle,
@@ -83,7 +81,7 @@ const Modal = ({ ganado, isOpen, onOpenChange, onClose, type }: ModalEdit) => {
     origen_id: getIdOrigen,
   };
 
-  const { handleSubmitForm, errors, register, formRef, control,setValue } =
+  const { handleSubmitForm, errors, register, formRef, control, setValue } =
     useFormManager<
       EditCastle,
       | ResponseGanado["ganado"]["numero"]
@@ -95,12 +93,12 @@ const Modal = ({ ganado, isOpen, onOpenChange, onClose, type }: ModalEdit) => {
       id: ganado.id,
       submitEditAction: actionsEdit[type],
       defaultValues: defaultValues,
-      messageOnSuccess: ()=> `${type} ${type == "Vaca" ? "actualizada" : 'actualizado'} correctamente`,
+      messageOnSuccess: () =>
+        `${type} ${type == "Vaca" ? "actualizada" : "actualizado"} correctamente`,
       justMessageOnSuccess: true,
       onClose: onClose,
-      routerBack:false
+      routerBack: false,
     });
-
 
   //atributos para el input de fecha_ingreso
   const {

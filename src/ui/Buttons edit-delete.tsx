@@ -8,7 +8,7 @@ import { useEditDelete } from "@/lib/hooks/useEditDelete";
 
 type ButtonEditProps = {
   id: number;
-  size?: "sm" | "md" | "lg"
+  size?: "sm" | "md" | "lg";
   /**Desabilitar el boton de eliminacion ya que hay elementos no deben ser eliminados   */
   hiddenDelete?: boolean;
   onEdit: (id: number) => void;
@@ -19,11 +19,17 @@ type ButtonEditProps = {
   onCancel: () => void;
 };
 
-
-
-
-export const ButtonsEditedDelete = ({formId,state,id,size,hiddenDelete=false,onEdit,onDelete,isLoading,onCancel}:ButtonEditProps) => {
-
+export const ButtonsEditedDelete = ({
+  formId,
+  state,
+  id,
+  size,
+  hiddenDelete = false,
+  onEdit,
+  onDelete,
+  isLoading,
+  onCancel,
+}: ButtonEditProps) => {
   const { pending } = useFormStatus();
   /* se utilizar el variant para evitar error de tipo al destructurar las props
     ya que si pone flat el tipo sera string y sera incompatible con el variant de nextui */
@@ -44,7 +50,6 @@ export const ButtonsEditedDelete = ({formId,state,id,size,hiddenDelete=false,onE
     "aria-label": action,
     title: action,
   });
-
 
   return (
     <div className="flex gap-4">
@@ -71,22 +76,21 @@ export const ButtonsEditedDelete = ({formId,state,id,size,hiddenDelete=false,onE
 
       {state == "save" ? (
         /* cancel */
-        <Button
-          {...baseButtonProps("Cancelar")}
-          onClick={onCancel}
-        >
+        <Button {...baseButtonProps("Cancelar")} onClick={onCancel}>
           <IconCancel className="size-7 fill-white" />
         </Button>
       ) : (
         /* delete */
-       !hiddenDelete && <Button
-          {...baseButtonProps("Eliminar")}
-          onPress={() => onDelete(id)}
-          isLoading={isLoading}
-          className="bg-error"
-        >
-          <IconDelete className="size-7" />
-        </Button>
+        !hiddenDelete && (
+          <Button
+            {...baseButtonProps("Eliminar")}
+            onPress={() => onDelete(id)}
+            isLoading={isLoading}
+            className="bg-error"
+          >
+            <IconDelete className="size-7" />
+          </Button>
+        )
       )}
     </div>
   );

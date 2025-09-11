@@ -24,7 +24,7 @@ export const DetailsChecks = {
   fecha: "Última",
   diagnostico: "Diagnóstico",
   tratamiento: "Tratamiento",
-  observacion:"Observación",
+  observacion: "Observación",
   vacuna: "Vacuna",
   dosis: "Dosis",
   proxima: "Próxima",

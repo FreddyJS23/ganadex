@@ -81,9 +81,7 @@ export const ModalCreateEditVaccine = (props: ModalCreateEditVaccineProps) => {
   };
 
   //Estado para el campo tipo ganados
-  const [tipoGanados, setTipoGanados] = useState<
-    CreateVaccine["tipo_ganados"] 
-  >(
+  const [tipoGanados, setTipoGanados] = useState<CreateVaccine["tipo_ganados"]>(
     type == "update"
       ? transfomedTypeCattleSelect(props.vaccine.tipos_ganado)
           ?.typesCattleTranformed

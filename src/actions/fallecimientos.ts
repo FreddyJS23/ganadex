@@ -14,5 +14,5 @@ export async function createDeathCattle(
     Object.assign(formData, { ganado_id: id }),
   );
   if ("error" in response) return response;
-  else return response.fallecimiento.ganado.numero ?? "sin número" ;
+  else return response.fallecimiento.ganado.numero ?? "sin número";
 }

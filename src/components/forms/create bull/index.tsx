@@ -105,16 +105,13 @@ export const FormBull = ({
   const [showinputSale, setShowinputSale] = useState(false);
 
   const handleSelectionChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    
-      /* se hace un slice de la primera posición para quitar el primer carácter "," 
+    /* se hace un slice de la primera posición para quitar el primer carácter "," 
     que es el separador de selección, ya que al no haber nada en el select, y seleccionar algo
     se posicionaba una coma quedan ",3" y no "3" que es el valor que se espera */
-    const valuesStates =
-      e.target.value.startsWith(',') 
-        ? e.target.value.slice(1).split(",") 
-        : e.target.value.split(",");
-    
-    
+    const valuesStates = e.target.value.startsWith(",")
+      ? e.target.value.slice(1).split(",")
+      : e.target.value.split(",");
+
     /* state sale */
     if (valuesStates.some((value) => value == "5")) {
       setshema(bullShemaWithSale);

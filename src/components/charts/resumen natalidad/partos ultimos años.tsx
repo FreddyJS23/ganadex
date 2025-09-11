@@ -66,7 +66,11 @@ const PartosUltimos5AñosLinea = forwardRef(function (
   return (
     <>
       {/* gráfico */}
-      <Line ref={ref} options={optionChartLinePartosTotales(darkMode)} data={dataLine} />
+      <Line
+        ref={ref}
+        options={optionChartLinePartosTotales(darkMode)}
+        data={dataLine}
+      />
     </>
   );
 });

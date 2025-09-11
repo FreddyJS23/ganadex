@@ -80,7 +80,7 @@ export const ChartAnnualBalanceMilk = ({
     ],
   };
 
-  const darkMode =useThemeStore((state) => state.darkMode)
+  const darkMode = useThemeStore((state) => state.darkMode);
 
   return (
     <>

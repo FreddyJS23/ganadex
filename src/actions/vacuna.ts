@@ -4,13 +4,11 @@ import { getData } from "@/utils/getData";
 import { AvailableVaccines, ResponseErrorNext } from "@/types";
 import { CreateVaccine } from "@/types/forms";
 
-
 export async function createVaccine(
   formData: CreateVaccine,
 ): Promise<AvailableVaccines | ResponseErrorNext> {
-
   // Enviar los datos al backend
-  const response = await getData<CreateVaccine, { vacuna:AvailableVaccines }>(
+  const response = await getData<CreateVaccine, { vacuna: AvailableVaccines }>(
     "vacunas",
     "POST",
     formData,
@@ -20,14 +18,12 @@ export async function createVaccine(
   return response.vacuna;
 }
 
-
 export async function updateVaccine(
   id: number,
   formData: CreateVaccine,
 ): Promise<AvailableVaccines | ResponseErrorNext> {
-
   // Enviar los datos al backend
-  const response = await getData<CreateVaccine, { vacuna:AvailableVaccines }>(
+  const response = await getData<CreateVaccine, { vacuna: AvailableVaccines }>(
     "vacuna",
     "PUT",
     formData,

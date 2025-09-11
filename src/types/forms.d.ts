@@ -24,7 +24,10 @@ import { createSaleMilkShema } from "@/validations/saleMilkShema";
 import { createServeShema, updateServeShema } from "@/validations/serveShema";
 import { createStaffShema } from "@/validations/staffShema";
 import { createSupplyShema } from "@/validations/supplyShema";
-import { createWeightMilkShema, updateWeightMilkShema } from "@/validations/WeightMilkShema";
+import {
+  createWeightMilkShema,
+  updateWeightMilkShema,
+} from "@/validations/WeightMilkShema";
 import { yearsToGenerateReportShema } from "@/validations/yearsTotGenerateReportShema";
 import { z } from "zod";
 import { createPajuelaToroSchema } from "@/validations/pajuelaToroShema";
@@ -79,7 +82,6 @@ export type CreateBeef = z.infer<typeof createBeefShema>;
 
 export type CreateAssigmentNumberBullCalf = z.infer<
   typeof assignmentNumberBullCalfShema
-  
 >;
 
 export type UpdateBirh = z.infer<typeof updateBirhthShema>;
@@ -144,4 +146,4 @@ export type CreateResponseSecurity = z.infer<
   typeof createResponsesSecurityShema
 >;
 
-export type CreateVaccine= z.infer<typeof createVaccineSchema>;
+export type CreateVaccine = z.infer<typeof createVaccineSchema>;

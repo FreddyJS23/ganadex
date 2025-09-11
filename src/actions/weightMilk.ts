@@ -37,4 +37,3 @@ export async function updateWeightMilk(
   if ("error" in response) return response;
   else return response.pesaje_leche.pesaje;
 }
-

@@ -9,8 +9,7 @@ export const TableAvailableVaccines = ({
   vacunas,
 }: { vacunas: Vaccines[] }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedVaccine, setSelectedVaccine] =
-    useState<Vaccines | null>(null);
+  const [selectedVaccine, setSelectedVaccine] = useState<Vaccines | null>(null);
 
   const handleEditClick = (vaccine: Vaccines) => {
     setSelectedVaccine(vaccine);

@@ -2,11 +2,11 @@
  * @param fecha fecha de nacimiento del animal formato dd/mm/yyyy(d-m-a)
  */
 export const getAge = (fecha: string) => {
-  
-  const fechaArray= fecha.split("-");
-//ya que el formato de fecha es dd-mm-aaaa hay que convertir a aaaa-mm-dd para el date
-  const fechaFormato = fechaArray[2] + "-" + fechaArray[1] + "-" + fechaArray[0];
-  
+  const fechaArray = fecha.split("-");
+  //ya que el formato de fecha es dd-mm-aaaa hay que convertir a aaaa-mm-dd para el date
+  const fechaFormato =
+    fechaArray[2] + "-" + fechaArray[1] + "-" + fechaArray[0];
+
   const fechaActual = new Date();
   const fechaNacimiento = new Date(fechaFormato);
   const ageYear = fechaActual.getFullYear() - fechaNacimiento.getFullYear();

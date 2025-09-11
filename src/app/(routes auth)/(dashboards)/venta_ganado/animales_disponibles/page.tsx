@@ -11,7 +11,7 @@ export default async function Page() {
   );
 
   const { compradores }: ResponseCompradores = await getData("compradores");
-  
+
   const session = (await auth()) as Session;
   const role = session.user.rol;
   return (
@@ -21,7 +21,11 @@ export default async function Page() {
         iconTooltip
         contentTooltip="Estos animales están destinado a ser vendidos para el consumo humano"
       />
-      <TableDiscardedCattle ganado_descartes={ganado_descartes} role={role} ListaCompradoresRegistrados={compradores} />
+      <TableDiscardedCattle
+        ganado_descartes={ganado_descartes}
+        role={role}
+        ListaCompradoresRegistrados={compradores}
+      />
     </>
   );
 }

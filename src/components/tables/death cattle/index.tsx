@@ -23,12 +23,13 @@ export const TableDeadCattle = ({ fallecidos }: ResponseFallecimientos) => {
         case "ganado": {
           const ganado = cellValue as Pick<Ganado, "id" | "numero">;
           return (
-                      <RedirectInTable
-                        id={fallecimiento["id"]}
-                        label={ganado.numero}
-                        redirect="ganado"
-                      />
-  )}
+            <RedirectInTable
+              id={fallecimiento["id"]}
+              label={ganado.numero}
+              redirect="ganado"
+            />
+          );
+        }
 
         default:
           return cellValue as ReactNode;

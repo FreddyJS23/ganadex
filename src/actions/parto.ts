@@ -29,7 +29,7 @@ export async function updateBirth(
     formData,
     idCastle,
     "parto",
-    idBirth
+    idBirth,
   );
   return response;
 }

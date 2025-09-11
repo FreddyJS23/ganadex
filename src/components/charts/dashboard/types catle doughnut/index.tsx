@@ -43,7 +43,6 @@ export const TortaTipoGanado = ({
 
   const darkMode = useThemeStore((state) => state.darkMode);
 
-
   const configAnotation = {
     annotation: {
       //plugin anotaciones
@@ -61,7 +60,7 @@ export const TortaTipoGanado = ({
     },
   };
 
-  const optionChart=optionChartTotalTypesCattle(darkMode);
+  const optionChart = optionChartTotalTypesCattle(darkMode);
   //destructurar options
   //primero se destructura el objeto de opciones
   //luego se crear un nuevo objecto con la propiedad plugins
@@ -72,5 +71,5 @@ export const TortaTipoGanado = ({
     plugins: { ...optionChart.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options} />
+  return <Doughnut data={datasets} options={options} />;
 };

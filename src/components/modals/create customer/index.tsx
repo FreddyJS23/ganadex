@@ -22,7 +22,6 @@ export const ModalCreateCustomer = ({
   const router = useRouter();
 
   const customSuccessAction = () => {
-
     /* ya que esta ruta puede ser usada por intercesión de ruta o una ruta normal la navegación sera diferente.
   Los datos registrados deben estar lo mas reciente posible, por lo que
   se hace una navegación para refrescar dependiendo del path donde se llame */
@@ -45,18 +44,19 @@ export const ModalCreateCustomer = ({
     return router.back();
   };
 
-  const { handleSubmitForm, errors, register, formRef } =
-    useFormManager<CreateCustomer, string | number | undefined>({
-      schema: createCustomerShema,
-      typeForm: "create",
-      submitCreateAction: createCustomer,
-      customSuccessAction: customSuccessAction,
-      messageOnSuccess:"crearComprador",
-      routerRefresh:false,
-      routerBack:false,
-    });
+  const { handleSubmitForm, errors, register, formRef } = useFormManager<
+    CreateCustomer,
+    string | number | undefined
+  >({
+    schema: createCustomerShema,
+    typeForm: "create",
+    submitCreateAction: createCustomer,
+    customSuccessAction: customSuccessAction,
+    messageOnSuccess: "crearComprador",
+    routerRefresh: false,
+    routerBack: false,
+  });
 
- 
   return (
     <LayoutModal
       icon="customer"

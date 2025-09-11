@@ -190,9 +190,8 @@ export const TabDetailsCattle = ({
                   content={servicio_toro.efectividad + "%"}
                 />
               </>
-            ) 
-             /* descripción servicios al ver una vaca */
-            : (
+            ) : (
+              /* descripción servicios al ver una vaca */
               <>
                 <Details
                   tittle={DetailsServe.fecha}

@@ -320,7 +320,7 @@ export type ResponseVacunasDisponibles = {
 
 export type ResponseVacunas = {
   vacunas: Vaccine[];
-}
+};
 
 export type ResponseSugerirNumero = {
   numero_disponible: number;

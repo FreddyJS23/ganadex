@@ -60,9 +60,8 @@ export const ModalSelectHaciendaSesion = ({
       router.push("/api/verificar_sesion_hacienda");
     } catch (error) {
       toast.error(error as string);
-    }
-    finally{
-      disableLoading()
+    } finally {
+      disableLoading();
     }
   });
 

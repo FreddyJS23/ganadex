@@ -15,9 +15,9 @@ export const Logos = ({ small }: LogosProps) => {
         <div className="hidden sm:block">
           <IconoLogoDark className={small ? "size-10" : "size-32"} />
         </div>
-         <div className="block sm:hidden">
+        <div className="block sm:hidden">
           <IconoLogo className={small ? "size-10" : "size-32"} />
-        </div> 
+        </div>
       </div>
     </>
   );

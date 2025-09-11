@@ -24,17 +24,14 @@ export const paletteBorderColor = [
   "#2a9235",
 ];
 
-
-
-
 export const optionChartTotalTypesCattle = (
   darkMode: boolean,
 ): ChartOptions<"doughnut"> => ({
   plugins: {
     legend: {
       position: "right",
-      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK, padding: 20, },
-      fullSize:false,
+      labels: { color: darkMode ? LETTER_WHITE : LETTER_BLACK, padding: 20 },
+      fullSize: false,
       align: "start",
     },
     datalabels: {
@@ -49,7 +46,7 @@ export const optionChartTotalTypesCattle = (
       },
     },
   },
-   borderColor: darkMode ? LETTER_WHITE : LETTER_BLACK,
+  borderColor: darkMode ? LETTER_WHITE : LETTER_BLACK,
   aspectRatio: 2.4,
   layout: { padding: 10 },
 });
@@ -89,7 +86,9 @@ export const optionChartTop3CatleProduction = (
   aspectRatio: 1.7,
 });
 
-export const optionChartLineAnnualMilk = (darkMode: boolean): ChartOptions<"line"> => ({
+export const optionChartLineAnnualMilk = (
+  darkMode: boolean,
+): ChartOptions<"line"> => ({
   scales: {
     y: {
       beginAtZero: true,
@@ -120,7 +119,7 @@ export const optionChartLineAnnualMilk = (darkMode: boolean): ChartOptions<"line
   plugins: {
     legend: {
       display: false,
-  },
+    },
     tooltip: {
       callbacks: {
         label: (context) => context.formattedValue + " KG",
@@ -130,7 +129,9 @@ export const optionChartLineAnnualMilk = (darkMode: boolean): ChartOptions<"line
   aspectRatio: 3,
 });
 
-export const optionChartLineEarningsMilkMonth= (darkMode: boolean): ChartOptions<"line"> => ({
+export const optionChartLineEarningsMilkMonth = (
+  darkMode: boolean,
+): ChartOptions<"line"> => ({
   parsing: {
     xAxisKey: "fecha",
     yAxisKey: "cantidad",
@@ -178,7 +179,9 @@ export const optionChartLineEarningsMilkMonth= (darkMode: boolean): ChartOptions
   aspectRatio: 3,
 });
 
-export const optionChartLineSalesCatle= (darkMode: boolean): ChartOptions<"bar"> => ({
+export const optionChartLineSalesCatle = (
+  darkMode: boolean,
+): ChartOptions<"bar"> => ({
   parsing: {
     xAxisKey: "mes",
     yAxisKey: "ventas",
@@ -216,7 +219,9 @@ export const optionChartLineSalesCatle= (darkMode: boolean): ChartOptions<"bar">
   aspectRatio: 7,
 });
 
-export const optionChartLinePartosTotales= (darkMode: boolean): ChartOptions<"line"> => ({
+export const optionChartLinePartosTotales = (
+  darkMode: boolean,
+): ChartOptions<"line"> => ({
   scales: {
     y: {
       beginAtZero: true,
@@ -284,7 +289,9 @@ export const optionChartLinePartosTotales= (darkMode: boolean): ChartOptions<"li
   aspectRatio: 3,
 });
 
-export const optionChartBarTasaNatalidad=(darkMode: boolean): ChartOptions<"bar"> => ({
+export const optionChartBarTasaNatalidad = (
+  darkMode: boolean,
+): ChartOptions<"bar"> => ({
   scales: {
     y: {
       beginAtZero: true,
@@ -349,7 +356,9 @@ export const optionChartBarTasaNatalidad=(darkMode: boolean): ChartOptions<"bar"
   aspectRatio: 3,
 });
 
-export const optionChartDoughnutCantidadNacimientos=(darkMode: boolean): ChartOptions<"doughnut"> => ({
+export const optionChartDoughnutCantidadNacimientos = (
+  darkMode: boolean,
+): ChartOptions<"doughnut"> => ({
   plugins: {
     title: {
       display: true,

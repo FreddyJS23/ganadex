@@ -10,10 +10,10 @@ export const createBaseCheckUpShema = z
     tratamiento: z.string().min(3).max(255).optional(),
     observacion: z.string().min(3).max(255).optional(),
     proxima: z.string().regex(regexDate).optional(),
-    dosis:z.number().gte(1).lte(32767).optional(),
+    dosis: z.number().gte(1).lte(32767).optional(),
     fecha: z.string().regex(regexDate),
     servicio_desconocido: z.boolean().optional(),
-    dias_feto:  z.number().gte(1).lte(100).optional(),
+    dias_feto: z.number().gte(1).lte(100).optional(),
     toro_id: z.string().regex(/\d/),
   })
   .refine((data) => new Date(data.fecha) <= new Date(), {
@@ -27,11 +27,12 @@ export const inputPersonalIdShema = z.object({
 export const createAdminCheckUpShema =
   createBaseCheckUpShema.and(inputPersonalIdShema);
 
-  export const editCheckUpShema = z
-    .object({
-      fecha: z.string().regex(regexDate),
-      tratamiento: z.string().min(3).max(255),
-    }).refine((data) => new Date(data.fecha) <= new Date(), {
-      message: "La fecha no puede ser mas alta que la fecha actual",
-      path: ["fecha"],
-    });
+export const editCheckUpShema = z
+  .object({
+    fecha: z.string().regex(regexDate),
+    tratamiento: z.string().min(3).max(255),
+  })
+  .refine((data) => new Date(data.fecha) <= new Date(), {
+    message: "La fecha no puede ser mas alta que la fecha actual",
+    path: ["fecha"],
+  });

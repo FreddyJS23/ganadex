@@ -61,7 +61,6 @@ const NatalidadUltimos5AñosBarra = forwardRef(function (
         backgroundColor: paletteBackground,
         borderColor: paletteBorderColor,
         borderWidth: 1,
-        
       },
     ],
   };
@@ -69,7 +68,11 @@ const NatalidadUltimos5AñosBarra = forwardRef(function (
   return (
     <>
       {/* gráfico */}
-      <Bar ref={ref} options={optionChartBarTasaNatalidad(darkMode)} data={dataBar} />
+      <Bar
+        ref={ref}
+        options={optionChartBarTasaNatalidad(darkMode)}
+        data={dataBar}
+      />
     </>
   );
 });
