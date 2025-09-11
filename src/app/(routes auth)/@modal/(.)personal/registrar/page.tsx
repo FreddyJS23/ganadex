@@ -7,6 +7,4 @@ export default async function Page() {
     await getData("cargosPersonal");
 
   return <ModalCreatePersonal cargos_personal={cargos_personal} />;
-    
-
 }

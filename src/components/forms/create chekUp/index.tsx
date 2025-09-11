@@ -69,20 +69,20 @@ export const FormCreateCheckUp = ({
 
   //observar select de vacunas
   const vacunaWacth = watch("vacuna_id");
-console.log(errors)
+  console.log(errors);
   /* control de check para mostrar campos sección servicio de emergencia */
   const [checkService, setCheckService] = useState(false);
 
-  const handleSelectService=(e:ChangeEvent<HTMLInputElement>)=>{
+  const handleSelectService = (e: ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
-    if(checked) {
+    if (checked) {
       setCheckService(true);
-      setValue("servicio_desconocido",true)
-      return
-    } 
+      setValue("servicio_desconocido", true);
+      return;
+    }
     setCheckService(false);
-    setValue("servicio_desconocido",false)
-  }
+    setValue("servicio_desconocido", false);
+  };
 
   useEffect(() => {
     if (!vacunaWacth) {
@@ -322,29 +322,20 @@ console.log(errors)
             </div>
           )}
 
-          {tipoRevision?.tipo == "Gestación" &&
-        <div className="flex gap-2 items-center">
-          <Tooltip
-          content="servicio_emergencia"
-          type="icon"
-          
-
-
-          /> 
-    <Checkbox
-              title="Crear servicio"
-              isSelected={checkService}
-              onChange={(e)=>handleSelectService(e)}
-              name="servicio_desconocido"
-  
-              id="servicio_desconocido"
-            >
-              Crear servicio
-            </Checkbox>
-
-        </div>
-          }
-        
+          {tipoRevision?.tipo == "Gestación" && (
+            <div className="flex gap-2 items-center">
+              <Tooltip content="servicio_emergencia" type="icon" />
+              <Checkbox
+                title="Crear servicio"
+                isSelected={checkService}
+                onChange={(e) => handleSelectService(e)}
+                name="servicio_desconocido"
+                id="servicio_desconocido"
+              >
+                Crear servicio
+              </Checkbox>
+            </div>
+          )}
 
           {/* campos para crear servicio de emergencia */}
           {checkService && (

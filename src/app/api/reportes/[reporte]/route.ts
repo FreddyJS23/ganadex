@@ -30,8 +30,7 @@ export async function GET(
       status: 200,
       headers: { "content-type": "application/pdf" },
     });
-  /* si el pdf no se genero devuelve el error */
-    else if (
+  /* si el pdf no se genero devuelve el error */ else if (
     typeof filePdf == "object"
   ) {
     return NextResponse.json(filePdf, { status: 500 });

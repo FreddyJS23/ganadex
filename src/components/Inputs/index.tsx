@@ -30,7 +30,7 @@ export const Input = ({
     dolar: <EndElement content="$" />,
     weight: <EndElement content="KG" />,
     "weight-milk": <EndElement content="KG" />,
-    "ml": <EndElement content="ml" />,
+    ml: <EndElement content="ml" />,
   };
 
   return (

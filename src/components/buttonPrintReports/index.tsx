@@ -37,27 +37,24 @@ export const ButtonGenerateReport = () => {
     } catch (error) {
       const message = error as string;
       return toast.error(message);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
 
   const Button = ({ endPoint, id }: GenerateReport) => {
     return (
-     
       <ButtonNextUI
-      isIconOnly
-      title={`Generar reporte`}
-      aria-label="Guardar"
-      variant="flat"
-      size="sm"
-      isLoading={loading}
-      onClick={() => generateReport(endPoint, id)}
-    >
-      <IconImprimir className={"size-8"} />
-    </ButtonNextUI>
-    
+        isIconOnly
+        title={`Generar reporte`}
+        aria-label="Guardar"
+        variant="flat"
+        size="sm"
+        isLoading={loading}
+        onClick={() => generateReport(endPoint, id)}
+      >
+        <IconImprimir className={"size-8"} />
+      </ButtonNextUI>
     );
   };
 
@@ -70,25 +67,37 @@ export const ButtonGenerateReport = () => {
   )
     return (
       <Link href={`/reporte/venta_leche`}>
-        <IconImprimir tittle="Generar reporte" className={"text-base-100 size-8 sm:text-current"} />
+        <IconImprimir
+          tittle="Generar reporte"
+          className={"text-base-100 size-8 sm:text-current"}
+        />
       </Link>
     );
   else if (pathname == "/fallecimientos")
     return (
       <Link href={`/reporte/causas_fallecimientos`}>
-        <IconImprimir tittle="Generar reporte" className={"text-base-100 size-8 sm:text-current"} />
+        <IconImprimir
+          tittle="Generar reporte"
+          className={"text-base-100 size-8 sm:text-current"}
+        />
       </Link>
     );
   else if (pathname == "/venta_ganado/historial")
     return (
       <Link href={`/reporte_anual/venta_ganado`}>
-        <IconImprimir tittle="Generar reporte" className={"text-base-100 size-8 sm:text-current"} />
+        <IconImprimir
+          tittle="Generar reporte"
+          className={"text-base-100 size-8 sm:text-current"}
+        />
       </Link>
     );
   else if (pathname == "/partos")
     return (
       <Link href={`/partos/resumen`}>
-        <IconGrafico tittle="Ver resumen estadístico" className={"text-base-100 size-8 sm:text-current"} />
+        <IconGrafico
+          tittle="Ver resumen estadístico"
+          className={"text-base-100 size-8 sm:text-current"}
+        />
       </Link>
     );
 

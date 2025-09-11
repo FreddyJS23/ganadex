@@ -71,7 +71,9 @@ export const Sidebar = async ({ android }: SidebarProps) => {
           <Logos small={true} />
           <div className="divider divider-primary self-center w-6 my-0 "></div>
           {/*  cuerpo */}
-          <ul className="flex flex-col w-full ">{sidebarElements(true, role)}</ul>
+          <ul className="flex flex-col w-full ">
+            {sidebarElements(true, role)}
+          </ul>
         </div>
       </nav>
     </>

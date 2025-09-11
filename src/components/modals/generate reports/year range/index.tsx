@@ -27,12 +27,10 @@ export const ModalGenerateReportYear = ({
   });
 
   const formRef = useRef(null);
-  const {activateLoading,disableLoading}= useLoadingButtonModal();
-  
+  const { activateLoading, disableLoading } = useLoadingButtonModal();
 
   const actionGenerateReportYear: () => void = handleSubmit(async (data) => {
-   
-      activateLoading();
+    activateLoading();
 
     try {
       const file = await generateReportsYear(data, type);
@@ -45,8 +43,7 @@ export const ModalGenerateReportYear = ({
     } catch (error) {
       const message = error as string;
       return toast.error(message);
-    }
-    finally {
+    } finally {
       disableLoading();
     }
   });

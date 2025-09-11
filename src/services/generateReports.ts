@@ -33,9 +33,10 @@ export const GetReports = async (
     url = process.env.API_URL_BASE + `${endpointsReports[endPoint]}/${id}`;
   } else if (endPoint == "venta_leche" || endPoint == "fallecimiento") {
     url =
-      process.env.API_URL_BASE + `${endpointsReports[endPoint]}?start=${startDate}&end=${endDate}`;
+      process.env.API_URL_BASE +
+      `${endpointsReports[endPoint]}?start=${startDate}&end=${endDate}`;
   }
-  
+
   const headers = new Headers({
     Accept: "application/json",
     Origin: process.env.ORIGIN,

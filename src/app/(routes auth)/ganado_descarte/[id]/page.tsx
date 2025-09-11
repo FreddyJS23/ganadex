@@ -80,44 +80,46 @@ export default async function Page({ params }: ParamsPageBeef) {
           {/*  detalles */}
           <div className="flex relative">
             <div className=" flex flex-wrap gap-4 bg-base-100 justify-between md:gap-y-4 p-4 shadow-[0px_0px_6px_-3px] shadow-primary rounded-md border-primary sm:grid grid-cols-2  sm:gap-6 lg:grid-cols-3 lg:justify-items-center ">
-            
               {/* boton flotante y modal para editar */}
-        {role == 'admin' && !disableEditWeight && <ModalEditAnimal type={"Ganado descarte"}  ganado={ganado_descarte} />}
+              {role == "admin" && !disableEditWeight && (
+                <ModalEditAnimal
+                  type={"Ganado descarte"}
+                  ganado={ganado_descarte}
+                />
+              )}
 
-              
               <Details tittle={DetailsCattle.nombre} content={nombre} />
               <Details tittle={DetailsCattle.origen} content={origen} />
               <Details
                 tittle={DetailsCattle.fecha_nacimiento}
                 content={fecha_nacimiento}
               />
-               {ganado_descarte.fallecimiento && (
+              {ganado_descarte.fallecimiento && (
                 <>
-                 <Details
-                  tittle={DetailsCattle.fecha_fallecimiento}
-                  content={ganado_descarte.fallecimiento.fecha}
-                />
-                 <Details
-                  tittle={DetailsCattle.causa_fallecimiento}
-                  content={ganado_descarte.fallecimiento.causa}
-                />
                   <Details
-                  tittle={DetailsCattle.descripcion_fallecimiento}
-                  content={ganado_descarte.fallecimiento.descripcion}
-                />
+                    tittle={DetailsCattle.fecha_fallecimiento}
+                    content={ganado_descarte.fallecimiento.fecha}
+                  />
+                  <Details
+                    tittle={DetailsCattle.causa_fallecimiento}
+                    content={ganado_descarte.fallecimiento.causa}
+                  />
+                  <Details
+                    tittle={DetailsCattle.descripcion_fallecimiento}
+                    content={ganado_descarte.fallecimiento.descripcion}
+                  />
                 </>
               )}
               {ganado_descarte.venta && (
                 <>
-                 <Details
-                  tittle={DetailsCattle.fecha_venta}
-                  content={ganado_descarte.venta.fecha}
-                />
-                 <Details
-                  tittle={DetailsCattle.comprador}
-                  content={ganado_descarte.venta.comprador}
-                />
-                
+                  <Details
+                    tittle={DetailsCattle.fecha_venta}
+                    content={ganado_descarte.venta.fecha}
+                  />
+                  <Details
+                    tittle={DetailsCattle.comprador}
+                    content={ganado_descarte.venta.comprador}
+                  />
                 </>
               )}
 

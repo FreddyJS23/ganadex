@@ -1,7 +1,5 @@
 import { auth } from "@/app/auth";
-import {
-  DetailsCattle,
-} from "@/collections";
+import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import { WeightsEditable } from "@/components/editable sections/weights";
@@ -65,40 +63,40 @@ export default async function Page({ params }: ParamsPageBull) {
           {/*  detalles */}
           <div className="flex relative">
             <div className=" flex flex-wrap gap-4 bg-base-100 justify-between md:gap-y-4 p-4 shadow-[0px_0px_6px_-3px] shadow-primary rounded-md border-primary sm:grid grid-cols-2  sm:gap-6 lg:grid-cols-3 lg:justify-items-center ">
-              
-               {/* boton flotante y modal para editar */}
-          {role == 'admin' && !disableEditWeight && <ModalEditAnimal type={"Toro"}  ganado={toro} />}
-              
+              {/* boton flotante y modal para editar */}
+              {role == "admin" && !disableEditWeight && (
+                <ModalEditAnimal type={"Toro"} ganado={toro} />
+              )}
+
               <Details tittle={DetailsCattle.nombre} content={nombre} />
               <Details tittle={DetailsCattle.origen} content={origen} />
-              
+
               {toro.fallecimiento && (
                 <>
-                 <Details
-                  tittle={DetailsCattle.fecha_fallecimiento}
-                  content={toro.fallecimiento.fecha}
-                />
-                 <Details
-                  tittle={DetailsCattle.causa_fallecimiento}
-                  content={toro.fallecimiento.causa}
-                />
                   <Details
-                  tittle={DetailsCattle.descripcion_fallecimiento}
-                  content={toro.fallecimiento.descripcion}
-                />
+                    tittle={DetailsCattle.fecha_fallecimiento}
+                    content={toro.fallecimiento.fecha}
+                  />
+                  <Details
+                    tittle={DetailsCattle.causa_fallecimiento}
+                    content={toro.fallecimiento.causa}
+                  />
+                  <Details
+                    tittle={DetailsCattle.descripcion_fallecimiento}
+                    content={toro.fallecimiento.descripcion}
+                  />
                 </>
               )}
               {toro.venta && (
                 <>
-                 <Details
-                  tittle={DetailsCattle.fecha_venta}
-                  content={toro.venta.fecha}
-                />
-                 <Details
-                  tittle={DetailsCattle.comprador}
-                  content={toro.venta.comprador}
-                />
-                
+                  <Details
+                    tittle={DetailsCattle.fecha_venta}
+                    content={toro.venta.fecha}
+                  />
+                  <Details
+                    tittle={DetailsCattle.comprador}
+                    content={toro.venta.comprador}
+                  />
                 </>
               )}
 
@@ -108,7 +106,7 @@ export default async function Page({ params }: ParamsPageBull) {
                   content={toro.fecha_ingreso}
                 />
               )}
-              
+
               <Details
                 tittle={DetailsCattle.fecha_nacimiento}
                 content={fecha_nacimiento}
@@ -136,13 +134,12 @@ export default async function Page({ params }: ParamsPageBull) {
                   </>
                 )}
               </div>
-              
             </div>
           </div>
         </div>
         <div className="w-full divide-y divide-primary/[.20]">
           <TabDetailsCattle
-            servicio_toro={{efectividad,padre_en_partos,servicios}}
+            servicio_toro={{ efectividad, padre_en_partos, servicios }}
             vacunaciones={vacunaciones}
             isMale={true}
             disableCreateButton

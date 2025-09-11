@@ -52,25 +52,24 @@ export const ModalCheckUp = ({ revision }: ModalProps) => {
     >
       <>
         {/* diagnósticos sacados del seeder tipo revision laravel */}
-        {(typeof revision.revision != "string") && (
-          revision.revision.tipo == "Aborto" ||
-          revision.revision.tipo == "Gestación"
-        ) && (
-          <div className="absolute left-[19%] top-[7%]">
-            {/* botón flotante */}
-            <ButtonsEditedDelete
-              id={revision.id}
-              size="md"
-              hiddenDelete
-              formId="form-edit-revision"
-              onEdit={onEdit}
-              state={stateButton}
-              onCancel={onSaveOrCancel}
-              isLoading={isLoading}
-              onDelete={onDelete}
-            />
-          </div>
-        )}
+        {typeof revision.revision != "string" &&
+          (revision.revision.tipo == "Aborto" ||
+            revision.revision.tipo == "Gestación") && (
+            <div className="absolute left-[19%] top-[7%]">
+              {/* botón flotante */}
+              <ButtonsEditedDelete
+                id={revision.id}
+                size="md"
+                hiddenDelete
+                formId="form-edit-revision"
+                onEdit={onEdit}
+                state={stateButton}
+                onCancel={onSaveOrCancel}
+                isLoading={isLoading}
+                onDelete={onDelete}
+              />
+            </div>
+          )}
 
         {stateButton == "save" ? (
           <RevisionEdit
@@ -151,7 +150,7 @@ const RevisionEdit = ({
     resolver: zodResolver(editCheckUpShema),
     defaultValues: {
       fecha: revision.fecha,
-      tratamiento: revision.tratamiento ? revision.tratamiento :undefined,
+      tratamiento: revision.tratamiento ? revision.tratamiento : undefined,
     },
   });
 

@@ -406,12 +406,12 @@ export enum FieldsLabelsWeights {
 
 export enum FieldsIdWheightMilk {
   peso_leche,
-  fecha
+  fecha,
 }
 
 export enum FieldsLabelsIdWheightMilk {
   "Pesaje de leche",
-  "Fecha",
+  Fecha,
 }
 
 export enum FieldsLabelsVaccine {

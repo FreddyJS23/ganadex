@@ -3,8 +3,7 @@ import { ResponseVacunas } from "@/types";
 import { getData } from "@/utils/getData";
 
 export default async function Page() {
-  const { vacunas }: ResponseVacunas =
-  await getData("vacunas");
+  const { vacunas }: ResponseVacunas = await getData("vacunas");
 
   return <ModalVaccines vacunas={vacunas} />;
 }

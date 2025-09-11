@@ -2,7 +2,7 @@
 
 import { headerServices, headerWeightMilk } from "@/collections/headerColums";
 import { ModalUpdateWeightMilk } from "@/components/modals/update weight milk";
-import {  PesajeLecheGanado, ResponsePesajesLeche } from "@/types";
+import { PesajeLecheGanado, ResponsePesajesLeche } from "@/types";
 import ButtonEdit from "@/ui/ButtonEdit";
 import { useDisclosure } from "@nextui-org/react";
 import { useState } from "react";

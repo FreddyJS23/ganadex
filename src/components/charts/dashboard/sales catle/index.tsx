@@ -65,7 +65,7 @@ export const SalesCatle = ({
     ],
   };
 
-  const darkMode =useThemeStore((state) => state.darkMode)
+  const darkMode = useThemeStore((state) => state.darkMode);
 
   return (
     <>

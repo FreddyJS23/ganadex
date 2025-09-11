@@ -24,14 +24,18 @@ export default async function Page() {
 
   if (existsPlanesSanitario)
     planes_sanitarios_pendientes.forEach((planes_sanitario: DayVaccination) => {
-      vacunasPendientes.push(`${planes_sanitario.vacuna}(${planes_sanitario.ganado_vacunado})`);
+      vacunasPendientes.push(
+        `${planes_sanitario.vacuna}(${planes_sanitario.ganado_vacunado})`,
+      );
     });
 
   return (
     <>
       <section className="flex flex-col gap-6">
         <div className="flex flex-col gap-5 w-11/12 ">
-          <h3 className="ml-2 text-lg md:text-xl font-bold">Próximos planes sanitario</h3>
+          <h3 className="ml-2 text-lg md:text-xl font-bold">
+            Próximos planes sanitario
+          </h3>
           <SliderVaccinationDays
             proximos_planes_sanitario={proximos_planes_sanitario}
           />

@@ -30,23 +30,23 @@ export async function createBeef(
 }
 
 export async function editBeef(
-  id:number,
+  id: number,
   formData: EditCastle,
 ): Promise<
   | ResponseErrorNext
   | ResponseGanado["ganado"]["numero"]
   | ResponseGanado["ganado"]["nombre"]
 > {
- 
-
-  const response = await getData<
-    EditCastle,
-    ResponseGanadoDescarte
-  >("ganadoDescarte", "PUT", formData, id);
+  const response = await getData<EditCastle, ResponseGanadoDescarte>(
+    "ganadoDescarte",
+    "PUT",
+    formData,
+    id,
+  );
   if ("error" in response) return response;
-  else return response.ganado_descarte.numero ?? response.ganado_descarte.nombre;
+  else
+    return response.ganado_descarte.numero ?? response.ganado_descarte.nombre;
 }
-
 
 export async function updateWeightBeef(
   id: number,

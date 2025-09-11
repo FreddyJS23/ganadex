@@ -1,7 +1,7 @@
 "use serve";
 
 import { ResponseErrorNext } from "@/types";
-import { CreateCheckUp, EditCheckUp} from "@/types/forms";
+import { CreateCheckUp, EditCheckUp } from "@/types/forms";
 import { getData } from "@/utils/getData";
 
 export async function createCheckUp(
@@ -21,7 +21,6 @@ export async function createCheckUp(
     return;
   }
 }
-
 
 export async function editCheckUp(
   idRevision: number,

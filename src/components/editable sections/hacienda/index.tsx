@@ -28,27 +28,24 @@ export const ListHaciendasProfile = ({
   const { stateButton, idAction, isLoading, onEdit, onSaveOrCancel, onDelete } =
     useEditDelete(deleteHacienda);
 
-
   return haciendas.map((hacienda) => {
     return stateButton == "save" && idAction == hacienda.id ? (
-    /*Editar hacienda */
-    <div className="flex gap-2 items-center">
-        <Edit hacienda={hacienda} id={hacienda.id}  onSave={onSaveOrCancel}>
-
-        <ButtonsEditedDelete
-          id={hacienda.id}
-          isLoading={isLoading}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          onCancel={onSaveOrCancel}
-          formId="form-edit-hacienda"
-          state="save"
-        />
+      /*Editar hacienda */
+      <div className="flex gap-2 items-center">
+        <Edit hacienda={hacienda} id={hacienda.id} onSave={onSaveOrCancel}>
+          <ButtonsEditedDelete
+            id={hacienda.id}
+            isLoading={isLoading}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            onCancel={onSaveOrCancel}
+            formId="form-edit-hacienda"
+            state="save"
+          />
         </Edit>
-       
       </div>
     ) : (
-     /* Ver hacienda */
+      /* Ver hacienda */
       <ElementProfile
         key={hacienda.id}
         tittle={hacienda.nombre}
@@ -75,7 +72,17 @@ export const ListHaciendasProfile = ({
     );
   });
 };
-const Edit = ({ hacienda, id , onSave,children }: { hacienda: Hacienda; id: number; onSave: () => void,children: ReactNode }) => {
+const Edit = ({
+  hacienda,
+  id,
+  onSave,
+  children,
+}: {
+  hacienda: Hacienda;
+  id: number;
+  onSave: () => void;
+  children: ReactNode;
+}) => {
   const router = useRouter();
   const {
     register,
@@ -89,7 +96,6 @@ const Edit = ({ hacienda, id , onSave,children }: { hacienda: Hacienda; id: numb
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const actionEdit: () => void = handleSubmit(async (data) => {
-    
     const hacienda = await editHacienda(id, data);
 
     /* manejar error del backend y mostrar mensaje */

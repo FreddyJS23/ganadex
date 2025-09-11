@@ -1,10 +1,6 @@
 "use serve";
 
-import {
-  Hacienda,
-  ResponseErrorNext,
-  ResponseHacienda,
-} from "@/types";
+import { Hacienda, ResponseErrorNext, ResponseHacienda } from "@/types";
 import { CreateHacienda } from "@/types/forms";
 import { getData } from "@/utils/getData";
 

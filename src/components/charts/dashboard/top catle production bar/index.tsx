@@ -50,7 +50,7 @@ export const ProduccionVacasTop3 = ({
     ],
   };
 
-  const darkMode =useThemeStore((state) => state.darkMode)
+  const darkMode = useThemeStore((state) => state.darkMode);
 
   return <Bar options={optionChartTop3CatleProduction(darkMode)} data={data} />;
 };

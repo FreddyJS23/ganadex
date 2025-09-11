@@ -41,7 +41,7 @@ export const TableAllCheckups = ({
         const revision = cellValue as
           | string
           | Pick<TipoRevision, "tipo" | "codigo">;
-        //revision desconocido  
+        //revision desconocido
         if (typeof revision == "string") return <span>{revision}</span>;
         else {
           //diagnositco pero no tiene codigo

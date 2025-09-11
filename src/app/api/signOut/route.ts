@@ -10,8 +10,7 @@ export async function GET(): Promise<NextResponse> {
   } catch (error) {
     console.error("Error al cerrar sesión en el servidor:");
   }
-  
- 
+
   await signOutAuthJs({ redirect: false });
 
   return redirect("/login");

@@ -1,5 +1,9 @@
 import { ModalCheckUp } from "@/components/modals/checkup";
-import { ResponseRevision, ResponseTiposRevision, ResponseVeterinariosSelect } from "@/types";
+import {
+  ResponseRevision,
+  ResponseTiposRevision,
+  ResponseVeterinariosSelect,
+} from "@/types";
 import { getData } from "@/utils/getData";
 
 type ParamsPage = {

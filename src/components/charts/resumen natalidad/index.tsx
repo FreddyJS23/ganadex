@@ -157,7 +157,7 @@ export const ResumenNatalidad = (
             />
           </div>
         </div>
-        
+
         <div className="flex w-full gap-4">
           <div className="w-full p-2 max-w-3xl bg-base-100 shadow-cards relative">
             {isLoading && hiddenChart && <Loading />}
@@ -168,7 +168,7 @@ export const ResumenNatalidad = (
               />
             </div>
           </div>
-        
+
           <div className="w-full p-2 max-w-3xl bg-base-100 shadow-cards relative">
             {isLoading && hiddenChart && <Loading />}
             <div className={`${isLoading && hiddenChart ? "opacity-10" : ""}`}>

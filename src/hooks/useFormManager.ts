@@ -163,9 +163,8 @@ export const useFormManager = <T extends FieldValues, ResponseAction>(
       //mostrar mensaje de éxito
       if (justMessageOnSuccess) {
         return handleSuccess(`${message}`, response);
-      }
-      /* mensajes con respuesta del servidor */
-      else if (!justMessageOnSuccess) {
+      } else if (!justMessageOnSuccess) {
+        /* mensajes con respuesta del servidor */
         //mensaje de éxito con respuesta del servidor al final del texto
         if (messageResponseLast)
           return handleSuccess(`${message} ${response} `, response);

@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 export async function authApi(
   credentials: Partial<Record<"usuario" | "password", unknown>>,
 ) {
-  const url = process.env.API_URL  + "login";
+  const url = process.env.API_URL + "login";
   const cookiesStore = cookies();
 
   const laravelSession = cookiesStore.get("laravel_session")?.value;

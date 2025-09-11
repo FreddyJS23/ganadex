@@ -68,7 +68,9 @@ export default async function Page() {
 
       {/* tabla ventas */}
       <article className="flex flex-col gap-2">
-        <h3 className="ml-2 text-lg md:text-xl font-bold">Historial de ventas</h3>
+        <h3 className="ml-2 text-lg md:text-xl font-bold">
+          Historial de ventas
+        </h3>
         <TableSaleCasttle ventas={ventas} />
       </article>
     </section>
