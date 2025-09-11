@@ -54,16 +54,15 @@ export const TableAllServes = ({
               redirect="toros"
             />
           );
-        else if(servicios["pajuela_toro"])
+        else if (servicios["pajuela_toro"])
           return (
             <RedirectInTable
               id={servicios["pajuela_toro"].id}
               label={servicios["pajuela_toro"].codigo}
               redirect="toros"
             />
-          )
-          else return <></>
-          ;
+          );
+        else return <></>;
         break;
       }
 

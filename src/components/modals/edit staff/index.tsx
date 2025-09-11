@@ -38,7 +38,6 @@ export const ModalEditStaff = ({
     return cargo?.id.toString();
   }, [cargos_personal, personal]);
 
-
   const defaultValues = { ...personal, cargo_id: getIdCargo };
 
   const { handleSubmitForm, errors, register, formRef, control } =
@@ -53,7 +52,6 @@ export const ModalEditStaff = ({
       onClose: onClose,
       routerBack: false,
     });
-
 
   return (
     <LayoutModal

@@ -90,7 +90,7 @@ export const ModalCreateUpdateCausaFallecimiento = (
     //rutas dentro de su modulo (/fallecimientos/tipo)
     if (!referer) {
       router.refresh();
-      disableLoading()
+      disableLoading();
       return router.back();
     }
     const pathOrigin = referer.split("/");
@@ -104,8 +104,8 @@ export const ModalCreateUpdateCausaFallecimiento = (
       disableLoading();
       return router.replace(`/${newRoute}`);
     }
-    
-    disableLoading()
+
+    disableLoading();
     router.refresh();
     return router.back();
   });

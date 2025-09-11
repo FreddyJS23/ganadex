@@ -95,7 +95,7 @@ export type InputProps = {
     | "select"
     | "date"
     | "number"
-    | "checkbox"
+    | "checkbox";
   size?: "sm" | "md" | "lg";
   required: boolean;
   description?: string;

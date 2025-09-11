@@ -50,8 +50,8 @@ export type Ganado = {
   pesos?: Pesos;
   estados: EstadosGanado[];
   eventos: Eventos;
-  fallecimiento:Pick<Fallecimiento,"fecha" | "causa" | "descripcion"> | null;
-  venta:Pick<Venta,"fecha" | "comprador"> | null;
+  fallecimiento: Pick<Fallecimiento, "fecha" | "causa" | "descripcion"> | null;
+  venta: Pick<Venta, "fecha" | "comprador"> | null;
 };
 
 export type Toro = Pick<
@@ -61,7 +61,7 @@ export type Toro = Pick<
   | "numero"
   | "origen"
   | "fecha_nacimiento"
-  | 'fallecimiento'
+  | "fallecimiento"
   | "fecha_ingreso"
   | "pesos"
   | "tipo"
@@ -116,13 +116,13 @@ export type Configuracion = {
 export type Revision = {
   id: number;
   fecha: string;
-    /**Cuando el tipo es un string, es porque no tiene diagnostico por ende dira (desconocido)   */
+  /**Cuando el tipo es un string, es porque no tiene diagnostico por ende dira (desconocido)   */
   revision: Pick<TipoRevision, "tipo" | "codigo"> | string;
-  tratamiento: string|null;
-  observacion: string|null;
+  tratamiento: string | null;
+  observacion: string | null;
   veterinario: veterinario;
-  vacuna:Pick<Vacuna, "id" | "nombre">|null;
-  dosis:string | null
+  vacuna: Pick<Vacuna, "id" | "nombre"> | null;
+  dosis: string | null;
 };
 
 /**Servicio individual de una cabeza de ganado */
@@ -198,7 +198,7 @@ export type Fallecimiento = {
   id: number;
   fecha: string;
   causa: string;
-  descripcion:string
+  descripcion: string;
   ganado: Pick<Ganado, "id" | "numero">;
 };
 
@@ -206,8 +206,8 @@ export type Fallecimiento = {
 export type Revisiones = {
   id: number;
   numero: number;
-  estado:string;
-  pendiente:boolean;
+  estado: string;
+  pendiente: boolean;
   ultima_revision: string;
   /**Cuando el tipo es un string, es porque no tiene diagnostico por ende dira (desconocido)   */
   revision: Pick<TipoRevision, "tipo" | "codigo"> | string;
@@ -222,8 +222,8 @@ export type Servicios = Pick<Ganado, "id" | "numero"> & {
   pajuela_toro?: PajuelaToro;
   efectividad: number;
   total_servicios: number;
-  estado:string;
-  pendiente:boolean;
+  estado: string;
+  pendiente: boolean;
 };
 
 /**Pesajes de leche de todas las cabeza de  ganado  */
@@ -236,7 +236,7 @@ export type PesajesLeche = Pick<Ganado, "id" | "numero" | "nombre"> & {
 export type Partos = Pick<Ganado, "id" | "numero"> & {
   ultimo_parto: string | null;
   total_partos: number;
-  estado:'Gestacion' | 'Vacia' | 'Vendida' | 'Fallecida' ;
+  estado: "Gestacion" | "Vacia" | "Vendida" | "Fallecida";
   toro?: Pick<Toro, "id" | "numero">;
   pajuela_toro?: PajuelaToro;
   cria?: Pick<Cria, "id" | "numero">;
@@ -276,21 +276,24 @@ export type DayVaccination = {
   fecha_fin: string;
   vacuna: string;
   vacunados: number;
-  ganado_vacunado:string;
+  ganado_vacunado: string;
 };
 
 export type AvailableVaccines = {
   id: number;
   nombre: string;
   intervalo_dosis: number;
-  tipo_vacuna:'medica'|'plan_sanitario'
-  dosis_recomendada_anual:number|null
+  tipo_vacuna: "medica" | "plan_sanitario";
+  dosis_recomendada_anual: number | null;
   aplicable_a_todos: boolean;
-  tipos_ganado:{tipo:string,sexo:GanadoDescarte["sexo"]}[] | null
+  tipos_ganado: { tipo: string; sexo: GanadoDescarte["sexo"] }[] | null;
 };
 
-export type Vaccine= Omit<AvailableVaccines,"tipos_ganado"> &
- {tipos_ganado:{id:number,tipo:string,sexo:GanadoDescarte["sexo"]}[] | null}
+export type Vaccine = Omit<AvailableVaccines, "tipos_ganado"> & {
+  tipos_ganado:
+    | { id: number; tipo: string; sexo: GanadoDescarte["sexo"] }[]
+    | null;
+};
 
 export type ListaVacunas = {
   id: string;
@@ -350,8 +353,8 @@ export type LogEvento = {
 
 export type TipoRevision = {
   id: number;
-  tipo: "Gestación" | "Descartar" | "Rutina" | 'Aborto' | string;
-  codigo:string | null;
+  tipo: "Gestación" | "Descartar" | "Rutina" | "Aborto" | string;
+  codigo: string | null;
 };
 
 export type CausaFallecimiento = {

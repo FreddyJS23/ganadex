@@ -43,18 +43,18 @@ const TotalNacimientosAñoActualTorta = forwardRef(function (
     ],
   };
 
-  const totalPartos:number =
+  const totalPartos: number =
     nacimientos_año_actual.hembras + nacimientos_año_actual.machos;
-    
-    const darkMode = useThemeStore((state) => state.darkMode);
 
-    const configAnotation = {
+  const darkMode = useThemeStore((state) => state.darkMode);
+
+  const configAnotation = {
     annotation: {
       //plugin anotaciones
       annotations: {
         dLabel: {
           type: "doughnutLabel",
-          content: ["Total", !isNaN(totalPartos) ? totalPartos : 0  ],
+          content: ["Total", !isNaN(totalPartos) ? totalPartos : 0],
           font: [
             { size: 20, weight: "bold" },
             { size: 18, weight: "normal" },
@@ -65,7 +65,7 @@ const TotalNacimientosAñoActualTorta = forwardRef(function (
     },
   };
 
-  const optionsChart=optionChartDoughnutCantidadNacimientos(darkMode);
+  const optionsChart = optionChartDoughnutCantidadNacimientos(darkMode);
 
   //destructurar options
   //primero se destructura el objeto de opciones

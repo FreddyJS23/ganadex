@@ -9,16 +9,19 @@ export default async function Page() {
   const { todo_personal }: ResponseTodoPersonal =
     await getData("todosPersonal");
 
-    const { cargos_personal }: ResponseCargosPersonal =
+  const { cargos_personal }: ResponseCargosPersonal =
     await getData("cargosPersonal");
-
 
   const session = (await auth()) as Session;
   const nameHacienda = session.user.hacienda?.nombre ?? "";
   return (
     <section>
       <TitlePage title="Personal" />
-      <TableStaff todo_personal={todo_personal} nameHacienda={nameHacienda} cargos_personal={cargos_personal} />
+      <TableStaff
+        todo_personal={todo_personal}
+        nameHacienda={nameHacienda}
+        cargos_personal={cargos_personal}
+      />
     </section>
   );
 }

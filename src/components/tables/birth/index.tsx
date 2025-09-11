@@ -27,12 +27,14 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
       case "cria": {
         const cria = cellValue as Cria;
 
-        return cria && (
-          <RedirectInTable
-            id={cria.id}
-            label={cria.numero ?? ""}
-            redirect="ganado"
-          />
+        return (
+          cria && (
+            <RedirectInTable
+              id={cria.id}
+              label={cria.numero ?? ""}
+              redirect="ganado"
+            />
+          )
         );
 
         break;

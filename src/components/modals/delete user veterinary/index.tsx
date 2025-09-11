@@ -23,13 +23,12 @@ export const ModalDeleteUserVeterinary = ({
   onOpenChange,
   onClose,
 }: ModalDeleteUserVeterinaryProps) => {
-
-  const {onAction} = useActionId({
+  const { onAction } = useActionId({
     action: deleteUserVeterinary,
     id: id,
     messageOnSuccess: "usuarioEliminado",
     onClose: onClose,
-    routerBack:false,
+    routerBack: false,
     justMessageOnSuccess: true,
   });
 

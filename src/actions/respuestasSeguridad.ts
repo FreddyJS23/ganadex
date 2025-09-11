@@ -37,7 +37,6 @@ export async function deleteResponseSecurity(
     ResponseRegistroExitoso
   >("respuestaSeguridad", "DELETE", undefined, id);
 
-
   if ("error" in response) return response;
   else return response.message;
 }

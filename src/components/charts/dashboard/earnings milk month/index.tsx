@@ -91,7 +91,7 @@ export const ChartEarningsMilkMonth = ({
     setDataGraph(data.concat(rangeData(select)));
   };
 
-  const darkMode=useThemeStore((state) => state.darkMode)
+  const darkMode = useThemeStore((state) => state.darkMode);
 
   return (
     <>

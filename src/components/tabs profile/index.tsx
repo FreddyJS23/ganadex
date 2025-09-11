@@ -221,23 +221,21 @@ export const TabsProfile = ({
                     </ButtonNextUI>
                   </div>
                 </div>
-                
+
                 <div className="flex justify-between w-9/12 items-center ">
                   <div className="flex flex-col gap-2 w-80">
-                    <span className="font-bold text-xl">Vacunas disponibles</span>
+                    <span className="font-bold text-xl">
+                      Vacunas disponibles
+                    </span>
                     <span className="text-sm opacity-60">
-                     Estas opciones son las que estarán disponibles a la hora crear una plan sanitario
-                     ,revision con tratamiento o al registrar una vaca,toro o ganado descarte,
-                     
+                      Estas opciones son las que estarán disponibles a la hora
+                      crear una plan sanitario ,revision con tratamiento o al
+                      registrar una vaca,toro o ganado descarte,
                     </span>
                   </div>
                   <div className="flex gap-4 items-center">
                     <ButtonCreateItem href={"/vacuna/registrar"} />
-                    <ButtonNextUI
-                      color="primary"
-                      as={Link}
-                      href="/vacuna"
-                    >
+                    <ButtonNextUI color="primary" as={Link} href="/vacuna">
                       Ver vacunas guardadas
                     </ButtonNextUI>
                   </div>

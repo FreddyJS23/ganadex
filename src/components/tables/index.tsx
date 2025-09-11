@@ -47,9 +47,9 @@ type TableComponentBaseProps<T> = {
   columnsCollection: { key: string; label: string }[];
   items: T[];
   renderCell: (item: T, columnKey: keyof T) => React.ReactNode;
-  /** 
+  /**
    * @default false
-    */
+   */
   filterSexCattle?: boolean;
 };
 
@@ -64,7 +64,13 @@ type TableComponentProps<T> =
 export const TableComponent = <T extends { id: number }>(
   props: TableComponentProps<T>,
 ) => {
-  const { columnsCollection, items, renderCell, type, filterSexCattle:filterSexProp=false } = props;
+  const {
+    columnsCollection,
+    items,
+    renderCell,
+    type,
+    filterSexCattle: filterSexProp = false,
+  } = props;
 
   /* -------------------------- ordenamiento columnas ------------------------- */
   const list = useAsyncList({
@@ -118,15 +124,15 @@ export const TableComponent = <T extends { id: number }>(
 
   const getIdfromSelectedKeys = (selectedKeys: Selection) => {
     const idArray = Array.from(selectedKeys).map((key) => {
-     
       // Busca el elemento original siendo la key el id del elemento
-      const selectedItem =
-       items.find((item) => item.id.toString() === key) as T & { ganado_id?: number };
+      const selectedItem = items.find(
+        (item) => item.id.toString() === key,
+      ) as T & { ganado_id?: number };
       //no se encontró el elemento, devolver undefined
       if (selectedItem == undefined) return 1;
       //si es un ganado descarte o toro tiene la propiedad ganado_id haciendo referencia al id de la tabla principal, devolver el id del ganado de la tabla principal
       if ("ganado_id" in selectedItem) return selectedItem.ganado_id as number;
-      
+
       return selectedItem.id; // Devuelve el ID original
     });
 
@@ -209,7 +215,9 @@ export const TableComponent = <T extends { id: number }>(
           T & { numero: number | null }
         >;
         filteredItems = filteredItemsWithNumber.filter((item) =>
-          item.numero ? item.numero.toString().includes(filterValue.toString()) : false,
+          item.numero
+            ? item.numero.toString().includes(filterValue.toString())
+            : false,
         );
       }
     }
@@ -352,7 +360,6 @@ export const TableComponent = <T extends { id: number }>(
 
     return filteredData.slice(start, end);
   }, [page, filteredData]);
-
 
   return (
     <div className="flex flex-col w-full ">

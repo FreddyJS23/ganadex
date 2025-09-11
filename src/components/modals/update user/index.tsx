@@ -27,7 +27,6 @@ export const ModalUpdateUser = ({
   onOpenChange,
   onClose,
 }: ModalProps & ModalUpdateUserProps) => {
-  
   const { handleSubmitForm, errors, register, formRef } = useFormManager<
     UpdateUser,
     string

@@ -4,40 +4,34 @@ import { useThemeStore } from "@/stores/themeStore";
 import { ChangeEvent, useEffect, useState } from "react";
 
 export const CheckboxTheme = () => {
-
-
-  const {darkMode,activateDarkMode,disableDarkMode}=useThemeStore()
+  const { darkMode, activateDarkMode, disableDarkMode } = useThemeStore();
 
   /* add dark mode para tailwindcss y daisyui */
- const addDarkMode = () => {
-  document.documentElement.classList.add("dark");
-  document.documentElement.setAttribute("data-theme", "ganadexThemeDark");
-};
+  const addDarkMode = () => {
+    document.documentElement.classList.add("dark");
+    document.documentElement.setAttribute("data-theme", "ganadexThemeDark");
+  };
 
-/* remove dark mode para tailwindcss y daisyui */
- const removeDarkMode = () => {
-  document.documentElement.classList.remove("dark");
-  document.documentElement.setAttribute("data-theme", "ganadexTheme");
-};
+  /* remove dark mode para tailwindcss y daisyui */
+  const removeDarkMode = () => {
+    document.documentElement.classList.remove("dark");
+    document.documentElement.setAttribute("data-theme", "ganadexTheme");
+  };
 
+  /** Activar o desactivar el modo oscuro
+   * @param e Evento del checkbox del theme controller de daisyUI
+   */
+  const changeThemeDark = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
 
-/** Activar o desactivar el modo oscuro
- * @param e Evento del checkbox del theme controller de daisyUI
- */
- const changeThemeDark = (
-  e: ChangeEvent<HTMLInputElement>,
-) => {
-  const { value } = e.target;
-
-  if (value == "ganadexTheme") {
-    activateDarkMode();
-    addDarkMode();
-  } else if (value == "ganadexThemeDark") {
-    disableDarkMode();
-    removeDarkMode();
-  }
-};
-
+    if (value == "ganadexTheme") {
+      activateDarkMode();
+      addDarkMode();
+    } else if (value == "ganadexThemeDark") {
+      disableDarkMode();
+      removeDarkMode();
+    }
+  };
 
   return (
     <label className="swap swap-rotate">

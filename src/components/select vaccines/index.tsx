@@ -15,7 +15,7 @@ type SelectVaccinesFormProps = Pick<InputProps, "required" | "errors"> & {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   field: any;
   filterByTipoVacuna?: "medica" | "plan_sanitario" | "ambas";
-/**Identifica si el select es para el form o para la lista de vacunas */
+  /**Identifica si el select es para el form o para la lista de vacunas */
   type: "form";
 };
 
@@ -31,7 +31,7 @@ type SelectVaccinesProps = {
 export const SelectVaccines = (
   props: SelectVaccinesProps | SelectVaccinesFormProps,
 ) => {
-  const { type, vaccinesSelect, filterByTipoVacuna="ambas" } = props;
+  const { type, vaccinesSelect, filterByTipoVacuna = "ambas" } = props;
 
   const groupByTipoVacuna = (vaccinesSelect: AvailableVaccines[]) => {
     const tiposVacuna: string[] = [];
@@ -120,10 +120,10 @@ export const SelectVaccines = (
     </Select>
   ) : (
     <Select
-    {...props.field}
+      {...props.field}
       {...propsSelect}
       isInvalid={props.errors["vacuna_id"] && true}
-      errorMessage={props.errors['vacuna_id']?.message}
+      errorMessage={props.errors["vacuna_id"]?.message}
       selectedKeys={value}
       onSelectionChange={(keys) => {
         setValue(keys);

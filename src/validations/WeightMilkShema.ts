@@ -8,4 +8,4 @@ export const createWeightMilkShema = z.object({
   fecha: z.string().regex(regexDate),
 });
 
-export const updateWeightMilkShema = createWeightMilkShema
+export const updateWeightMilkShema = createWeightMilkShema;

@@ -12,7 +12,7 @@ export const RestoreLastBackup = async () => {
   /*  const {token,cookieCsrf}=user */
   const { token } = user;
 
-  const url =process.env.API_URL + "restaurar";
+  const url = process.env.API_URL + "restaurar";
 
   const headers = new Headers({
     Accept: "*/*",

@@ -28,9 +28,8 @@ export const Button = ({
   title,
   buttonInModal,
 }: ButtonProps) => {
-  
   const { pending } = useFormStatus();
-  
+
   const { isLoading } = useLoadingButtonModal();
   if (form) {
     return (

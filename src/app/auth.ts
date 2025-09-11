@@ -11,7 +11,7 @@ import Credentials from "next-auth/providers/credentials";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   /* duracion de la session en laravel */
-  session:{maxAge:60*60*2},
+  session: { maxAge: 60 * 60 * 2 },
   callbacks: {
     jwt({ token, user, session, trigger }) {
       if (user) {
@@ -32,7 +32,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return token;
       }
       return token;
-    
     },
     session({ session, token }) {
       session.user.userId = token.userId;

@@ -29,11 +29,10 @@ export default async function Page({ params }: ParamsPage) {
   const { tipos_revision }: ResponseTiposRevision =
     await getData("tiposRevision");
 
-     const { vacunas_disponibles }: ResponseVacunasDisponibles =
-        await getData("vacunasDisponibles");
+  const { vacunas_disponibles }: ResponseVacunasDisponibles =
+    await getData("vacunasDisponibles");
 
   const { toros }: ResponseToros = await getData("todosToro", "GET", undefined);
-        
 
   const { user } = (await auth()) as Session;
   return (

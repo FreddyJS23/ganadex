@@ -22,8 +22,8 @@ export const createBullShema = z
       invalid_type_error: "Elija una opción valida",
     }),
     fecha_nacimiento: z.string().regex(regexDate),
-   
-  }).and(weightsWith2yearShema)
+  })
+  .and(weightsWith2yearShema)
   .refine((data) => new Date(data.fecha_nacimiento as string) <= new Date(), {
     message: "La fecha de nacimiento no puede ser mas alta que la fecha actual",
     path: ["fecha_nacimiento"],

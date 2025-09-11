@@ -24,9 +24,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       status: 200,
       headers: { "content-type": "application/pdf" },
     });
-  /* si el pdf no se genero devuelve el error */
-    else if (typeof filePdf == "object") {
-    return NextResponse.json(filePdf,{status:500});
+  /* si el pdf no se genero devuelve el error */ else if (
+    typeof filePdf == "object"
+  ) {
+    return NextResponse.json(filePdf, { status: 500 });
   } else
     return NextResponse.json(
       { message: "No se ha podido generar el pdf" },

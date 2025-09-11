@@ -32,25 +32,22 @@ export async function createCastle(
 }
 
 export async function editCastle(
-  id:number,
+  id: number,
   formData: EditCastle,
 ): Promise<
   | ResponseErrorNext
   | ResponseGanado["ganado"]["numero"]
   | ResponseGanado["ganado"]["nombre"]
 > {
- 
-
-  const response = await getData<
-    EditCastle,
-    ResponseGanado
-  >("ganado", "PUT", formData, id);
+  const response = await getData<EditCastle, ResponseGanado>(
+    "ganado",
+    "PUT",
+    formData,
+    id,
+  );
   if ("error" in response) return response;
   else return response.ganado.numero ?? response.ganado.nombre;
 }
-
-
-
 
 export async function updateWeightCastle(
   id: number,
