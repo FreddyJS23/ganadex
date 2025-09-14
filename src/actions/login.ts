@@ -9,11 +9,11 @@ import {
   ERROR_SERVER,
   ERROR_SIGNIN,
 } from "@/constants/responseApiMessage";
-import { ResponseErrorActionAction, ResponseLoginAuthJs } from "@/types";
+import { ResponseLoginAuthJs } from "@/types";
 
 export async function authenticate(
   formData: FormData,
-): Promise<ResponseLoginAuthJs | ResponseErrorActionAction> {
+): Promise<ResponseLoginAuthJs > {
   try {
     await signIn("credentials", {
       usuario: formData.get("usuario"),
