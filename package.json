@@ -4,6 +4,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "type-check": "tsc --noEmit",
     "fakeApi": "json-server src/data/db.json -p 4000",
     "format": "biome format ./ --write"
   },
