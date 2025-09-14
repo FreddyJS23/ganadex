@@ -1,4 +1,3 @@
-import { ResponseError } from "@/types";
 import { handleResponse } from "@/utils/handleResponseApi";
 import { getNewCookiesSession } from "@/utils/getNewCookiesSession";
 import { cookies } from "next/headers";

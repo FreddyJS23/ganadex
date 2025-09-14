@@ -1,21 +1,16 @@
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
 import type { CausaFallecimiento, ModalProps } from "@/types";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import type { CreateDeathCastle } from "@/types/forms";
 import { createDeathCastleShema } from "@/validations/deathCastle";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef } from "react";
 import { createDeathCattle } from "@/actions/fallecimientos";
-import { useParams, useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { useParams } from "next/navigation";
 import { getDateNow } from "@/utils/getDateNow";
 import { formDeadCattle } from "@/collections/formsInputs";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { Select } from "@/components/select";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
-import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { useFormManager } from "@/hooks/useFormManager";
 
 export const ModalDeathCattle = ({

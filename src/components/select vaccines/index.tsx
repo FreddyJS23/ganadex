@@ -3,7 +3,6 @@ import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import {
   InputProps,
   Select,
-  SelectedItems,
   SelectItem,
   SelectSection,
   type Selection,

@@ -48,7 +48,7 @@ export const TortaCausasFallecimientosGanado = ({
       annotations: {
         dLabel: {
           type: "doughnutLabel",
-          content: ({ chart }) => ["Total", total_fallecidos],
+          content: () => ["Total", total_fallecidos],
           font: [
             { size: 20, weight: "bold" },
             { size: 18, weight: "normal" },

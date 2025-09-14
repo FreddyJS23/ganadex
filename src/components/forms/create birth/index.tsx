@@ -10,7 +10,6 @@ import { veterinario } from "@/types";
 import { CreateAdminBirth, CreateBaseBirth } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
-import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { getDateNow } from "@/utils/getDateNow";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import {

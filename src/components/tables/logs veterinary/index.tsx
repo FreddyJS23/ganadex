@@ -4,8 +4,6 @@ import { headersColumnsLogsVeterinary } from "@/collections/headerColums";
 import { LogVeterinary, ResponseLogsVeterinary } from "@/types";
 import { Key, ReactNode, useCallback } from "react";
 import { TableComponent } from "..";
-import IconSearch from "@/icons/icono-Revisar.svg";
-import Link from "next/link";
 
 export const TableLogsVeterinary = ({ logs }: ResponseLogsVeterinary) => {
   const renderCell = useCallback(
@@ -14,7 +12,6 @@ export const TableLogsVeterinary = ({ logs }: ResponseLogsVeterinary) => {
       switch (columnKey as keyof LogVeterinary) {
         /* button icon */
         case "actividad_id": {
-          const id = cellValue as number;
           return (
             /*  <Link title={'Ir a la actividad'} >
                             <IconSearch className={'size-8 cursor-pointer '} />

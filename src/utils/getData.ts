@@ -3,22 +3,14 @@
 import { endPoints, endPointsCattle } from "@/collections/endPointsApi";
 import { handleResponse } from "./handleResponseApi";
 import {
-  ResponseError,
   ResponseErrorFromApi,
   ResponseErrorNext,
 } from "@/types";
 import { auth } from "@/auth";
 import { Session } from "next-auth";
-import ErrorApp from "./errorApp";
 import { handleErrorFromApi } from "./handleErrorFromApi";
 import ErrorFromApi from "@/lib/errors/errorFromApi";
-import { checkSessionLaravel } from "./checkSessionLaravelHeaders";
-import {
-  ERROR_401,
-  ERROR_404,
-  ERROR_419,
-  ERROR_500,
-} from "@/constants/responseApiMessage";
+import { ERROR_401, ERROR_404, ERROR_419, ERROR_500 } from "@/constants/responseApiMessage";
 
 export async function getData<Form, dataResponse>(
   endPoint: keyof typeof endPoints,

@@ -4,17 +4,11 @@ import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
 import type { ModalProps } from "@/types";
 import { useDisclosure } from "@nextui-org/react";
-import { useForm } from "react-hook-form";
 import type { CreateWeightMilk } from "@/types/forms";
 import { createWeightMilkShema } from "@/validations/WeightMilkShema";
-import { useParams, useRouter } from "next/navigation";
-import { useRef } from "react";
-import { toast } from "sonner";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useParams } from "next/navigation";
 import { createWeightMilk } from "@/actions/weightMilk";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { getDateNow } from "@/utils/getDateNow";
-import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { useFormManager } from "@/hooks/useFormManager";
 
 export const ModalWeightMilk = ({

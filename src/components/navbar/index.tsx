@@ -4,7 +4,7 @@ import { NotificationMain } from "../notifications";
 import { HamburgerButton } from "@/ui/HamburgerButton";
 import { Sidebar } from "../sidebar";
 import { getData } from "@/utils/getData";
-import { ResponseFechaUltimoRespaldo, ResponseNotificaciones } from "@/types";
+import { ResponseFechaUltimoRespaldo } from "@/types";
 import Link from "next/link";
 import { ButtonRestoreBd } from "../buttonRestoreBd";
 import { ButtonBackupBd } from "../buttonBackuppBd";

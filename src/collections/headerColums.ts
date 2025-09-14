@@ -24,13 +24,11 @@ import {
   AplicacionVacunaHistorial,
   Vacuna,
   UserVeterinaryInfo,
-  UsersVeterinary,
   LogVeterinary,
   LogEvento,
   ToroServicio,
   TipoRevision,
   CausaFallecimiento,
-  AvailableVaccines,
   Vaccine,
 } from "@/types";
 

@@ -5,15 +5,8 @@ import {
   CriaPendienteNumeracion,
   ResponseCriasPendienteNumeracion,
 } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
 import { Key, ReactNode, useCallback } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { TableComponent } from "..";
 import IconButton from "@/icons/icono-capar-numeracion.svg";
 import Link from "next/link";
 

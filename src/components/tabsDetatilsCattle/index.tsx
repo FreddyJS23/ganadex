@@ -12,11 +12,9 @@ import { Eventos, ResponseGanado } from "@/types";
 import { ContainerContentTab } from "./item";
 import { Tabs, Tab } from "@nextui-org/tabs";
 import { TitleTab } from "@/ui/TitleTab";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { ButtonGroupTabDetailCattle } from "@/ui/ButtonGroupTabDetailCattle";
-import { headerHistoryVaccinesApply } from "@/collections/headerColums";
 import { VaccinesAppliedCastle } from "../tables/vaccines Apply castle/index";
-import { useState } from "react";
 import { ModalHistoryVaccines } from "../modals/historys/history vaccines";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
@@ -72,8 +70,6 @@ export const TabDetailsCattle = ({
   ganado_id,
   servicio_toro,
 }: TabsDetailsCattleProps) => {
-  const router = useRouter();
-  const pathname = usePathname();
 
   let disableTabs: Array<string> = [];
 

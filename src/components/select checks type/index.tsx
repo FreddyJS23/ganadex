@@ -6,7 +6,6 @@ import {
   SelectedItems,
   Selection,
   SelectItem,
-  SelectSection,
 } from "@nextui-org/react";
 
 import { useState } from "react";

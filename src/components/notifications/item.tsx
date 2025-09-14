@@ -2,7 +2,6 @@ import IconCattle from "@/icons/icono-ganado1.svg";
 import IconCloseNotification from "@/icons/icono-cerrar-notificacion.svg";
 import { getNotificationMessage } from "@/utils";
 import type { Notification } from "@/types";
-import { LegacyRef, useRef } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { removeNotificationFromDB } from "@/actions/removeNotificationFromDB";

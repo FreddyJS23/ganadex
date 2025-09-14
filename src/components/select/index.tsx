@@ -1,8 +1,7 @@
 import { InputProps } from "@/types";
 import { Selection } from "@nextui-org/react";
 import { Select as SelectNextUI, SelectItem } from "@nextui-org/select";
-import { ChangeEvent, useState } from "react";
-import { ControllerRenderProps, FieldPath, FieldValues } from "react-hook-form";
+import { useState } from "react";
 import { TooltipTipoGanado } from "../tooltip";
 import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 

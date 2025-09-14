@@ -1,6 +1,5 @@
 import { headerHistoryVaccinesApply } from "@/collections/headerColums";
 import { AplicacionVacunaHistorial } from "@/types";
-import React from "react";
 
 export const VaccinesAppliedCastle = ({
   vacunaciones,

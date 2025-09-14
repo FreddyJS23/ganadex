@@ -1,16 +1,10 @@
 "use server";
 
 import { endpointsReportsAnnual } from "@/collections/endPointsApi";
-import { ResponseError, ResponseErrorFromApi } from "@/types";
+import { ResponseErrorFromApi } from "@/types";
 import { auth } from "@/auth";
 import { Session } from "next-auth";
 import ErrorFromApi from "@/lib/errors/errorFromApi";
-import {
-  ERROR_401,
-  ERROR_404,
-  ERROR_419,
-  ERROR_500,
-} from "@/constants/responseApiMessage";
 import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
 
 export const GetReportsYear = async (

@@ -9,20 +9,12 @@ import {
   User,
 } from "@/types";
 import { getAge } from "@/utils/getAge";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
-import { Key, ReactNode, useCallback, useState } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { Key, ReactNode, useCallback,  } from "react";
+import {  TableComponent } from "..";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import { DropDownOptions } from "@/components/dropdown options";
 import { RedirectInTable } from "@/components/redirectsInTables";
 import IconCheck from "@/icons/icono-check.svg";
-import { ButtonFilterStateCattle } from "@/components/filter state cattle";
 
 export const TableCasttle = ({
   cabezas_ganado,

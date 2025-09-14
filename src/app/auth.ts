@@ -6,7 +6,7 @@ import {
   ERROR_SIGNIN,
 } from "@/constants/responseApiMessage";
 import { authApi } from "@/services/authApi";
-import { ResponseError } from "@/types";
+import { ResponseErrorFromApi } from "@/types";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   /* duracion de la session en laravel */
@@ -64,7 +64,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         } catch (errorServe) {
           if (errorServe instanceof Error) throw new AuthError(ERROR_SERVER);
 
-          const codeStatusServe = errorServe as ResponseError;
+          const codeStatusServe = errorServe as ResponseErrorFromApi ;
           if (codeStatusServe.status == 401) throw new AuthError(ERROR_SIGNIN);
           else if (codeStatusServe.status == 419)
             throw new AuthError(ERROR_CORS);

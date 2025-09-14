@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 import type { CreateUser, Login } from "@/types/forms";
 import { createUser } from "@/actions/usuario";
 import {
-  ResponseError,
   type ResponseErrorNext,
   type ResponseRegistroExitoso,
 } from "@/types";

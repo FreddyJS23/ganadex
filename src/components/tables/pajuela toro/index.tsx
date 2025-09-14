@@ -2,15 +2,8 @@
 
 import { headerPajuelaToro } from "@/collections/headerColums";
 import { PajuelaToro, ResponsePajuelaToros } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
 import { Key, ReactNode, useCallback } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { TableComponent } from "..";
 
 export const TablePajuelaToro = ({ pajuela_toros }: ResponsePajuelaToros) => {
   const renderCell = useCallback((toro: PajuelaToro, columnKey: Key) => {

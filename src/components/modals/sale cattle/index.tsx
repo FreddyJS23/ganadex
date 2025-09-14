@@ -15,7 +15,6 @@ import { Button } from "@/ui/Button";
 import IconPrint from "@/icons/icono-imprimir.svg";
 import { getDateNow } from "@/utils/getDateNow";
 import { formSaleCattle } from "@/collections/formsInputs";
-import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 import { useLoadingButtonModal } from "@/stores/loadingButtonModal";

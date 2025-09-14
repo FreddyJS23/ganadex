@@ -2,7 +2,6 @@ import { assignmentNumberBullCalfShema } from "@/validations/assignmentNumberBul
 import {
   createAdminBirthShema,
   createBaseBirthShema,
-  createBirthShema,
   updateBirhthShema,
 } from "@/validations/birthShema";
 import { createBullShema } from "@/validations/bullShema";
@@ -41,7 +40,6 @@ import { recoveryPasswordShema } from "@/validations/recoveryPassword";
 import {
   createOrUpdateResponseSecurityShema,
   createResponsesSecurityShema,
-  updateResponseSecurityShema,
 } from "@/validations/responseSecurity";
 import { createVaccineSchema } from "@/validations/vaccineSchema";
 

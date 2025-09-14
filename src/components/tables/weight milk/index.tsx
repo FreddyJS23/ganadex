@@ -2,15 +2,9 @@
 
 import { headerAllWeightMilk } from "@/collections/headerColums";
 import { PesajesLeche, ResponsePesajesLecheGeneral } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
+
 import { Key, ReactNode, useCallback } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { TableComponent } from "..";
 import IconButton from "@/icons/icono-peso.svg";
 import Link from "next/link";
 import IconCheck from "@/icons/icono-check.svg";

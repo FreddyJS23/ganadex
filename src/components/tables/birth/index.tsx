@@ -5,18 +5,11 @@ import {
   Cria,
   Partos,
   ResponsePartosGeneral,
-  Toro,
   ToroDeServicio,
 } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
+
 import { Key, ReactNode, useCallback } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
 import { DropDownOptions } from "@/components/dropdown options";
 

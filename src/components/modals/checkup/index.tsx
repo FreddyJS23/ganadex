@@ -5,8 +5,6 @@ import { LayoutModal } from "..";
 import {
   type LayoutModalProps,
   type Revision,
-  TipoRevision,
-  veterinario,
 } from "@/types";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { useEditDelete } from "@/lib/hooks/useEditDelete";

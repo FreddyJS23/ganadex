@@ -1,7 +1,6 @@
 "use client";
 
 import { ResponseTotalTiposGanado } from "@/types/dashboard";
-import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import {
   optionChartTotalTypesCattle,
   paletteBackground,
@@ -26,10 +25,7 @@ export const TortaTipoGanado = ({
 }: ResponseTotalTiposGanado) => {
   const { numberTypes, typesCattle } = getCastleType(total_tipos_ganado);
 
-  const typesCattleCapitalized = typesCattle.map((type) =>
-    capitalizeFirstLetter(type),
-  );
-
+ 
   const datasets: ChartData<"doughnut", number[]> = {
     labels: typesCattle,
     datasets: [

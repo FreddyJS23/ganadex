@@ -2,15 +2,8 @@
 
 import { headerPlanesSanitario } from "@/collections/headerColums";
 import { DayVaccination, ResponsePlanesSanitario } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
 import { Key, ReactNode, useCallback } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { TableComponent } from "..";
 
 export const TableVAccinationDay = ({
   planes_sanitario,

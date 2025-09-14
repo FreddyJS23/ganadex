@@ -1,11 +1,10 @@
-import { DetailsCattle, DetailsWeights } from "@/collections";
+import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
 import { ResponseGanado } from "@/types";
 import { getData } from "@/utils/getData";
 import Image from "next/image";
-import Link from "next/link";
 import cattleImage from "public/cattle.png";
 import { DropDownOptions } from "@/components/dropdown options";
 import { auth } from "@/app/auth";

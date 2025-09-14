@@ -8,9 +8,7 @@ import { SelectBulls } from "@/components/select bulls";
 import { Textarea } from "@/components/Textarea";
 import {
   type PajuelaToro,
-  ResponseVeterinariosSelect,
   type Toro,
-  ToroDeServicio,
   type veterinario,
 } from "@/types";
 import type { CreateServe } from "@/types/forms";
@@ -21,7 +19,6 @@ import { getDateNow } from "@/utils/getDateNow";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { inputPersonalIdShema } from "@/validations/checkUpShema";
 import {
-  createServeShema,
   createServeShemaWithPajuelaToroId,
   createServeShemaWithToroId,
 } from "@/validations/serveShema";

@@ -2,7 +2,6 @@
 
 import ErrorFromApi from "@/lib/errors/errorFromApi";
 import {
-  ResponseError,
   ResponseErrorFromApi,
   ResponseErrorNext,
 } from "@/types";

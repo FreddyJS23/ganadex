@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, use } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createVaccine, updateVaccine } from "@/actions/vacuna";
@@ -11,7 +11,6 @@ import {
   SelectItem,
   type Selection,
   useDisclosure,
-  SelectSection,
 } from "@nextui-org/react";
 import type { CreateVaccine } from "@/types/forms";
 import { useRouter } from "next/navigation";
@@ -21,7 +20,6 @@ import { formVaccine } from "@/collections/formsInputs";
 import { createVaccineSchema } from "@/validations/vaccineSchema";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
-import { typeCasttleSelect } from "@/collections/typeCastleSelect";
 import { Vaccine } from "@/types";
 import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
@@ -52,7 +50,7 @@ export const ModalCreateEditVaccine = (props: ModalCreateEditVaccineProps) => {
     register,
     handleSubmit,
     control,
-    getValues,
+
     formState: { errors },
   } = useForm<CreateVaccine>({
     resolver: zodResolver(createVaccineSchema),

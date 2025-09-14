@@ -40,7 +40,6 @@ import { typeServicesForCasttle } from "./typesServicesForCasttle";
 import { stateBullSelect } from "./statesBullSelect";
 import { stateBeefSelect } from "./statesBeefSelect";
 import { origenCasttleSelect } from "./origenCastleSelect";
-import { Field } from "react-hook-form";
 
 export type Fields<Ids, Labels> = {
   id: Ids;

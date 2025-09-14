@@ -1,7 +1,6 @@
 import { useThemeStore } from "@/stores/themeStore";
 import { ResponseResumenNatalidad } from "@/types";
 import {
-  optionChartLineAnnualMilk,
   optionChartLinePartosTotales,
 } from "@/utils/configCharts";
 import {

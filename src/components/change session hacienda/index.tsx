@@ -15,9 +15,7 @@ import React, { useEffect } from "react";
 import { toast } from "sonner";
 import { Button } from "@/ui/Button";
 import IconHacienda from "@/icons/icono-hacienda.svg";
-import IconArrowRight from "@/icons/icono-flecha_derecha1.svg";
 import { getSession, useSession } from "next-auth/react";
-import { revalidatePath } from "next/cache";
 
 type ModalProps = {
   isOpen: boolean;
@@ -56,7 +54,7 @@ const ModalHaciendaSession = ({
 }: ModalProps) => {
   const router = useRouter();
 
-  const { update, data: session, status } = useSession();
+  const { update, data: session } = useSession();
 
   useEffect(() => {
     /* Llamar a la sesion para que el status el hook useSession se actualice y pase a authenticated,

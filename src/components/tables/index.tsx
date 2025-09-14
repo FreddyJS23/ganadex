@@ -32,14 +32,12 @@ import {
   type Ganado,
   type Hacienda,
   type Partos,
-  Servicios,
   type StateCattle,
   type TypesCattle,
 } from "@/types";
 import IconFlechaDerecha from "@/icons/icono-flecha_derecha.svg";
 import IconSearch from "@/icons/icono-buscar.svg";
 import { useSession } from "next-auth/react";
-import { types } from "util";
 import { typeCasttleSelect } from "@/collections/typeCastleSelect";
 
 type TableComponentBaseProps<T> = {
@@ -114,6 +112,7 @@ export const TableComponent = <T extends { id: number }>(
 
   useEffect(() => {
     list.reload();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
 
   /* --------------------------------- refrescar cuando cambia -------------------------------- */
@@ -346,6 +345,7 @@ export const TableComponent = <T extends { id: number }>(
     sexFilter,
     pendingFilter,
     statusBirthFilter,
+    nameHacienda,
   ]);
 
   /* -------------------------------- paginado -------------------------------- */

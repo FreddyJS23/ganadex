@@ -2,16 +2,8 @@
 
 import { headersColumnsUserVeterinary } from "@/collections/headerColums";
 import { ResponseVeterinariosUsuario, UserVeterinaryInfo } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  Table,
-} from "@nextui-org/table";
 import { Key, ReactNode, useCallback, useState } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { TableComponent } from "..";
 import { useDisclosure } from "@nextui-org/react";
 import IconDelete from "@/icons/icono-error.svg";
 import IconLogs from "@/icons/icono-logs.svg";
@@ -57,6 +49,7 @@ export const TableVeterinaryUsers = ({
           return cellValue as ReactNode;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 

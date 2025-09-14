@@ -2,20 +2,15 @@
 
 import { LayoutModal } from "..";
 import type { LayoutModalProps, Personal, PositionStaff } from "@/types";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import type { CreateStaff } from "@/types/forms";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { createStaffShema } from "@/validations/staffShema";
 import { editStaff } from "@/actions/personal";
-import { useMemo, useRef } from "react";
+import { useMemo } from "react";
 import { formStaff } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
-import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalEditStaffProps = Pick<

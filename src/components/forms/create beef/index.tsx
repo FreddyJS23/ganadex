@@ -20,7 +20,7 @@ import {
 import { createBeef } from "@/actions/ganado_descarte";
 import { type ChangeEvent, useEffect, useRef, useState } from "react";
 import { Select as SelectNextUI, SelectItem } from "@nextui-org/select";
-import type { AvailableVaccines, CausaFallecimiento, Comprador } from "@/types";
+import type { AvailableVaccines, CausaFallecimiento, Comprador, ListaVacunas } from "@/types";
 import { Checkbox, Chip, type Selection } from "@nextui-org/react";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { CreateListVaccination } from "@/components/create list vaccination";
