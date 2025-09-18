@@ -2,11 +2,15 @@ import { auth } from "@/app/auth";
 import { TableCasttle } from "@/components/tables/casttle";
 import { ResponseGanados } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 import { Session } from "next-auth";
 
 export default async function Page() {
-  const { cabezas_ganado }: ResponseGanados = await submitForm("todosGanado");
+  
+  const response = await getData<ResponseGanados>({endPoint:"todosGanado"});
+  const {cabezas_ganado}=responseErrorServer(response);
+  
   const session = (await auth()) as Session;
   const role = session.user.rol;
   return (

@@ -1,9 +1,13 @@
 import { CreateSaleCattle } from "@/components/create item in modal/create sale cattle";
 import { ResponseCompradores } from "@/types";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { compradores }: ResponseCompradores = await submitForm("compradores");
+  
+  const response = await getData<ResponseCompradores>({endPoint:"compradores"});
+  const {compradores}=responseErrorServer(response);
+  
 
   return <CreateSaleCattle ListaCompradoresRegistrados={compradores} />;
 }

@@ -10,37 +10,40 @@ import {
   ResponseVeterinariosSinUsuario,
   ResponseVeterinariosUsuario,
 } from "@/types";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
 import { Session } from "next-auth";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { usuarios_veterinarios }: ResponseVeterinariosUsuario = await submitForm(
-    "usuariosVeterinarios",
-  );
-  const { veterinarios_sin_usuario }: ResponseVeterinariosSinUsuario =
-    await submitForm("veterinariosSinUsuario");
-
-  const { hacienda }: ResponseHacienda = await submitForm("verSesionHacienda");
-  const { haciendas }: ResponseHaciendas = await submitForm("hacienda");
-
-  const { logs_eventos }: ResponseLogEventos = await submitForm("logsEventos");
-
+  
+  const response= await getData<ResponseVeterinariosUsuario>({endPoint:"usuariosVeterinarios"});
+  const {usuarios_veterinarios}=responseErrorServer(response);
+  
+  const response2= await getData<ResponseVeterinariosSinUsuario>({endPoint:"veterinariosSinUsuario"});
+  const {veterinarios_sin_usuario}=responseErrorServer(response2);
+  
+  const response3= await getData<ResponseHacienda>({endPoint:"verSesionHacienda"});
+  const {hacienda}=responseErrorServer(response3);
+  
+  const response4= await getData<ResponseHaciendas>({endPoint:"hacienda"});
+  const {haciendas}=responseErrorServer(response4);
+  
+  const response5= await getData<ResponseLogEventos>({endPoint:"logsEventos"});
+  const {logs_eventos}=responseErrorServer(response5);
+  
+  const response6= await getData<ResponsePreguntasSeguridad>({endPoint:"preguntasSeguridadDisponibles"});
+  const {preguntas_seguridad}=responseErrorServer(response6);
+  
+  const response7= await getData<ResponseRespuestaSeguridad>({endPoint:"respuestasSeguridad"});
+  const {respuestas_seguridad}=responseErrorServer(response7);
+  
   const session = (await auth()) as Session;
+  
   const id = session.user.userId;
-  const { user }: ResponseInformacionUsuarioLogeado = await submitForm(
-    "usuario",
-    "GET",
-    undefined,
-    id,
-  );
 
-  const { preguntas_seguridad }: ResponsePreguntasSeguridad = await submitForm(
-    "preguntasSeguridadDisponibles",
-  );
-
-  const { respuestas_seguridad }: ResponseRespuestaSeguridad = await submitForm(
-    "respuestasSeguridad",
-  );
+  const response8= await getData<ResponseInformacionUsuarioLogeado>({endPoint:"usuario",id:id});
+  const {user}=responseErrorServer(response8);
+  
 
   return (
     <>

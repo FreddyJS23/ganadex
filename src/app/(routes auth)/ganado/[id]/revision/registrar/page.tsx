@@ -8,31 +8,32 @@ import {
   ResponseVeterinariosSelect,
 } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 import { Session } from "next-auth";
 type ParamsPage = {
   params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { ganado }: ResponseGanado = await submitForm(
-    "ganado",
-    "GET",
-    undefined,
-    params.id,
-  );
+  
+  const response = await getData<ResponseGanado>({endPoint:"ganado",id:params.id});
+  const {ganado}=responseErrorServer(response);
+  
+  const response2 = await getData<ResponseVeterinariosSelect>({endPoint:"veterinariosHaciendaActual"});
+  const {veterinarios}=responseErrorServer(response2);
+  
+  const response3 = await getData<ResponseToros>({endPoint:"todosToro",param:"ganado_id",id:params.id});
+  const {toros}=responseErrorServer(response3);   
 
-  const { veterinarios }: ResponseVeterinariosSelect = await submitForm(
-    "veterinariosHaciendaActual",
-  );
+  const response4 = await getData<ResponseTiposRevision>({endPoint:"tiposRevision"});
+  const {tipos_revision}=responseErrorServer(response4);  
 
-  const { tipos_revision }: ResponseTiposRevision =
-    await submitForm("tiposRevision");
+  const response5 = await getData<ResponseVacunasDisponibles>({endPoint:"vacunasDisponibles"});
+  const {vacunas_disponibles}=responseErrorServer(response5);
 
-  const { vacunas_disponibles }: ResponseVacunasDisponibles =
-    await submitForm("vacunasDisponibles");
 
-  const { toros }: ResponseToros = await submitForm("todosToro", "GET", undefined);
+
 
   const { user } = (await auth()) as Session;
   return (

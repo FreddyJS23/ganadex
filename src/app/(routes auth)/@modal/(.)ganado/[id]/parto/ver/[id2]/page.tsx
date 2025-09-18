@@ -1,20 +1,17 @@
 import { ModalBirth } from "@/components/modals/birth";
 import { ResponseParto } from "@/types";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 type ParamsPage = {
   params: { id: number; id2: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { parto }: ResponseParto = await submitForm(
-    "ganado",
-    "GET",
-    undefined,
-    params.id,
-    "parto",
-    params.id2,
-  );
+  
+  const response = await getData<ResponseParto>({endPoint:"ganado",id:params.id,endPointCattle:"parto",id2:params.id2});
+  const {parto}=responseErrorServer(response);
+  
 
   return <ModalBirth parto={parto} />;
 }

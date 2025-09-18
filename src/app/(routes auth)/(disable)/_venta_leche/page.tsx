@@ -8,23 +8,27 @@ import {
   PrecioActual,
   VariacionPrecio,
 } from "@/types/dashboard";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { ventas_de_leche }: ResponseVentasLeche = await submitForm("ventasLeche");
-  const { precio_actual }: PrecioActual = await submitForm(
-    "dashboardVentaLecheprecioActual",
-  );
-  const { variacion }: VariacionPrecio = await submitForm(
-    "dashboardVentaLechevariacionPRecio",
-  );
-  const { ganancias }: GanaciasMes = await submitForm(
-    "dashboardVentaLechegananciasDelMes",
-  );
-
-  const { balance_mensual }: BalanceMensualVentaLeche = await submitForm(
-    "dashboardVentaLecheBalanceMensual",
-  );
+  
+  const response = await getData<ResponseVentasLeche>({endPoint:"ventasLeche"});
+  const {ventas_de_leche}=responseErrorServer(response);
+  
+  const response2 = await getData<PrecioActual>({endPoint:"dashboardVentaLecheprecioActual"});
+  const {precio_actual}=responseErrorServer(response2);
+  
+  const response3 = await getData<VariacionPrecio>({endPoint:"dashboardVentaLechevariacionPRecio"});
+  const {variacion}=responseErrorServer(response3);
+  
+  const response4 = await getData<GanaciasMes>({endPoint:"dashboardVentaLechegananciasDelMes"});
+  const {ganancias}=responseErrorServer(response4);
+  
+  const response5 = await getData<BalanceMensualVentaLeche>({endPoint:"dashboardVentaLecheBalanceMensual"});
+  const {balance_mensual}=responseErrorServer(response5);
+  
+  
 
   return (
     <section className="flex p-4  gap-8 flex-col sm:pl-12">

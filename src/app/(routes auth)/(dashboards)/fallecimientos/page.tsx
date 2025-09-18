@@ -3,15 +3,17 @@ import { DropdownCausaFallecimiento } from "@/components/dropdown causa fallecim
 import { TableDeadCattle } from "@/components/tables/death cattle";
 import { ResponseFallecimientos } from "@/types";
 import { Fallecimientos } from "@/types/dashboard";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { fallecidos }: ResponseFallecimientos =
-    await submitForm("fallecimientos");
+  
+  const response = await getData<ResponseFallecimientos>({endPoint:"fallecimientos"});
+  const {fallecidos}=responseErrorServer(response);
 
-  const { causas_frecuentes, total_fallecidos }: Fallecimientos = await submitForm(
-    "dashboardFallecimientosCausasFrecuentes",
-  );
+  const response2 = await getData<Fallecimientos>({endPoint:"dashboardFallecimientosCausasFrecuentes"});
+  const {causas_frecuentes, total_fallecidos}=responseErrorServer(response2);
+  
 
   return (
     <section className="flex gap-8 flex-col">

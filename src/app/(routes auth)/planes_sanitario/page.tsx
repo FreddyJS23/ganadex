@@ -4,20 +4,22 @@ import { WarningToast } from "@/components/warning toast";
 import { DayVaccination, ResponsePlanesSanitario } from "@/types";
 import { ProximosPlanSanitario } from "@/types/dashboard";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { planes_sanitario }: ResponsePlanesSanitario =
-    await submitForm("planesSanitario");
+  
+  const response = await getData<ResponsePlanesSanitario>({endPoint:"planesSanitario"});
+  const {planes_sanitario}=responseErrorServer(response);
+  
+  
+  const response2 = await getData<ProximosPlanSanitario>({endPoint:"dashboarPlanesSanitarioProximosPlanes"});
+  const {proximos_planes_sanitario}=responseErrorServer(response2);  
 
-  const { proximos_planes_sanitario }: ProximosPlanSanitario = await submitForm(
-    "dashboarPlanesSanitarioProximosPlanes",
-  );
+  const response3 = await getData<ResponsePlanesSanitario>({endPoint:"planesSanitariosPendientes"});
+  const {planes_sanitario:planes_sanitarios_pendientes}=responseErrorServer(response3);
 
-  const {
-    planes_sanitario: planes_sanitarios_pendientes,
-  }: ResponsePlanesSanitario = await submitForm("planesSanitariosPendientes");
-
+ 
   const existsPlanesSanitario = planes_sanitarios_pendientes.length > 0;
 
   const vacunasPendientes: string[] = [];

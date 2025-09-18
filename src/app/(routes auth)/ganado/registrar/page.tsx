@@ -6,19 +6,24 @@ import {
   ResponseVacunasDisponibles,
 } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { compradores }: ResponseCompradores = await submitForm("compradores");
-  const { vacunas_disponibles }: ResponseVacunasDisponibles =
-    await submitForm("vacunasDisponibles");
-
-  const { numero_disponible }: ResponseSugerirNumero =
-    await submitForm("sugerirNumero");
-
-  const { causas_fallecimiento }: ResponseCausasFallecimiento = await submitForm(
-    "causasFallecimiento",
-  );
+  
+  
+  const response = await getData<ResponseCompradores>({endPoint:"compradores"});
+  const {compradores}=responseErrorServer(response);
+  
+  const response2 = await getData<ResponseVacunasDisponibles>({endPoint:"vacunasDisponibles"});
+  const {vacunas_disponibles}=responseErrorServer(response2);
+  
+  const response3 = await getData<ResponseSugerirNumero>({endPoint:"sugerirNumero"});
+  const {numero_disponible}=responseErrorServer(response3);
+  
+  const response4 = await getData<ResponseCausasFallecimiento>({endPoint:"causasFallecimiento"});
+  const {causas_fallecimiento}=responseErrorServer(response4);
+  
 
   return (
     <>

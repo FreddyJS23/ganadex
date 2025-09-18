@@ -7,7 +7,8 @@ import {
   ResponseVeterinariosSelect,
 } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 import { Session } from "next-auth";
 
 type ParamsPage = {
@@ -15,21 +16,22 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { ganado }: ResponseGanado = await submitForm(
-    "ganado",
-    "GET",
-    undefined,
-    params.id,
-  );
+  
+  const response = await getData<ResponseGanado>({endPoint:"ganado",id:params.id});
+  const {ganado}=responseErrorServer(response);
 
-  const { veterinarios }: ResponseVeterinariosSelect = await submitForm(
-    "veterinariosHaciendaActual",
-  );
+  const response2 = await getData<ResponseVeterinariosSelect>({endPoint:"veterinariosHaciendaActual"});
+  const {veterinarios}=responseErrorServer(response2);
+  
+  
+  const response3 = await getData<ResponseObrerosSelect>({endPoint:"obreros"});
+  const {obreros}=responseErrorServer(response3);
 
-  const { obreros }: ResponseObrerosSelect = await submitForm("obreros");
+    const response4 = await getData<ResponseSugerirNumero>({endPoint:"sugerirNumero"});
+  const {numero_disponible}=responseErrorServer(response4);
+    
 
-  const { numero_disponible }: ResponseSugerirNumero =
-    await submitForm("sugerirNumero");
+
 
   const { user } = (await auth()) as Session;
   return (

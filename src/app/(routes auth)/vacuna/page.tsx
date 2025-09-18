@@ -1,9 +1,13 @@
 import { ModalVaccines } from "@/components/modals/historys/available vaccines";
 import { ResponseVacunas } from "@/types";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { vacunas }: ResponseVacunas = await submitForm("vacunas");
+  
+  const response = await getData<ResponseVacunas>({endPoint:"vacunasDisponibles"});
+  const {vacunas}=responseErrorServer(response);
+  
 
   return <ModalVaccines vacunas={vacunas} />;
 }

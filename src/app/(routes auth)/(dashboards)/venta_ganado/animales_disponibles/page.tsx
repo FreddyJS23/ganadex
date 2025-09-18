@@ -3,14 +3,18 @@ import { auth } from "@/app/auth";
 import { TableDiscardedCattle } from "@/components/tables/discarded cattle";
 import type { ResponseCompradores, ResponseGanadoDescartes } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { ganado_descartes }: ResponseGanadoDescartes = await submitForm(
-    "todosGanadoDescarte",
-  );
+  
+  const response = await getData<ResponseGanadoDescartes>({endPoint:"todosGanadoDescarte"});
+  const {ganado_descartes}=responseErrorServer(response);
 
-  const { compradores }: ResponseCompradores = await submitForm("compradores");
+  const response2 = await getData<ResponseCompradores>({endPoint:"compradores"});
+  const {compradores}=responseErrorServer(response2);
+  
+
 
   const session = (await auth()) as Session;
   const role = session.user.rol;

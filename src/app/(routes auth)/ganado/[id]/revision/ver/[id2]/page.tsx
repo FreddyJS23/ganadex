@@ -2,21 +2,18 @@ import { ModalCheckUp } from "@/components/modals/checkup";
 import {
   ResponseRevision,
 } from "@/types";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 type ParamsPage = {
   params: { id: number; id2: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { revision }: ResponseRevision = await submitForm(
-    "ganado",
-    "GET",
-    undefined,
-    params.id,
-    "revision",
-    params.id2,
-  );
+  
+  const response = await getData<ResponseRevision>({endPoint:"ganado",id:params.id,endPointCattle:"revision",id2:params.id2});
+  const {revision}=responseErrorServer(response);
+  
 
 
 

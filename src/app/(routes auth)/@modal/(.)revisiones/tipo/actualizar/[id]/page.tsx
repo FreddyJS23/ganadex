@@ -1,18 +1,17 @@
 import { ModalCreateUpdateTypeCheck } from "@/components/modals/type check";
 import { ResponseTipoRevision } from "@/types";
-import { submitForm } from "@/services/apiClient";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 type ParamsPage = {
   params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { tipo_revision }: ResponseTipoRevision = await submitForm(
-    "tipoRevision",
-    "GET",
-    undefined,
-    params.id,
-  );
+  
+  const response = await getData<ResponseTipoRevision>({endPoint:"tipoRevision",id:params.id});
+  const {tipo_revision}=responseErrorServer(response);
+  
   return (
     <ModalCreateUpdateTypeCheck
       update={true}

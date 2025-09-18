@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
@@ -70,3 +70,4 @@ export default function Page() {
     </>
   );
 }
+ */
