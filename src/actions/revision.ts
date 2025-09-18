@@ -2,13 +2,13 @@
 
 import { ResponseErrorNext } from "@/types";
 import { CreateAdminCheckUp, CreateBaseCheckUp, EditCheckUp } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createCheckUp(
   formData: CreateAdminCheckUp | CreateBaseCheckUp,
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await getData<CreateAdminCheckUp | CreateBaseCheckUp, void>(
+  const response = await submitForm<CreateAdminCheckUp | CreateBaseCheckUp, void>(
     "ganado",
     "POST",
     formData,
@@ -27,7 +27,7 @@ export async function editCheckUp(
   formData: EditCheckUp,
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await getData<EditCheckUp, void>(
+  const response = await submitForm<EditCheckUp, void>(
     "ganado",
     "PUT",
     formData,

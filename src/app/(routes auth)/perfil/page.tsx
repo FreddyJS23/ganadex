@@ -10,35 +10,35 @@ import {
   ResponseVeterinariosSinUsuario,
   ResponseVeterinariosUsuario,
 } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 import { Session } from "next-auth";
 
 export default async function Page() {
-  const { usuarios_veterinarios }: ResponseVeterinariosUsuario = await getData(
+  const { usuarios_veterinarios }: ResponseVeterinariosUsuario = await submitForm(
     "usuariosVeterinarios",
   );
   const { veterinarios_sin_usuario }: ResponseVeterinariosSinUsuario =
-    await getData("veterinariosSinUsuario");
+    await submitForm("veterinariosSinUsuario");
 
-  const { hacienda }: ResponseHacienda = await getData("verSesionHacienda");
-  const { haciendas }: ResponseHaciendas = await getData("hacienda");
+  const { hacienda }: ResponseHacienda = await submitForm("verSesionHacienda");
+  const { haciendas }: ResponseHaciendas = await submitForm("hacienda");
 
-  const { logs_eventos }: ResponseLogEventos = await getData("logsEventos");
+  const { logs_eventos }: ResponseLogEventos = await submitForm("logsEventos");
 
   const session = (await auth()) as Session;
   const id = session.user.userId;
-  const { user }: ResponseInformacionUsuarioLogeado = await getData(
+  const { user }: ResponseInformacionUsuarioLogeado = await submitForm(
     "usuario",
     "GET",
     undefined,
     id,
   );
 
-  const { preguntas_seguridad }: ResponsePreguntasSeguridad = await getData(
+  const { preguntas_seguridad }: ResponsePreguntasSeguridad = await submitForm(
     "preguntasSeguridadDisponibles",
   );
 
-  const { respuestas_seguridad }: ResponseRespuestaSeguridad = await getData(
+  const { respuestas_seguridad }: ResponseRespuestaSeguridad = await submitForm(
     "respuestasSeguridad",
   );
 

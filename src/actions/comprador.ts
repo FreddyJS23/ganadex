@@ -2,12 +2,12 @@
 
 import { ResponseComprador, ResponseErrorNext } from "@/types";
 import { CreateCustomer } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createCustomer(
   formData: CreateCustomer,
 ): Promise<string | number | ResponseErrorNext | undefined> {
-  const response = await getData<CreateCustomer, ResponseComprador>(
+  const response = await submitForm<CreateCustomer, ResponseComprador>(
     "comprador",
     "POST",
     formData,

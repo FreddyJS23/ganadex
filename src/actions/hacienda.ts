@@ -2,12 +2,12 @@
 
 import { Hacienda, ResponseErrorNext, ResponseHacienda } from "@/types";
 import { CreateHacienda } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createHacienda(
   formData: CreateHacienda,
 ): Promise<Hacienda | ResponseErrorNext> {
-  const response = await getData<CreateHacienda, ResponseHacienda>(
+  const response = await submitForm<CreateHacienda, ResponseHacienda>(
     "hacienda",
     "POST",
     formData,
@@ -20,7 +20,7 @@ export async function editHacienda(
   id: number,
   formData: CreateHacienda,
 ): Promise<Hacienda | ResponseErrorNext> {
-  const response = await getData<CreateHacienda, ResponseHacienda>(
+  const response = await submitForm<CreateHacienda, ResponseHacienda>(
     "haciendaAccion",
     "PUT",
     formData,
@@ -33,7 +33,7 @@ export async function editHacienda(
 export async function deleteHacienda(
   id: number,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<
+  const response = await submitForm<
     CreateHacienda,
     { haciendaID: number | string }
   >("haciendaAccion", "DELETE", undefined, id);
@@ -44,7 +44,7 @@ export async function deleteHacienda(
 export async function createSesionHacienda(
   haciendaId: number,
 ): Promise<Hacienda | ResponseErrorNext | undefined> {
-  const response = await getData<number, ResponseHacienda>(
+  const response = await submitForm<number, ResponseHacienda>(
     "crearSesionHacienda",
     "GET",
     undefined,

@@ -2,12 +2,12 @@
 
 import { ResponseErrorNext, ResponsePrecioLeche } from "@/types";
 import { CreatePriceMilk } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createPriceMilk(
   formData: CreatePriceMilk,
 ): Promise<number | ResponseErrorNext> {
-  const response = await getData<CreatePriceMilk, ResponsePrecioLeche>(
+  const response = await submitForm<CreatePriceMilk, ResponsePrecioLeche>(
     "crearPrecioLeche",
     "POST",
     formData,

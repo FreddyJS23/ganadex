@@ -8,21 +8,21 @@ import {
   PrecioActual,
   VariacionPrecio,
 } from "@/types/dashboard";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
-  const { ventas_de_leche }: ResponseVentasLeche = await getData("ventasLeche");
-  const { precio_actual }: PrecioActual = await getData(
+  const { ventas_de_leche }: ResponseVentasLeche = await submitForm("ventasLeche");
+  const { precio_actual }: PrecioActual = await submitForm(
     "dashboardVentaLecheprecioActual",
   );
-  const { variacion }: VariacionPrecio = await getData(
+  const { variacion }: VariacionPrecio = await submitForm(
     "dashboardVentaLechevariacionPRecio",
   );
-  const { ganancias }: GanaciasMes = await getData(
+  const { ganancias }: GanaciasMes = await submitForm(
     "dashboardVentaLechegananciasDelMes",
   );
 
-  const { balance_mensual }: BalanceMensualVentaLeche = await getData(
+  const { balance_mensual }: BalanceMensualVentaLeche = await submitForm(
     "dashboardVentaLecheBalanceMensual",
   );
 

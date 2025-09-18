@@ -7,12 +7,12 @@ import {
   ResponseRegistroExitoso,
 } from "@/types";
 import { CreateStaff } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createStaff(
   formData: CreateStaff,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<CreateStaff, ResponsePersonal>(
+  const response = await submitForm<CreateStaff, ResponsePersonal>(
     "personal",
     "POST",
     formData,
@@ -25,7 +25,7 @@ export async function editStaff(
   id: number,
   formData: CreateStaff,
 ): Promise<Personal | ResponseErrorNext> {
-  const response = await getData<CreateStaff, ResponsePersonal>(
+  const response = await submitForm<CreateStaff, ResponsePersonal>(
     "personal",
     "PUT",
     formData,
@@ -36,7 +36,7 @@ export async function editStaff(
 }
 
 export async function addInHacienda(id: number) {
-  const response = await getData<
+  const response = await submitForm<
     { personal_id: number },
     ResponseRegistroExitoso
   >("registrarVeterinarioEnHacienda", "POST", { personal_id: id });
@@ -45,7 +45,7 @@ export async function addInHacienda(id: number) {
 }
 
 export async function removeInHacienda(id: number) {
-  const response = await getData<
+  const response = await submitForm<
     { personal_id: number },
     ResponseRegistroExitoso
   >("eliminarVeterinarioEnHacienda", "DELETE", undefined, id);

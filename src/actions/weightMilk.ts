@@ -2,13 +2,13 @@
 
 import { ResponseErrorNext, ResponsePesajeLeche } from "@/types";
 import { CreateWeightMilk, UpdateWeightMilk } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createWeightMilk(
   formData: CreateWeightMilk,
   id: number,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<CreateWeightMilk, ResponsePesajeLeche>(
+  const response = await submitForm<CreateWeightMilk, ResponsePesajeLeche>(
     "ganado",
     "POST",
     formData,
@@ -25,7 +25,7 @@ export async function updateWeightMilk(
   idCastle: number,
   formData: UpdateWeightMilk,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<UpdateWeightMilk, ResponsePesajeLeche>(
+  const response = await submitForm<UpdateWeightMilk, ResponsePesajeLeche>(
     "ganado",
     "PUT",
     formData,

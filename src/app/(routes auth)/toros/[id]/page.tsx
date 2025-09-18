@@ -6,7 +6,7 @@ import { WeightsEditable } from "@/components/editable sections/weights";
 import { ModalEditAnimal } from "@/components/modals/edit animals";
 import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
 import { ResponseToro } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 import { Session } from "next-auth";
 import Image from "next/image";
 import cattleImage from "public/cattle.png";
@@ -16,7 +16,7 @@ type ParamsPageBull = {
 };
 
 export default async function Page({ params }: ParamsPageBull) {
-  const { toro, vacunaciones }: ResponseToro = await getData(
+  const { toro, vacunaciones }: ResponseToro = await submitForm(
     "toro",
     "GET",
     undefined,

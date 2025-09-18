@@ -7,7 +7,7 @@ import {
   ResponseVeterinariosSelect,
 } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 import { Session } from "next-auth";
 
 type ParamsPage = {
@@ -15,17 +15,17 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { ganado }: ResponseGanado = await getData(
+  const { ganado }: ResponseGanado = await submitForm(
     "ganado",
     "GET",
     undefined,
     params.id,
   );
-  const { veterinarios }: ResponseVeterinariosSelect = await getData(
+  const { veterinarios }: ResponseVeterinariosSelect = await submitForm(
     "veterinariosHaciendaActual",
   );
-  const { toros }: ResponseToros = await getData("todosToro", "GET", undefined);
-  const { pajuela_toros }: ResponsePajuelaToros = await getData(
+  const { toros }: ResponseToros = await submitForm("todosToro", "GET", undefined);
+  const { pajuela_toros }: ResponsePajuelaToros = await submitForm(
     "pajuelaToro",
     "GET",
     undefined,

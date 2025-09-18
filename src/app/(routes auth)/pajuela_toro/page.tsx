@@ -1,10 +1,10 @@
 import { TablePajuelaToro } from "@/components/tables/pajuela toro";
 import { ResponsePajuelaToros } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
-  const { pajuela_toros }: ResponsePajuelaToros = await getData("pajuelaToro");
+  const { pajuela_toros }: ResponsePajuelaToros = await submitForm("pajuelaToro");
   return (
     <>
       <TitlePage title="Pajuela toros" />

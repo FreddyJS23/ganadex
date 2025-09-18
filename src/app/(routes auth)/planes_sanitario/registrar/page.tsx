@@ -1,9 +1,9 @@
 import { CreateVaccinationDay } from "@/components/create item in modal/create vaccination day";
 import { ResponseVacunasDisponibles } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
   const { vacunas_disponibles }: ResponseVacunasDisponibles =
-    await getData("vacunasDisponibles");
+    await submitForm("vacunasDisponibles");
   return <CreateVaccinationDay vacunas_disponibles={vacunas_disponibles} />;
 }

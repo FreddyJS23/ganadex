@@ -1,13 +1,13 @@
 import { ModalAssignmentNumberBullCalf } from "@/components/modals/assignment number bull calf";
 import { ResponseGanado } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 type ParamsPage = {
   params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { ganado }: ResponseGanado = await getData(
+  const { ganado }: ResponseGanado = await submitForm(
     "ganado",
     "GET",
     undefined,

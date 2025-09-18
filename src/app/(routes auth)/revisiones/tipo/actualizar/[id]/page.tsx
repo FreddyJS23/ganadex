@@ -1,13 +1,13 @@
 import { ModalCreateUpdateTypeCheck } from "@/components/modals/type check";
 import { ResponseTipoRevision } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 type ParamsPage = {
   params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { tipo_revision }: ResponseTipoRevision = await getData(
+  const { tipo_revision }: ResponseTipoRevision = await submitForm(
     "tipoRevision",
     "GET",
     undefined,

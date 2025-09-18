@@ -7,7 +7,7 @@ import { WeightsEditable } from "@/components/editable sections/weights";
 import { ModalEditAnimal } from "@/components/modals/edit animals";
 import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
 import { ResponseGanado, ResponseGanadoDescarte } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 import { Session } from "next-auth";
 import Image from "next/image";
 import cattleImage from "public/cattle.png";
@@ -18,7 +18,7 @@ type ParamsPageBeef = {
 
 export default async function Page({ params }: ParamsPageBeef) {
   const { ganado_descarte, vacunaciones }: ResponseGanadoDescarte =
-    await getData("ganadoDescarte", "GET", undefined, params.id);
+    await submitForm("ganadoDescarte", "GET", undefined, params.id);
 
   const session = (await auth()) as Session;
   const role = session.user.rol;
@@ -40,7 +40,7 @@ export default async function Page({ params }: ParamsPageBeef) {
   let response = {} as ResponseGanado;
 
   if (sexo == "H") {
-    response = await getData("ganado", "GET", undefined, params.id);
+    response = await submitForm("ganado", "GET", undefined, params.id);
   }
 
   //comprobar si tiene estado vendido o fallecido para no editar pesos

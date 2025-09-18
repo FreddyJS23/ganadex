@@ -3,7 +3,7 @@ import IconoUser from "@/icons/icono-user.svg";
 import { NotificationMain } from "../notifications";
 import { HamburgerButton } from "@/ui/HamburgerButton";
 import { Sidebar } from "../sidebar";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
 import { ResponseFechaUltimoRespaldo } from "@/types";
 import Link from "next/link";
 import { ButtonRestoreBd } from "../buttonRestoreBd";
@@ -12,6 +12,7 @@ import { ButtonGenerateReport } from "../buttonPrintReports";
 import { auth } from "@/app/auth";
 import { Session } from "next-auth";
 import { NameHacienda } from "./item";
+import { responseErrorServer } from "@/utils/returnError";
 
 const elementsAdmin = (
   ultimo_backup: ResponseFechaUltimoRespaldo["ultimo_backup"],
@@ -32,9 +33,11 @@ const elementsAdmin = (
 };
 
 export const Navbar = async () => {
-  const { ultimo_backup }: ResponseFechaUltimoRespaldo = await getData(
-    "fechaUltimoRespaldo",
+  const response = await getData<ResponseFechaUltimoRespaldo>(
+   {endPoint:"fechaUltimoRespaldo",}
   );
+
+  const {ultimo_backup}=responseErrorServer(response);
 
   const session = (await auth()) as Session;
   const role = session.user.rol;

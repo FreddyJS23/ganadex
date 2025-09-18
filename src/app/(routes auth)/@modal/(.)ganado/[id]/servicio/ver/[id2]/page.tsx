@@ -1,13 +1,13 @@
 import { ModalServe } from "@/components/modals/serve";
 import { ResponseServicio } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 type ParamsPage = {
   params: { id: number; id2: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { servicio }: ResponseServicio = await getData(
+  const { servicio }: ResponseServicio = await submitForm(
     "ganado",
     "GET",
     undefined,

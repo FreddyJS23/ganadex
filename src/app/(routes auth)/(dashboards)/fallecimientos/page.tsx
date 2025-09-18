@@ -3,13 +3,13 @@ import { DropdownCausaFallecimiento } from "@/components/dropdown causa fallecim
 import { TableDeadCattle } from "@/components/tables/death cattle";
 import { ResponseFallecimientos } from "@/types";
 import { Fallecimientos } from "@/types/dashboard";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
   const { fallecidos }: ResponseFallecimientos =
-    await getData("fallecimientos");
+    await submitForm("fallecimientos");
 
-  const { causas_frecuentes, total_fallecidos }: Fallecimientos = await getData(
+  const { causas_frecuentes, total_fallecidos }: Fallecimientos = await submitForm(
     "dashboardFallecimientosCausasFrecuentes",
   );
 

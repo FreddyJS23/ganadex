@@ -8,7 +8,7 @@ import {
   ResponseGanadoDescarte,
 } from "@/types";
 import { CreateBeef, EditCastle, updateWeight } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createBeef(
   formData: CreateBeef,
@@ -18,7 +18,7 @@ export async function createBeef(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const vacunas = listVaccines.map(({ id, ...rest }) => ({ ...rest }));
 
-  const response = await getData<CreateBeef, ResponseGanadoDescarte>(
+  const response = await submitForm<CreateBeef, ResponseGanadoDescarte>(
     "ganadoDescarte",
     "POST",
     { ...formData, vacunas },
@@ -37,7 +37,7 @@ export async function editBeef(
   | ResponseGanado["ganado"]["numero"]
   | ResponseGanado["ganado"]["nombre"]
 > {
-  const response = await getData<EditCastle, ResponseGanadoDescarte>(
+  const response = await submitForm<EditCastle, ResponseGanadoDescarte>(
     "ganadoDescarte",
     "PUT",
     formData,
@@ -52,7 +52,7 @@ export async function updateWeightBeef(
   id: number,
   formData: updateWeight,
 ): Promise<Pesos | ResponseErrorNext> {
-  const response = await getData<updateWeight, ResponseGanadoDescarte>(
+  const response = await submitForm<updateWeight, ResponseGanadoDescarte>(
     "ganadoDescarte",
     "PUT",
     formData,

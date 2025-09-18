@@ -6,18 +6,18 @@ import {
   ResponseSugerirNumero,
   ResponseVacunasDisponibles,
 } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
-  const { compradores }: ResponseCompradores = await getData("compradores");
+  const { compradores }: ResponseCompradores = await submitForm("compradores");
   const { numero_disponible }: ResponseSugerirNumero =
-    await getData("sugerirNumero");
-  const { causas_fallecimiento }: ResponseCausasFallecimiento = await getData(
+    await submitForm("sugerirNumero");
+  const { causas_fallecimiento }: ResponseCausasFallecimiento = await submitForm(
     "causasFallecimiento",
   );
 
   const { vacunas_disponibles }: ResponseVacunasDisponibles =
-    await getData("vacunasDisponibles");
+    await submitForm("vacunasDisponibles");
 
   return (
     <>

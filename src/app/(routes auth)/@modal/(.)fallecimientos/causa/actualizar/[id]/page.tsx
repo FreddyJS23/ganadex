@@ -1,13 +1,13 @@
 import { ModalCreateUpdateCausaFallecimiento } from "@/components/modals/tipo fallecimiento";
 import { ResponseCausaFallecimiento } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 type ParamsPage = {
   params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { causa_fallecimiento }: ResponseCausaFallecimiento = await getData(
+  const { causa_fallecimiento }: ResponseCausaFallecimiento = await submitForm(
     "causaFallecimiento",
     "GET",
     undefined,

@@ -1,11 +1,11 @@
 import { TableCastreteBullCalf } from "@/components/tables/castrete bull calf";
 import { ResponseCriasPendienteCapar } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
   const { crias_pendiente_capar }: ResponseCriasPendienteCapar =
-    await getData("criasCapar");
+    await submitForm("criasCapar");
 
   return (
     <section>

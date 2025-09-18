@@ -1,9 +1,9 @@
 "use server";
 
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export const removeNotificationFromDB = async (id: number) => {
-  const response = await getData<number, { notificacionID: number }>(
+  const response = await submitForm<number, { notificacionID: number }>(
     "eliminarNotificacion",
     "DELETE",
     undefined,

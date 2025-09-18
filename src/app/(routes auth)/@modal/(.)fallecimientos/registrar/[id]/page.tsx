@@ -1,9 +1,9 @@
 import { CreateDeathCattle } from "@/components/create item in modal/create death cattle";
 import { ResponseCausasFallecimiento } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
-  const { causas_fallecimiento }: ResponseCausasFallecimiento = await getData(
+  const { causas_fallecimiento }: ResponseCausasFallecimiento = await submitForm(
     "causasFallecimiento",
   );
 

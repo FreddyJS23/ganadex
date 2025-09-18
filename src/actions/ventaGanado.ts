@@ -6,13 +6,13 @@ import {
   ResponseVentasGanado,
 } from "@/types";
 import { CreateSaleCattle } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createSaleCattle(
   formData: CreateSaleCattle,
   id: number,
 ): Promise<number | ResponseErrorNext> {
-  const response = await getData<CreateSaleCattle, ResponseVentaGanado>(
+  const response = await submitForm<CreateSaleCattle, ResponseVentaGanado>(
     "ventaGanado",
     "POST",
     Object.assign(formData, { ganado_id: id }),
@@ -26,7 +26,7 @@ export async function ventaGanadoLote(
   formData: CreateSaleCattle,
   ganadoIds: number[],
 ): Promise<number | ResponseErrorNext> {
-  const response = await getData<
+  const response = await submitForm<
     CreateSaleCattle & { ganado_ids: number[] },
     ResponseVentasGanado
   >("ventasGanadoLote", "POST", { ...formData, ganado_ids: ganadoIds });

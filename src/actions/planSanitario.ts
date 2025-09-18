@@ -6,12 +6,12 @@ import {
   ResponsePlanSanitario,
 } from "@/types";
 import { CreateVaccinacionDay } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createVaccinationDay(
   formData: CreateVaccinacionDay,
 ): Promise<DayVaccination | ResponseErrorNext> {
-  const response = await getData<CreateVaccinacionDay, ResponsePlanSanitario>(
+  const response = await submitForm<CreateVaccinacionDay, ResponsePlanSanitario>(
     "planesSanitario",
     "POST",
     formData,

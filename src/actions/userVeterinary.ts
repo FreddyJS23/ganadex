@@ -5,12 +5,12 @@ import {
   ResponseVeterinarioUsuario,
   UserVeterinaryInfo,
 } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createUserVeterinary(
   id: number,
 ): Promise<UserVeterinaryInfo | ResponseErrorNext> {
-  const response = await getData<
+  const response = await submitForm<
     { personal_id: number },
     ResponseVeterinarioUsuario
   >("usuariosVeterinarios", "POST", { personal_id: id });
@@ -21,7 +21,7 @@ export async function createUserVeterinary(
 export async function deleteUserVeterinary(
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await getData<number, void>(
+  const response = await submitForm<number, void>(
     "usuarioVeterinario",
     "DELETE",
     undefined,

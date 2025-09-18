@@ -8,7 +8,7 @@ import {
   ResponseUser,
 } from "@/types";
 import { CreateUser, UpdateConfiguration, UpdateUser } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createUser(
   formData: CreateUser,
@@ -25,7 +25,7 @@ export async function updateUser(
   id: number,
   formData: UpdateUser,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<UpdateUser, ResponseUser>(
+  const response = await submitForm<UpdateUser, ResponseUser>(
     "usuario",
     "PUT",
     formData,
@@ -38,7 +38,7 @@ export async function updateUser(
 export async function updateConfiguration(
   formData: UpdateConfiguration,
 ): Promise<Configuracion | ResponseErrorNext> {
-  const response = await getData<UpdateConfiguration, ResponseConfiguracion>(
+  const response = await submitForm<UpdateConfiguration, ResponseConfiguracion>(
     "actualizarConfig",
     "PUT",
     formData,

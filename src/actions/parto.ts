@@ -2,13 +2,13 @@
 
 import { ResponseErrorNext } from "@/types";
 import { CreateAdminBirth, CreateBaseBirth, UpdateBirh } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createBirth(
   formData: CreateBaseBirth | CreateAdminBirth,
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await getData<CreateBaseBirth | CreateAdminBirth, void>(
+  const response = await submitForm<CreateBaseBirth | CreateAdminBirth, void>(
     "ganado",
     "POST",
     formData,
@@ -23,7 +23,7 @@ export async function updateBirth(
   idCastle: number,
   formData: UpdateBirh,
 ): Promise<void | ResponseErrorNext> {
-  const response = await getData<UpdateBirh, void>(
+  const response = await submitForm<UpdateBirh, void>(
     "ganado",
     "PUT",
     formData,

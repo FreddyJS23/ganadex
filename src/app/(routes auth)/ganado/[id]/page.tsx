@@ -3,7 +3,7 @@ import { Details } from "@/components/details";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
 import { ResponseGanado } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 import Image from "next/image";
 import cattleImage from "public/cattle.png";
 import { DropDownOptions } from "@/components/dropdown options";
@@ -29,7 +29,7 @@ export default async function Page({ params }: ParamsPageCattle) {
     total_partos,
     info_pesajes_leche,
     vacunaciones,
-  }: ResponseGanado = await getData("ganado", "GET", undefined, params.id);
+  }: ResponseGanado = await submitForm("ganado", "GET", undefined, params.id);
 
   const { eventos } = ganado;
 

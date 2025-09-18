@@ -2,12 +2,12 @@
 
 import { ResponseErrorNext, ResponsePajuelaToro } from "@/types";
 import { CreatePajuelaToro } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createPajuelaToro(
   formData: CreatePajuelaToro,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<CreatePajuelaToro, ResponsePajuelaToro>(
+  const response = await submitForm<CreatePajuelaToro, ResponsePajuelaToro>(
     "pajuelaToro",
     "POST",
     formData,

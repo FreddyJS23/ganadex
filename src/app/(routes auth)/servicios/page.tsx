@@ -1,11 +1,11 @@
 import { TableAllServes } from "@/components/tables/serve";
 import { ResponseServiciosGeneral } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
   const { todos_servicios }: ResponseServiciosGeneral =
-    await getData("servicios");
+    await submitForm("servicios");
 
   return (
     <section>

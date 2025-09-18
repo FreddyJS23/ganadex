@@ -9,25 +9,25 @@ import {
   /*  MejorVenta,
     PeorVenta, */
 } from "@/types/dashboard";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
-  const { ventas }: ResponseVentasGanado = await getData("ventasGanado");
-  const { comprador }: MejorComprador = await getData(
+  const { ventas }: ResponseVentasGanado = await submitForm("ventasGanado");
+  const { comprador }: MejorComprador = await submitForm(
     "dashboardVentaGanadomejorComprador",
   );
-  /*  const { venta: mejorVenta }: MejorVenta = await getData(
+  /*  const { venta: mejorVenta }: MejorVenta = await submitForm(
         'dashboardVentaGanadomejorVenta',
     );
-    const { venta: peorVenta }: PeorVenta = await getData(
+    const { venta: peorVenta }: PeorVenta = await submitForm(
         'dashboardVentaGanadopeorVenta',
     ); */
-  const { balance_anual }: BalanceAnualVentaGanado = await getData(
+  const { balance_anual }: BalanceAnualVentaGanado = await submitForm(
     "dashboardVentaGanadoBalanceAnual",
   );
 
   const { años_ventas_ganado }: ResponseAñosVentaGanado =
-    await getData("añosVentaGanado");
+    await submitForm("añosVentaGanado");
 
   return (
     <section className="flex gap-8 flex-col ">

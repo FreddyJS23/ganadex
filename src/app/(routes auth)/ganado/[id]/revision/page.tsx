@@ -1,13 +1,13 @@
 import { ModalHistoryCheckUps } from "@/components/modals/historys/history checkups";
 import { ResponseRevisiones } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 type ParamsPage = {
   params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { revisiones }: ResponseRevisiones = await getData(
+  const { revisiones }: ResponseRevisiones = await submitForm(
     "ganado",
     "GET",
     undefined,

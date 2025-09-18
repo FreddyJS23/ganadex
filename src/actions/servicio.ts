@@ -2,13 +2,13 @@
 
 import { ResponseErrorNext } from "@/types";
 import { CreateServe } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createServe(
   formData: CreateServe,
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await getData<CreateServe, void>(
+  const response = await submitForm<CreateServe, void>(
     "ganado",
     "POST",
     formData,
@@ -24,7 +24,7 @@ export async function editServe(
   idCastle: number,
   formData: CreateServe,
 ): Promise<void | ResponseErrorNext> {
-  const response = await getData<CreateServe, void>(
+  const response = await submitForm<CreateServe, void>(
     "ganado",
     "PUT",
     formData,

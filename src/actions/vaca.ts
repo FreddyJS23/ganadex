@@ -7,7 +7,7 @@ import {
   ResponseGanado,
 } from "@/types";
 import { CreateCastle, EditCastle, updateWeight } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 type vacunasSinId = Omit<ListaVacunas, "id">;
 
@@ -23,7 +23,7 @@ export async function createCastle(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const vacunas = listVaccines.map(({ id, ...rest }) => ({ ...rest }));
 
-  const response = await getData<
+  const response = await submitForm<
     CreateCastle & { vacunas: vacunasSinId[] },
     ResponseGanado
   >("ganado", "POST", { ...formData, vacunas });
@@ -39,7 +39,7 @@ export async function editCastle(
   | ResponseGanado["ganado"]["numero"]
   | ResponseGanado["ganado"]["nombre"]
 > {
-  const response = await getData<EditCastle, ResponseGanado>(
+  const response = await submitForm<EditCastle, ResponseGanado>(
     "ganado",
     "PUT",
     formData,
@@ -53,7 +53,7 @@ export async function updateWeightCastle(
   id: number,
   formData: updateWeight,
 ): Promise<Pesos | ResponseErrorNext> {
-  const response = await getData<updateWeight, ResponseGanado>(
+  const response = await submitForm<updateWeight, ResponseGanado>(
     "ganado",
     "PUT",
     formData,

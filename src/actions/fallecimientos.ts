@@ -2,13 +2,13 @@
 
 import { ResponseErrorNext, ResponseFallecimiento } from "@/types";
 import { CreateDeathCastle } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createDeathCattle(
   formData: CreateDeathCastle,
   id: number,
 ): Promise<number | string | ResponseErrorNext> {
-  const response = await getData<CreateDeathCastle, ResponseFallecimiento>(
+  const response = await submitForm<CreateDeathCastle, ResponseFallecimiento>(
     "fallecimiento",
     "POST",
     Object.assign(formData, { ganado_id: id }),

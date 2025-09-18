@@ -1,12 +1,12 @@
 "use server";
 
 import { ResponseErrorNext, ResponseHacienda } from "@/types";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function changeSessionHacienda(
   hacienda_id: number,
 ): Promise<ResponseHacienda | ResponseErrorNext> {
-  const response = await getData<number, ResponseHacienda>(
+  const response = await submitForm<number, ResponseHacienda>(
     "cambiarSesisionHacienda",
     "GET",
     undefined,

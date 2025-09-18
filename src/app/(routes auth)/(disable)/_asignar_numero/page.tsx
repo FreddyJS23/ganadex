@@ -1,11 +1,11 @@
 import { TableAssignmentNumberBullCalf } from "@/components/tables/assignment number bull calf";
 import { ResponseCriasPendienteNumeracion } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export default async function Page() {
   const { crias_pendiente_numeracion }: ResponseCriasPendienteNumeracion =
-    await getData("criasNumeracion");
+    await submitForm("criasNumeracion");
 
   return (
     <section>

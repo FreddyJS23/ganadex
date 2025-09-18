@@ -2,15 +2,15 @@ import { auth } from "@/app/auth";
 import { TableStaff } from "@/components/tables/staff";
 import { ResponseCargosPersonal, ResponseTodoPersonal } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 import { Session } from "next-auth";
 
 export default async function Page() {
   const { todo_personal }: ResponseTodoPersonal =
-    await getData("todosPersonal");
+    await submitForm("todosPersonal");
 
   const { cargos_personal }: ResponseCargosPersonal =
-    await getData("cargosPersonal");
+    await submitForm("cargosPersonal");
 
   const session = (await auth()) as Session;
   const nameHacienda = session.user.hacienda?.nombre ?? "";

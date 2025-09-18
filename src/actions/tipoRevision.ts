@@ -2,12 +2,12 @@
 
 import { ResponseErrorNext, ResponseTipoRevision } from "@/types";
 import { CreateTypeCheck } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createTypeCheck(
   formData: CreateTypeCheck,
 ): Promise<ResponseTipoRevision | ResponseErrorNext> {
-  const response = await getData<CreateTypeCheck, ResponseTipoRevision>(
+  const response = await submitForm<CreateTypeCheck, ResponseTipoRevision>(
     "tipoRevision",
     "POST",
     formData,
@@ -20,7 +20,7 @@ export async function updateTypeCheck(
   formData: CreateTypeCheck,
   id: number,
 ): Promise<ResponseTipoRevision | ResponseErrorNext> {
-  const response = await getData<CreateTypeCheck, ResponseTipoRevision>(
+  const response = await submitForm<CreateTypeCheck, ResponseTipoRevision>(
     "tipoRevision",
     "PUT",
     formData,
