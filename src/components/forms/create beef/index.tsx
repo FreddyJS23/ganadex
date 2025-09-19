@@ -248,6 +248,7 @@ export const FormBeef = ({
             listVaccines={listVaccines}
             setListVaccines={setListVaccines}
             isChecked={isSelected}
+            fecha_nacimiento=""
           />
         </div>
       </div>

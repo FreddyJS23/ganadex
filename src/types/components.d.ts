@@ -12,6 +12,7 @@ import {
   DASHBOARD_SALE,
   DASHBOARD_TOOLTIPS,
   DETAILS_GANADO_TOOLTIPS,
+  DETAILS_TITLES,
   FORM_TOOLTIPS,
   TABLE_TOOLTIPS,
 } from "@/constants/tooltipsMessages";
@@ -143,7 +144,8 @@ type TooltipsBase = {
     | keyof typeof DASHBOARD_SALE
     | keyof typeof FORM_TOOLTIPS
     | keyof typeof DETAILS_GANADO_TOOLTIPS
-    | keyof typeof TABLE_TOOLTIPS;
+    | keyof typeof TABLE_TOOLTIPS
+    | keyof typeof DETAILS_TITLES
   placement?:
     | "top"
     | "bottom"

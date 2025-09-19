@@ -250,6 +250,7 @@ export const FormBull = ({
             listVaccines={listVaccines}
             setListVaccines={setListVaccines}
             isChecked={isSelected}
+            fecha_nacimiento={""}
           />
         </div>
       </div>

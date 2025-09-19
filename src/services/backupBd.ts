@@ -1,6 +1,5 @@
 "use server";
 
-import { ResponseError } from "@/types";
 import { auth } from "@/auth";
 import { Session } from "next-auth";
 
@@ -37,8 +36,7 @@ export const GetBackup = async () => {
         data: await ganadoDescarte.json(),
       };
   } catch (e) {
-    if (e instanceof Error) throw e;
-    const { status, data } = e as ResponseError;
-    throw `código ${status} ${data.message}`;
+    console.log(e);
+    throw `error backend`;
   }
 };

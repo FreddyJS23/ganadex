@@ -73,7 +73,7 @@ export const ModalSelectHaciendaSesion = ({
   return (
     <LayoutModal
       icon="price"
-      titleModal={"Selecionar hacienda en la que trabajar"}
+      titleModal={"Seleccionar hacienda en la que trabajar"}
       footer={true}
       isOpen={true}
       onOpen={onOpen}

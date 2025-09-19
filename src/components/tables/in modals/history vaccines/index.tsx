@@ -13,9 +13,9 @@ export const TableHistoryVaccines = ({ vacunas }: { vacunas: Vacuna[] }) => {
           </tr>
         </thead>
         <tbody>
-          {vacunas.map(({ id, fecha, vacuna, prox_dosis }) => (
+          {vacunas.map(({ id, fecha, nombre, prox_dosis }) => (
             <tr key={id}>
-              <td>{vacuna}</td>
+              <td>{nombre}</td>
               <td>{fecha}</td>
               <td>{prox_dosis}</td>
             </tr>

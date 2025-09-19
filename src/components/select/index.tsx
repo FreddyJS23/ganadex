@@ -18,7 +18,7 @@ type SelectProps = Pick<
   value?: string | number;
 };
 
-const EndElement = ({ content }: { content: "$" | "KG" }) => {
+const EndElement = ({ content }: { content: "$" | "KG"  | "ML" }) => {
   return (
     <div className="pointer-events-none flex items-center">
       <span className="text-default-400 text-small sm:text-base">
@@ -46,6 +46,7 @@ export const Select = ({
     dolar: <EndElement content="$" />,
     weight: <EndElement content="KG" />,
     "weight-milk": <EndElement content="KG" />,
+    ml: <EndElement content="ML" />,
   };
 
   /* el valueInit se convierte a string ya asi trabaja el set, con un number da error */

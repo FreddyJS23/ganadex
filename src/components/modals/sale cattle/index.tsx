@@ -133,7 +133,7 @@ export const ModalSaleCattle = (props: ModalSaleProps) => {
     <LayoutModal
       icon="cattleV2"
       titleModal={
-        sale === "single" ? "Venta de ganado" : "Vender aniamles seleccionado"
+        sale === "single" ? "Venta de ganado" : "Vender animales seleccionado"
       }
       footer={true}
       isOpen={isOpen}

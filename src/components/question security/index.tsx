@@ -188,7 +188,7 @@ const CreateOrEdit = (props: CreateOrEditProps) => {
                 items={converToSelectOptions(availableQuestion)}
                 label={"Pregunta seguridad"}
                 errors={errors}
-                value={type == "edit" ? props.pregunta_seguridad_id : null}
+                value={type == "edit" ? props.pregunta_seguridad_id : undefined}
                 required={true}
               />
             )}

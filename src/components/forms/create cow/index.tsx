@@ -263,7 +263,7 @@ export const FormCow = ({
             listVaccines={listVaccines}
             setListVaccines={setListVaccines}
             isChecked={isSelected}
-            fecha_nacimiento={getValues("fecha_nacimiento")}
+            fecha_nacimiento={getValues("fecha_nacimiento") ?? ""}
           />
         </div>
       </div>

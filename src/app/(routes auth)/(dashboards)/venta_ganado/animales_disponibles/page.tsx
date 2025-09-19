@@ -23,7 +23,7 @@ export default async function Page() {
       <TitlePage
         title="Ganado descarte"
         iconTooltip
-        contentTooltip="Estos animales están destinado a ser vendidos para el consumo humano"
+        contentTooltip="ganado_descarte"
       />
       <TableDiscardedCattle
         ganado_descartes={ganado_descartes}

@@ -1,5 +1,4 @@
 import { auth } from "@/app/auth";
-import { ResponseError } from "@/types";
 import { handleResponse } from "@/utils/handleResponseApi";
 import { Session } from "next-auth";
 
@@ -23,16 +22,14 @@ export async function signOutApi() {
     credentials: "include",
   };
   try {
-    const ganadoDescarte = await fetch(url, optionFetch);
-    const { data, status } = await handleResponse(ganadoDescarte);
+    const response = await fetch(url, optionFetch);
+    const { data, status } = await handleResponse(response);
     if (status == 200) {
       return status;
     } else if (status == 422 || status == 401 || status == 500)
       throw { status: status, data: data };
   } catch (e) {
-    if (e instanceof Error) throw e;
-
-    const { status, data } = e as ResponseError;
-    throw { status, data };
+    console.log(e)
+    throw 'Error'
   }
 }

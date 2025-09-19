@@ -159,7 +159,7 @@ export enum TitlesModals {
   "Venta de ganado",
   "Nuevo fallecimiento",
   "Historial de revisiones",
-  "Revision del ",
+  "Revisión del ",
   "Historial de servicios",
   "Servicio del ",
   "Historial de partos",
@@ -178,6 +178,22 @@ export enum TitlesModals {
   "Historial de actividades",
   "Actualizar configuración",
   "Actualizar ",
+  "Crear personal",
+  "Crear vacuna",
+  "Actualizar vacuna",
+  "Actualizar Vaca",
+  "Actualizar Toro",
+  "Actualizar Ganado descarte",
+  "Vacunas registradas",
+  "Causas de fallecimiento",
+  "Tipos de revisión",
+  "Actualizar pesaje de leche ",
+  "Venta de ganado",
+  "Vender animales seleccionado",
+  "Actualizar causa de fallecimiento",
+  "Crear causa de fallecimiento",
+  "Actualizar tipo de revisión",
+  "Crear tipo de revisión"
 }
 
 export enum FieldsIdCasttle {

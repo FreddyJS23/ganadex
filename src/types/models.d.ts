@@ -28,8 +28,9 @@ type veterinario = {
 
 type Cria = Pick<
   Ganado,
-  "id" | "nombre" | "numero" | "sexo" | "origen" | "fecha_nacimiento"
+  "id" | "nombre" | "numero" | "origen" | "fecha_nacimiento"
 > & {
+  sexo: "M" | "H";
   peso: Pick<Pesos, "peso_nacimiento">;
   observacion: string | null;
   toro_id: number | null;

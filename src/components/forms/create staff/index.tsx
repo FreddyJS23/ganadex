@@ -39,7 +39,7 @@ export const FormCreateStaff = ({
 
     form.current?.reset();
 
-    toast.success(`${response.nombre} ha sido creado con éxito`);
+    toast.success(`${response} ha sido creado con éxito`);
   });
 
   return (
