@@ -12,10 +12,9 @@ import { submitForm } from "@/services/apiClient";
 export async function createStaff(
   formData: CreateStaff,
 ): Promise<string | ResponseErrorNext> {
-  const response = await submitForm<CreateStaff, ResponsePersonal>(
-    "personal",
-    "POST",
-    formData,
+  const response = await submitForm<CreateStaff, ResponsePersonal>({
+    endPoint:"personal",
+    data:formData,}
   );
   if ("error" in response) return response;
   else return response.personal.nombre;
@@ -26,10 +25,10 @@ export async function editStaff(
   formData: CreateStaff,
 ): Promise<Personal | ResponseErrorNext> {
   const response = await submitForm<CreateStaff, ResponsePersonal>(
-    "personal",
-    "PUT",
-    formData,
-    id,
+   {endPoint: "personal",
+    method:"PUT",
+    data:formData,
+    id,}
   );
   if ("error" in response) return response;
   else return response.personal;
@@ -39,7 +38,7 @@ export async function addInHacienda(id: number) {
   const response = await submitForm<
     { personal_id: number },
     ResponseRegistroExitoso
-  >("registrarVeterinarioEnHacienda", "POST", { personal_id: id });
+  >({endPoint:"registrarVeterinarioEnHacienda", data:{ personal_id: id }});
   if ("error" in response) return response;
   else return response.message;
 }
@@ -48,7 +47,7 @@ export async function removeInHacienda(id: number) {
   const response = await submitForm<
     { personal_id: number },
     ResponseRegistroExitoso
-  >("eliminarVeterinarioEnHacienda", "DELETE", undefined, id);
+  >({endPoint:"eliminarVeterinarioEnHacienda", method:"DELETE", id});
   if ("error" in response) return response;
   else return response.message;
 }

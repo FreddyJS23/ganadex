@@ -13,9 +13,8 @@ export async function createSaleCattle(
   id: number,
 ): Promise<number | ResponseErrorNext> {
   const response = await submitForm<CreateSaleCattle, ResponseVentaGanado>(
-    "ventaGanado",
-    "POST",
-    Object.assign(formData, { ganado_id: id }),
+   {endPoint: "ventaGanado",
+    data:Object.assign(formData, { ganado_id: id }),}
   );
 
   if ("error" in response) return response;
@@ -29,7 +28,7 @@ export async function ventaGanadoLote(
   const response = await submitForm<
     CreateSaleCattle & { ganado_ids: number[] },
     ResponseVentasGanado
-  >("ventasGanadoLote", "POST", { ...formData, ganado_ids: ganadoIds });
+  >({endPoint:"ventasGanadoLote", data:{ ...formData, ganado_ids: ganadoIds }});
   if ("error" in response) return response;
   else return response.ventas.length;
 }

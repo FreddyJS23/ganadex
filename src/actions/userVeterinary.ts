@@ -13,7 +13,7 @@ export async function createUserVeterinary(
   const response = await submitForm<
     { personal_id: number },
     ResponseVeterinarioUsuario
-  >("usuariosVeterinarios", "POST", { personal_id: id });
+  >({endPoint:"usuariosVeterinarios",  data:{ personal_id: id }});
   if ("error" in response) return response;
   else return response.usuario_veterinario;
 }
@@ -22,10 +22,9 @@ export async function deleteUserVeterinary(
   id: number,
 ): Promise<void | ResponseErrorNext> {
   const response = await submitForm<number, void>(
-    "usuarioVeterinario",
-    "DELETE",
-    undefined,
-    id,
+   {endPoint: "usuarioVeterinario",
+    method:"DELETE",
+    id,}
   );
 
   return response;

@@ -9,10 +9,10 @@ export async function assignmentNumberBullCalf(
   id: number,
 ): Promise<void | ResponseErrorNext> {
   const response = await submitForm<CreateAssigmentNumberBullCalf, number>(
-    "asignarNumeroCria",
-    "POST",
-    formData,
-    id,
+ { endPoint:  "asignarNumeroCria",
+   data:formData,
+     id:id,
+    }
   );
 
   if (typeof response == "object" && "error" in response) return response;

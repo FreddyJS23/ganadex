@@ -9,11 +9,10 @@ export async function createServe(
   id: number,
 ): Promise<void | ResponseErrorNext> {
   const response = await submitForm<CreateServe, void>(
-    "ganado",
-    "POST",
-    formData,
+   { endPoint:"ganado",
+    data:formData,
     id,
-    "servicio",
+    endPointCattle:"servicio",}
   );
   if (typeof response == "object" && "error" in response) return response;
   else return;
@@ -25,12 +24,12 @@ export async function editServe(
   formData: CreateServe,
 ): Promise<void | ResponseErrorNext> {
   const response = await submitForm<CreateServe, void>(
-    "ganado",
-    "PUT",
-    formData,
-    idCastle,
-    "servicio",
-    idServe,
+  {  endPoint:"ganado",
+    method:"PUT",
+    data:formData,
+    id:idCastle,
+    endPointCattle:"servicio",
+    id2:idServe,}
   );
   if (typeof response == "object" && "error" in response) return response;
   else return;

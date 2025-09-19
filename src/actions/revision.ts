@@ -9,11 +9,11 @@ export async function createCheckUp(
   id: number,
 ): Promise<void | ResponseErrorNext> {
   const response = await submitForm<CreateAdminCheckUp | CreateBaseCheckUp, void>(
-    "ganado",
-    "POST",
-    formData,
+   { endPoint:"ganado",
+    
+    data:formData,
     id,
-    "revision",
+    endPointCattle:"revision",}
   );
 
   if (typeof response == "object" && "error" in response) return response;
@@ -28,12 +28,12 @@ export async function editCheckUp(
   id: number,
 ): Promise<void | ResponseErrorNext> {
   const response = await submitForm<EditCheckUp, void>(
-    "ganado",
-    "PUT",
-    formData,
+   {endPoint: "ganado",
+    method:"PUT",
+    data:formData,
     id,
-    "revision",
-    idRevision,
+    endPointCattle:"revision",
+    id2:idRevision,}
   );
 
   if (typeof response == "object" && "error" in response) return response;

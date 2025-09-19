@@ -8,9 +8,8 @@ export async function createTypeCheck(
   formData: CreateTypeCheck,
 ): Promise<ResponseTipoRevision | ResponseErrorNext> {
   const response = await submitForm<CreateTypeCheck, ResponseTipoRevision>(
-    "tipoRevision",
-    "POST",
-    formData,
+  {  endPoint:"tipoRevision",
+    data:formData,}
   );
   if (typeof response == "object" && "error" in response) return response;
   else return response;
@@ -21,10 +20,10 @@ export async function updateTypeCheck(
   id: number,
 ): Promise<ResponseTipoRevision | ResponseErrorNext> {
   const response = await submitForm<CreateTypeCheck, ResponseTipoRevision>(
-    "tipoRevision",
-    "PUT",
-    formData,
-    id,
+  {  endPoint:"tipoRevision",
+    method:"PUT",
+    data:formData,
+    id,}
   );
   if (typeof response == "object" && "error" in response) return response;
   else return response;

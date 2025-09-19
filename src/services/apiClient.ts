@@ -15,7 +15,7 @@ import { ERROR_401, ERROR_404, ERROR_419, ERROR_500 } from "@/constants/response
 
 type RequestConfig={
   endPoint: keyof typeof endPoints,
-  method: "GET" | "POST" | "DELETE" | "PUT",
+  method?: "GET" | "POST" | "DELETE" | "PUT",
   id?: number,
   endPointCattle?: keyof typeof endPointsCattle,
   id2?: number,
@@ -93,7 +93,9 @@ const returnErrorLaravelFromApi=(e: unknown)=>{
 
 
 /* ----------------------------------- api ---------------------------------- */
-
+/** 
+ * @default method POST
+  */
 export async function submitForm<Form, dataResponse>( {endPoint,method="POST",data,id,endPointCattle,id2}: SubmitFormType<Form>): Promise<dataResponse | ResponseErrorNext> {
 
 
@@ -127,7 +129,9 @@ export async function submitForm<Form, dataResponse>( {endPoint,method="POST",da
 }
 
 
-
+/** 
+ * @default method GET
+  */
 export async function getData<dataResponse>({endPoint,id,endPointCattle,id2,param}:GetDataType): Promise<dataResponse | ResponseErrorNext> {
 
   const {optionFetch,url:urlWihoutParam}=await configRequest({endPoint,method:"GET",id,endPointCattle,id2})

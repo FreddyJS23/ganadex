@@ -9,9 +9,8 @@ export async function createDeathCattle(
   id: number,
 ): Promise<number | string | ResponseErrorNext> {
   const response = await submitForm<CreateDeathCastle, ResponseFallecimiento>(
-    "fallecimiento",
-    "POST",
-    Object.assign(formData, { ganado_id: id }),
+  {endPoint: "fallecimiento",
+    data:Object.assign(formData, { ganado_id: id }),}
   );
   if ("error" in response) return response;
   else return response.fallecimiento.ganado.numero ?? "sin número";

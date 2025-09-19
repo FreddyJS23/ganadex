@@ -12,9 +12,8 @@ export async function createVaccinationDay(
   formData: CreateVaccinacionDay,
 ): Promise<DayVaccination | ResponseErrorNext> {
   const response = await submitForm<CreateVaccinacionDay, ResponsePlanSanitario>(
-    "planesSanitario",
-    "POST",
-    formData,
+   {endPoint: "planesSanitario",
+    data:formData,}
   );
   if ("error" in response) return response;
   else return response.plan_sanitario;

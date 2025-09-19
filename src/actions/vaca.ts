@@ -26,7 +26,7 @@ export async function createCastle(
   const response = await submitForm<
     CreateCastle & { vacunas: vacunasSinId[] },
     ResponseGanado
-  >("ganado", "POST", { ...formData, vacunas });
+  >({endPoint:"ganado", data:{ ...formData, vacunas }});
   if ("error" in response) return response;
   else return response.ganado.numero ?? response.ganado.nombre;
 }
@@ -40,10 +40,10 @@ export async function editCastle(
   | ResponseGanado["ganado"]["nombre"]
 > {
   const response = await submitForm<EditCastle, ResponseGanado>(
-    "ganado",
-    "PUT",
-    formData,
-    id,
+  {endPoint:  "ganado",
+    method:"PUT",
+    data:formData,
+    id,}
   );
   if ("error" in response) return response;
   else return response.ganado.numero ?? response.ganado.nombre;
@@ -54,10 +54,10 @@ export async function updateWeightCastle(
   formData: updateWeight,
 ): Promise<Pesos | ResponseErrorNext> {
   const response = await submitForm<updateWeight, ResponseGanado>(
-    "ganado",
-    "PUT",
-    formData,
-    id,
+  {endPoint:  "ganado",
+    method:"PUT",
+    data:formData,
+    id,}
   );
   if ("error" in response) return response;
   else return response.ganado.pesos!;

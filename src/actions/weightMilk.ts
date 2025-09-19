@@ -9,11 +9,10 @@ export async function createWeightMilk(
   id: number,
 ): Promise<string | ResponseErrorNext> {
   const response = await submitForm<CreateWeightMilk, ResponsePesajeLeche>(
-    "ganado",
-    "POST",
-    formData,
+    {endPoint:"ganado",
+    data:formData,
     id,
-    "pesajesLeche",
+    endPointCattle:"pesajesLeche",}
   );
 
   if ("error" in response) return response;
@@ -26,12 +25,12 @@ export async function updateWeightMilk(
   formData: UpdateWeightMilk,
 ): Promise<string | ResponseErrorNext> {
   const response = await submitForm<UpdateWeightMilk, ResponsePesajeLeche>(
-    "ganado",
-    "PUT",
-    formData,
-    idCastle,
-    "pesajeLeche",
-    idWeightMilk,
+   {endPoint: "ganado",
+    method:"PUT",
+    data:formData,
+    id:idCastle,
+    endPointCattle:"pesajeLeche",
+    id2:idWeightMilk,}
   );
 
   if ("error" in response) return response;

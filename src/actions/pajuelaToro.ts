@@ -8,9 +8,8 @@ export async function createPajuelaToro(
   formData: CreatePajuelaToro,
 ): Promise<string | ResponseErrorNext> {
   const response = await submitForm<CreatePajuelaToro, ResponsePajuelaToro>(
-    "pajuelaToro",
-    "POST",
-    formData,
+   {endPoint: "pajuelaToro",
+    data:formData,}
   );
 
   if ("error" in response) return response;

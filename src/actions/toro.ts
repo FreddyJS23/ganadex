@@ -23,7 +23,7 @@ export async function createBull(
   const response = await submitForm<
     CreateBull & { vacunas: vacunasSinId[] },
     ResponseToro
-  >("toro", "POST", { ...formData, vacunas });
+  >({endPoint: "toro", data: { ...formData, vacunas }, endPointCattle: "parto"});
   if ("error" in response) return response;
   else return response.toro.numero ?? response.toro.nombre;
 }
@@ -37,10 +37,10 @@ export async function editBull(
   | ResponseGanado["ganado"]["nombre"]
 > {
   const response = await submitForm<EditCastle, ResponseToro>(
-    "toro",
-    "PUT",
-    formData,
-    id,
+   {endPoint: "toro",
+    method:"PUT",
+    data:formData,
+    id,}
   );
   if ("error" in response) return response;
   else return response.toro.numero ?? response.toro.nombre;
@@ -51,10 +51,10 @@ export async function updateWeightBull(
   formData: updateWeight,
 ): Promise<Pesos | ResponseErrorNext> {
   const response = await submitForm<updateWeight, ResponseToro>(
-    "toro",
-    "PUT",
-    formData,
-    id,
+  {endPoint:  "toro",
+    method:"PUT",
+    data:formData,
+    id,}
   );
   if ("error" in response) return response;
   else return response.toro.pesos!;

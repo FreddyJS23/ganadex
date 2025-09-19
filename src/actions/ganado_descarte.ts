@@ -19,9 +19,8 @@ export async function createBeef(
   const vacunas = listVaccines.map(({ id, ...rest }) => ({ ...rest }));
 
   const response = await submitForm<CreateBeef, ResponseGanadoDescarte>(
-    "ganadoDescarte",
-    "POST",
-    { ...formData, vacunas },
+   {endPoint: "ganadoDescarte",
+    data:{ ...formData, vacunas },}
   );
 
   if ("error" in response) return response;
@@ -38,10 +37,10 @@ export async function editBeef(
   | ResponseGanado["ganado"]["nombre"]
 > {
   const response = await submitForm<EditCastle, ResponseGanadoDescarte>(
-    "ganadoDescarte",
-    "PUT",
-    formData,
-    id,
+   {endPoint: "ganadoDescarte",
+    method:"PUT",
+    data:formData,
+    id,}
   );
   if ("error" in response) return response;
   else
@@ -53,10 +52,10 @@ export async function updateWeightBeef(
   formData: updateWeight,
 ): Promise<Pesos | ResponseErrorNext> {
   const response = await submitForm<updateWeight, ResponseGanadoDescarte>(
-    "ganadoDescarte",
-    "PUT",
-    formData,
-    id,
+   {endPoint: "ganadoDescarte",
+    method:"PUT",
+    data:formData,
+    id,}
   );
   if ("error" in response) return response;
   else return response.ganado_descarte.pesos!;

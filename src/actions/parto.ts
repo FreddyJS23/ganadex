@@ -9,11 +9,10 @@ export async function createBirth(
   id: number,
 ): Promise<void | ResponseErrorNext> {
   const response = await submitForm<CreateBaseBirth | CreateAdminBirth, void>(
-    "ganado",
-    "POST",
-    formData,
+    {endPoint:"ganado",
+    data:formData,
     id,
-    "parto",
+    endPointCattle:"parto",}
   );
   return response;
 }
@@ -24,12 +23,12 @@ export async function updateBirth(
   formData: UpdateBirh,
 ): Promise<void | ResponseErrorNext> {
   const response = await submitForm<UpdateBirh, void>(
-    "ganado",
-    "PUT",
-    formData,
-    idCastle,
-    "parto",
-    idBirth,
+   {endPoint: "ganado",
+    method:"PUT",
+    data:formData,
+    id:idCastle,
+    endPointCattle:"parto",
+    id2:idBirth,}
   );
   return response;
 }

@@ -9,9 +9,8 @@ export async function createVaccine(
 ): Promise<AvailableVaccines | ResponseErrorNext> {
   // Enviar los datos al backend
   const response = await submitForm<CreateVaccine, { vacuna: AvailableVaccines }>(
-    "vacunas",
-    "POST",
-    formData,
+   {endPoint: "vacunas",
+    data:formData,}
   );
 
   if ("error" in response) return response;
@@ -24,10 +23,10 @@ export async function updateVaccine(
 ): Promise<AvailableVaccines | ResponseErrorNext> {
   // Enviar los datos al backend
   const response = await submitForm<CreateVaccine, { vacuna: AvailableVaccines }>(
-    "vacuna",
-    "PUT",
-    formData,
-    id,
+   {endPoint: "vacuna",
+    method:"PUT",
+    data:formData,
+    id,}
   );
 
   if ("error" in response) return response;

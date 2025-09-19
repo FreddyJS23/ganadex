@@ -8,9 +8,8 @@ export async function createPriceMilk(
   formData: CreatePriceMilk,
 ): Promise<number | ResponseErrorNext> {
   const response = await submitForm<CreatePriceMilk, ResponsePrecioLeche>(
-    "crearPrecioLeche",
-    "POST",
-    formData,
+  {  endPoint:"crearPrecioLeche",
+    data:formData,}
   );
 
   if ("error" in response) return response;

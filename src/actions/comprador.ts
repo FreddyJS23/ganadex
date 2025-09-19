@@ -8,9 +8,8 @@ export async function createCustomer(
   formData: CreateCustomer,
 ): Promise<string | number | ResponseErrorNext | undefined> {
   const response = await submitForm<CreateCustomer, ResponseComprador>(
-    "comprador",
-    "POST",
-    formData,
+   {endPoint: "comprador",
+   data:formData,}
   );
 
   if ("error" in response) return response;

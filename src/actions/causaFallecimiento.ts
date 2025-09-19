@@ -10,7 +10,7 @@ export async function createCausaFallecimiento(
   const response = await submitForm<
     CreateCausaFallecimiento,
     ResponseCausaFallecimiento
-  >("causasFallecimiento", "POST", formData);
+  >({endPoint:"causasFallecimiento",data:formData});
   if (typeof response == "object" && "error" in response) return response;
   else return response;
 }
@@ -22,7 +22,7 @@ export async function updateCausaFallecimiento(
   const response = await submitForm<
     CreateCausaFallecimiento,
     ResponseCausaFallecimiento
-  >("causaFallecimiento", "PUT", formData, id);
+  >({endPoint:"causaFallecimiento",method:"PUT",data:formData, id});
   if (typeof response == "object" && "error" in response) return response;
   else return response;
 }
