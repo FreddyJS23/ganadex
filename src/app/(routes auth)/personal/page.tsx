@@ -27,6 +27,11 @@ export default async function Page() {
         nameHacienda={nameHacienda}
         cargos_personal={cargos_personal}
       />
+      <TableStaff
+        todo_personal={todo_personal}
+        nameHacienda={nameHacienda}
+        cargos_personal={cargos_personal}
+      />
     </section>
   );
 }

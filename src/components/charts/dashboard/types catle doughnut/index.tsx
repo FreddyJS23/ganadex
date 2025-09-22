@@ -59,6 +59,7 @@ export const TortaTipoGanado = ({
   };
 
   const optionChart = optionChartTotalTypesCattle(darkMode);
+  const optionChart = optionChartTotalTypesCattle(darkMode);
   //destructurar options
   //primero se destructura el objeto de opciones
   //luego se crear un nuevo objecto con la propiedad plugins

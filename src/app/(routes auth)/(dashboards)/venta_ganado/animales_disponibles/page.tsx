@@ -31,6 +31,11 @@ export default async function Page() {
         role={role}
         ListaCompradoresRegistrados={compradores}
       />
+      <TableDiscardedCattle
+        ganado_descartes={ganado_descartes}
+        role={role}
+        ListaCompradoresRegistrados={compradores}
+      />
     </>
   );
 }

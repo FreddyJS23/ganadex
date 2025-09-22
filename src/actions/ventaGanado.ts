@@ -5,6 +5,11 @@ import {
   ResponseVentaGanado,
   ResponseVentasGanado,
 } from "@/types";
+import {
+  ResponseErrorNext,
+  ResponseVentaGanado,
+  ResponseVentasGanado,
+} from "@/types";
 import { CreateSaleCattle } from "@/types/forms";
 import { submitForm } from "@/services/apiClient";
 
@@ -33,5 +38,6 @@ export async function ventaGanadoLote(
     data: { ...formData, ganado_ids: ganadoIds },
   });
   if ("error" in response) return response;
+  else return response.ventas.length;
   else return response.ventas.length;
 }

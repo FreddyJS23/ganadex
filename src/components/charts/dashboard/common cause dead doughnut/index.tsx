@@ -43,6 +43,8 @@ export const TortaCausasFallecimientosGanado = ({
 
   const darkMode = useThemeStore((state) => state.darkMode);
 
+  const darkMode = useThemeStore((state) => state.darkMode);
+
   const configAnotation = {
     annotation: {
       //plugin anotaciones

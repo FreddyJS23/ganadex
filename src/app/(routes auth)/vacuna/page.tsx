@@ -11,3 +11,4 @@ export default async function Page() {
 
   return <ModalVaccines vacunas={vacunas} />;
 }
+

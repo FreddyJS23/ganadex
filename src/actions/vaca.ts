@@ -33,6 +33,7 @@ export async function createCastle(
 
 export async function editCastle(
   id: number,
+  id: number,
   formData: EditCastle,
 ): Promise<
   | ResponseErrorNext
