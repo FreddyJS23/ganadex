@@ -209,6 +209,9 @@ export enum FieldsIdCasttle {
   peso_actual,
   estado_id,
 }
+
+
+
 export enum FieldsLabelsCasttle {
   Nombre,
   Número,
@@ -222,6 +225,24 @@ export enum FieldsLabelsCasttle {
   "Peso actual",
   Estados,
 }
+
+export enum FieldsIdEditCasttle {
+  nombre,
+  numero,
+  origen_id,
+  fecha_ingreso,
+  fecha_nacimiento,
+  }
+
+
+export enum FieldsLabelsEditCasttle {
+  Nombre,
+  Número,
+  Origen,
+  "Fecha de ingreso",
+  "Fecha de nacimiento",
+}
+
 export enum FieldsIdBull {
   nombre,
   numero,

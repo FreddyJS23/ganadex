@@ -6,7 +6,7 @@ import {
   ERROR_SIGNIN,
 } from "@/constants/responseApiMessage";
 import { authApi } from "@/services/authApi";
-import { ResponseErrorFromApi } from "@/types";
+import { ResponseErrorFromApi, User } from "@/types";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   /* duracion de la session en laravel */
@@ -56,11 +56,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        let user = null;
+        let user:User & {id:string,xsrf_token:string  | null, laravel_session:string | null} | null = null;
         try {
           // logic to verify if user exists
-          user = await authApi(credentials);
-          return user;
+          const response = await authApi(credentials);
+          
+          if (typeof response == "object" && "error" in response!) throw response;
+          user = response as User & {id:string,xsrf_token:string  | null, laravel_session:string | null};
+
+          return user ;
         } catch (errorServe) {
           if (errorServe instanceof Error) throw new AuthError(ERROR_SERVER);
 

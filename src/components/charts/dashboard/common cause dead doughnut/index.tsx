@@ -14,6 +14,7 @@ import {
   Tooltip,
   Legend,
   ChartData,
+  ChartOptions,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
@@ -66,10 +67,10 @@ export const TortaCausasFallecimientosGanado = ({
   //luego se crear un nuevo objecto con la propiedad plugins
   //se destructora el objeto de plugins
   //y se añade el plugin anotaciones
-  const options = {
+  const options= {
     ...optionsChart,
     plugins: { ...optionsChart.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options} />;
+  return <Doughnut data={datasets} options={options as ChartOptions<"doughnut"> } />;
 };

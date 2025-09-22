@@ -1,4 +1,6 @@
 import {
+  FieldsIdEditCasttle,
+  FieldsLabelsEditCasttle,
   type FieldsIdBeef,
   type FieldsIdBirth,
   type FieldsIdBull,
@@ -153,8 +155,8 @@ export const formCastle: Fields<
 ];
 
 export const formCastleEdit: Fields<
-  keyof typeof FieldsIdCasttle,
-  keyof typeof FieldsLabelsCasttle
+  keyof typeof FieldsIdEditCasttle,
+  keyof typeof FieldsLabelsEditCasttle
 >[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
   { id: "numero", label: "Número", required: true, type: "number" },

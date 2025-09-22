@@ -14,6 +14,7 @@ import {
   Legend,
   ChartData,
 } from "chart.js";
+import { ChartJSOrUndefined } from "node_modules/react-chartjs-2/dist/types";
 import { ForwardedRef, forwardRef } from "react";
 import { Line } from "react-chartjs-2";
 
@@ -33,7 +34,7 @@ type PartosUltimos5AñosProps = {
 
 const PartosUltimos5AñosLinea = forwardRef(function (
   { nacimientos_ultimos_5_año }: PartosUltimos5AñosProps,
-  ref: ForwardedRef<ChartJS<"line">>,
+  ref: ForwardedRef<ChartJSOrUndefined<"line">>,
 ) {
   const extraerDatosUltimosAños = (
     nacimientos_ultimos_5_año: ResponseResumenNatalidad["nacimientos_ultimos_5_año"],

@@ -162,10 +162,8 @@ export type PesajeLecheGanado = {
   fecha: string;
 };
 
-export type User = {
-  id: number;
-  usuario: string;
-};
+
+
 export type CriaPendienteCapar = Pick<
   Ganado,
   "id" | "nombre" | "fecha_nacimiento"

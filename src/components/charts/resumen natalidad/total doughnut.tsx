@@ -9,6 +9,7 @@ import {
   Legend,
   ChartData,
   ArcElement,
+  ChartOptions,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
@@ -16,6 +17,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import { ForwardedRef, forwardRef } from "react";
 import { useThemeStore } from "@/stores/themeStore";
 import { LETTER_BLACK, LETTER_WHITE } from "@/constants/colorLetters";
+import { ChartJSOrUndefined } from "node_modules/react-chartjs-2/dist/types";
 
 ChartJS.register(
   ArcElement,
@@ -30,7 +32,7 @@ type TotalNacimientosAñoActualTortaProps = {
 };
 const TotalNacimientosAñoActualTorta = forwardRef(function (
   { nacimientos_año_actual }: TotalNacimientosAñoActualTortaProps,
-  ref: ForwardedRef<ChartJS<"doughnut">>,
+  ref: ForwardedRef<ChartJSOrUndefined<"doughnut">>,
 ) {
   const datasDoughnut: ChartData<"doughnut", number[]> = {
     labels: ["Hembras", "Machos"],
@@ -80,7 +82,7 @@ const TotalNacimientosAñoActualTorta = forwardRef(function (
     },
   };
 
-  return <Doughnut ref={ref} options={options} data={datasDoughnut} />;
+  return <Doughnut ref={ref} options={options as ChartOptions<'doughnut'>} data={datasDoughnut} />;
 });
 //al colocar el forwardRef en el componente se asegura que el componente  el linter queda con warin de display name
 TotalNacimientosAñoActualTorta.displayName = "TotalNacimientosAñoActualTorta";

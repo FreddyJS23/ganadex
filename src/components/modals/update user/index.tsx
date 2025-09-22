@@ -3,12 +3,12 @@ import { updateUser } from "@/actions/usuario";
 import { Input } from "@/components/Inputs";
 import type { UpdateUser } from "@/types/forms";
 import { updateUserShema } from "@/validations/updateUse";
-import type { ModalProps, UserVeterinaryInfo } from "@/types";
+import type { ModalProps, UserLoginInfo } from "@/types";
 import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalUpdateUserProps = {
   id: number;
-  usuario: UserVeterinaryInfo;
+  usuario: UserLoginInfo;
   onClose: () => void;
 };
 

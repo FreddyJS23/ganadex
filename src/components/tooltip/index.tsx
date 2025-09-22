@@ -2,19 +2,20 @@ import {
   DASHBOARD_SALE,
   DASHBOARD_TOOLTIPS,
   DETAILS_GANADO_TOOLTIPS,
+  DETAILS_TITLES,
   FORM_TOOLTIPS,
   TABLE_TOOLTIPS,
 } from "@/constants/tooltipsMessages";
 import Icon from "@/icons/icon-question.svg";
 import { TooltipsProps } from "@/types";
-import { forwardRef } from "react";
+import { forwardRef, LegacyRef } from "react";
 import { Tooltip as TooltipNextUI } from "@nextui-org/react";
 
 const sizes = { sm: "size-4", md: "size-6", lg: "size-8" };
 
 export const Tooltip = forwardRef(function Tooltip(
   props: TooltipsProps & { size?: keyof typeof sizes },
-  ref,
+  ref: LegacyRef<HTMLSpanElement>,
 ) {
   const { content, placement = "top", size = "lg", type } = props;
 
@@ -25,6 +26,7 @@ export const Tooltip = forwardRef(function Tooltip(
     ...FORM_TOOLTIPS,
     ...DETAILS_GANADO_TOOLTIPS,
     ...TABLE_TOOLTIPS,
+    ...DETAILS_TITLES,
   };
   return (
     <>
@@ -55,7 +57,7 @@ export const Tooltip = forwardRef(function Tooltip(
 
 export const TooltipTipoGanado = forwardRef(function TooltipGanado(
   props: { tipo: "vaca" | "toro" },
-  ref,
+  ref:LegacyRef<HTMLSpanElement>,
 ) {
   return (
     <TooltipNextUI

@@ -15,6 +15,7 @@ import {
   ChartData,
   BarElement,
 } from "chart.js";
+import { ChartJSOrUndefined } from "node_modules/react-chartjs-2/dist/types";
 import { ForwardedRef, forwardRef } from "react";
 import { Bar } from "react-chartjs-2";
 
@@ -32,7 +33,7 @@ type NatalidadUltimos5AñosProps = {
 
 const NatalidadUltimos5AñosBarra = forwardRef(function (
   { nacimientos_ultimos_5_año }: NatalidadUltimos5AñosProps,
-  ref: ForwardedRef<ChartJS<"bar">>,
+  ref: ForwardedRef<ChartJSOrUndefined<"bar">>,
 ) {
   const extraerDatosUltimosAños = (
     nacimientos_ultimos_5_año: ResponseResumenNatalidad["nacimientos_ultimos_5_año"],

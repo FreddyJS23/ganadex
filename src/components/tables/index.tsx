@@ -28,8 +28,8 @@ import {
 } from "react";
 import { statusOptions } from "@/collections/statusCattleCollection";
 import {
+  GanadoDescarte,
   type EstadosGanado,
-  type Ganado,
   type Hacienda,
   type Partos,
   type StateCattle,
@@ -268,7 +268,7 @@ export const TableComponent = <T extends { id: number }>(
 
       filteredItems = filteredItemsWithHacienda.filter((item) =>
         item.haciendas.some(
-          ({ nombre }) => nombre.toLowerCase() == nameHacienda.toLowerCase(),
+          ({ nombre }) =>nameHacienda ?  nombre.toLowerCase() == nameHacienda.toLowerCase() :  true,
         ),
       );
     }
@@ -293,9 +293,9 @@ export const TableComponent = <T extends { id: number }>(
 
     if (sexFilter != "all") {
       const filteredItemsWithSex = filteredItems as Array<
-        T & { sexo: Ganado["sexo"] }
+        T & { sexo: GanadoDescarte["sexo"] }
       >;
-      const sexFilterArray = Array.from(sexFilter) as Array<Ganado["sexo"]>;
+      const sexFilterArray = Array.from(sexFilter) as Array<GanadoDescarte["sexo"]>;
       filteredItems = filteredItemsWithSex.filter((item) =>
         /* filtrar el ganado por el tipo seleccionado en el select */
         sexFilterArray.includes(item.sexo),
@@ -518,7 +518,7 @@ export const TableComponent = <T extends { id: number }>(
               selectedKeys={personalFilter}
               selectionMode="single"
               onSelectionChange={(key) => {
-                setPersonalFilter(key);
+                setPersonalFilter(key as Set<"all" | "some">);
               }}
               classNames={{ base: "bg-base-100" }}
             >

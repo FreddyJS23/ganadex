@@ -12,6 +12,8 @@ import {
   Tooltip,
   Legend,
   ChartData,
+  ChartOptions,
+  Chart,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
@@ -41,17 +43,16 @@ export const TortaTipoGanado = ({
 
   const configAnotation = {
     annotation: {
-      //plugin anotaciones
-      annotations: {
-        dLabel: {
-          type: "doughnutLabel",
-          content: ({ chart }) => ["Total", chart.getDatasetMeta(0).total],
+     //plugin anotaciones
+     annotations: {
+      type: "doughnutLabel", 
+      content: ({ chart }:{chart:Chart}) => ["Total", chart.getDatasetMeta(0)],
           font: [
             { size: 20, weight: "bold" },
             { size: 18, weight: "normal" },
           ],
           color: darkMode ? LETTER_WHITE : LETTER_BLACK,
-        },
+        
       },
     },
   };
@@ -67,5 +68,5 @@ export const TortaTipoGanado = ({
     plugins: { ...optionChart.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options} />;
+  return <Doughnut data={datasets} options={options as ChartOptions<"doughnut">} />;
 };
