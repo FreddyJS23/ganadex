@@ -2,21 +2,12 @@
 
 import { headerBull } from "@/collections/headerColums";
 import { EstadosGanado, Pesos, ResponseToros, Toro, User } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
-import { Key, ReactNode, useCallback, useState } from "react";
-import { LayoutTable, TableComponent } from "..";
-import Link from "next/link";
+import { Key, ReactNode, useCallback } from "react";
+import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
 import { DropDownOptions } from "@/components/dropdown options";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import IconCheck from "@/icons/icono-check.svg";
-import { ButtonFilterStateCattle } from "@/components/filter state cattle";
 
 export const TableBull = ({
   toros,

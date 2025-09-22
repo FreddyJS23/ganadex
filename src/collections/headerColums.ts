@@ -21,17 +21,14 @@ import {
   VentaLeche,
   PajuelaToro,
   DayVaccination,
-  ResponseGanado,
   AplicacionVacunaHistorial,
   Vacuna,
   UserVeterinaryInfo,
-  UsersVeterinary,
   LogVeterinary,
   LogEvento,
   ToroServicio,
   TipoRevision,
   CausaFallecimiento,
-  AvailableVaccines,
   Vaccine,
 } from "@/types";
 
@@ -115,7 +112,6 @@ export const headerStaff: headersColumns<Personal>[] = [
 
 export const headerAllCheckup: headersColumns<Revisiones>[] = [
   { key: "numero", label: "Número" },
-  { key: "diagnostico", label: "Diagnóstico" },
   { key: "estado", label: "Estado" },
   { key: "pendiente", label: "Pendiente revisar" },
   { key: "proxima_revision", label: "Próxima revisión" },
@@ -173,7 +169,7 @@ export const headerHistoryPriceMilk: headersColumns<PreciosDeLeche>[] = [
 
 export const headerCheckups: headersColumns<Revision>[] = [
   { key: "fecha", label: "Fecha" },
-  { key: "diagnostico", label: "Diagnóstico" },
+  { key: "observacion", label: "Observación" },
 ];
 
 export const headerServices: headersColumnsServices[] = [
@@ -232,7 +228,7 @@ export const headerHistoryVaccinesApply: headersColumns<AplicacionVacunaHistoria
   ];
 
 export const headerHistoryVaccines: headersColumns<Vacuna>[] = [
-  { key: "vacuna", label: "Vacuna" },
+  { key: "nombre", label: "Vacuna" },
   { key: "fecha", label: "Fecha" },
   { key: "prox_dosis", label: "Próxima dosis" },
 ];

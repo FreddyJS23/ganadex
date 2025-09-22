@@ -1,9 +1,13 @@
 import { ModalHistoryPricesMilk } from "@/components/modals/historys/history prices of milk";
 import { ResponsePreciosLeche } from "@/types";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { precios }: ResponsePreciosLeche = await getData("preciosLeche");
+  const response = await getData<ResponsePreciosLeche>({
+    endPoint: "preciosLeche",
+  });
+  const { precios } = responseErrorServer(response);
 
   return <ModalHistoryPricesMilk precios={precios} />;
 }

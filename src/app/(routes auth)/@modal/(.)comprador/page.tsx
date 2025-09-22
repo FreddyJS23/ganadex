@@ -1,9 +1,13 @@
 import { ModalCustomers } from "@/components/modals/historys/customers";
 import { ResponseCompradores } from "@/types";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { compradores }: ResponseCompradores = await getData("compradores");
+  const response = await getData<ResponseCompradores>({
+    endPoint: "compradores",
+  });
+  const { compradores } = responseErrorServer(response);
 
   return <ModalCustomers compradores={compradores} />;
 }

@@ -1,18 +1,17 @@
 "use serve";
 
-import { getData } from "@/utils/getData";
 import { AvailableVaccines, ResponseErrorNext } from "@/types";
 import { CreateVaccine } from "@/types/forms";
+import { submitForm } from "@/services/apiClient";
 
 export async function createVaccine(
   formData: CreateVaccine,
 ): Promise<AvailableVaccines | ResponseErrorNext> {
   // Enviar los datos al backend
-  const response = await getData<CreateVaccine, { vacuna: AvailableVaccines }>(
-    "vacunas",
-    "POST",
-    formData,
-  );
+  const response = await submitForm<
+    CreateVaccine,
+    { vacuna: AvailableVaccines }
+  >({ endPoint: "vacunas", data: formData });
 
   if ("error" in response) return response;
   return response.vacuna;
@@ -23,12 +22,10 @@ export async function updateVaccine(
   formData: CreateVaccine,
 ): Promise<AvailableVaccines | ResponseErrorNext> {
   // Enviar los datos al backend
-  const response = await getData<CreateVaccine, { vacuna: AvailableVaccines }>(
-    "vacuna",
-    "PUT",
-    formData,
-    id,
-  );
+  const response = await submitForm<
+    CreateVaccine,
+    { vacuna: AvailableVaccines }
+  >({ endPoint: "vacuna", method: "PUT", data: formData, id });
 
   if ("error" in response) return response;
   return response.vacuna;

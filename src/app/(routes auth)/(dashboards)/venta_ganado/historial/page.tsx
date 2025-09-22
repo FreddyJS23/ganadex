@@ -9,25 +9,29 @@ import {
   /*  MejorVenta,
     PeorVenta, */
 } from "@/types/dashboard";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { ventas }: ResponseVentasGanado = await getData("ventasGanado");
-  const { comprador }: MejorComprador = await getData(
-    "dashboardVentaGanadomejorComprador",
-  );
-  /*  const { venta: mejorVenta }: MejorVenta = await getData(
-        'dashboardVentaGanadomejorVenta',
-    );
-    const { venta: peorVenta }: PeorVenta = await getData(
-        'dashboardVentaGanadopeorVenta',
-    ); */
-  const { balance_anual }: BalanceAnualVentaGanado = await getData(
-    "dashboardVentaGanadoBalanceAnual",
-  );
+  const response = await getData<ResponseVentasGanado>({
+    endPoint: "ventasGanado",
+  });
+  const { ventas } = responseErrorServer(response);
 
-  const { años_ventas_ganado }: ResponseAñosVentaGanado =
-    await getData("añosVentaGanado");
+  const response2 = await getData<MejorComprador>({
+    endPoint: "dashboardVentaGanadomejorComprador",
+  });
+  const { comprador } = responseErrorServer(response2);
+
+  const response5 = await getData<BalanceAnualVentaGanado>({
+    endPoint: "dashboardVentaGanadoBalanceAnual",
+  });
+  const { balance_anual } = responseErrorServer(response5);
+
+  const response6 = await getData<ResponseAñosVentaGanado>({
+    endPoint: "añosVentaGanado",
+  });
+  const { años_ventas_ganado } = responseErrorServer(response6);
 
   return (
     <section className="flex gap-8 flex-col ">

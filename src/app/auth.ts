@@ -1,13 +1,12 @@
+import NextAuth, { AuthError } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import {
   ERROR_CORS,
   ERROR_SERVER,
   ERROR_SIGNIN,
 } from "@/constants/responseApiMessage";
 import { authApi } from "@/services/authApi";
-import { ResponseError } from "@/types";
-
-import NextAuth, { AuthError } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import { ResponseErrorFromApi, User } from "@/types";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   /* duracion de la session en laravel */
@@ -57,15 +56,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        let user = null;
+        let user:
+          | (User & {
+              id: string;
+              xsrf_token: string | null;
+              laravel_session: string | null;
+            })
+          | null = null;
         try {
           // logic to verify if user exists
-          user = await authApi(credentials);
+          const response = await authApi(credentials);
+
+          if (typeof response == "object" && "error" in response!)
+            throw response;
+          user = response as User & {
+            id: string;
+            xsrf_token: string | null;
+            laravel_session: string | null;
+          };
+
           return user;
         } catch (errorServe) {
           if (errorServe instanceof Error) throw new AuthError(ERROR_SERVER);
 
-          const codeStatusServe = errorServe as ResponseError;
+          const codeStatusServe = errorServe as ResponseErrorFromApi;
           if (codeStatusServe.status == 401) throw new AuthError(ERROR_SIGNIN);
           else if (codeStatusServe.status == 419)
             throw new AuthError(ERROR_CORS);

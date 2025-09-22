@@ -1,23 +1,16 @@
 "use client";
 
 import { LayoutModal } from "..";
-import { toast } from "sonner";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { createStaff } from "@/actions/personal";
 import { formStaff } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
-import type { Personal, ResponseCargosPersonal } from "@/types";
+import type { ResponseCargosPersonal } from "@/types";
 import type { CreateStaff } from "@/types/forms";
-import { Button } from "@/ui/Button";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef } from "react";
 import { useDisclosure } from "@nextui-org/react";
 import { createStaffShema } from "@/validations/staffShema";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { useRouter } from "next/navigation";
-import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalCreatePersonal = {

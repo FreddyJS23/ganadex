@@ -1,10 +1,9 @@
-import { Button, ButtonProps } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import IconEdit from "@/icons/icono-editar.svg";
 import IconDelete from "@/icons/icono-borrar.svg";
 import IconSave from "@/icons/icono-save.svg";
 import IconCancel from "@/icons/icono-error.svg";
 import { useFormStatus } from "react-dom";
-import { useEditDelete } from "@/lib/hooks/useEditDelete";
 
 type ButtonEditProps = {
   id: number;

@@ -1,13 +1,15 @@
 import { ResumenNatalidad } from "@/components/charts/resumen natalidad";
 import { ResponseResumenNatalidad } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const {
-    nacimientos_ultimos_5_año,
-    nacimientos_año_actual,
-  }: ResponseResumenNatalidad = await getData("resumenNatalidad");
+  const response = await getData<ResponseResumenNatalidad>({
+    endPoint: "resumenNatalidad",
+  });
+  const { nacimientos_ultimos_5_año, nacimientos_año_actual } =
+    responseErrorServer(response);
 
   return (
     <section>

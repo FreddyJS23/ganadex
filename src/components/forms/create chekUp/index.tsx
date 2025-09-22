@@ -1,14 +1,12 @@
 "use client";
 
 import { createCheckUp } from "@/actions/revision";
-import { formCheckUp } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
 import { SelectChecksType } from "@/components/select checks type";
 import { Textarea } from "@/components/Textarea";
 import {
   AvailableVaccines,
-  ResponseVeterinariosSelect,
   Toro,
   type TipoRevision,
   type veterinario,
@@ -52,7 +50,6 @@ export const FormCreateCheckUp = ({
     register,
     formState: { errors },
     control,
-    getValues,
     unregister,
     setValue,
     watch,

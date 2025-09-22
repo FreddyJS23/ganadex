@@ -124,7 +124,7 @@ export type Fallecimientos = {
 type ProximoPlanSanitario = {
   vacuna: string;
   prox_dosis: string;
-  ganado_vacunado: string[];
+  ganado_vacunado: string;
 };
 
 export type ProximosPlanSanitario = {

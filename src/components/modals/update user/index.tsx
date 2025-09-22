@@ -1,21 +1,14 @@
-import React, { useRef } from "react";
 import { LayoutModal } from "..";
-import { toast } from "sonner";
 import { updateUser } from "@/actions/usuario";
 import { Input } from "@/components/Inputs";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import type { UpdateUser } from "@/types/forms";
 import { updateUserShema } from "@/validations/updateUse";
-import type { ModalProps, UserAdminInfo, UserVeterinaryInfo } from "@/types";
-import { useRouter } from "next/navigation";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
+import type { ModalProps, UserLoginInfo } from "@/types";
 import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalUpdateUserProps = {
   id: number;
-  usuario: UserVeterinaryInfo | UserAdminInfo;
+  usuario: UserLoginInfo;
   onClose: () => void;
 };
 

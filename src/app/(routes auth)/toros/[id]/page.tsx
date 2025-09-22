@@ -1,31 +1,28 @@
 import { auth } from "@/app/auth";
-import {
-  DetailsCattle,
-  DetailsEfficiencyBull,
-  DetailsWeights,
-} from "@/collections";
+import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import { WeightsEditable } from "@/components/editable sections/weights";
 import { ModalEditAnimal } from "@/components/modals/edit animals";
 import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
 import { ResponseToro } from "@/types";
-import { getData } from "@/utils/getData";
 import { Session } from "next-auth";
 import Image from "next/image";
 import cattleImage from "public/cattle.png";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 type ParamsPageBull = {
   params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPageBull) {
-  const { toro, vacunaciones }: ResponseToro = await getData(
-    "toro",
-    "GET",
-    undefined,
-    params.id,
-  );
+  const response = await getData<ResponseToro>({
+    endPoint: "toro",
+    id: params.id,
+  });
+  const { toro, vacunaciones } = responseErrorServer(response);
+
   const {
     numero,
     nombre,

@@ -1,4 +1,6 @@
 import {
+  FieldsIdEditCasttle,
+  FieldsLabelsEditCasttle,
   type FieldsIdBeef,
   type FieldsIdBirth,
   type FieldsIdBull,
@@ -32,7 +34,6 @@ import {
   type FieldsLabelsWeights,
   type InputProps,
   type Pesos,
-  TooltipsProps,
 } from "@/types";
 import { genderSelect } from "./genderSelect";
 import { typeCasttleSelect } from "./typeCastleSelect";
@@ -41,7 +42,6 @@ import { typeServicesForCasttle } from "./typesServicesForCasttle";
 import { stateBullSelect } from "./statesBullSelect";
 import { stateBeefSelect } from "./statesBeefSelect";
 import { origenCasttleSelect } from "./origenCastleSelect";
-import { Field } from "react-hook-form";
 
 export type Fields<Ids, Labels> = {
   id: Ids;
@@ -155,8 +155,8 @@ export const formCastle: Fields<
 ];
 
 export const formCastleEdit: Fields<
-  keyof typeof FieldsIdCasttle,
-  keyof typeof FieldsLabelsCasttle
+  keyof typeof FieldsIdEditCasttle,
+  keyof typeof FieldsLabelsEditCasttle
 >[] = [
   { id: "nombre", label: "Nombre", required: true, type: "text" },
   { id: "numero", label: "Número", required: true, type: "number" },

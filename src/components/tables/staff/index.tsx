@@ -2,15 +2,8 @@
 
 import { headerStaff } from "@/collections/headerColums";
 import { Personal, PositionStaff } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
-import { Key, ReactNode, useCallback, useEffect, useState } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { Key, ReactNode, useCallback, useState } from "react";
+import { TableComponent } from "..";
 import IconAdd from "@/icons/icono-plus.svg";
 import IconRemove from "@/icons/icono-cerrar-notificacion.svg";
 import { toast } from "sonner";
@@ -33,6 +26,7 @@ export const TableStaff = ({
   cargos_personal,
 }: TableStaffProps) => {
   //Utilizado para refrescar la tabla cuando se interactúa con datos de la tabla
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [reloadData, setReloadData] = useState(0);
 
   /* Estado modal */

@@ -7,7 +7,8 @@ import {
   ResponseVeterinariosSelect,
 } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 import { Session } from "next-auth";
 
 type ParamsPage = {
@@ -15,21 +16,28 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  const { ganado }: ResponseGanado = await getData(
-    "ganado",
-    "GET",
-    undefined,
-    params.id,
-  );
-  const { veterinarios }: ResponseVeterinariosSelect = await getData(
-    "veterinariosHaciendaActual",
-  );
-  const { toros }: ResponseToros = await getData("todosToro", "GET", undefined);
-  const { pajuela_toros }: ResponsePajuelaToros = await getData(
-    "pajuelaToro",
-    "GET",
-    undefined,
-  );
+  const response = await getData<ResponseGanado>({
+    endPoint: "ganado",
+    id: params.id,
+  });
+  const { ganado } = responseErrorServer(response);
+
+  const response2 = await getData<ResponseVeterinariosSelect>({
+    endPoint: "veterinariosHaciendaActual",
+  });
+  const { veterinarios } = responseErrorServer(response2);
+
+  const response3 = await getData<ResponseToros>({
+    endPoint: "todosToro",
+    param: "ganado_id",
+    id: params.id,
+  });
+  const { toros } = responseErrorServer(response3);
+
+  const response4 = await getData<ResponsePajuelaToros>({
+    endPoint: "pajuelaToro",
+  });
+  const { pajuela_toros } = responseErrorServer(response4);
 
   const { user } = (await auth()) as Session;
 

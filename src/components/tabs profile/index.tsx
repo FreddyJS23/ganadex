@@ -12,7 +12,6 @@ import {
   type Configuracion,
   type Hacienda,
   type LogEvento,
-  PreguntaSeguridad,
   type PreguntasSeguridad,
   type RespuestasSeguridad,
   type UserLoginInfo,
@@ -30,8 +29,6 @@ import {
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 import Link from "next/link";
 import { TableLogsEvents } from "../tables/logs events";
-import { ChangeSessionHacienda } from "../change session hacienda";
-import { UpdateResponseSecurity } from "../update response security";
 import { QuestionSecurity } from "../question security";
 import { ListHaciendasProfile } from "../editable sections/hacienda";
 

@@ -3,15 +3,15 @@ import {
   CreateOrUpdateResponseSecurity,
   CreateResponseSecurity,
 } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createResponseSecurity(
   formData: CreateResponseSecurity,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<
+  const response = await submitForm<
     CreateResponseSecurity,
     ResponseRegistroExitoso
-  >("respuestasSeguridad", "POST", formData);
+  >({ endPoint: "respuestasSeguridad", data: formData });
 
   if ("error" in response) return response;
   else return response.message;
@@ -21,10 +21,10 @@ export async function updateResponseSecurity(
   id: number,
   formData: CreateOrUpdateResponseSecurity,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<
+  const response = await submitForm<
     CreateOrUpdateResponseSecurity,
     ResponseRegistroExitoso
-  >("respuestaSeguridad", "PUT", formData, id);
+  >({ endPoint: "respuestaSeguridad", method: "PUT", data: formData, id });
   if ("error" in response) return response;
   else return response.message;
 }
@@ -32,10 +32,10 @@ export async function updateResponseSecurity(
 export async function deleteResponseSecurity(
   id: number,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<
+  const response = await submitForm<
     { respuestaSeguridadID: number },
     ResponseRegistroExitoso
-  >("respuestaSeguridad", "DELETE", undefined, id);
+  >({ endPoint: "respuestaSeguridad", method: "DELETE", id });
 
   if ("error" in response) return response;
   else return response.message;

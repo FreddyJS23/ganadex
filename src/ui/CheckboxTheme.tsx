@@ -1,7 +1,7 @@
 "use client";
 
 import { useThemeStore } from "@/stores/themeStore";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent } from "react";
 
 export const CheckboxTheme = () => {
   const { darkMode, activateDarkMode, disableDarkMode } = useThemeStore();

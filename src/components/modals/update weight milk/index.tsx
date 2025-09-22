@@ -1,23 +1,13 @@
 "use client";
 
 import { LayoutModal } from "..";
-import {
-  type LayoutModalProps,
-  type PesajeLecheGanado,
-  PositionStaff,
-} from "@/types";
-import { toast } from "sonner";
+import { type LayoutModalProps, type PesajeLecheGanado } from "@/types";
 import { useParams, useRouter } from "next/navigation";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { useForm } from "react-hook-form";
 import type { UpdateWeightMilk } from "@/types/forms";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef } from "react";
 import { formWeightMilk } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { updateWeightMilkShema } from "@/validations/WeightMilkShema";
 import { updateWeightMilk } from "@/actions/weightMilk";
-import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { useFormManager } from "@/hooks/useFormManager";
 
 type ModalUpdateWeightMilkProps = Pick<

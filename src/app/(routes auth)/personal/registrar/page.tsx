@@ -1,11 +1,14 @@
 import { FormCreateStaff } from "@/components/forms/create staff";
 import { ResponseCargosPersonal } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { cargos_personal }: ResponseCargosPersonal =
-    await getData("cargosPersonal");
+  const response = await getData<ResponseCargosPersonal>({
+    endPoint: "cargosPersonal",
+  });
+  const { cargos_personal } = responseErrorServer(response);
 
   return (
     <>

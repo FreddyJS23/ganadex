@@ -23,7 +23,7 @@ export const ModalSelectHaciendaSesion = ({
 }) => {
   const { handleSubmit, control } = useForm<{ hacienda_id: number }>();
   const router = useRouter();
-  const { update, data: session, status } = useSession();
+  const { update, data: session } = useSession();
   const formRef = useRef(null);
   const { onOpen, onOpenChange } = useDisclosure();
   const [value, setValue] = useState<Selection>(new Set([]));
@@ -73,7 +73,7 @@ export const ModalSelectHaciendaSesion = ({
   return (
     <LayoutModal
       icon="price"
-      titleModal={"Selecionar hacienda en la que trabajar"}
+      titleModal={"Seleccionar hacienda en la que trabajar"}
       footer={true}
       isOpen={true}
       onOpen={onOpen}

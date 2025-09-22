@@ -6,18 +6,29 @@ import {
   ResponseSugerirNumero,
   ResponseVacunasDisponibles,
 } from "@/types";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { compradores }: ResponseCompradores = await getData("compradores");
-  const { numero_disponible }: ResponseSugerirNumero =
-    await getData("sugerirNumero");
-  const { causas_fallecimiento }: ResponseCausasFallecimiento = await getData(
-    "causasFallecimiento",
-  );
+  const response2 = await getData<ResponseCompradores>({
+    endPoint: "compradores",
+  });
+  const { compradores } = responseErrorServer(response2);
 
-  const { vacunas_disponibles }: ResponseVacunasDisponibles =
-    await getData("vacunasDisponibles");
+  const response3 = await getData<ResponseSugerirNumero>({
+    endPoint: "sugerirNumero",
+  });
+  const { numero_disponible } = responseErrorServer(response3);
+
+  const response4 = await getData<ResponseVacunasDisponibles>({
+    endPoint: "vacunasDisponibles",
+  });
+  const { vacunas_disponibles } = responseErrorServer(response4);
+
+  const response5 = await getData<ResponseCausasFallecimiento>({
+    endPoint: "causasFallecimiento",
+  });
+  const { causas_fallecimiento } = responseErrorServer(response5);
 
   return (
     <>

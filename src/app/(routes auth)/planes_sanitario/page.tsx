@@ -4,20 +4,25 @@ import { WarningToast } from "@/components/warning toast";
 import { DayVaccination, ResponsePlanesSanitario } from "@/types";
 import { ProximosPlanSanitario } from "@/types/dashboard";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
-import { getData } from "@/utils/getData";
-import { alert } from "@nextui-org/react";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { planes_sanitario }: ResponsePlanesSanitario =
-    await getData("planesSanitario");
+  const response = await getData<ResponsePlanesSanitario>({
+    endPoint: "planesSanitario",
+  });
+  const { planes_sanitario } = responseErrorServer(response);
 
-  const { proximos_planes_sanitario }: ProximosPlanSanitario = await getData(
-    "dashboarPlanesSanitarioProximosPlanes",
-  );
+  const response2 = await getData<ProximosPlanSanitario>({
+    endPoint: "dashboarPlanesSanitarioProximosPlanes",
+  });
+  const { proximos_planes_sanitario } = responseErrorServer(response2);
 
-  const {
-    planes_sanitario: planes_sanitarios_pendientes,
-  }: ResponsePlanesSanitario = await getData("planesSanitariosPendientes");
+  const response3 = await getData<ResponsePlanesSanitario>({
+    endPoint: "planesSanitariosPendientes",
+  });
+  const { planes_sanitario: planes_sanitarios_pendientes } =
+    responseErrorServer(response3);
 
   const existsPlanesSanitario = planes_sanitarios_pendientes.length > 0;
 

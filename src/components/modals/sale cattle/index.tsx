@@ -15,7 +15,6 @@ import { Button } from "@/ui/Button";
 import IconPrint from "@/icons/icono-imprimir.svg";
 import { getDateNow } from "@/utils/getDateNow";
 import { formSaleCattle } from "@/collections/formsInputs";
-import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
@@ -134,7 +133,7 @@ export const ModalSaleCattle = (props: ModalSaleProps) => {
     <LayoutModal
       icon="cattleV2"
       titleModal={
-        sale === "single" ? "Venta de ganado" : "Vender aniamles seleccionado"
+        sale === "single" ? "Venta de ganado" : "Vender animales seleccionado"
       }
       footer={true}
       isOpen={isOpen}

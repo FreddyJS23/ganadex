@@ -9,14 +9,13 @@ import {
   User,
   Comprador,
 } from "@/types";
-import { Key, ReactNode, useCallback, useState } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { ReactNode, useCallback, useState } from "react";
+import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
 import { DropDownOptions } from "@/components/dropdown options";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import IconCheck from "@/icons/icono-check.svg";
-import { ButtonFilterStateCattle } from "@/components/filter state cattle";
-import { Selection, useDisclosure } from "@nextui-org/react";
+import { useDisclosure } from "@nextui-org/react";
 import { Button } from "@/ui/Button";
 import { ModalSaleCattle } from "@/components/modals/sale cattle";
 

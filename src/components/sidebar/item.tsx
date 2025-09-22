@@ -1,20 +1,7 @@
 import IconoFlechaDerecha from "@/icons/icono-flecha_derecha.svg";
 import Link from "next/link";
-import { SidebarElementProps, URLS } from "@/types";
-import { iconsSidebar, optionsSubmenuSidebar } from "@/collections";
-
-const optionsSubmenu = (url: URL) => {
-  return optionsSubmenuSidebar.map(({ link, option }, index) => (
-    <li
-      key={index}
-      className="flex p-2 items-center rounded gap-3 hover:bg-base-200 transition-colors duration-75"
-    >
-      <Link key={index} className="" href={`${url}${link}`}>
-        {option}
-      </Link>
-    </li>
-  ));
-};
+import { SidebarElementProps } from "@/types";
+import { iconsSidebar } from "@/collections";
 
 export const SidebarElement = ({
   icon,

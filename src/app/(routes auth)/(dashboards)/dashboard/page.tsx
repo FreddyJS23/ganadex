@@ -1,6 +1,18 @@
+import { Session } from "next-auth";
+import { auth } from "@/app/auth";
 import { CardDashboard } from "@/components/cards";
+/* import { CircularProgress } from '@/components/circules progress dashboard'; */
+import { ChartAnnualBalanceMilk } from "@/components/charts/dashboard/annual balance milk";
+import { ProduccionVacasTop3 } from "@/components/charts/dashboard/top catle production bar";
 import { TortaTipoGanado } from "@/components/charts/dashboard/types catle doughnut";
+import { Tooltip } from "@/components/tooltip";
+import { WarningToast } from "@/components/warning toast";
+import IconCatle from "@/icons/icono-ganado.svg";
+import IconPositive from "@/icons/icono-ganancia.svg";
+import IconNegative from "@/icons/icono-perdida.svg";
+import { ResponseAñosProduccionLeche, ResponsePlanesSanitario } from "@/types";
 import {
+  balanceAnualLeche,
   /* InsumoMayorExistencia,
     InsumoMenorExistencia, */
   ResponseTotalTiposGanado,
@@ -11,63 +23,65 @@ import {
   TotalPersonal,
   TotalVacasEnGestacion,
   TotalVacasEnOrdeño,
-  balanceAnualLeche,
 } from "@/types/dashboard";
-import { getData } from "@/utils/getData";
-import IconCatle from "@/icons/icono-ganado.svg";
-import IconPositive from "@/icons/icono-ganancia.svg";
-import IconNegative from "@/icons/icono-perdida.svg";
-import IconSupplies from "@/icons/icono-insumo.svg";
-import { ProduccionVacasTop3 } from "@/components/charts/dashboard/top catle production bar";
-/* import { CircularProgress } from '@/components/circules progress dashboard'; */
-import { ChartAnnualBalanceMilk } from "@/components/charts/dashboard/annual balance milk";
-import { ResponseAñosProduccionLeche, ResponsePlanesSanitario } from "@/types";
-import { Tooltip } from "@/components/tooltip";
-import { WarningToast } from "@/components/warning toast";
-import { auth } from "@/app/auth";
-import { Session } from "next-auth";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Home() {
-  const { total_tipos_ganado }: ResponseTotalTiposGanado = await getData(
-    "dashboardPrincipaltotalGanadoTipo",
-  );
-  const { top_vacas_productoras }: TopVacasProductoras = await getData(
-    "dashboardPrincipalvacasProductoras",
-  );
-  const { top_vacas_menos_productoras }: TopVacasMenosProductoras =
-    await getData("dashboardPrincipalvacasMenosProductoras");
-  /*  const { mayor_cantidad_insumo }: InsumoMayorExistencia = await getData(
-        'dashboardPrincipalinsumoMayorExistencia',
-    );
-    const { menor_cantidad_insumo }: InsumoMenorExistencia = await getData(
-        'dashboardPrincipalinsumoMenorExistencia',
-    ); */
-  const { balance_anual }: balanceAnualLeche = await getData(
-    "dashboardPrincipalbalanceAnualLeche",
-  );
-  const { ganado_pendiente_revision }: TotalGanadoPendienteRevision =
-    await getData("dashboardPrincipalpendienteRevision");
-  const { total_personal }: TotalPersonal = await getData(
-    "dashboardPrincipaltotalPersonal",
-  );
-  const { vacas_en_gestacion }: TotalVacasEnGestacion = await getData(
-    "dashboardPrincipalvacasGestacion",
-  );
+  const get1 = await getData<ResponseTotalTiposGanado>({
+    endPoint: "dashboardPrincipaltotalGanadoTipo",
+  });
+  const { total_tipos_ganado } = responseErrorServer(get1);
 
-  const { total_vacas_en_ordeño }: TotalVacasEnOrdeño = await getData(
-    "dashboardPrincipalVacasEnOrdeño",
-  );
+  const get2 = await getData<TopVacasProductoras>({
+    endPoint: "dashboardPrincipalvacasProductoras",
+  });
+  const { top_vacas_productoras } = responseErrorServer(get2);
 
-  const { cantidad_vacas_para_servir }: TotalGanadoPendienteservir =
-    await getData("dashboardPrincipalcantidadNovillasMontar");
+  const get3 = await getData<TopVacasMenosProductoras>({
+    endPoint: "dashboardPrincipalvacasMenosProductoras",
+  });
+  const { top_vacas_menos_productoras } = responseErrorServer(get3);
 
-  const { años_produccion_leche }: ResponseAñosProduccionLeche = await getData(
-    "añosProduccionLeche",
-  );
+  const get4 = await getData<TotalGanadoPendienteRevision>({
+    endPoint: "dashboardPrincipalpendienteRevision",
+  });
+  const { ganado_pendiente_revision } = responseErrorServer(get4);
 
-  const { planes_sanitario }: ResponsePlanesSanitario = await getData(
-    "planesSanitariosPendientes",
-  );
+  const get5 = await getData<TotalPersonal>({
+    endPoint: "dashboardPrincipaltotalPersonal",
+  });
+  const { total_personal } = responseErrorServer(get5);
+
+  const get6 = await getData<TotalVacasEnGestacion>({
+    endPoint: "dashboardPrincipalvacasGestacion",
+  });
+  const { vacas_en_gestacion } = responseErrorServer(get6);
+
+  const get7 = await getData<TotalVacasEnOrdeño>({
+    endPoint: "dashboardPrincipalVacasEnOrdeño",
+  });
+  const { total_vacas_en_ordeño } = responseErrorServer(get7);
+
+  const get8 = await getData<TotalGanadoPendienteservir>({
+    endPoint: "dashboardPrincipalcantidadNovillasMontar",
+  });
+  const { cantidad_vacas_para_servir } = responseErrorServer(get8);
+
+  const get9 = await getData<ResponseAñosProduccionLeche>({
+    endPoint: "añosProduccionLeche",
+  });
+  const { años_produccion_leche } = responseErrorServer(get9);
+
+  const get10 = await getData<balanceAnualLeche>({
+    endPoint: "dashboardPrincipalbalanceAnualLeche",
+  });
+  const { balance_anual } = responseErrorServer(get10);
+
+  const get11 = await getData<ResponsePlanesSanitario>({
+    endPoint: "planesSanitariosPendientes",
+  });
+  const { planes_sanitario } = responseErrorServer(get11);
 
   const existsPlanesSanitario = planes_sanitario.length > 0;
   const session = (await auth()) as Session;

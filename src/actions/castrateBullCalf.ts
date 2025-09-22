@@ -1,11 +1,13 @@
 "use serve";
 
 import { ResponseErrorNext } from "@/types";
-/* import { getData } from '@/utils/getData';
+/* import { submitForm } from '@/utils/submitForm';
  */
-export async function castrateBullCalf(/*  id: number, */): Promise<
-  void | ResponseErrorNext | undefined
-> {
-  /*     const response = await getData<number,void>('caparCria', 'GET', undefined, id); */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export async function castrateBullCalf(
+  id: number,
+): Promise<void | ResponseErrorNext | undefined> {
+  /*     const response = await submitForm<number,void>('caparCria', 'GET', undefined, id); */
+
   return { error: { message: "disable", status: 404 } };
 }

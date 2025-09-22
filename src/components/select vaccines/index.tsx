@@ -3,7 +3,6 @@ import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import {
   InputProps,
   Select,
-  SelectedItems,
   SelectItem,
   SelectSection,
   type Selection,
@@ -108,7 +107,8 @@ export const SelectVaccines = (
                   <span className="text-[12px] opacity-60">
                     {vaccine.aplicable_a_todos
                       ? "Todos"
-                      : vaccine.tipos_ganado
+                      : vaccine.tipos_ganado &&
+                        vaccine.tipos_ganado
                           .map(({ tipo, sexo }) => `${tipo} (${sexo})`)
                           .join(", ")}
                   </span>
@@ -145,7 +145,8 @@ export const SelectVaccines = (
                   <span className="text-[12px] opacity-60">
                     {vaccine.aplicable_a_todos
                       ? "Todos"
-                      : vaccine.tipos_ganado
+                      : vaccine.tipos_ganado &&
+                        vaccine.tipos_ganado
                           .map(({ tipo, sexo }) => `${tipo} (${sexo})`)
                           .join(", ")}
                   </span>

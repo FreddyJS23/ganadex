@@ -14,6 +14,7 @@ import {
   Tooltip,
   Legend,
   ChartData,
+  ChartOptions,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
@@ -42,13 +43,15 @@ export const TortaCausasFallecimientosGanado = ({
 
   const darkMode = useThemeStore((state) => state.darkMode);
 
+  const darkMode = useThemeStore((state) => state.darkMode);
+
   const configAnotation = {
     annotation: {
       //plugin anotaciones
       annotations: {
         dLabel: {
           type: "doughnutLabel",
-          content: ({ chart }) => ["Total", total_fallecidos],
+          content: () => ["Total", total_fallecidos],
           font: [
             { size: 20, weight: "bold" },
             { size: 18, weight: "normal" },
@@ -71,5 +74,7 @@ export const TortaCausasFallecimientosGanado = ({
     plugins: { ...optionsChart.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options} />;
+  return (
+    <Doughnut data={datasets} options={options as ChartOptions<"doughnut">} />
+  );
 };

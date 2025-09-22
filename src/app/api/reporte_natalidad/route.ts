@@ -1,5 +1,5 @@
-import { GetReportsYear } from "@/services/generateReportsYear";
 import { NextRequest, NextResponse } from "next/server";
+import { GetReportsYear } from "@/services/generateReportsYear";
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const dateNow = new Date();

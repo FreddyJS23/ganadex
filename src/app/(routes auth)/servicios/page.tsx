@@ -1,11 +1,14 @@
 import { TableAllServes } from "@/components/tables/serve";
 import { ResponseServiciosGeneral } from "@/types";
 import { TitlePage } from "@/ui/TitlePage";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  const { todos_servicios }: ResponseServiciosGeneral =
-    await getData("servicios");
+  const response = await getData<ResponseServiciosGeneral>({
+    endPoint: "servicios",
+  });
+  const { todos_servicios } = responseErrorServer(response);
 
   return (
     <section>

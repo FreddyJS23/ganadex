@@ -1,16 +1,10 @@
 import { Input } from "@/components/Inputs";
 import { LayoutModal } from "..";
 import type { ModalProps } from "@/types";
-import { useForm } from "react-hook-form";
 import type { CreateCustomer } from "@/types/forms";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { createCustomerShema } from "@/validations/Customer";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
-import { toast } from "sonner";
 import { createCustomer } from "@/actions/comprador";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { useFormManager } from "@/hooks/useFormManager";
 
 export const ModalCreateCustomer = ({

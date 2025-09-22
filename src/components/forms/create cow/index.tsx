@@ -27,15 +27,11 @@ import {
   type CausaFallecimiento,
   type Comprador,
   type ListaVacunas,
-  ResponseCompradores,
-  ResponseGanado,
 } from "@/types";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
-import { getDateNow } from "@/utils/getDateNow";
 import { CreateListVaccination } from "@/components/create list vaccination";
-import { ToolTipTipoGanado } from "@/components/tooltip";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { useRouter } from "next/navigation";
+import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 
 type FormCowProps = {
   compradores: Comprador[];
@@ -58,7 +54,6 @@ export const FormCow = ({
 
   const router = useRouter();
   const form = useRef<HTMLFormElement | null>(null);
-  const containerInputsForm = useRef<HTMLDivElement[]>([]);
   const [shema, setshema] = useState<
     typeof castleShema | typeof castleShemaWitDeath | typeof castleShemaWithSale
   >(castleShema);
@@ -268,7 +263,7 @@ export const FormCow = ({
             listVaccines={listVaccines}
             setListVaccines={setListVaccines}
             isChecked={isSelected}
-            fecha_nacimiento={getValues("fecha_nacimiento")}
+            fecha_nacimiento={getValues("fecha_nacimiento") ?? ""}
           />
         </div>
       </div>

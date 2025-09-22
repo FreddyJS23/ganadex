@@ -2,11 +2,7 @@
 
 import { LayoutModal } from "..";
 import type { LayoutModalProps } from "@/types";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { deleteUserVeterinary } from "@/actions/userVeterinary";
-import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 import { useActionId } from "@/hooks/useActionId";
 
 type ModalDeleteUserVeterinaryProps = Pick<

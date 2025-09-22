@@ -1,18 +1,7 @@
 "use serve";
 
-import { ResponseErrorAction, ResponseInsumo } from "@/types";
-import { CreateSupply } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { ResponseErrorNext } from "@/types";
 
-export async function createSupply(
-  formData: CreateSupply,
-): Promise<string | ResponseErrorAction> {
-  /* const response = await getData<CreateSupply,ResponseInsumo>(
-            'insumo',
-            'POST',
-            formData,
-        );
-       */
-
+export async function createSupply(): Promise<string | ResponseErrorNext> {
   return { error: { message: "disable", status: 404 } };
 }

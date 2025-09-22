@@ -1,16 +1,16 @@
 "use client"; // Error components must be Client Components
 
+import { Button } from "@nextui-org/react";
+import Link from "next/link";
+import { signOut } from "next-auth/react";
+import { useEffect, useState } from "react";
 import {
   ERROR_401,
   ERROR_404,
   ERROR_419,
   ERROR_500,
 } from "@/constants/responseApiMessage";
-import { Button } from "@nextui-org/react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
-import { signOut } from "next-auth/react";
 
 type ErrorProps = {
   error: Error & { digest?: string };

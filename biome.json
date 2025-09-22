@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "ignore": [".next", "node_modules"]
+    "ignore": [".next", "node_modules",".vscode","build"]
   },
   "linter": {
     "enabled": false

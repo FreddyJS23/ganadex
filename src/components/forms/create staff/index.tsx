@@ -1,6 +1,6 @@
 "use client";
 
-import { addInHacienda, createStaff } from "@/actions/personal";
+import { createStaff } from "@/actions/personal";
 import { formStaff } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
@@ -11,8 +11,7 @@ import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { createStaffShema } from "@/validations/staffShema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRef, useState } from "react";
-import IconAdd from "@/icons/icono-plus.svg";
+import { useRef } from "react";
 
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -40,7 +39,7 @@ export const FormCreateStaff = ({
 
     form.current?.reset();
 
-    toast.success(`${response.nombre} ha sido creado con éxito`);
+    toast.success(`${response} ha sido creado con éxito`);
   });
 
   return (

@@ -1,6 +1,5 @@
 "use server";
 
-import { ResponseError } from "@/types";
 import { auth } from "@/auth";
 import { Session } from "next-auth";
 
@@ -38,8 +37,6 @@ export const RestoreLastBackup = async () => {
       };
   } catch (e) {
     console.log(e);
-    if (e instanceof Error) throw e;
-    const { status, data } = e as ResponseError;
-    throw `código ${status} ${data.message}`;
+    throw `error backend`;
   }
 };

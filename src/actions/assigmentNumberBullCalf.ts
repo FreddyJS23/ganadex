@@ -2,18 +2,17 @@
 
 import { ResponseErrorNext } from "@/types";
 import { CreateAssigmentNumberBullCalf } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function assignmentNumberBullCalf(
   formData: CreateAssigmentNumberBullCalf,
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await getData<CreateAssigmentNumberBullCalf, number>(
-    "asignarNumeroCria",
-    "POST",
-    formData,
-    id,
-  );
+  const response = await submitForm<CreateAssigmentNumberBullCalf, number>({
+    endPoint: "asignarNumeroCria",
+    data: formData,
+    id: id,
+  });
 
   if (typeof response == "object" && "error" in response) return response;
 }

@@ -1,19 +1,19 @@
 "use server";
 
+import { isRedirectError } from "next/dist/client/components/redirect";
+import { cookies } from "next/headers";
+import { AuthError } from "next-auth";
 import { signIn } from "@/auth";
 import {
   ERROR_CORS,
   ERROR_SERVER,
   ERROR_SIGNIN,
 } from "@/constants/responseApiMessage";
-import { ResponseErrorActionAction, ResponseLoginAuthJs } from "@/types";
-import { AuthError } from "next-auth";
-import { isRedirectError } from "next/dist/client/components/redirect";
-import { cookies } from "next/headers";
+import { ResponseErrorNext, ResponseLoginAuthJs } from "@/types";
 
 export async function authenticate(
   formData: FormData,
-): Promise<ResponseLoginAuthJs | ResponseErrorActionAction> {
+): Promise<ResponseLoginAuthJs | ResponseErrorNext> {
   try {
     await signIn("credentials", {
       usuario: formData.get("usuario"),
@@ -39,8 +39,15 @@ export async function authenticate(
       const messageError = error.message.match(
         regexMessageErrors,
       ) as unknown as string;
-      return messageError && { error: { message: messageError[0] } };
+      if (messageError) {
+        if (messageError[0] == ERROR_SERVER)
+          return { error: { message: messageError[0], status: 500 } };
+        if (messageError[0] == ERROR_SIGNIN)
+          return { error: { message: messageError[0], status: 401 } };
+        if (messageError[0] == ERROR_CORS)
+          return { error: { message: messageError[0], status: 403 } };
+      }
     }
   }
-  return { error: { message: "Error" } };
+  return { error: { message: "Error", status: 500 } };
 }

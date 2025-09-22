@@ -2,15 +2,8 @@
 
 import { headerSaleCasttle } from "@/collections/headerColums";
 import { Ganado, ResponseVentasGanado, VentaGanado } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
 import { Key, ReactNode, useCallback, useState } from "react";
-import { LayoutTable, TableComponent } from "..";
+import { TableComponent } from "..";
 import Link from "next/link";
 import { toast } from "sonner";
 import IconPrint from "@/icons/icono-imprimir.svg";

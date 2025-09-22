@@ -8,7 +8,7 @@ import {
   ResponseUser,
 } from "@/types";
 import { CreateUser, UpdateConfiguration, UpdateUser } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createUser(
   formData: CreateUser,
@@ -25,12 +25,12 @@ export async function updateUser(
   id: number,
   formData: UpdateUser,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<UpdateUser, ResponseUser>(
-    "usuario",
-    "PUT",
-    formData,
+  const response = await submitForm<UpdateUser, ResponseUser>({
+    endPoint: "usuario",
+    method: "PUT",
+    data: formData,
     id,
-  );
+  });
   if ("error" in response) return response;
   else return response.user.usuario;
 }
@@ -38,10 +38,8 @@ export async function updateUser(
 export async function updateConfiguration(
   formData: UpdateConfiguration,
 ): Promise<Configuracion | ResponseErrorNext> {
-  const response = await getData<UpdateConfiguration, ResponseConfiguracion>(
-    "actualizarConfig",
-    "PUT",
-    formData,
+  const response = await submitForm<UpdateConfiguration, ResponseConfiguracion>(
+    { endPoint: "actualizarConfig", method: "PUT", data: formData },
   );
 
   if ("error" in response) return response;

@@ -32,13 +32,11 @@ import {
   AplicacionVacunaHistorial,
   UserVeterinaryInfo,
   UserAdminInfo,
-  UserVeterinary,
   ToroServicio,
   TipoRevision,
   CausaFallecimiento,
   PreguntasSeguridad,
   RespuestasSeguridad,
-  Vaccines,
   Vaccine,
 } from "./models";
 

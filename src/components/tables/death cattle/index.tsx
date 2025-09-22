@@ -2,16 +2,8 @@
 
 import { headerDeadCattle } from "@/collections/headerColums";
 import { Fallecimiento, Ganado, ResponseFallecimientos } from "@/types";
-import {
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/table";
 import { Key, ReactNode, useCallback } from "react";
-import { LayoutTable, TableComponent } from "..";
-import Link from "next/link";
+import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
 
 export const TableDeadCattle = ({ fallecidos }: ResponseFallecimientos) => {

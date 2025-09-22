@@ -1,17 +1,15 @@
 import { headerVaccines } from "@/collections/headerColums";
 import { ModalCreateEditVaccine } from "@/components/modals/create-edit Vaccine";
-import type { Vaccines } from "@/types";
 import ButtonEdit from "@/ui/ButtonEdit";
-import { Modal, Input, Button, useDisclosure } from "@nextui-org/react";
+import { useDisclosure } from "@nextui-org/react";
 import { useState } from "react";
+import { Vaccine } from "@/types";
 
-export const TableAvailableVaccines = ({
-  vacunas,
-}: { vacunas: Vaccines[] }) => {
+export const TableAvailableVaccines = ({ vacunas }: { vacunas: Vaccine[] }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedVaccine, setSelectedVaccine] = useState<Vaccines | null>(null);
+  const [selectedVaccine, setSelectedVaccine] = useState<Vaccine | null>(null);
 
-  const handleEditClick = (vaccine: Vaccines) => {
+  const handleEditClick = (vaccine: Vaccine) => {
     setSelectedVaccine(vaccine);
     onOpen();
   };

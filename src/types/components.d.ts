@@ -12,6 +12,7 @@ import {
   DASHBOARD_SALE,
   DASHBOARD_TOOLTIPS,
   DETAILS_GANADO_TOOLTIPS,
+  DETAILS_TITLES,
   FORM_TOOLTIPS,
   TABLE_TOOLTIPS,
 } from "@/constants/tooltipsMessages";
@@ -105,7 +106,7 @@ export type InputProps = {
   register: UseFormRegister<any>;
   /**Objeto con los campos que no pasen su validación, para asignar un clase error al label */
   errors: FieldErrors;
-  defaultValue?: string | number;
+  defaultValue?: string | number | null;
   uppercase?: boolean;
   variant?: "flat" | "bordered" | "underlined" | "faded";
   placeholder?: string;
@@ -143,7 +144,8 @@ type TooltipsBase = {
     | keyof typeof DASHBOARD_SALE
     | keyof typeof FORM_TOOLTIPS
     | keyof typeof DETAILS_GANADO_TOOLTIPS
-    | keyof typeof TABLE_TOOLTIPS;
+    | keyof typeof TABLE_TOOLTIPS
+    | keyof typeof DETAILS_TITLES;
   placement?:
     | "top"
     | "bottom"

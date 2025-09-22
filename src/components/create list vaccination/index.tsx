@@ -4,9 +4,6 @@ import IconRemove from "@/icons/icono-error.svg";
 import IconVaccine from "@/icons/icono-vacuna.svg";
 import {
   Input as InputNextUI,
-  Select as SelectNextUI,
-  SelectItem,
-  Selection,
   Modal,
   ModalContent,
   ModalHeader,
@@ -15,9 +12,7 @@ import {
 } from "@nextui-org/react";
 import { toast } from "sonner";
 import { AvailableVaccines, ListaVacunas } from "@/types";
-import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { SelectVaccines } from "../select vaccines";
-import { is } from "date-fns/locale";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 
 type ModalProps = {

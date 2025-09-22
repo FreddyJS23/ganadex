@@ -2,12 +2,18 @@
 import { JWT } from "next-auth/jwt";
 import { Configuracion, Hacienda } from "./models";
 
-type User = {
+export type User = {
   id: number;
   usuario: string;
   token: string;
   rol: "admin" | "veterinario";
+  xsrf_token: string;
+  laravel_session: string;
+  userId: number;
+  sesion_hacienda: boolean;
   configuracion: Configuracion;
+  hacienda: Hacienda | null;
+  tiene_preguntas_seguridad: boolean;
 };
 
 export type ResponseRegistroExitoso = {

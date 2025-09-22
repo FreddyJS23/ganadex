@@ -10,9 +10,9 @@ import { RecoveryPassword } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { recoveryPasswordShema } from "@/validations/recoveryPassword";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export const NewPasswordRecovery = ({
@@ -29,7 +29,6 @@ export const NewPasswordRecovery = ({
   const {
     register,
     formState: { errors },
-    control,
     handleSubmit,
   } = useForm<RecoveryPassword>({
     resolver: zodResolver(recoveryPasswordShema),
@@ -37,10 +36,6 @@ export const NewPasswordRecovery = ({
   });
 
   /* campos array preguntas */
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "respuestas",
-  });
 
   const actionRecoveryPassword: () => void = handleSubmit(async (data) => {
     const getResponses = data.respuestas.map(({ respuesta }) => respuesta);

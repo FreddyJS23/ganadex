@@ -1,7 +1,6 @@
 "use client";
 
 import { ResponseTotalTiposGanado } from "@/types/dashboard";
-import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import {
   optionChartTotalTypesCattle,
   paletteBackground,
@@ -13,6 +12,8 @@ import {
   Tooltip,
   Legend,
   ChartData,
+  ChartOptions,
+  Chart,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
@@ -25,10 +26,6 @@ export const TortaTipoGanado = ({
   total_tipos_ganado,
 }: ResponseTotalTiposGanado) => {
   const { numberTypes, typesCattle } = getCastleType(total_tipos_ganado);
-
-  const typesCattleCapitalized = typesCattle.map((type) =>
-    capitalizeFirstLetter(type),
-  );
 
   const datasets: ChartData<"doughnut", number[]> = {
     labels: typesCattle,
@@ -47,19 +44,21 @@ export const TortaTipoGanado = ({
     annotation: {
       //plugin anotaciones
       annotations: {
-        dLabel: {
-          type: "doughnutLabel",
-          content: ({ chart }) => ["Total", chart.getDatasetMeta(0).total],
-          font: [
-            { size: 20, weight: "bold" },
-            { size: 18, weight: "normal" },
-          ],
-          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
-        },
+        type: "doughnutLabel",
+        content: ({ chart }: { chart: Chart }) => [
+          "Total",
+          chart.getDatasetMeta(0),
+        ],
+        font: [
+          { size: 20, weight: "bold" },
+          { size: 18, weight: "normal" },
+        ],
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
     },
   };
 
+  const optionChart = optionChartTotalTypesCattle(darkMode);
   const optionChart = optionChartTotalTypesCattle(darkMode);
   //destructurar options
   //primero se destructura el objeto de opciones
@@ -71,5 +70,7 @@ export const TortaTipoGanado = ({
     plugins: { ...optionChart.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options} />;
+  return (
+    <Doughnut data={datasets} options={options as ChartOptions<"doughnut">} />
+  );
 };

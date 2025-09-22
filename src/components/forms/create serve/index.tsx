@@ -6,13 +6,7 @@ import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
 import { SelectBulls } from "@/components/select bulls";
 import { Textarea } from "@/components/Textarea";
-import {
-  type PajuelaToro,
-  ResponseVeterinariosSelect,
-  type Toro,
-  ToroDeServicio,
-  type veterinario,
-} from "@/types";
+import { type PajuelaToro, type Toro, type veterinario } from "@/types";
 import type { CreateServe } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
@@ -21,7 +15,6 @@ import { getDateNow } from "@/utils/getDateNow";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { inputPersonalIdShema } from "@/validations/checkUpShema";
 import {
-  createServeShema,
   createServeShemaWithPajuelaToroId,
   createServeShemaWithToroId,
 } from "@/validations/serveShema";

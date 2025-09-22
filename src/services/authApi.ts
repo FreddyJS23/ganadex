@@ -1,7 +1,15 @@
-import { ResponseError } from "@/types";
 import { handleResponse } from "@/utils/handleResponseApi";
 import { getNewCookiesSession } from "@/utils/getNewCookiesSession";
 import { cookies } from "next/headers";
+import {
+  ERROR_401,
+  ERROR_404,
+  ERROR_419,
+  ERROR_500,
+} from "@/constants/responseApiMessage";
+import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
+import ErrorFromApi from "@/lib/errors/errorFromApi";
+import { ResponseLogin } from "@/types";
 
 export async function authApi(
   credentials: Partial<Record<"usuario" | "password", unknown>>,
@@ -37,11 +45,11 @@ export async function authApi(
     body: JSON.stringify(credentials),
   };
   try {
-    const ganadoDescarte = await fetch(url, optionFetch);
-    const { data, status } = await handleResponse(ganadoDescarte);
+    const response = await fetch(url, optionFetch);
+    const { data, status } = await handleResponse<ResponseLogin>(response);
     if (status == 200 || status == 201) {
       const { xsrfToken, laravelSession } = getNewCookiesSession(
-        ganadoDescarte.headers,
+        response.headers,
       );
       return {
         ...data.login,
@@ -55,7 +63,15 @@ export async function authApi(
   } catch (e) {
     if (e instanceof Error) throw e;
 
-    const { status, data } = e as ResponseError;
-    throw { status, data };
+    console.log(e);
+    /* manejar otros errores del servidor de laravel */
+    if (e instanceof ErrorFromApi) {
+      const { status } = e.error;
+      if (status == 404) throw new Error(ERROR_404);
+      else if (status == 401) throw new Error(ERROR_401);
+      else if (status == 500) throw new Error(ERROR_500);
+      else if (status == 419) throw new Error(ERROR_419);
+    }
+    return handleErrorFromApi(e);
   }
 }

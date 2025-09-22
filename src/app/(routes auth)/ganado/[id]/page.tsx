@@ -1,11 +1,11 @@
-import { DetailsCattle, DetailsWeights } from "@/collections";
+import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
 import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
 import { ResponseGanado } from "@/types";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 import Image from "next/image";
-import Link from "next/link";
 import cattleImage from "public/cattle.png";
 import { DropDownOptions } from "@/components/dropdown options";
 import { auth } from "@/app/auth";
@@ -18,6 +18,10 @@ type ParamsPageCattle = {
 };
 
 export default async function Page({ params }: ParamsPageCattle) {
+  const response = await getData<ResponseGanado>({
+    endPoint: "ganado",
+    id: params.id,
+  });
   const {
     ganado,
     revision_reciente,
@@ -30,7 +34,7 @@ export default async function Page({ params }: ParamsPageCattle) {
     total_partos,
     info_pesajes_leche,
     vacunaciones,
-  }: ResponseGanado = await getData("ganado", "GET", undefined, params.id);
+  } = responseErrorServer(response);
 
   const { eventos } = ganado;
 

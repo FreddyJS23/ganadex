@@ -1,16 +1,11 @@
 "use client";
 
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { Button as ButtonNextUI, useDisclosure } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { toast } from "sonner";
 import { Button } from "@/ui/Button";
-import IconEditar from "@/icons/icono-editar.svg";
-import {
-  createOrUpdateResponseSecurityShema,
-  updateResponseSecurityShema,
-} from "@/validations/responseSecurity";
+import { createOrUpdateResponseSecurityShema } from "@/validations/responseSecurity";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -18,7 +13,6 @@ import {
   deleteResponseSecurity,
   updateResponseSecurity,
 } from "@/actions/respuestasSeguridad";
-import { LayoutModal } from "../modals";
 import { Input } from "../Inputs";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 
@@ -192,7 +186,7 @@ const CreateOrEdit = (props: CreateOrEditProps) => {
                 items={converToSelectOptions(availableQuestion)}
                 label={"Pregunta seguridad"}
                 errors={errors}
-                value={type == "edit" ? props.pregunta_seguridad_id : null}
+                value={type == "edit" ? props.pregunta_seguridad_id : undefined}
                 required={true}
               />
             )}

@@ -1,8 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
-
+import { redirect } from "next/navigation";
+import { NextResponse } from "next/server";
 import { signOut as signOutAuthJs } from "@/auth";
 import { signOutApi } from "@/services/signOutApi";
-import { redirect } from "next/navigation";
 
 export async function GET(): Promise<NextResponse> {
   try {

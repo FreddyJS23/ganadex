@@ -28,8 +28,9 @@ type veterinario = {
 
 type Cria = Pick<
   Ganado,
-  "id" | "nombre" | "numero" | "sexo" | "origen" | "fecha_nacimiento"
+  "id" | "nombre" | "numero" | "origen" | "fecha_nacimiento"
 > & {
+  sexo: "M" | "H";
   peso: Pick<Pesos, "peso_nacimiento">;
   observacion: string | null;
   toro_id: number | null;
@@ -161,10 +162,6 @@ export type PesajeLecheGanado = {
   fecha: string;
 };
 
-export type User = {
-  id: number;
-  usuario: string;
-};
 export type CriaPendienteCapar = Pick<
   Ganado,
   "id" | "nombre" | "fecha_nacimiento"

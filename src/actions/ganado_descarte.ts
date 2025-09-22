@@ -8,7 +8,7 @@ import {
   ResponseGanadoDescarte,
 } from "@/types";
 import { CreateBeef, EditCastle, updateWeight } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 export async function createBeef(
   formData: CreateBeef,
@@ -18,11 +18,10 @@ export async function createBeef(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const vacunas = listVaccines.map(({ id, ...rest }) => ({ ...rest }));
 
-  const response = await getData<CreateBeef, ResponseGanadoDescarte>(
-    "ganadoDescarte",
-    "POST",
-    { ...formData, vacunas },
-  );
+  const response = await submitForm<CreateBeef, ResponseGanadoDescarte>({
+    endPoint: "ganadoDescarte",
+    data: { ...formData, vacunas },
+  });
 
   if ("error" in response) return response;
   else
@@ -37,12 +36,12 @@ export async function editBeef(
   | ResponseGanado["ganado"]["numero"]
   | ResponseGanado["ganado"]["nombre"]
 > {
-  const response = await getData<EditCastle, ResponseGanadoDescarte>(
-    "ganadoDescarte",
-    "PUT",
-    formData,
+  const response = await submitForm<EditCastle, ResponseGanadoDescarte>({
+    endPoint: "ganadoDescarte",
+    method: "PUT",
+    data: formData,
     id,
-  );
+  });
   if ("error" in response) return response;
   else
     return response.ganado_descarte.numero ?? response.ganado_descarte.nombre;
@@ -52,12 +51,12 @@ export async function updateWeightBeef(
   id: number,
   formData: updateWeight,
 ): Promise<Pesos | ResponseErrorNext> {
-  const response = await getData<updateWeight, ResponseGanadoDescarte>(
-    "ganadoDescarte",
-    "PUT",
-    formData,
+  const response = await submitForm<updateWeight, ResponseGanadoDescarte>({
+    endPoint: "ganadoDescarte",
+    method: "PUT",
+    data: formData,
     id,
-  );
+  });
   if ("error" in response) return response;
   else return response.ganado_descarte.pesos!;
 }

@@ -8,7 +8,7 @@ import {
   ResponseToro,
 } from "@/types";
 import { CreateBull, EditCastle, updateWeight } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { submitForm } from "@/services/apiClient";
 
 type vacunasSinId = Omit<ListaVacunas, "id">;
 
@@ -20,10 +20,14 @@ export async function createBull(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const vacunas = listVaccines.map(({ id, ...rest }) => ({ ...rest }));
 
-  const response = await getData<
+  const response = await submitForm<
     CreateBull & { vacunas: vacunasSinId[] },
     ResponseToro
-  >("toro", "POST", { ...formData, vacunas });
+  >({
+    endPoint: "toro",
+    data: { ...formData, vacunas },
+    endPointCattle: "parto",
+  });
   if ("error" in response) return response;
   else return response.toro.numero ?? response.toro.nombre;
 }
@@ -36,12 +40,12 @@ export async function editBull(
   | ResponseGanado["ganado"]["numero"]
   | ResponseGanado["ganado"]["nombre"]
 > {
-  const response = await getData<EditCastle, ResponseToro>(
-    "toro",
-    "PUT",
-    formData,
+  const response = await submitForm<EditCastle, ResponseToro>({
+    endPoint: "toro",
+    method: "PUT",
+    data: formData,
     id,
-  );
+  });
   if ("error" in response) return response;
   else return response.toro.numero ?? response.toro.nombre;
 }
@@ -50,12 +54,12 @@ export async function updateWeightBull(
   id: number,
   formData: updateWeight,
 ): Promise<Pesos | ResponseErrorNext> {
-  const response = await getData<updateWeight, ResponseToro>(
-    "toro",
-    "PUT",
-    formData,
+  const response = await submitForm<updateWeight, ResponseToro>({
+    endPoint: "toro",
+    method: "PUT",
+    data: formData,
     id,
-  );
+  });
   if ("error" in response) return response;
   else return response.toro.pesos!;
 }

@@ -1,20 +1,19 @@
 "use serve";
 
 import { ResponseErrorNext, ResponsePesajeLeche } from "@/types";
-import { CreateWeightMilk, UpdateWeightMilkShema } from "@/types/forms";
-import { getData } from "@/utils/getData";
+import { CreateWeightMilk, UpdateWeightMilk } from "@/types/forms";
+import { submitForm } from "@/services/apiClient";
 
 export async function createWeightMilk(
   formData: CreateWeightMilk,
   id: number,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<CreateWeightMilk, ResponsePesajeLeche>(
-    "ganado",
-    "POST",
-    formData,
+  const response = await submitForm<CreateWeightMilk, ResponsePesajeLeche>({
+    endPoint: "ganado",
+    data: formData,
     id,
-    "pesajesLeche",
-  );
+    endPointCattle: "pesajesLeche",
+  });
 
   if ("error" in response) return response;
   else return response.pesaje_leche.pesaje;
@@ -23,16 +22,16 @@ export async function createWeightMilk(
 export async function updateWeightMilk(
   idWeightMilk: number,
   idCastle: number,
-  formData: UpdateWeightMilkShema,
+  formData: UpdateWeightMilk,
 ): Promise<string | ResponseErrorNext> {
-  const response = await getData<UpdateWeightMilkShema, ResponsePesajeLeche>(
-    "ganado",
-    "PUT",
-    formData,
-    idCastle,
-    "pesajeLeche",
-    idWeightMilk,
-  );
+  const response = await submitForm<UpdateWeightMilk, ResponsePesajeLeche>({
+    endPoint: "ganado",
+    method: "PUT",
+    data: formData,
+    id: idCastle,
+    endPointCattle: "pesajeLeche",
+    id2: idWeightMilk,
+  });
 
   if ("error" in response) return response;
   else return response.pesaje_leche.pesaje;

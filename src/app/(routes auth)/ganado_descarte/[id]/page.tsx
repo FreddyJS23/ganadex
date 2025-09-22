@@ -1,5 +1,5 @@
 import { auth } from "@/app/auth";
-import { DetailsCattle, DetailsWeights } from "@/collections";
+import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
 import { DropDownOptions } from "@/components/dropdown options";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";
@@ -7,7 +7,8 @@ import { WeightsEditable } from "@/components/editable sections/weights";
 import { ModalEditAnimal } from "@/components/modals/edit animals";
 import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
 import { ResponseGanado, ResponseGanadoDescarte } from "@/types";
-import { getData } from "@/utils/getData";
+import { getData } from "@/services/apiClient";
+import { responseErrorServer } from "@/utils/returnError";
 import { Session } from "next-auth";
 import Image from "next/image";
 import cattleImage from "public/cattle.png";
@@ -17,8 +18,11 @@ type ParamsPageBeef = {
 };
 
 export default async function Page({ params }: ParamsPageBeef) {
-  const { ganado_descarte, vacunaciones }: ResponseGanadoDescarte =
-    await getData("ganadoDescarte", "GET", undefined, params.id);
+  const response = await getData<ResponseGanadoDescarte>({
+    endPoint: "ganadoDescarte",
+    id: params.id,
+  });
+  const { ganado_descarte, vacunaciones } = responseErrorServer(response);
 
   const session = (await auth()) as Session;
   const role = session.user.rol;
@@ -37,10 +41,14 @@ export default async function Page({ params }: ParamsPageBeef) {
 
   /* en caso que el descarte sea hembra,se sobre entiende que fue una vaca
         por ende tiene todos estos datos  */
-  let response = {} as ResponseGanado;
+  let responseHembra = {} as ResponseGanado;
 
   if (sexo == "H") {
-    response = await getData("ganado", "GET", undefined, params.id);
+    const fetch = await getData<ResponseGanado>({
+      endPoint: "ganado",
+      id: params.id,
+    });
+    responseHembra = responseErrorServer(fetch);
   }
 
   //comprobar si tiene estado vendido o fallecido para no editar pesos
@@ -162,14 +170,14 @@ export default async function Page({ params }: ParamsPageBeef) {
         ) : (
           <div className="w-full divide-y divide-primary/[.20]">
             <TabDetailsCattle
-              revision_reciente={response.revision_reciente}
-              servicio_reciente={response.servicio_reciente}
-              total_revisiones={response.total_revisiones}
-              total_servicios={response.total_servicios}
-              efectividad={response.efectividad}
-              parto_reciente={response.parto_reciente}
-              total_partos={response.total_partos}
-              info_pesajes_leche={response.info_pesajes_leche}
+              revision_reciente={responseHembra.revision_reciente}
+              servicio_reciente={responseHembra.servicio_reciente}
+              total_revisiones={responseHembra.total_revisiones}
+              total_servicios={responseHembra.total_servicios}
+              efectividad={responseHembra.efectividad}
+              parto_reciente={responseHembra.parto_reciente}
+              total_partos={responseHembra.total_partos}
+              info_pesajes_leche={responseHembra.info_pesajes_leche}
               vacunaciones={vacunaciones}
               disabledSomeTabs={false}
               isMale={false}
