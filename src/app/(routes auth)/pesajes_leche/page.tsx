@@ -5,10 +5,10 @@ import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  
-  const response= await getData<ResponsePesajesLecheGeneral>({endPoint:"pesajesLeche"});
-  const {todos_pesaje_leche}=responseErrorServer(response);
-  
+  const response = await getData<ResponsePesajesLecheGeneral>({
+    endPoint: "pesajesLeche",
+  });
+  const { todos_pesaje_leche } = responseErrorServer(response);
 
   return (
     <section>

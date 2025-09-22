@@ -61,7 +61,10 @@ export const ModalCreateEditVaccine = (props: ModalCreateEditVaccineProps) => {
           },
   });
 
-  const {field:checkbox}=useController({name:"aplicable_a_todos",control})
+  const { field: checkbox } = useController({
+    name: "aplicable_a_todos",
+    control,
+  });
 
   const { activateLoading, disableLoading } = useLoadingButtonModal();
 
@@ -238,7 +241,9 @@ const GanadoTiposVacuna = ({
   isDisabled,
   initialSelected,
 }: {
-  setTipoGanados: React.Dispatch<React.SetStateAction<CreateVaccine["tipo_ganados"]>> ;
+  setTipoGanados: React.Dispatch<
+    React.SetStateAction<CreateVaccine["tipo_ganados"]>
+  >;
   isDisabled: boolean;
   initialSelected: CreateVaccine["tipo_ganados"];
 }) => {

@@ -1,11 +1,7 @@
 "use client";
 
 import { headerAllServes } from "@/collections/headerColums";
-import {
-  ResponseServiciosGeneral,
-  Servicios,
-  ToroDeServicio,
-} from "@/types";
+import { ResponseServiciosGeneral, Servicios, ToroDeServicio } from "@/types";
 import { Key, ReactNode, useCallback } from "react";
 import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";

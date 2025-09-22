@@ -8,10 +8,12 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  
-  const response = await getData<ResponseServiciosToro>({endPoint:"toro",id:params.id,endPointCattle:"servicios"});
-  const {servicios}=responseErrorServer(response);
-  
+  const response = await getData<ResponseServiciosToro>({
+    endPoint: "toro",
+    id: params.id,
+    endPointCattle: "servicios",
+  });
+  const { servicios } = responseErrorServer(response);
 
   return <ModalHistoryServicesBull servicios={servicios} />;
 }

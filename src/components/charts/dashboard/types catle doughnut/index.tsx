@@ -27,7 +27,6 @@ export const TortaTipoGanado = ({
 }: ResponseTotalTiposGanado) => {
   const { numberTypes, typesCattle } = getCastleType(total_tipos_ganado);
 
- 
   const datasets: ChartData<"doughnut", number[]> = {
     labels: typesCattle,
     datasets: [
@@ -43,16 +42,18 @@ export const TortaTipoGanado = ({
 
   const configAnotation = {
     annotation: {
-     //plugin anotaciones
-     annotations: {
-      type: "doughnutLabel", 
-      content: ({ chart }:{chart:Chart}) => ["Total", chart.getDatasetMeta(0)],
-          font: [
-            { size: 20, weight: "bold" },
-            { size: 18, weight: "normal" },
-          ],
-          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
-        
+      //plugin anotaciones
+      annotations: {
+        type: "doughnutLabel",
+        content: ({ chart }: { chart: Chart }) => [
+          "Total",
+          chart.getDatasetMeta(0),
+        ],
+        font: [
+          { size: 20, weight: "bold" },
+          { size: 18, weight: "normal" },
+        ],
+        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
       },
     },
   };
@@ -68,5 +69,7 @@ export const TortaTipoGanado = ({
     plugins: { ...optionChart.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options as ChartOptions<"doughnut">} />;
+  return (
+    <Doughnut data={datasets} options={options as ChartOptions<"doughnut">} />
+  );
 };

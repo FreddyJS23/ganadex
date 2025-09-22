@@ -29,7 +29,7 @@ export async function signOutApi() {
     } else if (status == 422 || status == 401 || status == 500)
       throw { status: status, data: data };
   } catch (e) {
-    console.log(e)
-    throw 'Error'
+    console.log(e);
+    throw "Error";
   }
 }

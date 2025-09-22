@@ -25,12 +25,12 @@ export async function updateUser(
   id: number,
   formData: UpdateUser,
 ): Promise<string | ResponseErrorNext> {
-  const response = await submitForm<UpdateUser, ResponseUser>(
-  {  endPoint:"usuario",
-    method:"PUT",
-    data:formData,
-    id,}
-  );
+  const response = await submitForm<UpdateUser, ResponseUser>({
+    endPoint: "usuario",
+    method: "PUT",
+    data: formData,
+    id,
+  });
   if ("error" in response) return response;
   else return response.user.usuario;
 }
@@ -39,9 +39,7 @@ export async function updateConfiguration(
   formData: UpdateConfiguration,
 ): Promise<Configuracion | ResponseErrorNext> {
   const response = await submitForm<UpdateConfiguration, ResponseConfiguracion>(
-   {endPoint: "actualizarConfig",
-    method:"PUT",
-    data:formData,}
+    { endPoint: "actualizarConfig", method: "PUT", data: formData },
   );
 
   if ("error" in response) return response;

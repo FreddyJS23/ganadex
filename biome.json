@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "includes": ["**", "!**/.next", "!**/node_modules"]
+    "ignore": [".next", "node_modules",".vscode","build"]
   },
   "linter": {
     "enabled": false
@@ -9,5 +9,7 @@
   "formatter": {
     "indentStyle": "space"
   },
-  "assist": { "actions": { "source": { "organizeImports": "on" } } }
+  "organizeImports": {
+    "enabled": true
+  }
 }

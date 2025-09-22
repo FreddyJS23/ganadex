@@ -7,13 +7,15 @@ import { Session } from "next-auth";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  
-  const response = await getData<ResponseTodoPersonal>({endPoint:"todosPersonal"});
-  const {todo_personal}=responseErrorServer(response);
+  const response = await getData<ResponseTodoPersonal>({
+    endPoint: "todosPersonal",
+  });
+  const { todo_personal } = responseErrorServer(response);
 
-  const response2 = await getData<ResponseCargosPersonal>({endPoint:"cargosPersonal"});
-  const {cargos_personal}=responseErrorServer(response2);
-  
+  const response2 = await getData<ResponseCargosPersonal>({
+    endPoint: "cargosPersonal",
+  });
+  const { cargos_personal } = responseErrorServer(response2);
 
   const session = (await auth()) as Session;
   const nameHacienda = session.user.hacienda?.nombre ?? "";

@@ -38,7 +38,5 @@ export const RestoreLastBackup = async () => {
   } catch (e) {
     console.log(e);
     throw `error backend`;
-
-   
   }
 };

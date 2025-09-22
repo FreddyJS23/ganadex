@@ -37,7 +37,6 @@ export const NewPasswordRecovery = ({
 
   /* campos array preguntas */
 
-
   const actionRecoveryPassword: () => void = handleSubmit(async (data) => {
     const getResponses = data.respuestas.map(({ respuesta }) => respuesta);
 

@@ -12,7 +12,7 @@ export const responseErrorFrontend = <T>(response: T | ResponseErrorNext) => {
     return toast.error(messageErrorApi(response));
 
   return response as T;
-}
+};
 
 /**De haber un error lanzara un error en nextjs, que se renderizará en la pantalla de error
  * debe ser utilizado en paginas renderizadas en el servidor(use server)
@@ -24,4 +24,4 @@ export const responseErrorServer = <T>(response: T | ResponseErrorNext) => {
       data: { errors: {}, message: response.error.message },
     });
   return response as T;
-}
+};

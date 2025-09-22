@@ -8,10 +8,12 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  
-  const response = await getData<ResponseTipoRevision>({endPoint:"tipoRevision",id:params.id});
-  const {tipo_revision}=responseErrorServer(response);
-  
+  const response = await getData<ResponseTipoRevision>({
+    endPoint: "tipoRevision",
+    id: params.id,
+  });
+  const { tipo_revision } = responseErrorServer(response);
+
   return (
     <ModalCreateUpdateTypeCheck
       update={true}

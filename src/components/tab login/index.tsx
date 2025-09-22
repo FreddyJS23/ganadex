@@ -10,10 +10,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import type { CreateUser, Login } from "@/types/forms";
 import { createUser } from "@/actions/usuario";
-import {
-  type ResponseErrorNext,
-  type ResponseRegistroExitoso,
-} from "@/types";
+import { type ResponseErrorNext, type ResponseRegistroExitoso } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createUserShema } from "@/validations/createUser";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";

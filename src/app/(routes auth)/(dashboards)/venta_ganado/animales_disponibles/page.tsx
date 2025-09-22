@@ -7,14 +7,15 @@ import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  
-  const response = await getData<ResponseGanadoDescartes>({endPoint:"todosGanadoDescarte"});
-  const {ganado_descartes}=responseErrorServer(response);
+  const response = await getData<ResponseGanadoDescartes>({
+    endPoint: "todosGanadoDescarte",
+  });
+  const { ganado_descartes } = responseErrorServer(response);
 
-  const response2 = await getData<ResponseCompradores>({endPoint:"compradores"});
-  const {compradores}=responseErrorServer(response2);
-  
-
+  const response2 = await getData<ResponseCompradores>({
+    endPoint: "compradores",
+  });
+  const { compradores } = responseErrorServer(response2);
 
   const session = (await auth()) as Session;
   const role = session.user.rol;

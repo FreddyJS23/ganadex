@@ -8,9 +8,11 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  
-  const response = await getData<ResponseCausaFallecimiento>({endPoint:"causaFallecimiento",id:params.id});
-  const {causa_fallecimiento}=responseErrorServer(response);
+  const response = await getData<ResponseCausaFallecimiento>({
+    endPoint: "causaFallecimiento",
+    id: params.id,
+  });
+  const { causa_fallecimiento } = responseErrorServer(response);
 
   return (
     <ModalCreateUpdateCausaFallecimiento

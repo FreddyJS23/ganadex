@@ -8,12 +8,12 @@ export async function createBirth(
   formData: CreateBaseBirth | CreateAdminBirth,
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await submitForm<CreateBaseBirth | CreateAdminBirth, void>(
-    {endPoint:"ganado",
-    data:formData,
+  const response = await submitForm<CreateBaseBirth | CreateAdminBirth, void>({
+    endPoint: "ganado",
+    data: formData,
     id,
-    endPointCattle:"parto",}
-  );
+    endPointCattle: "parto",
+  });
   return response;
 }
 
@@ -22,13 +22,13 @@ export async function updateBirth(
   idCastle: number,
   formData: UpdateBirh,
 ): Promise<void | ResponseErrorNext> {
-  const response = await submitForm<UpdateBirh, void>(
-   {endPoint: "ganado",
-    method:"PUT",
-    data:formData,
-    id:idCastle,
-    endPointCattle:"parto",
-    id2:idBirth,}
-  );
+  const response = await submitForm<UpdateBirh, void>({
+    endPoint: "ganado",
+    method: "PUT",
+    data: formData,
+    id: idCastle,
+    endPointCattle: "parto",
+    id2: idBirth,
+  });
   return response;
 }

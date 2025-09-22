@@ -2,8 +2,8 @@
 
 import { headerBull } from "@/collections/headerColums";
 import { EstadosGanado, Pesos, ResponseToros, Toro, User } from "@/types";
-import { Key, ReactNode, useCallback, } from "react";
-import {  TableComponent } from "..";
+import { Key, ReactNode, useCallback } from "react";
+import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
 import { DropDownOptions } from "@/components/dropdown options";
 import { DropdownStatesCattle } from "@/components/dropdown states cattle";

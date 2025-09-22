@@ -112,7 +112,7 @@ export const TableComponent = <T extends { id: number }>(
 
   useEffect(() => {
     list.reload();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
 
   /* --------------------------------- refrescar cuando cambia -------------------------------- */
@@ -267,8 +267,10 @@ export const TableComponent = <T extends { id: number }>(
       >;
 
       filteredItems = filteredItemsWithHacienda.filter((item) =>
-        item.haciendas.some(
-          ({ nombre }) =>nameHacienda ?  nombre.toLowerCase() == nameHacienda.toLowerCase() :  true,
+        item.haciendas.some(({ nombre }) =>
+          nameHacienda
+            ? nombre.toLowerCase() == nameHacienda.toLowerCase()
+            : true,
         ),
       );
     }
@@ -295,7 +297,9 @@ export const TableComponent = <T extends { id: number }>(
       const filteredItemsWithSex = filteredItems as Array<
         T & { sexo: GanadoDescarte["sexo"] }
       >;
-      const sexFilterArray = Array.from(sexFilter) as Array<GanadoDescarte["sexo"]>;
+      const sexFilterArray = Array.from(sexFilter) as Array<
+        GanadoDescarte["sexo"]
+      >;
       filteredItems = filteredItemsWithSex.filter((item) =>
         /* filtrar el ganado por el tipo seleccionado en el select */
         sexFilterArray.includes(item.sexo),

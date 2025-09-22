@@ -2,37 +2,36 @@
 
 import { endPoints, endPointsCattle } from "@/collections/endPointsApi";
 import { handleResponse } from "../utils/handleResponseApi";
-import {
-  ResponseErrorFromApi,
-  ResponseErrorNext,
-} from "@/types";
+import { ResponseErrorFromApi, ResponseErrorNext } from "@/types";
 import { auth } from "@/auth";
 import { Session } from "next-auth";
 import { handleErrorFromApi } from "../utils/handleErrorFromApi";
 import ErrorFromApi from "@/lib/errors/errorFromApi";
-import { ERROR_401, ERROR_404, ERROR_419, ERROR_500 } from "@/constants/responseApiMessage";
+import {
+  ERROR_401,
+  ERROR_404,
+  ERROR_419,
+  ERROR_500,
+} from "@/constants/responseApiMessage";
 
+type RequestConfig = {
+  endPoint: keyof typeof endPoints;
+  method?: "GET" | "POST" | "DELETE" | "PUT";
+  id?: number;
+  endPointCattle?: keyof typeof endPointsCattle;
+  id2?: number;
+};
 
-type RequestConfig={
-  endPoint: keyof typeof endPoints,
-  method?: "GET" | "POST" | "DELETE" | "PUT",
-  id?: number,
-  endPointCattle?: keyof typeof endPointsCattle,
-  id2?: number,
-}
+type GetDataType = Omit<RequestConfig, "method"> & {
+  param?: string | number;
+};
 
-type GetDataType=Omit<RequestConfig, 'method'> &  {
-  param?: string | number,
-}
+type SubmitFormType<Form> = RequestConfig & {
+  data?: Form;
+};
 
-type SubmitFormType<Form>=RequestConfig &  {
-  data?: Form,
-}
-
-
-const configRequest=async(config:RequestConfig)=>{
-
-  const {endPoint,method,id,endPointCattle,id2}=config
+const configRequest = async (config: RequestConfig) => {
+  const { endPoint, method, id, endPointCattle, id2 } = config;
 
   const session = (await auth()) as Session;
 
@@ -61,24 +60,25 @@ const configRequest=async(config:RequestConfig)=>{
     credentials: "include",
   };
 
+  if (id) url = url + id;
+  if (endPointCattle) url = url + endPointsCattle[endPointCattle];
+  if (id2) url = url + id2;
 
-if (id) url = url + id;
-if (endPointCattle) url = url + endPointsCattle[endPointCattle];
-if (id2) url = url + id2;
-
-return {url,optionFetch}
-
-}
+  return { url, optionFetch };
+};
 
 /* ----------------------------- messages errros ---------------------------- */
-const returnErrorFromApi=(status:number,data:ResponseErrorFromApi["data"])=>{
+const returnErrorFromApi = (
+  status: number,
+  data: ResponseErrorFromApi["data"],
+) => {
   throw new ErrorFromApi("error", {
     status: status,
     data: data as ResponseErrorFromApi["data"],
   });
-}
+};
 
-const returnErrorLaravelFromApi=(e: unknown)=>{
+const returnErrorLaravelFromApi = (e: unknown) => {
   console.log(e);
   /* manejar otros errores del servidor de laravel */
   if (e instanceof ErrorFromApi) {
@@ -89,23 +89,31 @@ const returnErrorLaravelFromApi=(e: unknown)=>{
     else if (status == 419) throw new Error(ERROR_419);
   }
   return handleErrorFromApi(e);
-}
-
+};
 
 /* ----------------------------------- api ---------------------------------- */
-/** 
+/**
  * @default method POST
-  */
-export async function submitForm<Form, dataResponse>( {endPoint,method="POST",data,id,endPointCattle,id2}: SubmitFormType<Form>): Promise<dataResponse | ResponseErrorNext> {
+ */
+export async function submitForm<Form, dataResponse>({
+  endPoint,
+  method = "POST",
+  data,
+  id,
+  endPointCattle,
+  id2,
+}: SubmitFormType<Form>): Promise<dataResponse | ResponseErrorNext> {
+  const { optionFetch, url } = await configRequest({
+    endPoint,
+    method,
+    id,
+    endPointCattle,
+    id2,
+  });
 
-
-  const {optionFetch,url}=await configRequest({endPoint,method,id,endPointCattle,id2})
-  
-  
   method == "POST" || method == "PUT"
-  ? (optionFetch.body = JSON.stringify(data))
-  : null;
-
+    ? (optionFetch.body = JSON.stringify(data))
+    : null;
 
   try {
     const dataApi = await fetch(url, optionFetch);
@@ -128,23 +136,33 @@ export async function submitForm<Form, dataResponse>( {endPoint,method="POST",da
   return handleErrorFromApi("error");
 }
 
-
-/** 
+/**
  * @default method GET
-  */
-export async function getData<dataResponse>({endPoint,id,endPointCattle,id2,param}:GetDataType): Promise<dataResponse | ResponseErrorNext> {
+ */
+export async function getData<dataResponse>({
+  endPoint,
+  id,
+  endPointCattle,
+  id2,
+  param,
+}: GetDataType): Promise<dataResponse | ResponseErrorNext> {
+  const { optionFetch, url: urlWihoutParam } = await configRequest({
+    endPoint,
+    method: "GET",
+    id,
+    endPointCattle,
+    id2,
+  });
 
-  const {optionFetch,url:urlWihoutParam}=await configRequest({endPoint,method:"GET",id,endPointCattle,id2})
-  
-  let url = urlWihoutParam
+  let url = urlWihoutParam;
 
   if (
-  endPoint == "dashboardVentaGanadoBalanceAnual" ||
-  endPoint == "dashboardPrincipalbalanceAnualLeche"
-)
-  url = url + "?year=" + param;
-if (endPoint == "dashboardVentaLecheBalanceMensual")
-  url = url + "?month=" + param; 
+    endPoint == "dashboardVentaGanadoBalanceAnual" ||
+    endPoint == "dashboardPrincipalbalanceAnualLeche"
+  )
+    url = url + "?year=" + param;
+  if (endPoint == "dashboardVentaLecheBalanceMensual")
+    url = url + "?month=" + param;
 
   try {
     const dataApi = await fetch(url, optionFetch);

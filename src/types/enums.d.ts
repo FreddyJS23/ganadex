@@ -193,7 +193,7 @@ export enum TitlesModals {
   "Actualizar causa de fallecimiento",
   "Crear causa de fallecimiento",
   "Actualizar tipo de revisión",
-  "Crear tipo de revisión"
+  "Crear tipo de revisión",
 }
 
 export enum FieldsIdCasttle {
@@ -209,8 +209,6 @@ export enum FieldsIdCasttle {
   peso_actual,
   estado_id,
 }
-
-
 
 export enum FieldsLabelsCasttle {
   Nombre,
@@ -232,8 +230,7 @@ export enum FieldsIdEditCasttle {
   origen_id,
   fecha_ingreso,
   fecha_nacimiento,
-  }
-
+}
 
 export enum FieldsLabelsEditCasttle {
   Nombre,

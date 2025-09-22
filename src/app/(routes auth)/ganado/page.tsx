@@ -7,10 +7,9 @@ import { responseErrorServer } from "@/utils/returnError";
 import { Session } from "next-auth";
 
 export default async function Page() {
-  
-  const response = await getData<ResponseGanados>({endPoint:"todosGanado"});
-  const {cabezas_ganado}=responseErrorServer(response);
-  
+  const response = await getData<ResponseGanados>({ endPoint: "todosGanado" });
+  const { cabezas_ganado } = responseErrorServer(response);
+
   const session = (await auth()) as Session;
   const role = session.user.rol;
   return (

@@ -18,9 +18,12 @@ type ParamsPageCattle = {
 };
 
 export default async function Page({ params }: ParamsPageCattle) {
-  
-    const response = await getData<ResponseGanado>({endPoint:"ganado",id:params.id});
-  const {ganado,
+  const response = await getData<ResponseGanado>({
+    endPoint: "ganado",
+    id: params.id,
+  });
+  const {
+    ganado,
     revision_reciente,
     servicio_reciente,
     total_revisiones,
@@ -30,9 +33,8 @@ export default async function Page({ params }: ParamsPageCattle) {
     parto_reciente,
     total_partos,
     info_pesajes_leche,
-    vacunaciones,}=responseErrorServer(response);
-  
-  
+    vacunaciones,
+  } = responseErrorServer(response);
 
   const { eventos } = ganado;
 

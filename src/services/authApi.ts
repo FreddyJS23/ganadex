@@ -1,7 +1,12 @@
 import { handleResponse } from "@/utils/handleResponseApi";
 import { getNewCookiesSession } from "@/utils/getNewCookiesSession";
 import { cookies } from "next/headers";
-import { ERROR_401, ERROR_404, ERROR_419, ERROR_500 } from "@/constants/responseApiMessage";
+import {
+  ERROR_401,
+  ERROR_404,
+  ERROR_419,
+  ERROR_500,
+} from "@/constants/responseApiMessage";
 import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
 import ErrorFromApi from "@/lib/errors/errorFromApi";
 import { ResponseLogin } from "@/types";
@@ -59,14 +64,14 @@ export async function authApi(
     if (e instanceof Error) throw e;
 
     console.log(e);
-  /* manejar otros errores del servidor de laravel */
-  if (e instanceof ErrorFromApi) {
-    const { status } = e.error;
-    if (status == 404) throw new Error(ERROR_404);
-    else if (status == 401) throw new Error(ERROR_401);
-    else if (status == 500) throw new Error(ERROR_500);
-    else if (status == 419) throw new Error(ERROR_419);
-  }
-  return handleErrorFromApi(e);
+    /* manejar otros errores del servidor de laravel */
+    if (e instanceof ErrorFromApi) {
+      const { status } = e.error;
+      if (status == 404) throw new Error(ERROR_404);
+      else if (status == 401) throw new Error(ERROR_401);
+      else if (status == 500) throw new Error(ERROR_500);
+      else if (status == 419) throw new Error(ERROR_419);
+    }
+    return handleErrorFromApi(e);
   }
 }

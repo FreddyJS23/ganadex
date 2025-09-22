@@ -1,10 +1,7 @@
 "use client";
 
 import { LayoutModal } from "..";
-import {
-  type LayoutModalProps,
-  type PesajeLecheGanado,
-} from "@/types";
+import { type LayoutModalProps, type PesajeLecheGanado } from "@/types";
 import { useParams, useRouter } from "next/navigation";
 import type { UpdateWeightMilk } from "@/types/forms";
 import { formWeightMilk } from "@/collections/formsInputs";

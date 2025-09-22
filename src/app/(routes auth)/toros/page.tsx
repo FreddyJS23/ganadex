@@ -6,12 +6,10 @@ import { Session } from "next-auth";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
-
 export default async function Page() {
-  
-  const response = await getData<ResponseToros>({endPoint:"todosToro"});
-  const {toros}=responseErrorServer(response);
-  
+  const response = await getData<ResponseToros>({ endPoint: "todosToro" });
+  const { toros } = responseErrorServer(response);
+
   const session = (await auth()) as Session;
   const role = session.user.rol;
   return (

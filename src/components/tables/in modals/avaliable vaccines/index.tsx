@@ -5,13 +5,9 @@ import { useDisclosure } from "@nextui-org/react";
 import { useState } from "react";
 import { Vaccine } from "@/types";
 
-
-export const TableAvailableVaccines = ({
-  vacunas,
-}: { vacunas: Vaccine[] }) => {
+export const TableAvailableVaccines = ({ vacunas }: { vacunas: Vaccine[] }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedVaccine, setSelectedVaccine] =
-    useState<Vaccine | null>(null);
+  const [selectedVaccine, setSelectedVaccine] = useState<Vaccine | null>(null);
 
   const handleEditClick = (vaccine: Vaccine) => {
     setSelectedVaccine(vaccine);

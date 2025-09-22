@@ -6,11 +6,7 @@ import { Input } from "@/components/Inputs";
 import { Select } from "@/components/select";
 import { SelectBulls } from "@/components/select bulls";
 import { Textarea } from "@/components/Textarea";
-import {
-  type PajuelaToro,
-  type Toro,
-  type veterinario,
-} from "@/types";
+import { type PajuelaToro, type Toro, type veterinario } from "@/types";
 import type { CreateServe } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";

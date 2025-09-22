@@ -4,10 +4,10 @@ import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  
-  const response = await getData<ResponseCompradores>({endPoint:"compradores"});
-  const {compradores}=responseErrorServer(response);
-  
+  const response = await getData<ResponseCompradores>({
+    endPoint: "compradores",
+  });
+  const { compradores } = responseErrorServer(response);
 
   return <CreateSaleCattle ListaCompradoresRegistrados={compradores} />;
 }

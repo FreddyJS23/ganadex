@@ -1,8 +1,6 @@
 import { useThemeStore } from "@/stores/themeStore";
 import { ResponseResumenNatalidad } from "@/types";
-import {
-  optionChartLinePartosTotales,
-} from "@/utils/configCharts";
+import { optionChartLinePartosTotales } from "@/utils/configCharts";
 import {
   Chart as ChartJS,
   CategoryScale,

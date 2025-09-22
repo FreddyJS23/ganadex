@@ -67,10 +67,12 @@ export const TortaCausasFallecimientosGanado = ({
   //luego se crear un nuevo objecto con la propiedad plugins
   //se destructora el objeto de plugins
   //y se añade el plugin anotaciones
-  const options= {
+  const options = {
     ...optionsChart,
     plugins: { ...optionsChart.plugins, ...configAnotation },
   };
 
-  return <Doughnut data={datasets} options={options as ChartOptions<"doughnut"> } />;
+  return (
+    <Doughnut data={datasets} options={options as ChartOptions<"doughnut">} />
+  );
 };

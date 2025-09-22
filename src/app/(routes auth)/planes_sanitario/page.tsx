@@ -8,18 +8,22 @@ import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  
-  const response = await getData<ResponsePlanesSanitario>({endPoint:"planesSanitario"});
-  const {planes_sanitario}=responseErrorServer(response);
-  
-  
-  const response2 = await getData<ProximosPlanSanitario>({endPoint:"dashboarPlanesSanitarioProximosPlanes"});
-  const {proximos_planes_sanitario}=responseErrorServer(response2);  
+  const response = await getData<ResponsePlanesSanitario>({
+    endPoint: "planesSanitario",
+  });
+  const { planes_sanitario } = responseErrorServer(response);
 
-  const response3 = await getData<ResponsePlanesSanitario>({endPoint:"planesSanitariosPendientes"});
-  const {planes_sanitario:planes_sanitarios_pendientes}=responseErrorServer(response3);
+  const response2 = await getData<ProximosPlanSanitario>({
+    endPoint: "dashboarPlanesSanitarioProximosPlanes",
+  });
+  const { proximos_planes_sanitario } = responseErrorServer(response2);
 
- 
+  const response3 = await getData<ResponsePlanesSanitario>({
+    endPoint: "planesSanitariosPendientes",
+  });
+  const { planes_sanitario: planes_sanitarios_pendientes } =
+    responseErrorServer(response3);
+
   const existsPlanesSanitario = planes_sanitarios_pendientes.length > 0;
 
   const vacunasPendientes: string[] = [];

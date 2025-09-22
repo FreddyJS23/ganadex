@@ -82,7 +82,13 @@ const TotalNacimientosAñoActualTorta = forwardRef(function (
     },
   };
 
-  return <Doughnut ref={ref} options={options as ChartOptions<'doughnut'>} data={datasDoughnut} />;
+  return (
+    <Doughnut
+      ref={ref}
+      options={options as ChartOptions<"doughnut">}
+      data={datasDoughnut}
+    />
+  );
 });
 //al colocar el forwardRef en el componente se asegura que el componente  el linter queda con warin de display name
 TotalNacimientosAñoActualTorta.displayName = "TotalNacimientosAñoActualTorta";

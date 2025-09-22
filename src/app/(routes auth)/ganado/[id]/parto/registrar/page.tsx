@@ -16,22 +16,26 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  
-  const response = await getData<ResponseGanado>({endPoint:"ganado",id:params.id});
-  const {ganado}=responseErrorServer(response);
+  const response = await getData<ResponseGanado>({
+    endPoint: "ganado",
+    id: params.id,
+  });
+  const { ganado } = responseErrorServer(response);
 
-  const response2 = await getData<ResponseVeterinariosSelect>({endPoint:"veterinariosHaciendaActual"});
-  const {veterinarios}=responseErrorServer(response2);
-  
-  
-  const response3 = await getData<ResponseObrerosSelect>({endPoint:"obreros"});
-  const {obreros}=responseErrorServer(response3);
+  const response2 = await getData<ResponseVeterinariosSelect>({
+    endPoint: "veterinariosHaciendaActual",
+  });
+  const { veterinarios } = responseErrorServer(response2);
 
-    const response4 = await getData<ResponseSugerirNumero>({endPoint:"sugerirNumero"});
-  const {numero_disponible}=responseErrorServer(response4);
-    
+  const response3 = await getData<ResponseObrerosSelect>({
+    endPoint: "obreros",
+  });
+  const { obreros } = responseErrorServer(response3);
 
-
+  const response4 = await getData<ResponseSugerirNumero>({
+    endPoint: "sugerirNumero",
+  });
+  const { numero_disponible } = responseErrorServer(response4);
 
   const { user } = (await auth()) as Session;
   return (

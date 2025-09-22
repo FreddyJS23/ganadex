@@ -8,9 +8,13 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-
-  const response = await getData<ResponseParto>({endPoint:"ganado",id:params.id,endPointCattle:"parto",id2:params.id2});
-  const {parto}=responseErrorServer(response);
+  const response = await getData<ResponseParto>({
+    endPoint: "ganado",
+    id: params.id,
+    endPointCattle: "parto",
+    id2: params.id2,
+  });
+  const { parto } = responseErrorServer(response);
 
   return <ModalBirth parto={parto} />;
 }

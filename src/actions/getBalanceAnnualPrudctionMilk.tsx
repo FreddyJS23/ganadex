@@ -8,9 +8,9 @@ export async function getBalanceAnnualPrudctionMilk(
   year: number,
 ): Promise<BalanceMensualLeche[] | ResponseErrorNext> {
   const response = await getData<balanceAnualLeche>({
-    endPoint:"dashboardPrincipalbalanceAnualLeche",
-    param:year,
-});
+    endPoint: "dashboardPrincipalbalanceAnualLeche",
+    param: year,
+  });
 
   if ("error" in response) return response;
   else return response.balance_anual;

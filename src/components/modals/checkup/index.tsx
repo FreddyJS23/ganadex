@@ -2,10 +2,7 @@
 
 import { useDisclosure } from "@nextui-org/modal";
 import { LayoutModal } from "..";
-import {
-  type LayoutModalProps,
-  type Revision,
-} from "@/types";
+import { type LayoutModalProps, type Revision } from "@/types";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { useEditDelete } from "@/lib/hooks/useEditDelete";
 import { useParams, useRouter } from "next/navigation";

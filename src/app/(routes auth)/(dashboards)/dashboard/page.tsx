@@ -28,46 +28,60 @@ import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Home() {
-  const  get1  = await getData<ResponseTotalTiposGanado>({  endPoint:"dashboardPrincipaltotalGanadoTipo"});
-  const {total_tipos_ganado}=responseErrorServer(get1);
-  
-  
-  const get2  = await getData<TopVacasProductoras>({endPoint:"dashboardPrincipalvacasProductoras"});
-  const {top_vacas_productoras}=responseErrorServer(get2);
+  const get1 = await getData<ResponseTotalTiposGanado>({
+    endPoint: "dashboardPrincipaltotalGanadoTipo",
+  });
+  const { total_tipos_ganado } = responseErrorServer(get1);
 
+  const get2 = await getData<TopVacasProductoras>({
+    endPoint: "dashboardPrincipalvacasProductoras",
+  });
+  const { top_vacas_productoras } = responseErrorServer(get2);
 
-  const get3  = await getData<TopVacasMenosProductoras>(
-{  endPoint:"dashboardPrincipalvacasMenosProductoras"}      
-  );
-  const {top_vacas_menos_productoras}=responseErrorServer(get3);
+  const get3 = await getData<TopVacasMenosProductoras>({
+    endPoint: "dashboardPrincipalvacasMenosProductoras",
+  });
+  const { top_vacas_menos_productoras } = responseErrorServer(get3);
 
+  const get4 = await getData<TotalGanadoPendienteRevision>({
+    endPoint: "dashboardPrincipalpendienteRevision",
+  });
+  const { ganado_pendiente_revision } = responseErrorServer(get4);
 
-  const get4 = await getData<TotalGanadoPendienteRevision>({  endPoint:"dashboardPrincipalpendienteRevision"});
-  const {ganado_pendiente_revision}=responseErrorServer(get4);
-  
-  const get5 = await getData<TotalPersonal>({  endPoint:"dashboardPrincipaltotalPersonal"});
-  const {total_personal}=responseErrorServer(get5);
+  const get5 = await getData<TotalPersonal>({
+    endPoint: "dashboardPrincipaltotalPersonal",
+  });
+  const { total_personal } = responseErrorServer(get5);
 
-    const get6 = await getData<TotalVacasEnGestacion>({  endPoint:"dashboardPrincipalvacasGestacion"});
-    const {vacas_en_gestacion}=responseErrorServer(get6);
+  const get6 = await getData<TotalVacasEnGestacion>({
+    endPoint: "dashboardPrincipalvacasGestacion",
+  });
+  const { vacas_en_gestacion } = responseErrorServer(get6);
 
-  
-    const get7 = await getData<TotalVacasEnOrdeño>({  endPoint:"dashboardPrincipalVacasEnOrdeño"});
-    const {total_vacas_en_ordeño}=responseErrorServer(get7);
+  const get7 = await getData<TotalVacasEnOrdeño>({
+    endPoint: "dashboardPrincipalVacasEnOrdeño",
+  });
+  const { total_vacas_en_ordeño } = responseErrorServer(get7);
 
-    const get8 = await getData<TotalGanadoPendienteservir>({  endPoint:"dashboardPrincipalcantidadNovillasMontar"});
-    const {cantidad_vacas_para_servir}=responseErrorServer(get8);
+  const get8 = await getData<TotalGanadoPendienteservir>({
+    endPoint: "dashboardPrincipalcantidadNovillasMontar",
+  });
+  const { cantidad_vacas_para_servir } = responseErrorServer(get8);
 
-    const get9 = await getData<ResponseAñosProduccionLeche>({  endPoint:"añosProduccionLeche"});
-    const {años_produccion_leche}=responseErrorServer(get9);
+  const get9 = await getData<ResponseAñosProduccionLeche>({
+    endPoint: "añosProduccionLeche",
+  });
+  const { años_produccion_leche } = responseErrorServer(get9);
 
-    const get10 = await getData<balanceAnualLeche>({  endPoint:"dashboardPrincipalbalanceAnualLeche"});
-    const {balance_anual}=responseErrorServer(get10);
+  const get10 = await getData<balanceAnualLeche>({
+    endPoint: "dashboardPrincipalbalanceAnualLeche",
+  });
+  const { balance_anual } = responseErrorServer(get10);
 
-    const get11 = await getData<ResponsePlanesSanitario>({  endPoint:"planesSanitariosPendientes"});
-    const {planes_sanitario}=responseErrorServer(get11);
-
-
+  const get11 = await getData<ResponsePlanesSanitario>({
+    endPoint: "planesSanitariosPendientes",
+  });
+  const { planes_sanitario } = responseErrorServer(get11);
 
   const existsPlanesSanitario = planes_sanitario.length > 0;
   const session = (await auth()) as Session;

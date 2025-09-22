@@ -1,10 +1,7 @@
 "use server";
 
 import ErrorFromApi from "@/lib/errors/errorFromApi";
-import {
-  ResponseErrorFromApi,
-  ResponseErrorNext,
-} from "@/types";
+import { ResponseErrorFromApi, ResponseErrorNext } from "@/types";
 import { handleErrorFromApi } from "@/utils/handleErrorFromApi";
 import { handleResponse } from "@/utils/handleResponseApi";
 import { cookies } from "next/headers";

@@ -8,11 +8,12 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  
-  const response = await getData<ResponseGanado>({endPoint:"ganado",id:params.id});
-  const {ganado}=responseErrorServer(response);
-  const {numero, nombre}=ganado;
-  
+  const response = await getData<ResponseGanado>({
+    endPoint: "ganado",
+    id: params.id,
+  });
+  const { ganado } = responseErrorServer(response);
+  const { numero, nombre } = ganado;
 
   return <ModalDiscardCattle dataHeader={numero ? numero : nombre} />;
 }

@@ -1,4 +1,4 @@
-import {  type veterinario } from "@/types";
+import { type veterinario } from "@/types";
 import { Button, Select, type Selection, SelectItem } from "@nextui-org/react";
 import { useState } from "react";
 import SaveIcon from "@/icons/icono-save.svg";

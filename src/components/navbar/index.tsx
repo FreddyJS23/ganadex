@@ -33,11 +33,11 @@ const elementsAdmin = (
 };
 
 export const Navbar = async () => {
-  const response = await getData<ResponseFechaUltimoRespaldo>(
-   {endPoint:"fechaUltimoRespaldo",}
-  );
+  const response = await getData<ResponseFechaUltimoRespaldo>({
+    endPoint: "fechaUltimoRespaldo",
+  });
 
-  const {ultimo_backup}=responseErrorServer(response);
+  const { ultimo_backup } = responseErrorServer(response);
 
   const session = (await auth()) as Session;
   const role = session.user.rol;

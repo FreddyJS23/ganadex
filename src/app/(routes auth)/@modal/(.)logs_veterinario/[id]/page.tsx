@@ -8,10 +8,11 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  
-  const response = await getData<ResponseLogsVeterinary>({endPoint:"logsVeterinario",id:params.id});
-  const {logs}=responseErrorServer(response);
-  
+  const response = await getData<ResponseLogsVeterinary>({
+    endPoint: "logsVeterinario",
+    id: params.id,
+  });
+  const { logs } = responseErrorServer(response);
 
   return (
     <>

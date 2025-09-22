@@ -8,10 +8,12 @@ type ParamsPage = {
 };
 
 export default async function Page({ params }: ParamsPage) {
-  
-  const response = await getData<ResponsePesajesLeche>({endPoint:"ganado",id:params.id,endPointCattle:"pesajesLeche"});
-  const {pesajes_leche}=responseErrorServer(response);
-  
+  const response = await getData<ResponsePesajesLeche>({
+    endPoint: "ganado",
+    id: params.id,
+    endPointCattle: "pesajesLeche",
+  });
+  const { pesajes_leche } = responseErrorServer(response);
 
   return <ModalHistoryWeightMilk pesajes_leche={pesajes_leche} />;
 }

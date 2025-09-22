@@ -8,12 +8,12 @@ export async function createWeightMilk(
   formData: CreateWeightMilk,
   id: number,
 ): Promise<string | ResponseErrorNext> {
-  const response = await submitForm<CreateWeightMilk, ResponsePesajeLeche>(
-    {endPoint:"ganado",
-    data:formData,
+  const response = await submitForm<CreateWeightMilk, ResponsePesajeLeche>({
+    endPoint: "ganado",
+    data: formData,
     id,
-    endPointCattle:"pesajesLeche",}
-  );
+    endPointCattle: "pesajesLeche",
+  });
 
   if ("error" in response) return response;
   else return response.pesaje_leche.pesaje;
@@ -24,14 +24,14 @@ export async function updateWeightMilk(
   idCastle: number,
   formData: UpdateWeightMilk,
 ): Promise<string | ResponseErrorNext> {
-  const response = await submitForm<UpdateWeightMilk, ResponsePesajeLeche>(
-   {endPoint: "ganado",
-    method:"PUT",
-    data:formData,
-    id:idCastle,
-    endPointCattle:"pesajeLeche",
-    id2:idWeightMilk,}
-  );
+  const response = await submitForm<UpdateWeightMilk, ResponsePesajeLeche>({
+    endPoint: "ganado",
+    method: "PUT",
+    data: formData,
+    id: idCastle,
+    endPointCattle: "pesajeLeche",
+    id2: idWeightMilk,
+  });
 
   if ("error" in response) return response;
   else return response.pesaje_leche.pesaje;

@@ -1,12 +1,7 @@
 "use client";
 
 import { headerAllBirths } from "@/collections/headerColums";
-import {
-  Cria,
-  Partos,
-  ResponsePartosGeneral,
-  ToroDeServicio,
-} from "@/types";
+import { Cria, Partos, ResponsePartosGeneral, ToroDeServicio } from "@/types";
 
 import { Key, ReactNode, useCallback } from "react";
 import { TableComponent } from "..";

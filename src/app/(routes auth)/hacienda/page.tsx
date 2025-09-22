@@ -5,9 +5,8 @@ import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  
-  const response=await getData<ResponseHaciendas>({endPoint:"hacienda"});
-  const {haciendas}=responseErrorServer(response);
+  const response = await getData<ResponseHaciendas>({ endPoint: "hacienda" });
+  const { haciendas } = responseErrorServer(response);
 
   return haciendas.length == 0 ? (
     <CreateHacienda primeraHacienda={true} />

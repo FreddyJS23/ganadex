@@ -18,10 +18,11 @@ type ParamsPageBeef = {
 };
 
 export default async function Page({ params }: ParamsPageBeef) {
-  
-  const response = await getData<ResponseGanadoDescarte>({endPoint:"ganadoDescarte",id:params.id});
-  const {ganado_descarte, vacunaciones}=responseErrorServer(response);
-
+  const response = await getData<ResponseGanadoDescarte>({
+    endPoint: "ganadoDescarte",
+    id: params.id,
+  });
+  const { ganado_descarte, vacunaciones } = responseErrorServer(response);
 
   const session = (await auth()) as Session;
   const role = session.user.rol;
@@ -43,8 +44,11 @@ export default async function Page({ params }: ParamsPageBeef) {
   let responseHembra = {} as ResponseGanado;
 
   if (sexo == "H") {
-      const fetch = await getData<ResponseGanado>({endPoint:"ganado",id:params.id});
-      responseHembra=responseErrorServer(fetch);
+    const fetch = await getData<ResponseGanado>({
+      endPoint: "ganado",
+      id: params.id,
+    });
+    responseHembra = responseErrorServer(fetch);
   }
 
   //comprobar si tiene estado vendido o fallecido para no editar pesos

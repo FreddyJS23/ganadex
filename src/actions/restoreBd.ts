@@ -3,7 +3,9 @@
 import { RestoreLastBackup } from "@/services/restoreBd";
 import { ResponseErrorNext } from "@/types";
 
-export async function restoreBd(): Promise<void | ResponseErrorNext | undefined> {
+export async function restoreBd(): Promise<
+  void | ResponseErrorNext | undefined
+> {
   try {
     await RestoreLastBackup();
   } catch (error) {

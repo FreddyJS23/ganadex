@@ -12,17 +12,17 @@ import cattleImage from "public/cattle.png";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
-
 type ParamsPageBull = {
   params: { id: number };
 };
 
 export default async function Page({ params }: ParamsPageBull) {
-  
-  const response = await getData<ResponseToro>({endPoint:"toro",id:params.id});
-  const {toro,vacunaciones}=responseErrorServer(response);
-  
-  
+  const response = await getData<ResponseToro>({
+    endPoint: "toro",
+    id: params.id,
+  });
+  const { toro, vacunaciones } = responseErrorServer(response);
+
   const {
     numero,
     nombre,

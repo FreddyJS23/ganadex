@@ -6,10 +6,10 @@ import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
   /* endpoint erroneo a proposito para no tener error de tipo */
-  const response = await getData<ResponseCriasPendienteNumeracion>({endPoint:"actualizarConfig"});
-  const {crias_pendiente_numeracion}=responseErrorServer(response);
-  
-  
+  const response = await getData<ResponseCriasPendienteNumeracion>({
+    endPoint: "actualizarConfig",
+  });
+  const { crias_pendiente_numeracion } = responseErrorServer(response);
 
   return (
     <section>

@@ -5,9 +5,10 @@ import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  
-  const response = await getData<ResponseServiciosGeneral>({endPoint:"servicios"});
-  const {todos_servicios}=responseErrorServer(response);    
+  const response = await getData<ResponseServiciosGeneral>({
+    endPoint: "servicios",
+  });
+  const { todos_servicios } = responseErrorServer(response);
 
   return (
     <section>

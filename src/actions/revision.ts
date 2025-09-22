@@ -1,20 +1,27 @@
 "use serve";
 
 import { ResponseErrorNext } from "@/types";
-import { CreateAdminCheckUp, CreateBaseCheckUp, EditCheckUp } from "@/types/forms";
+import {
+  CreateAdminCheckUp,
+  CreateBaseCheckUp,
+  EditCheckUp,
+} from "@/types/forms";
 import { submitForm } from "@/services/apiClient";
 
 export async function createCheckUp(
   formData: CreateAdminCheckUp | CreateBaseCheckUp,
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await submitForm<CreateAdminCheckUp | CreateBaseCheckUp, void>(
-   { endPoint:"ganado",
-    
-    data:formData,
+  const response = await submitForm<
+    CreateAdminCheckUp | CreateBaseCheckUp,
+    void
+  >({
+    endPoint: "ganado",
+
+    data: formData,
     id,
-    endPointCattle:"revision",}
-  );
+    endPointCattle: "revision",
+  });
 
   if (typeof response == "object" && "error" in response) return response;
   else {
@@ -27,14 +34,14 @@ export async function editCheckUp(
   formData: EditCheckUp,
   id: number,
 ): Promise<void | ResponseErrorNext> {
-  const response = await submitForm<EditCheckUp, void>(
-   {endPoint: "ganado",
-    method:"PUT",
-    data:formData,
+  const response = await submitForm<EditCheckUp, void>({
+    endPoint: "ganado",
+    method: "PUT",
+    data: formData,
     id,
-    endPointCattle:"revision",
-    id2:idRevision,}
-  );
+    endPointCattle: "revision",
+    id2: idRevision,
+  });
 
   if (typeof response == "object" && "error" in response) return response;
   else {

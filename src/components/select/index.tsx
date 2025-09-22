@@ -18,7 +18,7 @@ type SelectProps = Pick<
   value?: string | number;
 };
 
-const EndElement = ({ content }: { content: "$" | "KG"  | "ML" }) => {
+const EndElement = ({ content }: { content: "$" | "KG" | "ML" }) => {
   return (
     <div className="pointer-events-none flex items-center">
       <span className="text-default-400 text-small sm:text-base">

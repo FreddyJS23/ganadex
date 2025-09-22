@@ -2,7 +2,6 @@ const isProduction = process.env.NODE_ENV === "production";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
- 
   /* si se usa docker, comentar el distDir y descomenta el output */
   distDir: isProduction ? "build" : undefined,
   // output: "standalone",

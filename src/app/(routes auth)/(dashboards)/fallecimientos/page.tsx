@@ -7,13 +7,16 @@ import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {
-  
-  const response = await getData<ResponseFallecimientos>({endPoint:"fallecimientos"});
-  const {fallecidos}=responseErrorServer(response);
+  const response = await getData<ResponseFallecimientos>({
+    endPoint: "fallecimientos",
+  });
+  const { fallecidos } = responseErrorServer(response);
 
-  const response2 = await getData<Fallecimientos>({endPoint:"dashboardFallecimientosCausasFrecuentes"});
-  const {causas_frecuentes, total_fallecidos}=responseErrorServer(response2);
-  
+  const response2 = await getData<Fallecimientos>({
+    endPoint: "dashboardFallecimientosCausasFrecuentes",
+  });
+  const { causas_frecuentes, total_fallecidos } =
+    responseErrorServer(response2);
 
   return (
     <section className="flex gap-8 flex-col">

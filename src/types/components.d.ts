@@ -145,7 +145,7 @@ type TooltipsBase = {
     | keyof typeof FORM_TOOLTIPS
     | keyof typeof DETAILS_GANADO_TOOLTIPS
     | keyof typeof TABLE_TOOLTIPS
-    | keyof typeof DETAILS_TITLES
+    | keyof typeof DETAILS_TITLES;
   placement?:
     | "top"
     | "bottom"

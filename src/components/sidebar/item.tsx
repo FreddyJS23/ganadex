@@ -1,9 +1,7 @@
 import IconoFlechaDerecha from "@/icons/icono-flecha_derecha.svg";
 import Link from "next/link";
-import { SidebarElementProps,  } from "@/types";
-import { iconsSidebar, } from "@/collections";
-
-
+import { SidebarElementProps } from "@/types";
+import { iconsSidebar } from "@/collections";
 
 export const SidebarElement = ({
   icon,

@@ -3,7 +3,7 @@
 import { headerStaff } from "@/collections/headerColums";
 import { Personal, PositionStaff } from "@/types";
 import { Key, ReactNode, useCallback, useState } from "react";
-import {  TableComponent } from "..";
+import { TableComponent } from "..";
 import IconAdd from "@/icons/icono-plus.svg";
 import IconRemove from "@/icons/icono-cerrar-notificacion.svg";
 import { toast } from "sonner";

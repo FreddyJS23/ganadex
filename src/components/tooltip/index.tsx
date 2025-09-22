@@ -57,7 +57,7 @@ export const Tooltip = forwardRef(function Tooltip(
 
 export const TooltipTipoGanado = forwardRef(function TooltipGanado(
   props: { tipo: "vaca" | "toro" },
-  ref:LegacyRef<HTMLSpanElement>,
+  ref: LegacyRef<HTMLSpanElement>,
 ) {
   return (
     <TooltipNextUI

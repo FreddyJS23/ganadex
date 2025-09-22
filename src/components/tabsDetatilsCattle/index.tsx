@@ -70,7 +70,6 @@ export const TabDetailsCattle = ({
   ganado_id,
   servicio_toro,
 }: TabsDetailsCattleProps) => {
-
   let disableTabs: Array<string> = [];
 
   if (isMale) {

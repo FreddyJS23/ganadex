@@ -56,19 +56,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        let user:User & {id:string,xsrf_token:string  | null, laravel_session:string | null} | null = null;
+        let user:
+          | (User & {
+              id: string;
+              xsrf_token: string | null;
+              laravel_session: string | null;
+            })
+          | null = null;
         try {
           // logic to verify if user exists
           const response = await authApi(credentials);
-          
-          if (typeof response == "object" && "error" in response!) throw response;
-          user = response as User & {id:string,xsrf_token:string  | null, laravel_session:string | null};
 
-          return user ;
+          if (typeof response == "object" && "error" in response!)
+            throw response;
+          user = response as User & {
+            id: string;
+            xsrf_token: string | null;
+            laravel_session: string | null;
+          };
+
+          return user;
         } catch (errorServe) {
           if (errorServe instanceof Error) throw new AuthError(ERROR_SERVER);
 
-          const codeStatusServe = errorServe as ResponseErrorFromApi ;
+          const codeStatusServe = errorServe as ResponseErrorFromApi;
           if (codeStatusServe.status == 401) throw new AuthError(ERROR_SIGNIN);
           else if (codeStatusServe.status == 419)
             throw new AuthError(ERROR_CORS);
