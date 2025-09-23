@@ -1,5 +1,5 @@
-import { CreateSaleCattle } from "@/components/create item in modal/create sale cattle";
-import { ResponseCompradores } from "@/types";
+import { CreateSaleCattle } from "@/components/modals/modal in pages/create sale cattle";
+import type { ResponseCompradores } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

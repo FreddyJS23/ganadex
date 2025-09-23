@@ -2,14 +2,14 @@
 
 import { createCheckUp } from "@/actions/revision";
 import { Input } from "@/components/Inputs";
-import { Select } from "@/components/select";
-import { SelectChecksType } from "@/components/select checks type";
+import { Select } from "@/components/selects/select";
+import { SelectChecksType } from "@/components/selects/select checks type";
 import { Textarea } from "@/components/Textarea";
-import {
+import type {
   AvailableVaccines,
   Toro,
-  type TipoRevision,
-  type veterinario,
+  TipoRevision,
+  veterinario,
 } from "@/types";
 import type { CreateAdminCheckUp, CreateBaseCheckUp } from "@/types/forms";
 import { Button } from "@/ui/Button";
@@ -25,10 +25,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { ChangeEvent, useEffect, useState } from "react";
-import { SelectVaccines } from "@/components/select vaccines";
+import { type ChangeEvent, useEffect, useState } from "react";
+import { SelectVaccines } from "@/components/selects/select vaccines";
 import { Checkbox } from "@nextui-org/react";
-import { SelectBulls } from "@/components/select bulls";
+import { SelectBulls } from "@/components/selects/select bulls";
 import { Tooltip } from "@/components/tooltip";
 
 type FormCreateCheckUpProps = {

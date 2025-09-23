@@ -1,6 +1,6 @@
 import { auth } from "@/app/auth";
-import { TabsProfile } from "@/components/tabs profile";
-import {
+import { TabsProfile } from "@/components/tabs/tabs profile";
+import type {
   ResponseHacienda,
   ResponseHaciendas,
   ResponseInformacionUsuarioLogeado,
@@ -11,7 +11,7 @@ import {
   ResponseVeterinariosUsuario,
 } from "@/types";
 import { getData } from "@/services/apiClient";
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 import { responseErrorServer } from "@/utils/returnError";
 
 export default async function Page() {

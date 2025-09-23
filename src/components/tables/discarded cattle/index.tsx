@@ -1,7 +1,7 @@
 "use client";
 
 import { headerBeef } from "@/collections/headerColums";
-import {
+import type {
   EstadosGanado,
   Pesos,
   GanadoDescarte,
@@ -9,15 +9,15 @@ import {
   User,
   Comprador,
 } from "@/types";
-import { ReactNode, useCallback, useState } from "react";
+import { type ReactNode, useCallback, useState } from "react";
 import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
-import { DropDownOptions } from "@/components/dropdown options";
-import { DropdownStatesCattle } from "@/components/dropdown states cattle";
+import { DropDownOptions } from "@/components/dropdowns/dropdown options";
+import { DropdownStatesCattle } from "@/components/dropdowns/dropdown states cattle";
 import IconCheck from "@/icons/icono-check.svg";
 import { useDisclosure } from "@nextui-org/react";
 import { Button } from "@/ui/Button";
-import { ModalSaleCattle } from "@/components/modals/sale cattle";
+import { ModalSaleCattle } from "@/components/modals/create/sale cattle";
 
 export const TableDiscardedCattle = ({
   ganado_descartes,

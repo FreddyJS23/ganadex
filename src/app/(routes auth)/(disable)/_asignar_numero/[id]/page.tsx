@@ -1,5 +1,5 @@
-import { ModalAssignmentNumberBullCalf } from "@/components/modals/assignment number bull calf";
-import { ResponseGanado } from "@/types";
+import { ModalAssignmentNumberBullCalf } from "@/components/modals/create/assignment number bull calf";
+import type { ResponseGanado } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

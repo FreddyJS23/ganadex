@@ -18,9 +18,9 @@ import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 
 import type { PreguntasSeguridad, RespuestasSeguridad } from "@/types";
 import React from "react";
-import { ElementProfile, LayoutCenterContentTabs } from "../tabs profile/items";
+import { ElementProfile, LayoutCenterContentTabs } from "../tabs/tabs profile/items";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
-import { Select } from "../select";
+import { Select } from "../selects/select";
 import type { CreateOrUpdateResponseSecurity } from "@/types/forms";
 import IconSave from "@/icons/icono-save.svg";
 import { useEditDelete } from "@/lib/hooks/useEditDelete";
@@ -209,7 +209,7 @@ const CreateOrEdit = (props: CreateOrEditProps) => {
         <div className="w-28 self-start">
           <Button
             type="submit"
-            onClick={() => {}}
+            onClick={() => { }}
             title="Guardar"
             content={
               <>

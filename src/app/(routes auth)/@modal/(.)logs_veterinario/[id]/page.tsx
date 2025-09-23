@@ -1,5 +1,5 @@
-import { ModalLogsVeterinary } from "@/components/modals/logs veterinary";
-import { ResponseLogsVeterinary } from "@/types";
+import { ModalLogsVeterinary } from "@/components/modals/view/logs veterinary";
+import type { ResponseLogsVeterinary } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

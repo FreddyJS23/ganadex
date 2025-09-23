@@ -1,7 +1,7 @@
 "use client";
 
 import { headerCasttle } from "@/collections/headerColums";
-import {
+import type {
   CabezasGanado,
   EstadosGanado,
   Pesos,
@@ -9,10 +9,10 @@ import {
   User,
 } from "@/types";
 import { getAge } from "@/utils/getAge";
-import { Key, ReactNode, useCallback } from "react";
+import { type Key, type ReactNode, useCallback } from "react";
 import { TableComponent } from "..";
-import { DropdownStatesCattle } from "@/components/dropdown states cattle";
-import { DropDownOptions } from "@/components/dropdown options";
+import { DropdownStatesCattle } from "@/components/dropdowns/dropdown states cattle";
+import { DropDownOptions } from "@/components/dropdowns/dropdown options";
 import { RedirectInTable } from "@/components/redirectsInTables";
 import IconCheck from "@/icons/icono-check.svg";
 

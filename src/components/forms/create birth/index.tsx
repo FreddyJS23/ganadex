@@ -3,11 +3,11 @@
 import { createBirth } from "@/actions/parto";
 import { formBirth, formCalfCastle } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
-import { Select } from "@/components/select";
-import { SelectVeterinariesAndWorkers } from "@/components/select veterinaries & workers";
+import { Select } from "@/components/selects/select";
+import { SelectVeterinariesAndWorkers } from "@/components/selects/select veterinaries & workers";
 import { Textarea } from "@/components/Textarea";
-import { veterinario } from "@/types";
-import { CreateAdminBirth, CreateBaseBirth } from "@/types/forms";
+import type { veterinario } from "@/types";
+import type { CreateAdminBirth, CreateBaseBirth } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 import { getDateNow } from "@/utils/getDateNow";
@@ -82,7 +82,7 @@ export const FormCreateBirth = ({
   const router = useRouter();
   const { id: cattleId } = useParams<{ id: string }>();
   const actionCreateBirth: () => void = handleSubmit(async (data) => {
-    const response = await createBirth(data, parseInt(cattleId));
+    const response = await createBirth(data, Number.parseInt(cattleId));
     /* manejar error del backend y mostrar mensaje */
     if (typeof response == "object" && "error" in response!)
       return toast.error(messageErrorApi(response));

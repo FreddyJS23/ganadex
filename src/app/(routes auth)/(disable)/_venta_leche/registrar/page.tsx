@@ -1,5 +1,5 @@
-import { CreateSaleMilk } from "@/components/create item in modal/create sale milk";
-import { ResponsePreciosLeche } from "@/types";
+import { CreateSaleMilk } from "@/components/modals/modal in pages/create sale milk";
+import type { ResponsePreciosLeche } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

@@ -1,13 +1,13 @@
 "use client";
 
 import { getResumenNatalidad } from "@/actions/getResumenNatalidad";
-import { SelectFilterYear } from "@/components/select filter year";
-import { ResponseErrorNext, ResponseResumenNatalidad } from "@/types";
+import { SelectFilterYear } from "@/components/selects/select filter year";
+import type { ResponseErrorNext, ResponseResumenNatalidad } from "@/types";
 import { useRef, useState } from "react";
 import { TotalNacimientosAñoActualTorta } from "./total doughnut";
 import { NatalidadUltimos5AñosBarra } from "./natalidad ultimos años";
 import { PartosUltimos5AñosLinea } from "./partos ultimos años";
-import { Chart as ChartJS } from "chart.js";
+import type { Chart as ChartJS } from "chart.js";
 import { toast } from "sonner";
 import IconReport from "@/icons/icono-imprimir.svg";
 import { Button, CircularProgress } from "@nextui-org/react";
@@ -37,7 +37,7 @@ export const ResumenNatalidad = (
 
   /* seleccion del año para el grafico */
   const [selectValue, setSelectValue] = useState(
-    parseInt(resumenNatalidad.nacimientos_año_actual.año),
+    Number.parseInt(resumenNatalidad.nacimientos_año_actual.año),
   );
 
   /* funcion para cambiar el año seleccionado */

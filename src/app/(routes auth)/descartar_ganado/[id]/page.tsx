@@ -1,5 +1,5 @@
-import { ModalDiscardCattle } from "@/components/modals/discard cattle";
-import { ResponseGanado } from "@/types";
+import { ModalDiscardCattle } from "@/components/modals/actions/discard cattle";
+import type { ResponseGanado } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

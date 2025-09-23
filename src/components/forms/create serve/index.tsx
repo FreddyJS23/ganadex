@@ -3,10 +3,10 @@
 import { createServe } from "@/actions/servicio";
 import { formService } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
-import { Select } from "@/components/select";
-import { SelectBulls } from "@/components/select bulls";
+import { Select } from "@/components/selects/select";
+import { SelectBulls } from "@/components/selects/select bulls";
 import { Textarea } from "@/components/Textarea";
-import { type PajuelaToro, type Toro, type veterinario } from "@/types";
+import type { PajuelaToro, Toro, veterinario } from "@/types";
 import type { CreateServe } from "@/types/forms";
 import { Button } from "@/ui/Button";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";

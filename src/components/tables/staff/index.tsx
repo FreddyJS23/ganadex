@@ -1,8 +1,8 @@
 "use client";
 
 import { headerStaff } from "@/collections/headerColums";
-import { Personal, PositionStaff } from "@/types";
-import { Key, ReactNode, useCallback, useState } from "react";
+import type { Personal, PositionStaff } from "@/types";
+import { type Key, type ReactNode, useCallback, useState } from "react";
 import { TableComponent } from "..";
 import IconAdd from "@/icons/icono-plus.svg";
 import IconRemove from "@/icons/icono-cerrar-notificacion.svg";
@@ -12,7 +12,7 @@ import { addInHacienda, removeInHacienda } from "@/actions/personal";
 import { useRouter } from "next/navigation";
 import { Button, useDisclosure } from "@nextui-org/react";
 import IconEdit from "@/icons/icono-editar.svg";
-import { ModalEditStaff } from "@/components/modals/edit staff";
+import { ModalEditStaff } from "@/components/modals/edits/edit staff";
 
 type TableStaffProps = {
   todo_personal: Personal[];

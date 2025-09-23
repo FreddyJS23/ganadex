@@ -3,7 +3,7 @@
 import { createStaff } from "@/actions/personal";
 import { formStaff } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
-import { Select } from "@/components/select";
+import { Select } from "@/components/selects/select";
 import type { ResponseCargosPersonal } from "@/types";
 import type { CreateStaff } from "@/types/forms";
 import { Button } from "@/ui/Button";

@@ -1,7 +1,7 @@
 "use client";
 
 import { getBalanceAnnualPrudctionMilk } from "@/actions/getBalanceAnnualPrudctionMilk";
-import { SelectFilterYear } from "@/components/select filter year";
+import { SelectFilterYear } from "@/components/selects/select filter year";
 import { useThemeStore } from "@/stores/themeStore";
 import type { ResponseAñosProduccionLeche } from "@/types";
 import type { BalanceMensualLeche } from "@/types/dashboard";

@@ -3,18 +3,18 @@ import IconServicio from "@/icons/icono-servir.svg";
 import IconRevision from "@/icons/icono-revision.svg";
 import IconPersonal from "@/icons/icono-personal.svg";
 import IconFlechaEstadoDolar from "@/icons/icono-flechaEstadoDolar.svg";
-import { DropDownOptionsCardsDashboard } from "../dropdown options cards dashboard";
+import { DropDownOptionsCardsDashboard } from "../dropdowns/dropdown options cards dashboard";
 import { abbrevationMonths } from "@/collections/abbrevationMonths";
 import { Tooltip } from "../tooltip";
 import { isSameYear } from "date-fns/fp";
 
 type ContentCardProp = {
   title:
-    | "Vacas preñadas"
-    | "Pendiente de servir"
-    | "Pendiente de revision"
-    | "Vacas en ordeño"
-    | "Personal";
+  | "Vacas preñadas"
+  | "Pendiente de servir"
+  | "Pendiente de revision"
+  | "Vacas en ordeño"
+  | "Personal";
   icon: "pregnant" | "serve" | "checkUp" | "staff";
   data: string | number;
 };

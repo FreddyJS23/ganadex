@@ -1,7 +1,7 @@
 import Image from "next/image";
 import cattleBackgroundLogin from "public/cattleBackgroundLogin.png";
 import { CarouselImagesLogin, CarouselTextLogin } from "@/components/carousel";
-import { TabLogin } from "@/components/tab login";
+import { TabLogin } from "@/components/tabs/tab login";
 import { Logos } from "@/ui/Logos";
 
 export default function Page() {

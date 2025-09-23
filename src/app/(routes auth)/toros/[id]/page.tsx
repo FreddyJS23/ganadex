@@ -1,12 +1,12 @@
 import { auth } from "@/app/auth";
 import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
-import { DropdownStatesCattle } from "@/components/dropdown states cattle";
+import { DropdownStatesCattle } from "@/components/dropdowns/dropdown states cattle";
 import { WeightsEditable } from "@/components/editable sections/weights";
-import { ModalEditAnimal } from "@/components/modals/edit animals";
-import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
-import { ResponseToro } from "@/types";
-import { Session } from "next-auth";
+import { ModalEditAnimal } from "@/components/modals/edits/edit animals";
+import { TabDetailsCattle } from "@/components/tabs/tabsDetatilsCattle";
+import type { ResponseToro } from "@/types";
+import type { Session } from "next-auth";
 import Image from "next/image";
 import cattleImage from "public/cattle.png";
 import { getData } from "@/services/apiClient";

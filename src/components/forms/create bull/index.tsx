@@ -7,7 +7,7 @@ import {
 } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Button } from "@/ui/Button";
-import { Select } from "@/components/select";
+import { Select } from "@/components/selects/select";
 import { Select as SelectNextUI, SelectItem } from "@nextui-org/select";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

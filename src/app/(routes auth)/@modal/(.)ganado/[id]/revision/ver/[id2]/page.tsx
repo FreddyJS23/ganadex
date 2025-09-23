@@ -1,5 +1,5 @@
-import { ModalCheckUp } from "@/components/modals/checkup";
-import { ResponseRevision } from "@/types";
+import { ModalCheckUp } from "@/components/modals/view/checkup";
+import type { ResponseRevision } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

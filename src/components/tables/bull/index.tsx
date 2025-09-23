@@ -1,12 +1,12 @@
 "use client";
 
 import { headerBull } from "@/collections/headerColums";
-import { EstadosGanado, Pesos, ResponseToros, Toro, User } from "@/types";
-import { Key, ReactNode, useCallback } from "react";
+import type { EstadosGanado, Pesos, ResponseToros, Toro, User } from "@/types";
+import { type Key, type ReactNode, useCallback } from "react";
 import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
-import { DropDownOptions } from "@/components/dropdown options";
-import { DropdownStatesCattle } from "@/components/dropdown states cattle";
+import { DropDownOptions } from "@/components/dropdowns/dropdown options";
+import { DropdownStatesCattle } from "@/components/dropdowns/dropdown states cattle";
 import IconCheck from "@/icons/icono-check.svg";
 
 export const TableBull = ({

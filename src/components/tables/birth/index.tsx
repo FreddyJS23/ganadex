@@ -1,12 +1,17 @@
 "use client";
 
 import { headerAllBirths } from "@/collections/headerColums";
-import { Cria, Partos, ResponsePartosGeneral, ToroDeServicio } from "@/types";
+import type {
+  Cria,
+  Partos,
+  ResponsePartosGeneral,
+  ToroDeServicio,
+} from "@/types";
 
-import { Key, ReactNode, useCallback } from "react";
+import { type Key, type ReactNode, useCallback } from "react";
 import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
-import { DropDownOptions } from "@/components/dropdown options";
+import { DropDownOptions } from "@/components/dropdowns/dropdown options";
 
 export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
   const renderCell = useCallback((partos: Partos, columnKey: Key) => {
@@ -77,5 +82,17 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
       renderCell={renderCell}
       type="parto"
     />
+  );
+};
+type = "parto"
+  />
+  );
+};
+type = "parto"
+  />
+  );
+};
+type = "parto"
+  />
   );
 };
