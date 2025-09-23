@@ -1,5 +1,5 @@
-import { ModalCreateUpdateCausaFallecimiento } from "@/components/modals/tipo fallecimiento";
-import { ResponseCausaFallecimiento } from "@/types";
+import { ModalCreateUpdateCausaFallecimiento } from "@/components/modals/create/tipo fallecimiento";
+import type { ResponseCausaFallecimiento } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

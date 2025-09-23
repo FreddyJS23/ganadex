@@ -1,10 +1,10 @@
 "use client";
 
 import { getBalanceAnnualSaleCattle } from "@/actions/getBalanceAnnualSaleCattle";
-import { SelectFilterYear } from "@/components/select filter year";
+import { SelectFilterYear } from "@/components/selects/select filter year";
 import { useThemeStore } from "@/stores/themeStore";
-import { ResponseAñosVentaGanado } from "@/types";
-import {
+import type { ResponseAñosVentaGanado } from "@/types";
+import type {
   BalanceAnualVentaGanado,
   BalanceMensualVentaGanado,
 } from "@/types/dashboard";
@@ -14,7 +14,7 @@ import {
   paletteBorderColor,
 } from "@/utils/configCharts";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { ChartData } from "chart.js";
+import type { ChartData } from "chart.js";
 import {
   Chart as ChartJS,
   CategoryScale,

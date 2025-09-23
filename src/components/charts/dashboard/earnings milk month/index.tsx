@@ -1,9 +1,9 @@
 "use client";
 
 import { getBalanceMonthlySaleMilk } from "@/actions/getBalanceMonthlySaleMilk";
-import { SelectFilterMonth } from "@/components/select filter month";
+import { SelectFilterMonth } from "@/components/selects/select filter month";
 import { useThemeStore } from "@/stores/themeStore";
-import {
+import type {
   BalanceDiarioVentaLeche,
   BalanceMensualVentaLeche,
 } from "@/types/dashboard";
@@ -19,7 +19,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  ChartData,
+  type ChartData,
   TimeScale,
 } from "chart.js";
 import "chartjs-adapter-date-fns";

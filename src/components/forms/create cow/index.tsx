@@ -9,7 +9,7 @@ import { Input } from "@/components/Inputs";
 import { Button } from "@/ui/Button";
 import { Select as SelectNextUI, SelectItem } from "@nextui-org/select";
 import { Chip } from "@nextui-org/chip";
-import { Select } from "@/components/select";
+import { Select } from "@/components/selects/select";
 import { Controller, useForm } from "react-hook-form";
 import {
   castleShema,
@@ -22,11 +22,11 @@ import { createCastle } from "@/actions/vaca";
 import { toast } from "sonner";
 import { type ChangeEvent, useEffect, useRef, useState } from "react";
 import { Checkbox, type Selection } from "@nextui-org/react";
-import {
-  type AvailableVaccines,
-  type CausaFallecimiento,
-  type Comprador,
-  type ListaVacunas,
+import type {
+  AvailableVaccines,
+  CausaFallecimiento,
+  Comprador,
+  ListaVacunas,
 } from "@/types";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
 import { CreateListVaccination } from "@/components/create list vaccination";

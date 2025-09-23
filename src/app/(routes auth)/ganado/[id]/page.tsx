@@ -1,17 +1,17 @@
 import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
-import { DropdownStatesCattle } from "@/components/dropdown states cattle";
-import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
-import { ResponseGanado } from "@/types";
+import { DropdownStatesCattle } from "@/components/dropdowns/dropdown states cattle";
+import { TabDetailsCattle } from "@/components/tabs/tabsDetatilsCattle";
+import type { ResponseGanado } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 import Image from "next/image";
 import cattleImage from "public/cattle.png";
-import { DropDownOptions } from "@/components/dropdown options";
+import { DropDownOptions } from "@/components/dropdowns/dropdown options";
 import { auth } from "@/app/auth";
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 import { WeightsEditable } from "@/components/editable sections/weights";
-import { ModalEditAnimal } from "@/components/modals/edit animals";
+import { ModalEditAnimal } from "@/components/modals/edits/edit animals";
 
 type ParamsPageCattle = {
   params: { id: number };
@@ -43,7 +43,7 @@ export default async function Page({ params }: ParamsPageCattle) {
   let disabledSomeTabs = true;
   if (ganado.pesos?.peso_actual) {
     if (
-      parseInt(ganado.pesos?.peso_actual) >=
+      Number.parseInt(ganado.pesos?.peso_actual) >=
       session.user.configuracion.peso_servicio
     )
       disabledSomeTabs = false;

@@ -1,5 +1,5 @@
-import { ModalCastrateBullCalf } from "@/components/modals/castrate bull calf";
-import { ResponseGanado } from "@/types";
+import { ModalCastrateBullCalf } from "@/components/modals/create/castrate bull calf";
+import type { ResponseGanado } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

@@ -1,4 +1,4 @@
-import { UpdateConfiguration } from "@/components/create item in modal/update configuration";
+import { UpdateConfiguration } from "@/components/modals/modal in pages/update configuration";
 
 export default async function Page() {
   return <UpdateConfiguration />;

@@ -1,13 +1,13 @@
 "use client";
 
 import { headersColumnsUserVeterinary } from "@/collections/headerColums";
-import { ResponseVeterinariosUsuario, UserVeterinaryInfo } from "@/types";
-import { Key, ReactNode, useCallback, useState } from "react";
+import type { ResponseVeterinariosUsuario, UserVeterinaryInfo } from "@/types";
+import { type Key, type ReactNode, useCallback, useState } from "react";
 import { TableComponent } from "..";
 import { useDisclosure } from "@nextui-org/react";
 import IconDelete from "@/icons/icono-error.svg";
 import IconLogs from "@/icons/icono-logs.svg";
-import { ModalDeleteUserVeterinary } from "@/components/modals/delete user veterinary";
+import { ModalDeleteUserVeterinary } from "@/components/modals/actions/delete user veterinary";
 import Link from "next/link";
 
 export const TableVeterinaryUsers = ({

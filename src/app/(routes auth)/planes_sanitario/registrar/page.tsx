@@ -1,5 +1,5 @@
-import { CreateVaccinationDay } from "@/components/create item in modal/create vaccination day";
-import { ResponseVacunasDisponibles } from "@/types";
+import { CreateVaccinationDay } from "@/components/modals/modal in pages/create vaccination day";
+import type { ResponseVacunasDisponibles } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

@@ -1,16 +1,16 @@
 import { deleteHacienda, editHacienda } from "@/actions/hacienda";
 import { ChangeSessionHacienda } from "@/components/change session hacienda";
 import { Input } from "@/components/Inputs";
-import { ElementProfile } from "@/components/tabs profile/items";
+import { ElementProfile } from "@/components/tabs/tabs profile/items";
 import { useEditDelete } from "@/lib/hooks/useEditDelete";
-import { Hacienda, UserLoginInfo } from "@/types";
-import { CreateHacienda } from "@/types/forms";
+import type { Hacienda, UserLoginInfo } from "@/types";
+import type { CreateHacienda } from "@/types/forms";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { createHaciendaShema } from "@/validations/hacienda";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { ReactNode, useRef } from "react";
+import { type ReactNode, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 

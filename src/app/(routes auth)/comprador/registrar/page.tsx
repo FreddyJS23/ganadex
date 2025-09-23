@@ -1,4 +1,4 @@
-import { CreateCustomer } from "@/components/create item in modal/create customer";
+import { CreateCustomer } from "@/components/modals/modal in pages/create customer";
 
 export default async function Page() {
   return <CreateCustomer />;

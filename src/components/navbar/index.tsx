@@ -4,13 +4,13 @@ import { NotificationMain } from "../notifications";
 import { HamburgerButton } from "@/ui/HamburgerButton";
 import { Sidebar } from "../sidebar";
 import { getData } from "@/services/apiClient";
-import { ResponseFechaUltimoRespaldo } from "@/types";
+import type { ResponseFechaUltimoRespaldo } from "@/types";
 import Link from "next/link";
-import { ButtonRestoreBd } from "../buttonRestoreBd";
-import { ButtonBackupBd } from "../buttonBackuppBd";
-import { ButtonGenerateReport } from "../buttonPrintReports";
+import { ButtonRestoreBd } from "../buttons/buttonRestoreBd";
+import { ButtonBackupBd } from "../buttons/buttonBackuppBd";
+import { ButtonGenerateReport } from "../buttons/buttonPrintReports";
 import { auth } from "@/app/auth";
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 import { NameHacienda } from "./item";
 import { responseErrorServer } from "@/utils/returnError";
 

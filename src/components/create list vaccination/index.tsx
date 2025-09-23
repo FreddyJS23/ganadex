@@ -11,8 +11,8 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { toast } from "sonner";
-import { AvailableVaccines, ListaVacunas } from "@/types";
-import { SelectVaccines } from "../select vaccines";
+import type { AvailableVaccines, ListaVacunas } from "@/types";
+import { SelectVaccines } from "../selects/select vaccines";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 
 type ModalProps = {
@@ -93,7 +93,7 @@ export const CreateListVaccination = ({
     setFecha("");
     setValueSelect(null);
   };
-  const aplicarIntervaloDosis = (fecha: string, intervalo: number = 1) => {
+  const aplicarIntervaloDosis = (fecha: string, intervalo = 1) => {
     const fechaVacunacion = new Date(fecha);
     //calcular el proximo dosis
     fechaVacunacion.setDate(fechaVacunacion.getDate() + intervalo);

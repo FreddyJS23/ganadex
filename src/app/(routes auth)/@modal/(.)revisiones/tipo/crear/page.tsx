@@ -1,4 +1,4 @@
-import { ModalCreateUpdateTypeCheck } from "@/components/modals/type check";
+import { ModalCreateUpdateTypeCheck } from "@/components/modals/create/type check";
 import { headers } from "next/headers";
 
 export default function Page() {

@@ -1,5 +1,5 @@
-import { CreateDeathCattle } from "@/components/create item in modal/create death cattle";
-import { ResponseCausasFallecimiento } from "@/types";
+import { CreateDeathCattle } from "@/components/modals/modal in pages/create death cattle";
+import type { ResponseCausasFallecimiento } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

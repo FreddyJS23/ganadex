@@ -1,9 +1,9 @@
 import { headerVaccines } from "@/collections/headerColums";
-import { ModalCreateEditVaccine } from "@/components/modals/create-edit Vaccine";
+import { ModalCreateEditVaccine } from "@/components/modals/create/create-edit Vaccine";
 import ButtonEdit from "@/ui/ButtonEdit";
 import { useDisclosure } from "@nextui-org/react";
 import { useState } from "react";
-import { Vaccine } from "@/types";
+import type { Vaccine } from "@/types";
 
 export const TableAvailableVaccines = ({ vacunas }: { vacunas: Vaccine[] }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

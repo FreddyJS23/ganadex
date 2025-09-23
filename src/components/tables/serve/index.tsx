@@ -1,11 +1,15 @@
 "use client";
 
 import { headerAllServes } from "@/collections/headerColums";
-import { ResponseServiciosGeneral, Servicios, ToroDeServicio } from "@/types";
-import { Key, ReactNode, useCallback } from "react";
+import type {
+  ResponseServiciosGeneral,
+  Servicios,
+  ToroDeServicio,
+} from "@/types";
+import { type Key, type ReactNode, useCallback } from "react";
 import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
-import { DropDownOptions } from "@/components/dropdown options";
+import { DropDownOptions } from "@/components/dropdowns/dropdown options";
 
 export const TableAllServes = ({
   todos_servicios,
@@ -78,6 +82,15 @@ export const TableAllServes = ({
       items={todos_servicios}
       renderCell={renderCell}
       type="servicio"
+    />
+  );
+};
+    />
+  );
+};
+    />
+  );
+};
     />
   );
 };

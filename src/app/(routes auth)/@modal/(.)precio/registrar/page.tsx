@@ -1,4 +1,4 @@
-import { CreatePriceMilk } from "@/components/create item in modal/create price milk";
+import { CreatePriceMilk } from "@/components/modals/modal in pages/create price milk";
 
 export default async function Page() {
   return <CreatePriceMilk />;

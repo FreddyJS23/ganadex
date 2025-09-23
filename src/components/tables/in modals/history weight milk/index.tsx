@@ -1,8 +1,8 @@
 "use client";
 
 import { headerWeightMilk } from "@/collections/headerColums";
-import { ModalUpdateWeightMilk } from "@/components/modals/update weight milk";
-import { PesajeLecheGanado, ResponsePesajesLeche } from "@/types";
+import { ModalUpdateWeightMilk } from "@/components/modals/edits/update weight milk";
+import type { PesajeLecheGanado, ResponsePesajesLeche } from "@/types";
 import ButtonEdit from "@/ui/ButtonEdit";
 import { useDisclosure } from "@nextui-org/react";
 import { useState } from "react";

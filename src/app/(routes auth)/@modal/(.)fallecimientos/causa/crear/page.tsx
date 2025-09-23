@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { ModalCreateUpdateCausaFallecimiento } from "@/components/modals/tipo fallecimiento";
+import { ModalCreateUpdateCausaFallecimiento } from "@/components/modals/create/tipo fallecimiento";
 
 export default function Page() {
   const headersList = headers();

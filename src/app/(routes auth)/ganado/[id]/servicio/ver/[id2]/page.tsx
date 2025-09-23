@@ -1,5 +1,5 @@
-import { ModalServe } from "@/components/modals/serve";
-import { ResponseServicio } from "@/types";
+import { ModalServe } from "@/components/modals/view/serve";
+import type { ResponseServicio } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

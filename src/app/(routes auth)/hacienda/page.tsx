@@ -1,6 +1,6 @@
-import { CreateHacienda } from "@/components/create item in modal/create hacienda";
-import { ModalSelectHaciendaSesion } from "@/components/modals/select hacienda sesion";
-import { ResponseHaciendas } from "@/types";
+import { CreateHacienda } from "@/components/modals/modal in pages/create hacienda";
+import { ModalSelectHaciendaSesion } from "@/components/modals/create/select hacienda sesion";
+import type { ResponseHaciendas } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

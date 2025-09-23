@@ -1,8 +1,8 @@
 import { TortaCausasFallecimientosGanado } from "@/components/charts/dashboard/common cause dead doughnut";
-import { DropdownCausaFallecimiento } from "@/components/dropdown causa fallecimiento";
+import { DropdownCausaFallecimiento } from "@/components/dropdowns/dropdown causa fallecimiento";
 import { TableDeadCattle } from "@/components/tables/death cattle";
-import { ResponseFallecimientos } from "@/types";
-import { Fallecimientos } from "@/types/dashboard";
+import type { ResponseFallecimientos } from "@/types";
+import type { Fallecimientos } from "@/types/dashboard";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

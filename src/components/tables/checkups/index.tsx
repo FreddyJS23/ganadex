@@ -1,11 +1,15 @@
 "use client";
 
 import { headerAllCheckup } from "@/collections/headerColums";
-import { ResponseRevisionesGeneral, Revisiones, TipoRevision } from "@/types";
-import { Key, ReactNode, useCallback } from "react";
+import type {
+  ResponseRevisionesGeneral,
+  Revisiones,
+  TipoRevision,
+} from "@/types";
+import { type Key, type ReactNode, useCallback } from "react";
 import { TableComponent } from "..";
 import { RedirectInTable } from "@/components/redirectsInTables";
-import { DropDownOptions } from "@/components/dropdown options";
+import { DropDownOptions } from "@/components/dropdowns/dropdown options";
 
 export const TableAllCheckups = ({
   todas_revisiones,
@@ -68,6 +72,15 @@ export const TableAllCheckups = ({
       columnsCollection={headerAllCheckup}
       items={todas_revisiones}
       renderCell={renderCell}
+    />
+  );
+};
+    />
+  );
+};
+    />
+  );
+};
     />
   );
 };

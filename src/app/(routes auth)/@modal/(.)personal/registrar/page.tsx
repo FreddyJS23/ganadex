@@ -1,5 +1,5 @@
-import { ModalCreatePersonal } from "@/components/modals/create personal";
-import { ResponseCargosPersonal } from "@/types";
+import { ModalCreatePersonal } from "@/components/modals/create/create personal";
+import type { ResponseCargosPersonal } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

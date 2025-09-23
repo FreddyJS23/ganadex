@@ -1,15 +1,15 @@
 import { auth } from "@/app/auth";
 import { DetailsCattle } from "@/collections";
 import { Details } from "@/components/details";
-import { DropDownOptions } from "@/components/dropdown options";
-import { DropdownStatesCattle } from "@/components/dropdown states cattle";
+import { DropDownOptions } from "@/components/dropdowns/dropdown options";
+import { DropdownStatesCattle } from "@/components/dropdowns/dropdown states cattle";
 import { WeightsEditable } from "@/components/editable sections/weights";
-import { ModalEditAnimal } from "@/components/modals/edit animals";
-import { TabDetailsCattle } from "@/components/tabsDetatilsCattle";
-import { ResponseGanado, ResponseGanadoDescarte } from "@/types";
+import { ModalEditAnimal } from "@/components/modals/edits/edit animals";
+import { TabDetailsCattle } from "@/components/tabs/tabsDetatilsCattle";
+import type { ResponseGanado, ResponseGanadoDescarte } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 import Image from "next/image";
 import cattleImage from "public/cattle.png";
 

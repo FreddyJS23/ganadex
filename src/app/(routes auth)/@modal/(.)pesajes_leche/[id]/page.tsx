@@ -1,5 +1,5 @@
-import { ModalWeightMilk } from "@/components/modals/weight milk";
-import { ResponseGanado } from "@/types";
+import { ModalWeightMilk } from "@/components/modals/create/weight milk";
+import type { ResponseGanado } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

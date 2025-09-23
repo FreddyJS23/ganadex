@@ -1,5 +1,5 @@
-import { ModalBirth } from "@/components/modals/birth";
-import { ResponseParto } from "@/types";
+import { ModalBirth } from "@/components/modals/view/birth";
+import type { ResponseParto } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 

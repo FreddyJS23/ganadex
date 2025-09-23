@@ -1,5 +1,5 @@
-import { ModalCreateUpdateTypeCheck } from "@/components/modals/type check";
-import { ResponseTipoRevision } from "@/types";
+import { ModalCreateUpdateTypeCheck } from "@/components/modals/create/type check";
+import type { ResponseTipoRevision } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
 
