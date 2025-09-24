@@ -4,7 +4,7 @@ import { useDisclosure } from "@nextui-org/modal";
 import { LayoutModal } from "../..";
 import type { LayoutModalProps, Revision } from "@/types";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
-import { useEditDelete } from "@/lib/hooks/useEditDelete";
+import { useEditDelete } from "@/hooks/useEditDelete";
 import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
 import type { EditCheckUp } from "@/types/forms";

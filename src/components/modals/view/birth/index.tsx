@@ -3,7 +3,7 @@
 import { RedirectInTable } from "@/components/redirectsInTables";
 import { LayoutModal } from "../..";
 import type { ModalProps, Parto } from "@/types";
-import { useEditDelete } from "@/lib/hooks/useEditDelete";
+import { useEditDelete } from "@/hooks/useEditDelete";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { useRef } from "react";
 import { useParams, useRouter } from "next/navigation";

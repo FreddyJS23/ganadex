@@ -2,7 +2,7 @@ import { deleteHacienda, editHacienda } from "@/actions/hacienda";
 import { ChangeSessionHacienda } from "@/components/change session hacienda";
 import { Input } from "@/components/Inputs";
 import { ElementProfile } from "@/components/tabs/tabs profile/items";
-import { useEditDelete } from "@/lib/hooks/useEditDelete";
+import { useEditDelete } from "@/hooks/useEditDelete";
 import type { Hacienda, UserLoginInfo } from "@/types";
 import type { CreateHacienda } from "@/types/forms";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";

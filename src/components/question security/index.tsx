@@ -23,7 +23,7 @@ import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { Select } from "../selects/select";
 import type { CreateOrUpdateResponseSecurity } from "@/types/forms";
 import IconSave from "@/icons/icono-save.svg";
-import { useEditDelete } from "@/lib/hooks/useEditDelete";
+import { useEditDelete } from "@/hooks/useEditDelete";
 
 type QuestionSecurityProps = {
   preguntas_seguridad: PreguntasSeguridad[];
