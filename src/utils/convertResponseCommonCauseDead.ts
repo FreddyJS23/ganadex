@@ -1,5 +1,6 @@
 import { CausaFrecuente } from "@/types/dashboard";
 
+/**Dividir los datos de causas frecuentes y la cantidad de muertes por causa frecuente*/
 export const getCommonCausesDeadAndTotalDead = (
   causesDead: CausaFrecuente[],
 ) => {

@@ -1,6 +1,6 @@
 import { ResponseErrorNext } from "@/types";
 
-/** Función para devolver el mensaje de error del servidor de laravel */
+/** Devolver un mensaje de error en un formato estándar para usarlo en un toast */
 export const messageErrorApi = (res: ResponseErrorNext): string | null => {
   /* combrobar si es un objecto para evitar problemas de con el compilador typescript */
   if (typeof res === "object" && res !== null) {

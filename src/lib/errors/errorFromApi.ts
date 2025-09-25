@@ -1,5 +1,10 @@
 import { ResponseErrorFromApi } from "@/types";
 
+
+/**  Clase personalizada de error que se utiliza para manejar errores de la API.
+ * @param message Mensaje de error
+ * @param error Objeto con información del error
+ */
 class ErrorFromApi extends Error {
   error: ResponseErrorFromApi;
 

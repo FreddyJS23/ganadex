@@ -1,7 +1,7 @@
 import ErrorFromApi from "@/lib/errors/errorFromApi";
 import { ResponseErrorNext } from "@/types";
 
-/** Función para tranformar un error proveniente del servidor de laravel */
+/** Función para trasformar un error proveniente de una petición hecha a la api de Laravel*/
 export const handleErrorFromApi = (e: unknown): ResponseErrorNext => {
   if (e instanceof ErrorFromApi) {
     const { status, data } = e.error;

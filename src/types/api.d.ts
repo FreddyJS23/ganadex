@@ -44,28 +44,12 @@ type errors = {
   [index: string]: [];
 };
 
-/** Respuesta del servidor */
-export type Response = {
-  /** Informacion de la repuesta */
-  data: ResponseGanado | Ganado;
-  /**Código de respuesta del servidor*/
-  status: number;
-};
 
-/** Respuesta del servidor */
-export type ResponseCorrect = {
-  /** Informacion de la repuesta */
-  message: string;
-};
-
+/** Formato de respuesta de error al enviar un formulario con errores en los campos   */
 export type ResponseErrorCampos = {
   message: string;
   errors: errors;
 };
-/* export type ResponseError = {
-    status: number;
-    data: ResponseErrorCampos;
-}; */
 
 /** Respuesta del servidor de laravel */
 export type ResponseErrorFromApi = {
@@ -80,7 +64,7 @@ export type ResponseErrorNext = {
 
 export type ResponseRestablecerContraseñaUsuario = {
   token: string;
-  preguntas: PreguntaSeguridad[];
+  preguntas:PreguntasSeguridad[];
 };
 
 export type ResponseGanado = {

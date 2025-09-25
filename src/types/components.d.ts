@@ -112,6 +112,25 @@ export type InputProps = {
   placeholder?: string;
 };
 
+
+export type SelectOptions={
+  label: string | number 
+  value: string | number;
+}
+
+export type SelectProps = Pick<
+  InputProps,
+  "id" | "description" | "label" | "endContent" | "required" | "errors"
+> & {
+  items: SelectOptions[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  field: any;
+  handleSelectionChange?: (select: string | number) => void;
+  tooltipTipoGanado?: boolean;
+  tipo?: "vaca" | "toro";
+  value?: string | number;
+};
+
 export type LayoutModalProps = {
   /**Body del modal   */
   children: JSX.Element;

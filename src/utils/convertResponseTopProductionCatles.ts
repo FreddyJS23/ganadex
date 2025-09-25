@@ -1,5 +1,7 @@
 import { vacaProductora } from "@/types/dashboard";
 
+/** Dividir los datos de produccion de leche y el numero de la vaca para gráfico de top 3 produccion
+ * para el gráfico de top 3 produccion de leche */
 export const getTopProductionCastle = (
   topProductionCatle: vacaProductora[],
 ) => {

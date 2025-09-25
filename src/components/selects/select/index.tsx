@@ -1,22 +1,11 @@
-import type { InputProps } from "@/types";
 import type { Selection } from "@nextui-org/react";
 import { Select as SelectNextUI, SelectItem } from "@nextui-org/select";
 import { useState } from "react";
 import { TooltipTipoGanado } from "../../tooltip";
 import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
+import { SelectProps } from "@/types";
 
-type SelectProps = Pick<
-  InputProps,
-  "id" | "description" | "label" | "endContent" | "required" | "errors"
-> & {
-  items: { value: string | number; label: string | number }[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  field: any;
-  handleSelectionChange?: (select: string | number) => void;
-  tooltipTipoGanado?: boolean;
-  tipo?: "vaca" | "toro";
-  value?: string | number;
-};
+
 
 const EndElement = ({ content }: { content: "$" | "KG" | "ML" }) => {
   return (

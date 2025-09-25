@@ -1,6 +1,9 @@
 import { TypesCattle } from "@/types";
 import { TotalTiposGanado } from "@/types/dashboard";
 
+/** Dividir los tipos de ganado y la cantidad de tipos por tipo de ganado
+ * para el gráfico de torta
+ */
 export const getCastleType = (totalTypesCattle: TotalTiposGanado[]) => {
   const typesCattle: Array<keyof typeof TypesCattle> = [];
   const numberTypes: number[] = [];
