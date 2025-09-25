@@ -29,7 +29,7 @@ import type {
   ListaVacunas,
 } from "@/types";
 import { converToSelectOptions } from "@/utils/convertResponseInOptionsSelect";
-import { CreateListVaccination } from "@/components/create list vaccination";
+import { CreateListVaccination } from "@/components/modals/create/create list vaccination";
 import { useRouter } from "next/navigation";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 

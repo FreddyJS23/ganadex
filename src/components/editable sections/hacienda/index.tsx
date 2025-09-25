@@ -1,5 +1,5 @@
 import { deleteHacienda, editHacienda } from "@/actions/hacienda";
-import { ChangeSessionHacienda } from "@/components/change session hacienda";
+import { ChangeSessionHacienda } from "@/components/modals/actions/change session hacienda";
 import { Input } from "@/components/Inputs";
 import { ElementProfile } from "@/components/tabs/tabs profile/items";
 import { useEditDelete } from "@/hooks/useEditDelete";

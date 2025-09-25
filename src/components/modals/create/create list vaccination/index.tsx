@@ -12,7 +12,7 @@ import {
 } from "@nextui-org/react";
 import { toast } from "sonner";
 import type { AvailableVaccines, ListaVacunas } from "@/types";
-import { SelectVaccines } from "../selects/select vaccines";
+import { SelectVaccines } from "../../../selects/select vaccines";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";
 
 type ModalProps = {
