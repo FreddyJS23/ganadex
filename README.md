@@ -3,7 +3,7 @@
 ## 📖 Índice
 
 - 🎯 [Introducción](#-introducción)
-- 🛠️ [Stack Tecnológico](#stack-tecnológico)
+- ⚒️ [Stack Tecnológico](#stack-tecnológico)
 - 🗂️ [Estructura del Proyecto](#estructura-de-carpetas)
 - 📋 [Requisitos Previos](#requisitos-previos)
 - ⚙️ [Instalación y Configuración](#instalación)
@@ -64,7 +64,7 @@ Ganadex es un sistema automatizado para monitorear y gestionar cada etapa del ci
 
 - Exportación de reportes estadísticos en PDF
 
-##  Stack tecnológico
+## Stack Tecnológico
 
 Este proyecto utiliza un conjunto de tecnologías modernas para garantizar un desarrollo eficiente, una experiencia de usuario fluida y un backend robusto. Aquí están las herramientas y bibliotecas clave utilizadas:
 
@@ -280,7 +280,7 @@ Esto expondrá la aplicación en [http://localhost:3000](http://localhost:3000).
 
 ## Guía de Desarrollo
 
-## **Contenido de la Carpeta `src/actions`**
+### **Contenido de la Carpeta `src/actions`**
 
 La carpeta `src/actions` contiene las acciones del servidor de Next.js. Estas acciones son funciones que se ejecutan en el lado del servidor.
 
@@ -405,7 +405,7 @@ import { createCastle } from "@/actions/vaca";
 
 ```
 
-## **Contenido de la Carpeta `src/components`**
+### **Contenido de la Carpeta `src/components`**
 
 La carpeta `src/components` contiene todos los componentes reutilizables de la aplicación. Estos componentes están organizados en subcarpetas según su funcionalidad, lo que facilita su mantenimiento y reutilización en diferentes partes del proyecto.
 
@@ -462,7 +462,7 @@ src/components/
 
 ---
 
-## **Contenido de la Carpeta `src/data`**
+### **Contenido de la Carpeta `src/data`**
 
 La carpeta `src/data` un archivo server json para un servicio de api con datos de ejemplo.
 
@@ -488,7 +488,7 @@ src/data/
 npm fakeApi
 ```
 
-## **Contenido de la Carpeta `src/hooks`**
+### **Contenido de la Carpeta `src/hooks`**
 
 La carpeta `src/hooks` contiene hooks personalizados que encapsulan lógica reutilizable para manejar acciones comunes en la aplicación. Estos hooks están diseñados para simplificar tareas como la gestión de formularios, la ejecución de acciones con IDs y la edición o eliminación de datos.
 
@@ -782,7 +782,7 @@ src/ui/
 
 ---
 
-## **Contenido de la Carpeta `src/utils`**
+### **Contenido de la Carpeta `src/utils`**
 
 La carpeta `src/utils` contiene funciones utilitarias y helpers que encapsulan lógica común y repetitiva utilizada en diferentes partes de la aplicación. Estas utilidades están diseñadas para ser reutilizables y facilitar tareas como formateo de datos, manejo de errores, configuración de gráficos y más.
 
