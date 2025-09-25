@@ -3,13 +3,13 @@
 ## 📖 Índice
 
 - 🎯 [Introducción](#-introducción)
-- ⚒️ [Stack Tecnológico](#-stack-tecnológico)
+- 🎒 [Stack Tecnológico](#-stack-tecnológico)
 - 📂 [Estructura del Proyecto](#-estructura-de-carpetas)
 - 📋 [Requisitos Previos](#-requisitos-previos)
-- ⚙️ [Instalación y Configuración](#-instalacion-y-configuracion)
+- 🔧 [Instalación y Configuración](#-instalación-y-configuración)
 - 🚀 [Ejecución del Proyecto](#-ejecución-del-proyecto)
 - 🐳 [Uso de Docker](#-uso-de-docker)
-- 🛠️ [Guía de Desarrollo](#-guía-de-desarrollo)
+- 📘 [Guía de Desarrollo](#-guía-de-desarrollo)
 
 ## 🎯 Introducción
 
@@ -63,7 +63,7 @@ Ganadex es un sistema automatizado para monitorear y gestionar cada etapa del ci
 
 - Exportación de reportes estadísticos en PDF
 
-## ⚒️ Stack Tecnológico
+## 🔧 Stack Tecnológico
 
 Este proyecto utiliza un conjunto de tecnologías modernas para garantizar un desarrollo eficiente, una experiencia de usuario fluida y un backend robusto. Aquí están las herramientas y bibliotecas clave utilizadas:
 
@@ -129,7 +129,7 @@ Antes de comenzar, asegúrate de tener instalados los siguientes programas en tu
 - **Git** (para clonar el repositorio).
 - **Docker** (opcional, para entornos de desarrollo consistentes).
 
-## ⚙️ Instalación y Configuración
+## 🔧 Instalación y Configuración
 
 Sigue estos pasos para instalar el proyecto en tu máquina local:
 
@@ -277,7 +277,7 @@ Esto expondrá la aplicación en [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## 🛠️ Guía de Desarrollo
+## 📘 Guía de Desarrollo
 
 ### **Contenido de la Carpeta `src/actions`**
 
