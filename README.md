@@ -3,14 +3,13 @@
 ## 📖 Índice
 
 - 🎯 [Introducción](#-introducción)
-- ⚒️ [Stack Tecnológico](#stack-tecnológico)
-- 🗂️ [Estructura del Proyecto](#estructura-de-carpetas)
-- 📋 [Requisitos Previos](#requisitos-previos)
-- ⚙️ [Instalación y Configuración](#instalación)
-- 🚀 [Ejecución del Proyecto](#ejecución-del-proyecto)
-- 🐳 [Uso de Docker](#uso-de-docker)
-- 📂 [Estructura de Carpetas](#estructura-de-carpetas)
-- 🛠️ [Guía de Desarrollo](#guía-de-desarrollo)
+- ⚒️ [Stack Tecnológico](#-stack-tecnológico)
+- 📂 [Estructura del Proyecto](#-estructura-de-carpetas)
+- 📋 [Requisitos Previos](#-requisitos-previos)
+- ⚙️ [Instalación y Configuración](#-instalacion-y-configuracion)
+- 🚀 [Ejecución del Proyecto](#-ejecución-del-proyecto)
+- 🐳 [Uso de Docker](#-uso-de-docker)
+- 🛠️ [Guía de Desarrollo](#-guía-de-desarrollo)
 
 ## 🎯 Introducción
 
@@ -64,7 +63,7 @@ Ganadex es un sistema automatizado para monitorear y gestionar cada etapa del ci
 
 - Exportación de reportes estadísticos en PDF
 
-## Stack Tecnológico
+## ⚒️ Stack Tecnológico
 
 Este proyecto utiliza un conjunto de tecnologías modernas para garantizar un desarrollo eficiente, una experiencia de usuario fluida y un backend robusto. Aquí están las herramientas y bibliotecas clave utilizadas:
 
@@ -86,7 +85,7 @@ Este proyecto utiliza un conjunto de tecnologías modernas para garantizar un de
 - 📦 **[Sharp](https://sharp.pixelplumbing.com/)** - Procesamiento de imágenes rápido y eficiente.
 - 🔔 **[Sonner](https://sonner.dev/)** - Biblioteca para notificaciones rápidas y personalizables.
 
-## Estructura de Carpetas
+## 📂 Estructura de Carpetas
 
  El proyecto sigue una estructura modular para facilitar la escalabilidad y el mantenimiento. A continuación, se describe la estructura principal:
 
@@ -121,7 +120,7 @@ src/
 
 ```
 
-## Requisitos Previos
+## 📋 Requisitos Previos
 
 Antes de comenzar, asegúrate de tener instalados los siguientes programas en tu máquina:
 
@@ -130,7 +129,7 @@ Antes de comenzar, asegúrate de tener instalados los siguientes programas en tu
 - **Git** (para clonar el repositorio).
 - **Docker** (opcional, para entornos de desarrollo consistentes).
 
-## Instalación
+## ⚙️ Instalación y Configuración
 
 Sigue estos pasos para instalar el proyecto en tu máquina local:
 
@@ -189,7 +188,7 @@ NEXT_PUBLIC_BASE_URL="https://tudominio.com"
 
 ```
 
-## Ejecución del Proyecto
+## 🚀 Ejecución del Proyecto
 
 Para iniciar el servidor de desarrollo, ejecuta:
 
@@ -220,7 +219,7 @@ npm run type-check
 
 Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación
 
-## Uso de Docker
+## 🐳 Uso de Docker
 
 Docker permite ejecutar la aplicación en un entorno aislado y consistente, ideal para desarrollo y producción.
 
@@ -278,7 +277,7 @@ Esto expondrá la aplicación en [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## Guía de Desarrollo
+## 🛠️ Guía de Desarrollo
 
 ### **Contenido de la Carpeta `src/actions`**
 
