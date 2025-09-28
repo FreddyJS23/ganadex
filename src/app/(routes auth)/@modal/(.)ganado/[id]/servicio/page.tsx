@@ -1,4 +1,4 @@
-import { ModalHistoryServices } from "@/components/modals/historys/history services bull";
+import { ModalHistoryServices } from "@/components/modals/view/historys/history services bull";
 import { ResponseServicios } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";

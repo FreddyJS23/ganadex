@@ -1,7 +1,8 @@
 "use client";
 
-import { LayoutModal } from "../..";
-import { ModalProps, PreciosDeLeche } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { ModalProps, PreciosDeLeche } from "@/types";
 import { ContainerTableHistory } from "..";
 import { TableHistoryPriceMilk } from "@/components/tables/in modals/history price milk";
 

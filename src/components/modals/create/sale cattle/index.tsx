@@ -1,5 +1,6 @@
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { Comprador, ModalProps } from "@/types";
 import { Select } from "@/components/selects/select";
 import { Controller, useForm } from "react-hook-form";

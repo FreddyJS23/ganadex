@@ -1,6 +1,7 @@
 "use client";
 
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { LayoutModalProps } from "@/types";
 import { deleteUserVeterinary } from "@/actions/userVeterinary";
 import { useActionId } from "@/hooks/useActionId";

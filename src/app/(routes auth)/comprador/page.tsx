@@ -1,4 +1,4 @@
-import { ModalCustomers } from "@/components/modals/historys/customers";
+import { ModalCustomers } from "@/components/modals/view/historys/customers";
 import { ResponseCompradores } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";

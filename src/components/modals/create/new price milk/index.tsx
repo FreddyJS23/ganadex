@@ -1,5 +1,6 @@
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ModalProps } from "@/types";
 import { createPriceMilk } from "@/actions/precioLeche";
 import { toast } from "sonner";

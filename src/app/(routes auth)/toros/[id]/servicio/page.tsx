@@ -1,4 +1,4 @@
-import { ModalHistoryServicesBull } from "@/components/modals/historys/history services";
+import { ModalHistoryServicesBull } from "@/components/modals/view/historys/history services";
 import { getData } from "@/services/apiClient";
 import { ResponseServiciosToro } from "@/types";
 import { responseErrorServer } from "@/utils/returnError";

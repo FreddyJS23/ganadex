@@ -1,4 +1,4 @@
-import { ModalHistoryCheckUps } from "@/components/modals/historys/history checkups";
+import { ModalHistoryCheckUps } from "@/components/modals/view/historys/history checkups";
 import { ResponseRevisiones } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";

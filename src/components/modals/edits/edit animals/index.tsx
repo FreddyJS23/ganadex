@@ -12,7 +12,8 @@ import ButtonEdit from "@/ui/ButtonEdit";
 import { castleEditShema } from "@/validations/castleShema";
 import { useDisclosure } from "@nextui-org/react";
 import { useMemo, useState } from "react";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import { formCastleEdit } from "@/collections/formsInputs";
 import { Input } from "@/components/Inputs";
 import { Controller } from "react-hook-form";

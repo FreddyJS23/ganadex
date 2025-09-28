@@ -1,5 +1,6 @@
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ModalProps } from "@/types";
 import type { CreateCustomer } from "@/types/forms";
 import { createCustomerShema } from "@/validations/Customer";

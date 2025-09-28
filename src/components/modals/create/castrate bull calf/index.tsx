@@ -1,7 +1,8 @@
 "use client";
 
 import { useDisclosure } from "@nextui-org/modal";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ModalProps } from "@/types";
 import { toast } from "sonner";
 import { castrateBullCalf } from "@/actions/castrateBullCalf";

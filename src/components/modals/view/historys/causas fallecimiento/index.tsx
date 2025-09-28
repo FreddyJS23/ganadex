@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
 import { CausaFallecimiento, ModalProps } from "@/types";
 import { ContainerTableHistory } from "..";
 import { TableCausasFallecimiento } from "@/components/tables/in modals/causas fallecimiento";

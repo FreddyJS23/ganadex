@@ -1,4 +1,4 @@
-import { ModalHistoryWeightMilk } from "@/components/modals/historys/history weight milk";
+import { ModalHistoryWeightMilk } from "@/components/modals/view/historys/history weight milk";
 import { ResponsePesajesLeche } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";

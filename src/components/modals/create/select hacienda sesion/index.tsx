@@ -1,6 +1,7 @@
 "use client";
 
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { Hacienda } from "@/types";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";

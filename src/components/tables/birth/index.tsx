@@ -84,15 +84,4 @@ export const TableAllBirths = ({ todos_partos }: ResponsePartosGeneral) => {
     />
   );
 };
-type = "parto"
-  />
-  );
-};
-type = "parto"
-  />
-  );
-};
-type = "parto"
-  />
-  );
-};
+

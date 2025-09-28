@@ -1,5 +1,6 @@
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ModalProps, PreciosDeLeche } from "@/types";
 import { Select } from "@/components/selects/select";
 import type { CreateSaleMilk } from "@/types/forms";

@@ -15,7 +15,8 @@ import {
 import type { CreateVaccine } from "@/types/forms";
 import { useRouter } from "next/navigation";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import { formVaccine } from "@/collections/formsInputs";
 import { createVaccineSchema } from "@/validations/vaccineSchema";
 import { Input } from "@/components/Inputs";

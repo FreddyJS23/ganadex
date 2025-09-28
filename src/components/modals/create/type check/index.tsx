@@ -1,7 +1,8 @@
 "use client";
 
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ResponseErrorNext, ResponseTipoRevision } from "@/types";
 import type { CreateTypeCheck } from "@/types/forms";
 import { useForm } from "react-hook-form";

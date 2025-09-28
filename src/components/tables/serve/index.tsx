@@ -85,12 +85,3 @@ export const TableAllServes = ({
     />
   );
 };
-    />
-  );
-};
-    />
-  );
-};
-    />
-  );
-};

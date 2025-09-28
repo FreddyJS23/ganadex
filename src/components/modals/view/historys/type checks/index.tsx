@@ -1,7 +1,8 @@
 "use client";
 
-import { LayoutModal } from "../..";
-import { ModalProps, TipoRevision } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { ModalProps, TipoRevision } from "@/types";
 import { ContainerTableHistory } from "..";
 import { TableTypeCheck } from "@/components/tables/in modals/types check";
 

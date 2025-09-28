@@ -1,7 +1,8 @@
 "use client";
 
 import { useDisclosure } from "@nextui-org/react";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ModalProps, Servicio } from "@/types";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";
 import { useEditDelete } from "@/hooks/useEditDelete";

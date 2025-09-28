@@ -1,4 +1,4 @@
-import { ModalHistoryPricesMilk } from "@/components/modals/historys/history prices of milk";
+import { ModalHistoryPricesMilk } from "@/components/modals/view/historys/history prices of milk";
 import { ResponsePreciosLeche } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";

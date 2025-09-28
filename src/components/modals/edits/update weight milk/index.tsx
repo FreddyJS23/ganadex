@@ -1,6 +1,7 @@
 "use client";
 
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { LayoutModalProps, PesajeLecheGanado } from "@/types";
 import { useParams, useRouter } from "next/navigation";
 import type { UpdateWeightMilk } from "@/types/forms";

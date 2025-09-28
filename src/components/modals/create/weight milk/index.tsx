@@ -1,7 +1,8 @@
 "use client";
 
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ModalProps } from "@/types";
 import { useDisclosure } from "@nextui-org/react";
 import type { CreateWeightMilk } from "@/types/forms";

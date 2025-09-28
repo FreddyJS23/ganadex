@@ -1,7 +1,8 @@
 "use client";
 
-import { LayoutModal } from "../..";
-import { ModalProps, PesajeLecheGanado } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { ModalProps, PesajeLecheGanado } from "@/types";
 import { TableHistoryWeightMilk } from "@/components/tables/in modals/history weight milk";
 import { ContainerTableHistory } from "..";
 

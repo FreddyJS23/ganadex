@@ -1,16 +1,17 @@
 "use client";
 
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
-import { ModalProps } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { ModalProps } from "@/types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
 import { toast } from "sonner";
-import { endpointsReportsAnnual } from "@/collections/endPointsApi";
+import type { endpointsReportsAnnual } from "@/collections/endPointsApi";
 import { generateReportsYear } from "@/actions/generate report year";
 import { yearsToGenerateReportShema } from "@/validations/yearsTotGenerateReportShema";
-import { YearToReports } from "@/types/forms";
+import type { YearToReports } from "@/types/forms";
 import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 
 export const ModalGenerateReportYear = ({

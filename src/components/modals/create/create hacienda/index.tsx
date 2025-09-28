@@ -1,5 +1,6 @@
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ModalProps } from "@/types";
 import { useForm } from "react-hook-form";
 import type { CreateHacienda } from "@/types/forms";

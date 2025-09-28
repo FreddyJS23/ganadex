@@ -1,7 +1,8 @@
 "use client";
 
-import { LayoutModal } from "../..";
-import { ToroServicio } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { ToroServicio } from "@/types";
 import { ContainerTableHistory } from "..";
 import { TableHistoryServicesBull } from "@/components/tables/in modals/history services bull";
 

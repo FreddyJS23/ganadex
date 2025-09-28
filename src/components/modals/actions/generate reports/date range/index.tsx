@@ -1,16 +1,17 @@
 "use client";
 
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
-import { ModalProps } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { ModalProps } from "@/types";
 import { useForm } from "react-hook-form";
-import { RangeDatesToReports } from "@/types/forms";
+import type { RangeDatesToReports } from "@/types/forms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
 import { toast } from "sonner";
 import { rangeDatesToReportsShema } from "@/validations/rangeDatesShema";
 import { generateReports } from "@/actions/generate report";
-import { endpointsReports } from "@/collections/endPointsApi";
+import type { endpointsReports } from "@/collections/endPointsApi";
 import { messageErrorApi } from "@/utils/handleErrorResponseNext";
 import { useLoadingButtonModal } from "@/stores/loadingButtonModal";
 

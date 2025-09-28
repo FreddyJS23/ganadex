@@ -5,7 +5,8 @@ import type { AvailableVaccines, DayVaccination, ModalProps } from "@/types";
 import type { CreateVaccinacionDay } from "@/types/forms";
 import { createVaccinationDayShema } from "@/validations/VaccinationDay";
 import { Controller } from "react-hook-form";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import { useFormManager } from "@/hooks/useFormManager";
 import { SelectVaccines } from "@/components/selects/select vaccines";
 import { ButtonCreateItem } from "@/ui/ButtonCreate";

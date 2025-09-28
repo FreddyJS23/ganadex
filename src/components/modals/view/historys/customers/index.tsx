@@ -1,7 +1,8 @@
 "use client";
 
-import { LayoutModal } from "../..";
-import { Comprador, ModalProps } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { Comprador, ModalProps } from "@/types";
 import { ContainerTableHistory } from "..";
 import { TableCustomers } from "@/components/tables/in modals/customers";
 

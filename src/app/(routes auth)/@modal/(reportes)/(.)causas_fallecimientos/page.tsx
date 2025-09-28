@@ -1,4 +1,4 @@
-import { ModalGenerateReport } from "@/components/modals/generate reports/date range";
+import { ModalGenerateReport } from "@/components/modals/actions/generate reports/date range";
 
 export default async function Page() {
   return <ModalGenerateReport type="fallecimiento" />;

@@ -1,7 +1,8 @@
 "use client";
 
 import { RedirectInTable } from "@/components/redirectsInTables";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ModalProps, Parto } from "@/types";
 import { useEditDelete } from "@/hooks/useEditDelete";
 import { ButtonsEditedDelete } from "@/ui/Buttons edit-delete";

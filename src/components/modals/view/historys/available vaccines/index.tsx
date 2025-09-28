@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
 import { ModalProps, Vaccine } from "@/types";
 import { ContainerTableHistory } from "..";
 import { TableAvailableVaccines } from "@/components/tables/in modals/avaliable vaccines";

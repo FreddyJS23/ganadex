@@ -75,12 +75,3 @@ export const TableAllCheckups = ({
     />
   );
 };
-    />
-  );
-};
-    />
-  );
-};
-    />
-  );
-};

@@ -1,4 +1,4 @@
-import { ModalCausasFallecimiento } from "@/components/modals/historys/causas fallecimiento";
+import { ModalCausasFallecimiento } from "@/components/modals/view/historys/causas fallecimiento";
 import { ResponseCausasFallecimiento } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";

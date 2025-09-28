@@ -15,7 +15,7 @@ import { TitleTab } from "@/ui/TitleTab";
 import { usePathname } from "next/navigation";
 import { ButtonGroupTabDetailCattle } from "@/ui/ButtonGroupTabDetailCattle";
 import { VaccinesAppliedCastle } from "../../tables/vaccines Apply castle/index/index";
-import { ModalHistoryVaccines } from "../../modals/historys/history vaccines";
+import { ModalHistoryVaccines } from "@/components/modals/view/historys/history vaccines";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 

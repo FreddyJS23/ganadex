@@ -1,7 +1,8 @@
 "use client";
 
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { ResponseCausaFallecimiento, ResponseErrorNext } from "@/types";
 import type { CreateCausaFallecimiento } from "@/types/forms";
 import { useForm } from "react-hook-form";

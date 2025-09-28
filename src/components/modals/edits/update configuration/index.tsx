@@ -1,4 +1,5 @@
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import { updateConfiguration } from "@/actions/usuario";
 import { Input } from "@/components/Inputs";
 import type { UpdateConfiguration } from "@/types/forms";

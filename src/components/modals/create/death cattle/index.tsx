@@ -1,5 +1,6 @@
 import { Input } from "@/components/Inputs";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { CausaFallecimiento, ModalProps } from "@/types";
 import { Controller } from "react-hook-form";
 import type { CreateDeathCastle } from "@/types/forms";

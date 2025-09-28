@@ -1,7 +1,8 @@
 "use client";
 
-import { LayoutModal } from "../..";
-import { Revision } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { Revision } from "@/types";
 import { TableHistoryCheckUps } from "@/components/tables/in modals/history checkups";
 import { ContainerTableHistory } from "..";
 

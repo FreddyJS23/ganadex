@@ -1,6 +1,7 @@
 "use client";
 
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import type { LayoutModalProps, Personal, PositionStaff } from "@/types";
 import { Controller } from "react-hook-form";
 import type { CreateStaff } from "@/types/forms";

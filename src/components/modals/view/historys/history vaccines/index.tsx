@@ -1,7 +1,8 @@
 "use client";
 
-import { LayoutModal } from "../..";
-import { ModalProps, Vacuna } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { ModalProps, Vacuna } from "@/types";
 import { ContainerTableHistory } from "..";
 import { TableHistoryVaccines } from "@/components/tables/in modals/history vaccines";
 import { useDisclosure } from "@nextui-org/react";

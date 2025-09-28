@@ -1,5 +1,6 @@
-import { LayoutModal } from "../..";
-import { ModalProps, PreciosDeLeche } from "@/types";
+import { LayoutModal } from "@/components/modals";
+
+import type { ModalProps, PreciosDeLeche } from "@/types";
 import { TableHistoryPriceMilk } from "@/components/tables/in modals/history price milk";
 import { ContainerTableHistory } from "..";
 

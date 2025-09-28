@@ -1,4 +1,4 @@
-import { ModalVaccines } from "@/components/modals/historys/available vaccines";
+import { ModalVaccines } from "@/components/modals/view/historys/available vaccines";
 import { ResponseVacunas } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";

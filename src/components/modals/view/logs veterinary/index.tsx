@@ -1,7 +1,8 @@
 "use client";
 
 import type { LogVeterinary, ModalProps } from "@/types";
-import { LayoutModal } from "../..";
+import { LayoutModal } from "@/components/modals";
+
 import { TableLogsVeterinary } from "@/components/tables/logs veterinary";
 
 export const ModalLogsVeterinary = ({

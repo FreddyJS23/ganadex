@@ -5,6 +5,7 @@ import { ResponseErrorNext } from "@/types";
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function castrateBullCalf(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   id: number,
 ): Promise<void | ResponseErrorNext | undefined> {
   /*     const response = await submitForm<number,void>('caparCria', 'GET', undefined, id); */

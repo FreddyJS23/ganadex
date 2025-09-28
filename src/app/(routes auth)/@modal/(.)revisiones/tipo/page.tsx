@@ -1,4 +1,4 @@
-import { ModalTypeCheck } from "@/components/modals/historys/type checks";
+import { ModalTypeCheck } from "@/components/modals/view/historys/type checks";
 import { ResponseTiposRevision } from "@/types";
 import { getData } from "@/services/apiClient";
 import { responseErrorServer } from "@/utils/returnError";
