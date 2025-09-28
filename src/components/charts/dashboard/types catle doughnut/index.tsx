@@ -13,7 +13,6 @@ import {
   Legend,
   ChartData,
   ChartOptions,
-  Chart,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import annotationPlugin from "chartjs-plugin-annotation";
@@ -40,21 +39,28 @@ export const TortaTipoGanado = ({
 
   const darkMode = useThemeStore((state) => state.darkMode);
 
+  const sumaTotal = (numbers: number[]) => numbers.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
   const configAnotation = {
     annotation: {
       //plugin anotaciones
       annotations: {
-        type: "doughnutLabel",
-        content: ({ chart }: { chart: Chart }) => [
-          "Total",
-          chart.getDatasetMeta(0),
-        ],
-        font: [
-          { size: 20, weight: "bold" },
-          { size: 18, weight: "normal" },
-        ],
-        color: darkMode ? LETTER_WHITE : LETTER_BLACK,
-      },
+        dLabel: {
+          type: "doughnutLabel",
+          content: () =>
+
+            [
+              "Total",
+              //No se usa el total descrito en la documentación de plugin anotaciones, ya que el tipo no existe y genera error de tipado
+              sumaTotal(numberTypes),
+
+            ],
+          font: [
+            { size: 20, weight: "bold" },
+            { size: 18, weight: "normal" },
+          ],
+          color: darkMode ? LETTER_WHITE : LETTER_BLACK,
+        },
+      }
     },
   };
 
